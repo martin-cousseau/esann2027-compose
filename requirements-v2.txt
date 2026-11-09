@@ -1,0 +1,6 @@
+# Pinned for every Colab runtime of the v2 study (installed by colab/bootstrap.py).
+# torch is NOT listed: it stays at the locked Colab image's version (recorded in colab/locked_fingerprint.json),
+# and bootstrap.py adds a constraint so no dependency can move it.
+lm-eval==0.4.13
+nvidia-ml-py==13.615.71
+pytest==9.2.0

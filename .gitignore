@@ -1,0 +1,8 @@
+# private inputs (review text, draft PDF, Drive exports): backed up to the private HF dataset, never pushed
+context/
+# runtime caches and local scratch
+cache/
+__pycache__/
+*.pyc
+.pytest_cache/
+paper/scratch/

@@ -1,0 +1,27 @@
+# container checks, 2026-11-09T23:01:30+00:00
+PASS | 1 HF_TOKEN set | non-empty (value never printed)
+PASS | 2 HF identity | user=martincousseau role=fineGrained write_scope=True
+PASS | 3 results repo | martincousseau/esann2027-v2-results private=True upload+delete OK
+PASS | 4 document context/review.md | 62285 bytes
+FAIL | 4 document context/explainer.md | missing
+PASS | 4 document context/review_code.zip | 47328 bytes
+PASS | 4 document context/esann2027_paper_draft.pdf | 303603 bytes
+PASS | 5a repository | branch=claude/busy-hopper-ghtynk HEAD=3452e1e4c5a2eec44c7a94fc41a931886f0d6a3f
+PASS | 5b review_code unpacked
+PASS | 5c push permission (dry run; nothing pushed) |  * [new branch]      HEAD -> claude/busy-hopper-ghtynk
+PASS | 6 baseline re-analysis | max |recomputed - printed| = 0.000
+RESULT container checks: FAIL
+# document mapping (Drive folder 1bk2uyKTwa0TQDkP5OUEJn8DTK9fS3Wf9, read through the Google Drive connector, 2026-11-09)
+INFO | Drive folder contents | 2 files: Google Doc "Review" (id 11X177tVneSrd8WWzD1q6lw_s4XU7gF6XKrz-PNsgEPU), Google Doc "Code" (id 1aSXQDlHP7J_C6I5oAhgODRZiyz8unurb1ghuTUxr2Q0)
+PASS | context/review.md | "Review" doc exported as Markdown (identified by content: title "Review: Do Pruning and Quantization Compose?", six major issues, requested experiments)
+INFO | "Code" doc | code listings of the review scripts (ablation_same_hessian.py, arms.py, extra_orders.py, analyze_results.py, synthetic_layers.py); kept as context/raw/code_doc.txt
+PASS | context/review_code.zip | uploaded to the session by the author (sha256 0ada0dc9...), matches the "Code" doc file list; unzipped to review_code/
+PASS | context/esann2027_paper_draft.pdf | uploaded to the session by the author (sha256 f6d0c496...), 6 pages
+FAIL | context/explainer.md | no Explainer document in the folder or elsewhere in the Drive (Markdown and DOCX exports of "Review" contain only the review tab)
+DECISION | explainer | author chose (2026-11-09, in session): proceed without it; the folder is re-checked at each NEWS.md update
+INFO | LaTeX source | not in the folder nor in the repository (README lists paper/ but it is absent): the paper is re-created from the PDF
+# Colab connector (2026-11-09)
+PASS | 7 get_subscription | tier SUBSCRIPTION_TIER_PRO
+PASS | 7 list_runtime_specs | eligible GPU: T4 (STANDARD, HIGHMEM), L4 (STANDARD), A100 (STANDARD, HIGHMEM), G4 (STANDARD); H100 STANDARD not eligible; TPU V5E1, V6E1 and CPU specs also eligible; same as expected
+PASS | 7 list_runtimes | no runtime existed before this session
+PASS | 8 subagent access | a subagent loaded mcp__Google_Colab_GPU__list_runtimes and called it (result {}): GPU subagents can drive Colab
