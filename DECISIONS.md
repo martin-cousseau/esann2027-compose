@@ -32,3 +32,18 @@ Every judgment call, with the reason and the date (UTC). Newest last.
 9. **2026-11-09, image lock.** Colab image `release-colab-external-images_20261106-060046_RC00` (the latest
    when the pilot was created). Later runtimes are created with this version string; if Colab refuses it,
    the run stops and the mismatch is logged.
+10. **2026-11-09, budget freedom (author, in session).** The 100 CU are one pool, to be allocated freely
+    and spent on speed (parallel runtimes) as needed. The allocation table in logs/budget.md is now
+    indicative only; the total stays capped at 100 CU (stop at about 5 CU estimated left).
+11. **2026-11-09, models published at the end (author, in session).** Every compressed state is exported
+    in an exact compact form (integer codes, per-group fp32 scale and uint8 zero point, mask bitmap; pruned-only
+    layers as fp32 kept values + bitmap), verified bit for bit before writing, and uploaded from the runtime
+    to `martincousseau/esann2027-compose-v2` (private until the end of the session, then public with a README,
+    linked from the fork). Round trip tested for every order and arm (tests/test_pipeline.py).
+12. **2026-11-09, tinyBenchmarks dropped.** lm-eval 0.4.13 needs a git install of the tinyBenchmarks package
+    for its metrics; it is first in the shrink order, so it is not run.
+13. **2026-11-09, GPU subagents do not poll.** Colab tool calls time out after 60 s on the client side, and a
+    subagent cannot sleep between polls. Waiting is done by a container-side watcher
+    (`scripts/watch_runtime.py`, run in the background by the orchestrator), which mirrors results through
+    the Jupyter API and exits on events. The orchestrator makes the Colab calls; subagents write family code
+    and analyse pulled results (the brief's fallback mode).

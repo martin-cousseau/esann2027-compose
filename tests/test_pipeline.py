@@ -244,3 +244,23 @@ def test_storage_matches_extra_orders_bits_per_weight():
         for key, mode in (("tcr", "none"), ("bitmap", "bitmap"), ("entropy_nominal", "entropy")):
             ref = X.bits_per_weight(s, b, mode) - (16 + b) / 128
             assert abs(st[key] - ref) < 1e-9, (s, b, key, st[key], ref)
+
+
+@pytest.mark.parametrize("order,s,b", [("quant", 0.0, 4), ("quant", 0.0, 3), ("quant", 0.0, 8), ("prune", 0.5, 16),
+                                       ("joint", 0.5, 4), ("p_then_q", 0.25, 3), ("q_then_p", 0.5, 4),
+                                       ("q_then_p_refit", 0.25, 3), ("q_then_p_pmask", 0.5, 4),
+                                       ("p_then_q_stale", 0.5, 3)])
+def test_export_roundtrip_is_exact(tmp_path, order, s, b):
+    core = P.load_core(strict=True)
+    rec = P.GridRecorder(core)
+    model = tiny_llama()
+    g = torch.Generator().manual_seed(4)
+    calib = [torch.randint(0, 512, (1, 64), generator=g) for _ in range(4)]
+    core.compress_model(model, calib, s, b, order, "cpu", verbose=False)
+    out = P.export_compressed(core, model, rec.records, b, str(tmp_path / "m.safetensors"), {"order": order})
+    assert out["fp32_fallback_layers"] == []
+    fresh = tiny_llama()
+    P.load_compressed_into(core, fresh, out["path"])
+    for (k1, v1), (k2, v2) in zip(model.state_dict().items(), fresh.state_dict().items()):
+        assert k1 == k2 and torch.equal(v1, v2), k1
+    rec.uninstall()

@@ -468,3 +468,168 @@ def read_jsonl(path):
             except json.JSONDecodeError:
                 pass  # a line cut by a kill: ignored, the unit is re-run
     return out
+
+
+# ----------------------------------------------------------------------------- exact compact model export
+class GridRecorder:
+    """Records, for every compress_weight call, the grid returned by its LAST obs_sweep call and the mask.
+
+    For every order (paper orders and review arms) the last sweep inside compress_weight produces the final
+    weights, so its grid is the one the weights lie on. Install after load_core (it wraps the strict
+    obs_sweep, so the overflow check still runs); records come in compress_model's layer order.
+    """
+
+    def __init__(self, core):
+        self.core, self.records, self._last = core, [], None
+        self._sweep, self._cw = core.obs_sweep, core.compress_weight
+        rec = self
+
+        def obs_sweep(W, H, *a, **kw):
+            out = rec._sweep(W, H, *a, **kw)
+            rec._last = out[2]
+            return out
+
+        def compress_weight(W, H, sparsity, bits, order, groupsize=128):
+            rec._last = None
+            Wh, m = rec._cw(W, H, sparsity, bits, order, groupsize)
+            rec.records.append({"grid": rec._last, "mask": m.detach().clone()})
+            return Wh, m
+
+        core.__dict__["obs_sweep"] = obs_sweep
+        core.__dict__["compress_weight"] = compress_weight
+
+    def reset(self):
+        self.records = []
+
+    def uninstall(self):
+        self.core.__dict__["obs_sweep"] = self._sweep
+        self.core.__dict__["compress_weight"] = self._cw
+
+
+def _linears_in_order(core, model):
+    import torch.nn as nn
+    for li, layer in enumerate(core.get_layers(model)):
+        lins = {n: m for n, m in layer.named_modules() if isinstance(m, nn.Linear)}  # compress_model's order
+        for n, m in lins.items():
+            yield li, n, m
+
+
+def _pack_nibbles(q):
+    import torch
+    q = q.to(torch.uint8).reshape(-1)
+    if q.numel() % 2:
+        q = torch.cat([q, q.new_zeros(1)])
+    return (q[0::2] | (q[1::2] << 4)).contiguous()
+
+
+def _unpack_nibbles(p, n):
+    import torch
+    out = torch.empty(p.numel() * 2, dtype=torch.uint8, device=p.device)
+    out[0::2] = p & 0x0F
+    out[1::2] = p >> 4
+    return out[:n]
+
+
+def _packbits(mask):
+    import numpy as np
+    import torch
+    return torch.from_numpy(np.packbits(mask.reshape(-1).cpu().numpy().astype(np.uint8)))
+
+
+def _unpackbits(p, n, dev):
+    import numpy as np
+    import torch
+    return torch.from_numpy(np.unpackbits(p.cpu().numpy())[:n].astype(bool)).to(dev)
+
+
+def export_compressed(core, model, records, bits, path, meta, groupsize=GROUPSIZE):
+    """Write the compressed linear weights of the decoder blocks in an exact compact form.
+
+    Quantized layers: integer codes (4-bit packed two per byte when bits <= 4, else uint8), fp32 scale and
+    uint8 zero point per (row, group), and the sparsity mask as a bitmap (needed only to tell mask zeros from
+    rounding zeros: decoding gives exact zeros either way). Pruned-only layers: fp32 kept values + bitmap.
+    Every layer is decoded and compared bit for bit before writing; a layer that does not round-trip is
+    stored as plain fp32 and flagged. Returns a summary dict (bytes, exact layers, fallbacks).
+    """
+    import torch
+    from safetensors.torch import save_file
+    tensors, layers_meta, fallbacks = {}, [], []
+    lin = list(_linears_in_order(core, model))
+    assert len(lin) == len(records), (len(lin), len(records))
+    for (li, n, m), rec in zip(lin, records):
+        W = m.weight.data.float()
+        rows, cols = W.shape
+        key = f"{li}.{n}"
+        mask = rec["mask"].to(W.device)
+        entry = {"key": key, "shape": [rows, cols]}
+        if bits < 16 and rec["grid"]:
+            G = len(rec["grid"])
+            scale = torch.stack([rec["grid"][g][0].float() for g in range(G)], 1)
+            zero = torch.stack([rec["grid"][g][1].float() for g in range(G)], 1)
+            sc = scale.repeat_interleave(groupsize, 1)[:, :cols]
+            ze = zero.repeat_interleave(groupsize, 1)[:, :cols]
+            q = torch.clamp(torch.round(W / sc + ze), 0, 2 ** bits - 1)
+            Wr = sc * (q - ze)
+            if mask.any():
+                Wr[mask] = 0
+            if torch.equal(Wr, W) and bool((zero >= 0).all()) and bool((zero <= 255).all()):
+                codes = _pack_nibbles(q) if bits <= 4 else q.to(torch.uint8).reshape(-1)
+                tensors[key + ".codes"] = codes.cpu()
+                tensors[key + ".scale"] = scale.cpu().contiguous()
+                tensors[key + ".zero"] = zero.to(torch.uint8).cpu().contiguous()
+                if mask.any():
+                    tensors[key + ".mask"] = _packbits(mask)
+                entry.update(kind="quant", bits=bits, groups=G, packed=bits <= 4)
+            else:
+                tensors[key + ".weight"] = W.cpu().contiguous()
+                entry.update(kind="fp32")
+                fallbacks.append(key)
+        elif mask.any():
+            tensors[key + ".values"] = W[~mask].cpu().contiguous()
+            tensors[key + ".mask"] = _packbits(mask)
+            entry.update(kind="sparse_fp32")
+        else:
+            tensors[key + ".weight"] = W.cpu().contiguous()
+            entry.update(kind="fp32")
+        layers_meta.append(entry)
+    os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
+    meta = dict(meta, format="esann2027-v2-compact-1", groupsize=groupsize, layers=layers_meta,
+                fp32_fallback_layers=fallbacks)
+    save_file(tensors, path, metadata={"esann2027": json.dumps(meta)})
+    with open(path, "rb") as f:
+        sha = hashlib.sha256(f.read()).hexdigest()
+    return {"path": path, "bytes": os.path.getsize(path), "sha256": sha, "layers": len(layers_meta),
+            "fp32_fallback_layers": fallbacks}
+
+
+def load_compressed_into(core, model, path, groupsize=None):
+    """Decode a file written by export_compressed into an already loaded dense model (same architecture).
+    The result equals the evaluated compressed model bit for bit."""
+    import torch
+    from safetensors import safe_open
+    with safe_open(path, framework="pt") as f:
+        meta = json.loads(f.metadata()["esann2027"])
+        gs = groupsize or meta["groupsize"]
+        by_key = {e["key"]: e for e in meta["layers"]}
+        for li, n, m in _linears_in_order(core, model):
+            e = by_key[f"{li}.{n}"]
+            dev, dt_ = m.weight.device, m.weight.dtype
+            rows, cols = e["shape"]
+            if e["kind"] == "quant":
+                codes = f.get_tensor(e["key"] + ".codes").to(dev)
+                q = (_unpack_nibbles(codes, rows * cols) if e["packed"] else codes).reshape(rows, cols).float()
+                scale = f.get_tensor(e["key"] + ".scale").to(dev)
+                zero = f.get_tensor(e["key"] + ".zero").to(dev).float()
+                sc = scale.repeat_interleave(gs, 1)[:, :cols]
+                ze = zero.repeat_interleave(gs, 1)[:, :cols]
+                W = sc * (q - ze)
+                if e["key"] + ".mask" in f.keys():
+                    W[_unpackbits(f.get_tensor(e["key"] + ".mask"), rows * cols, dev).reshape(rows, cols)] = 0
+            elif e["kind"] == "sparse_fp32":
+                mask = _unpackbits(f.get_tensor(e["key"] + ".mask"), rows * cols, dev).reshape(rows, cols)
+                W = torch.zeros(rows, cols, device=dev)
+                W[~mask] = f.get_tensor(e["key"] + ".values").to(dev)
+            else:
+                W = f.get_tensor(e["key"] + ".weight").to(dev)
+            m.weight.data = W.to(dt_)
+    return meta

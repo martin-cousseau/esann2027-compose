@@ -66,34 +66,48 @@ def tensor_sha(t):
 
 # ----------------------------------------------------------------------------- uploads (optional)
 class Uploader:
-    """Uploads result files to the private HF dataset if a token file exists on this machine.
+    """Uploads files to a Hugging Face repo (one commit per batch) if a token file exists on this machine.
 
-    Without a token the files stay on the runtime and are pulled by the orchestrator."""
+    Without a token the files stay on the runtime and are pulled by the orchestrator through the Jupyter
+    API. Failed batches stay queued and are retried at the next flush. background=True runs each flush
+    in a thread (used for model files, so the GPU keeps evaluating while they upload)."""
 
-    def __init__(self, repo_id, log):
-        self.repo_id, self.log, self.pending = repo_id, log, []
+    def __init__(self, repo_id, log, repo_type="dataset", background=False):
+        self.repo_id, self.log, self.repo_type, self.background = repo_id, log, repo_type, background
+        self.pending, self.threads = [], []
         tokfile = os.path.expanduser("~/.cache/huggingface/token")
         self.enabled = bool(repo_id) and os.path.exists(tokfile)
 
-    def push(self, local, remote):
+    def push(self, files, message):
         if not self.enabled:
             return
-        self.pending.append((local, remote))
-        self.flush()
+        self.pending.append((list(files), message))
+        if self.background:
+            import threading
+            t = threading.Thread(target=self.flush, daemon=True)
+            t.start()
+            self.threads.append(t)
+        else:
+            self.flush()
 
     def flush(self):
         if not self.enabled or not self.pending:
             return
-        from huggingface_hub import HfApi
-        api, left = HfApi(), []
-        for local, remote in self.pending:
+        from huggingface_hub import CommitOperationAdd, HfApi
+        api = HfApi()
+        batch, self.pending = self.pending, []
+        for files, message in batch:
             try:
-                api.upload_file(path_or_fileobj=local, path_in_repo=remote, repo_id=self.repo_id,
-                                repo_type="dataset", commit_message=f"runner: {remote}")
+                ops = [CommitOperationAdd(path_in_repo=r, path_or_fileobj=l) for l, r in files]
+                api.create_commit(repo_id=self.repo_id, repo_type=self.repo_type, operations=ops,
+                                  commit_message=message)
             except Exception as e:  # noqa: BLE001
-                self.log(f"upload failed for {remote}: {type(e).__name__}; kept in queue")
-                left.append((local, remote))
-        self.pending = left
+                self.log(f"upload to {self.repo_id} failed ({message}): {type(e).__name__}: {str(e)[:160]}; queued")
+                self.pending.append((files, message))
+
+    def join(self, timeout=None):
+        for t in self.threads:
+            t.join(timeout)
 
 
 # ----------------------------------------------------------------------------- one unit
@@ -131,6 +145,7 @@ def run_unit(ctx, u, log):
     sid = state_id(args.model, u, args.dtype)
     t, started = {}, P.utcnow()
     P.set_determinism(0)
+    ctx["recorder"].reset()
     model.load_state_dict(dense_sd)
     seed = int(u.get("seed", 0))
     if seed not in ctx["calibs"]:
@@ -145,6 +160,18 @@ def run_unit(ctx, u, log):
                                         verbose=True, log=log)
     if args.device == "cuda":
         torch.cuda.synchronize()
+    export = None
+    if order != "dense" and args.export_models:
+        with P.timer(t, "export"):
+            mpath = os.path.join(ctx["models_root"], f"{sid}.safetensors")
+            export = P.export_compressed(core, model, ctx["recorder"].records, b, mpath,
+                                         {"state_id": sid, "model": args.model, "order": order, "sparsity": s,
+                                          "bits": b, "seed": seed, "dtype": args.dtype,
+                                          "commit": ctx["fp"].get("commit"), "code_hash": P.code_hash()})
+        export["repo_path"] = f"models/{short(args.model)}/{sid}.safetensors"
+        ctx["model_uploader"].push([(mpath, export["repo_path"])], f"model {sid}")
+        log(f"  exported {export['bytes'] / 2**20:.1f} MiB, fp32 fallbacks {len(export['fp32_fallback_layers'])}")
+    ctx["recorder"].reset()
     sym = P.model_symbol_entropy(core, model) if (b < 16 and order != "dense") else None
     kl_on = u.get("kl", True)
     write_status(ctx["status"], state_id=sid, stage="wikitext2", done=ctx["n_done"], todo=ctx["n_todo"])
@@ -187,14 +214,14 @@ def run_unit(ctx, u, log):
         "diags": diags, "checks": checks, "timings": t, "started": started, "finished": P.utcnow(),
         "n_calib": P.N_CALIB, "seqlen": P.SEQLEN, "groupsize": P.GROUPSIZE,
         "calib_sha": ctx["calib_sha"].get(seed), "wt_windows_sha": ctx["wt_sha"], "c4_windows_sha": ctx["c4_sha"],
-        "compressed_weights": ctx["n_comp"], "status": "ok" if checks["all_ok"] else "failed_check",
+        "compressed_weights": ctx["n_comp"], "model_export": export,
+        "status": "ok" if checks["all_ok"] else "failed_check",
         "metadata": P.run_metadata(args.dtype, args.runtime_name, args.session,
                                    {"unit": u, "fp16_flag": args.dtype != "float32"}),
     }
     P.append_jsonl(ctx["out"], row)
-    ctx["uploader"].push(ctx["out"], os.path.relpath(ctx["out"], ROOT))
-    if items:
-        ctx["uploader"].push(items_abs, items_rel)
+    files = [(ctx["out"], os.path.relpath(ctx["out"], ROOT))] + ([(items_abs, items_rel)] if items else [])
+    ctx["uploader"].push(files, f"result {sid}")
     log(f"DONE {sid} status={row['status']} ppl={wt['ppl']:.4f} times={t}")
     return row
 
@@ -211,7 +238,9 @@ def main():
     ap.add_argument("--eval-batch", type=int, default=32)
     ap.add_argument("--runtime-name", default=None)
     ap.add_argument("--session", default=None)
-    ap.add_argument("--hf-repo", default=None, help="private HF dataset for uploads (needs a token file)")
+    ap.add_argument("--hf-repo", default=None, help="private HF dataset for result uploads (needs a token file)")
+    ap.add_argument("--hf-models-repo", default=None, help="HF model repo for the compressed models")
+    ap.add_argument("--export-models", action="store_true", help="write every compressed state in exact compact form")
     ap.add_argument("--max-units", type=int, default=None)
     ap.add_argument("--no-dense-copy", action="store_true", help="skip KL (no dense copy on the GPU)")
     ap.add_argument("--device", default="cuda")
@@ -252,6 +281,7 @@ def main():
         return 0
 
     core = P.load_core(strict=True)
+    recorder = P.GridRecorder(core)
     model, tok = P.load_model(args.model, args.dtype, args.device)
     dense = None if args.no_dense_copy else copy.deepcopy(model)
     dense_sd = {k: v.detach().clone().cpu() for k, v in model.state_dict().items()}
@@ -271,7 +301,10 @@ def main():
             excl |= {i for i, _ in P.calib_documents(tok, c4, P.N_CALIB, P.SEQLEN, sd)}
         c4_win, c4_where = P.c4_eval_windows(tok, c4, n=P.C4_EVAL_WINDOWS, seqlen=P.SEQLEN, exclude=excl)
         torch.save({"windows": c4_win, "where": c4_where, "excluded_docs": sorted(excl)}, cpath)
-    ctx = dict(items_root=items_root, args=args, model=model, tok=tok, dense=dense, dense_sd=dense_sd, core=core, c4=c4, wt_win=wt_win,
+    ctx = dict(items_root=items_root, recorder=recorder, fp=fp,
+               models_root=os.path.join(base if args.smoke else ROOT, "models", short(args.model)),
+               model_uploader=Uploader(args.hf_models_repo, log, repo_type="model", background=True),
+               args=args, model=model, tok=tok, dense=dense, dense_sd=dense_sd, core=core, c4=c4, wt_win=wt_win,
                c4_win=c4_win, calibs={}, calib_sha={}, wt_sha=tensor_sha(wt_win), c4_sha=tensor_sha(c4_win),
                out=out, status=status, n_done=len(units) - len(todo), n_todo=len(todo),
                n_comp=P.compressed_weight_count(core, model), uploader=Uploader(args.hf_repo, log))
@@ -295,7 +328,11 @@ def main():
                 torch.cuda.empty_cache()
         ctx["n_done"] += 1
         ctx["uploader"].flush()
-    write_status(status, stage="finished", done=ctx["n_done"], todo=0, failures=failures)
+    ctx["model_uploader"].join(timeout=1800)
+    ctx["model_uploader"].flush()
+    ctx["uploader"].flush()
+    write_status(status, stage="finished", done=ctx["n_done"], todo=0, failures=failures,
+                 upload_backlog=len(ctx["uploader"].pending) + len(ctx["model_uploader"].pending))
     log(f"queue finished: {failures} failures")
     return 0
 
