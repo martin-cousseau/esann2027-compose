@@ -6,3 +6,12 @@ __pycache__/
 *.pyc
 .pytest_cache/
 paper/scratch/
+# LaTeX build artifacts (the PDFs are kept)
+paper/**/*.aux
+paper/**/*.fls
+paper/**/*.fdb_latexmk
+paper/**/*.blg
+paper/**/*.out
+paper/**/*.synctex.gz
+paper/**/build_stdout.log
+paper/**/main.log
