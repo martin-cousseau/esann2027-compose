@@ -23,3 +23,12 @@ Every judgment call, with the reason and the date (UTC). Newest last.
 7. **2026-11-09, C4 evaluation windows.** 256 windows of 2048 tokens from distinct C4-validation (shard 0)
    documents, sampled with seed 20261109, excluding every document used by calibration seeds 0, 1 and 2
    (the paper calibrates on the same shard).
+8. **2026-11-09, token transfer to Colab.** The container can reach the runtime's Jupyter server directly
+   (the connector's connection URL and proxy token). The HF token is therefore written to
+   `/root/.cache/huggingface/token` by `scripts/colab_jupyter.py put-token`, which reads `$HF_TOKEN` from the
+   container environment, so the value never appears in any tool call, output, log or commit; mode 600 is
+   set with a one-line `execute_code` (no secret in it). This replaces the execute_code transfer of section
+   3.4 with a channel that exposes less. Bulk results come back the same way (`colab_jupyter.py pull`).
+9. **2026-11-09, image lock.** Colab image `release-colab-external-images_20261106-060046_RC00` (the latest
+   when the pilot was created). Later runtimes are created with this version string; if Colab refuses it,
+   the run stops and the mismatch is logged.
