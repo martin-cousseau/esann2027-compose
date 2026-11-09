@@ -1,0 +1,118 @@
+\begin{thebibliography}{10}
+
+\bibitem{frantar2023sparsegpt}
+E.~Frantar and D.~Alistarh.
+\newblock {SparseGPT}: Massive language models can be accurately pruned in
+  one-shot.
+\newblock In {\em Proceedings of the 40th International Conference on Machine
+  Learning (ICML)}, volume 202 of {\em PMLR}, pages 10323--10337, 2023.
+
+\bibitem{frantar2023gptq}
+E.~Frantar, S.~Ashkboos, T.~Hoefler, and D.~Alistarh.
+\newblock {GPTQ}: Accurate post-training quantization for generative
+  pre-trained transformers.
+\newblock In {\em International Conference on Learning Representations (ICLR)},
+  2023.
+
+\bibitem{lecun1990obd}
+Y.~LeCun, J.~S. Denker, and S.~A. Solla.
+\newblock Optimal brain damage.
+\newblock In {\em Advances in Neural Information Processing Systems 2}, pages
+  598--605, 1990.
+
+\bibitem{hassibi1993obs}
+B.~Hassibi and D.~G. Stork.
+\newblock Second order derivatives for network pruning: {Optimal Brain
+  Surgeon}.
+\newblock In {\em Advances in Neural Information Processing Systems 5}, pages
+  164--171, 1993.
+
+\bibitem{han2016deep}
+S.~Han, H.~Mao, and W.~J. Dally.
+\newblock Deep compression: Compressing deep neural networks with pruning,
+  trained quantization and {Huffman} coding.
+\newblock In {\em International Conference on Learning Representations (ICLR)},
+  2016.
+
+\bibitem{laborde2025semantic}
+S.~Laborde, M.~Cousseau, A.~Yaacoub, and L.~Prevost.
+\newblock Semantic retention and extreme compression in {LLMs}: Can we have
+  both?
+\newblock In {\em International Joint Conference on Neural Networks (IJCNN)}.
+  IEEE, 2025.
+
+\bibitem{harma2025effective}
+S.~B. Harma, A.~Chakraborty, E.~Kostenok, D.~Mishin, D.~Ha, B.~Falsafi,
+  M.~Jaggi, M.~Liu, Y.~Oh, S.~Subramanian, and A.~Yazdanbakhsh.
+\newblock Effective interplay between sparsity and quantization: From theory to
+  practice.
+\newblock In {\em International Conference on Learning Representations (ICLR)},
+  2025.
+
+\bibitem{guo2024jsq}
+J.~Guo et~al.
+\newblock Compressing large language models by joint sparsification and
+  quantization.
+\newblock In {\em Proceedings of the 41st International Conference on Machine
+  Learning (ICML)}, volume 235 of {\em PMLR}, 2024.
+
+\bibitem{guo2025obr}
+H.~Guo, Y.~Li, and L.~Benini.
+\newblock Optimal brain restoration for joint quantization and sparsification
+  of {LLMs}, 2025.
+\newblock arXiv:2509.11177.
+
+\bibitem{frantar2022obc}
+E.~Frantar, S.~P. Singh, and D.~Alistarh.
+\newblock Optimal brain compression: A framework for accurate post-training
+  quantization and pruning.
+\newblock In {\em Advances in Neural Information Processing Systems (NeurIPS)},
+  volume~35, 2022.
+
+\bibitem{benallal2025smollm2}
+L.~{Ben Allal} et~al.
+\newblock {SmolLM2}: When smol goes big -- data-centric training of a small
+  language model, 2025.
+\newblock arXiv:2502.02737.
+
+\bibitem{qwen2024qwen25}
+{Qwen Team}.
+\newblock {Qwen2.5} technical report, 2024.
+\newblock arXiv:2412.15115.
+
+\bibitem{raffel2020t5}
+C.~Raffel et~al.
+\newblock Exploring the limits of transfer learning with a unified text-to-text
+  transformer.
+\newblock {\em Journal of Machine Learning Research}, 21(140):1--67, 2020.
+
+\bibitem{merity2017pointer}
+S.~Merity, C.~Xiong, J.~Bradbury, and R.~Socher.
+\newblock Pointer sentinel mixture models.
+\newblock In {\em International Conference on Learning Representations (ICLR)},
+  2017.
+
+\bibitem{clark2018arc}
+P.~Clark et~al.
+\newblock Think you have solved question answering? {T}ry {ARC}, the {AI2}
+  reasoning challenge, 2018.
+\newblock arXiv:1803.05457.
+
+\bibitem{bisk2020piqa}
+Y.~Bisk, R.~Zellers, R.~{Le Bras}, J.~Gao, and Y.~Choi.
+\newblock {PIQA}: Reasoning about physical commonsense in natural language.
+\newblock In {\em Proceedings of the AAAI Conference on Artificial
+  Intelligence}, volume~34, pages 7432--7439, 2020.
+
+\bibitem{zellers2019hellaswag}
+R.~Zellers, A.~Holtzman, Y.~Bisk, A.~Farhadi, and Y.~Choi.
+\newblock {HellaSwag}: Can a machine really finish your sentence?
+\newblock In {\em Proceedings of the 57th Annual Meeting of the Association for
+  Computational Linguistics (ACL)}, pages 4791--4800, 2019.
+
+\bibitem{gao2024lmeval}
+L.~Gao et~al.
+\newblock A framework for few-shot language model evaluation.
+\newblock Zenodo, version 0.4, 2024.
+
+\end{thebibliography}
