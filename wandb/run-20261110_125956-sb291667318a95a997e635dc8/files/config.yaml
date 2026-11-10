@@ -1,0 +1,128 @@
+_wandb:
+    value:
+        cli_version: 0.31.0
+        e:
+            01a1c58b-3423-7b7e-ad85-540b94099278:
+                codePath: scripts/wandb_sync.py
+                codePathLocal: scripts/wandb_sync.py
+                cpu:
+                    model: Intel(R) Xeon(R) Processor @ 2.10GHz
+                cpu_count: 4
+                cpu_count_logical: 4
+                disk:
+                    /:
+                        total: "270553174016"
+                        used: "13363990528"
+                executable: /home/user/venv/bin/python
+                git:
+                    commit: cc6ad7af3b32d66d9ad529053d7b6e342edf0f1a
+                    remote: https://github.com/martin-cousseau/esann2027-compose
+                host: vm
+                memory:
+                    total: "16867737600"
+                os: Linux-6.18.44-fc-v338-x86_64-with-glibc2.39
+                program: /home/user/esann2027-compose/scripts/wandb_sync.py
+                python: CPython 3.13.18
+                root: /home/user/esann2027-compose
+                startedAt: "2026-11-10T12:59:56.468710Z"
+                writerId: 01a1c58b-3423-7b7e-ad85-540b94099278
+        m: []
+        python_version: 3.13.18
+        t:
+            "3":
+                - 2
+                - 13
+                - 14
+                - 15
+                - 16
+                - 62
+                - 78
+            "4": 3.13.18
+            "5": 0.31.0
+            "12": 0.31.0
+            "13": linux-x86_64
+bits:
+    value: 4
+code_hash:
+    value: cef8af3eb1248742
+colab_image:
+    value: release-colab-external-images_20261106-060046_RC00
+colab_runtime:
+    value: esann-a4
+compressed_weights:
+    value: 106168320
+dtype:
+    value: float32
+eval_batch:
+    value:
+        arc_challenge: 48
+        arc_easy: 48
+        boolq: 16
+        hellaswag: 48
+        lambada_openai: 16
+        openbookqa: 48
+        piqa: 48
+        sciq: 16
+        winogrande: 48
+family:
+    value: E1
+finished:
+    value: "2026-11-10T12:29:28+00:00"
+git_commit:
+    value: 0acaa106f097ce64f39d480eb2f8321ec08bd54d
+git_commit_url:
+    value: https://github.com/martin-cousseau/esann2027-compose/commit/0acaa106f097ce64f39d480eb2f8321ec08bd54d
+git_repo:
+    value: https://github.com/martin-cousseau/esann2027-compose
+gpu:
+    value: NVIDIA L4
+groupsize:
+    value: 128
+hf_model_sha256:
+    value: 4f1cc964c8ff3a4ecdfbfb2a278b4dbe75bb984c1c4ad2bb413aab16a5058fff
+hf_model_url:
+    value: https://huggingface.co/martincousseau/esann2027-compose-v2/blob/main/models/SmolLM2-135M/SmolLM2-135M__p_then_q__s0.2500__b4__seed0__float32.safetensors
+items_file:
+    value: results/v2/items/SmolLM2-135M__p_then_q__s0.2500__b4__seed0__float32.json.gz
+items_url:
+    value: https://github.com/martin-cousseau/esann2027-compose/blob/claude/busy-hopper-ghtynk/results/v2/items/SmolLM2-135M__p_then_q__s0.2500__b4__seed0__float32.json.gz
+lm_eval:
+    value: 0.4.13
+model:
+    value: HuggingFaceTB/SmolLM2-135M
+n_calib:
+    value: 128
+nvidia_smi:
+    value: NVIDIA L4, 580.82.07, GPU-80673f78-1ca5-e843-f6ba-ac8c3450e3e4, 00000000:00:03.0, 23034 MiB, 2040 MHz
+order:
+    value: p_then_q
+seed:
+    value: 0
+seqlen:
+    value: 2048
+sparsity:
+    value: 0.25
+started:
+    value: "2026-11-10T12:19:24+00:00"
+state_id:
+    value: SmolLM2-135M__p_then_q__s0.2500__b4__seed0__float32
+status:
+    value: ok
+storage:
+    value:
+        bitmap: 4
+        entropy_actual: 3.811278124459133
+        entropy_nominal: 3.811278124459133
+        group_overhead: 0.15625
+        mask_frac_actual: 0.25
+        symbol_entropy: 3.318742644638635
+        tcr: 3
+        zero_frac_actual: 0.25603564325720074
+tcr:
+    value: 0.8125
+torch:
+    value: 2.14.1+cu130
+transformers:
+    value: 5.22.1
+virtualization_mode:
+    value: passthrough
