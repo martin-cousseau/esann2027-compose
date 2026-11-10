@@ -34,12 +34,15 @@ def e1():
 
 
 def e3():
+    # perplexity, C4 and KL only (tasks cut for budget, DECISIONS.md); the four review arms in four cells
     cells = [(0.25, 3), (1 / 3, 3), (0.5, 4), (0.5, 3)]
-    return {m: [u(a, s, b) for s, b in cells for a in ARMS] for m in CORE}
+    return {m: [u(a, s, b, tasks=[]) for s, b in cells for a in ARMS] for m in CORE}
 
 
 def e4():
-    return {m: [u("quant", 0.0, 2), u("joint", 0.6, 4), u("p_then_q", 0.6, 4), u("q_then_p", 0.6, 4)] for m in CORE}
+    # frontier points with full metrics: 2-bit reference, 60% pruning alone and 60%+4-bit in every order
+    return {m: [u("quant", 0.0, 2), u("prune", 0.6, 16), u("joint", 0.6, 4), u("p_then_q", 0.6, 4),
+                u("q_then_p", 0.6, 4)] for m in CORE}
 
 
 def e5(bits=(4,)):

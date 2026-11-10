@@ -75,3 +75,9 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     evaluation stays deterministic. The first units (both dense models, and the 3 gate units of SmolLM2-135M)
     ran at a single batch size; batch size changes only padding, so per-item results can differ at most on
     near-tied items (checked at the end by re-evaluating the dense models).
+20. **2026-11-10, E3 and E4 scope.** Measured cost per E1 unit (L4): about 10 min (SmolLM2-135M), about 21 min
+    (360M), about 22 min (Qwen2.5-0.5B), three quarters of it lm-eval. With E1 at about 20 L4-hours, E3 runs
+    with WikiText-2 and C4 perplexity, KL and top-1 only (no benchmarks; the mechanism question is about
+    the perplexity/KL gap), and E4 adds 5 frontier states per model (2-bit, 60% alone, 60%+4-bit in the three
+    orders) with the full E1 metrics. If CU remain at the end, E3's 50%+4 and 25%+3 cells get the paper's
+    three benchmarks.
