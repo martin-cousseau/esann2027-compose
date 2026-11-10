@@ -20,3 +20,4 @@ models/
 # local bookkeeping of the container-side mirrors
 results/v2/.pull_manifest.json
 results/v2/.wandb_synced.json
+logs/status/
