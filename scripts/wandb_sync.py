@@ -35,6 +35,8 @@ def api_key():
         sys.exit("no W&B API key")
     os.environ["WANDB_API_KEY"] = k
     os.environ.setdefault("WANDB_SILENT", "true")
+    os.environ.setdefault("WANDB_DIR", "/root/.cache/esann-wandb")  # keep W&B's local run files out of the repo
+    os.makedirs(os.environ["WANDB_DIR"], exist_ok=True)
     return k
 
 

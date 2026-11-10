@@ -21,3 +21,5 @@ models/
 results/v2/.pull_manifest.json
 results/v2/.wandb_synced.json
 logs/status/
+# W&B local run files (the sync script writes them under /root/.cache/esann-wandb)
+wandb/
