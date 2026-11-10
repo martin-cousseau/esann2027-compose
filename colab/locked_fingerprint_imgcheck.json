@@ -1,0 +1,1 @@
+{"gpu_name": "NVIDIA L4", "colab_image": ["release-colab-external-images_20261106-060046_RC00", "release-colab-external-images_20261109-060054_RC00"], "torch": "2.14.1+cu130", "transformers": "5.22.1", "lm_eval": "0.4.13", "datasets": "4.8.5", "accelerate": "1.15.0"}

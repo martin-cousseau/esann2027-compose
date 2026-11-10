@@ -13,3 +13,7 @@
 {"event":"lost","name":"runtimes/esann-e1-a3","observed_utc":"2026-11-10T11:05:00Z","note":"last upload 07:55, model upload after; died ~08:00-08:10","lifetime_h_est":0.85}
 {"event":"create","name":"runtimes/esann-a4","spec":"L4/STANDARD/GPU","created_utc":"2026-11-10T11:06:39Z","owner":"orchestrator","purpose":"E1 135M+360M, E2 Qwen"}
 {"event":"create","name":"runtimes/esann-b3","spec":"L4/STANDARD/GPU","created_utc":"2026-11-10T11:06:43Z","owner":"orchestrator","purpose":"E1 Qwen, E4, E3"}
+{"event":"lost","name":"runtimes/esann-a4","observed_utc":"2026-11-10T18:02:00Z","note":"last upload 15:45; tokens expired 14:54 during a session suspension (usage limit), keepalive stopped","lifetime_h_est":4.75}
+{"event":"lost","name":"runtimes/esann-b3","observed_utc":"2026-11-10T18:02:00Z","note":"same as esann-a4","lifetime_h_est":4.75}
+{"event":"create","name":"runtimes/esann-a5","spec":"L4/STANDARD/GPU (us-west4)","created_utc":"2026-11-10T18:03:59Z","owner":"orchestrator","purpose":"E3 135M rest, E1 360M"}
+{"event":"create","name":"runtimes/esann-b4","spec":"L4/STANDARD/GPU","created_utc":"2026-11-10T18:04:03Z","owner":"orchestrator","purpose":"E1 Qwen rest, E4/E3 Qwen and 360M"}

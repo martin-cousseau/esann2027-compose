@@ -264,3 +264,10 @@ def test_export_roundtrip_is_exact(tmp_path, order, s, b):
     for (k1, v1), (k2, v2) in zip(model.state_dict().items(), fresh.state_dict().items()):
         assert k1 == k2 and torch.equal(v1, v2), k1
     rec.uninstall()
+
+
+def test_fingerprint_accepts_listed_images_only():
+    locked = {"gpu_name": "NVIDIA L4", "colab_image": ["img-1", "img-2"], "torch": "2.x"}
+    assert P.check_fingerprint({"gpu_name": "NVIDIA L4", "colab_image": "img-2", "torch": "2.x"}, locked)
+    with pytest.raises(RuntimeError):
+        P.check_fingerprint({"gpu_name": "NVIDIA L4", "colab_image": "img-3", "torch": "2.x"}, locked)

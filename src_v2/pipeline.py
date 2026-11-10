@@ -435,8 +435,12 @@ LOCKED_KEYS = ("gpu_name", "colab_image", "torch", "transformers", "lm_eval", "d
 
 
 def check_fingerprint(fp, locked):
-    """Raise if any locked field differs (GPU type, image, package versions). UUID and commit may differ."""
-    bad = {k: (fp.get(k), locked.get(k)) for k in LOCKED_KEYS if k in locked and fp.get(k) != locked.get(k)}
+    """Raise if any locked field differs (GPU type, image, package versions). UUID and commit may differ.
+    A locked value may be a list of accepted values (an image admitted after a bit-exact check, DECISIONS.md)."""
+    def ok(k):
+        v = locked.get(k)
+        return fp.get(k) in v if isinstance(v, list) else fp.get(k) == v
+    bad = {k: (fp.get(k), locked.get(k)) for k in LOCKED_KEYS if k in locked and not ok(k)}
     if bad:
         raise RuntimeError("fingerprint mismatch (found, locked): " + json.dumps(bad))
     return True
