@@ -100,3 +100,7 @@ Hosts that could not be reached from the sandbox: proceedings.neurips.cc, papers
   - SparseGPT shows 50% + 4-bit vs 3-bit only for ≥ 2.7B.
   - Zhou's sub-1B evidence is Qwen2.5-0.5B alone.
 - Budget: v1 has 18 references, and Part A adds 5 (Kim, Bouriel, Zhou, Dutta, Panferov). To reach about 16, cut in this order: OBD/OBS (OBC covers that lineage), Deep Compression, JSQ (or swap it for SLiM), Panferov (if the "multiplicative" framing goes), and any benchmark not in the main table.
+
+## Addendum 2026-11-10 (orchestrator)
+
+OBD and OBS were verified through the web-fetch route on proceedings.neurips.cc (abstract pages and their BibTeX records) and added to refs.bib. The site gives no page ranges, so pages are omitted; the draft printed pages 598-605 (OBD) and 164-171 (OBS), which remain unverified.
