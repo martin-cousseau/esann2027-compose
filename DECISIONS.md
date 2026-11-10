@@ -81,3 +81,6 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     the perplexity/KL gap), and E4 adds 5 frontier states per model (2-bit, 60% alone, 60%+4-bit in the three
     orders) with the full E1 metrics. If CU remain at the end, E3's 50%+4 and 25%+3 cells get the paper's
     three benchmarks.
+21. **2026-11-10, runtime names in metadata.** Units run on the replacement runtimes `esann-e1-a2`/`-b2` carry
+    `colab_runtime_name` = `esann-e1-a`/`-b` (the chain scripts' names); the GPU UUID in `nvidia_smi` and
+    `logs/runtimes.jsonl` identify the machine. chain_b2 records `esann-e1-b2` correctly.
