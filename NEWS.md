@@ -1,18 +1,36 @@
 # NEWS (newest first)
 
 ## Read this first
-- **Angle:** not chosen yet (needs E1-E4). Early E2 evidence weakens angle A on SmolLM2-135M (see below).
-- **Status:** E1 running on two L4 runtimes (`esann-e1-a3`, `esann-e1-b2`); E2 done for both SmolLM2 models,
-  Qwen running. Reproduction gate re-read after an investigation (see below): proceeding. Runtime A was lost
-  twice (idle reclaim, then an unexplained loss); every finished unit was kept.
-- **Blockers:** none. Colab allows 2 GPU runtimes at once here.
+- **Angle:** not chosen yet. Angle A's evidence failed on both SmolLM2 models (E2); the default (B + C, honest
+  storage frontier with the mask counted) is the likely choice. Decision when SmolLM2-135M has E1+E3+E4 (about
+  16:30 UTC) and confirmed as the larger models arrive.
+- **Status:** phase 0 now fully passes (fp32 reproduction within 0.5%; bit-exact across two L4 machines). E1
+  restarted at 11:09 UTC on `esann-a4` (SmolLM2-135M E1, E4, E3, then 360M E1; E2 Qwen alongside) and `esann-b3`
+  (Qwen2.5-0.5B E1, then E4 and E3). E1 done so far: 6 of 75 states.
+- **Blockers:** none, but Colab runtimes die 20-35 min after the last client code execution; a websocket
+  keepalive now pings them every 4 min. This needs my hourly token refresh: if this session stops, the runtimes
+  stop within about 1.5 h (finished units are kept on HF and in git).
 - **Decisions waiting on you:** none urgent (QUESTIONS.md).
 - **GPU type locked:** NVIDIA L4, image `release-colab-external-images_20261106-060046_RC00`, fp32, TF32 off.
-- **CU (estimate; check the Colab website):** about 7 spent (pilot about 1-2, four runtimes about 0.7 h each,
-  two alive since 06:41), about 93 left; 2 runtimes alive, about 4.5 CU/h together.
-- **Links:** PR https://github.com/martin-cousseau/esann2027-compose/pull/1 ; W&B (public)
+- **CU (estimate; check the Colab website):** about 11 spent (7 runtimes so far, 0.6-0.9 h each, plus the
+  pilot), about 89 left; 2 runtimes alive (about 4.5 CU/h).
+- **Links:** PR https://github.com/martin-cousseau/esann2027-compose/pull/1 ; W&B (public, 11 runs)
   https://wandb.ai/martin-css/esann2027-compose-v2 ; models (private until the end)
   https://huggingface.co/martincousseau/esann2027-compose-v2
+
+## 2026-11-10 11:20 UTC - reproduction and determinism pass; runtimes lost again, keepalive added
+- **fp32 reproduction passes:** SmolLM2-360M fp32 on L4 vs the paper's own fp32 re-runs (T4): joint 25%+4
+  -0.11%, P->Q 25%+4 +0.37%, Q->P 25%+4 +0.37% (`results/v2/REPRO32/`). The SmolLM2-135M gaps vs 16-bit T4
+  runs are precision + hardware: the same code in 16-bit on L4 differs from the 16-bit T4 runs by +1.5%
+  (4-bit) and +4.6% (50%+4 P->Q) (`results/v2/REPRO16/`). Gaps of a few % between orders are therefore not
+  meaningful across hardware; within the locked type they are exact.
+- **Determinism passes:** SmolLM2-135M joint 50%+4 computed on two different L4 machines: identical WikiText-2
+  NLL and identical per-layer errors (`results/v2/DET/` vs `results/v2/E1/`).
+- **Runtimes:** `esann-e1-b2` (07:35) and `esann-e1-a3` (about 08:05) died like the earlier ones; units they
+  finished after the watcher stopped were recovered from the HF results dataset. New runtimes since 11:06 with
+  a kernel-channel keepalive (`scripts/colab_keepalive.py`).
+- **W&B:** 11 runs synced to the public project.
+- **Next:** SmolLM2-135M E1 rest (about 14:30), E4 and E3 on 135M (about 16:30), angle decision draft.
 
 ## 2026-11-10 07:35 UTC - reproduction investigation, E2 for both SmolLM2 models
 - **Reproduction:** dense perplexity matches the published runs to 1e-5, but compressed states do not hold

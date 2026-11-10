@@ -41,6 +41,11 @@ Since 2026-11-10 the author lets the 100 CU be allocated freely (DECISIONS.md #1
 
 | Runtime | Created (UTC) | Deleted (UTC) | Hours | Est. CU |
 |---|---|---|---|---|
-| esann-pilot | 2026-11-09 23:38 | reclaimed by Colab, time unknown (session suspended 23:51-05:49) | ~1.9 (upper bound 6.2) | ~4.2 (upper bound 13.8) |
-| esann-e1-a | 2026-11-10 05:53 | alive | | |
-| esann-e1-b | 2026-11-10 05:53 | alive | | |
+| esann-pilot | 2026-11-09 23:38 | reclaimed by Colab, likely ~00:10 (idle-client reclaim seen later) | ~0.6 (upper bound 6.2) | ~1.3 (upper bound 13.8) |
+| esann-e1-a | 2026-11-10 05:53 | reclaimed ~06:33 | 0.67 | 1.5 |
+| esann-e1-b | 2026-11-10 05:53 | reclaimed ~06:33 | 0.67 | 1.5 |
+| esann-e1-a2 | 2026-11-10 06:41 | lost ~07:15 | 0.58 | 1.3 |
+| esann-e1-b2 | 2026-11-10 06:41 | lost ~07:35 | 0.9 | 2.0 |
+| esann-e1-a3 | 2026-11-10 07:15 | lost ~08:05 | 0.85 | 1.9 |
+| esann-a4 | 2026-11-10 11:06 | alive | | |
+| esann-b3 | 2026-11-10 11:06 | alive | | |
