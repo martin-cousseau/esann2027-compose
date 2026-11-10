@@ -47,5 +47,7 @@ Since 2026-11-10 the author lets the 100 CU be allocated freely (DECISIONS.md #1
 | esann-e1-a2 | 2026-11-10 06:41 | lost ~07:15 | 0.58 | 1.3 |
 | esann-e1-b2 | 2026-11-10 06:41 | lost ~07:35 | 0.9 | 2.0 |
 | esann-e1-a3 | 2026-11-10 07:15 | lost ~08:05 | 0.85 | 1.9 |
-| esann-a4 | 2026-11-10 11:06 | alive | | |
-| esann-b3 | 2026-11-10 11:06 | alive | | |
+| esann-a4 | 2026-11-10 11:06 | lost ~15:50 (session suspended) | 4.75 | 10.6 |
+| esann-b3 | 2026-11-10 11:06 | lost ~15:50 (session suspended) | 4.75 | 10.6 |
+| esann-a5 | 2026-11-10 18:04 | alive | | |
+| esann-b4 | 2026-11-10 18:04 | alive | | |

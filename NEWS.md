@@ -1,22 +1,36 @@
 # NEWS (newest first)
 
 ## Read this first
-- **Angle:** not chosen yet. Angle A's evidence failed on both SmolLM2 models (E2); the default (B + C, honest
-  storage frontier with the mask counted) is the likely choice. Decision when SmolLM2-135M has E1+E3+E4 (about
-  16:30 UTC) and confirmed as the larger models arrive.
-- **Status:** phase 0 now fully passes (fp32 reproduction within 0.5%; bit-exact across two L4 machines). E1
-  restarted at 11:09 UTC on `esann-a4` (SmolLM2-135M E1, E4, E3, then 360M E1; E2 Qwen alongside) and `esann-b3`
-  (Qwen2.5-0.5B E1, then E4 and E3). E1 done so far: 6 of 75 states.
-- **Blockers:** none, but Colab runtimes die 20-35 min after the last client code execution; a websocket
-  keepalive now pings them every 4 min. This needs my hourly token refresh: if this session stops, the runtimes
-  stop within about 1.5 h (finished units are kept on HF and in git).
-- **Decisions waiting on you:** none urgent (QUESTIONS.md).
-- **GPU type locked:** NVIDIA L4, image `release-colab-external-images_20261106-060046_RC00`, fp32, TF32 off.
-- **CU (estimate; check the Colab website):** about 11 spent (7 runtimes so far, 0.6-0.9 h each, plus the
-  pilot), about 89 left; 2 runtimes alive (about 4.5 CU/h).
-- **Links:** PR https://github.com/martin-cousseau/esann2027-compose/pull/1 ; W&B (public, 11 runs)
+- **Angle:** B + C (honest storage frontier with the mask counted, plus free zeros), provisional
+  (DECISIONS.md #25). The 6-page LaTeX draft exists (`paper/main.tex`, `paper/main.pdf`); its numbers are
+  generated macros, and 29 new macros are being added.
+- **Status:** E1 SmolLM2-135M complete (25 states), E4 SmolLM2-135M complete, E3 135M in progress, E1 Qwen 13/25,
+  E1 SmolLM2-360M not started. Runtimes `esann-a5` and `esann-b4` since 18:04 UTC.
+- **Blockers:** none. Risk: this session was suspended twice by usage limits; each time the runtimes died about
+  an hour later. A runtime-side keepalive is now running too (DECISIONS.md #27); finished units are never lost.
+- **Decisions waiting on you:** none urgent (QUESTIONS.md). The draft is authored "A. Yaacoub" (from README.md),
+  affiliation to be confirmed.
+- **GPU type locked:** NVIDIA L4, fp32, TF32 off; images `..._20261106-060046_RC00` and `..._20261109-060054_RC00`
+  (the second admitted after a bit-exact check, #26).
+- **CU (estimate; check the Colab website):** about 33 spent, about 67 left; 2 runtimes alive (about 4.5 CU/h).
+- **Links:** PR https://github.com/martin-cousseau/esann2027-compose/pull/1 ; W&B (public)
   https://wandb.ai/martin-css/esann2027-compose-v2 ; models (private until the end)
   https://huggingface.co/martincousseau/esann2027-compose-v2
+
+## 2026-11-10 18:15 UTC - SmolLM2-135M complete; draft paper; restart after a suspension
+- **SmolLM2-135M, E1 complete** (`results/v2/E1/SmolLM2-135M.jsonl`, `reports/analysis/summary.md`): with the
+  1-bit mask counted, 50%+4-bit P->Q beats plain 3-bit at 3.0 bits/w (WikiText-2 41.2 vs 57.6, KL 0.97 vs 1.27),
+  while 25%+4-bit does not beat plain 4-bit at 4.0 bits/w (21.99 vs 21.94). Q->P at 25%+3 equals 3-bit exactly
+  (identical perplexity and all 210 layer errors). P->Q is the best order in every complete cell by WikiText-2,
+  C4 and KL. Caveat: under entropy coding of the stored symbols, plain 3-bit costs less than 50%+4-bit.
+- **E2 complete for all 3 models:** sub-additivity of mask-first orders holds with one Hessian in aggregate
+  (all 18 cells); neither re-fitting the grid nor the pruning-only mask explains the quantize-first penalty on
+  any model; the interaction correlates with input correlation (Spearman 0.41-0.60).
+- **Paper:** 6-page draft for angle B + C, 15 verified references, every number a macro.
+- **Runtimes:** the session was suspended 14:48-18:00 (usage limit), the tokens expired, the runtimes died at
+  about 15:50; all finished units were recovered from the HF results dataset. Restarted at 18:04 on a newer
+  Colab image, admitted after a bit-exact check.
+- **Next:** E3 135M, E1 360M (A); E1 Qwen, then E4/E3 for Qwen and 360M (B); macros; NEWS every few hours.
 
 ## 2026-11-10 11:20 UTC - reproduction and determinism pass; runtimes lost again, keepalive added
 - **fp32 reproduction passes:** SmolLM2-360M fp32 on L4 vs the paper's own fp32 re-runs (T4): joint 25%+4
