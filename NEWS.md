@@ -2,8 +2,9 @@
 
 ## Read this first
 - **Angle:** not chosen yet (needs E1-E4). Early E2 evidence weakens angle A on SmolLM2-135M (see below).
-- **Status:** E1 and E2 running on two L4 runtimes (`esann-e1-a2`, `esann-e1-b2`) since 06:45 UTC, after two
-  fixes (memory in lm-eval; Colab reclaiming runtimes with an idle kernel). Analysis pipeline built.
+- **Status:** E1 running on two L4 runtimes (`esann-e1-a3`, `esann-e1-b2`); E2 done for both SmolLM2 models,
+  Qwen running. Reproduction gate re-read after an investigation (see below): proceeding. Runtime A was lost
+  twice (idle reclaim, then an unexplained loss); every finished unit was kept.
 - **Blockers:** none. Colab allows 2 GPU runtimes at once here.
 - **Decisions waiting on you:** none urgent (QUESTIONS.md).
 - **GPU type locked:** NVIDIA L4, image `release-colab-external-images_20261106-060046_RC00`, fp32, TF32 off.
@@ -12,6 +13,18 @@
 - **Links:** PR https://github.com/martin-cousseau/esann2027-compose/pull/1 ; W&B (public)
   https://wandb.ai/martin-css/esann2027-compose-v2 ; models (private until the end)
   https://huggingface.co/martincousseau/esann2027-compose-v2
+
+## 2026-11-10 07:35 UTC - reproduction investigation, E2 for both SmolLM2 models
+- **Reproduction:** dense perplexity matches the published runs to 1e-5, but compressed states do not hold
+  0.5% across GPU types: SmolLM2-135M 4-bit +0.74% (fp32 L4 vs 16-bit T4), 50%+4 P->Q +2.62%; Qwen2.5-0.5B
+  4-bit +0.50%. The same code in 16-bit on the L4 gives +1.50% for SmolLM2-135M 4-bit, so neither precision
+  nor the pipeline explains it: kernel-level differences flip greedy rounding/mask decisions, which cascade.
+  E1 proceeds (DECISIONS.md #22); fp32 SmolLM2-360M vs the paper's own fp32 re-runs still running.
+- **E2 complete for SmolLM2-135M and -360M** (`reports/analysis/summary.md`, `scripts/make_tables.py`): P->Q and
+  joint are sub-additive in all 6 cells on both models with one Hessian. Neither the re-fitted grid (always
+  worse) nor the pruning-only mask (-19% to +39%) removes most of the quantize-first penalty on either
+  model, so angle A's evidence bar is not met; the default angle (B + C, honest storage frontier) stands.
+- **Next:** E1 SmolLM2-135M rest and 360M on A3; E1 Qwen then E4 and E3 on B2; E2 Qwen on A3.
 
 ## 2026-11-10 06:55 UTC - fixes, first results
 - **Colab reclaims runtimes whose kernel is idle** (about 20 min after the last code execution), even with GPU
