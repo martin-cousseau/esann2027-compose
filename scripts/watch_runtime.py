@@ -41,7 +41,8 @@ def parse_time(s):
         frac = "".join(ch for ch in tail if ch.isdigit())[:6]
         tz = tail[len("".join(ch for ch in tail if ch.isdigit())):]
         s = f"{head}.{frac}{tz}"
-    return dt.datetime.fromisoformat(s)
+    t = dt.datetime.fromisoformat(s)
+    return t if t.tzinfo else t.replace(tzinfo=dt.timezone.utc)  # Jupyter's last_modified may carry no zone
 
 
 def snapshot(runtime):

@@ -47,3 +47,11 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     (`scripts/watch_runtime.py`, run in the background by the orchestrator), which mirrors results through
     the Jupyter API and exits on events. The orchestrator makes the Colab calls; subagents write family code
     and analyse pulled results (the brief's fallback mode).
+14. **2026-11-10, W&B (author, in session).** Every finished result line is mirrored to the public W&B
+    project https://wandb.ai/martin-css/esann2027-compose-v2 (one run per model state, idempotent,
+    `scripts/wandb_sync.py`), with links to the git commit, the per-item file and the HF model file. Sync runs
+    from the container after results are pulled, so the GPU runner has no W&B dependency. The API key lives
+    outside the repository (mode 600) and is never printed or committed.
+15. **2026-11-10, two runtimes at once.** Colab refused a third concurrent L4 ("Precondition check failed").
+    E2 therefore shares runtime A with E1 (E2's sweeps are CPU/launch bound, E1's evaluation GPU bound);
+    results do not depend on co-location, only the logged timings do.
