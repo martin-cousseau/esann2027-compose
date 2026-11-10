@@ -9,3 +9,7 @@
 {"event":"create","name":"runtimes/esann-e1-b2","spec":"L4/STANDARD/GPU","created_utc":"2026-11-10T06:41:34Z","owner":"orchestrator","purpose":"E1 Qwen2.5-0.5B (replaces esann-e1-b)"}
 {"event":"lost","name":"runtimes/esann-e1-a2","observed_utc":"2026-11-10T07:19:30Z","note":"Requested entity was not found; last status 07:13:48; a keepalive cell was running; cause unknown (possibly preemption); B2 created at the same time is alive","lifetime_h_est":0.58}
 {"event":"create","name":"runtimes/esann-e1-a3","spec":"L4/STANDARD/GPU","created_utc":"2026-11-10T07:15:48Z","owner":"orchestrator","purpose":"reproduction investigation, E2 Qwen, then E1 135M/360M (replaces esann-e1-a2)"}
+{"event":"lost","name":"runtimes/esann-e1-b2","observed_utc":"2026-11-10T07:38:33Z","lifetime_h_est":0.9}
+{"event":"lost","name":"runtimes/esann-e1-a3","observed_utc":"2026-11-10T11:05:00Z","note":"last upload 07:55, model upload after; died ~08:00-08:10","lifetime_h_est":0.85}
+{"event":"create","name":"runtimes/esann-a4","spec":"L4/STANDARD/GPU","created_utc":"2026-11-10T11:06:39Z","owner":"orchestrator","purpose":"E1 135M+360M, E2 Qwen"}
+{"event":"create","name":"runtimes/esann-b3","spec":"L4/STANDARD/GPU","created_utc":"2026-11-10T11:06:43Z","owner":"orchestrator","purpose":"E1 Qwen, E4, E3"}
