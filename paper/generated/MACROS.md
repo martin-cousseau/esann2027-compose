@@ -28,54 +28,54 @@ Suffix `Pct`: the value is a percentage (the macro holds the number only). Signe
 
 Macro = `\res` + column + `SmolSmall` + row tag (e.g. `\resPplSmolSmallDense`). Row source: the state's result line; column source: below the table.
 
-| Row tag | State | Source | Ppl | PplCFour | Kl | KlCFour | TopOnePct | TopOneCFourPct | BitsTcr | BitsMask | FreeZerosPct | FlipsPct | FlipsCWPct | FlipsWCPct | SrThree | SrPaper | SrExt | SrCn |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| `Dense` | dense | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__dense__s0.0000__b16__seed0__float32` | `15.42` | `20.55` | `0.000` | `0.000` | `100.0` | `100.0` | `16.00` | `16.00` |  | `0.0` | `0.0` | `0.0` | `1.000` | `1.000` | `1.000` | `1.000` |
-| `QuantBEight` | 8-bit | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__quant__s0.0000__b8__seed0__float32` | `15.44` | `20.59` | `0.002` | `0.002` | `97.9` | `97.7` | `8.00` | `8.00` | `0.9` | `1.0` | `0.5` | `0.5` | `0.999` | `0.998` | `1.000` | `0.999` |
-| `QuantBFour` | 4-bit | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__quant__s0.0000__b4__seed0__float32` | `21.94` | `27.83` | `0.346` | `0.309` | `71.3` | `70.5` | `4.00` | `4.00` | `14.8` | `14.4` | `9.5` | `4.9` | `0.942` | `0.941` | `0.933` | `0.829` |
-| `QuantBThree` | 3-bit | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__quant__s0.0000__b3__seed0__float32` | `57.55` | `62.31` | `1.273` | `1.123` | `49.5` | `48.8` | `3.00` | `3.00` | `30.7` | `27.4` | `20.7` | `6.7` | `0.758` | `0.759` | `0.773` | `0.424` |
-| `QuantBTwo` | 2-bit | `SmolLM2-135M__quant__s0.0000__b2__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `PruneSTwentyFive` | 25% pruned | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__prune__s0.2500__b16__seed0__float32` | `16.48` | `21.63` | `0.067` | `0.055` | `86.6` | `86.7` | `12.00` | `13.00` | `25.0` | `6.1` | `3.5` | `2.6` | `0.976` | `0.983` | `0.985` | `0.962` |
-| `PruneSThirtyThree` | 33% pruned | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__prune__s0.3333__b16__seed0__float32` | `18.37` | `23.58` | `0.173` | `0.145` | `79.4` | `79.4` | `10.67` | `11.67` | `33.3` | `10.0` | `6.1` | `3.9` | `0.959` | `0.958` | `0.966` | `0.912` |
-| `PruneSFifty` | 50% pruned | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__prune__s0.5000__b16__seed0__float32` | `32.82` | `39.17` | `0.740` | `0.666` | `60.2` | `59.6` | `8.00` | `9.00` | `50.0` | `18.4` | `13.4` | `5.1` | `0.827` | `0.815` | `0.869` | `0.667` |
-| `PruneSSixty` | 60% pruned | `SmolLM2-135M__prune__s0.6000__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBFourJoint` | 25%+4 joint | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__joint__s0.2500__b4__seed0__float32` | `23.50` | `29.73` | `0.414` | `0.377` | `68.7` | `67.9` | `3.00` | `4.00` | `25.4` | `14.5` | `9.0` | `5.5` | `0.929` | `0.924` | `0.932` | `0.827` |
-| `STwentyFiveBFourPQ` | 25%+4 P->Q | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__p_then_q__s0.2500__b4__seed0__float32` | `21.99` | `27.59` | `0.348` | `0.303` | `70.9` | `70.8` | `3.00` | `4.00` | `25.6` | `13.0` | `7.7` | `5.3` | `0.946` | `0.940` | `0.955` | `0.887` |
-| `STwentyFiveBFourQP` | 25%+4 Q->P | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__q_then_p__s0.2500__b4__seed0__float32` | `24.35` | `30.23` | `0.449` | `0.393` | `68.0` | `67.6` | `3.00` | `4.00` | `25.0` | `15.5` | `9.5` | `6.0` | `0.925` | `0.907` | `0.937` | `0.841` |
-| `SThirtyThreeBFourJoint` | 33%+4 joint | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__joint__s0.3333__b4__seed0__float32` | `26.23` | `32.23` | `0.514` | `0.461` | `65.9` | `65.2` | `2.67` | `3.67` | `33.5` | `16.9` | `11.6` | `5.3` | `0.897` | `0.886` | `0.905` | `0.759` |
-| `SThirtyThreeBFourPQ` | 33%+4 P->Q | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__p_then_q__s0.3333__b4__seed0__float32` | `24.44` | `30.24` | `0.458` | `0.399` | `67.3` | `66.9` | `2.67` | `3.67` | `33.6` | `17.5` | `11.1` | `6.4` | `0.917` | `0.909` | `0.921` | `0.799` |
-| `SThirtyThreeBFourQP` | 33%+4 Q->P | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__q_then_p__s0.3333__b4__seed0__float32` | `27.07` | `33.30` | `0.553` | `0.493` | `64.7` | `63.8` | `2.67` | `3.67` | `33.3` | `18.9` | `12.2` | `6.7` | `0.910` | `0.899` | `0.913` | `0.779` |
-| `SFiftyBFourJoint` | 50%+4 joint | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__joint__s0.5000__b4__seed0__float32` | `44.47` | `54.34` | `1.043` | `0.995` | `53.4` | `51.6` | `2.00` | `3.00` | `50.1` | `22.8` | `16.7` | `6.1` | `0.801` | `0.797` | `0.838` | `0.588` |
-| `SFiftyBFourPQ` | 50%+4 P->Q | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32` | `41.20` | `48.37` | `0.966` | `0.878` | `55.1` | `54.1` | `2.00` | `3.00` | `50.1` | `22.0` | `16.1` | `5.9` | `0.790` | `0.779` | `0.820` | `0.542` |
-| `SFiftyBFourQP` | 50%+4 Q->P | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__q_then_p__s0.5000__b4__seed0__float32` | `47.33` | `56.63` | `1.112` | `1.035` | `52.6` | `51.1` | `2.00` | `3.00` | `50.0` | `22.0` | `15.7` | `6.3` | `0.798` | `0.781` | `0.847` | `0.611` |
-| `SFiftyBFourQPRefit` | 50%+4 Q->P refit | `SmolLM2-135M__q_then_p_refit__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourQPPmask` | 50%+4 Q->P P-mask | `SmolLM2-135M__q_then_p_pmask__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourQPPmaskRefit` | 50%+4 Q->P P-mask refit | `SmolLM2-135M__q_then_p_pmask_refit__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourPQStale` | 50%+4 P->Q stale grid | `SmolLM2-135M__p_then_q_stale__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SSixtyBFourJoint` | 60%+4 joint | `SmolLM2-135M__joint__s0.6000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SSixtyBFourPQ` | 60%+4 P->Q | `SmolLM2-135M__p_then_q__s0.6000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SSixtyBFourQP` | 60%+4 Q->P | `SmolLM2-135M__q_then_p__s0.6000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBThreeJoint` | 25%+3 joint | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__joint__s0.2500__b3__seed0__float32` | `68.77` | `72.30` | `1.447` | `1.274` | `46.5` | `45.3` | `2.25` | `3.25` | `32.2` | `26.2` | `19.8` | `6.3` | `0.763` | `0.767` | `0.790` | `0.467` |
-| `STwentyFiveBThreePQ` | 25%+3 P->Q | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__p_then_q__s0.2500__b3__seed0__float32` | `53.14` | `55.20` | `1.192` | `1.000` | `49.9` | `50.3` | `2.25` | `3.25` | `33.3` | `24.2` | `18.3` | `6.0` | `0.774` | `0.769` | `0.797` | `0.484` |
-| `STwentyFiveBThreeQP` | 25%+3 Q->P | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__q_then_p__s0.2500__b3__seed0__float32` | `57.55` | `62.31` | `1.273` | `1.123` | `49.5` | `48.8` | `2.25` | `3.25` | `30.7` | `27.4` | `20.7` | `6.7` | `0.758` | `0.759` | `0.773` | `0.424` |
-| `STwentyFiveBThreeQPRefit` | 25%+3 Q->P refit | `SmolLM2-135M__q_then_p_refit__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBThreeQPPmask` | 25%+3 Q->P P-mask | `SmolLM2-135M__q_then_p_pmask__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBThreeQPPmaskRefit` | 25%+3 Q->P P-mask refit | `SmolLM2-135M__q_then_p_pmask_refit__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBThreePQStale` | 25%+3 P->Q stale grid | `SmolLM2-135M__p_then_q_stale__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBThreeJoint` | 33%+3 joint | `SmolLM2-135M__joint__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBThreePQ` | 33%+3 P->Q | `SmolLM2-135M__p_then_q__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBThreeQP` | 33%+3 Q->P | `SmolLM2-135M__q_then_p__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBThreeQPRefit` | 33%+3 Q->P refit | `SmolLM2-135M__q_then_p_refit__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBThreeQPPmask` | 33%+3 Q->P P-mask | `SmolLM2-135M__q_then_p_pmask__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBThreeQPPmaskRefit` | 33%+3 Q->P P-mask refit | `SmolLM2-135M__q_then_p_pmask_refit__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBThreePQStale` | 33%+3 P->Q stale grid | `SmolLM2-135M__p_then_q_stale__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBThreeJoint` | 50%+3 joint | `SmolLM2-135M__joint__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBThreePQ` | 50%+3 P->Q | `SmolLM2-135M__p_then_q__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBThreeQP` | 50%+3 Q->P | `SmolLM2-135M__q_then_p__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBThreeQPRefit` | 50%+3 Q->P refit | `SmolLM2-135M__q_then_p_refit__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBThreeQPPmask` | 50%+3 Q->P P-mask | `SmolLM2-135M__q_then_p_pmask__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBThreeQPPmaskRefit` | 50%+3 Q->P P-mask refit | `SmolLM2-135M__q_then_p_pmask_refit__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBThreePQStale` | 50%+3 P->Q stale grid | `SmolLM2-135M__p_then_q_stale__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| Row tag | State | Source | Ppl | PplCFour | Kl | KlCFour | TopOnePct | TopOneCFourPct | BitsTcr | BitsMask | BitsSym | FreeZerosPct | FlipsPct | FlipsCWPct | FlipsWCPct | SrThree | SrPaper | SrExt | SrCn |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| `Dense` | dense | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__dense__s0.0000__b16__seed0__float32` | `15.42` | `20.55` | `0.000` | `0.000` | `100.0` | `100.0` | `16.00` | `16.00` | `--` |  | `0.0` | `0.0` | `0.0` | `1.000` | `1.000` | `1.000` | `1.000` |
+| `QuantBEight` | 8-bit | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__quant__s0.0000__b8__seed0__float32` | `15.44` | `20.59` | `0.002` | `0.002` | `97.9` | `97.7` | `8.00` | `8.00` | `6.35` | `0.9` | `1.0` | `0.5` | `0.5` | `0.999` | `0.998` | `1.000` | `0.999` |
+| `QuantBFour` | 4-bit | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__quant__s0.0000__b4__seed0__float32` | `21.94` | `27.83` | `0.346` | `0.309` | `71.3` | `70.5` | `4.00` | `4.00` | `3.43` | `14.8` | `14.4` | `9.5` | `4.9` | `0.942` | `0.941` | `0.933` | `0.829` |
+| `QuantBThree` | 3-bit | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__quant__s0.0000__b3__seed0__float32` | `57.55` | `62.31` | `1.273` | `1.123` | `49.5` | `48.8` | `3.00` | `3.00` | `2.42` | `30.7` | `27.4` | `20.7` | `6.7` | `0.758` | `0.759` | `0.773` | `0.424` |
+| `QuantBTwo` | 2-bit | `results/v2/E4/SmolLM2-135M.jsonl` `SmolLM2-135M__quant__s0.0000__b2__seed0__float32` | `94279.66` | `25405.10` | `8.620` | `7.118` | `2.0` | `3.9` | `2.00` | `2.00` | `1.34` | `62.9` | `46.5` | `35.1` | `11.4` | `0.611` | `0.586` | `0.576` | `-0.078` |
+| `PruneSTwentyFive` | 25% pruned | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__prune__s0.2500__b16__seed0__float32` | `16.48` | `21.63` | `0.067` | `0.055` | `86.6` | `86.7` | `12.00` | `13.00` | `--` | `25.0` | `6.1` | `3.5` | `2.6` | `0.976` | `0.983` | `0.985` | `0.962` |
+| `PruneSThirtyThree` | 33% pruned | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__prune__s0.3333__b16__seed0__float32` | `18.37` | `23.58` | `0.173` | `0.145` | `79.4` | `79.4` | `10.67` | `11.67` | `--` | `33.3` | `10.0` | `6.1` | `3.9` | `0.959` | `0.958` | `0.966` | `0.912` |
+| `PruneSFifty` | 50% pruned | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__prune__s0.5000__b16__seed0__float32` | `32.82` | `39.17` | `0.740` | `0.666` | `60.2` | `59.6` | `8.00` | `9.00` | `--` | `50.0` | `18.4` | `13.4` | `5.1` | `0.827` | `0.815` | `0.869` | `0.667` |
+| `PruneSSixty` | 60% pruned | `results/v2/E4/SmolLM2-135M.jsonl` `SmolLM2-135M__prune__s0.6000__b16__seed0__float32` | `71.43` | `80.24` | `1.503` | `1.386` | `47.0` | `45.9` | `6.40` | `7.40` | `--` | `60.0` | `24.4` | `18.5` | `5.9` | `0.739` | `0.733` | `0.800` | `0.492` |
+| `STwentyFiveBFourJoint` | 25%+4 joint | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__joint__s0.2500__b4__seed0__float32` | `23.50` | `29.73` | `0.414` | `0.377` | `68.7` | `67.9` | `3.00` | `4.00` | `3.32` | `25.4` | `14.5` | `9.0` | `5.5` | `0.929` | `0.924` | `0.932` | `0.827` |
+| `STwentyFiveBFourPQ` | 25%+4 P->Q | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__p_then_q__s0.2500__b4__seed0__float32` | `21.99` | `27.59` | `0.348` | `0.303` | `70.9` | `70.8` | `3.00` | `4.00` | `3.32` | `25.6` | `13.0` | `7.7` | `5.3` | `0.946` | `0.940` | `0.955` | `0.887` |
+| `STwentyFiveBFourQP` | 25%+4 Q->P | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__q_then_p__s0.2500__b4__seed0__float32` | `24.35` | `30.23` | `0.449` | `0.393` | `68.0` | `67.6` | `3.00` | `4.00` | `3.29` | `25.0` | `15.5` | `9.5` | `6.0` | `0.925` | `0.907` | `0.937` | `0.841` |
+| `SThirtyThreeBFourJoint` | 33%+4 joint | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__joint__s0.3333__b4__seed0__float32` | `26.23` | `32.23` | `0.514` | `0.461` | `65.9` | `65.2` | `2.67` | `3.67` | `3.14` | `33.5` | `16.9` | `11.6` | `5.3` | `0.897` | `0.886` | `0.905` | `0.759` |
+| `SThirtyThreeBFourPQ` | 33%+4 P->Q | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__p_then_q__s0.3333__b4__seed0__float32` | `24.44` | `30.24` | `0.458` | `0.399` | `67.3` | `66.9` | `2.67` | `3.67` | `3.14` | `33.6` | `17.5` | `11.1` | `6.4` | `0.917` | `0.909` | `0.921` | `0.799` |
+| `SThirtyThreeBFourQP` | 33%+4 Q->P | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__q_then_p__s0.3333__b4__seed0__float32` | `27.07` | `33.30` | `0.553` | `0.493` | `64.7` | `63.8` | `2.67` | `3.67` | `3.11` | `33.3` | `18.9` | `12.2` | `6.7` | `0.910` | `0.899` | `0.913` | `0.779` |
+| `SFiftyBFourJoint` | 50%+4 joint | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__joint__s0.5000__b4__seed0__float32` | `44.47` | `54.34` | `1.043` | `0.995` | `53.4` | `51.6` | `2.00` | `3.00` | `2.62` | `50.1` | `22.8` | `16.7` | `6.1` | `0.801` | `0.797` | `0.838` | `0.588` |
+| `SFiftyBFourPQ` | 50%+4 P->Q | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32` | `41.20` | `48.37` | `0.966` | `0.878` | `55.1` | `54.1` | `2.00` | `3.00` | `2.62` | `50.1` | `22.0` | `16.1` | `5.9` | `0.790` | `0.779` | `0.820` | `0.542` |
+| `SFiftyBFourQP` | 50%+4 Q->P | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__q_then_p__s0.5000__b4__seed0__float32` | `47.33` | `56.63` | `1.112` | `1.035` | `52.6` | `51.1` | `2.00` | `3.00` | `2.61` | `50.0` | `22.0` | `15.7` | `6.3` | `0.798` | `0.781` | `0.847` | `0.611` |
+| `SFiftyBFourQPRefit` | 50%+4 Q->P refit | `SmolLM2-135M__q_then_p_refit__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourQPPmask` | 50%+4 Q->P P-mask | `SmolLM2-135M__q_then_p_pmask__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourQPPmaskRefit` | 50%+4 Q->P P-mask refit | `SmolLM2-135M__q_then_p_pmask_refit__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourPQStale` | 50%+4 P->Q stale grid | `SmolLM2-135M__p_then_q_stale__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SSixtyBFourJoint` | 60%+4 joint | `results/v2/E4/SmolLM2-135M.jsonl` `SmolLM2-135M__joint__s0.6000__b4__seed0__float32` | `97.56` | `105.03` | `1.799` | `1.655` | `41.6` | `41.5` | `1.60` | `2.60` | `2.24` | `60.0` | `26.3` | `20.5` | `5.8` | `0.708` | `0.704` | `0.767` | `0.407` |
+| `SSixtyBFourPQ` | 60%+4 P->Q | `results/v2/E4/SmolLM2-135M.jsonl` `SmolLM2-135M__p_then_q__s0.6000__b4__seed0__float32` | `104.20` | `117.87` | `1.871` | `1.772` | `40.9` | `40.4` | `1.60` | `2.60` | `2.25` | `60.1` | `27.6` | `21.1` | `6.4` | `0.709` | `0.712` | `0.765` | `0.402` |
+| `SSixtyBFourQP` | 60%+4 Q->P | `results/v2/E4/SmolLM2-135M.jsonl` `SmolLM2-135M__q_then_p__s0.6000__b4__seed0__float32` | `137.79` | `135.98` | `2.151` | `1.915` | `38.8` | `38.7` | `1.60` | `2.60` | `2.24` | `60.0` | `27.9` | `21.6` | `6.4` | `0.700` | `0.705` | `0.750` | `0.365` |
+| `STwentyFiveBThreeJoint` | 25%+3 joint | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__joint__s0.2500__b3__seed0__float32` | `68.77` | `72.30` | `1.447` | `1.274` | `46.5` | `45.3` | `2.25` | `3.25` | `2.40` | `32.2` | `26.2` | `19.8` | `6.3` | `0.763` | `0.767` | `0.790` | `0.467` |
+| `STwentyFiveBThreePQ` | 25%+3 P->Q | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__p_then_q__s0.2500__b3__seed0__float32` | `53.14` | `55.20` | `1.192` | `1.000` | `49.9` | `50.3` | `2.25` | `3.25` | `2.40` | `33.3` | `24.2` | `18.3` | `6.0` | `0.774` | `0.769` | `0.797` | `0.484` |
+| `STwentyFiveBThreeQP` | 25%+3 Q->P | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__q_then_p__s0.2500__b3__seed0__float32` | `57.55` | `62.31` | `1.273` | `1.123` | `49.5` | `48.8` | `2.25` | `3.25` | `2.42` | `30.7` | `27.4` | `20.7` | `6.7` | `0.758` | `0.759` | `0.773` | `0.424` |
+| `STwentyFiveBThreeQPRefit` | 25%+3 Q->P refit | `results/v2/E3/SmolLM2-135M.jsonl` `SmolLM2-135M__q_then_p_refit__s0.2500__b3__seed0__float32` | `65.62` | `67.73` | `1.402` | `1.205` | `46.2` | `45.9` | `2.25` | `3.25` | `2.42` | `30.7` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBThreeQPPmask` | 25%+3 Q->P P-mask | `results/v2/E3/SmolLM2-135M.jsonl` `SmolLM2-135M__q_then_p_pmask__s0.2500__b3__seed0__float32` | `52.17` | `54.68` | `1.178` | `0.991` | `50.3` | `50.2` | `2.25` | `3.25` | `2.40` | `33.4` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBThreeQPPmaskRefit` | 25%+3 Q->P P-mask refit | `SmolLM2-135M__q_then_p_pmask_refit__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBThreePQStale` | 25%+3 P->Q stale grid | `SmolLM2-135M__p_then_q_stale__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBThreeJoint` | 33%+3 joint | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__joint__s0.3333__b3__seed0__float32` | `62.21` | `66.75` | `1.346` | `1.194` | `47.5` | `46.4` | `2.00` | `3.00` | `2.37` | `36.4` | `30.1` | `22.6` | `7.4` | `0.761` | `0.762` | `0.759` | `0.387` |
+| `SThirtyThreeBThreePQ` | 33%+3 P->Q | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__p_then_q__s0.3333__b3__seed0__float32` | `53.24` | `54.86` | `1.205` | `0.997` | `49.9` | `50.2` | `2.00` | `3.00` | `2.36` | `37.4` | `27.0` | `20.3` | `6.6` | `0.777` | `0.779` | `0.783` | `0.448` |
+| `SThirtyThreeBThreeQP` | 33%+3 Q->P | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__q_then_p__s0.3333__b3__seed0__float32` | `68.59` | `73.98` | `1.445` | `1.295` | `46.6` | `45.4` | `2.00` | `3.00` | `2.39` | `33.5` | `27.6` | `20.8` | `6.8` | `0.739` | `0.739` | `0.783` | `0.449` |
+| `SThirtyThreeBThreeQPRefit` | 33%+3 Q->P refit | `SmolLM2-135M__q_then_p_refit__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBThreeQPPmask` | 33%+3 Q->P P-mask | `SmolLM2-135M__q_then_p_pmask__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBThreeQPPmaskRefit` | 33%+3 Q->P P-mask refit | `SmolLM2-135M__q_then_p_pmask_refit__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBThreePQStale` | 33%+3 P->Q stale grid | `SmolLM2-135M__p_then_q_stale__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBThreeJoint` | 50%+3 joint | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__joint__s0.5000__b3__seed0__float32` | `99.24` | `114.20` | `1.833` | `1.740` | `41.0` | `38.6` | `1.50` | `2.50` | `2.14` | `50.8` | `28.9` | `22.5` | `6.4` | `0.710` | `0.692` | `0.725` | `0.301` |
+| `SFiftyBThreePQ` | 50%+3 P->Q | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__p_then_q__s0.5000__b3__seed0__float32` | `86.03` | `92.39` | `1.671` | `1.518` | `43.5` | `42.0` | `1.50` | `2.50` | `2.14` | `51.1` | `27.3` | `21.3` | `6.0` | `0.729` | `0.719` | `0.765` | `0.401` |
+| `SFiftyBThreeQP` | 50%+3 Q->P | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__q_then_p__s0.5000__b3__seed0__float32` | `152.51` | `147.58` | `2.249` | `1.990` | `36.0` | `36.1` | `1.50` | `2.50` | `2.11` | `50.1` | `31.1` | `23.5` | `7.6` | `0.692` | `0.675` | `0.734` | `0.324` |
+| `SFiftyBThreeQPRefit` | 50%+3 Q->P refit | `SmolLM2-135M__q_then_p_refit__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBThreeQPPmask` | 50%+3 Q->P P-mask | `SmolLM2-135M__q_then_p_pmask__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBThreeQPPmaskRefit` | 50%+3 Q->P P-mask refit | `SmolLM2-135M__q_then_p_pmask_refit__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBThreePQStale` | 50%+3 P->Q stale grid | `SmolLM2-135M__p_then_q_stale__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 
 Columns:
 
@@ -87,6 +87,7 @@ Columns:
 - `TopOneCFourPct`: top-1 agreement on C4 (%); field `c4.top1`
 - `BitsTcr`: bits per weight as TCr counts them, b(1-s); field `storage.tcr`
 - `BitsMask`: bits per weight with a 1-bit mask; field `storage.bitmap`
+- `BitsSym`: plug-in entropy of the stored symbols per group of 128, zeros included, bits per weight; field `storage.symbol_entropy` (measured for quantized states only)
 - `FlipsPct`: items whose correctness differs from dense, pooled over the 9 zero-shot tasks, v2 metric (%); per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
 - `FlipsCWPct`: correct-to-wrong items against dense, pooled (% of items); per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
 - `FlipsWCPct`: wrong-to-correct items against dense, pooled (% of items); per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
@@ -102,39 +103,39 @@ Macro = `\res` + column + `SmolSmall` + row tag (e.g. `\resISrThreeSmolSmallSTwe
 
 | Row tag | State | Source | ISrThree | ISrThreeLo | ISrThreeHi | ISrPaper | ISrPaperLo | ISrPaperHi | ISrExt | ISrExtLo | ISrExtHi | ISrCn | ISrCnLo | ISrCnHi |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| `STwentyFiveBFourJoint` | 25%+4 joint | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__joint__s0.2500__b4__seed0__float32` | `\ensuremath{+0.010}` | `\ensuremath{-0.005}` | `\ensuremath{+0.024}` | `\ensuremath{-0.000}` | `\ensuremath{-0.014}` | `\ensuremath{+0.013}` | `\ensuremath{+0.013}` | `\ensuremath{+0.001}` | `\ensuremath{+0.027}` | `\ensuremath{+0.030}` | `\ensuremath{-0.001}` | `\ensuremath{+0.062}` |
-| `STwentyFiveBFourPQ` | 25%+4 P->Q | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__p_then_q__s0.2500__b4__seed0__float32` | `\ensuremath{+0.026}` | `\ensuremath{+0.011}` | `\ensuremath{+0.042}` | `\ensuremath{+0.016}` | `\ensuremath{+0.002}` | `\ensuremath{+0.030}` | `\ensuremath{+0.037}` | `\ensuremath{+0.023}` | `\ensuremath{+0.051}` | `\ensuremath{+0.090}` | `\ensuremath{+0.056}` | `\ensuremath{+0.123}` |
-| `STwentyFiveBFourQP` | 25%+4 Q->P | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__q_then_p__s0.2500__b4__seed0__float32` | `\ensuremath{+0.006}` | `\ensuremath{-0.009}` | `\ensuremath{+0.021}` | `\ensuremath{-0.017}` | `\ensuremath{-0.031}` | `\ensuremath{-0.003}` | `\ensuremath{+0.019}` | `\ensuremath{+0.006}` | `\ensuremath{+0.032}` | `\ensuremath{+0.044}` | `\ensuremath{+0.013}` | `\ensuremath{+0.077}` |
-| `SThirtyThreeBFourJoint` | 33%+4 joint | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__joint__s0.3333__b4__seed0__float32` | `\ensuremath{-0.006}` | `\ensuremath{-0.023}` | `\ensuremath{+0.011}` | `\ensuremath{-0.014}` | `\ensuremath{-0.031}` | `\ensuremath{+0.001}` | `\ensuremath{+0.005}` | `\ensuremath{-0.010}` | `\ensuremath{+0.018}` | `\ensuremath{+0.003}` | `\ensuremath{-0.031}` | `\ensuremath{+0.034}` |
-| `SThirtyThreeBFourPQ` | 33%+4 P->Q | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__p_then_q__s0.3333__b4__seed0__float32` | `\ensuremath{+0.014}` | `\ensuremath{-0.002}` | `\ensuremath{+0.030}` | `\ensuremath{+0.008}` | `\ensuremath{-0.007}` | `\ensuremath{+0.023}` | `\ensuremath{+0.020}` | `\ensuremath{+0.007}` | `\ensuremath{+0.034}` | `\ensuremath{+0.043}` | `\ensuremath{+0.010}` | `\ensuremath{+0.076}` |
-| `SThirtyThreeBFourQP` | 33%+4 Q->P | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__q_then_p__s0.3333__b4__seed0__float32` | `\ensuremath{+0.006}` | `\ensuremath{-0.010}` | `\ensuremath{+0.022}` | `\ensuremath{-0.002}` | `\ensuremath{-0.017}` | `\ensuremath{+0.014}` | `\ensuremath{+0.012}` | `\ensuremath{-0.002}` | `\ensuremath{+0.026}` | `\ensuremath{+0.022}` | `\ensuremath{-0.013}` | `\ensuremath{+0.055}` |
-| `SFiftyBFourJoint` | 50%+4 joint | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__joint__s0.5000__b4__seed0__float32` | `\ensuremath{+0.022}` | `\ensuremath{+0.006}` | `\ensuremath{+0.040}` | `\ensuremath{+0.030}` | `\ensuremath{+0.013}` | `\ensuremath{+0.045}` | `\ensuremath{+0.027}` | `\ensuremath{+0.012}` | `\ensuremath{+0.042}` | `\ensuremath{+0.035}` | `\ensuremath{+0.002}` | `\ensuremath{+0.067}` |
-| `SFiftyBFourPQ` | 50%+4 P->Q | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32` | `\ensuremath{+0.011}` | `\ensuremath{-0.006}` | `\ensuremath{+0.029}` | `\ensuremath{+0.012}` | `\ensuremath{-0.005}` | `\ensuremath{+0.028}` | `\ensuremath{+0.009}` | `\ensuremath{-0.005}` | `\ensuremath{+0.023}` | `\ensuremath{-0.012}` | `\ensuremath{-0.044}` | `\ensuremath{+0.021}` |
-| `SFiftyBFourQP` | 50%+4 Q->P | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__q_then_p__s0.5000__b4__seed0__float32` | `\ensuremath{+0.018}` | `\ensuremath{+0.000}` | `\ensuremath{+0.037}` | `\ensuremath{+0.015}` | `\ensuremath{-0.003}` | `\ensuremath{+0.031}` | `\ensuremath{+0.036}` | `\ensuremath{+0.020}` | `\ensuremath{+0.052}` | `\ensuremath{+0.057}` | `\ensuremath{+0.020}` | `\ensuremath{+0.092}` |
+| `STwentyFiveBFourJoint` | 25%+4 joint | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__joint__s0.2500__b4__seed0__float32` | `\ensuremath{+0.010}` | `\ensuremath{-0.005}` | `\ensuremath{+0.024}` | `\ensuremath{-0.000}` | `\ensuremath{-0.015}` | `\ensuremath{+0.014}` | `\ensuremath{+0.013}` | `\ensuremath{+0.000}` | `\ensuremath{+0.026}` | `\ensuremath{+0.030}` | `\ensuremath{-0.002}` | `\ensuremath{+0.062}` |
+| `STwentyFiveBFourPQ` | 25%+4 P->Q | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__p_then_q__s0.2500__b4__seed0__float32` | `\ensuremath{+0.026}` | `\ensuremath{+0.011}` | `\ensuremath{+0.041}` | `\ensuremath{+0.016}` | `\ensuremath{+0.002}` | `\ensuremath{+0.030}` | `\ensuremath{+0.037}` | `\ensuremath{+0.023}` | `\ensuremath{+0.050}` | `\ensuremath{+0.090}` | `\ensuremath{+0.057}` | `\ensuremath{+0.121}` |
+| `STwentyFiveBFourQP` | 25%+4 Q->P | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__q_then_p__s0.2500__b4__seed0__float32` | `\ensuremath{+0.006}` | `\ensuremath{-0.009}` | `\ensuremath{+0.021}` | `\ensuremath{-0.017}` | `\ensuremath{-0.031}` | `\ensuremath{-0.003}` | `\ensuremath{+0.019}` | `\ensuremath{+0.006}` | `\ensuremath{+0.032}` | `\ensuremath{+0.044}` | `\ensuremath{+0.012}` | `\ensuremath{+0.076}` |
+| `SThirtyThreeBFourJoint` | 33%+4 joint | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__joint__s0.3333__b4__seed0__float32` | `\ensuremath{-0.006}` | `\ensuremath{-0.022}` | `\ensuremath{+0.010}` | `\ensuremath{-0.014}` | `\ensuremath{-0.030}` | `\ensuremath{+0.001}` | `\ensuremath{+0.005}` | `\ensuremath{-0.010}` | `\ensuremath{+0.019}` | `\ensuremath{+0.003}` | `\ensuremath{-0.032}` | `\ensuremath{+0.035}` |
+| `SThirtyThreeBFourPQ` | 33%+4 P->Q | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__p_then_q__s0.3333__b4__seed0__float32` | `\ensuremath{+0.014}` | `\ensuremath{-0.002}` | `\ensuremath{+0.030}` | `\ensuremath{+0.008}` | `\ensuremath{-0.007}` | `\ensuremath{+0.023}` | `\ensuremath{+0.020}` | `\ensuremath{+0.006}` | `\ensuremath{+0.034}` | `\ensuremath{+0.043}` | `\ensuremath{+0.009}` | `\ensuremath{+0.075}` |
+| `SThirtyThreeBFourQP` | 33%+4 Q->P | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__q_then_p__s0.3333__b4__seed0__float32` | `\ensuremath{+0.006}` | `\ensuremath{-0.010}` | `\ensuremath{+0.022}` | `\ensuremath{-0.002}` | `\ensuremath{-0.018}` | `\ensuremath{+0.014}` | `\ensuremath{+0.012}` | `\ensuremath{-0.003}` | `\ensuremath{+0.026}` | `\ensuremath{+0.022}` | `\ensuremath{-0.013}` | `\ensuremath{+0.056}` |
+| `SFiftyBFourJoint` | 50%+4 joint | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__joint__s0.5000__b4__seed0__float32` | `\ensuremath{+0.022}` | `\ensuremath{+0.005}` | `\ensuremath{+0.039}` | `\ensuremath{+0.030}` | `\ensuremath{+0.014}` | `\ensuremath{+0.047}` | `\ensuremath{+0.027}` | `\ensuremath{+0.012}` | `\ensuremath{+0.042}` | `\ensuremath{+0.035}` | `\ensuremath{+0.002}` | `\ensuremath{+0.067}` |
+| `SFiftyBFourPQ` | 50%+4 P->Q | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32` | `\ensuremath{+0.011}` | `\ensuremath{-0.006}` | `\ensuremath{+0.027}` | `\ensuremath{+0.012}` | `\ensuremath{-0.003}` | `\ensuremath{+0.028}` | `\ensuremath{+0.009}` | `\ensuremath{-0.006}` | `\ensuremath{+0.024}` | `\ensuremath{-0.012}` | `\ensuremath{-0.045}` | `\ensuremath{+0.021}` |
+| `SFiftyBFourQP` | 50%+4 Q->P | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__q_then_p__s0.5000__b4__seed0__float32` | `\ensuremath{+0.018}` | `\ensuremath{-0.000}` | `\ensuremath{+0.036}` | `\ensuremath{+0.015}` | `\ensuremath{-0.002}` | `\ensuremath{+0.031}` | `\ensuremath{+0.036}` | `\ensuremath{+0.021}` | `\ensuremath{+0.052}` | `\ensuremath{+0.057}` | `\ensuremath{+0.023}` | `\ensuremath{+0.091}` |
 | `SFiftyBFourQPRefit` | 50%+4 Q->P refit | `SmolLM2-135M__q_then_p_refit__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBFourQPPmask` | 50%+4 Q->P P-mask | `SmolLM2-135M__q_then_p_pmask__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBFourQPPmaskRefit` | 50%+4 Q->P P-mask refit | `SmolLM2-135M__q_then_p_pmask_refit__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBFourPQStale` | 50%+4 P->Q stale grid | `SmolLM2-135M__p_then_q_stale__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SSixtyBFourJoint` | 60%+4 joint | `SmolLM2-135M__joint__s0.6000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SSixtyBFourPQ` | 60%+4 P->Q | `SmolLM2-135M__p_then_q__s0.6000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SSixtyBFourQP` | 60%+4 Q->P | `SmolLM2-135M__q_then_p__s0.6000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBThreeJoint` | 25%+3 joint | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__joint__s0.2500__b3__seed0__float32` | `\ensuremath{+0.023}` | `\ensuremath{+0.007}` | `\ensuremath{+0.040}` | `\ensuremath{+0.021}` | `\ensuremath{+0.003}` | `\ensuremath{+0.038}` | `\ensuremath{+0.029}` | `\ensuremath{+0.014}` | `\ensuremath{+0.042}` | `\ensuremath{+0.059}` | `\ensuremath{+0.025}` | `\ensuremath{+0.092}` |
-| `STwentyFiveBThreePQ` | 25%+3 P->Q | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__p_then_q__s0.2500__b3__seed0__float32` | `\ensuremath{+0.035}` | `\ensuremath{+0.017}` | `\ensuremath{+0.051}` | `\ensuremath{+0.023}` | `\ensuremath{+0.006}` | `\ensuremath{+0.041}` | `\ensuremath{+0.035}` | `\ensuremath{+0.020}` | `\ensuremath{+0.049}` | `\ensuremath{+0.076}` | `\ensuremath{+0.041}` | `\ensuremath{+0.111}` |
-| `STwentyFiveBThreeQP` | 25%+3 Q->P | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__q_then_p__s0.2500__b3__seed0__float32` | `\ensuremath{+0.019}` | `\ensuremath{+0.012}` | `\ensuremath{+0.025}` | `\ensuremath{+0.013}` | `\ensuremath{+0.007}` | `\ensuremath{+0.019}` | `\ensuremath{+0.012}` | `\ensuremath{+0.005}` | `\ensuremath{+0.018}` | `\ensuremath{+0.016}` | `\ensuremath{+0.008}` | `\ensuremath{+0.025}` |
-| `STwentyFiveBThreeQPRefit` | 25%+3 Q->P refit | `SmolLM2-135M__q_then_p_refit__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBThreeQPPmask` | 25%+3 Q->P P-mask | `SmolLM2-135M__q_then_p_pmask__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SSixtyBFourJoint` | 60%+4 joint | `results/v2/E4/SmolLM2-135M.jsonl` `SmolLM2-135M__joint__s0.6000__b4__seed0__float32` | `\ensuremath{+0.012}` | `\ensuremath{-0.005}` | `\ensuremath{+0.028}` | `\ensuremath{+0.015}` | `\ensuremath{-0.001}` | `\ensuremath{+0.031}` | `\ensuremath{+0.020}` | `\ensuremath{+0.006}` | `\ensuremath{+0.035}` | `\ensuremath{-0.001}` | `\ensuremath{-0.032}` | `\ensuremath{+0.030}` |
+| `SSixtyBFourPQ` | 60%+4 P->Q | `results/v2/E4/SmolLM2-135M.jsonl` `SmolLM2-135M__p_then_q__s0.6000__b4__seed0__float32` | `\ensuremath{+0.012}` | `\ensuremath{-0.004}` | `\ensuremath{+0.029}` | `\ensuremath{+0.023}` | `\ensuremath{+0.007}` | `\ensuremath{+0.038}` | `\ensuremath{+0.018}` | `\ensuremath{+0.004}` | `\ensuremath{+0.033}` | `\ensuremath{-0.006}` | `\ensuremath{-0.037}` | `\ensuremath{+0.025}` |
+| `SSixtyBFourQP` | 60%+4 Q->P | `results/v2/E4/SmolLM2-135M.jsonl` `SmolLM2-135M__q_then_p__s0.6000__b4__seed0__float32` | `\ensuremath{+0.004}` | `\ensuremath{-0.014}` | `\ensuremath{+0.021}` | `\ensuremath{+0.015}` | `\ensuremath{-0.001}` | `\ensuremath{+0.032}` | `\ensuremath{+0.004}` | `\ensuremath{-0.012}` | `\ensuremath{+0.020}` | `\ensuremath{-0.043}` | `\ensuremath{-0.079}` | `\ensuremath{-0.008}` |
+| `STwentyFiveBThreeJoint` | 25%+3 joint | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__joint__s0.2500__b3__seed0__float32` | `\ensuremath{+0.023}` | `\ensuremath{+0.007}` | `\ensuremath{+0.040}` | `\ensuremath{+0.021}` | `\ensuremath{+0.004}` | `\ensuremath{+0.037}` | `\ensuremath{+0.029}` | `\ensuremath{+0.014}` | `\ensuremath{+0.044}` | `\ensuremath{+0.059}` | `\ensuremath{+0.024}` | `\ensuremath{+0.094}` |
+| `STwentyFiveBThreePQ` | 25%+3 P->Q | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__p_then_q__s0.2500__b3__seed0__float32` | `\ensuremath{+0.035}` | `\ensuremath{+0.017}` | `\ensuremath{+0.052}` | `\ensuremath{+0.023}` | `\ensuremath{+0.007}` | `\ensuremath{+0.040}` | `\ensuremath{+0.035}` | `\ensuremath{+0.020}` | `\ensuremath{+0.050}` | `\ensuremath{+0.076}` | `\ensuremath{+0.039}` | `\ensuremath{+0.112}` |
+| `STwentyFiveBThreeQP` | 25%+3 Q->P | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__q_then_p__s0.2500__b3__seed0__float32` | `\ensuremath{+0.019}` | `\ensuremath{+0.012}` | `\ensuremath{+0.025}` | `\ensuremath{+0.013}` | `\ensuremath{+0.007}` | `\ensuremath{+0.019}` | `\ensuremath{+0.012}` | `\ensuremath{+0.005}` | `\ensuremath{+0.018}` | `\ensuremath{+0.016}` | `\ensuremath{+0.008}` | `\ensuremath{+0.024}` |
+| `STwentyFiveBThreeQPRefit` | 25%+3 Q->P refit | `results/v2/E3/SmolLM2-135M.jsonl` `SmolLM2-135M__q_then_p_refit__s0.2500__b3__seed0__float32` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBThreeQPPmask` | 25%+3 Q->P P-mask | `results/v2/E3/SmolLM2-135M.jsonl` `SmolLM2-135M__q_then_p_pmask__s0.2500__b3__seed0__float32` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `STwentyFiveBThreeQPPmaskRefit` | 25%+3 Q->P P-mask refit | `SmolLM2-135M__q_then_p_pmask_refit__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `STwentyFiveBThreePQStale` | 25%+3 P->Q stale grid | `SmolLM2-135M__p_then_q_stale__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBThreeJoint` | 33%+3 joint | `SmolLM2-135M__joint__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBThreePQ` | 33%+3 P->Q | `SmolLM2-135M__p_then_q__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBThreeQP` | 33%+3 Q->P | `SmolLM2-135M__q_then_p__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBThreeJoint` | 33%+3 joint | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__joint__s0.3333__b3__seed0__float32` | `\ensuremath{+0.034}` | `\ensuremath{+0.017}` | `\ensuremath{+0.052}` | `\ensuremath{+0.035}` | `\ensuremath{+0.018}` | `\ensuremath{+0.052}` | `\ensuremath{+0.012}` | `\ensuremath{-0.004}` | `\ensuremath{+0.028}` | `\ensuremath{+0.000}` | `\ensuremath{-0.037}` | `\ensuremath{+0.035}` |
+| `SThirtyThreeBThreePQ` | 33%+3 P->Q | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__p_then_q__s0.3333__b3__seed0__float32` | `\ensuremath{+0.050}` | `\ensuremath{+0.033}` | `\ensuremath{+0.068}` | `\ensuremath{+0.052}` | `\ensuremath{+0.034}` | `\ensuremath{+0.070}` | `\ensuremath{+0.036}` | `\ensuremath{+0.021}` | `\ensuremath{+0.051}` | `\ensuremath{+0.061}` | `\ensuremath{+0.026}` | `\ensuremath{+0.096}` |
+| `SThirtyThreeBThreeQP` | 33%+3 Q->P | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__q_then_p__s0.3333__b3__seed0__float32` | `\ensuremath{+0.012}` | `\ensuremath{-0.005}` | `\ensuremath{+0.030}` | `\ensuremath{+0.012}` | `\ensuremath{-0.005}` | `\ensuremath{+0.029}` | `\ensuremath{+0.037}` | `\ensuremath{+0.020}` | `\ensuremath{+0.052}` | `\ensuremath{+0.062}` | `\ensuremath{+0.026}` | `\ensuremath{+0.096}` |
 | `SThirtyThreeBThreeQPRefit` | 33%+3 Q->P refit | `SmolLM2-135M__q_then_p_refit__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SThirtyThreeBThreeQPPmask` | 33%+3 Q->P P-mask | `SmolLM2-135M__q_then_p_pmask__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SThirtyThreeBThreeQPPmaskRefit` | 33%+3 Q->P P-mask refit | `SmolLM2-135M__q_then_p_pmask_refit__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SThirtyThreeBThreePQStale` | 33%+3 P->Q stale grid | `SmolLM2-135M__p_then_q_stale__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBThreeJoint` | 50%+3 joint | `SmolLM2-135M__joint__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBThreePQ` | 50%+3 P->Q | `SmolLM2-135M__p_then_q__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBThreeQP` | 50%+3 Q->P | `SmolLM2-135M__q_then_p__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBThreeJoint` | 50%+3 joint | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__joint__s0.5000__b3__seed0__float32` | `\ensuremath{+0.083}` | `\ensuremath{+0.065}` | `\ensuremath{+0.101}` | `\ensuremath{+0.074}` | `\ensuremath{+0.056}` | `\ensuremath{+0.092}` | `\ensuremath{+0.053}` | `\ensuremath{+0.036}` | `\ensuremath{+0.069}` | `\ensuremath{+0.018}` | `\ensuremath{-0.017}` | `\ensuremath{+0.052}` |
+| `SFiftyBThreePQ` | 50%+3 P->Q | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__p_then_q__s0.5000__b3__seed0__float32` | `\ensuremath{+0.102}` | `\ensuremath{+0.085}` | `\ensuremath{+0.120}` | `\ensuremath{+0.101}` | `\ensuremath{+0.083}` | `\ensuremath{+0.118}` | `\ensuremath{+0.092}` | `\ensuremath{+0.076}` | `\ensuremath{+0.108}` | `\ensuremath{+0.118}` | `\ensuremath{+0.086}` | `\ensuremath{+0.151}` |
+| `SFiftyBThreeQP` | 50%+3 Q->P | `results/v2/E1/SmolLM2-135M.jsonl` `SmolLM2-135M__q_then_p__s0.5000__b3__seed0__float32` | `\ensuremath{+0.065}` | `\ensuremath{+0.046}` | `\ensuremath{+0.084}` | `\ensuremath{+0.056}` | `\ensuremath{+0.038}` | `\ensuremath{+0.074}` | `\ensuremath{+0.062}` | `\ensuremath{+0.045}` | `\ensuremath{+0.078}` | `\ensuremath{+0.041}` | `\ensuremath{+0.006}` | `\ensuremath{+0.075}` |
 | `SFiftyBThreeQPRefit` | 50%+3 Q->P refit | `SmolLM2-135M__q_then_p_refit__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBThreeQPPmask` | 50%+3 Q->P P-mask | `SmolLM2-135M__q_then_p_pmask__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBThreeQPPmaskRefit` | 50%+3 Q->P P-mask refit | `SmolLM2-135M__q_then_p_pmask_refit__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
@@ -142,71 +143,71 @@ Macro = `\res` + column + `SmolSmall` + row tag (e.g. `\resISrThreeSmolSmallSTwe
 
 Columns:
 
-- `ISrThree`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
-- `ISrThreeLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
-- `ISrThreeHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
-- `ISrPaper`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, paper metric (acc, acc, acc_norm)), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
-- `ISrPaperLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, paper metric (acc, acc, acc_norm)), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
-- `ISrPaperHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, paper metric (acc, acc, acc_norm)), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
-- `ISrExt`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr-extended over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
-- `ISrExtLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr-extended over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
-- `ISrExtHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr-extended over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
-- `ISrCn`: I_Sr = Sr_PQ - Sr_P Sr_Q (chance-normalized Sr over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
-- `ISrCnLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (chance-normalized Sr over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
-- `ISrCnHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (chance-normalized Sr over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
+- `ISrThree`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
+- `ISrThreeLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
+- `ISrThreeHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
+- `ISrPaper`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, paper metric (acc, acc, acc_norm)), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
+- `ISrPaperLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, paper metric (acc, acc, acc_norm)), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
+- `ISrPaperHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, paper metric (acc, acc, acc_norm)), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
+- `ISrExt`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr-extended over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
+- `ISrExtLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr-extended over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
+- `ISrExtHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr-extended over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
+- `ISrCn`: I_Sr = Sr_PQ - Sr_P Sr_Q (chance-normalized Sr over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
+- `ISrCnLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (chance-normalized Sr over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
+- `ISrCnHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (chance-normalized Sr over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
 
 ## States of SmolLM2-360M (seed 0)
 
 Macro = `\res` + column + `SmolMedium` + row tag (e.g. `\resPplSmolMediumDense`). Row source: the state's result line; column source: below the table.
 
-| Row tag | State | Source | Ppl | PplCFour | Kl | KlCFour | TopOnePct | TopOneCFourPct | BitsTcr | BitsMask | FreeZerosPct | FlipsPct | FlipsCWPct | FlipsWCPct | SrThree | SrPaper | SrExt | SrCn |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| `Dense` | dense | `SmolLM2-360M__dense__s0.0000__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |  | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `QuantBEight` | 8-bit | `SmolLM2-360M__quant__s0.0000__b8__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `QuantBFour` | 4-bit | `SmolLM2-360M__quant__s0.0000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `QuantBThree` | 3-bit | `SmolLM2-360M__quant__s0.0000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `QuantBTwo` | 2-bit | `SmolLM2-360M__quant__s0.0000__b2__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `PruneSTwentyFive` | 25% pruned | `SmolLM2-360M__prune__s0.2500__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `PruneSThirtyThree` | 33% pruned | `SmolLM2-360M__prune__s0.3333__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `PruneSFifty` | 50% pruned | `SmolLM2-360M__prune__s0.5000__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `PruneSSixty` | 60% pruned | `SmolLM2-360M__prune__s0.6000__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBFourJoint` | 25%+4 joint | `SmolLM2-360M__joint__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBFourPQ` | 25%+4 P->Q | `SmolLM2-360M__p_then_q__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBFourQP` | 25%+4 Q->P | `SmolLM2-360M__q_then_p__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBFourJoint` | 33%+4 joint | `SmolLM2-360M__joint__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBFourPQ` | 33%+4 P->Q | `SmolLM2-360M__p_then_q__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBFourQP` | 33%+4 Q->P | `SmolLM2-360M__q_then_p__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourJoint` | 50%+4 joint | `SmolLM2-360M__joint__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourPQ` | 50%+4 P->Q | `SmolLM2-360M__p_then_q__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourQP` | 50%+4 Q->P | `SmolLM2-360M__q_then_p__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourQPRefit` | 50%+4 Q->P refit | `SmolLM2-360M__q_then_p_refit__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourQPPmask` | 50%+4 Q->P P-mask | `SmolLM2-360M__q_then_p_pmask__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourQPPmaskRefit` | 50%+4 Q->P P-mask refit | `SmolLM2-360M__q_then_p_pmask_refit__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourPQStale` | 50%+4 P->Q stale grid | `SmolLM2-360M__p_then_q_stale__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SSixtyBFourJoint` | 60%+4 joint | `SmolLM2-360M__joint__s0.6000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SSixtyBFourPQ` | 60%+4 P->Q | `SmolLM2-360M__p_then_q__s0.6000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SSixtyBFourQP` | 60%+4 Q->P | `SmolLM2-360M__q_then_p__s0.6000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBThreeJoint` | 25%+3 joint | `SmolLM2-360M__joint__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBThreePQ` | 25%+3 P->Q | `SmolLM2-360M__p_then_q__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBThreeQP` | 25%+3 Q->P | `SmolLM2-360M__q_then_p__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBThreeQPRefit` | 25%+3 Q->P refit | `SmolLM2-360M__q_then_p_refit__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBThreeQPPmask` | 25%+3 Q->P P-mask | `SmolLM2-360M__q_then_p_pmask__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBThreeQPPmaskRefit` | 25%+3 Q->P P-mask refit | `SmolLM2-360M__q_then_p_pmask_refit__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBThreePQStale` | 25%+3 P->Q stale grid | `SmolLM2-360M__p_then_q_stale__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBThreeJoint` | 33%+3 joint | `SmolLM2-360M__joint__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBThreePQ` | 33%+3 P->Q | `SmolLM2-360M__p_then_q__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBThreeQP` | 33%+3 Q->P | `SmolLM2-360M__q_then_p__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBThreeQPRefit` | 33%+3 Q->P refit | `SmolLM2-360M__q_then_p_refit__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBThreeQPPmask` | 33%+3 Q->P P-mask | `SmolLM2-360M__q_then_p_pmask__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBThreeQPPmaskRefit` | 33%+3 Q->P P-mask refit | `SmolLM2-360M__q_then_p_pmask_refit__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBThreePQStale` | 33%+3 P->Q stale grid | `SmolLM2-360M__p_then_q_stale__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBThreeJoint` | 50%+3 joint | `SmolLM2-360M__joint__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBThreePQ` | 50%+3 P->Q | `SmolLM2-360M__p_then_q__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBThreeQP` | 50%+3 Q->P | `SmolLM2-360M__q_then_p__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBThreeQPRefit` | 50%+3 Q->P refit | `SmolLM2-360M__q_then_p_refit__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBThreeQPPmask` | 50%+3 Q->P P-mask | `SmolLM2-360M__q_then_p_pmask__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBThreeQPPmaskRefit` | 50%+3 Q->P P-mask refit | `SmolLM2-360M__q_then_p_pmask_refit__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBThreePQStale` | 50%+3 P->Q stale grid | `SmolLM2-360M__p_then_q_stale__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| Row tag | State | Source | Ppl | PplCFour | Kl | KlCFour | TopOnePct | TopOneCFourPct | BitsTcr | BitsMask | BitsSym | FreeZerosPct | FlipsPct | FlipsCWPct | FlipsWCPct | SrThree | SrPaper | SrExt | SrCn |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| `Dense` | dense | `SmolLM2-360M__dense__s0.0000__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |  | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `QuantBEight` | 8-bit | `SmolLM2-360M__quant__s0.0000__b8__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `QuantBFour` | 4-bit | `SmolLM2-360M__quant__s0.0000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `QuantBThree` | 3-bit | `SmolLM2-360M__quant__s0.0000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `QuantBTwo` | 2-bit | `SmolLM2-360M__quant__s0.0000__b2__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `PruneSTwentyFive` | 25% pruned | `SmolLM2-360M__prune__s0.2500__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `PruneSThirtyThree` | 33% pruned | `SmolLM2-360M__prune__s0.3333__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `PruneSFifty` | 50% pruned | `SmolLM2-360M__prune__s0.5000__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `PruneSSixty` | 60% pruned | `SmolLM2-360M__prune__s0.6000__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBFourJoint` | 25%+4 joint | `SmolLM2-360M__joint__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBFourPQ` | 25%+4 P->Q | `SmolLM2-360M__p_then_q__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBFourQP` | 25%+4 Q->P | `SmolLM2-360M__q_then_p__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBFourJoint` | 33%+4 joint | `SmolLM2-360M__joint__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBFourPQ` | 33%+4 P->Q | `SmolLM2-360M__p_then_q__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBFourQP` | 33%+4 Q->P | `SmolLM2-360M__q_then_p__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourJoint` | 50%+4 joint | `SmolLM2-360M__joint__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourPQ` | 50%+4 P->Q | `SmolLM2-360M__p_then_q__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourQP` | 50%+4 Q->P | `SmolLM2-360M__q_then_p__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourQPRefit` | 50%+4 Q->P refit | `SmolLM2-360M__q_then_p_refit__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourQPPmask` | 50%+4 Q->P P-mask | `SmolLM2-360M__q_then_p_pmask__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourQPPmaskRefit` | 50%+4 Q->P P-mask refit | `SmolLM2-360M__q_then_p_pmask_refit__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourPQStale` | 50%+4 P->Q stale grid | `SmolLM2-360M__p_then_q_stale__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SSixtyBFourJoint` | 60%+4 joint | `SmolLM2-360M__joint__s0.6000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SSixtyBFourPQ` | 60%+4 P->Q | `SmolLM2-360M__p_then_q__s0.6000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SSixtyBFourQP` | 60%+4 Q->P | `SmolLM2-360M__q_then_p__s0.6000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBThreeJoint` | 25%+3 joint | `SmolLM2-360M__joint__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBThreePQ` | 25%+3 P->Q | `SmolLM2-360M__p_then_q__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBThreeQP` | 25%+3 Q->P | `SmolLM2-360M__q_then_p__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBThreeQPRefit` | 25%+3 Q->P refit | `SmolLM2-360M__q_then_p_refit__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBThreeQPPmask` | 25%+3 Q->P P-mask | `SmolLM2-360M__q_then_p_pmask__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBThreeQPPmaskRefit` | 25%+3 Q->P P-mask refit | `SmolLM2-360M__q_then_p_pmask_refit__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBThreePQStale` | 25%+3 P->Q stale grid | `SmolLM2-360M__p_then_q_stale__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBThreeJoint` | 33%+3 joint | `SmolLM2-360M__joint__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBThreePQ` | 33%+3 P->Q | `SmolLM2-360M__p_then_q__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBThreeQP` | 33%+3 Q->P | `SmolLM2-360M__q_then_p__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBThreeQPRefit` | 33%+3 Q->P refit | `SmolLM2-360M__q_then_p_refit__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBThreeQPPmask` | 33%+3 Q->P P-mask | `SmolLM2-360M__q_then_p_pmask__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBThreeQPPmaskRefit` | 33%+3 Q->P P-mask refit | `SmolLM2-360M__q_then_p_pmask_refit__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBThreePQStale` | 33%+3 P->Q stale grid | `SmolLM2-360M__p_then_q_stale__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBThreeJoint` | 50%+3 joint | `SmolLM2-360M__joint__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBThreePQ` | 50%+3 P->Q | `SmolLM2-360M__p_then_q__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBThreeQP` | 50%+3 Q->P | `SmolLM2-360M__q_then_p__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBThreeQPRefit` | 50%+3 Q->P refit | `SmolLM2-360M__q_then_p_refit__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBThreeQPPmask` | 50%+3 Q->P P-mask | `SmolLM2-360M__q_then_p_pmask__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBThreeQPPmaskRefit` | 50%+3 Q->P P-mask refit | `SmolLM2-360M__q_then_p_pmask_refit__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBThreePQStale` | 50%+3 P->Q stale grid | `SmolLM2-360M__p_then_q_stale__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 
 Columns:
 
@@ -218,6 +219,7 @@ Columns:
 - `TopOneCFourPct`: top-1 agreement on C4 (%); field `c4.top1`
 - `BitsTcr`: bits per weight as TCr counts them, b(1-s); field `storage.tcr`
 - `BitsMask`: bits per weight with a 1-bit mask; field `storage.bitmap`
+- `BitsSym`: plug-in entropy of the stored symbols per group of 128, zeros included, bits per weight; field `storage.symbol_entropy` (measured for quantized states only)
 - `FlipsPct`: items whose correctness differs from dense, pooled over the 9 zero-shot tasks, v2 metric (%); per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
 - `FlipsCWPct`: correct-to-wrong items against dense, pooled (% of items); per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
 - `FlipsWCPct`: wrong-to-correct items against dense, pooled (% of items); per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
@@ -273,71 +275,71 @@ Macro = `\res` + column + `SmolMedium` + row tag (e.g. `\resISrThreeSmolMediumST
 
 Columns:
 
-- `ISrThree`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
-- `ISrThreeLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
-- `ISrThreeHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
-- `ISrPaper`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, paper metric (acc, acc, acc_norm)), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
-- `ISrPaperLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, paper metric (acc, acc, acc_norm)), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
-- `ISrPaperHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, paper metric (acc, acc, acc_norm)), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
-- `ISrExt`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr-extended over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
-- `ISrExtLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr-extended over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
-- `ISrExtHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr-extended over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
-- `ISrCn`: I_Sr = Sr_PQ - Sr_P Sr_Q (chance-normalized Sr over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
-- `ISrCnLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (chance-normalized Sr over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
-- `ISrCnHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (chance-normalized Sr over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
+- `ISrThree`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
+- `ISrThreeLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
+- `ISrThreeHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
+- `ISrPaper`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, paper metric (acc, acc, acc_norm)), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
+- `ISrPaperLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, paper metric (acc, acc, acc_norm)), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
+- `ISrPaperHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, paper metric (acc, acc, acc_norm)), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
+- `ISrExt`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr-extended over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
+- `ISrExtLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr-extended over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
+- `ISrExtHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr-extended over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
+- `ISrCn`: I_Sr = Sr_PQ - Sr_P Sr_Q (chance-normalized Sr over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
+- `ISrCnLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (chance-normalized Sr over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
+- `ISrCnHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (chance-normalized Sr over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
 
 ## States of Qwen2.5-0.5B (seed 0)
 
 Macro = `\res` + column + `Qwen` + row tag (e.g. `\resPplQwenDense`). Row source: the state's result line; column source: below the table.
 
-| Row tag | State | Source | Ppl | PplCFour | Kl | KlCFour | TopOnePct | TopOneCFourPct | BitsTcr | BitsMask | FreeZerosPct | FlipsPct | FlipsCWPct | FlipsWCPct | SrThree | SrPaper | SrExt | SrCn |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| `Dense` | dense | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__dense__s0.0000__b16__seed0__float32` | `13.07` | `19.61` | `0.000` | `0.000` | `100.0` | `100.0` | `16.00` | `16.00` |  | `0.0` | `0.0` | `0.0` | `1.000` | `1.000` | `1.000` | `1.000` |
-| `QuantBEight` | 8-bit | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__quant__s0.0000__b8__seed0__float32` | `13.07` | `19.62` | `0.000` | `0.000` | `99.0` | `99.0` | `8.00` | `8.00` | `0.9` | `0.6` | `0.3` | `0.3` | `1.002` | `1.002` | `0.999` | `0.997` |
-| `QuantBFour` | 4-bit | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__quant__s0.0000__b4__seed0__float32` | `14.31` | `21.07` | `0.098` | `0.075` | `84.2` | `84.6` | `4.00` | `4.00` | `15.6` | `11.4` | `6.9` | `4.5` | `0.979` | `0.971` | `0.965` | `0.920` |
-| `QuantBThree` | 3-bit | `Qwen2.5-0.5B__quant__s0.0000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `QuantBTwo` | 2-bit | `Qwen2.5-0.5B__quant__s0.0000__b2__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `PruneSTwentyFive` | 25% pruned | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__prune__s0.2500__b16__seed0__float32` | `13.63` | `20.21` | `0.045` | `0.032` | `88.9` | `89.4` | `12.00` | `13.00` | `25.0` | `7.2` | `3.6` | `3.5` | `1.021` | `1.001` | `1.003` | `1.007` |
-| `PruneSThirtyThree` | 33% pruned | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__prune__s0.3333__b16__seed0__float32` | `14.53` | `21.12` | `0.111` | `0.079` | `83.0` | `84.0` | `10.67` | `11.67` | `33.3` | `12.0` | `7.6` | `4.5` | `1.000` | `0.978` | `0.961` | `0.912` |
-| `PruneSFifty` | 50% pruned | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__prune__s0.5000__b16__seed0__float32` | `20.15` | `26.86` | `0.440` | `0.328` | `68.6` | `69.6` | `8.00` | `9.00` | `50.0` | `19.9` | `14.0` | `6.0` | `0.907` | `0.891` | `0.894` | `0.759` |
-| `PruneSSixty` | 60% pruned | `Qwen2.5-0.5B__prune__s0.6000__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBFourJoint` | 25%+4 joint | `Qwen2.5-0.5B__joint__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBFourPQ` | 25%+4 P->Q | `Qwen2.5-0.5B__p_then_q__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBFourQP` | 25%+4 Q->P | `Qwen2.5-0.5B__q_then_p__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBFourJoint` | 33%+4 joint | `Qwen2.5-0.5B__joint__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBFourPQ` | 33%+4 P->Q | `Qwen2.5-0.5B__p_then_q__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBFourQP` | 33%+4 Q->P | `Qwen2.5-0.5B__q_then_p__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourJoint` | 50%+4 joint | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__joint__s0.5000__b4__seed0__float32` | `21.91` | `28.74` | `0.523` | `0.398` | `65.5` | `66.9` | `2.00` | `3.00` | `50.1` | `21.3` | `15.2` | `6.0` | `0.895` | `0.880` | `0.877` | `0.720` |
-| `SFiftyBFourPQ` | 50%+4 P->Q | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__p_then_q__s0.5000__b4__seed0__float32` | `22.18` | `28.95` | `0.541` | `0.404` | `65.2` | `66.7` | `2.00` | `3.00` | `50.1` | `21.4` | `15.5` | `5.9` | `0.890` | `0.878` | `0.870` | `0.705` |
-| `SFiftyBFourQP` | 50%+4 Q->P | `Qwen2.5-0.5B__q_then_p__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourQPRefit` | 50%+4 Q->P refit | `Qwen2.5-0.5B__q_then_p_refit__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourQPPmask` | 50%+4 Q->P P-mask | `Qwen2.5-0.5B__q_then_p_pmask__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourQPPmaskRefit` | 50%+4 Q->P P-mask refit | `Qwen2.5-0.5B__q_then_p_pmask_refit__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourPQStale` | 50%+4 P->Q stale grid | `Qwen2.5-0.5B__p_then_q_stale__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SSixtyBFourJoint` | 60%+4 joint | `Qwen2.5-0.5B__joint__s0.6000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SSixtyBFourPQ` | 60%+4 P->Q | `Qwen2.5-0.5B__p_then_q__s0.6000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SSixtyBFourQP` | 60%+4 Q->P | `Qwen2.5-0.5B__q_then_p__s0.6000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBThreeJoint` | 25%+3 joint | `Qwen2.5-0.5B__joint__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBThreePQ` | 25%+3 P->Q | `Qwen2.5-0.5B__p_then_q__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBThreeQP` | 25%+3 Q->P | `Qwen2.5-0.5B__q_then_p__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBThreeQPRefit` | 25%+3 Q->P refit | `Qwen2.5-0.5B__q_then_p_refit__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBThreeQPPmask` | 25%+3 Q->P P-mask | `Qwen2.5-0.5B__q_then_p_pmask__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBThreeQPPmaskRefit` | 25%+3 Q->P P-mask refit | `Qwen2.5-0.5B__q_then_p_pmask_refit__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBThreePQStale` | 25%+3 P->Q stale grid | `Qwen2.5-0.5B__p_then_q_stale__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBThreeJoint` | 33%+3 joint | `Qwen2.5-0.5B__joint__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBThreePQ` | 33%+3 P->Q | `Qwen2.5-0.5B__p_then_q__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBThreeQP` | 33%+3 Q->P | `Qwen2.5-0.5B__q_then_p__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBThreeQPRefit` | 33%+3 Q->P refit | `Qwen2.5-0.5B__q_then_p_refit__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBThreeQPPmask` | 33%+3 Q->P P-mask | `Qwen2.5-0.5B__q_then_p_pmask__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBThreeQPPmaskRefit` | 33%+3 Q->P P-mask refit | `Qwen2.5-0.5B__q_then_p_pmask_refit__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBThreePQStale` | 33%+3 P->Q stale grid | `Qwen2.5-0.5B__p_then_q_stale__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBThreeJoint` | 50%+3 joint | `Qwen2.5-0.5B__joint__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBThreePQ` | 50%+3 P->Q | `Qwen2.5-0.5B__p_then_q__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBThreeQP` | 50%+3 Q->P | `Qwen2.5-0.5B__q_then_p__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBThreeQPRefit` | 50%+3 Q->P refit | `Qwen2.5-0.5B__q_then_p_refit__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBThreeQPPmask` | 50%+3 Q->P P-mask | `Qwen2.5-0.5B__q_then_p_pmask__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBThreeQPPmaskRefit` | 50%+3 Q->P P-mask refit | `Qwen2.5-0.5B__q_then_p_pmask_refit__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBThreePQStale` | 50%+3 P->Q stale grid | `Qwen2.5-0.5B__p_then_q_stale__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| Row tag | State | Source | Ppl | PplCFour | Kl | KlCFour | TopOnePct | TopOneCFourPct | BitsTcr | BitsMask | BitsSym | FreeZerosPct | FlipsPct | FlipsCWPct | FlipsWCPct | SrThree | SrPaper | SrExt | SrCn |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| `Dense` | dense | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__dense__s0.0000__b16__seed0__float32` | `13.07` | `19.61` | `0.000` | `0.000` | `100.0` | `100.0` | `16.00` | `16.00` | `--` |  | `0.0` | `0.0` | `0.0` | `1.000` | `1.000` | `1.000` | `1.000` |
+| `QuantBEight` | 8-bit | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__quant__s0.0000__b8__seed0__float32` | `13.07` | `19.62` | `0.000` | `0.000` | `99.0` | `99.0` | `8.00` | `8.00` | `6.33` | `0.9` | `0.6` | `0.3` | `0.3` | `1.002` | `1.002` | `0.999` | `0.997` |
+| `QuantBFour` | 4-bit | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__quant__s0.0000__b4__seed0__float32` | `14.31` | `21.07` | `0.098` | `0.075` | `84.2` | `84.6` | `4.00` | `4.00` | `3.40` | `15.6` | `11.4` | `6.9` | `4.5` | `0.979` | `0.971` | `0.965` | `0.920` |
+| `QuantBThree` | 3-bit | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__quant__s0.0000__b3__seed0__float32` | `21.84` | `28.33` | `0.514` | `0.380` | `66.8` | `67.8` | `3.00` | `3.00` | `2.39` | `32.1` | `21.8` | `15.1` | `6.6` | `0.887` | `0.885` | `0.882` | `0.731` |
+| `QuantBTwo` | 2-bit | `Qwen2.5-0.5B__quant__s0.0000__b2__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `PruneSTwentyFive` | 25% pruned | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__prune__s0.2500__b16__seed0__float32` | `13.63` | `20.21` | `0.045` | `0.032` | `88.9` | `89.4` | `12.00` | `13.00` | `--` | `25.0` | `7.2` | `3.6` | `3.5` | `1.021` | `1.001` | `1.003` | `1.007` |
+| `PruneSThirtyThree` | 33% pruned | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__prune__s0.3333__b16__seed0__float32` | `14.53` | `21.12` | `0.111` | `0.079` | `83.0` | `84.0` | `10.67` | `11.67` | `--` | `33.3` | `12.0` | `7.6` | `4.5` | `1.000` | `0.978` | `0.961` | `0.912` |
+| `PruneSFifty` | 50% pruned | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__prune__s0.5000__b16__seed0__float32` | `20.15` | `26.86` | `0.440` | `0.328` | `68.6` | `69.6` | `8.00` | `9.00` | `--` | `50.0` | `19.9` | `14.0` | `6.0` | `0.907` | `0.891` | `0.894` | `0.759` |
+| `PruneSSixty` | 60% pruned | `Qwen2.5-0.5B__prune__s0.6000__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBFourJoint` | 25%+4 joint | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__joint__s0.2500__b4__seed0__float32` | `14.63` | `21.43` | `0.122` | `0.093` | `82.5` | `82.9` | `3.00` | `4.00` | `3.29` | `25.6` | `12.0` | `7.3` | `4.7` | `1.014` | `0.978` | `0.966` | `0.923` |
+| `STwentyFiveBFourPQ` | 25%+4 P->Q | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__p_then_q__s0.2500__b4__seed0__float32` | `14.77` | `21.50` | `0.129` | `0.096` | `81.9` | `82.6` | `3.00` | `4.00` | `3.29` | `25.8` | `12.7` | `7.7` | `5.0` | `1.009` | `0.981` | `0.967` | `0.926` |
+| `STwentyFiveBFourQP` | 25%+4 Q->P | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__q_then_p__s0.2500__b4__seed0__float32` | `15.07` | `21.78` | `0.148` | `0.110` | `80.5` | `81.5` | `3.00` | `4.00` | `3.27` | `25.0` | `12.8` | `7.8` | `5.0` | `0.990` | `0.975` | `0.958` | `0.905` |
+| `SThirtyThreeBFourJoint` | 33%+4 joint | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__joint__s0.3333__b4__seed0__float32` | `15.64` | `22.33` | `0.187` | `0.136` | `78.2` | `79.6` | `2.67` | `3.67` | `3.12` | `33.6` | `16.1` | `10.8` | `5.3` | `0.988` | `0.960` | `0.930` | `0.842` |
+| `SThirtyThreeBFourPQ` | 33%+4 P->Q | `Qwen2.5-0.5B__p_then_q__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBFourQP` | 33%+4 Q->P | `Qwen2.5-0.5B__q_then_p__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourJoint` | 50%+4 joint | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__joint__s0.5000__b4__seed0__float32` | `21.91` | `28.74` | `0.523` | `0.398` | `65.5` | `66.9` | `2.00` | `3.00` | `2.61` | `50.1` | `21.3` | `15.2` | `6.0` | `0.895` | `0.880` | `0.877` | `0.720` |
+| `SFiftyBFourPQ` | 50%+4 P->Q | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__p_then_q__s0.5000__b4__seed0__float32` | `22.18` | `28.95` | `0.541` | `0.404` | `65.2` | `66.7` | `2.00` | `3.00` | `2.61` | `50.1` | `21.4` | `15.5` | `5.9` | `0.890` | `0.878` | `0.870` | `0.705` |
+| `SFiftyBFourQP` | 50%+4 Q->P | `Qwen2.5-0.5B__q_then_p__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourQPRefit` | 50%+4 Q->P refit | `Qwen2.5-0.5B__q_then_p_refit__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourQPPmask` | 50%+4 Q->P P-mask | `Qwen2.5-0.5B__q_then_p_pmask__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourQPPmaskRefit` | 50%+4 Q->P P-mask refit | `Qwen2.5-0.5B__q_then_p_pmask_refit__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourPQStale` | 50%+4 P->Q stale grid | `Qwen2.5-0.5B__p_then_q_stale__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SSixtyBFourJoint` | 60%+4 joint | `Qwen2.5-0.5B__joint__s0.6000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SSixtyBFourPQ` | 60%+4 P->Q | `Qwen2.5-0.5B__p_then_q__s0.6000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SSixtyBFourQP` | 60%+4 Q->P | `Qwen2.5-0.5B__q_then_p__s0.6000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBThreeJoint` | 25%+3 joint | `Qwen2.5-0.5B__joint__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBThreePQ` | 25%+3 P->Q | `Qwen2.5-0.5B__p_then_q__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBThreeQP` | 25%+3 Q->P | `Qwen2.5-0.5B__q_then_p__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBThreeQPRefit` | 25%+3 Q->P refit | `Qwen2.5-0.5B__q_then_p_refit__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBThreeQPPmask` | 25%+3 Q->P P-mask | `Qwen2.5-0.5B__q_then_p_pmask__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBThreeQPPmaskRefit` | 25%+3 Q->P P-mask refit | `Qwen2.5-0.5B__q_then_p_pmask_refit__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBThreePQStale` | 25%+3 P->Q stale grid | `Qwen2.5-0.5B__p_then_q_stale__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBThreeJoint` | 33%+3 joint | `Qwen2.5-0.5B__joint__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBThreePQ` | 33%+3 P->Q | `Qwen2.5-0.5B__p_then_q__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBThreeQP` | 33%+3 Q->P | `Qwen2.5-0.5B__q_then_p__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBThreeQPRefit` | 33%+3 Q->P refit | `Qwen2.5-0.5B__q_then_p_refit__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBThreeQPPmask` | 33%+3 Q->P P-mask | `Qwen2.5-0.5B__q_then_p_pmask__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBThreeQPPmaskRefit` | 33%+3 Q->P P-mask refit | `Qwen2.5-0.5B__q_then_p_pmask_refit__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBThreePQStale` | 33%+3 P->Q stale grid | `Qwen2.5-0.5B__p_then_q_stale__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBThreeJoint` | 50%+3 joint | `Qwen2.5-0.5B__joint__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBThreePQ` | 50%+3 P->Q | `Qwen2.5-0.5B__p_then_q__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBThreeQP` | 50%+3 Q->P | `Qwen2.5-0.5B__q_then_p__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBThreeQPRefit` | 50%+3 Q->P refit | `Qwen2.5-0.5B__q_then_p_refit__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBThreeQPPmask` | 50%+3 Q->P P-mask | `Qwen2.5-0.5B__q_then_p_pmask__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBThreeQPPmaskRefit` | 50%+3 Q->P P-mask refit | `Qwen2.5-0.5B__q_then_p_pmask_refit__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBThreePQStale` | 50%+3 P->Q stale grid | `Qwen2.5-0.5B__p_then_q_stale__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 
 Columns:
 
@@ -349,6 +351,7 @@ Columns:
 - `TopOneCFourPct`: top-1 agreement on C4 (%); field `c4.top1`
 - `BitsTcr`: bits per weight as TCr counts them, b(1-s); field `storage.tcr`
 - `BitsMask`: bits per weight with a 1-bit mask; field `storage.bitmap`
+- `BitsSym`: plug-in entropy of the stored symbols per group of 128, zeros included, bits per weight; field `storage.symbol_entropy` (measured for quantized states only)
 - `FlipsPct`: items whose correctness differs from dense, pooled over the 9 zero-shot tasks, v2 metric (%); per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
 - `FlipsCWPct`: correct-to-wrong items against dense, pooled (% of items); per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
 - `FlipsWCPct`: wrong-to-correct items against dense, pooled (% of items); per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
@@ -364,14 +367,14 @@ Macro = `\res` + column + `Qwen` + row tag (e.g. `\resISrThreeQwenSTwentyFiveBFo
 
 | Row tag | State | Source | ISrThree | ISrThreeLo | ISrThreeHi | ISrPaper | ISrPaperLo | ISrPaperHi | ISrExt | ISrExtLo | ISrExtHi | ISrCn | ISrCnLo | ISrCnHi |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| `STwentyFiveBFourJoint` | 25%+4 joint | `Qwen2.5-0.5B__joint__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBFourPQ` | 25%+4 P->Q | `Qwen2.5-0.5B__p_then_q__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBFourQP` | 25%+4 Q->P | `Qwen2.5-0.5B__q_then_p__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBFourJoint` | 33%+4 joint | `Qwen2.5-0.5B__joint__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBFourJoint` | 25%+4 joint | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__joint__s0.2500__b4__seed0__float32` | `\ensuremath{+0.015}` | `\ensuremath{+0.002}` | `\ensuremath{+0.029}` | `\ensuremath{+0.006}` | `\ensuremath{-0.006}` | `\ensuremath{+0.018}` | `\ensuremath{-0.001}` | `\ensuremath{-0.013}` | `\ensuremath{+0.010}` | `\ensuremath{-0.003}` | `\ensuremath{-0.028}` | `\ensuremath{+0.022}` |
+| `STwentyFiveBFourPQ` | 25%+4 P->Q | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__p_then_q__s0.2500__b4__seed0__float32` | `\ensuremath{+0.011}` | `\ensuremath{-0.002}` | `\ensuremath{+0.024}` | `\ensuremath{+0.009}` | `\ensuremath{-0.003}` | `\ensuremath{+0.021}` | `\ensuremath{-0.000}` | `\ensuremath{-0.012}` | `\ensuremath{+0.011}` | `\ensuremath{-0.000}` | `\ensuremath{-0.026}` | `\ensuremath{+0.024}` |
+| `STwentyFiveBFourQP` | 25%+4 Q->P | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__q_then_p__s0.2500__b4__seed0__float32` | `\ensuremath{-0.009}` | `\ensuremath{-0.022}` | `\ensuremath{+0.004}` | `\ensuremath{+0.003}` | `\ensuremath{-0.010}` | `\ensuremath{+0.015}` | `\ensuremath{-0.009}` | `\ensuremath{-0.021}` | `\ensuremath{+0.002}` | `\ensuremath{-0.021}` | `\ensuremath{-0.047}` | `\ensuremath{+0.005}` |
+| `SThirtyThreeBFourJoint` | 33%+4 joint | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__joint__s0.3333__b4__seed0__float32` | `\ensuremath{+0.009}` | `\ensuremath{-0.004}` | `\ensuremath{+0.023}` | `\ensuremath{+0.010}` | `\ensuremath{-0.003}` | `\ensuremath{+0.022}` | `\ensuremath{+0.003}` | `\ensuremath{-0.009}` | `\ensuremath{+0.015}` | `\ensuremath{+0.002}` | `\ensuremath{-0.024}` | `\ensuremath{+0.028}` |
 | `SThirtyThreeBFourPQ` | 33%+4 P->Q | `Qwen2.5-0.5B__p_then_q__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SThirtyThreeBFourQP` | 33%+4 Q->P | `Qwen2.5-0.5B__q_then_p__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourJoint` | 50%+4 joint | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__joint__s0.5000__b4__seed0__float32` | `\ensuremath{+0.007}` | `\ensuremath{-0.006}` | `\ensuremath{+0.022}` | `\ensuremath{+0.015}` | `\ensuremath{+0.002}` | `\ensuremath{+0.029}` | `\ensuremath{+0.014}` | `\ensuremath{+0.004}` | `\ensuremath{+0.026}` | `\ensuremath{+0.022}` | `\ensuremath{-0.001}` | `\ensuremath{+0.045}` |
-| `SFiftyBFourPQ` | 50%+4 P->Q | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__p_then_q__s0.5000__b4__seed0__float32` | `\ensuremath{+0.002}` | `\ensuremath{-0.010}` | `\ensuremath{+0.015}` | `\ensuremath{+0.013}` | `\ensuremath{+0.001}` | `\ensuremath{+0.025}` | `\ensuremath{+0.008}` | `\ensuremath{-0.003}` | `\ensuremath{+0.019}` | `\ensuremath{+0.007}` | `\ensuremath{-0.015}` | `\ensuremath{+0.031}` |
+| `SFiftyBFourJoint` | 50%+4 joint | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__joint__s0.5000__b4__seed0__float32` | `\ensuremath{+0.007}` | `\ensuremath{-0.006}` | `\ensuremath{+0.021}` | `\ensuremath{+0.015}` | `\ensuremath{+0.002}` | `\ensuremath{+0.028}` | `\ensuremath{+0.014}` | `\ensuremath{+0.002}` | `\ensuremath{+0.026}` | `\ensuremath{+0.022}` | `\ensuremath{-0.003}` | `\ensuremath{+0.047}` |
+| `SFiftyBFourPQ` | 50%+4 P->Q | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__p_then_q__s0.5000__b4__seed0__float32` | `\ensuremath{+0.002}` | `\ensuremath{-0.011}` | `\ensuremath{+0.015}` | `\ensuremath{+0.013}` | `\ensuremath{+0.001}` | `\ensuremath{+0.026}` | `\ensuremath{+0.008}` | `\ensuremath{-0.004}` | `\ensuremath{+0.020}` | `\ensuremath{+0.007}` | `\ensuremath{-0.017}` | `\ensuremath{+0.031}` |
 | `SFiftyBFourQP` | 50%+4 Q->P | `Qwen2.5-0.5B__q_then_p__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBFourQPRefit` | 50%+4 Q->P refit | `Qwen2.5-0.5B__q_then_p_refit__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBFourQPPmask` | 50%+4 Q->P P-mask | `Qwen2.5-0.5B__q_then_p_pmask__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
@@ -404,42 +407,42 @@ Macro = `\res` + column + `Qwen` + row tag (e.g. `\resISrThreeQwenSTwentyFiveBFo
 
 Columns:
 
-- `ISrThree`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
-- `ISrThreeLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
-- `ISrThreeHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
-- `ISrPaper`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, paper metric (acc, acc, acc_norm)), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
-- `ISrPaperLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, paper metric (acc, acc, acc_norm)), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
-- `ISrPaperHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, paper metric (acc, acc, acc_norm)), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
-- `ISrExt`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr-extended over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
-- `ISrExtLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr-extended over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
-- `ISrExtHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr-extended over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
-- `ISrCn`: I_Sr = Sr_PQ - Sr_P Sr_Q (chance-normalized Sr over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
-- `ISrCnLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (chance-normalized Sr over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
-- `ISrCnHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (chance-normalized Sr over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
+- `ISrThree`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
+- `ISrThreeLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
+- `ISrThreeHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
+- `ISrPaper`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, paper metric (acc, acc, acc_norm)), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
+- `ISrPaperLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, paper metric (acc, acc, acc_norm)), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
+- `ISrPaperHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, paper metric (acc, acc, acc_norm)), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
+- `ISrExt`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr-extended over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
+- `ISrExtLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr-extended over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
+- `ISrExtHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr-extended over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
+- `ISrCn`: I_Sr = Sr_PQ - Sr_P Sr_Q (chance-normalized Sr over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
+- `ISrCnLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (chance-normalized Sr over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
+- `ISrCnHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (chance-normalized Sr over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
 
 ## States of SmolLM2-1.7B (seed 0)
 
 Macro = `\res` + column + `SmolLarge` + row tag (e.g. `\resPplSmolLargeDense`). Row source: the state's result line; column source: below the table.
 
-| Row tag | State | Source | Ppl | PplCFour | Kl | KlCFour | TopOnePct | TopOneCFourPct | BitsTcr | BitsMask | FreeZerosPct | FlipsPct | FlipsCWPct | FlipsWCPct | SrThree | SrPaper | SrExt | SrCn |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| `Dense` | dense | `SmolLM2-1.7B__dense__s0.0000__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |  | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `QuantBFour` | 4-bit | `SmolLM2-1.7B__quant__s0.0000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `QuantBThree` | 3-bit | `SmolLM2-1.7B__quant__s0.0000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `PruneSTwentyFive` | 25% pruned | `SmolLM2-1.7B__prune__s0.2500__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `PruneSFifty` | 50% pruned | `SmolLM2-1.7B__prune__s0.5000__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBFourJoint` | 25%+4 joint | `SmolLM2-1.7B__joint__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBFourPQ` | 25%+4 P->Q | `SmolLM2-1.7B__p_then_q__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBFourQP` | 25%+4 Q->P | `SmolLM2-1.7B__q_then_p__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourJoint` | 50%+4 joint | `SmolLM2-1.7B__joint__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourPQ` | 50%+4 P->Q | `SmolLM2-1.7B__p_then_q__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourQP` | 50%+4 Q->P | `SmolLM2-1.7B__q_then_p__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBThreeJoint` | 25%+3 joint | `SmolLM2-1.7B__joint__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBThreePQ` | 25%+3 P->Q | `SmolLM2-1.7B__p_then_q__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBThreeQP` | 25%+3 Q->P | `SmolLM2-1.7B__q_then_p__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBThreeJoint` | 50%+3 joint | `SmolLM2-1.7B__joint__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBThreePQ` | 50%+3 P->Q | `SmolLM2-1.7B__p_then_q__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBThreeQP` | 50%+3 Q->P | `SmolLM2-1.7B__q_then_p__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| Row tag | State | Source | Ppl | PplCFour | Kl | KlCFour | TopOnePct | TopOneCFourPct | BitsTcr | BitsMask | BitsSym | FreeZerosPct | FlipsPct | FlipsCWPct | FlipsWCPct | SrThree | SrPaper | SrExt | SrCn |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| `Dense` | dense | `SmolLM2-1.7B__dense__s0.0000__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |  | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `QuantBFour` | 4-bit | `SmolLM2-1.7B__quant__s0.0000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `QuantBThree` | 3-bit | `SmolLM2-1.7B__quant__s0.0000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `PruneSTwentyFive` | 25% pruned | `SmolLM2-1.7B__prune__s0.2500__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `PruneSFifty` | 50% pruned | `SmolLM2-1.7B__prune__s0.5000__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBFourJoint` | 25%+4 joint | `SmolLM2-1.7B__joint__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBFourPQ` | 25%+4 P->Q | `SmolLM2-1.7B__p_then_q__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBFourQP` | 25%+4 Q->P | `SmolLM2-1.7B__q_then_p__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourJoint` | 50%+4 joint | `SmolLM2-1.7B__joint__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourPQ` | 50%+4 P->Q | `SmolLM2-1.7B__p_then_q__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourQP` | 50%+4 Q->P | `SmolLM2-1.7B__q_then_p__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBThreeJoint` | 25%+3 joint | `SmolLM2-1.7B__joint__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBThreePQ` | 25%+3 P->Q | `SmolLM2-1.7B__p_then_q__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBThreeQP` | 25%+3 Q->P | `SmolLM2-1.7B__q_then_p__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBThreeJoint` | 50%+3 joint | `SmolLM2-1.7B__joint__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBThreePQ` | 50%+3 P->Q | `SmolLM2-1.7B__p_then_q__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBThreeQP` | 50%+3 Q->P | `SmolLM2-1.7B__q_then_p__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 
 Columns:
 
@@ -451,6 +454,7 @@ Columns:
 - `TopOneCFourPct`: top-1 agreement on C4 (%); field `c4.top1`
 - `BitsTcr`: bits per weight as TCr counts them, b(1-s); field `storage.tcr`
 - `BitsMask`: bits per weight with a 1-bit mask; field `storage.bitmap`
+- `BitsSym`: plug-in entropy of the stored symbols per group of 128, zeros included, bits per weight; field `storage.symbol_entropy` (measured for quantized states only)
 - `FlipsPct`: items whose correctness differs from dense, pooled over the 9 zero-shot tasks, v2 metric (%); per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
 - `FlipsCWPct`: correct-to-wrong items against dense, pooled (% of items); per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
 - `FlipsWCPct`: wrong-to-correct items against dense, pooled (% of items); per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
@@ -481,18 +485,18 @@ Macro = `\res` + column + `SmolLarge` + row tag (e.g. `\resISrThreeSmolLargeSTwe
 
 Columns:
 
-- `ISrThree`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
-- `ISrThreeLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
-- `ISrThreeHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
-- `ISrPaper`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, paper metric (acc, acc, acc_norm)), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
-- `ISrPaperLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, paper metric (acc, acc, acc_norm)), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
-- `ISrPaperHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, paper metric (acc, acc, acc_norm)), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
-- `ISrExt`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr-extended over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
-- `ISrExtLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr-extended over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
-- `ISrExtHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr-extended over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
-- `ISrCn`: I_Sr = Sr_PQ - Sr_P Sr_Q (chance-normalized Sr over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
-- `ISrCnLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (chance-normalized Sr over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
-- `ISrCnHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (chance-normalized Sr over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (1000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
+- `ISrThree`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
+- `ISrThreeLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
+- `ISrThreeHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
+- `ISrPaper`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, paper metric (acc, acc, acc_norm)), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
+- `ISrPaperLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, paper metric (acc, acc, acc_norm)), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
+- `ISrPaperHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, paper metric (acc, acc, acc_norm)), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
+- `ISrExt`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr-extended over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
+- `ISrExtLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr-extended over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
+- `ISrExtHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr-extended over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
+- `ISrCn`: I_Sr = Sr_PQ - Sr_P Sr_Q (chance-normalized Sr over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
+- `ISrCnLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (chance-normalized Sr over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
+- `ISrCnHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (chance-normalized Sr over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
 
 ## Calibration seeds
 
@@ -555,184 +559,184 @@ Columns:
 
 | Macro | Value | Meaning | Source |
 |---|---|---|---|
-| `\resQOneMaskFirstSub` | `10` | joint and P->Q combinations sub-additive (ratio of mean errors < 0) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneMaskFirstTotal` | `10` | joint and P->Q combinations with all three states available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneMaskFirstSub` | `17` | joint and P->Q combinations sub-additive (ratio of mean errors < 0) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneMaskFirstTotal` | `17` | joint and P->Q combinations with all three states available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneRatioMinJointBFourPct` | `\ensuremath{-13.0}` | joint, 4-bit cells: smallest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneRatioMaxJointBFourPct` | `\ensuremath{-9.6}` | joint, 4-bit cells: largest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneSubJointBFour` | `4` | joint, 4-bit cells: cells sub-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneSubJointBFour` | `6` | joint, 4-bit cells: cells sub-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneSuperJointBFour` | `0` | joint, 4-bit cells: cells super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneCellsJointBFour` | `4` | joint, 4-bit cells: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneCellsJointBFour` | `6` | joint, 4-bit cells: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneLayerShareJointBFourPct` | `99` | joint, 4-bit cells: sub-additive layer records, matched layer by layer (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneLayerShareJointBFourQprojPct` | `99` | joint, 4-bit cells: sub-additive q_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerShareJointBFourKprojPct` | `97` | joint, 4-bit cells: sub-additive k_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerShareJointBFourKprojPct` | `98` | joint, 4-bit cells: sub-additive k_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneLayerShareJointBFourVprojPct` | `100` | joint, 4-bit cells: sub-additive v_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerShareJointBFourOprojPct` | `96` | joint, 4-bit cells: sub-additive o_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerShareJointBFourOprojPct` | `97` | joint, 4-bit cells: sub-additive o_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneLayerShareJointBFourGateprojPct` | `100` | joint, 4-bit cells: sub-additive gate_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneLayerShareJointBFourUpprojPct` | `100` | joint, 4-bit cells: sub-additive up_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneLayerShareJointBFourDownprojPct` | `99` | joint, 4-bit cells: sub-additive down_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneBlockZeroSuperJointBFour` | `0` | joint, 4-bit cells: cells where block 0 alone is super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneRatioMinJointBThreePct` | `\ensuremath{-10.2}` | joint, 3-bit cells: smallest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneRatioMinJointBThreePct` | `\ensuremath{-23.9}` | joint, 3-bit cells: smallest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneRatioMaxJointBThreePct` | `\ensuremath{-10.2}` | joint, 3-bit cells: largest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneSubJointBThree` | `1` | joint, 3-bit cells: cells sub-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneSubJointBThree` | `3` | joint, 3-bit cells: cells sub-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneSuperJointBThree` | `0` | joint, 3-bit cells: cells super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneCellsJointBThree` | `1` | joint, 3-bit cells: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneCellsJointBThree` | `3` | joint, 3-bit cells: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneLayerShareJointBThreePct` | `98` | joint, 3-bit cells: sub-additive layer records, matched layer by layer (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneLayerShareJointBThreeQprojPct` | `97` | joint, 3-bit cells: sub-additive q_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneLayerShareJointBThreeKprojPct` | `97` | joint, 3-bit cells: sub-additive k_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneLayerShareJointBThreeVprojPct` | `100` | joint, 3-bit cells: sub-additive v_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerShareJointBThreeOprojPct` | `93` | joint, 3-bit cells: sub-additive o_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerShareJointBThreeOprojPct` | `96` | joint, 3-bit cells: sub-additive o_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneLayerShareJointBThreeGateprojPct` | `100` | joint, 3-bit cells: sub-additive gate_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneLayerShareJointBThreeUpprojPct` | `100` | joint, 3-bit cells: sub-additive up_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneLayerShareJointBThreeDownprojPct` | `100` | joint, 3-bit cells: sub-additive down_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneBlockZeroSuperJointBThree` | `0` | joint, 3-bit cells: cells where block 0 alone is super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneRatioMinJointPct` | `\ensuremath{-13.0}` | joint: smallest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneRatioMinJointPct` | `\ensuremath{-23.9}` | joint: smallest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneRatioMaxJointPct` | `\ensuremath{-9.6}` | joint: largest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneSubJoint` | `5` | joint: cells sub-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneSubJoint` | `9` | joint: cells sub-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneSuperJoint` | `0` | joint: cells super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneCellsJoint` | `5` | joint: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneCellsJoint` | `9` | joint: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneLayerShareJointPct` | `99` | joint: sub-additive layer records, matched layer by layer (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneRatioMinPQBFourPct` | `\ensuremath{-6.9}` | P->Q, 4-bit cells: smallest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneRatioMaxPQBFourPct` | `\ensuremath{-6.4}` | P->Q, 4-bit cells: largest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneSubPQBFour` | `4` | P->Q, 4-bit cells: cells sub-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneRatioMaxPQBFourPct` | `\ensuremath{-5.6}` | P->Q, 4-bit cells: largest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneSubPQBFour` | `5` | P->Q, 4-bit cells: cells sub-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneSuperPQBFour` | `0` | P->Q, 4-bit cells: cells super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneCellsPQBFour` | `4` | P->Q, 4-bit cells: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerSharePQBFourPct` | `90` | P->Q, 4-bit cells: sub-additive layer records, matched layer by layer (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerSharePQBFourQprojPct` | `83` | P->Q, 4-bit cells: sub-additive q_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneCellsPQBFour` | `5` | P->Q, 4-bit cells: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerSharePQBFourPct` | `89` | P->Q, 4-bit cells: sub-additive layer records, matched layer by layer (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerSharePQBFourQprojPct` | `81` | P->Q, 4-bit cells: sub-additive q_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneLayerSharePQBFourKprojPct` | `76` | P->Q, 4-bit cells: sub-additive k_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneLayerSharePQBFourVprojPct` | `82` | P->Q, 4-bit cells: sub-additive v_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerSharePQBFourOprojPct` | `91` | P->Q, 4-bit cells: sub-additive o_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerSharePQBFourOprojPct` | `90` | P->Q, 4-bit cells: sub-additive o_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneLayerSharePQBFourGateprojPct` | `100` | P->Q, 4-bit cells: sub-additive gate_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneLayerSharePQBFourUpprojPct` | `100` | P->Q, 4-bit cells: sub-additive up_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerSharePQBFourDownprojPct` | `95` | P->Q, 4-bit cells: sub-additive down_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerSharePQBFourDownprojPct` | `93` | P->Q, 4-bit cells: sub-additive down_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneBlockZeroSuperPQBFour` | `0` | P->Q, 4-bit cells: cells where block 0 alone is super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneRatioMinPQBThreePct` | `\ensuremath{-3.5}` | P->Q, 3-bit cells: smallest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneRatioMinPQBThreePct` | `\ensuremath{-18.1}` | P->Q, 3-bit cells: smallest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneRatioMaxPQBThreePct` | `\ensuremath{-3.5}` | P->Q, 3-bit cells: largest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneSubPQBThree` | `1` | P->Q, 3-bit cells: cells sub-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneSubPQBThree` | `3` | P->Q, 3-bit cells: cells sub-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneSuperPQBThree` | `0` | P->Q, 3-bit cells: cells super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneCellsPQBThree` | `1` | P->Q, 3-bit cells: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerSharePQBThreePct` | `67` | P->Q, 3-bit cells: sub-additive layer records, matched layer by layer (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerSharePQBThreeQprojPct` | `50` | P->Q, 3-bit cells: sub-additive q_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerSharePQBThreeKprojPct` | `43` | P->Q, 3-bit cells: sub-additive k_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerSharePQBThreeVprojPct` | `60` | P->Q, 3-bit cells: sub-additive v_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerSharePQBThreeOprojPct` | `60` | P->Q, 3-bit cells: sub-additive o_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerSharePQBThreeGateprojPct` | `87` | P->Q, 3-bit cells: sub-additive gate_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerSharePQBThreeUpprojPct` | `90` | P->Q, 3-bit cells: sub-additive up_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerSharePQBThreeDownprojPct` | `77` | P->Q, 3-bit cells: sub-additive down_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneCellsPQBThree` | `3` | P->Q, 3-bit cells: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerSharePQBThreePct` | `80` | P->Q, 3-bit cells: sub-additive layer records, matched layer by layer (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerSharePQBThreeQprojPct` | `62` | P->Q, 3-bit cells: sub-additive q_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerSharePQBThreeKprojPct` | `63` | P->Q, 3-bit cells: sub-additive k_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerSharePQBThreeVprojPct` | `80` | P->Q, 3-bit cells: sub-additive v_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerSharePQBThreeOprojPct` | `78` | P->Q, 3-bit cells: sub-additive o_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerSharePQBThreeGateprojPct` | `96` | P->Q, 3-bit cells: sub-additive gate_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerSharePQBThreeUpprojPct` | `97` | P->Q, 3-bit cells: sub-additive up_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerSharePQBThreeDownprojPct` | `86` | P->Q, 3-bit cells: sub-additive down_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneBlockZeroSuperPQBThree` | `1` | P->Q, 3-bit cells: cells where block 0 alone is super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneRatioMinPQPct` | `\ensuremath{-6.9}` | P->Q: smallest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneRatioMinPQPct` | `\ensuremath{-18.1}` | P->Q: smallest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneRatioMaxPQPct` | `\ensuremath{-3.5}` | P->Q: largest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneSubPQ` | `5` | P->Q: cells sub-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneSubPQ` | `8` | P->Q: cells sub-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneSuperPQ` | `0` | P->Q: cells super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneCellsPQ` | `5` | P->Q: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneCellsPQ` | `8` | P->Q: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneLayerSharePQPct` | `85` | P->Q: sub-additive layer records, matched layer by layer (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneRatioMinQPBFourPct` | `\ensuremath{+2.0}` | Q->P, 4-bit cells: smallest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneRatioMaxQPBFourPct` | `\ensuremath{+7.2}` | Q->P, 4-bit cells: largest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneSubQPBFour` | `0` | Q->P, 4-bit cells: cells sub-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneSuperQPBFour` | `3` | Q->P, 4-bit cells: cells super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneCellsQPBFour` | `3` | Q->P, 4-bit cells: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerShareQPBFourPct` | `23` | Q->P, 4-bit cells: sub-additive layer records, matched layer by layer (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerShareQPBFourQprojPct` | `43` | Q->P, 4-bit cells: sub-additive q_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerShareQPBFourKprojPct` | `36` | Q->P, 4-bit cells: sub-additive k_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerShareQPBFourVprojPct` | `19` | Q->P, 4-bit cells: sub-additive v_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerShareQPBFourOprojPct` | `23` | Q->P, 4-bit cells: sub-additive o_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneSuperQPBFour` | `4` | Q->P, 4-bit cells: cells super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneCellsQPBFour` | `4` | Q->P, 4-bit cells: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerShareQPBFourPct` | `28` | Q->P, 4-bit cells: sub-additive layer records, matched layer by layer (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerShareQPBFourQprojPct` | `54` | Q->P, 4-bit cells: sub-additive q_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerShareQPBFourKprojPct` | `48` | Q->P, 4-bit cells: sub-additive k_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerShareQPBFourVprojPct` | `31` | Q->P, 4-bit cells: sub-additive v_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerShareQPBFourOprojPct` | `27` | Q->P, 4-bit cells: sub-additive o_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneLayerShareQPBFourGateprojPct` | `1` | Q->P, 4-bit cells: sub-additive gate_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneLayerShareQPBFourUpprojPct` | `2` | Q->P, 4-bit cells: sub-additive up_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerShareQPBFourDownprojPct` | `34` | Q->P, 4-bit cells: sub-additive down_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneBlockZeroSuperQPBFour` | `3` | Q->P, 4-bit cells: cells where block 0 alone is super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneRatioMinQPBThreePct` | `\ensuremath{-10.8}` | Q->P, 3-bit cells: smallest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneRatioMaxQPBThreePct` | `\ensuremath{-10.8}` | Q->P, 3-bit cells: largest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneSubQPBThree` | `1` | Q->P, 3-bit cells: cells sub-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerShareQPBFourDownprojPct` | `31` | Q->P, 4-bit cells: sub-additive down_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneBlockZeroSuperQPBFour` | `4` | Q->P, 4-bit cells: cells where block 0 alone is super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneRatioMinQPBThreePct` | `\ensuremath{-15.3}` | Q->P, 3-bit cells: smallest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneRatioMaxQPBThreePct` | `\ensuremath{-4.9}` | Q->P, 3-bit cells: largest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneSubQPBThree` | `3` | Q->P, 3-bit cells: cells sub-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneSuperQPBThree` | `0` | Q->P, 3-bit cells: cells super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneCellsQPBThree` | `1` | Q->P, 3-bit cells: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerShareQPBThreePct` | `100` | Q->P, 3-bit cells: sub-additive layer records, matched layer by layer (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerShareQPBThreeQprojPct` | `100` | Q->P, 3-bit cells: sub-additive q_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerShareQPBThreeKprojPct` | `100` | Q->P, 3-bit cells: sub-additive k_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerShareQPBThreeVprojPct` | `100` | Q->P, 3-bit cells: sub-additive v_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerShareQPBThreeOprojPct` | `100` | Q->P, 3-bit cells: sub-additive o_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerShareQPBThreeGateprojPct` | `100` | Q->P, 3-bit cells: sub-additive gate_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerShareQPBThreeUpprojPct` | `100` | Q->P, 3-bit cells: sub-additive up_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerShareQPBThreeDownprojPct` | `100` | Q->P, 3-bit cells: sub-additive down_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneBlockZeroSuperQPBThree` | `0` | Q->P, 3-bit cells: cells where block 0 alone is super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneRatioMinQPPct` | `\ensuremath{-10.8}` | Q->P: smallest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneCellsQPBThree` | `3` | Q->P, 3-bit cells: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerShareQPBThreePct` | `89` | Q->P, 3-bit cells: sub-additive layer records, matched layer by layer (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerShareQPBThreeQprojPct` | `98` | Q->P, 3-bit cells: sub-additive q_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerShareQPBThreeKprojPct` | `98` | Q->P, 3-bit cells: sub-additive k_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerShareQPBThreeVprojPct` | `89` | Q->P, 3-bit cells: sub-additive v_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerShareQPBThreeOprojPct` | `90` | Q->P, 3-bit cells: sub-additive o_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerShareQPBThreeGateprojPct` | `82` | Q->P, 3-bit cells: sub-additive gate_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerShareQPBThreeUpprojPct` | `77` | Q->P, 3-bit cells: sub-additive up_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerShareQPBThreeDownprojPct` | `88` | Q->P, 3-bit cells: sub-additive down_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneBlockZeroSuperQPBThree` | `1` | Q->P, 3-bit cells: cells where block 0 alone is super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneRatioMinQPPct` | `\ensuremath{-15.3}` | Q->P: smallest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneRatioMaxQPPct` | `\ensuremath{+7.2}` | Q->P: largest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneSubQP` | `1` | Q->P: cells sub-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneSuperQP` | `3` | Q->P: cells super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneCellsQP` | `4` | Q->P: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerShareQPPct` | `42` | Q->P: sub-additive layer records, matched layer by layer (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneSubQP` | `3` | Q->P: cells sub-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneSuperQP` | `4` | Q->P: cells super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneCellsQP` | `7` | Q->P: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerShareQPPct` | `55` | Q->P: sub-additive layer records, matched layer by layer (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 
 ## Q2: order ranking (seed 0; counts over the E1 grid: core models x E1 cells)
 
 | Macro | Value | Meaning | Source |
 |---|---|---|---|
-| `\resQTwoCellsPpl` | `4` | cells with all three orders ranked by wt_ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoQPWorstPpl` | `3` | cells where Q->P is strictly worst by wt_ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestJointPpl` | `0` | cells where joint is best by wt_ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoCellsPpl` | `7` | cells with all three orders ranked by wt_ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoQPWorstPpl` | `6` | cells where Q->P is strictly worst by wt_ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestJointPpl` | `1` | cells where joint is best by wt_ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoBestJointPplSmolSmall` | `0` | SmolLM2-135M: cells where joint has the lowest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoBestJointPplSmolMedium` | `--` | SmolLM2-360M: cells where joint has the lowest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestJointPplQwen` | `--` | Qwen2.5-0.5B: cells where joint has the lowest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestPQPpl` | `4` | cells where P->Q is best by wt_ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestPQPplSmolSmall` | `4` | SmolLM2-135M: cells where P->Q has the lowest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestJointPplQwen` | `1` | Qwen2.5-0.5B: cells where joint has the lowest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestPQPpl` | `6` | cells where P->Q is best by wt_ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestPQPplSmolSmall` | `6` | SmolLM2-135M: cells where P->Q has the lowest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoBestPQPplSmolMedium` | `--` | SmolLM2-360M: cells where P->Q has the lowest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestPQPplQwen` | `--` | Qwen2.5-0.5B: cells where P->Q has the lowest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestPQPplQwen` | `0` | Qwen2.5-0.5B: cells where P->Q has the lowest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoBestQPPpl` | `0` | cells where Q->P is best by wt_ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoBestQPPplSmolSmall` | `0` | SmolLM2-135M: cells where Q->P has the lowest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoBestQPPplSmolMedium` | `--` | SmolLM2-360M: cells where Q->P has the lowest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestQPPplQwen` | `--` | Qwen2.5-0.5B: cells where Q->P has the lowest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoCellsPplCFour` | `4` | cells with all three orders ranked by c4_ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoQPWorstPplCFour` | `3` | cells where Q->P is strictly worst by c4_ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestJointPplCFour` | `0` | cells where joint is best by c4_ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestPQPplCFour` | `4` | cells where P->Q is best by c4_ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestQPPplQwen` | `0` | Qwen2.5-0.5B: cells where Q->P has the lowest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoCellsPplCFour` | `7` | cells with all three orders ranked by c4_ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoQPWorstPplCFour` | `6` | cells where Q->P is strictly worst by c4_ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestJointPplCFour` | `1` | cells where joint is best by c4_ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestPQPplCFour` | `6` | cells where P->Q is best by c4_ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoBestQPPplCFour` | `0` | cells where Q->P is best by c4_ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoCellsKl` | `4` | cells with all three orders ranked by wt_kl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoQPWorstKl` | `3` | cells where Q->P is strictly worst by wt_kl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestJointKl` | `0` | cells where joint is best by wt_kl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestPQKl` | `4` | cells where P->Q is best by wt_kl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoCellsKl` | `7` | cells with all three orders ranked by wt_kl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoQPWorstKl` | `6` | cells where Q->P is strictly worst by wt_kl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestJointKl` | `1` | cells where joint is best by wt_kl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestPQKl` | `6` | cells where P->Q is best by wt_kl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoBestQPKl` | `0` | cells where Q->P is best by wt_kl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoCellsKlCFour` | `4` | cells with all three orders ranked by c4_kl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoQPWorstKlCFour` | `3` | cells where Q->P is strictly worst by c4_kl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestJointKlCFour` | `0` | cells where joint is best by c4_kl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestPQKlCFour` | `4` | cells where P->Q is best by c4_kl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoCellsKlCFour` | `7` | cells with all three orders ranked by c4_kl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoQPWorstKlCFour` | `6` | cells where Q->P is strictly worst by c4_kl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestJointKlCFour` | `1` | cells where joint is best by c4_kl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestPQKlCFour` | `6` | cells where P->Q is best by c4_kl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoBestQPKlCFour` | `0` | cells where Q->P is best by c4_kl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoCellsFlips` | `4` | cells with all three orders ranked by flips9 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoQPWorstFlips` | `3` | cells where Q->P is strictly worst by flips9 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestJointFlips` | `1` | cells where joint is best by flips9 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestPQFlips` | `2` | cells where P->Q is best by flips9 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoCellsFlips` | `7` | cells with all three orders ranked by flips9 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoQPWorstFlips` | `5` | cells where Q->P is strictly worst by flips9 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestJointFlips` | `2` | cells where joint is best by flips9 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestPQFlips` | `4` | cells where P->Q is best by flips9 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoBestQPFlips` | `1` | cells where Q->P is best by flips9 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoCellsSrThree` | `4` | cells with all three orders ranked by sr3_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoQPWorstSrThree` | `2` | cells where Q->P is strictly worst by sr3_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestJointSrThree` | `1` | cells where joint is best by sr3_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestPQSrThree` | `3` | cells where P->Q is best by sr3_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoCellsSrThree` | `7` | cells with all three orders ranked by sr3_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoQPWorstSrThree` | `5` | cells where Q->P is strictly worst by sr3_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestJointSrThree` | `2` | cells where joint is best by sr3_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestPQSrThree` | `5` | cells where P->Q is best by sr3_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoBestQPSrThree` | `0` | cells where Q->P is best by sr3_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoCellsSrExt` | `4` | cells with all three orders ranked by sr9_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoQPWorstSrExt` | `1` | cells where Q->P is strictly worst by sr9_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoCellsSrExt` | `7` | cells with all three orders ranked by sr9_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoQPWorstSrExt` | `2` | cells where Q->P is strictly worst by sr9_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoBestJointSrExt` | `0` | cells where joint is best by sr9_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestPQSrExt` | `3` | cells where P->Q is best by sr9_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestQPSrExt` | `1` | cells where Q->P is best by sr9_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoCellsSrPaper` | `4` | cells with all three orders ranked by sr3_paper | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoQPWorstSrPaper` | `2` | cells where Q->P is strictly worst by sr3_paper | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestPQSrExt` | `5` | cells where P->Q is best by sr9_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestQPSrExt` | `2` | cells where Q->P is best by sr9_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoCellsSrPaper` | `7` | cells with all three orders ranked by sr3_paper | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoQPWorstSrPaper` | `5` | cells where Q->P is strictly worst by sr3_paper | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoBestJointSrPaper` | `1` | cells where joint is best by sr3_paper | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestPQSrPaper` | `3` | cells where P->Q is best by sr3_paper | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestPQSrPaper` | `6` | cells where P->Q is best by sr3_paper | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoBestQPSrPaper` | `0` | cells where Q->P is best by sr3_paper | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoMaxRatio` | `1.29` | largest worst/best WikiText-2 ppl ratio over cells | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoMaxRatioWhere` | `SmolLM2-135M 25\%+3` | where that ratio occurs | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoMaxRatioCFour` | `1.31` | largest worst/best C4 ppl ratio over cells | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoAgreeCells` | `4` | cells ranked by all five metrics (WT2 ppl, C4 ppl, KL, flips, Sr) | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoAgreeAll` | `1` | cells where the five metrics give the identical ranking | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoAgreePplCFour` | `4` | cells where c4_ppl ranks the orders as WikiText-2 ppl does | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoSameBestPplCFour` | `4` | cells where c4_ppl picks the same best order | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoAgreeKl` | `4` | cells where wt_kl ranks the orders as WikiText-2 ppl does | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoSameBestKl` | `4` | cells where wt_kl picks the same best order | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoAgreeFlips` | `1` | cells where flips9 ranks the orders as WikiText-2 ppl does | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoSameBestFlips` | `2` | cells where flips9 picks the same best order | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoAgreeSrThree` | `1` | cells where sr3_v2 ranks the orders as WikiText-2 ppl does | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoSameBestSrThree` | `3` | cells where sr3_v2 picks the same best order | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoMaxRatio` | `1.77` | largest worst/best WikiText-2 ppl ratio over cells | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoMaxRatioWhere` | `SmolLM2-135M 50\%+3` | where that ratio occurs | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoMaxRatioCFour` | `1.60` | largest worst/best C4 ppl ratio over cells | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoAgreeCells` | `7` | cells ranked by all five metrics (WT2 ppl, C4 ppl, KL, flips, Sr) | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoAgreeAll` | `3` | cells where the five metrics give the identical ranking | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoAgreePplCFour` | `7` | cells where c4_ppl ranks the orders as WikiText-2 ppl does | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoSameBestPplCFour` | `7` | cells where c4_ppl picks the same best order | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoAgreeKl` | `7` | cells where wt_kl ranks the orders as WikiText-2 ppl does | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoSameBestKl` | `7` | cells where wt_kl picks the same best order | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoAgreeFlips` | `3` | cells where flips9 ranks the orders as WikiText-2 ppl does | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoSameBestFlips` | `5` | cells where flips9 picks the same best order | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoAgreeSrThree` | `4` | cells where sr3_v2 ranks the orders as WikiText-2 ppl does | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoSameBestSrThree` | `6` | cells where sr3_v2 picks the same best order | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioSmolSmallSTwentyFiveBFour` | `1.11` | SmolLM2-135M 25%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioSmolSmallSThirtyThreeBFour` | `1.11` | SmolLM2-135M 33%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioSmolSmallSFiftyBFour` | `1.15` | SmolLM2-135M 50%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoRatioSmolSmallSSixtyBFour` | `--` | SmolLM2-135M 60%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoRatioSmolSmallSSixtyBFour` | `1.41` | SmolLM2-135M 60%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioSmolSmallSTwentyFiveBThree` | `1.29` | SmolLM2-135M 25%+3: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoRatioSmolSmallSThirtyThreeBThree` | `--` | SmolLM2-135M 33%+3: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoRatioSmolSmallSFiftyBThree` | `--` | SmolLM2-135M 50%+3: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoRatioSmolSmallSThirtyThreeBThree` | `1.29` | SmolLM2-135M 33%+3: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoRatioSmolSmallSFiftyBThree` | `1.77` | SmolLM2-135M 50%+3: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioSmolMediumSTwentyFiveBFour` | `--` | SmolLM2-360M 25%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioSmolMediumSThirtyThreeBFour` | `--` | SmolLM2-360M 33%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioSmolMediumSFiftyBFour` | `--` | SmolLM2-360M 50%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
@@ -740,7 +744,7 @@ Columns:
 | `\resQTwoRatioSmolMediumSTwentyFiveBThree` | `--` | SmolLM2-360M 25%+3: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioSmolMediumSThirtyThreeBThree` | `--` | SmolLM2-360M 33%+3: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioSmolMediumSFiftyBThree` | `--` | SmolLM2-360M 50%+3: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoRatioQwenSTwentyFiveBFour` | `--` | Qwen2.5-0.5B 25%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoRatioQwenSTwentyFiveBFour` | `1.03` | Qwen2.5-0.5B 25%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioQwenSThirtyThreeBFour` | `--` | Qwen2.5-0.5B 33%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioQwenSFiftyBFour` | `--` | Qwen2.5-0.5B 50%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioQwenSSixtyBFour` | `--` | Qwen2.5-0.5B 60%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
@@ -757,11 +761,11 @@ Columns:
 | Macro | Value | Meaning | Source |
 |---|---|---|---|
 | `\resQThreeSpreadMinSmolSmallPct` | `10.7` | SmolLM2-135M: smallest (max-min)/min of WikiText-2 ppl over the orders, 4-bit cells (%) | reports/analysis/q3_order_spread.csv |
-| `\resQThreeSpreadMaxSmolSmallPct` | `14.9` | SmolLM2-135M: largest 4-bit order spread (%) | reports/analysis/q3_order_spread.csv |
+| `\resQThreeSpreadMaxSmolSmallPct` | `41.2` | SmolLM2-135M: largest 4-bit order spread (%) | reports/analysis/q3_order_spread.csv |
 | `\resQThreeSpreadMinSmolMediumPct` | `--` | SmolLM2-360M: smallest (max-min)/min of WikiText-2 ppl over the orders, 4-bit cells (%) | reports/analysis/q3_order_spread.csv |
 | `\resQThreeSpreadMaxSmolMediumPct` | `--` | SmolLM2-360M: largest 4-bit order spread (%) | reports/analysis/q3_order_spread.csv |
-| `\resQThreeSpreadMinQwenPct` | `--` | Qwen2.5-0.5B: smallest (max-min)/min of WikiText-2 ppl over the orders, 4-bit cells (%) | reports/analysis/q3_order_spread.csv |
-| `\resQThreeSpreadMaxQwenPct` | `--` | Qwen2.5-0.5B: largest 4-bit order spread (%) | reports/analysis/q3_order_spread.csv |
+| `\resQThreeSpreadMinQwenPct` | `3.0` | Qwen2.5-0.5B: smallest (max-min)/min of WikiText-2 ppl over the orders, 4-bit cells (%) | reports/analysis/q3_order_spread.csv |
+| `\resQThreeSpreadMaxQwenPct` | `3.0` | Qwen2.5-0.5B: largest 4-bit order spread (%) | reports/analysis/q3_order_spread.csv |
 | `\resQThreeSpreadMinSmolLargePct` | `--` | SmolLM2-1.7B: smallest (max-min)/min of WikiText-2 ppl over the orders, 4-bit cells (%) | reports/analysis/q3_order_spread.csv |
 | `\resQThreeSpreadMaxSmolLargePct` | `--` | SmolLM2-1.7B: largest 4-bit order spread (%) | reports/analysis/q3_order_spread.csv |
 
@@ -769,7 +773,7 @@ Columns:
 
 | Macro | Value | Meaning | Source |
 |---|---|---|---|
-| `\resFpCompared` | `27` | published configurations (seed 0) with a v2 fp32 counterpart | reports/analysis/fp16_vs_fp32.csv (v2 fp32 vs results/merged published values) |
+| `\resFpCompared` | `38` | published configurations (seed 0) with a v2 fp32 counterpart | reports/analysis/fp16_vs_fp32.csv (v2 fp32 vs results/merged published values) |
 | `\resFpMaxAbsDeltaPct` | `12.98` | largest |v2 ppl / published ppl - 1| (%) | reports/analysis/fp16_vs_fp32.csv (v2 fp32 vs results/merged published values) |
 | `\resFpMaxAbsDeltaWhere` | `SmolLM2-135M 25\%+3 joint` | where it occurs | reports/analysis/fp16_vs_fp32.csv (v2 fp32 vs results/merged published values) |
 | `\resFpMaxAbsDeltaSmolSmallPct` | `12.98` | SmolLM2-135M: largest |relative ppl difference| (%) | reports/analysis/fp16_vs_fp32.csv (v2 fp32 vs results/merged published values) |
@@ -785,8 +789,8 @@ Columns:
 | `\resEThreeRemovedPmaskSmolSmallSFiftyBFourPct` | `--` | SmolLM2-135M 50%+4: share of the Q->P ppl penalty removed by Q->P P-mask (%) | reports/analysis/e3_mechanism.csv |
 | `\resEThreeRemovedBothSmolSmallSFiftyBFourPct` | `--` | SmolLM2-135M 50%+4: share of the Q->P ppl penalty removed by Q->P P-mask refit (%) | reports/analysis/e3_mechanism.csv |
 | `\resEThreeStaleSmolSmallSFiftyBFourPct` | `--` | SmolLM2-135M 50%+4: P->Q ppl change with the stale grid (%) | reports/analysis/e3_mechanism.csv |
-| `\resEThreeRemovedRefitSmolSmallSTwentyFiveBThreePct` | `--` | SmolLM2-135M 25%+3: share of the Q->P ppl penalty removed by Q->P refit (%) | reports/analysis/e3_mechanism.csv |
-| `\resEThreeRemovedPmaskSmolSmallSTwentyFiveBThreePct` | `--` | SmolLM2-135M 25%+3: share of the Q->P ppl penalty removed by Q->P P-mask (%) | reports/analysis/e3_mechanism.csv |
+| `\resEThreeRemovedRefitSmolSmallSTwentyFiveBThreePct` | `\ensuremath{-183}` | SmolLM2-135M 25%+3: share of the Q->P ppl penalty removed by Q->P refit (%) | reports/analysis/e3_mechanism.csv |
+| `\resEThreeRemovedPmaskSmolSmallSTwentyFiveBThreePct` | `\ensuremath{+122}` | SmolLM2-135M 25%+3: share of the Q->P ppl penalty removed by Q->P P-mask (%) | reports/analysis/e3_mechanism.csv |
 | `\resEThreeRemovedBothSmolSmallSTwentyFiveBThreePct` | `--` | SmolLM2-135M 25%+3: share of the Q->P ppl penalty removed by Q->P P-mask refit (%) | reports/analysis/e3_mechanism.csv |
 | `\resEThreeStaleSmolSmallSTwentyFiveBThreePct` | `--` | SmolLM2-135M 25%+3: P->Q ppl change with the stale grid (%) | reports/analysis/e3_mechanism.csv |
 | `\resEThreeRemovedRefitSmolSmallSThirtyThreeBThreePct` | `--` | SmolLM2-135M 33%+3: share of the Q->P ppl penalty removed by Q->P refit (%) | reports/analysis/e3_mechanism.csv |
@@ -852,8 +856,8 @@ Columns:
 | `\resIdentityQPThreeSmolLarge` | `--` | SmolLM2-1.7B: Q->P 25%+3 identical to 3-bit (ppl and every rel_err) | reports/analysis/identity_qp25_3bit.json |
 | `\resIdentityRelErrMaxDiffSmolLarge` | `--` | SmolLM2-1.7B: largest |rel_err difference| | reports/analysis/identity_qp25_3bit.json |
 | `\resGroupOverheadBFour` | `0.156` | 4-bit: scale and zero point bits per weight | results/v2/E1/Qwen2.5-0.5B.jsonl, state `Qwen2.5-0.5B__quant__s0.0000__b4__seed0__float32`, field `storage.group_overhead` |
-| `\resGroupOverheadBThree` | `0.148` | 3-bit: scale and zero point bits per weight | results/v2/E1/SmolLM2-135M.jsonl, state `SmolLM2-135M__quant__s0.0000__b3__seed0__float32`, field `storage.group_overhead` |
-| `\resGroupOverheadBTwo` | `--` | 2-bit: scale and zero point bits per weight | no state yet |
+| `\resGroupOverheadBThree` | `0.148` | 3-bit: scale and zero point bits per weight | results/v2/E1/Qwen2.5-0.5B.jsonl, state `Qwen2.5-0.5B__quant__s0.0000__b3__seed0__float32`, field `storage.group_overhead` |
+| `\resGroupOverheadBTwo` | `0.141` | 2-bit: scale and zero point bits per weight | results/v2/E4/SmolLM2-135M.jsonl, state `SmolLM2-135M__quant__s0.0000__b2__seed0__float32`, field `storage.group_overhead` |
 | `\resGroupOverheadBEight` | `0.188` | 8-bit: scale and zero point bits per weight | results/v2/E1/Qwen2.5-0.5B.jsonl, state `Qwen2.5-0.5B__quant__s0.0000__b8__seed0__float32`, field `storage.group_overhead` |
 
 ## E2: same-Hessian layer ablation
@@ -1416,6 +1420,316 @@ Columns:
 | `\resNItemsBoolq` | `3270` | boolq: items evaluated per state | results/v2/items/*.json.gz |
 | `\resNItemsSciq` | `1000` | sciq: items evaluated per state | results/v2/items/*.json.gz |
 | `\resNItemsLambada` | `5153` | lambada_openai: items evaluated per state | results/v2/items/*.json.gz |
-| `\resBootB` | `1000` | bootstrap resamples (items within each task) | scripts/analysis/stats.py, make_tables.py --boot |
-| `\resNStates` | `27` | usable v2 model states (status ok) | results/v2/*/*.jsonl |
+| `\resBootB` | `10000` | bootstrap resamples (items within each task) | scripts/analysis/stats.py, make_tables.py --boot |
+| `\resNStates` | `45` | usable v2 model states (status ok) | results/v2/*/*.jsonl |
 | `\resNStatesPlanned` | `207` | model states in the study plan | scripts/make_queues.py |
+
+## Requested by paper/main.tex (reports/latex_macro_requests.md, R1-R31)
+
+| Macro | Value | Meaning | Source |
+|---|---|---|---|
+| `\resFrontierThreeWins` | `1` | R1: models where the best order of 50%+4 beats 3-bit alone in WikiText-2 ppl (SmolLM2-135M) | reports/analysis/frontier_equal_storage.csv (wikitext2.ppl; best order = lowest of the three) |
+| `\resFrontierThreeModels` | `1` | R2: models with 3-bit and all three 50%+4 orders (SmolLM2-135M) | reports/analysis/frontier_equal_storage.csv (wikitext2.ppl; best order = lowest of the three) |
+| `\resFrontierThreeGainMinPct` | `28.4` | R3: over the R1 models, smallest 100(1 - ppl_best(50%+4)/ppl(3-bit)) | reports/analysis/frontier_equal_storage.csv (wikitext2.ppl; best order = lowest of the three) |
+| `\resFrontierThreeGainMaxPct` | `28.4` | R4: the same, largest | reports/analysis/frontier_equal_storage.csv (wikitext2.ppl; best order = lowest of the three) |
+| `\resFrontierFourGapMaxPct` | `2.2` | R5: largest |100(ppl_best(25%+4)/ppl(4-bit) - 1)| over the models with both (SmolLM2-135M, Qwen2.5-0.5B) | reports/analysis/frontier_equal_storage.csv (wikitext2.ppl; best order = lowest of the three) |
+| `\resIdentityQPThreeCount` | `1` | R7: models where Q->P 25%+3 is identical to 3-bit (ppl and every rel_err) (SmolLM2-135M) | reports/analysis/identity_qp25_3bit.json |
+| `\resIdentityQPThreeModels` | `1` | R8: models where both states exist (SmolLM2-135M) | reports/analysis/identity_qp25_3bit.json |
+| `\resETwoMaskFirstSub` | `36` | R9: E2 (model, cell, order in joint/P->Q) with summed-layer I_E/(E_P+E_Q) < 0 | reports/analysis/e2_cells.csv (18 model-cells; planned E2 layer lines still missing: 0) |
+| `\resETwoMaskFirstTotal` | `36` | R10: such combinations available | reports/analysis/e2_cells.csv (18 model-cells; planned E2 layer lines still missing: 0) |
+| `\resETwoSubJointMinPct` | `97` | R11: smallest share of sub-additive layers, joint, over cells (%) | reports/analysis/e2_cells.csv (18 model-cells; planned E2 layer lines still missing: 0) |
+| `\resETwoSubJointMaxPct` | `100` | R12: largest share of sub-additive layers, joint (%) | reports/analysis/e2_cells.csv (18 model-cells; planned E2 layer lines still missing: 0) |
+| `\resETwoSubPQMinPct` | `60` | R13: smallest share of sub-additive layers, P->Q, over cells (%) | reports/analysis/e2_cells.csv (18 model-cells; planned E2 layer lines still missing: 0) |
+| `\resETwoSubPQMaxPct` | `92` | R14: largest share of sub-additive layers, P->Q (%) | reports/analysis/e2_cells.csv (18 model-cells; planned E2 layer lines still missing: 0) |
+| `\resETwoRhoMin` | `\ensuremath{+0.41}` | R15: smallest Spearman rho, P->Q layer ratio vs h_corr_index | reports/analysis/e2_spearman.csv (arm p_then_q, 18 model-cells) |
+| `\resETwoRhoMax` | `\ensuremath{+0.60}` | R16: largest of those rhos | reports/analysis/e2_spearman.csv (arm p_then_q, 18 model-cells) |
+| `\resETwoRhoPMax` | `\ensuremath{5.43\times 10^{-6}}` | R17: largest p-value of those rhos | reports/analysis/e2_spearman.csv (arm p_then_q, 18 model-cells) |
+| `\resETwoBlockZeroSuperPQSmolSmall` | `1` | R18: SmolLM2-135M, cells (of 6) where the P->Q ratio of block 0 is > 0 | reports/analysis/e2_cells.csv (18 model-cells; planned E2 layer lines still missing: 0) |
+| `\resETwoBlockZeroSuperPQSmolMedium` | `6` | R18: SmolLM2-360M, cells (of 6) where the P->Q ratio of block 0 is > 0 | reports/analysis/e2_cells.csv (18 model-cells; planned E2 layer lines still missing: 0) |
+| `\resETwoBlockZeroSuperPQQwen` | `0` | R18: Qwen2.5-0.5B, cells (of 6) where the P->Q ratio of block 0 is > 0 | reports/analysis/e2_cells.csv (18 model-cells; planned E2 layer lines still missing: 0) |
+| `\resETwoRefitWorse` | `12` | R21: cells with a Q->P penalty where the re-fitted grid removes a negative share | reports/analysis/e2_cells.csv (18 model-cells; planned E2 layer lines still missing: 0) |
+| `\resETwoPenaltyCells` | `12` | R22: cells with qp_penalty_sum > 0 | reports/analysis/e2_cells.csv (18 model-cells; planned E2 layer lines still missing: 0) |
+| `\resETwoRemovedPmaskMaxPct` | `39` | R23: largest share removed by the pruning-only mask over the R22 cells (%) | reports/analysis/e2_cells.csv (18 model-cells; planned E2 layer lines still missing: 0) |
+| `\resETwoStaleMaxAbsPct` | `0.4` | R24: largest |stale grid imposed on P->Q| over cells (% of its error) | reports/analysis/e2_cells.csv (18 model-cells; planned E2 layer lines still missing: 0) |
+| `\resQTwoQPWorstPplBFour` | `5` | R19: 4-bit cells (25/33/50/60%) where Q->P has the strictly highest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (seed 0, every 4-bit cell with three orders: 5) |
+| `\resQTwoCellsPplBFour` | `5` | R20: 4-bit cells with all three orders ranked | reports/analysis/q2_order_ranking.csv (seed 0, every 4-bit cell with three orders: 5) |
+| `\resMcNemarSigPQQP` | `6` | R25: cells where P->Q vs Q->P has exact McNemar p < 0.05 | reports/analysis/e1_mcnemar.csv (task pooled9, seed 0; extra_orders.mcnemar) |
+| `\resMcNemarCellsPQQP` | `8` | R26: cells with that test | reports/analysis/e1_mcnemar.csv (task pooled9, seed 0; extra_orders.mcnemar) |
+| `\resHwDeltaSmolSmallSFiftyBFourPQPct` | `\ensuremath{+4.6}` | R27: SmolLM2-135M 50%+4 P->Q: 100(ppl REPRO16 / ppl results_full (16-bit, T4) - 1) | reports/analysis/repro_hardware.csv (`SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float16`) |
+| `\resHwDeltaSmolSmallQuantBFourPct` | `\ensuremath{+1.5}` | R27: SmolLM2-135M 4-bit: 100(ppl REPRO16 / ppl results_full (16-bit, T4) - 1) | reports/analysis/repro_hardware.csv (`SmolLM2-135M__quant__s0.0000__b4__seed0__float16`) |
+| `\resReproThirtyTwoMaxAbsPct` | `0.4` | R28: largest |100(ppl REPRO32 / ppl results_fix - 1)| over the 3 planned REPRO32 states (-- until all exist) | reports/analysis/repro_hardware.csv |
+| `\resSeedBestStable` | `--` | R30: 4-bit cells of the E5 models whose best order by WikiText-2 ppl is the same for every seed | reports/analysis/seed_order_stability.csv |
+| `\resSeedBestCells` | `--` | R30: 4-bit cells of the E5 models with every seed and order | reports/analysis/seed_order_stability.csv |
+| `\resSeedSdMaxSinglePct` | `--` | R31: largest 100 sd/mean of WikiText-2 ppl over three seeds, single states | reports/analysis/e1_seeds.csv |
+| `\resSeedSdMaxCombinedPct` | `--` | R31: largest 100 sd/mean of WikiText-2 ppl over three seeds, combined states | reports/analysis/e1_seeds.csv |
+
+## Paired accuracy differences of SmolLM2-135M (R29; seed 0)
+
+Macro = `\res` + column + `SmolSmall` + row tag (e.g. `\resAccDiffSmolSmallSTwentyFiveBFourJointPQ`). Row source: the state's result line; column source: below the table.
+
+| Row tag | State | Source | AccDiff | AccDiffLo | AccDiffHi |
+|---|---|---|---|---|---|
+| `STwentyFiveBFourJointPQ` | 25%+4: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{-1.2}` | `\ensuremath{-1.8}` | `\ensuremath{-0.6}` |
+| `STwentyFiveBFourJointQP` | 25%+4: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{-0.3}` | `\ensuremath{-0.9}` | `\ensuremath{+0.3}` |
+| `STwentyFiveBFourPQQP` | 25%+4: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{+0.9}` | `\ensuremath{+0.3}` | `\ensuremath{+1.6}` |
+| `SThirtyThreeBFourJointPQ` | 33%+4: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{-0.8}` | `\ensuremath{-1.4}` | `\ensuremath{-0.2}` |
+| `SThirtyThreeBFourJointQP` | 33%+4: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{-0.4}` | `\ensuremath{-1.1}` | `\ensuremath{+0.2}` |
+| `SThirtyThreeBFourPQQP` | 33%+4: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{+0.4}` | `\ensuremath{-0.2}` | `\ensuremath{+1.1}` |
+| `SFiftyBFourJointPQ` | 50%+4: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{+1.0}` | `\ensuremath{+0.3}` | `\ensuremath{+1.6}` |
+| `SFiftyBFourJointQP` | 50%+4: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{-0.5}` | `\ensuremath{-1.2}` | `\ensuremath{+0.2}` |
+| `SFiftyBFourJointQPRefit` | 50%+4: joint minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourJointQPPmask` | 50%+4: joint minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourJointQPPmaskRefit` | 50%+4: joint minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourJointPQStale` | 50%+4: joint minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourPQQP` | 50%+4: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{-1.4}` | `\ensuremath{-2.1}` | `\ensuremath{-0.7}` |
+| `SFiftyBFourPQQPRefit` | 50%+4: P->Q minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourPQQPPmask` | 50%+4: P->Q minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourPQQPPmaskRefit` | 50%+4: P->Q minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourPQPQStale` | 50%+4: P->Q minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourQPQPRefit` | 50%+4: Q->P minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourQPQPPmask` | 50%+4: Q->P minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourQPQPPmaskRefit` | 50%+4: Q->P minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourQPPQStale` | 50%+4: Q->P minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SSixtyBFourJointPQ` | 60%+4: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{+0.1}` | `\ensuremath{-0.5}` | `\ensuremath{+0.8}` |
+| `SSixtyBFourJointQP` | 60%+4: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{+0.9}` | `\ensuremath{+0.1}` | `\ensuremath{+1.6}` |
+| `SSixtyBFourPQQP` | 60%+4: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{+0.8}` | `\ensuremath{+0.0}` | `\ensuremath{+1.5}` |
+| `STwentyFiveBThreeJointPQ` | 25%+3: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{-0.4}` | `\ensuremath{-1.1}` | `\ensuremath{+0.4}` |
+| `STwentyFiveBThreeJointQP` | 25%+3: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{+0.9}` | `\ensuremath{+0.2}` | `\ensuremath{+1.6}` |
+| `STwentyFiveBThreeJointQPRefit` | 25%+3: joint minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreeJointQPPmask` | 25%+3: joint minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreeJointQPPmaskRefit` | 25%+3: joint minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreeJointPQStale` | 25%+3: joint minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreePQQP` | 25%+3: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{+1.2}` | `\ensuremath{+0.5}` | `\ensuremath{+2.0}` |
+| `STwentyFiveBThreePQQPRefit` | 25%+3: P->Q minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreePQQPPmask` | 25%+3: P->Q minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreePQQPPmaskRefit` | 25%+3: P->Q minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreePQPQStale` | 25%+3: P->Q minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreeQPQPRefit` | 25%+3: Q->P minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreeQPQPPmask` | 25%+3: Q->P minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreeQPQPPmaskRefit` | 25%+3: Q->P minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreeQPPQStale` | 25%+3: Q->P minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreeJointPQ` | 33%+3: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{-1.3}` | `\ensuremath{-2.0}` | `\ensuremath{-0.5}` |
+| `SThirtyThreeBThreeJointQP` | 33%+3: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{-1.3}` | `\ensuremath{-2.0}` | `\ensuremath{-0.5}` |
+| `SThirtyThreeBThreeJointQPRefit` | 33%+3: joint minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreeJointQPPmask` | 33%+3: joint minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreeJointQPPmaskRefit` | 33%+3: joint minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreeJointPQStale` | 33%+3: joint minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreePQQP` | 33%+3: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{-0.0}` | `\ensuremath{-0.8}` | `\ensuremath{+0.7}` |
+| `SThirtyThreeBThreePQQPRefit` | 33%+3: P->Q minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreePQQPPmask` | 33%+3: P->Q minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreePQQPPmaskRefit` | 33%+3: P->Q minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreePQPQStale` | 33%+3: P->Q minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreeQPQPRefit` | 33%+3: Q->P minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreeQPQPPmask` | 33%+3: Q->P minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreeQPQPPmaskRefit` | 33%+3: Q->P minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreeQPPQStale` | 33%+3: Q->P minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreeJointPQ` | 50%+3: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{-2.1}` | `\ensuremath{-2.8}` | `\ensuremath{-1.3}` |
+| `SFiftyBThreeJointQP` | 50%+3: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{-0.5}` | `\ensuremath{-1.2}` | `\ensuremath{+0.3}` |
+| `SFiftyBThreeJointQPRefit` | 50%+3: joint minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreeJointQPPmask` | 50%+3: joint minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreeJointQPPmaskRefit` | 50%+3: joint minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreeJointPQStale` | 50%+3: joint minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreePQQP` | 50%+3: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{+1.6}` | `\ensuremath{+0.8}` | `\ensuremath{+2.4}` |
+| `SFiftyBThreePQQPRefit` | 50%+3: P->Q minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreePQQPPmask` | 50%+3: P->Q minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreePQQPPmaskRefit` | 50%+3: P->Q minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreePQPQStale` | 50%+3: P->Q minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreeQPQPRefit` | 50%+3: Q->P minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreeQPQPPmask` | 50%+3: Q->P minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreeQPQPPmaskRefit` | 50%+3: Q->P minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreeQPPQStale` | 50%+3: Q->P minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+
+Columns:
+
+- `AccDiff`: mean accuracy difference over the 9 tasks, v2 metric, points (x100)
+- `AccDiffLo`: its paired-bootstrap 95% interval, lower end
+- `AccDiffHi`: its paired-bootstrap 95% interval, upper end
+
+## Paired accuracy differences of SmolLM2-360M (R29; seed 0)
+
+Macro = `\res` + column + `SmolMedium` + row tag (e.g. `\resAccDiffSmolMediumSTwentyFiveBFourJointPQ`). Row source: the state's result line; column source: below the table.
+
+| Row tag | State | Source | AccDiff | AccDiffLo | AccDiffHi |
+|---|---|---|---|---|---|
+| `STwentyFiveBFourJointPQ` | 25%+4: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBFourJointQP` | 25%+4: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBFourPQQP` | 25%+4: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBFourJointPQ` | 33%+4: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBFourJointQP` | 33%+4: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBFourPQQP` | 33%+4: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourJointPQ` | 50%+4: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourJointQP` | 50%+4: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourJointQPRefit` | 50%+4: joint minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourJointQPPmask` | 50%+4: joint minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourJointQPPmaskRefit` | 50%+4: joint minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourJointPQStale` | 50%+4: joint minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourPQQP` | 50%+4: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourPQQPRefit` | 50%+4: P->Q minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourPQQPPmask` | 50%+4: P->Q minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourPQQPPmaskRefit` | 50%+4: P->Q minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourPQPQStale` | 50%+4: P->Q minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourQPQPRefit` | 50%+4: Q->P minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourQPQPPmask` | 50%+4: Q->P minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourQPQPPmaskRefit` | 50%+4: Q->P minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourQPPQStale` | 50%+4: Q->P minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SSixtyBFourJointPQ` | 60%+4: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SSixtyBFourJointQP` | 60%+4: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SSixtyBFourPQQP` | 60%+4: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreeJointPQ` | 25%+3: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreeJointQP` | 25%+3: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreeJointQPRefit` | 25%+3: joint minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreeJointQPPmask` | 25%+3: joint minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreeJointQPPmaskRefit` | 25%+3: joint minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreeJointPQStale` | 25%+3: joint minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreePQQP` | 25%+3: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreePQQPRefit` | 25%+3: P->Q minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreePQQPPmask` | 25%+3: P->Q minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreePQQPPmaskRefit` | 25%+3: P->Q minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreePQPQStale` | 25%+3: P->Q minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreeQPQPRefit` | 25%+3: Q->P minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreeQPQPPmask` | 25%+3: Q->P minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreeQPQPPmaskRefit` | 25%+3: Q->P minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreeQPPQStale` | 25%+3: Q->P minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreeJointPQ` | 33%+3: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreeJointQP` | 33%+3: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreeJointQPRefit` | 33%+3: joint minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreeJointQPPmask` | 33%+3: joint minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreeJointQPPmaskRefit` | 33%+3: joint minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreeJointPQStale` | 33%+3: joint minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreePQQP` | 33%+3: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreePQQPRefit` | 33%+3: P->Q minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreePQQPPmask` | 33%+3: P->Q minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreePQQPPmaskRefit` | 33%+3: P->Q minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreePQPQStale` | 33%+3: P->Q minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreeQPQPRefit` | 33%+3: Q->P minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreeQPQPPmask` | 33%+3: Q->P minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreeQPQPPmaskRefit` | 33%+3: Q->P minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreeQPPQStale` | 33%+3: Q->P minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreeJointPQ` | 50%+3: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreeJointQP` | 50%+3: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreeJointQPRefit` | 50%+3: joint minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreeJointQPPmask` | 50%+3: joint minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreeJointQPPmaskRefit` | 50%+3: joint minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreeJointPQStale` | 50%+3: joint minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreePQQP` | 50%+3: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreePQQPRefit` | 50%+3: P->Q minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreePQQPPmask` | 50%+3: P->Q minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreePQQPPmaskRefit` | 50%+3: P->Q minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreePQPQStale` | 50%+3: P->Q minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreeQPQPRefit` | 50%+3: Q->P minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreeQPQPPmask` | 50%+3: Q->P minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreeQPQPPmaskRefit` | 50%+3: Q->P minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreeQPPQStale` | 50%+3: Q->P minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+
+Columns:
+
+- `AccDiff`: mean accuracy difference over the 9 tasks, v2 metric, points (x100)
+- `AccDiffLo`: its paired-bootstrap 95% interval, lower end
+- `AccDiffHi`: its paired-bootstrap 95% interval, upper end
+
+## Paired accuracy differences of Qwen2.5-0.5B (R29; seed 0)
+
+Macro = `\res` + column + `Qwen` + row tag (e.g. `\resAccDiffQwenSTwentyFiveBFourJointPQ`). Row source: the state's result line; column source: below the table.
+
+| Row tag | State | Source | AccDiff | AccDiffLo | AccDiffHi |
+|---|---|---|---|---|---|
+| `STwentyFiveBFourJointPQ` | 25%+4: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{-0.1}` | `\ensuremath{-0.6}` | `\ensuremath{+0.4}` |
+| `STwentyFiveBFourJointQP` | 25%+4: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{+0.5}` | `\ensuremath{-0.1}` | `\ensuremath{+1.0}` |
+| `STwentyFiveBFourPQQP` | 25%+4: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{+0.5}` | `\ensuremath{-0.1}` | `\ensuremath{+1.1}` |
+| `SThirtyThreeBFourJointPQ` | 33%+4: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBFourJointQP` | 33%+4: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBFourPQQP` | 33%+4: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourJointPQ` | 50%+4: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{+0.4}` | `\ensuremath{-0.2}` | `\ensuremath{+0.9}` |
+| `SFiftyBFourJointQP` | 50%+4: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourJointQPRefit` | 50%+4: joint minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourJointQPPmask` | 50%+4: joint minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourJointQPPmaskRefit` | 50%+4: joint minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourJointPQStale` | 50%+4: joint minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourPQQP` | 50%+4: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourPQQPRefit` | 50%+4: P->Q minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourPQQPPmask` | 50%+4: P->Q minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourPQQPPmaskRefit` | 50%+4: P->Q minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourPQPQStale` | 50%+4: P->Q minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourQPQPRefit` | 50%+4: Q->P minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourQPQPPmask` | 50%+4: Q->P minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourQPQPPmaskRefit` | 50%+4: Q->P minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourQPPQStale` | 50%+4: Q->P minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SSixtyBFourJointPQ` | 60%+4: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SSixtyBFourJointQP` | 60%+4: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SSixtyBFourPQQP` | 60%+4: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreeJointPQ` | 25%+3: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreeJointQP` | 25%+3: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreeJointQPRefit` | 25%+3: joint minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreeJointQPPmask` | 25%+3: joint minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreeJointQPPmaskRefit` | 25%+3: joint minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreeJointPQStale` | 25%+3: joint minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreePQQP` | 25%+3: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreePQQPRefit` | 25%+3: P->Q minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreePQQPPmask` | 25%+3: P->Q minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreePQQPPmaskRefit` | 25%+3: P->Q minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreePQPQStale` | 25%+3: P->Q minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreeQPQPRefit` | 25%+3: Q->P minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreeQPQPPmask` | 25%+3: Q->P minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreeQPQPPmaskRefit` | 25%+3: Q->P minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreeQPPQStale` | 25%+3: Q->P minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreeJointPQ` | 33%+3: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreeJointQP` | 33%+3: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreeJointQPRefit` | 33%+3: joint minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreeJointQPPmask` | 33%+3: joint minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreeJointQPPmaskRefit` | 33%+3: joint minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreeJointPQStale` | 33%+3: joint minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreePQQP` | 33%+3: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreePQQPRefit` | 33%+3: P->Q minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreePQQPPmask` | 33%+3: P->Q minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreePQQPPmaskRefit` | 33%+3: P->Q minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreePQPQStale` | 33%+3: P->Q minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreeQPQPRefit` | 33%+3: Q->P minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreeQPQPPmask` | 33%+3: Q->P minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreeQPQPPmaskRefit` | 33%+3: Q->P minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreeQPPQStale` | 33%+3: Q->P minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreeJointPQ` | 50%+3: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreeJointQP` | 50%+3: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreeJointQPRefit` | 50%+3: joint minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreeJointQPPmask` | 50%+3: joint minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreeJointQPPmaskRefit` | 50%+3: joint minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreeJointPQStale` | 50%+3: joint minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreePQQP` | 50%+3: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreePQQPRefit` | 50%+3: P->Q minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreePQQPPmask` | 50%+3: P->Q minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreePQQPPmaskRefit` | 50%+3: P->Q minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreePQPQStale` | 50%+3: P->Q minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreeQPQPRefit` | 50%+3: Q->P minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreeQPQPPmask` | 50%+3: Q->P minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreeQPQPPmaskRefit` | 50%+3: Q->P minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreeQPPQStale` | 50%+3: Q->P minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+
+Columns:
+
+- `AccDiff`: mean accuracy difference over the 9 tasks, v2 metric, points (x100)
+- `AccDiffLo`: its paired-bootstrap 95% interval, lower end
+- `AccDiffHi`: its paired-bootstrap 95% interval, upper end
+
+## Paired accuracy differences of SmolLM2-1.7B (R29; seed 0)
+
+Macro = `\res` + column + `SmolLarge` + row tag (e.g. `\resAccDiffSmolLargeSTwentyFiveBFourJointPQ`). Row source: the state's result line; column source: below the table.
+
+| Row tag | State | Source | AccDiff | AccDiffLo | AccDiffHi |
+|---|---|---|---|---|---|
+| `STwentyFiveBFourJointPQ` | 25%+4: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBFourJointQP` | 25%+4: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBFourPQQP` | 25%+4: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourJointPQ` | 50%+4: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourJointQP` | 50%+4: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourPQQP` | 50%+4: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreeJointPQ` | 25%+3: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreeJointQP` | 25%+3: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreePQQP` | 25%+3: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreeJointPQ` | 50%+3: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreeJointQP` | 50%+3: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreePQQP` | 50%+3: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+
+Columns:
+
+- `AccDiff`: mean accuracy difference over the 9 tasks, v2 metric, points (x100)
+- `AccDiffLo`: its paired-bootstrap 95% interval, lower end
+- `AccDiffHi`: its paired-bootstrap 95% interval, upper end

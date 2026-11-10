@@ -293,8 +293,31 @@ def mechanism_e3(store, missing, seed=0):
     return rows
 
 
+def seed_stability(store):
+    """4-bit cells of the models planned with several calibration seeds (E5): the best order by WikiText-2
+    ppl for every seed, and whether it is the same for all of them (macro R30)."""
+    rows = []
+    multi = {v["short"] for v in store.plan.values() if v["seed"] > 0}
+    for m in [x for x in store.models() if x in multi]:
+        seeds = sorted({0} | {v["seed"] for v in store.plan.values() if v["short"] == m})
+        for s, b in store.cells(m, 0, PAPER_ORDERS):
+            if b != 4:
+                continue
+            best = {}
+            for sd in seeds:
+                vals = {o: ((store.get(m, o, s, b, sd) or {}).get("wikitext2") or {}).get("ppl") for o in PAPER_ORDERS}
+                if all(finite(v) for v in vals.values()):
+                    best[sd] = min(PAPER_ORDERS, key=lambda o: (vals[o], PAPER_ORDERS.index(o)))
+            complete = len(best) == len(seeds)
+            rows.append({"model": m, "cell": cell_label(s, b), "seeds": " ".join(map(str, seeds)),
+                         "best_by_seed": " ".join(f"{sd}:{ORDER_TXT[o]}" for sd, o in sorted(best.items())),
+                         "complete": complete, "stable": complete and len(set(best.values())) == 1})
+    return rows
+
+
 def write(res, paths):
     R = paths.reports
+    write_csv(os.path.join(R, "seed_order_stability.csv"), res["seed_stability"])
     write_csv(os.path.join(R, "q1_layer_interaction.csv"), res["q1"])
     write_csv(os.path.join(R, "q2_order_ranking.csv"), res["q2"])
     write_csv(os.path.join(R, "q3_order_spread.csv"), res["q3"])
@@ -309,6 +332,7 @@ def analyze(store, e1, paths, missing):
     res["q2_summary"] = q2_summary(res["q2"])
     res["q3"] = q3(res["q2"])
     res["e3"] = mechanism_e3(store, missing)
+    res["seed_stability"] = seed_stability(store)
     res["fp"], v1 = fp_compare(store, paths, missing)
     res["fp_summary"] = fp_summary(res["fp"])
     res["v1_check"] = v1["check"] if v1 else None

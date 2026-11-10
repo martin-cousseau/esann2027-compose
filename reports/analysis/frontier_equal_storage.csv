@@ -1,0 +1,9 @@
+model,comparison,cell,quant_bits,best_order,best_ppl,quant_ppl,best_bits_mask,quant_bits_mask,available,gain_pct,gap_pct
+SmolLM2-135M,three,50%+4,3,p_then_q,41.20490983533286,57.55154411856475,3.0,3.0,True,28.403467767181688,-28.403467767181688
+SmolLM2-135M,four,25%+4,4,p_then_q,21.99225128776896,21.935929258780874,4.0,4.0,True,-0.2567569776673162,0.2567569776673162
+SmolLM2-360M,three,50%+4,3,,,,,,False,,
+SmolLM2-360M,four,25%+4,4,,,,,,False,,
+Qwen2.5-0.5B,three,50%+4,3,,,21.84288609442527,,3.0,False,,
+Qwen2.5-0.5B,four,25%+4,4,joint,14.63165044117792,14.313790423550815,4.0,4.0,True,-2.2206558027014545,2.2206558027014545
+SmolLM2-1.7B,three,50%+4,3,,,,,,False,,
+SmolLM2-1.7B,four,25%+4,4,,,,,,False,,

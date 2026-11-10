@@ -56,7 +56,9 @@ def analyze(store, missing, seed=0):
                 missing.add("E4 frontier", f"{model} {cell_label(s, b)} best order",
                             f"{len(vals)} of 3 paper orders available")
         identity.append(_identity(store, model, missing, seed))
-    return {"points": points, "best": best, "identity": identity}
+    res = {"points": points, "best": best, "identity": identity}
+    res["equal_storage"] = equal_storage(store, res, seed)
+    return res
 
 
 def _identity(store, model, missing, seed=0):
@@ -87,6 +89,29 @@ def _identity(store, model, missing, seed=0):
     return row
 
 
+EQUAL_STORAGE = (("three", (0.5, 4), 3), ("four", (0.25, 4), 4))  # cell whose 1-bit-mask cost equals b-bit alone
+
+
+def equal_storage(store, fr, seed=0):
+    """Best order of 50%+4 against 3-bit alone, and of 25%+4 against 4-bit alone (macros R1-R5)."""
+    rows = []
+    for model in store.models():
+        for tag, (s, b), qb in EQUAL_STORAGE:
+            q, best = store.quant_only(model, qb, seed), fr["best"].get((model, s, b))
+            qp = (q.get("wikitext2") or {}).get("ppl") if q else None
+            bp = best["wt_ppl"] if best else None
+            row = {"model": model, "comparison": tag, "cell": cell_label(s, b), "quant_bits": qb,
+                   "best_order": best["order"] if best else None, "best_ppl": bp, "quant_ppl": qp,
+                   "best_bits_mask": best["bits_bitmap"] if best else None,
+                   "quant_bits_mask": (q.get("storage") or {}).get("bitmap") if q else None,
+                   "available": finite(qp) and finite(bp)}
+            row["gain_pct"] = 100 * (1 - bp / qp) if row["available"] else None
+            row["gap_pct"] = 100 * (bp / qp - 1) if row["available"] else None
+            rows.append(row)
+    return rows
+
+
 def write(res, paths):
     write_csv(os.path.join(paths.reports, "frontier_points.csv"), res["points"])
+    write_csv(os.path.join(paths.reports, "frontier_equal_storage.csv"), res["equal_storage"])
     write_json(os.path.join(paths.reports, "identity_qp25_3bit.json"), res["identity"])

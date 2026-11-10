@@ -1,0 +1,6 @@
+family,state_id,model,order,sparsity,bits,seed,ppl,source,reference,ref_ppl,gpu,dtype,rel_delta_pct
+REPRO16,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float16,SmolLM2-135M,p_then_q,0.5,4,0,42.01707130834663,results/v2/REPRO16/SmolLM2-135M.jsonl,"results_full (16-bit, T4)",40.15202419771081,NVIDIA L4,float16,4.644964103060478
+REPRO16,SmolLM2-135M__quant__s0.0000__b4__seed0__float16,SmolLM2-135M,quant,0.0,4,0,22.100453691562436,results/v2/REPRO16/SmolLM2-135M.jsonl,"results_full (16-bit, T4)",21.774235577332675,NVIDIA L4,float16,1.498184003159042
+REPRO32,SmolLM2-360M__joint__s0.2500__b4__seed0__float32,SmolLM2-360M,joint,0.25,4,0,13.204480939249104,results/v2/REPRO32/SmolLM2-360M.jsonl,"results_fix (fp32, T4)",13.218486790418927,NVIDIA L4,float32,-0.10595653944274197
+REPRO32,SmolLM2-360M__p_then_q__s0.2500__b4__seed0__float32,SmolLM2-360M,p_then_q,0.25,4,0,13.338463043517894,results/v2/REPRO32/SmolLM2-360M.jsonl,"results_fix (fp32, T4)",13.288831981614587,NVIDIA L4,float32,0.37347948993540214
+REPRO32,SmolLM2-360M__q_then_p__s0.2500__b4__seed0__float32,SmolLM2-360M,q_then_p,0.25,4,0,14.384162653787834,results/v2/REPRO32/SmolLM2-360M.jsonl,"results_fix (fp32, T4)",14.330933200122212,NVIDIA L4,float32,0.3714304778503097

@@ -352,6 +352,8 @@ STATE_COLS = (  # column tag, meaning and source, value(row, by_sid) -> formatte
     ("TopOneCFourPct", "top-1 agreement on C4 (%); field `c4.top1`", lambda r, b: num(_pc(_g(r, "c4", "top1")), 1)),
     ("BitsTcr", "bits per weight as TCr counts them, b(1-s); field `storage.tcr`", lambda r, b: num(_g(r, "storage", "tcr"), 2)),
     ("BitsMask", "bits per weight with a 1-bit mask; field `storage.bitmap`", lambda r, b: num(_g(r, "storage", "bitmap"), 2)),
+    ("BitsSym", "plug-in entropy of the stored symbols per group of 128, zeros included, bits per weight; field "
+     "`storage.symbol_entropy` (measured for quantized states only)", lambda r, b: num(_g(r, "storage", "symbol_entropy"), 2)),
     ("FreeZerosPct", "weights exactly zero after compression (%); field `storage.zero_frac_actual` (not measured for dense)",
      lambda r, b: num(_pc(_g(r, "storage", "zero_frac_actual")), 1)),
     ("FlipsPct", "items whose correctness differs from dense, pooled over the 9 zero-shot tasks, v2 metric (%); " + ITEMS,
@@ -569,7 +571,120 @@ def macros_misc(M, store, e1, det, fr, e2res, boolq):
     M.add(sec, "NStatesPlanned", str(len(store.plan)), "model states in the study plan", "scripts/make_queues.py")
 
 
-def write_all(store, e1, q, det, fr, e2res, boolq, paths, missing):
+def _n(v):
+    return str(v) if v is not None else "--"
+
+
+def macros_requests(M, store, e1, q, fr, e2res, repro):
+    """Macros requested by paper/main.tex (reports/latex_macro_requests.md, R1-R31), under the exact names."""
+    sec = "Requested by paper/main.tex (reports/latex_macro_requests.md, R1-R31)"
+    add = lambda name, val, what, src: M.add(sec, name, val, what, src)  # noqa: E731
+    # R1-R5: equal storage with the mask counted
+    es, src = fr["equal_storage"], "reports/analysis/frontier_equal_storage.csv (wikitext2.ppl; best order = lowest of the three)"
+    three = [r for r in es if r["comparison"] == "three" and r["available"]]
+    wins = [r for r in three if r["best_ppl"] < r["quant_ppl"]]
+    four = [r for r in es if r["comparison"] == "four" and r["available"]]
+    names = lambda rr: ", ".join(r["model"] for r in rr) or "none"  # noqa: E731
+    add("FrontierThreeWins", _n(len(wins)) if three else "--",
+        f"R1: models where the best order of 50%+4 beats 3-bit alone in WikiText-2 ppl ({names(wins)})", src)
+    add("FrontierThreeModels", _n(len(three)) if three else "--", f"R2: models with 3-bit and all three 50%+4 orders ({names(three)})", src)
+    g = [r["gain_pct"] for r in wins]
+    add("FrontierThreeGainMinPct", num(min(g), 1) if g else "--", "R3: over the R1 models, smallest 100(1 - ppl_best(50%+4)/ppl(3-bit))", src)
+    add("FrontierThreeGainMaxPct", num(max(g), 1) if g else "--", "R4: the same, largest", src)
+    gp = [abs(r["gap_pct"]) for r in four]
+    add("FrontierFourGapMaxPct", num(max(gp), 1) if gp else "--",
+        f"R5: largest |100(ppl_best(25%+4)/ppl(4-bit) - 1)| over the models with both ({names(four)})", src)
+    # R7-R8: Q->P 25%+3 = 3-bit
+    av = [r for r in fr["identity"] if r.get("status") != "pending"]
+    src = "reports/analysis/identity_qp25_3bit.json"
+    add("IdentityQPThreeCount", _n(sum(bool(r.get("identical")) for r in av)) if av else "--",
+        f"R7: models where Q->P 25%+3 is identical to 3-bit (ppl and every rel_err) ({names([r for r in av if r.get('identical')])})", src)
+    add("IdentityQPThreeModels", _n(len(av)) if av else "--", f"R8: models where both states exist ({names(av)})", src)
+    # R9-R18, R21-R24: E2 aggregates
+    C = [c for c in e2res["cells"] if c.get("n_layers")]
+    miss = sum(c.get("n_missing") or 0 for c in e2res["coverage"])
+    src = f"reports/analysis/e2_cells.csv ({len(C)} model-cells; planned E2 layer lines still missing: {miss})"
+    mf = [(c, o) for c in C for o in ("joint", "p_then_q") if finite(c.get(f"ratio_{o}_pct"))]
+    add("ETwoMaskFirstSub", _n(sum(c[f"ratio_{o}_pct"] < 0 for c, o in mf)) if mf else "--",
+        "R9: E2 (model, cell, order in joint/P->Q) with summed-layer I_E/(E_P+E_Q) < 0", src)
+    add("ETwoMaskFirstTotal", _n(len(mf)) if mf else "--", "R10: such combinations available", src)
+    for arm, at, r1, r2 in (("joint", "Joint", "R11", "R12"), ("p_then_q", "PQ", "R13", "R14")):
+        v = [100 * c[f"share_sub_{arm}"] for c in C if finite(c.get(f"share_sub_{arm}"))]
+        add(f"ETwoSub{at}MinPct", num(min(v), 0) if v else "--", f"{r1}: smallest share of sub-additive layers, {ORDER_TXT[arm]}, over cells (%)", src)
+        add(f"ETwoSub{at}MaxPct", num(max(v), 0) if v else "--", f"{r2}: largest share of sub-additive layers, {ORDER_TXT[arm]} (%)", src)
+    rh = [r for r in e2res["spearman"] if r["arm"] == "p_then_q" and finite(r.get("rho"))]
+    srcr = f"reports/analysis/e2_spearman.csv (arm p_then_q, {len(rh)} model-cells)"
+    add("ETwoRhoMin", signed(min(r["rho"] for r in rh), 2) if rh else "--", "R15: smallest Spearman rho, P->Q layer ratio vs h_corr_index", srcr)
+    add("ETwoRhoMax", signed(max(r["rho"] for r in rh), 2) if rh else "--", "R16: largest of those rhos", srcr)
+    add("ETwoRhoPMax", pval(max(r["p"] for r in rh)) if rh else "--", "R17: largest p-value of those rhos", srcr)
+    for cv in e2res["coverage"]:
+        cm = [c for c in C if c["model"] == cv["model"] and finite(c.get("ratio_block0_p_then_q_pct"))]
+        add(f"ETwoBlockZeroSuperPQ{model_tag(cv['model'])}", _n(sum(c["ratio_block0_p_then_q_pct"] > 0 for c in cm)) if cm else "--",
+            f"R18: {cv['model']}, cells (of {len(cm)}) where the P->Q ratio of block 0 is > 0", src)
+    pen = [c for c in C if finite(c.get("qp_penalty_sum")) and c["qp_penalty_sum"] > 0]
+    add("ETwoRefitWorse", _n(sum(finite(c.get("penalty_removed_q_then_p_refit_pct")) and c["penalty_removed_q_then_p_refit_pct"] < 0
+                                 for c in pen)) if C else "--",
+        "R21: cells with a Q->P penalty where the re-fitted grid removes a negative share", src)
+    add("ETwoPenaltyCells", _n(len(pen)) if C else "--", "R22: cells with qp_penalty_sum > 0", src)
+    v = [c["penalty_removed_q_then_p_pmask_pct"] for c in pen if finite(c.get("penalty_removed_q_then_p_pmask_pct"))]
+    add("ETwoRemovedPmaskMaxPct", num(max(v), 0) if v else "--", "R23: largest share removed by the pruning-only mask over the R22 cells (%)", src)
+    v = [abs(c["stale_grid_on_pq_pct"]) for c in C if finite(c.get("stale_grid_on_pq_pct"))]
+    add("ETwoStaleMaxAbsPct", num(max(v), 1) if v else "--", "R24: largest |stale grid imposed on P->Q| over cells (% of its error)", src)
+    # R19-R20: Q->P worst at 4 bits (every 4-bit cell with three orders, E1 and E4)
+    R4 = [r for r in q["q2"] if r["bits"] == 4 and r.get("wt_ppl_ranking")]
+    src = f"reports/analysis/q2_order_ranking.csv (seed 0, every 4-bit cell with three orders: {len(R4)})"
+    add("QTwoQPWorstPplBFour", _n(sum(r["wt_ppl_worst"] == "q_then_p" and not r["wt_ppl_tie_at_worst"] for r in R4)) if R4 else "--",
+        "R19: 4-bit cells (25/33/50/60%) where Q->P has the strictly highest WikiText-2 ppl", src)
+    add("QTwoCellsPplBFour", _n(len(R4)) if R4 else "--", "R20: 4-bit cells with all three orders ranked", src)
+    # R25-R26: McNemar P->Q vs Q->P, pooled 9 tasks
+    mc = [x for x in e1["mcnemar"] if x["order_a"] == "p_then_q" and x["order_b"] == "q_then_p" and x["task"] == "pooled9"
+          and x["seed"] == 0]
+    src = "reports/analysis/e1_mcnemar.csv (task pooled9, seed 0; extra_orders.mcnemar)"
+    add("McNemarSigPQQP", _n(sum(x["p"] < 0.05 for x in mc)) if mc else "--", "R25: cells where P->Q vs Q->P has exact McNemar p < 0.05", src)
+    add("McNemarCellsPQQP", _n(len(mc)) if mc else "--", "R26: cells with that test", src)
+    # R27-R28: hardware / precision
+    src = "reports/analysis/repro_hardware.csv"
+    for r in [x for x in repro if x["family"] == "REPRO16"]:
+        add(f"HwDelta{model_tag(r['model'])}{config_tag(r['order'], r['sparsity'], r['bits'])}Pct", signed(r["rel_delta_pct"], 1),
+            f"R27: {r['model']} {store.label(r['state_id'].replace('__float16', '__float32'))}: 100(ppl REPRO16 / ppl {r['reference']} - 1)",
+            src + f" (`{r['state_id']}`)")
+    r32 = [x for x in repro if x["family"] == "REPRO32"]
+    ok = r32 and all(finite(x["rel_delta_pct"]) for x in r32)
+    add("ReproThirtyTwoMaxAbsPct", num(max(abs(x["rel_delta_pct"]) for x in r32), 1) if ok else "--",
+        f"R28: largest |100(ppl REPRO32 / ppl results_fix - 1)| over the {len(r32)} planned REPRO32 states (-- until all exist)", src)
+    # R30-R31: calibration seeds (E5)
+    ss = [r for r in q["seed_stability"] if r["complete"]]
+    src = "reports/analysis/seed_order_stability.csv"
+    add("SeedBestStable", _n(sum(r["stable"] for r in ss)) if ss else "--",
+        "R30: 4-bit cells of the E5 models whose best order by WikiText-2 ppl is the same for every seed", src)
+    add("SeedBestCells", _n(len(ss)) if ss else "--", "R30: 4-bit cells of the E5 models with every seed and order", src)
+    for nm, sel in (("Single", ("prune", "quant")), ("Combined", COMBINED)):
+        v = [100 * r["wt_ppl_sd"] / r["wt_ppl_mean"] for r in e1["seeds"] if r["order"] in sel and r["n"] >= 3
+             and finite(r.get("wt_ppl_sd")) and finite(r.get("wt_ppl_mean"))]
+        add(f"SeedSdMax{nm}Pct", num(max(v), 1) if v else "--",
+            f"R31: largest 100 sd/mean of WikiText-2 ppl over three seeds, {nm.lower()} states", "reports/analysis/e1_seeds.csv")
+    # R29: paired accuracy differences between orders, mean over the 9 tasks (v2 metric), in points
+    ad = {(x["model"], x["cell"], x["order_a"], x["order_b"]): x for x in e1["acc_orders"] if x["task"] == "mean9_v2" and x["seed"] == 0}
+    for model in store.models():
+        mt = model_tag(model)
+        sec2 = f"Paired accuracy differences of {model} (R29; seed 0)"
+        for s, b in store.cells(model, 0):
+            orders = [o for o in COMBINED if store.is_planned(model, o, s, b, 0) or store.get(model, o, s, b, 0)]
+            pairs = [(a, c) for i, a in enumerate(orders) for c in orders[i + 1:] if a in PAPER_ORDERS]
+            for a, c in pairs:
+                x = ad.get((model, cell_label(s, b), a, c))
+                row = {"model_tag": mt, "row": cell_tag(s, b) + ORDER_TAG[a] + ORDER_TAG[c],
+                       "row_label": f"{cell_label(s, b)}: {ORDER_TXT[a]} minus {ORDER_TXT[c]}",
+                       "row_source": "`reports/analysis/e1_acc_orders.csv` task `mean9_v2`" + ("" if x else " (not available yet)")}
+                for col, key, what in (("AccDiff", "diff", "mean accuracy difference over the 9 tasks, v2 metric, points (x100)"),
+                                       ("AccDiffLo", "lo", "its paired-bootstrap 95% interval, lower end"),
+                                       ("AccDiffHi", "hi", "its paired-bootstrap 95% interval, upper end")):
+                    v = 100 * x[key] if x and finite(x[key]) else None
+                    M.add(sec2, col + mt + row["row"], signed(v, 1), f"{model} {row['row_label']}: {what}", row["row_source"],
+                          grid=dict(row, col=col, col_meaning=what, col_index=("diff", "lo", "hi").index(key)))
+
+
+def write_all(store, e1, q, det, fr, e2res, boolq, paths, missing, repro=()):
     G = paths.generated
     write_text(os.path.join(G, "table_main_rows.tex"), table_main_rows(store, e1, fr, missing))
     write_text(os.path.join(G, "table_kl_flips.tex"), table_kl_flips(store, e1, missing))
@@ -580,6 +695,7 @@ def write_all(store, e1, q, det, fr, e2res, boolq, paths, missing):
     macros_seeds(M, store, e1)
     macros_questions(M, store, q)
     macros_misc(M, store, e1, det, fr, e2res, boolq)
+    macros_requests(M, store, e1, q, fr, e2res, repro)
     write_text(os.path.join(G, "macros.tex"), M.tex())
     write_text(os.path.join(G, "MACROS.md"), M.md(MACROS_HEADER))
     n_missing = sum(r["value"] == "--" for r in M.rows)

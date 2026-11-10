@@ -25,7 +25,7 @@ import time
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
-from scripts.analysis import boolq_chance, det, e1, e2, frontier, latex, questions, summary  # noqa: E402
+from scripts.analysis import boolq_chance, det, e1, e2, frontier, latex, questions, repro, summary  # noqa: E402
 from scripts.analysis import stats as S  # noqa: E402
 from scripts.analysis.common import Missing, Paths, Store  # noqa: E402
 
@@ -49,15 +49,17 @@ def run(paths=None, B=S.BOOT_B, figures=True, fetch=True, log=print):
     frontier.write(fr, paths)
     e2res = e2.analyze(paths, missing)
     e2.write(e2res, paths)
-    tex = latex.write_all(store, e1res, qres, detres, fr, e2res, boolq[:2], paths, missing)
+    rep = repro.analyze(paths, missing)
+    repro.write(rep, paths)
+    tex = latex.write_all(store, e1res, qres, detres, fr, e2res, boolq[:2], paths, missing, repro=rep)
     figs = []
     if figures:
         from scripts.analysis import figures as F
         figs = F.write_all(store, fr, qres, e2res, paths)
-    summary.write(store, e1res, qres, detres, fr, e2res, boolq, tex, missing, paths, B, figs)
+    summary.write(store, e1res, qres, detres, fr, e2res, boolq, tex, missing, paths, B, figs, rep)
     log(f"[make_tables] {tex['macros']} macros ({tex['macros_missing']} still --), {len(figs)} figures, "
         f"{len(missing.items)} missing entries; {time.time() - t0:.1f}s")
-    return {"store": store, "e1": e1res, "q": qres, "det": detres, "frontier": fr, "e2": e2res, "tex": tex,
+    return {"store": store, "e1": e1res, "q": qres, "det": detres, "frontier": fr, "e2": e2res, "tex": tex, "repro": rep,
             "missing": missing, "figures": figs}
 
 

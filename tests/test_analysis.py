@@ -283,6 +283,44 @@ def test_store_and_alignment(tmp_path):
     assert store2.items(sid) is None and "sha256" in store2.item_problems[sid]
 
 
+def test_requested_macros_on_fake_results(tmp_path):
+    """Macros requested by paper/main.tex (R1-R31): exact names, values from the fake files, -- when missing."""
+    root = str(tmp_path)
+    lines = make_fake_repo(root)
+    q4 = [r for r in lines if r["order"] == "quant" and r["bits"] == 4][0]
+    rep = dict(q4, family="REPRO16", dtype="float16", state_id=q4["state_id"].replace("__float32", "__float16"),
+               wikitext2={"ppl": 1.013 * q4["wikitext2"]["ppl"]}, tasks={}, items_file=None, c4=None)
+    os.makedirs(os.path.join(root, "results", "v2", "REPRO16"))
+    with open(os.path.join(root, "results", "v2", "REPRO16", "SmolLM2-135M.jsonl"), "w") as f:
+        f.write(json.dumps(rep) + "\n")
+    from scripts.make_tables import run
+    out = run(paths=Paths(root=root), B=200, figures=False, fetch=False, log=lambda *a: None)
+    assert rep["state_id"] not in out["store"].states  # REPRO lines never become study states
+    with open(os.path.join(root, "paper", "generated", "macros.tex")) as f:
+        vals = dict(re.findall(r"^\\newcommand\{\\([^}]*)\}\{(.*)\}$", f.read(), flags=re.M))
+    with open(os.path.join(root, "results", "results_full.jsonl")) as f:
+        pub = [json.loads(x) for x in f if json.loads(x)["order"] == "quant" and json.loads(x)["bits"] == 4][0]["ppl"]
+    want = 100 * (rep["wikitext2"]["ppl"] / pub - 1)
+    assert vals["resHwDeltaSmolSmallQuantBFourPct"] == "\\ensuremath{" + f"{want:+.1f}" + "}"
+    assert vals["resReproThirtyTwoMaxAbsPct"] == "--"          # no REPRO32 line
+    best = min((r for r in lines if r["sparsity"] == 0.25 and r["bits"] == 4), key=lambda r: r["wikitext2"]["ppl"])
+    gap = abs(100 * (best["wikitext2"]["ppl"] / q4["wikitext2"]["ppl"] - 1))
+    assert vals["resFrontierFourGapMaxPct"] == f"{gap:.1f}"
+    assert vals["resFrontierThreeModels"] == "--" and vals["resFrontierThreeWins"] == "--"  # no 50%+4 state
+    assert vals["resIdentityQPThreeCount"] == "1" and vals["resIdentityQPThreeModels"] == "1"
+    cell = [c for c in out["e2"]["cells"] if c.get("n_layers")]
+    assert vals["resETwoMaskFirstTotal"] == str(2 * len(cell))
+    assert vals["resETwoMaskFirstSub"] == str(sum((c["ratio_joint_pct"] < 0) + (c["ratio_p_then_q_pct"] < 0) for c in cell))
+    acc = [x for x in out["e1"]["acc_orders"] if x["task"] == "mean9_v2" and x["order_a"] == "p_then_q"
+           and x["order_b"] == "q_then_p" and x["cell"] == "25%+4"][0]
+    for name, key in (("resAccDiffSmolSmallSTwentyFiveBFourPQQP", "diff"), ("resAccDiffLoSmolSmallSTwentyFiveBFourPQQP", "lo"),
+                      ("resAccDiffHiSmolSmallSTwentyFiveBFourPQQP", "hi")):
+        assert vals[name] == "\\ensuremath{" + f"{100 * acc[key]:+.1f}" + "}"
+    assert vals["resAccDiffSmolSmallSFiftyBFourPQQP"] == "--"  # planned cell, not in the fake results
+    assert vals["resBitsSymSmolSmallQuantBThree"] == f"{[r for r in lines if r['order'] == 'quant' and r['bits'] == 3][0]['storage']['symbol_entropy']:.2f}"
+    assert vals["resSeedBestCells"] == "--" and vals["resSeedSdMaxSinglePct"] == "--"
+
+
 def test_macros_and_tables_on_fake_results(tmp_path):
     root = str(tmp_path)
     lines = make_fake_repo(root)

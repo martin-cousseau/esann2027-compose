@@ -1,0 +1,103 @@
+\begin{thebibliography}{10}
+
+\bibitem{frantar2023sparsegpt}
+Elias Frantar and Dan Alistarh.
+\newblock {SparseGPT}: Massive language models can be accurately pruned in
+  one-shot.
+\newblock In {\em Proceedings of the 40th International Conference on Machine
+  Learning (ICML)}, volume 202 of {\em PMLR}, pages 10323--10337, 2023.
+
+\bibitem{frantar2023gptq}
+Elias Frantar, Saleh Ashkboos, Torsten Hoefler, and Dan Alistarh.
+\newblock {OPTQ}: Accurate quantization for generative pre-trained
+  transformers.
+\newblock In {\em International Conference on Learning Representations (ICLR)},
+  2023.
+\newblock Preprint title: {GPTQ}: Accurate Post-Training Quantization for
+  Generative Pre-trained Transformers, arXiv:2210.17323.
+
+\bibitem{frantar2022obc}
+Elias Frantar, Sidak~Pal Singh, and Dan Alistarh.
+\newblock Optimal brain compression: A framework for accurate post-training
+  quantization and pruning.
+\newblock In {\em Conference on Neural Information Processing Systems
+  (NeurIPS)}, 2022.
+
+\bibitem{laborde2025semantic}
+Stanislas Laborde, Martin Cousseau, Antoun Yaacoub, and Lionel Prevost.
+\newblock Semantic retention and extreme compression in {LLMs}: Can we have
+  both?
+\newblock In {\em 2025 International Joint Conference on Neural Networks
+  (IJCNN)}, pages 1--9. IEEE, 2025.
+
+\bibitem{zhou2025revisiting}
+Zihan Zhou, Simon Kurz, and Zhixue Zhao.
+\newblock Revisiting pruning vs quantization for small language models.
+\newblock In {\em Findings of the Association for Computational Linguistics:
+  {EMNLP} 2025}, pages 12055--12070, 2025.
+
+\bibitem{harma2025interplay}
+Simla~Burcu Harma, Ayan Chakraborty, Elizaveta Kostenok, Danila Mishin, Dongho
+  Ha, Babak Falsafi, Martin Jaggi, Ming Liu, Yunho Oh, Suvinay Subramanian, and
+  Amir Yazdanbakhsh.
+\newblock Effective interplay between sparsity and quantization: From theory to
+  practice.
+\newblock In {\em International Conference on Learning Representations (ICLR)},
+  2025.
+
+\bibitem{kim2026order}
+Minjun Kim, Jaehyeon Choi, Hyunwoo Yang, Jongjin Kim, Jinho Song, and U~Kang.
+\newblock Prune-then-quantize or quantize-then-prune? {U}nderstanding the
+  impact of compression order in joint model compression.
+\newblock In {\em International Conference on Learning Representations (ICLR)},
+  2026.
+
+\bibitem{bouriel2026interaction}
+Iheb Bouriel, Qassim Nasir, and Manar Abu~Talib.
+\newblock Interaction effects in hybrid compression of small language models.
+\newblock In {\em Proceedings of the Thirty-Fifth International Joint
+  Conference on Artificial Intelligence, {IJCAI-26}}, pages 5666--5674, 2026.
+
+\bibitem{guo2026obr}
+Hang Guo, Luca Benini, and Yawei Li.
+\newblock Optimal brain restoration for joint quantization and sparsification
+  of {LLMs}.
+\newblock In {\em International Conference on Learning Representations (ICLR)},
+  2026.
+
+\bibitem{benallal2025smollm2}
+Loubna Ben~Allal et~al.
+\newblock {SmolLM2}: When smol goes big --- data-centric training of a fully
+  open small language model.
+\newblock In {\em Conference on Language Modeling (COLM)}, 2025.
+
+\bibitem{qwen2024qwen25}
+{Qwen Team}.
+\newblock {Qwen2.5} technical report, 2024.
+\newblock arXiv:2412.15115.
+
+\bibitem{dutta2024accuracy}
+Abhinav Dutta, Sanjeev Krishnan, Nipun Kwatra, and Ramachandran Ramjee.
+\newblock Accuracy is not all you need.
+\newblock In {\em Conference on Neural Information Processing Systems
+  (NeurIPS)}, 2024.
+
+\bibitem{raffel2020t5}
+Colin Raffel et~al.
+\newblock Exploring the limits of transfer learning with a unified text-to-text
+  transformer.
+\newblock {\em Journal of Machine Learning Research}, 21(140):1--67, 2020.
+
+\bibitem{merity2017pointer}
+Stephen Merity, Caiming Xiong, James Bradbury, and Richard Socher.
+\newblock Pointer sentinel mixture models.
+\newblock In {\em International Conference on Learning Representations (ICLR)},
+  2017.
+
+\bibitem{gao2024lmeval}
+Leo Gao et~al.
+\newblock The language model evaluation harness.
+\newblock Zenodo, 2024.
+\newblock Version v0.4.3, doi:10.5281/zenodo.12608602.
+
+\end{thebibliography}
