@@ -129,3 +129,7 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     C4 and KL only, so the frontier conclusion is tested within one family at 15x the smallest model. E5 runs
     SmolLM2-360M with calibration seeds 1 and 2 (4-bit alone and the nine 4-bit cells), perplexity, C4 and KL.
     Qwen2.5 seeds, the prune-only seeds, the 3-bit seeds, Qwen2.5-1.5B/3B and MMLU are cut (shrink order).
+30. **2026-11-10, keepalive stops when the work does.** The runtime-side keepalive exits after 15 min without
+    any chain or runner process, so a finished runtime is freed by Colab within about half an hour even when
+    this session is away; follow-on chains (E6 on A, E5 on B) are armed to start as soon as the current chain
+    ends, so no runtime idles between queues.

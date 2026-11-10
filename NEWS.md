@@ -4,15 +4,17 @@
 - **Angle:** B + C (honest storage frontier with the mask counted, plus free zeros), provisional
   (DECISIONS.md #25). The 6-page LaTeX draft exists (`paper/main.tex`, `paper/main.pdf`); its numbers are
   generated macros, and 29 new macros are being added.
-- **Status:** E1 SmolLM2-135M complete (25 states), E4 SmolLM2-135M complete, E3 135M in progress, E1 Qwen 13/25,
-  E1 SmolLM2-360M not started. Runtimes `esann-a5` and `esann-b4` since 18:04 UTC.
+- **Status (21:00 UTC):** SmolLM2-135M complete (E1 25, E2, E3 16, E4 5): angle B + C confirmed on it. E1 Qwen
+  19/25, E1 SmolLM2-360M 5/25. Queued: A: 360M E1 (to ~02:30), then E6 SmolLM2-1.7B (7 states, to ~06:00);
+  B: Qwen E1, E4 Qwen/360M, E3 360M/Qwen (to ~06:00), then E5 SmolLM2-360M seeds (to ~08:30).
 - **Blockers:** none. Risk: this session was suspended twice by usage limits; each time the runtimes died about
   an hour later. A runtime-side keepalive is now running too (DECISIONS.md #27); finished units are never lost.
 - **Decisions waiting on you:** none urgent (QUESTIONS.md). The draft is authored "A. Yaacoub" (from README.md),
   affiliation to be confirmed.
 - **GPU type locked:** NVIDIA L4, fp32, TF32 off; images `..._20261106-060046_RC00` and `..._20261109-060054_RC00`
   (the second admitted after a bit-exact check, #26).
-- **CU (estimate; check the Colab website):** about 33 spent, about 67 left; 2 runtimes alive (about 4.5 CU/h).
+- **CU (estimate; check the Colab website):** about 39 spent, about 61 left; the armed queues need about 53
+  (total about 92); 2 runtimes alive (about 4.5 CU/h). Runtimes free themselves when their queues end.
 - **Links:** PR https://github.com/martin-cousseau/esann2027-compose/pull/1 ; W&B (public)
   https://wandb.ai/martin-css/esann2027-compose-v2 ; models (private until the end)
   https://huggingface.co/martincousseau/esann2027-compose-v2
