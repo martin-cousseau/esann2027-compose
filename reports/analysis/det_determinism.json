@@ -1,0 +1,10 @@
+[
+ {
+  "state_id": "SmolLM2-135M__joint__s0.5000__b4__seed0__float32",
+  "det_source": "results/v2/DET/SmolLM2-135M.jsonl",
+  "det_gpu": "NVIDIA L4, 580.82.07, GPU-4bf4ccbd-e257-9817-893f-47683fc2d80d, 00000000:00:03.0, 23034 MiB, 2040 MHz",
+  "det_ppl": 44.471287794545596,
+  "det_nll_sum": 1149670.6870117188,
+  "status": "pending: the same state is not in the study families yet"
+ }
+]

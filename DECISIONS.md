@@ -62,3 +62,10 @@ Every judgment call, with the reason and the date (UTC). Newest last.
 17. **2026-11-10, lm-eval batch sizes.** Batch 64 ran out of memory on long BoolQ/SciQ requests (fp32 logits
     and log-softmax over a 49k vocabulary). Fixed sizes: 16 for SmolLM2 models, 8 for Qwen2.5 (152k vocabulary);
     the OOM retry now runs outside the except block, and the dense copy waits on the CPU during lm-eval.
+18. **2026-11-10, keep the kernel busy.** Colab reclaimed both runtimes about 20 minutes after the last code
+    execution, although runner processes were using the GPU (and the pilot earlier the same way): the idle
+    check looks at the kernel, not at background processes. Chains are now started from a kernel cell that
+    blocks until they finish, so the runtime stays alive while it works and frees itself after its queue is
+    done. Finished units were all safe (resume-safe runners, results pulled every 90 s); the two units in
+    progress were lost and are re-run. Finished result files are pushed back to fresh runtimes so the runners
+    skip them.

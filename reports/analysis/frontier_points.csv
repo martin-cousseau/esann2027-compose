@@ -1,0 +1,3 @@
+model,state_id,kind,order,sparsity,bits,cell,bits_tcr,bits_bitmap,bits_entropy_actual,bits_symbol_entropy,group_overhead,zero_frac_actual,mask_frac_actual,wt_ppl,wt_kl,c4_ppl,c4_kl,best_in_cell
+SmolLM2-135M,SmolLM2-135M__dense__s0.0000__b16__seed0__float32,dense,dense,0.0,16,,16.0,16.0,,,0.0,,,15.415320214104828,0.0,20.55300065847101,0.0,
+Qwen2.5-0.5B,Qwen2.5-0.5B__dense__s0.0000__b16__seed0__float32,dense,dense,0.0,16,,16.0,16.0,,,0.0,,,13.06988507653256,0.0,19.611714072680343,0.0,

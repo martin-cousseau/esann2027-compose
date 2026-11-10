@@ -173,7 +173,7 @@ def _model(store, model, sids, chance, missing, out, B, seed):
         for name, spec in S.SR_SETS.items():
             try:
                 pt, lo, hi = bs.stat(lambda g: S.isr(g, sid, psid, qsid, dsid, spec, chance))
-                parts = [bs.stat(lambda g, x=x: S.sr(g, x, dsid, spec, chance))[0] for x in (sid, psid, qsid)]
+                parts = [bs.value(lambda g, x=x: S.sr(g, x, dsid, spec, chance)) for x in (sid, psid, qsid)]
             except S.MissingData as e:
                 missing.add("E1 I_Sr", f"{sid} {name}", f"no data for {e.args[0]}")
                 continue

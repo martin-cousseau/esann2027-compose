@@ -1,0 +1,26 @@
+[
+ {
+  "model": "SmolLM2-135M",
+  "q_then_p_state": null,
+  "quant3_state": null,
+  "status": "pending"
+ },
+ {
+  "model": "SmolLM2-360M",
+  "q_then_p_state": null,
+  "quant3_state": null,
+  "status": "pending"
+ },
+ {
+  "model": "Qwen2.5-0.5B",
+  "q_then_p_state": null,
+  "quant3_state": null,
+  "status": "pending"
+ },
+ {
+  "model": "SmolLM2-1.7B",
+  "q_then_p_state": null,
+  "quant3_state": null,
+  "status": "pending"
+ }
+]

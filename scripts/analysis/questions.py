@@ -13,7 +13,17 @@ fp  for every published (model, order, s, b) at seed 0: v2 fp32 perplexity again
 """
 import os
 
-from .common import COMBINED, LAYER_TYPES, ORDER_TXT, PAPER_ORDERS, cell_label, finite, layer_type, load_v1, write_csv
+from .common import (ARMS, COMBINED, LAYER_TYPES, MECH_ARMS, MQ, ORDER_TXT, PAPER_ORDERS, cell_label, finite, layer_type,
+                     load_v1, short, skey, write_csv)
+
+# Scope of the headline counts ("X of Y cells"): the paper's grid, i.e. the E1 cells of the core models
+# (scripts/make_queues.py). Other cells (E4's 60%, E6's model) are in the per-cell CSV files.
+PAPER_GRID = {(short(m), skey(u["sparsity"]), int(u["bits"])) for m, q in MQ.e1().items() for u in q
+              if u["order"] in PAPER_ORDERS}
+
+
+def in_grid(r):
+    return (r["model"], skey(r["sparsity"]), int(r["bits"])) in PAPER_GRID
 
 Q2_METRICS = (  # name, label, +1 = lower is better, -1 = higher is better; the first five define agreement
     ("wt_ppl", "WikiText-2 ppl", 1), ("c4_ppl", "C4 ppl", 1), ("wt_kl", "KL (WikiText-2)", 1),
@@ -79,7 +89,7 @@ def q1(store, missing):
 
 def q1_summary(rows, seed=0):
     """Counts as the paper states them (seed 0, the three paper orders), and pooled layer shares."""
-    R = [r for r in rows if r["seed"] == seed and r["order"] in PAPER_ORDERS and r["ratio_mean_pct"] is not None]
+    R = [r for r in rows if r["seed"] == seed and r["order"] in PAPER_ORDERS and r["ratio_mean_pct"] is not None and in_grid(r)]
     mf = [r for r in R if r["order"] in ("joint", "p_then_q")]
     out = {"mask_first_total": len(mf), "mask_first_subadditive": sum(r["ratio_mean_pct"] < 0 for r in mf)}
     for o in ("joint", "p_then_q", "q_then_p"):
@@ -159,7 +169,8 @@ def q2(store, e1, missing, seed=0):
 
 
 def q2_summary(rows):
-    out = {"cells": len(rows)}
+    rows = [r for r in rows if in_grid(r)]
+    out = {"cells": len(rows), "grid_cells": len(PAPER_GRID)}
     for name, _label, _sign in Q2_METRICS:
         R = [r for r in rows if r.get(f"{name}_ranking")]
         out[f"{name}_cells"] = len(R)
@@ -249,12 +260,46 @@ def fp_summary(rows):
     return out
 
 
+# ----------------------------------------------------------------------------- E3: mechanism on full runs
+def mechanism_e3(store, missing, seed=0):
+    """Share of the Q->P penalty over P->Q (perplexity or KL of full sequential runs) removed by each arm,
+    the model-level counterpart of E2's layer-error shares; and the stale grid imposed on P->Q."""
+    rows = []
+    for model in store.models():
+        for s, b in store.cells(model, seed, ARMS):
+            qp, pq = store.get(model, "q_then_p", s, b, seed), store.get(model, "p_then_q", s, b, seed)
+            row = {"model": model, "cell": cell_label(s, b), "sparsity": s, "bits": b, "seed": seed}
+            for arm in ARMS:
+                if store.get(model, arm, s, b, seed) is None:
+                    missing.add("E3 mechanism (full runs)", f"{model} {cell_label(s, b)} {ORDER_TXT[arm]}",
+                                "not available yet" if store.is_planned(model, arm, s, b, seed) else "not planned")
+            for metric, get in (("wt_ppl", lambda r: (r.get("wikitext2") or {}).get("ppl")),
+                                ("c4_ppl", lambda r: (r.get("c4") or {}).get("ppl")),
+                                ("wt_kl", lambda r: (r.get("wikitext2") or {}).get("kl"))):
+                vqp, vpq = (get(qp) if qp else None), (get(pq) if pq else None)
+                row[f"{metric}_q_then_p"], row[f"{metric}_p_then_q"] = vqp, vpq
+                pen = (vqp - vpq) if finite(vqp) and finite(vpq) else None
+                row[f"{metric}_penalty"] = pen
+                for arm in MECH_ARMS:
+                    r = store.get(model, arm, s, b, seed)
+                    v = get(r) if r else None
+                    row[f"{metric}_{arm}"] = v
+                    row[f"{metric}_removed_{arm}_pct"] = 100 * (vqp - v) / pen if (pen and pen > 0 and finite(v)) else None
+                r = store.get(model, "p_then_q_stale", s, b, seed)
+                v = get(r) if r else None
+                row[f"{metric}_p_then_q_stale"] = v
+                row[f"{metric}_stale_on_pq_pct"] = 100 * (v / vpq - 1) if finite(v) and finite(vpq) and vpq else None
+            rows.append(row)
+    return rows
+
+
 def write(res, paths):
     R = paths.reports
     write_csv(os.path.join(R, "q1_layer_interaction.csv"), res["q1"])
     write_csv(os.path.join(R, "q2_order_ranking.csv"), res["q2"])
     write_csv(os.path.join(R, "q3_order_spread.csv"), res["q3"])
     write_csv(os.path.join(R, "fp16_vs_fp32.csv"), res["fp"])
+    write_csv(os.path.join(R, "e3_mechanism.csv"), res["e3"])
 
 
 def analyze(store, e1, paths, missing):
@@ -263,6 +308,7 @@ def analyze(store, e1, paths, missing):
     res["q2"] = q2(store, e1, missing)
     res["q2_summary"] = q2_summary(res["q2"])
     res["q3"] = q3(res["q2"])
+    res["e3"] = mechanism_e3(store, missing)
     res["fp"], v1 = fp_compare(store, paths, missing)
     res["fp_summary"] = fp_summary(res["fp"])
     res["v1_check"] = v1["check"] if v1 else None

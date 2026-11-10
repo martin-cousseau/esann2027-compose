@@ -1,0 +1,9 @@
+model,state_id,set,value,lo,hi
+SmolLM2-135M,SmolLM2-135M__dense__s0.0000__b16__seed0__float32,sr3_v2,1.0,1.0,1.0
+SmolLM2-135M,SmolLM2-135M__dense__s0.0000__b16__seed0__float32,sr3_paper,1.0,1.0,1.0
+SmolLM2-135M,SmolLM2-135M__dense__s0.0000__b16__seed0__float32,sr9_v2,1.0,1.0,1.0
+SmolLM2-135M,SmolLM2-135M__dense__s0.0000__b16__seed0__float32,sr9_cn,1.0,1.0,1.0
+Qwen2.5-0.5B,Qwen2.5-0.5B__dense__s0.0000__b16__seed0__float32,sr3_v2,1.0,1.0,1.0
+Qwen2.5-0.5B,Qwen2.5-0.5B__dense__s0.0000__b16__seed0__float32,sr3_paper,1.0,1.0,1.0
+Qwen2.5-0.5B,Qwen2.5-0.5B__dense__s0.0000__b16__seed0__float32,sr9_v2,1.0,1.0,1.0
+Qwen2.5-0.5B,Qwen2.5-0.5B__dense__s0.0000__b16__seed0__float32,sr9_cn,1.0,1.0,1.0

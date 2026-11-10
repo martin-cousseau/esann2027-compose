@@ -73,6 +73,10 @@ class PairedBootstrap:
         except KeyError:
             raise MissingData((task, key)) from None
 
+    def value(self, fn):
+        """fn evaluated on the full sample only (no interval)."""
+        return float(fn(self._point))
+
     def stat(self, fn):
         """fn(get) -> value, where get(task, key) is a mean accuracy; fn is evaluated on the full sample (point)
         and on the B resamples at once (numpy arrays). Returns (point, lo, hi); raises MissingData."""

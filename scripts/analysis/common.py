@@ -33,6 +33,7 @@ from scripts.run_grid import short, state_id  # noqa: E402
 PAPER_ORDERS = tuple(MQ.ORDERS)           # joint, p_then_q, q_then_p
 ARMS = tuple(MQ.ARMS)                     # the E3 ablation arms
 COMBINED = PAPER_ORDERS + ARMS
+MECH_ARMS = ("q_then_p_refit", "q_then_p_pmask", "q_then_p_pmask_refit")   # what closes the Q->P penalty
 DTYPE = "float32"
 LAYER_TYPES = ("q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj")
 ORDER_TXT = {"dense": "dense", "prune": "prune only", "quant": "quant only", "joint": "joint", "p_then_q": "P->Q",
@@ -122,7 +123,7 @@ def write_csv(path, rows, columns=None):
                 if k not in columns:
                     columns.append(k)
     with open(path + ".tmp", "w", newline="") as f:
-        w = csv.writer(f)
+        w = csv.writer(f, lineterminator="\n")
         w.writerow(columns)
         for r in rows:
             out = []
@@ -187,6 +188,7 @@ class Store:
         self.states, self.source = {}, {}
         self.det, self.det_source = {}, {}
         self.not_ok, self.failures, self.duplicates, self.other_dtype = [], [], [], []
+        self.archived_failures, self.ignored_files = [], []
         self.item_problems = {}
         self._items = {}
         self.index = {}
@@ -203,13 +205,17 @@ class Store:
                 path = os.path.join(root, fam, f)
                 if not f.endswith(".jsonl"):
                     continue
-                if f.startswith("failures__"):
+                if "failures__" in f:  # failures__<model>.jsonl (current) or an archived copy (renamed by the orchestrator)
                     for r in P.read_jsonl(path):
                         if isinstance(r, dict):
-                            self.failures.append(dict(r, _file=self.paths.rel(path)))
+                            rec = dict(r, _file=self.paths.rel(path))
+                            (self.failures if f.startswith("failures__") else self.archived_failures).append(rec)
                     continue
                 if fam == "E2":
                     continue  # different schema (one line per layer), read by e2.py
+                if fam != "DET" and fam not in MQ.FAMILIES:
+                    self.ignored_files.append(self.paths.rel(path))  # e.g. a pilot: not a study family
+                    continue
                 for r in P.read_jsonl(path):
                     if not isinstance(r, dict) or "state_id" not in r:
                         continue

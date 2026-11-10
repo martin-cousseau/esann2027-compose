@@ -75,6 +75,26 @@ def put_token():
     return 0 if ok else 1
 
 
+def push(local_root, remote_root, include_suffix=(".jsonl", ".json.gz")):
+    """Upload local result files to the runtime (restores a resume point on a fresh runtime)."""
+    import base64
+    n = 0
+    for dirpath, _, files in os.walk(local_root):
+        for f in sorted(files):
+            if not f.endswith(include_suffix) or f.startswith(".") or f.startswith("archived_"):
+                continue
+            lp = os.path.join(dirpath, f)
+            rel = os.path.relpath(lp, local_root)
+            rp = remote_root.strip("/") + "/" + rel
+            mkdirs(os.path.dirname(rp))
+            with open(lp, "rb") as fh:
+                b64 = base64.b64encode(fh.read()).decode()
+            _req("PUT", api_path(rp), {"type": "file", "format": "base64", "content": b64}, timeout=300)
+            n += 1
+    print(f"pushed {n} files from {local_root} to /{remote_root.strip('/')}")
+    return 0
+
+
 def listing(remote):
     d = _req("GET", api_path(remote) + "?content=1")
     return d.get("content") or []
@@ -125,6 +145,9 @@ def main():
     p.add_argument("remote")
     p.add_argument("local")
     p.add_argument("--include", nargs="*", default=None, help="only paths containing one of these substrings")
+    pu = sub.add_parser("push")
+    pu.add_argument("local")
+    pu.add_argument("remote")
     ls = sub.add_parser("ls")
     ls.add_argument("remote")
     a = ap.parse_args()
@@ -136,6 +159,8 @@ def main():
         return put_token()
     if a.cmd == "pull":
         return pull(a.remote, a.local, a.include)
+    if a.cmd == "push":
+        return push(a.local, a.remote)
     for e in listing(a.remote):
         print(f"{e['type'][:4]} {e.get('size') or 0:>10} {e.get('last_modified', '')[:19]} {e['name']}")
     return 0
