@@ -68,9 +68,19 @@ def ping(base, token, kid):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--minutes", type=float, default=4.0)
+    ap.add_argument("--idle-exit-min", type=float, default=15.0,
+                    help="exit when no chain/runner process has existed for this long (lets Colab free the runtime)")
     a = ap.parse_args()
-    kid = None
+    kid, idle_since = None, None
     while True:
+        busy = subprocess.run(["pgrep", "-f", "chain_|run_grid.py|run_e2.py"], capture_output=True, text=True).stdout.strip()
+        if busy:
+            idle_since = None
+        else:
+            idle_since = idle_since or time.time()
+            if time.time() - idle_since >= 60 * a.idle_exit_min:
+                print(time.strftime("%H:%M:%S"), "no work for", a.idle_exit_min, "min: keepalive exits", flush=True)
+                return 0
         try:
             srv = servers()
             s = srv[0]
