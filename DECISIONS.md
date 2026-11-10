@@ -124,3 +124,8 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     the frontier shows no gain from pruning at 4.0 bits/w, a clear gain at 3.0 bits/w (50%+4 vs 3-bit) and
     the only usable points below 3 bits (2-bit plain collapses); angle A fails its bar (no single arm closes
     >= 60% consistently; refit never helps). Final confirmation when 360M and Qwen are complete.
+29. **2026-11-10, E5 and E6 scope for the remaining budget.** About 21 CU remain after the current queues.
+    E6 runs SmolLM2-1.7B in 7 states (dense, 4-bit, 3-bit, 25%+4 and 50%+4 in P->Q and joint) with perplexity,
+    C4 and KL only, so the frontier conclusion is tested within one family at 15x the smallest model. E5 runs
+    SmolLM2-360M with calibration seeds 1 and 2 (4-bit alone and the nine 4-bit cells), perplexity, C4 and KL.
+    Qwen2.5 seeds, the prune-only seeds, the 3-bit seeds, Qwen2.5-1.5B/3B and MMLU are cut (shrink order).
