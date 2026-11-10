@@ -1,1 +1,5 @@
 {"event":"create","name":"runtimes/esann-pilot","spec":"L4/STANDARD/GPU","image":"latest (unspecified)","created_utc":"2026-11-09T23:38:09Z","owner":"orchestrator","purpose":"phase-0 pilot"}
+{"event":"create","name":"runtimes/esann-e1-a","spec":"L4/STANDARD/GPU","created_utc":"2026-11-10T05:53:32Z","owner":"orchestrator","purpose":"E1 135M+360M, E2"}
+{"event":"create","name":"runtimes/esann-e1-b","spec":"L4/STANDARD/GPU","created_utc":"2026-11-10T05:53:35Z","owner":"orchestrator","purpose":"DET, E1 Qwen2.5-0.5B"}
+{"event":"create_failed","name":"runtimes/esann-e2-a","spec":"L4/STANDARD/GPU","utc":"2026-11-10T05:53:40Z","error":"Precondition check failed (likely the 2-concurrent-GPU-runtime limit)"}
+{"event":"reclaimed","name":"runtimes/esann-pilot","observed_utc":"2026-11-10T05:50:30Z","note":"absent from list_runtimes after the session was suspended 23:51-05:49 UTC; lifetime unknown (>= 23:38-00:00 active; upper bound 6.2 h)"}

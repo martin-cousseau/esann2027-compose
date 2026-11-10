@@ -23,6 +23,8 @@ G4 costs about 4.5-5x L4, above the "at most about twice L4" rule, so it was not
 
 ## Allocation and spending (updated after every runtime closes)
 
+Since 2026-11-10 the author lets the 100 CU be allocated freely (DECISIONS.md #10); the table is indicative.
+
 | Item | Allocated CU | Spent (est.) | Notes |
 |---|---|---|---|
 | Phase 0 and timing pilot | 4 | 0 | |
@@ -39,3 +41,6 @@ G4 costs about 4.5-5x L4, above the "at most about twice L4" rule, so it was not
 
 | Runtime | Created (UTC) | Deleted (UTC) | Hours | Est. CU |
 |---|---|---|---|---|
+| esann-pilot | 2026-11-09 23:38 | reclaimed by Colab, time unknown (session suspended 23:51-05:49) | ~1.9 (upper bound 6.2) | ~4.2 (upper bound 13.8) |
+| esann-e1-a | 2026-11-10 05:53 | alive | | |
+| esann-e1-b | 2026-11-10 05:53 | alive | | |
