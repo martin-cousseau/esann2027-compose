@@ -27,6 +27,9 @@ import random
 import sys
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# Where runners write results, logs, caches and models. On Colab: /content/out, outside the git checkout,
+# so updating the code never touches live result files. In the container it defaults to the repository.
+OUT = os.environ.get("ESANN_OUT", REPO)
 REVIEW_ABLATION = os.path.join(REPO, "review_code", "ablation")
 if REVIEW_ABLATION not in sys.path:
     sys.path.insert(0, REVIEW_ABLATION)

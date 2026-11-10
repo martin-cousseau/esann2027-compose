@@ -55,3 +55,10 @@ Every judgment call, with the reason and the date (UTC). Newest last.
 15. **2026-11-10, two runtimes at once.** Colab refused a third concurrent L4 ("Precondition check failed").
     E2 therefore shares runtime A with E1 (E2's sweeps are CPU/launch bound, E1's evaluation GPU bound);
     results do not depend on co-location, only the logged timings do.
+16. **2026-11-10, runtime outputs outside the checkout.** Runners write results, logs, caches and models to
+    `ESANN_OUT=/content/out` on the runtimes, not into the git checkout: committing the pulled results made
+    `git checkout` of new code collide with the live result files. The container keeps the same paths
+    (`results/v2/...`); the watcher mirrors `/content/out/results/v2` into them.
+17. **2026-11-10, lm-eval batch sizes.** Batch 64 ran out of memory on long BoolQ/SciQ requests (fp32 logits
+    and log-softmax over a 49k vocabulary). Fixed sizes: 16 for SmolLM2 models, 8 for Qwen2.5 (152k vocabulary);
+    the OOM retry now runs outside the except block, and the dense copy waits on the CPU during lm-eval.

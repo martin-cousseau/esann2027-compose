@@ -54,8 +54,8 @@ def main():
     ap.add_argument("--session", default=None)
     a = ap.parse_args()
     short = a.model.split("/")[-1]
-    out = os.path.join(ROOT, "results", "v2", "E2", f"{short}.jsonl")
-    status = os.path.join(ROOT, "logs", "status", f"E2__{short}.json")
+    out = os.path.join(P.OUT, "results", "v2", "E2", f"{short}.jsonl")
+    status = os.path.join(P.OUT, "logs", "status", f"E2__{short}.json")
     os.makedirs(os.path.dirname(out), exist_ok=True)
     os.makedirs(os.path.dirname(status), exist_ok=True)
 

@@ -215,7 +215,7 @@ def run_unit(ctx, u, log):
         fs[task] = {"num_fewshot": int(k), "results": a2, "meta": m2}
         items.update({f"{kk}@{k}shot": vv for kk, vv in i2.items()})
     items_abs = os.path.join(ctx["items_root"], f"{sid}.json.gz")
-    items_rel = os.path.relpath(items_abs, ROOT)
+    items_rel = os.path.relpath(items_abs, P.OUT)
     sha = P.write_items(items_abs, items) if items else None
     checks = unit_checks(u, diags, wt)
     main = {task: agg[task].get(f"{P.main_metric(task)},none") for task in agg if task in P.ZERO_SHOT_TASKS}
@@ -235,7 +235,7 @@ def run_unit(ctx, u, log):
                                    {"unit": u, "fp16_flag": args.dtype != "float32"}),
     }
     P.append_jsonl(ctx["out"], row)
-    files = [(ctx["out"], os.path.relpath(ctx["out"], ROOT))] + ([(items_abs, items_rel)] if items else [])
+    files = [(ctx["out"], os.path.relpath(ctx["out"], P.OUT))] + ([(items_abs, items_rel)] if items else [])
     ctx["uploader"].push(files, f"result {sid}")
     log(f"DONE {sid} status={row['status']} ppl={wt['ppl']:.4f} times={t}")
     return row
@@ -265,11 +265,11 @@ def main():
     if args.smoke:
         P.N_CALIB, P.SEQLEN, P.C4_EVAL_WINDOWS = 4, 256, 2
 
-    out = args.out or os.path.join(ROOT, "results", "v2", args.family, f"{short(args.model)}.jsonl")
-    base = os.path.dirname(os.path.abspath(out)) if args.smoke else ROOT  # smoke runs never touch results/ or logs/
+    out = args.out or os.path.join(P.OUT, "results", "v2", args.family, f"{short(args.model)}.jsonl")
+    base = os.path.dirname(os.path.abspath(out)) if args.smoke else P.OUT  # smoke runs never touch results/ or logs/
     log = Log(os.path.join(base, "logs", "runner", f"{args.family}__{short(args.model)}.log"))
     status = os.path.join(base, "logs", "status", f"{args.family}__{short(args.model)}.json")
-    items_root = os.path.join(base, "items") if args.smoke else os.path.join(ROOT, "results", "v2", "items")
+    items_root = os.path.join(base, "items") if args.smoke else os.path.join(P.OUT, "results", "v2", "items")
     import torch
     P.set_determinism(0)
     fp = P.fingerprint()
@@ -317,7 +317,7 @@ def main():
         c4_win, c4_where = P.c4_eval_windows(tok, c4, n=P.C4_EVAL_WINDOWS, seqlen=P.SEQLEN, exclude=excl)
         torch.save({"windows": c4_win, "where": c4_where, "excluded_docs": sorted(excl)}, cpath)
     ctx = dict(items_root=items_root, recorder=recorder, fp=fp,
-               models_root=os.path.join(base if args.smoke else ROOT, "models", short(args.model)),
+               models_root=os.path.join(base, "models", short(args.model)),
                model_uploader=Uploader(args.hf_models_repo, log, repo_type="model", background=True),
                args=args, model=model, tok=tok, dense=dense, dense_sd=dense_sd, core=core, c4=c4, wt_win=wt_win,
                c4_win=c4_win, calibs={}, calib_sha={}, wt_sha=tensor_sha(wt_win), c4_sha=tensor_sha(c4_win),

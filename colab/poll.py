@@ -11,7 +11,7 @@ import os
 import subprocess
 import time
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT = os.environ.get("ESANN_OUT", os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 
 def count_lines(path):

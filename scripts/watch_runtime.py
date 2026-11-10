@@ -27,7 +27,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "scripts"))
 import colab_jupyter as CJ  # noqa: E402
 
-REMOTE = "/content/work"
+REMOTE = "/content/out"  # ESANN_OUT on the runtimes (results, logs, caches, models)
 
 
 def now():
