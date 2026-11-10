@@ -120,3 +120,7 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     stops when this session is suspended (both runtimes died ~1 h after a suspension at 14:48). Each runtime
     now also runs `colab/local_keepalive.py`, which executes a trivial cell through its own Jupyter server
     every 4 min.
+28. **2026-11-10, angle B + C confirmed on the complete SmolLM2-135M picture** (E1 25 states, E2, E3 16, E4 5):
+    the frontier shows no gain from pruning at 4.0 bits/w, a clear gain at 3.0 bits/w (50%+4 vs 3-bit) and
+    the only usable points below 3 bits (2-bit plain collapses); angle A fails its bar (no single arm closes
+    >= 60% consistently; refit never helps). Final confirmation when 360M and Qwen are complete.
