@@ -162,23 +162,23 @@ Macro = `\res` + column + `SmolMedium` + row tag (e.g. `\resPplSmolMediumDense`)
 
 | Row tag | State | Source | Ppl | PplCFour | Kl | KlCFour | TopOnePct | TopOneCFourPct | BitsTcr | BitsMask | BitsSym | FreeZerosPct | FlipsPct | FlipsCWPct | FlipsWCPct | SrThree | SrPaper | SrExt | SrCn |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| `Dense` | dense | `SmolLM2-360M__dense__s0.0000__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |  | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `QuantBEight` | 8-bit | `SmolLM2-360M__quant__s0.0000__b8__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `QuantBFour` | 4-bit | `SmolLM2-360M__quant__s0.0000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `QuantBThree` | 3-bit | `SmolLM2-360M__quant__s0.0000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `Dense` | dense | `results/v2/E1/SmolLM2-360M.jsonl` `SmolLM2-360M__dense__s0.0000__b16__seed0__float32` | `11.46` | `16.14` | `0.000` | `0.000` | `100.0` | `100.0` | `16.00` | `16.00` | `--` |  | `0.0` | `0.0` | `0.0` | `1.000` | `1.000` | `1.000` | `1.000` |
+| `QuantBEight` | 8-bit | `results/v2/E1/SmolLM2-360M.jsonl` `SmolLM2-360M__quant__s0.0000__b8__seed0__float32` | `11.47` | `16.15` | `0.001` | `0.001` | `98.7` | `98.7` | `8.00` | `8.00` | `6.35` | `0.9` | `0.8` | `0.3` | `0.5` | `1.000` | `1.002` | `1.002` | `1.004` |
+| `QuantBFour` | 4-bit | `results/v2/E1/SmolLM2-360M.jsonl` `SmolLM2-360M__quant__s0.0000__b4__seed0__float32` | `13.27` | `18.06` | `0.143` | `0.118` | `81.6` | `81.5` | `4.00` | `4.00` | `3.43` | `14.8` | `10.2` | `6.4` | `3.8` | `0.963` | `0.965` | `0.960` | `0.915` |
+| `QuantBThree` | 3-bit | `results/v2/E1/SmolLM2-360M.jsonl` `SmolLM2-360M__quant__s0.0000__b3__seed0__float32` | `21.97` | `27.28` | `0.650` | `0.533` | `63.2` | `63.6` | `3.00` | `3.00` | `2.42` | `30.8` | `21.5` | `15.9` | `5.7` | `0.830` | `0.834` | `0.853` | `0.686` |
 | `QuantBTwo` | 2-bit | `SmolLM2-360M__quant__s0.0000__b2__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `PruneSTwentyFive` | 25% pruned | `SmolLM2-360M__prune__s0.2500__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `PruneSThirtyThree` | 33% pruned | `SmolLM2-360M__prune__s0.3333__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `PruneSFifty` | 50% pruned | `SmolLM2-360M__prune__s0.5000__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `PruneSTwentyFive` | 25% pruned | `results/v2/E1/SmolLM2-360M.jsonl` `SmolLM2-360M__prune__s0.2500__b16__seed0__float32` | `12.08` | `16.74` | `0.051` | `0.040` | `88.6` | `89.0` | `12.00` | `13.00` | `--` | `25.0` | `6.8` | `3.3` | `3.5` | `0.994` | `0.995` | `1.001` | `1.003` |
+| `PruneSThirtyThree` | 33% pruned | `results/v2/E1/SmolLM2-360M.jsonl` `SmolLM2-360M__prune__s0.3333__b16__seed0__float32` | `12.86` | `17.58` | `0.118` | `0.092` | `83.0` | `83.4` | `10.67` | `11.67` | `--` | `33.3` | `10.2` | `5.6` | `4.6` | `0.976` | `0.971` | `0.986` | `0.970` |
+| `PruneSFifty` | 50% pruned | `results/v2/E1/SmolLM2-360M.jsonl` `SmolLM2-360M__prune__s0.5000__b16__seed0__float32` | `18.63` | `23.99` | `0.497` | `0.411` | `67.3` | `67.4` | `8.00` | `9.00` | `--` | `50.0` | `17.7` | `12.0` | `5.7` | `0.874` | `0.874` | `0.918` | `0.824` |
 | `PruneSSixty` | 60% pruned | `SmolLM2-360M__prune__s0.6000__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBFourJoint` | 25%+4 joint | `SmolLM2-360M__joint__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBFourPQ` | 25%+4 P->Q | `SmolLM2-360M__p_then_q__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBFourQP` | 25%+4 Q->P | `SmolLM2-360M__q_then_p__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBFourJoint` | 25%+4 joint | `results/v2/E1/SmolLM2-360M.jsonl` `SmolLM2-360M__joint__s0.2500__b4__seed0__float32` | `13.20` | `17.88` | `0.139` | `0.108` | `81.3` | `81.9` | `3.00` | `4.00` | `3.32` | `25.4` | `10.3` | `5.6` | `4.7` | `0.974` | `0.971` | `0.981` | `0.959` |
+| `STwentyFiveBFourPQ` | 25%+4 P->Q | `results/v2/E1/SmolLM2-360M.jsonl` `SmolLM2-360M__p_then_q__s0.2500__b4__seed0__float32` | `13.34` | `18.02` | `0.146` | `0.116` | `81.1` | `81.4` | `3.00` | `4.00` | `3.32` | `25.6` | `10.6` | `5.9` | `4.8` | `0.973` | `0.972` | `0.979` | `0.955` |
+| `STwentyFiveBFourQP` | 25%+4 Q->P | `results/v2/E1/SmolLM2-360M.jsonl` `SmolLM2-360M__q_then_p__s0.2500__b4__seed0__float32` | `14.38` | `19.17` | `0.222` | `0.180` | `77.2` | `77.6` | `3.00` | `4.00` | `3.29` | `25.0` | `12.7` | `8.3` | `4.4` | `0.942` | `0.948` | `0.949` | `0.891` |
 | `SThirtyThreeBFourJoint` | 33%+4 joint | `SmolLM2-360M__joint__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SThirtyThreeBFourPQ` | 33%+4 P->Q | `SmolLM2-360M__p_then_q__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SThirtyThreeBFourQP` | 33%+4 Q->P | `SmolLM2-360M__q_then_p__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourJoint` | 50%+4 joint | `SmolLM2-360M__joint__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourPQ` | 50%+4 P->Q | `SmolLM2-360M__p_then_q__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourJoint` | 50%+4 joint | `results/v2/E1/SmolLM2-360M.jsonl` `SmolLM2-360M__joint__s0.5000__b4__seed0__float32` | `20.48` | `26.32` | `0.589` | `0.506` | `64.7` | `64.3` | `2.00` | `3.00` | `2.61` | `50.1` | `19.2` | `13.4` | `5.8` | `0.846` | `0.857` | `0.900` | `0.787` |
+| `SFiftyBFourPQ` | 50%+4 P->Q | `results/v2/E1/SmolLM2-360M.jsonl` `SmolLM2-360M__p_then_q__s0.5000__b4__seed0__float32` | `21.29` | `26.84` | `0.631` | `0.526` | `63.2` | `63.7` | `2.00` | `3.00` | `2.62` | `50.1` | `19.3` | `13.3` | `6.0` | `0.862` | `0.863` | `0.898` | `0.781` |
 | `SFiftyBFourQP` | 50%+4 Q->P | `SmolLM2-360M__q_then_p__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBFourQPRefit` | 50%+4 Q->P refit | `SmolLM2-360M__q_then_p_refit__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBFourQPPmask` | 50%+4 Q->P P-mask | `SmolLM2-360M__q_then_p_pmask__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
@@ -235,14 +235,14 @@ Macro = `\res` + column + `SmolMedium` + row tag (e.g. `\resISrThreeSmolMediumST
 
 | Row tag | State | Source | ISrThree | ISrThreeLo | ISrThreeHi | ISrPaper | ISrPaperLo | ISrPaperHi | ISrExt | ISrExtLo | ISrExtHi | ISrCn | ISrCnLo | ISrCnHi |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| `STwentyFiveBFourJoint` | 25%+4 joint | `SmolLM2-360M__joint__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBFourPQ` | 25%+4 P->Q | `SmolLM2-360M__p_then_q__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBFourQP` | 25%+4 Q->P | `SmolLM2-360M__q_then_p__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBFourJoint` | 25%+4 joint | `results/v2/E1/SmolLM2-360M.jsonl` `SmolLM2-360M__joint__s0.2500__b4__seed0__float32` | `\ensuremath{+0.017}` | `\ensuremath{+0.006}` | `\ensuremath{+0.028}` | `\ensuremath{+0.011}` | `\ensuremath{+0.001}` | `\ensuremath{+0.021}` | `\ensuremath{+0.020}` | `\ensuremath{+0.009}` | `\ensuremath{+0.029}` | `\ensuremath{+0.042}` | `\ensuremath{+0.020}` | `\ensuremath{+0.063}` |
+| `STwentyFiveBFourPQ` | 25%+4 P->Q | `results/v2/E1/SmolLM2-360M.jsonl` `SmolLM2-360M__p_then_q__s0.2500__b4__seed0__float32` | `\ensuremath{+0.016}` | `\ensuremath{+0.005}` | `\ensuremath{+0.028}` | `\ensuremath{+0.012}` | `\ensuremath{+0.001}` | `\ensuremath{+0.022}` | `\ensuremath{+0.017}` | `\ensuremath{+0.007}` | `\ensuremath{+0.027}` | `\ensuremath{+0.038}` | `\ensuremath{+0.016}` | `\ensuremath{+0.059}` |
+| `STwentyFiveBFourQP` | 25%+4 Q->P | `results/v2/E1/SmolLM2-360M.jsonl` `SmolLM2-360M__q_then_p__s0.2500__b4__seed0__float32` | `\ensuremath{-0.015}` | `\ensuremath{-0.025}` | `\ensuremath{-0.004}` | `\ensuremath{-0.013}` | `\ensuremath{-0.025}` | `\ensuremath{-0.003}` | `\ensuremath{-0.013}` | `\ensuremath{-0.023}` | `\ensuremath{-0.003}` | `\ensuremath{-0.027}` | `\ensuremath{-0.049}` | `\ensuremath{-0.008}` |
 | `SThirtyThreeBFourJoint` | 33%+4 joint | `SmolLM2-360M__joint__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SThirtyThreeBFourPQ` | 33%+4 P->Q | `SmolLM2-360M__p_then_q__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SThirtyThreeBFourQP` | 33%+4 Q->P | `SmolLM2-360M__q_then_p__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourJoint` | 50%+4 joint | `SmolLM2-360M__joint__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourPQ` | 50%+4 P->Q | `SmolLM2-360M__p_then_q__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourJoint` | 50%+4 joint | `results/v2/E1/SmolLM2-360M.jsonl` `SmolLM2-360M__joint__s0.5000__b4__seed0__float32` | `\ensuremath{+0.004}` | `\ensuremath{-0.009}` | `\ensuremath{+0.016}` | `\ensuremath{+0.013}` | `\ensuremath{+0.001}` | `\ensuremath{+0.024}` | `\ensuremath{+0.019}` | `\ensuremath{+0.007}` | `\ensuremath{+0.030}` | `\ensuremath{+0.033}` | `\ensuremath{+0.010}` | `\ensuremath{+0.054}` |
+| `SFiftyBFourPQ` | 50%+4 P->Q | `results/v2/E1/SmolLM2-360M.jsonl` `SmolLM2-360M__p_then_q__s0.5000__b4__seed0__float32` | `\ensuremath{+0.020}` | `\ensuremath{+0.008}` | `\ensuremath{+0.032}` | `\ensuremath{+0.019}` | `\ensuremath{+0.007}` | `\ensuremath{+0.030}` | `\ensuremath{+0.016}` | `\ensuremath{+0.005}` | `\ensuremath{+0.028}` | `\ensuremath{+0.027}` | `\ensuremath{+0.004}` | `\ensuremath{+0.051}` |
 | `SFiftyBFourQP` | 50%+4 Q->P | `SmolLM2-360M__q_then_p__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBFourQPRefit` | 50%+4 Q->P refit | `SmolLM2-360M__q_then_p_refit__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBFourQPPmask` | 50%+4 Q->P P-mask | `SmolLM2-360M__q_then_p_pmask__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
@@ -311,7 +311,7 @@ Macro = `\res` + column + `Qwen` + row tag (e.g. `\resPplQwenDense`). Row source
 | `SThirtyThreeBFourQP` | 33%+4 Q->P | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__q_then_p__s0.3333__b4__seed0__float32` | `16.07` | `22.86` | `0.213` | `0.160` | `77.2` | `78.0` | `2.67` | `3.67` | `3.10` | `33.3` | `14.3` | `9.0` | `5.3` | `0.962` | `0.943` | `0.950` | `0.887` |
 | `SFiftyBFourJoint` | 50%+4 joint | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__joint__s0.5000__b4__seed0__float32` | `21.91` | `28.74` | `0.523` | `0.398` | `65.5` | `66.9` | `2.00` | `3.00` | `2.61` | `50.1` | `21.3` | `15.2` | `6.0` | `0.895` | `0.880` | `0.877` | `0.720` |
 | `SFiftyBFourPQ` | 50%+4 P->Q | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__p_then_q__s0.5000__b4__seed0__float32` | `22.18` | `28.95` | `0.541` | `0.404` | `65.2` | `66.7` | `2.00` | `3.00` | `2.61` | `50.1` | `21.4` | `15.5` | `5.9` | `0.890` | `0.878` | `0.870` | `0.705` |
-| `SFiftyBFourQP` | 50%+4 Q->P | `Qwen2.5-0.5B__q_then_p__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourQP` | 50%+4 Q->P | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__q_then_p__s0.5000__b4__seed0__float32` | `22.39` | `30.24` | `0.550` | `0.448` | `65.2` | `65.2` | `2.00` | `3.00` | `2.60` | `50.0` | `21.4` | `15.2` | `6.1` | `0.880` | `0.865` | `0.884` | `0.736` |
 | `SFiftyBFourQPRefit` | 50%+4 Q->P refit | `Qwen2.5-0.5B__q_then_p_refit__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBFourQPPmask` | 50%+4 Q->P P-mask | `Qwen2.5-0.5B__q_then_p_pmask__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBFourQPPmaskRefit` | 50%+4 Q->P P-mask refit | `Qwen2.5-0.5B__q_then_p_pmask_refit__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
@@ -319,23 +319,23 @@ Macro = `\res` + column + `Qwen` + row tag (e.g. `\resPplQwenDense`). Row source
 | `SSixtyBFourJoint` | 60%+4 joint | `Qwen2.5-0.5B__joint__s0.6000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SSixtyBFourPQ` | 60%+4 P->Q | `Qwen2.5-0.5B__p_then_q__s0.6000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SSixtyBFourQP` | 60%+4 Q->P | `Qwen2.5-0.5B__q_then_p__s0.6000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBThreeJoint` | 25%+3 joint | `Qwen2.5-0.5B__joint__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBThreePQ` | 25%+3 P->Q | `Qwen2.5-0.5B__p_then_q__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBThreeQP` | 25%+3 Q->P | `Qwen2.5-0.5B__q_then_p__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBThreeJoint` | 25%+3 joint | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__joint__s0.2500__b3__seed0__float32` | `21.53` | `28.29` | `0.505` | `0.379` | `66.8` | `67.7` | `2.25` | `3.25` | `2.37` | `33.5` | `21.7` | `14.7` | `7.0` | `0.899` | `0.890` | `0.900` | `0.772` |
+| `STwentyFiveBThreePQ` | 25%+3 P->Q | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__p_then_q__s0.2500__b3__seed0__float32` | `21.92` | `28.69` | `0.521` | `0.392` | `66.1` | `67.2` | `2.25` | `3.25` | `2.36` | `34.8` | `21.2` | `15.1` | `6.1` | `0.908` | `0.893` | `0.882` | `0.732` |
+| `STwentyFiveBThreeQP` | 25%+3 Q->P | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__q_then_p__s0.2500__b3__seed0__float32` | `21.84` | `28.33` | `0.514` | `0.380` | `66.8` | `67.8` | `2.25` | `3.25` | `2.39` | `32.1` | `21.8` | `15.1` | `6.6` | `0.887` | `0.885` | `0.882` | `0.731` |
 | `STwentyFiveBThreeQPRefit` | 25%+3 Q->P refit | `Qwen2.5-0.5B__q_then_p_refit__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `STwentyFiveBThreeQPPmask` | 25%+3 Q->P P-mask | `Qwen2.5-0.5B__q_then_p_pmask__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `STwentyFiveBThreeQPPmaskRefit` | 25%+3 Q->P P-mask refit | `Qwen2.5-0.5B__q_then_p_pmask_refit__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `STwentyFiveBThreePQStale` | 25%+3 P->Q stale grid | `Qwen2.5-0.5B__p_then_q_stale__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBThreeJoint` | 33%+3 joint | `Qwen2.5-0.5B__joint__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBThreePQ` | 33%+3 P->Q | `Qwen2.5-0.5B__p_then_q__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBThreeQP` | 33%+3 Q->P | `Qwen2.5-0.5B__q_then_p__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBThreeJoint` | 33%+3 joint | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__joint__s0.3333__b3__seed0__float32` | `21.95` | `28.70` | `0.525` | `0.393` | `66.0` | `67.0` | `2.00` | `3.00` | `2.34` | `37.1` | `22.8` | `16.8` | `6.0` | `0.871` | `0.867` | `0.848` | `0.655` |
+| `SThirtyThreeBThreePQ` | 33%+3 P->Q | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__p_then_q__s0.3333__b3__seed0__float32` | `22.96` | `29.50` | `0.566` | `0.420` | `64.7` | `66.1` | `2.00` | `3.00` | `2.33` | `38.4` | `21.8` | `15.5` | `6.3` | `0.898` | `0.878` | `0.876` | `0.719` |
+| `SThirtyThreeBThreeQP` | 33%+3 Q->P | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__q_then_p__s0.3333__b3__seed0__float32` | `23.15` | `29.40` | `0.580` | `0.417` | `64.4` | `66.3` | `2.00` | `3.00` | `2.37` | `33.6` | `21.8` | `15.3` | `6.6` | `0.890` | `0.880` | `0.880` | `0.726` |
 | `SThirtyThreeBThreeQPRefit` | 33%+3 Q->P refit | `Qwen2.5-0.5B__q_then_p_refit__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SThirtyThreeBThreeQPPmask` | 33%+3 Q->P P-mask | `Qwen2.5-0.5B__q_then_p_pmask__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SThirtyThreeBThreeQPPmaskRefit` | 33%+3 Q->P P-mask refit | `Qwen2.5-0.5B__q_then_p_pmask_refit__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SThirtyThreeBThreePQStale` | 33%+3 P->Q stale grid | `Qwen2.5-0.5B__p_then_q_stale__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBThreeJoint` | 50%+3 joint | `Qwen2.5-0.5B__joint__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBThreePQ` | 50%+3 P->Q | `Qwen2.5-0.5B__p_then_q__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBThreeQP` | 50%+3 Q->P | `Qwen2.5-0.5B__q_then_p__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBThreeJoint` | 50%+3 joint | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__joint__s0.5000__b3__seed0__float32` | `28.62` | `35.45` | `0.792` | `0.611` | `58.2` | `60.2` | `1.50` | `2.50` | `2.12` | `50.9` | `26.0` | `19.3` | `6.6` | `0.822` | `0.820` | `0.823` | `0.599` |
+| `SFiftyBThreePQ` | 50%+3 P->Q | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__p_then_q__s0.5000__b3__seed0__float32` | `29.96` | `36.54` | `0.841` | `0.642` | `57.9` | `59.3` | `1.50` | `2.50` | `2.11` | `51.3` | `26.4` | `20.0` | `6.4` | `0.806` | `0.800` | `0.807` | `0.562` |
+| `SFiftyBThreeQP` | 50%+3 Q->P | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__q_then_p__s0.5000__b3__seed0__float32` | `34.63` | `42.36` | `0.976` | `0.790` | `55.6` | `55.7` | `1.50` | `2.50` | `2.10` | `50.0` | `28.1` | `21.0` | `7.0` | `0.803` | `0.778` | `0.802` | `0.551` |
 | `SFiftyBThreeQPRefit` | 50%+3 Q->P refit | `Qwen2.5-0.5B__q_then_p_refit__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBThreeQPPmask` | 50%+3 Q->P P-mask | `Qwen2.5-0.5B__q_then_p_pmask__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBThreeQPPmaskRefit` | 50%+3 Q->P P-mask refit | `Qwen2.5-0.5B__q_then_p_pmask_refit__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
@@ -375,7 +375,7 @@ Macro = `\res` + column + `Qwen` + row tag (e.g. `\resISrThreeQwenSTwentyFiveBFo
 | `SThirtyThreeBFourQP` | 33%+4 Q->P | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__q_then_p__s0.3333__b4__seed0__float32` | `\ensuremath{-0.017}` | `\ensuremath{-0.031}` | `\ensuremath{-0.002}` | `\ensuremath{-0.007}` | `\ensuremath{-0.020}` | `\ensuremath{+0.006}` | `\ensuremath{+0.023}` | `\ensuremath{+0.011}` | `\ensuremath{+0.036}` | `\ensuremath{+0.048}` | `\ensuremath{+0.023}` | `\ensuremath{+0.077}` |
 | `SFiftyBFourJoint` | 50%+4 joint | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__joint__s0.5000__b4__seed0__float32` | `\ensuremath{+0.007}` | `\ensuremath{-0.005}` | `\ensuremath{+0.022}` | `\ensuremath{+0.015}` | `\ensuremath{+0.002}` | `\ensuremath{+0.029}` | `\ensuremath{+0.014}` | `\ensuremath{+0.004}` | `\ensuremath{+0.026}` | `\ensuremath{+0.022}` | `\ensuremath{-0.001}` | `\ensuremath{+0.044}` |
 | `SFiftyBFourPQ` | 50%+4 P->Q | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__p_then_q__s0.5000__b4__seed0__float32` | `\ensuremath{+0.002}` | `\ensuremath{-0.010}` | `\ensuremath{+0.015}` | `\ensuremath{+0.013}` | `\ensuremath{+0.001}` | `\ensuremath{+0.026}` | `\ensuremath{+0.008}` | `\ensuremath{-0.003}` | `\ensuremath{+0.019}` | `\ensuremath{+0.007}` | `\ensuremath{-0.016}` | `\ensuremath{+0.031}` |
-| `SFiftyBFourQP` | 50%+4 Q->P | `Qwen2.5-0.5B__q_then_p__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourQP` | 50%+4 Q->P | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__q_then_p__s0.5000__b4__seed0__float32` | `\ensuremath{-0.007}` | `\ensuremath{-0.023}` | `\ensuremath{+0.008}` | `\ensuremath{-0.000}` | `\ensuremath{-0.014}` | `\ensuremath{+0.014}` | `\ensuremath{+0.021}` | `\ensuremath{+0.009}` | `\ensuremath{+0.034}` | `\ensuremath{+0.038}` | `\ensuremath{+0.012}` | `\ensuremath{+0.063}` |
 | `SFiftyBFourQPRefit` | 50%+4 Q->P refit | `Qwen2.5-0.5B__q_then_p_refit__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBFourQPPmask` | 50%+4 Q->P P-mask | `Qwen2.5-0.5B__q_then_p_pmask__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBFourQPPmaskRefit` | 50%+4 Q->P P-mask refit | `Qwen2.5-0.5B__q_then_p_pmask_refit__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
@@ -383,23 +383,23 @@ Macro = `\res` + column + `Qwen` + row tag (e.g. `\resISrThreeQwenSTwentyFiveBFo
 | `SSixtyBFourJoint` | 60%+4 joint | `Qwen2.5-0.5B__joint__s0.6000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SSixtyBFourPQ` | 60%+4 P->Q | `Qwen2.5-0.5B__p_then_q__s0.6000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SSixtyBFourQP` | 60%+4 Q->P | `Qwen2.5-0.5B__q_then_p__s0.6000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBThreeJoint` | 25%+3 joint | `Qwen2.5-0.5B__joint__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBThreePQ` | 25%+3 P->Q | `Qwen2.5-0.5B__p_then_q__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBThreeQP` | 25%+3 Q->P | `Qwen2.5-0.5B__q_then_p__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBThreeJoint` | 25%+3 joint | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__joint__s0.2500__b3__seed0__float32` | `\ensuremath{-0.006}` | `\ensuremath{-0.021}` | `\ensuremath{+0.011}` | `\ensuremath{+0.005}` | `\ensuremath{-0.011}` | `\ensuremath{+0.018}` | `\ensuremath{+0.015}` | `\ensuremath{+0.001}` | `\ensuremath{+0.029}` | `\ensuremath{+0.036}` | `\ensuremath{+0.005}` | `\ensuremath{+0.065}` |
+| `STwentyFiveBThreePQ` | 25%+3 P->Q | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__p_then_q__s0.2500__b3__seed0__float32` | `\ensuremath{+0.003}` | `\ensuremath{-0.012}` | `\ensuremath{+0.019}` | `\ensuremath{+0.007}` | `\ensuremath{-0.008}` | `\ensuremath{+0.022}` | `\ensuremath{-0.002}` | `\ensuremath{-0.015}` | `\ensuremath{+0.011}` | `\ensuremath{-0.004}` | `\ensuremath{-0.032}` | `\ensuremath{+0.024}` |
+| `STwentyFiveBThreeQP` | 25%+3 Q->P | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__q_then_p__s0.2500__b3__seed0__float32` | `\ensuremath{-0.018}` | `\ensuremath{-0.027}` | `\ensuremath{-0.009}` | `\ensuremath{-0.001}` | `\ensuremath{-0.009}` | `\ensuremath{+0.007}` | `\ensuremath{-0.003}` | `\ensuremath{-0.009}` | `\ensuremath{+0.004}` | `\ensuremath{-0.005}` | `\ensuremath{-0.018}` | `\ensuremath{+0.007}` |
 | `STwentyFiveBThreeQPRefit` | 25%+3 Q->P refit | `Qwen2.5-0.5B__q_then_p_refit__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `STwentyFiveBThreeQPPmask` | 25%+3 Q->P P-mask | `Qwen2.5-0.5B__q_then_p_pmask__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `STwentyFiveBThreeQPPmaskRefit` | 25%+3 Q->P P-mask refit | `Qwen2.5-0.5B__q_then_p_pmask_refit__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `STwentyFiveBThreePQStale` | 25%+3 P->Q stale grid | `Qwen2.5-0.5B__p_then_q_stale__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBThreeJoint` | 33%+3 joint | `Qwen2.5-0.5B__joint__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBThreePQ` | 33%+3 P->Q | `Qwen2.5-0.5B__p_then_q__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBThreeQP` | 33%+3 Q->P | `Qwen2.5-0.5B__q_then_p__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBThreeJoint` | 33%+3 joint | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__joint__s0.3333__b3__seed0__float32` | `\ensuremath{-0.015}` | `\ensuremath{-0.034}` | `\ensuremath{+0.002}` | `\ensuremath{+0.001}` | `\ensuremath{-0.017}` | `\ensuremath{+0.017}` | `\ensuremath{+0.001}` | `\ensuremath{-0.014}` | `\ensuremath{+0.016}` | `\ensuremath{-0.011}` | `\ensuremath{-0.042}` | `\ensuremath{+0.020}` |
+| `SThirtyThreeBThreePQ` | 33%+3 P->Q | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__p_then_q__s0.3333__b3__seed0__float32` | `\ensuremath{+0.011}` | `\ensuremath{-0.005}` | `\ensuremath{+0.027}` | `\ensuremath{+0.012}` | `\ensuremath{-0.003}` | `\ensuremath{+0.027}` | `\ensuremath{+0.029}` | `\ensuremath{+0.015}` | `\ensuremath{+0.042}` | `\ensuremath{+0.052}` | `\ensuremath{+0.023}` | `\ensuremath{+0.081}` |
+| `SThirtyThreeBThreeQP` | 33%+3 Q->P | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__q_then_p__s0.3333__b3__seed0__float32` | `\ensuremath{+0.003}` | `\ensuremath{-0.015}` | `\ensuremath{+0.019}` | `\ensuremath{+0.014}` | `\ensuremath{-0.003}` | `\ensuremath{+0.030}` | `\ensuremath{+0.032}` | `\ensuremath{+0.019}` | `\ensuremath{+0.047}` | `\ensuremath{+0.060}` | `\ensuremath{+0.032}` | `\ensuremath{+0.090}` |
 | `SThirtyThreeBThreeQPRefit` | 33%+3 Q->P refit | `Qwen2.5-0.5B__q_then_p_refit__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SThirtyThreeBThreeQPPmask` | 33%+3 Q->P P-mask | `Qwen2.5-0.5B__q_then_p_pmask__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SThirtyThreeBThreeQPPmaskRefit` | 33%+3 Q->P P-mask refit | `Qwen2.5-0.5B__q_then_p_pmask_refit__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SThirtyThreeBThreePQStale` | 33%+3 P->Q stale grid | `Qwen2.5-0.5B__p_then_q_stale__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBThreeJoint` | 50%+3 joint | `Qwen2.5-0.5B__joint__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBThreePQ` | 50%+3 P->Q | `Qwen2.5-0.5B__p_then_q__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBThreeQP` | 50%+3 Q->P | `Qwen2.5-0.5B__q_then_p__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBThreeJoint` | 50%+3 joint | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__joint__s0.5000__b3__seed0__float32` | `\ensuremath{+0.018}` | `\ensuremath{+0.001}` | `\ensuremath{+0.035}` | `\ensuremath{+0.032}` | `\ensuremath{+0.015}` | `\ensuremath{+0.049}` | `\ensuremath{+0.035}` | `\ensuremath{+0.022}` | `\ensuremath{+0.050}` | `\ensuremath{+0.044}` | `\ensuremath{+0.016}` | `\ensuremath{+0.071}` |
+| `SFiftyBThreePQ` | 50%+3 P->Q | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__p_then_q__s0.5000__b3__seed0__float32` | `\ensuremath{+0.002}` | `\ensuremath{-0.016}` | `\ensuremath{+0.021}` | `\ensuremath{+0.012}` | `\ensuremath{-0.005}` | `\ensuremath{+0.028}` | `\ensuremath{+0.019}` | `\ensuremath{+0.005}` | `\ensuremath{+0.034}` | `\ensuremath{+0.008}` | `\ensuremath{-0.021}` | `\ensuremath{+0.037}` |
+| `SFiftyBThreeQP` | 50%+3 Q->P | `results/v2/E1/Qwen2.5-0.5B.jsonl` `Qwen2.5-0.5B__q_then_p__s0.5000__b3__seed0__float32` | `\ensuremath{-0.001}` | `\ensuremath{-0.020}` | `\ensuremath{+0.017}` | `\ensuremath{-0.010}` | `\ensuremath{-0.029}` | `\ensuremath{+0.007}` | `\ensuremath{+0.015}` | `\ensuremath{-0.000}` | `\ensuremath{+0.030}` | `\ensuremath{-0.003}` | `\ensuremath{-0.032}` | `\ensuremath{+0.026}` |
 | `SFiftyBThreeQPRefit` | 50%+3 Q->P refit | `Qwen2.5-0.5B__q_then_p_refit__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBThreeQPPmask` | 50%+3 Q->P P-mask | `Qwen2.5-0.5B__q_then_p_pmask__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBThreeQPPmaskRefit` | 50%+3 Q->P P-mask refit | `Qwen2.5-0.5B__q_then_p_pmask_refit__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
@@ -559,13 +559,13 @@ Columns:
 
 | Macro | Value | Meaning | Source |
 |---|---|---|---|
-| `\resQOneMaskFirstSub` | `18` | joint and P->Q combinations sub-additive (ratio of mean errors < 0) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneMaskFirstTotal` | `18` | joint and P->Q combinations with all three states available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneMaskFirstSub` | `28` | joint and P->Q combinations sub-additive (ratio of mean errors < 0) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneMaskFirstTotal` | `28` | joint and P->Q combinations with all three states available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneRatioMinJointBFourPct` | `\ensuremath{-13.0}` | joint, 4-bit cells: smallest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneRatioMaxJointBFourPct` | `\ensuremath{-9.6}` | joint, 4-bit cells: largest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneSubJointBFour` | `6` | joint, 4-bit cells: cells sub-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneRatioMaxJointBFourPct` | `\ensuremath{-8.0}` | joint, 4-bit cells: largest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneSubJointBFour` | `8` | joint, 4-bit cells: cells sub-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneSuperJointBFour` | `0` | joint, 4-bit cells: cells super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneCellsJointBFour` | `6` | joint, 4-bit cells: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneCellsJointBFour` | `8` | joint, 4-bit cells: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneLayerShareJointBFourPct` | `99` | joint, 4-bit cells: sub-additive layer records, matched layer by layer (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneLayerShareJointBFourQprojPct` | `99` | joint, 4-bit cells: sub-additive q_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneLayerShareJointBFourKprojPct` | `98` | joint, 4-bit cells: sub-additive k_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
@@ -576,11 +576,11 @@ Columns:
 | `\resQOneLayerShareJointBFourDownprojPct` | `99` | joint, 4-bit cells: sub-additive down_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneBlockZeroSuperJointBFour` | `0` | joint, 4-bit cells: cells where block 0 alone is super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneRatioMinJointBThreePct` | `\ensuremath{-23.9}` | joint, 3-bit cells: smallest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneRatioMaxJointBThreePct` | `\ensuremath{-10.2}` | joint, 3-bit cells: largest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneSubJointBThree` | `3` | joint, 3-bit cells: cells sub-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneRatioMaxJointBThreePct` | `\ensuremath{-5.8}` | joint, 3-bit cells: largest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneSubJointBThree` | `6` | joint, 3-bit cells: cells sub-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneSuperJointBThree` | `0` | joint, 3-bit cells: cells super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneCellsJointBThree` | `3` | joint, 3-bit cells: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerShareJointBThreePct` | `98` | joint, 3-bit cells: sub-additive layer records, matched layer by layer (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneCellsJointBThree` | `6` | joint, 3-bit cells: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerShareJointBThreePct` | `99` | joint, 3-bit cells: sub-additive layer records, matched layer by layer (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneLayerShareJointBThreeQprojPct` | `97` | joint, 3-bit cells: sub-additive q_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneLayerShareJointBThreeKprojPct` | `97` | joint, 3-bit cells: sub-additive k_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneLayerShareJointBThreeVprojPct` | `100` | joint, 3-bit cells: sub-additive v_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
@@ -590,146 +590,146 @@ Columns:
 | `\resQOneLayerShareJointBThreeDownprojPct` | `100` | joint, 3-bit cells: sub-additive down_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneBlockZeroSuperJointBThree` | `0` | joint, 3-bit cells: cells where block 0 alone is super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneRatioMinJointPct` | `\ensuremath{-23.9}` | joint: smallest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneRatioMaxJointPct` | `\ensuremath{-9.6}` | joint: largest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneSubJoint` | `9` | joint: cells sub-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneRatioMaxJointPct` | `\ensuremath{-5.8}` | joint: largest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneSubJoint` | `14` | joint: cells sub-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneSuperJoint` | `0` | joint: cells super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneCellsJoint` | `9` | joint: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneCellsJoint` | `14` | joint: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneLayerShareJointPct` | `99` | joint: sub-additive layer records, matched layer by layer (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneRatioMinPQBFourPct` | `\ensuremath{-6.9}` | P->Q, 4-bit cells: smallest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneRatioMaxPQBFourPct` | `\ensuremath{-5.6}` | P->Q, 4-bit cells: largest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneSubPQBFour` | `6` | P->Q, 4-bit cells: cells sub-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneRatioMaxPQBFourPct` | `\ensuremath{-5.2}` | P->Q, 4-bit cells: largest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneSubPQBFour` | `8` | P->Q, 4-bit cells: cells sub-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneSuperPQBFour` | `0` | P->Q, 4-bit cells: cells super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneCellsPQBFour` | `6` | P->Q, 4-bit cells: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerSharePQBFourPct` | `90` | P->Q, 4-bit cells: sub-additive layer records, matched layer by layer (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerSharePQBFourQprojPct` | `84` | P->Q, 4-bit cells: sub-additive q_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerSharePQBFourKprojPct` | `78` | P->Q, 4-bit cells: sub-additive k_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerSharePQBFourVprojPct` | `83` | P->Q, 4-bit cells: sub-additive v_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerSharePQBFourOprojPct` | `90` | P->Q, 4-bit cells: sub-additive o_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerSharePQBFourGateprojPct` | `100` | P->Q, 4-bit cells: sub-additive gate_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerSharePQBFourUpprojPct` | `100` | P->Q, 4-bit cells: sub-additive up_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerSharePQBFourDownprojPct` | `93` | P->Q, 4-bit cells: sub-additive down_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneBlockZeroSuperPQBFour` | `0` | P->Q, 4-bit cells: cells where block 0 alone is super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneCellsPQBFour` | `8` | P->Q, 4-bit cells: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerSharePQBFourPct` | `87` | P->Q, 4-bit cells: sub-additive layer records, matched layer by layer (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerSharePQBFourQprojPct` | `74` | P->Q, 4-bit cells: sub-additive q_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerSharePQBFourKprojPct` | `70` | P->Q, 4-bit cells: sub-additive k_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerSharePQBFourVprojPct` | `79` | P->Q, 4-bit cells: sub-additive v_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerSharePQBFourOprojPct` | `92` | P->Q, 4-bit cells: sub-additive o_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerSharePQBFourGateprojPct` | `99` | P->Q, 4-bit cells: sub-additive gate_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerSharePQBFourUpprojPct` | `99` | P->Q, 4-bit cells: sub-additive up_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerSharePQBFourDownprojPct` | `92` | P->Q, 4-bit cells: sub-additive down_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneBlockZeroSuperPQBFour` | `2` | P->Q, 4-bit cells: cells where block 0 alone is super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneRatioMinPQBThreePct` | `\ensuremath{-18.1}` | P->Q, 3-bit cells: smallest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneRatioMaxPQBThreePct` | `\ensuremath{-3.5}` | P->Q, 3-bit cells: largest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneSubPQBThree` | `3` | P->Q, 3-bit cells: cells sub-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneRatioMaxPQBThreePct` | `\ensuremath{-2.9}` | P->Q, 3-bit cells: largest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneSubPQBThree` | `6` | P->Q, 3-bit cells: cells sub-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneSuperPQBThree` | `0` | P->Q, 3-bit cells: cells super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneCellsPQBThree` | `3` | P->Q, 3-bit cells: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerSharePQBThreePct` | `80` | P->Q, 3-bit cells: sub-additive layer records, matched layer by layer (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerSharePQBThreeQprojPct` | `62` | P->Q, 3-bit cells: sub-additive q_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerSharePQBThreeKprojPct` | `63` | P->Q, 3-bit cells: sub-additive k_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneCellsPQBThree` | `6` | P->Q, 3-bit cells: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerSharePQBThreePct` | `82` | P->Q, 3-bit cells: sub-additive layer records, matched layer by layer (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerSharePQBThreeQprojPct` | `68` | P->Q, 3-bit cells: sub-additive q_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerSharePQBThreeKprojPct` | `68` | P->Q, 3-bit cells: sub-additive k_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneLayerSharePQBThreeVprojPct` | `80` | P->Q, 3-bit cells: sub-additive v_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerSharePQBThreeOprojPct` | `78` | P->Q, 3-bit cells: sub-additive o_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerSharePQBThreeGateprojPct` | `96` | P->Q, 3-bit cells: sub-additive gate_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerSharePQBThreeUpprojPct` | `97` | P->Q, 3-bit cells: sub-additive up_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerSharePQBThreeOprojPct` | `74` | P->Q, 3-bit cells: sub-additive o_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerSharePQBThreeGateprojPct` | `98` | P->Q, 3-bit cells: sub-additive gate_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerSharePQBThreeUpprojPct` | `98` | P->Q, 3-bit cells: sub-additive up_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneLayerSharePQBThreeDownprojPct` | `86` | P->Q, 3-bit cells: sub-additive down_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneBlockZeroSuperPQBThree` | `1` | P->Q, 3-bit cells: cells where block 0 alone is super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneRatioMinPQPct` | `\ensuremath{-18.1}` | P->Q: smallest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneRatioMaxPQPct` | `\ensuremath{-3.5}` | P->Q: largest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneSubPQ` | `9` | P->Q: cells sub-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneRatioMaxPQPct` | `\ensuremath{-2.9}` | P->Q: largest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneSubPQ` | `14` | P->Q: cells sub-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneSuperPQ` | `0` | P->Q: cells super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneCellsPQ` | `9` | P->Q: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerSharePQPct` | `86` | P->Q: sub-additive layer records, matched layer by layer (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneCellsPQ` | `14` | P->Q: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerSharePQPct` | `85` | P->Q: sub-additive layer records, matched layer by layer (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneRatioMinQPBFourPct` | `\ensuremath{+2.0}` | Q->P, 4-bit cells: smallest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneRatioMaxQPBFourPct` | `\ensuremath{+7.2}` | Q->P, 4-bit cells: largest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneSubQPBFour` | `0` | Q->P, 4-bit cells: cells sub-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneSuperQPBFour` | `5` | Q->P, 4-bit cells: cells super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneCellsQPBFour` | `5` | Q->P, 4-bit cells: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneSuperQPBFour` | `7` | Q->P, 4-bit cells: cells super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneCellsQPBFour` | `7` | Q->P, 4-bit cells: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneLayerShareQPBFourPct` | `26` | Q->P, 4-bit cells: sub-additive layer records, matched layer by layer (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerShareQPBFourQprojPct` | `54` | Q->P, 4-bit cells: sub-additive q_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerShareQPBFourKprojPct` | `46` | Q->P, 4-bit cells: sub-additive k_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerShareQPBFourVprojPct` | `32` | Q->P, 4-bit cells: sub-additive v_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerShareQPBFourOprojPct` | `22` | Q->P, 4-bit cells: sub-additive o_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerShareQPBFourQprojPct` | `57` | Q->P, 4-bit cells: sub-additive q_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerShareQPBFourKprojPct` | `47` | Q->P, 4-bit cells: sub-additive k_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerShareQPBFourVprojPct` | `34` | Q->P, 4-bit cells: sub-additive v_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerShareQPBFourOprojPct` | `20` | Q->P, 4-bit cells: sub-additive o_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneLayerShareQPBFourGateprojPct` | `1` | Q->P, 4-bit cells: sub-additive gate_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneLayerShareQPBFourUpprojPct` | `1` | Q->P, 4-bit cells: sub-additive up_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerShareQPBFourDownprojPct` | `26` | Q->P, 4-bit cells: sub-additive down_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneBlockZeroSuperQPBFour` | `5` | Q->P, 4-bit cells: cells where block 0 alone is super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerShareQPBFourDownprojPct` | `22` | Q->P, 4-bit cells: sub-additive down_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneBlockZeroSuperQPBFour` | `7` | Q->P, 4-bit cells: cells where block 0 alone is super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneRatioMinQPBThreePct` | `\ensuremath{-15.3}` | Q->P, 3-bit cells: smallest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneRatioMaxQPBThreePct` | `\ensuremath{-4.9}` | Q->P, 3-bit cells: largest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneSubQPBThree` | `3` | Q->P, 3-bit cells: cells sub-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneRatioMaxQPBThreePct` | `\ensuremath{-3.6}` | Q->P, 3-bit cells: largest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneSubQPBThree` | `6` | Q->P, 3-bit cells: cells sub-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneSuperQPBThree` | `0` | Q->P, 3-bit cells: cells super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneCellsQPBThree` | `3` | Q->P, 3-bit cells: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneCellsQPBThree` | `6` | Q->P, 3-bit cells: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneLayerShareQPBThreePct` | `89` | Q->P, 3-bit cells: sub-additive layer records, matched layer by layer (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerShareQPBThreeQprojPct` | `98` | Q->P, 3-bit cells: sub-additive q_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerShareQPBThreeKprojPct` | `98` | Q->P, 3-bit cells: sub-additive k_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerShareQPBThreeVprojPct` | `89` | Q->P, 3-bit cells: sub-additive v_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerShareQPBThreeOprojPct` | `90` | Q->P, 3-bit cells: sub-additive o_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerShareQPBThreeGateprojPct` | `82` | Q->P, 3-bit cells: sub-additive gate_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerShareQPBThreeUpprojPct` | `77` | Q->P, 3-bit cells: sub-additive up_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerShareQPBThreeDownprojPct` | `88` | Q->P, 3-bit cells: sub-additive down_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneBlockZeroSuperQPBThree` | `1` | Q->P, 3-bit cells: cells where block 0 alone is super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerShareQPBThreeQprojPct` | `99` | Q->P, 3-bit cells: sub-additive q_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerShareQPBThreeKprojPct` | `99` | Q->P, 3-bit cells: sub-additive k_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerShareQPBThreeVprojPct` | `93` | Q->P, 3-bit cells: sub-additive v_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerShareQPBThreeOprojPct` | `91` | Q->P, 3-bit cells: sub-additive o_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerShareQPBThreeGateprojPct` | `79` | Q->P, 3-bit cells: sub-additive gate_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerShareQPBThreeUpprojPct` | `73` | Q->P, 3-bit cells: sub-additive up_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerShareQPBThreeDownprojPct` | `90` | Q->P, 3-bit cells: sub-additive down_proj records (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneBlockZeroSuperQPBThree` | `2` | Q->P, 3-bit cells: cells where block 0 alone is super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneRatioMinQPPct` | `\ensuremath{-15.3}` | Q->P: smallest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 | `\resQOneRatioMaxQPPct` | `\ensuremath{+7.2}` | Q->P: largest I_E/(E_P+E_Q) (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneSubQP` | `3` | Q->P: cells sub-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneSuperQP` | `5` | Q->P: cells super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneCellsQP` | `8` | Q->P: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
-| `\resQOneLayerShareQPPct` | `51` | Q->P: sub-additive layer records, matched layer by layer (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneSubQP` | `6` | Q->P: cells sub-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneSuperQP` | `7` | Q->P: cells super-additive | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneCellsQP` | `13` | Q->P: cells available | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
+| `\resQOneLayerShareQPPct` | `55` | Q->P: sub-additive layer records, matched layer by layer (%) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py, from the diags of each line) |
 
 ## Q2: order ranking (seed 0; counts over the E1 grid: core models x E1 cells)
 
 | Macro | Value | Meaning | Source |
 |---|---|---|---|
-| `\resQTwoCellsPpl` | `8` | cells with all three orders ranked by wt_ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoQPWorstPpl` | `7` | cells where Q->P is strictly worst by wt_ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestJointPpl` | `1` | cells where joint is best by wt_ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoCellsPpl` | `13` | cells with all three orders ranked by wt_ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoQPWorstPpl` | `11` | cells where Q->P is strictly worst by wt_ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestJointPpl` | `6` | cells where joint is best by wt_ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoBestJointPplSmolSmall` | `0` | SmolLM2-135M: cells where joint has the lowest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestJointPplSmolMedium` | `--` | SmolLM2-360M: cells where joint has the lowest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestJointPplQwen` | `1` | Qwen2.5-0.5B: cells where joint has the lowest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestJointPplSmolMedium` | `1` | SmolLM2-360M: cells where joint has the lowest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestJointPplQwen` | `5` | Qwen2.5-0.5B: cells where joint has the lowest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoBestPQPpl` | `7` | cells where P->Q is best by wt_ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoBestPQPplSmolSmall` | `6` | SmolLM2-135M: cells where P->Q has the lowest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestPQPplSmolMedium` | `--` | SmolLM2-360M: cells where P->Q has the lowest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestPQPplSmolMedium` | `0` | SmolLM2-360M: cells where P->Q has the lowest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoBestPQPplQwen` | `1` | Qwen2.5-0.5B: cells where P->Q has the lowest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoBestQPPpl` | `0` | cells where Q->P is best by wt_ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoBestQPPplSmolSmall` | `0` | SmolLM2-135M: cells where Q->P has the lowest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestQPPplSmolMedium` | `--` | SmolLM2-360M: cells where Q->P has the lowest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestQPPplSmolMedium` | `0` | SmolLM2-360M: cells where Q->P has the lowest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoBestQPPplQwen` | `0` | Qwen2.5-0.5B: cells where Q->P has the lowest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoCellsPplCFour` | `8` | cells with all three orders ranked by c4_ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoQPWorstPplCFour` | `7` | cells where Q->P is strictly worst by c4_ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestJointPplCFour` | `2` | cells where joint is best by c4_ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoCellsPplCFour` | `13` | cells with all three orders ranked by c4_ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoQPWorstPplCFour` | `10` | cells where Q->P is strictly worst by c4_ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestJointPplCFour` | `7` | cells where joint is best by c4_ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoBestPQPplCFour` | `6` | cells where P->Q is best by c4_ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoBestQPPplCFour` | `0` | cells where Q->P is best by c4_ppl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoCellsKl` | `8` | cells with all three orders ranked by wt_kl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoQPWorstKl` | `7` | cells where Q->P is strictly worst by wt_kl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestJointKl` | `2` | cells where joint is best by wt_kl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoCellsKl` | `13` | cells with all three orders ranked by wt_kl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoQPWorstKl` | `11` | cells where Q->P is strictly worst by wt_kl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestJointKl` | `7` | cells where joint is best by wt_kl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoBestPQKl` | `6` | cells where P->Q is best by wt_kl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoBestQPKl` | `0` | cells where Q->P is best by wt_kl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoCellsKlCFour` | `8` | cells with all three orders ranked by c4_kl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoQPWorstKlCFour` | `7` | cells where Q->P is strictly worst by c4_kl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestJointKlCFour` | `2` | cells where joint is best by c4_kl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoCellsKlCFour` | `13` | cells with all three orders ranked by c4_kl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoQPWorstKlCFour` | `10` | cells where Q->P is strictly worst by c4_kl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestJointKlCFour` | `7` | cells where joint is best by c4_kl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoBestPQKlCFour` | `6` | cells where P->Q is best by c4_kl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoBestQPKlCFour` | `0` | cells where Q->P is best by c4_kl | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoCellsFlips` | `8` | cells with all three orders ranked by flips9 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoQPWorstFlips` | `5` | cells where Q->P is strictly worst by flips9 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestJointFlips` | `2` | cells where joint is best by flips9 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestPQFlips` | `4` | cells where P->Q is best by flips9 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoCellsFlips` | `13` | cells with all three orders ranked by flips9 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoQPWorstFlips` | `8` | cells where Q->P is strictly worst by flips9 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestJointFlips` | `5` | cells where joint is best by flips9 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestPQFlips` | `6` | cells where P->Q is best by flips9 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoBestQPFlips` | `2` | cells where Q->P is best by flips9 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoCellsSrThree` | `8` | cells with all three orders ranked by sr3_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoQPWorstSrThree` | `6` | cells where Q->P is strictly worst by sr3_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestJointSrThree` | `3` | cells where joint is best by sr3_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestPQSrThree` | `5` | cells where P->Q is best by sr3_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoCellsSrThree` | `13` | cells with all three orders ranked by sr3_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoQPWorstSrThree` | `10` | cells where Q->P is strictly worst by sr3_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestJointSrThree` | `6` | cells where joint is best by sr3_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestPQSrThree` | `7` | cells where P->Q is best by sr3_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoBestQPSrThree` | `0` | cells where Q->P is best by sr3_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoCellsSrExt` | `8` | cells with all three orders ranked by sr9_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoQPWorstSrExt` | `2` | cells where Q->P is strictly worst by sr9_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestJointSrExt` | `0` | cells where joint is best by sr9_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoCellsSrExt` | `13` | cells with all three orders ranked by sr9_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoQPWorstSrExt` | `5` | cells where Q->P is strictly worst by sr9_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestJointSrExt` | `3` | cells where joint is best by sr9_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoBestPQSrExt` | `5` | cells where P->Q is best by sr9_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestQPSrExt` | `3` | cells where Q->P is best by sr9_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoCellsSrPaper` | `8` | cells with all three orders ranked by sr3_paper | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoQPWorstSrPaper` | `6` | cells where Q->P is strictly worst by sr3_paper | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestJointSrPaper` | `2` | cells where joint is best by sr3_paper | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestPQSrPaper` | `6` | cells where P->Q is best by sr3_paper | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoBestQPSrPaper` | `0` | cells where Q->P is best by sr3_paper | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestQPSrExt` | `5` | cells where Q->P is best by sr9_v2 | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoCellsSrPaper` | `13` | cells with all three orders ranked by sr3_paper | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoQPWorstSrPaper` | `10` | cells where Q->P is strictly worst by sr3_paper | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestJointSrPaper` | `4` | cells where joint is best by sr3_paper | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestPQSrPaper` | `8` | cells where P->Q is best by sr3_paper | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoBestQPSrPaper` | `1` | cells where Q->P is best by sr3_paper | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoMaxRatio` | `1.77` | largest worst/best WikiText-2 ppl ratio over cells | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoMaxRatioWhere` | `SmolLM2-135M 50\%+3` | where that ratio occurs | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoMaxRatioCFour` | `1.60` | largest worst/best C4 ppl ratio over cells | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoAgreeCells` | `8` | cells ranked by all five metrics (WT2 ppl, C4 ppl, KL, flips, Sr) | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoAgreeAll` | `3` | cells where the five metrics give the identical ranking | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoAgreePplCFour` | `7` | cells where c4_ppl ranks the orders as WikiText-2 ppl does | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoSameBestPplCFour` | `7` | cells where c4_ppl picks the same best order | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoAgreeKl` | `7` | cells where wt_kl ranks the orders as WikiText-2 ppl does | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoSameBestKl` | `7` | cells where wt_kl picks the same best order | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoAgreeFlips` | `3` | cells where flips9 ranks the orders as WikiText-2 ppl does | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoSameBestFlips` | `5` | cells where flips9 picks the same best order | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoAgreeSrThree` | `4` | cells where sr3_v2 ranks the orders as WikiText-2 ppl does | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoSameBestSrThree` | `6` | cells where sr3_v2 picks the same best order | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoAgreeCells` | `13` | cells ranked by all five metrics (WT2 ppl, C4 ppl, KL, flips, Sr) | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoAgreeAll` | `5` | cells where the five metrics give the identical ranking | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoAgreePplCFour` | `11` | cells where c4_ppl ranks the orders as WikiText-2 ppl does | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoSameBestPplCFour` | `12` | cells where c4_ppl picks the same best order | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoAgreeKl` | `12` | cells where wt_kl ranks the orders as WikiText-2 ppl does | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoSameBestKl` | `12` | cells where wt_kl picks the same best order | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoAgreeFlips` | `5` | cells where flips9 ranks the orders as WikiText-2 ppl does | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoSameBestFlips` | `8` | cells where flips9 picks the same best order | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoAgreeSrThree` | `7` | cells where sr3_v2 ranks the orders as WikiText-2 ppl does | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoSameBestSrThree` | `9` | cells where sr3_v2 picks the same best order | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioSmolSmallSTwentyFiveBFour` | `1.11` | SmolLM2-135M 25%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioSmolSmallSThirtyThreeBFour` | `1.11` | SmolLM2-135M 33%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioSmolSmallSFiftyBFour` | `1.15` | SmolLM2-135M 50%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
@@ -737,7 +737,7 @@ Columns:
 | `\resQTwoRatioSmolSmallSTwentyFiveBThree` | `1.29` | SmolLM2-135M 25%+3: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioSmolSmallSThirtyThreeBThree` | `1.29` | SmolLM2-135M 33%+3: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioSmolSmallSFiftyBThree` | `1.77` | SmolLM2-135M 50%+3: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoRatioSmolMediumSTwentyFiveBFour` | `--` | SmolLM2-360M 25%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoRatioSmolMediumSTwentyFiveBFour` | `1.09` | SmolLM2-360M 25%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioSmolMediumSThirtyThreeBFour` | `--` | SmolLM2-360M 33%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioSmolMediumSFiftyBFour` | `--` | SmolLM2-360M 50%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioSmolMediumSSixtyBFour` | `--` | SmolLM2-360M 60%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
@@ -746,11 +746,11 @@ Columns:
 | `\resQTwoRatioSmolMediumSFiftyBThree` | `--` | SmolLM2-360M 50%+3: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioQwenSTwentyFiveBFour` | `1.03` | Qwen2.5-0.5B 25%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioQwenSThirtyThreeBFour` | `1.03` | Qwen2.5-0.5B 33%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoRatioQwenSFiftyBFour` | `--` | Qwen2.5-0.5B 50%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoRatioQwenSFiftyBFour` | `1.02` | Qwen2.5-0.5B 50%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioQwenSSixtyBFour` | `--` | Qwen2.5-0.5B 60%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoRatioQwenSTwentyFiveBThree` | `--` | Qwen2.5-0.5B 25%+3: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoRatioQwenSThirtyThreeBThree` | `--` | Qwen2.5-0.5B 33%+3: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoRatioQwenSFiftyBThree` | `--` | Qwen2.5-0.5B 50%+3: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoRatioQwenSTwentyFiveBThree` | `1.02` | Qwen2.5-0.5B 25%+3: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoRatioQwenSThirtyThreeBThree` | `1.05` | Qwen2.5-0.5B 33%+3: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoRatioQwenSFiftyBThree` | `1.21` | Qwen2.5-0.5B 50%+3: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioSmolLargeSTwentyFiveBFour` | `--` | SmolLM2-1.7B 25%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioSmolLargeSFiftyBFour` | `--` | SmolLM2-1.7B 50%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioSmolLargeSTwentyFiveBThree` | `--` | SmolLM2-1.7B 25%+3: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
@@ -762,9 +762,9 @@ Columns:
 |---|---|---|---|
 | `\resQThreeSpreadMinSmolSmallPct` | `10.7` | SmolLM2-135M: smallest (max-min)/min of WikiText-2 ppl over the orders, 4-bit cells (%) | reports/analysis/q3_order_spread.csv |
 | `\resQThreeSpreadMaxSmolSmallPct` | `41.2` | SmolLM2-135M: largest 4-bit order spread (%) | reports/analysis/q3_order_spread.csv |
-| `\resQThreeSpreadMinSmolMediumPct` | `--` | SmolLM2-360M: smallest (max-min)/min of WikiText-2 ppl over the orders, 4-bit cells (%) | reports/analysis/q3_order_spread.csv |
-| `\resQThreeSpreadMaxSmolMediumPct` | `--` | SmolLM2-360M: largest 4-bit order spread (%) | reports/analysis/q3_order_spread.csv |
-| `\resQThreeSpreadMinQwenPct` | `2.8` | Qwen2.5-0.5B: smallest (max-min)/min of WikiText-2 ppl over the orders, 4-bit cells (%) | reports/analysis/q3_order_spread.csv |
+| `\resQThreeSpreadMinSmolMediumPct` | `8.9` | SmolLM2-360M: smallest (max-min)/min of WikiText-2 ppl over the orders, 4-bit cells (%) | reports/analysis/q3_order_spread.csv |
+| `\resQThreeSpreadMaxSmolMediumPct` | `8.9` | SmolLM2-360M: largest 4-bit order spread (%) | reports/analysis/q3_order_spread.csv |
+| `\resQThreeSpreadMinQwenPct` | `2.2` | Qwen2.5-0.5B: smallest (max-min)/min of WikiText-2 ppl over the orders, 4-bit cells (%) | reports/analysis/q3_order_spread.csv |
 | `\resQThreeSpreadMaxQwenPct` | `3.0` | Qwen2.5-0.5B: largest 4-bit order spread (%) | reports/analysis/q3_order_spread.csv |
 | `\resQThreeSpreadMinSmolLargePct` | `--` | SmolLM2-1.7B: smallest (max-min)/min of WikiText-2 ppl over the orders, 4-bit cells (%) | reports/analysis/q3_order_spread.csv |
 | `\resQThreeSpreadMaxSmolLargePct` | `--` | SmolLM2-1.7B: largest 4-bit order spread (%) | reports/analysis/q3_order_spread.csv |
@@ -773,12 +773,12 @@ Columns:
 
 | Macro | Value | Meaning | Source |
 |---|---|---|---|
-| `\resFpCompared` | `40` | published configurations (seed 0) with a v2 fp32 counterpart | reports/analysis/fp16_vs_fp32.csv (v2 fp32 vs results/merged published values) |
-| `\resFpMaxAbsDeltaPct` | `12.98` | largest |v2 ppl / published ppl - 1| (%) | reports/analysis/fp16_vs_fp32.csv (v2 fp32 vs results/merged published values) |
-| `\resFpMaxAbsDeltaWhere` | `SmolLM2-135M 25\%+3 joint` | where it occurs | reports/analysis/fp16_vs_fp32.csv (v2 fp32 vs results/merged published values) |
+| `\resFpCompared` | `62` | published configurations (seed 0) with a v2 fp32 counterpart | reports/analysis/fp16_vs_fp32.csv (v2 fp32 vs results/merged published values) |
+| `\resFpMaxAbsDeltaPct` | `15.25` | largest |v2 ppl / published ppl - 1| (%) | reports/analysis/fp16_vs_fp32.csv (v2 fp32 vs results/merged published values) |
+| `\resFpMaxAbsDeltaWhere` | `SmolLM2-360M 3-bit quant only` | where it occurs | reports/analysis/fp16_vs_fp32.csv (v2 fp32 vs results/merged published values) |
 | `\resFpMaxAbsDeltaSmolSmallPct` | `12.98` | SmolLM2-135M: largest |relative ppl difference| (%) | reports/analysis/fp16_vs_fp32.csv (v2 fp32 vs results/merged published values) |
-| `\resFpMaxAbsDeltaSmolMediumPct` | `--` | SmolLM2-360M: largest |relative ppl difference| (%) | reports/analysis/fp16_vs_fp32.csv (v2 fp32 vs results/merged published values) |
-| `\resFpMaxAbsDeltaQwenPct` | `1.40` | Qwen2.5-0.5B: largest |relative ppl difference| (%) | reports/analysis/fp16_vs_fp32.csv (v2 fp32 vs results/merged published values) |
+| `\resFpMaxAbsDeltaSmolMediumPct` | `15.25` | SmolLM2-360M: largest |relative ppl difference| (%) | reports/analysis/fp16_vs_fp32.csv (v2 fp32 vs results/merged published values) |
+| `\resFpMaxAbsDeltaQwenPct` | `2.80` | Qwen2.5-0.5B: largest |relative ppl difference| (%) | reports/analysis/fp16_vs_fp32.csv (v2 fp32 vs results/merged published values) |
 | `\resFpMaxAbsDeltaSmolLargePct` | `--` | SmolLM2-1.7B: largest |relative ppl difference| (%) | reports/analysis/fp16_vs_fp32.csv (v2 fp32 vs results/merged published values) |
 
 ## E3: Q->P penalty removed in full runs (WikiText-2 ppl)
@@ -851,8 +851,8 @@ Columns:
 | `\resIdentityRelErrMaxDiffSmolSmall` | `0` | SmolLM2-135M: largest |rel_err difference| | reports/analysis/identity_qp25_3bit.json |
 | `\resIdentityQPThreeSmolMedium` | `--` | SmolLM2-360M: Q->P 25%+3 identical to 3-bit (ppl and every rel_err) | reports/analysis/identity_qp25_3bit.json |
 | `\resIdentityRelErrMaxDiffSmolMedium` | `--` | SmolLM2-360M: largest |rel_err difference| | reports/analysis/identity_qp25_3bit.json |
-| `\resIdentityQPThreeQwen` | `--` | Qwen2.5-0.5B: Q->P 25%+3 identical to 3-bit (ppl and every rel_err) | reports/analysis/identity_qp25_3bit.json |
-| `\resIdentityRelErrMaxDiffQwen` | `--` | Qwen2.5-0.5B: largest |rel_err difference| | reports/analysis/identity_qp25_3bit.json |
+| `\resIdentityQPThreeQwen` | `yes` | Qwen2.5-0.5B: Q->P 25%+3 identical to 3-bit (ppl and every rel_err) | reports/analysis/identity_qp25_3bit.json |
+| `\resIdentityRelErrMaxDiffQwen` | `0` | Qwen2.5-0.5B: largest |rel_err difference| | reports/analysis/identity_qp25_3bit.json |
 | `\resIdentityQPThreeSmolLarge` | `--` | SmolLM2-1.7B: Q->P 25%+3 identical to 3-bit (ppl and every rel_err) | reports/analysis/identity_qp25_3bit.json |
 | `\resIdentityRelErrMaxDiffSmolLarge` | `--` | SmolLM2-1.7B: largest |rel_err difference| | reports/analysis/identity_qp25_3bit.json |
 | `\resGroupOverheadBFour` | `0.156` | 4-bit: scale and zero point bits per weight | results/v2/E1/Qwen2.5-0.5B.jsonl, state `Qwen2.5-0.5B__quant__s0.0000__b4__seed0__float32`, field `storage.group_overhead` |
@@ -1421,7 +1421,7 @@ Columns:
 | `\resNItemsSciq` | `1000` | sciq: items evaluated per state | results/v2/items/*.json.gz |
 | `\resNItemsLambada` | `5153` | lambada_openai: items evaluated per state | results/v2/items/*.json.gz |
 | `\resBootB` | `500` | bootstrap resamples (items within each task) | scripts/analysis/stats.py, make_tables.py --boot |
-| `\resNStates` | `61` | usable v2 model states (status ok) | results/v2/*/*.jsonl |
+| `\resNStates` | `83` | usable v2 model states (status ok) | results/v2/*/*.jsonl |
 | `\resNStatesPlanned` | `207` | model states in the study plan | scripts/make_queues.py |
 
 ## Requested by paper/main.tex (reports/latex_macro_requests.md, R1-R31)
@@ -1429,12 +1429,12 @@ Columns:
 | Macro | Value | Meaning | Source |
 |---|---|---|---|
 | `\resFrontierThreeWins` | `1` | R1: models where the best order of 50%+4 beats 3-bit alone in WikiText-2 ppl (SmolLM2-135M) | reports/analysis/frontier_equal_storage.csv (wikitext2.ppl; best order = lowest of the three) |
-| `\resFrontierThreeModels` | `1` | R2: models with 3-bit and all three 50%+4 orders (SmolLM2-135M) | reports/analysis/frontier_equal_storage.csv (wikitext2.ppl; best order = lowest of the three) |
+| `\resFrontierThreeModels` | `2` | R2: models with 3-bit and all three 50%+4 orders (SmolLM2-135M, Qwen2.5-0.5B) | reports/analysis/frontier_equal_storage.csv (wikitext2.ppl; best order = lowest of the three) |
 | `\resFrontierThreeGainMinPct` | `28.4` | R3: over the R1 models, smallest 100(1 - ppl_best(50%+4)/ppl(3-bit)) | reports/analysis/frontier_equal_storage.csv (wikitext2.ppl; best order = lowest of the three) |
 | `\resFrontierThreeGainMaxPct` | `28.4` | R4: the same, largest | reports/analysis/frontier_equal_storage.csv (wikitext2.ppl; best order = lowest of the three) |
-| `\resFrontierFourGapMaxPct` | `2.2` | R5: largest |100(ppl_best(25%+4)/ppl(4-bit) - 1)| over the models with both (SmolLM2-135M, Qwen2.5-0.5B) | reports/analysis/frontier_equal_storage.csv (wikitext2.ppl; best order = lowest of the three) |
-| `\resIdentityQPThreeCount` | `1` | R7: models where Q->P 25%+3 is identical to 3-bit (ppl and every rel_err) (SmolLM2-135M) | reports/analysis/identity_qp25_3bit.json |
-| `\resIdentityQPThreeModels` | `1` | R8: models where both states exist (SmolLM2-135M) | reports/analysis/identity_qp25_3bit.json |
+| `\resFrontierFourGapMaxPct` | `2.2` | R5: largest |100(ppl_best(25%+4)/ppl(4-bit) - 1)| over the models with both (SmolLM2-135M, SmolLM2-360M, Qwen2.5-0.5B) | reports/analysis/frontier_equal_storage.csv (wikitext2.ppl; best order = lowest of the three) |
+| `\resIdentityQPThreeCount` | `2` | R7: models where Q->P 25%+3 is identical to 3-bit (ppl and every rel_err) (SmolLM2-135M, Qwen2.5-0.5B) | reports/analysis/identity_qp25_3bit.json |
+| `\resIdentityQPThreeModels` | `2` | R8: models where both states exist (SmolLM2-135M, Qwen2.5-0.5B) | reports/analysis/identity_qp25_3bit.json |
 | `\resETwoMaskFirstSub` | `36` | R9: E2 (model, cell, order in joint/P->Q) with summed-layer I_E/(E_P+E_Q) < 0 | reports/analysis/e2_cells.csv (18 model-cells; planned E2 layer lines still missing: 0) |
 | `\resETwoMaskFirstTotal` | `36` | R10: such combinations available | reports/analysis/e2_cells.csv (18 model-cells; planned E2 layer lines still missing: 0) |
 | `\resETwoSubJointMinPct` | `97` | R11: smallest share of sub-additive layers, joint, over cells (%) | reports/analysis/e2_cells.csv (18 model-cells; planned E2 layer lines still missing: 0) |
@@ -1451,10 +1451,10 @@ Columns:
 | `\resETwoPenaltyCells` | `12` | R22: cells with qp_penalty_sum > 0 | reports/analysis/e2_cells.csv (18 model-cells; planned E2 layer lines still missing: 0) |
 | `\resETwoRemovedPmaskMaxPct` | `39` | R23: largest share removed by the pruning-only mask over the R22 cells (%) | reports/analysis/e2_cells.csv (18 model-cells; planned E2 layer lines still missing: 0) |
 | `\resETwoStaleMaxAbsPct` | `0.4` | R24: largest |stale grid imposed on P->Q| over cells (% of its error) | reports/analysis/e2_cells.csv (18 model-cells; planned E2 layer lines still missing: 0) |
-| `\resQTwoQPWorstPplBFour` | `6` | R19: 4-bit cells (25/33/50/60%) where Q->P has the strictly highest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (seed 0, every 4-bit cell with three orders: 6) |
-| `\resQTwoCellsPplBFour` | `6` | R20: 4-bit cells with all three orders ranked | reports/analysis/q2_order_ranking.csv (seed 0, every 4-bit cell with three orders: 6) |
-| `\resMcNemarSigPQQP` | `7` | R25: cells where P->Q vs Q->P has exact McNemar p < 0.05 | reports/analysis/e1_mcnemar.csv (task pooled9, seed 0; extra_orders.mcnemar) |
-| `\resMcNemarCellsPQQP` | `9` | R26: cells with that test | reports/analysis/e1_mcnemar.csv (task pooled9, seed 0; extra_orders.mcnemar) |
+| `\resQTwoQPWorstPplBFour` | `8` | R19: 4-bit cells (25/33/50/60%) where Q->P has the strictly highest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (seed 0, every 4-bit cell with three orders: 8) |
+| `\resQTwoCellsPplBFour` | `8` | R20: 4-bit cells with all three orders ranked | reports/analysis/q2_order_ranking.csv (seed 0, every 4-bit cell with three orders: 8) |
+| `\resMcNemarSigPQQP` | `10` | R25: cells where P->Q vs Q->P has exact McNemar p < 0.05 | reports/analysis/e1_mcnemar.csv (task pooled9, seed 0; extra_orders.mcnemar) |
+| `\resMcNemarCellsPQQP` | `14` | R26: cells with that test | reports/analysis/e1_mcnemar.csv (task pooled9, seed 0; extra_orders.mcnemar) |
 | `\resHwDeltaSmolSmallSFiftyBFourPQPct` | `\ensuremath{+4.6}` | R27: SmolLM2-135M 50%+4 P->Q: 100(ppl REPRO16 / ppl results_full (16-bit, T4) - 1) | reports/analysis/repro_hardware.csv (`SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float16`) |
 | `\resHwDeltaSmolSmallQuantBFourPct` | `\ensuremath{+1.5}` | R27: SmolLM2-135M 4-bit: 100(ppl REPRO16 / ppl results_full (16-bit, T4) - 1) | reports/analysis/repro_hardware.csv (`SmolLM2-135M__quant__s0.0000__b4__seed0__float16`) |
 | `\resReproThirtyTwoMaxAbsPct` | `0.4` | R28: largest |100(ppl REPRO32 / ppl results_fix - 1)| over the 3 planned REPRO32 states (-- until all exist) | reports/analysis/repro_hardware.csv |
@@ -1551,13 +1551,13 @@ Macro = `\res` + column + `SmolMedium` + row tag (e.g. `\resAccDiffSmolMediumSTw
 
 | Row tag | State | Source | AccDiff | AccDiffLo | AccDiffHi |
 |---|---|---|---|---|---|
-| `STwentyFiveBFourJointPQ` | 25%+4: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
-| `STwentyFiveBFourJointQP` | 25%+4: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
-| `STwentyFiveBFourPQQP` | 25%+4: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBFourJointPQ` | 25%+4: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{+0.1}` | `\ensuremath{-0.3}` | `\ensuremath{+0.5}` |
+| `STwentyFiveBFourJointQP` | 25%+4: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{+1.9}` | `\ensuremath{+1.4}` | `\ensuremath{+2.5}` |
+| `STwentyFiveBFourPQQP` | 25%+4: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{+1.8}` | `\ensuremath{+1.2}` | `\ensuremath{+2.4}` |
 | `SThirtyThreeBFourJointPQ` | 33%+4: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `SThirtyThreeBFourJointQP` | 33%+4: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `SThirtyThreeBFourPQQP` | 33%+4: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
-| `SFiftyBFourJointPQ` | 50%+4: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourJointPQ` | 50%+4: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{+0.1}` | `\ensuremath{-0.4}` | `\ensuremath{+0.6}` |
 | `SFiftyBFourJointQP` | 50%+4: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `SFiftyBFourJointQPRefit` | 50%+4: joint minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `SFiftyBFourJointQPPmask` | 50%+4: joint minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
@@ -1640,12 +1640,12 @@ Macro = `\res` + column + `Qwen` + row tag (e.g. `\resAccDiffQwenSTwentyFiveBFou
 | `SThirtyThreeBFourJointQP` | 33%+4: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{-1.1}` | `\ensuremath{-1.8}` | `\ensuremath{-0.5}` |
 | `SThirtyThreeBFourPQQP` | 33%+4: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{-0.8}` | `\ensuremath{-1.4}` | `\ensuremath{-0.2}` |
 | `SFiftyBFourJointPQ` | 50%+4: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{+0.4}` | `\ensuremath{-0.2}` | `\ensuremath{+0.9}` |
-| `SFiftyBFourJointQP` | 50%+4: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourJointQP` | 50%+4: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{-0.4}` | `\ensuremath{-1.0}` | `\ensuremath{+0.3}` |
 | `SFiftyBFourJointQPRefit` | 50%+4: joint minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `SFiftyBFourJointQPPmask` | 50%+4: joint minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `SFiftyBFourJointQPPmaskRefit` | 50%+4: joint minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `SFiftyBFourJointPQStale` | 50%+4: joint minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
-| `SFiftyBFourPQQP` | 50%+4: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourPQQP` | 50%+4: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{-0.8}` | `\ensuremath{-1.4}` | `\ensuremath{-0.2}` |
 | `SFiftyBFourPQQPRefit` | 50%+4: P->Q minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `SFiftyBFourPQQPPmask` | 50%+4: P->Q minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `SFiftyBFourPQQPPmaskRefit` | 50%+4: P->Q minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
@@ -1657,13 +1657,13 @@ Macro = `\res` + column + `Qwen` + row tag (e.g. `\resAccDiffQwenSTwentyFiveBFou
 | `SSixtyBFourJointPQ` | 60%+4: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `SSixtyBFourJointQP` | 60%+4: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `SSixtyBFourPQQP` | 60%+4: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
-| `STwentyFiveBThreeJointPQ` | 25%+3: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
-| `STwentyFiveBThreeJointQP` | 25%+3: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreeJointPQ` | 25%+3: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{+1.0}` | `\ensuremath{+0.3}` | `\ensuremath{+1.6}` |
+| `STwentyFiveBThreeJointQP` | 25%+3: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{+1.0}` | `\ensuremath{+0.3}` | `\ensuremath{+1.6}` |
 | `STwentyFiveBThreeJointQPRefit` | 25%+3: joint minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `STwentyFiveBThreeJointQPPmask` | 25%+3: joint minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `STwentyFiveBThreeJointQPPmaskRefit` | 25%+3: joint minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `STwentyFiveBThreeJointPQStale` | 25%+3: joint minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
-| `STwentyFiveBThreePQQP` | 25%+3: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreePQQP` | 25%+3: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{+0.0}` | `\ensuremath{-0.6}` | `\ensuremath{+0.7}` |
 | `STwentyFiveBThreePQQPRefit` | 25%+3: P->Q minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `STwentyFiveBThreePQQPPmask` | 25%+3: P->Q minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `STwentyFiveBThreePQQPPmaskRefit` | 25%+3: P->Q minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
@@ -1672,13 +1672,13 @@ Macro = `\res` + column + `Qwen` + row tag (e.g. `\resAccDiffQwenSTwentyFiveBFou
 | `STwentyFiveBThreeQPQPPmask` | 25%+3: Q->P minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `STwentyFiveBThreeQPQPPmaskRefit` | 25%+3: Q->P minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `STwentyFiveBThreeQPPQStale` | 25%+3: Q->P minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
-| `SThirtyThreeBThreeJointPQ` | 33%+3: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
-| `SThirtyThreeBThreeJointQP` | 33%+3: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreeJointPQ` | 33%+3: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{-1.6}` | `\ensuremath{-2.3}` | `\ensuremath{-0.9}` |
+| `SThirtyThreeBThreeJointQP` | 33%+3: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{-1.8}` | `\ensuremath{-2.5}` | `\ensuremath{-1.1}` |
 | `SThirtyThreeBThreeJointQPRefit` | 33%+3: joint minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `SThirtyThreeBThreeJointQPPmask` | 33%+3: joint minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `SThirtyThreeBThreeJointQPPmaskRefit` | 33%+3: joint minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `SThirtyThreeBThreeJointPQStale` | 33%+3: joint minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
-| `SThirtyThreeBThreePQQP` | 33%+3: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreePQQP` | 33%+3: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{-0.2}` | `\ensuremath{-0.9}` | `\ensuremath{+0.6}` |
 | `SThirtyThreeBThreePQQPRefit` | 33%+3: P->Q minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `SThirtyThreeBThreePQQPPmask` | 33%+3: P->Q minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `SThirtyThreeBThreePQQPPmaskRefit` | 33%+3: P->Q minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
@@ -1687,13 +1687,13 @@ Macro = `\res` + column + `Qwen` + row tag (e.g. `\resAccDiffQwenSTwentyFiveBFou
 | `SThirtyThreeBThreeQPQPPmask` | 33%+3: Q->P minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `SThirtyThreeBThreeQPQPPmaskRefit` | 33%+3: Q->P minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `SThirtyThreeBThreeQPPQStale` | 33%+3: Q->P minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
-| `SFiftyBThreeJointPQ` | 50%+3: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
-| `SFiftyBThreeJointQP` | 50%+3: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreeJointPQ` | 50%+3: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{+0.9}` | `\ensuremath{+0.3}` | `\ensuremath{+1.6}` |
+| `SFiftyBThreeJointQP` | 50%+3: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{+1.2}` | `\ensuremath{+0.4}` | `\ensuremath{+1.9}` |
 | `SFiftyBThreeJointQPRefit` | 50%+3: joint minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `SFiftyBThreeJointQPPmask` | 50%+3: joint minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `SFiftyBThreeJointQPPmaskRefit` | 50%+3: joint minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `SFiftyBThreeJointPQStale` | 50%+3: joint minus P->Q stale grid | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
-| `SFiftyBThreePQQP` | 50%+3: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreePQQP` | 50%+3: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{+0.3}` | `\ensuremath{-0.5}` | `\ensuremath{+1.0}` |
 | `SFiftyBThreePQQPRefit` | 50%+3: P->Q minus Q->P refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `SFiftyBThreePQQPPmask` | 50%+3: P->Q minus Q->P P-mask | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `SFiftyBThreePQQPPmaskRefit` | 50%+3: P->Q minus Q->P P-mask refit | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
