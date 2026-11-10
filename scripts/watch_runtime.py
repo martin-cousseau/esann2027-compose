@@ -150,8 +150,16 @@ def main():
         if seen_finished is None:
             seen_finished = set(finished)  # queues already finished when the watcher started do not count
         new_finished = [k for k in finished if k not in seen_finished]
-        if new_finished:
-            print(f"QUEUE_DONE {a.runtime} {new_finished} | {summary}")
+        # a queue that already finished on an earlier runtime (re-run after a restore) is not news
+        known_path = "/root/.config/esann/finished_queues.json"
+        known = set(json.load(open(known_path))) if os.path.exists(known_path) else set()
+        fresh = [k for k in new_finished if k.split(":", 1)[1] not in known]
+        seen_finished.update(new_finished)
+        known.update(k.split(":", 1)[1] for k in finished)
+        with open(known_path, "w") as f:
+            json.dump(sorted(known), f)
+        if fresh:
+            print(f"QUEUE_DONE {a.runtime} {fresh} | {summary}")
             return 0
         if count_failures(local_results) > fail0:
             print(f"FAILURE {a.runtime} failures={count_failures(local_results)} | {summary}")
