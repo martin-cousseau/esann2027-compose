@@ -13,8 +13,7 @@ fp  for every published (model, order, s, b) at seed 0: v2 fp32 perplexity again
 """
 import os
 
-from .common import (COMBINED, LAYER_TYPES, PAPER_ORDERS, ORDER_TXT, cell_label, finite, layer_type, load_v1,
-                     short, skey, write_csv)
+from .common import COMBINED, LAYER_TYPES, ORDER_TXT, PAPER_ORDERS, cell_label, finite, layer_type, load_v1, write_csv
 
 Q2_METRICS = (  # name, label, +1 = lower is better, -1 = higher is better; the first five define agreement
     ("wt_ppl", "WikiText-2 ppl", 1), ("c4_ppl", "C4 ppl", 1), ("wt_kl", "KL (WikiText-2)", 1),
@@ -165,9 +164,7 @@ def q2_summary(rows):
         R = [r for r in rows if r.get(f"{name}_ranking")]
         out[f"{name}_cells"] = len(R)
         out[f"{name}_qp_worst"] = sum(r[f"{name}_worst"] == "q_then_p" and not r[f"{name}_tie_at_worst"] for r in R)
-        out[f"{name}_qp_worst_or_tied"] = sum(r[f"{name}_worst"] == "q_then_p" or
-                                              (r[f"{name}_tie_at_worst"] and r[f"{name}_q_then_p"] == r[f"{name}_" + r[f"{name}_worst"]])
-                                              for r in R)
+        out[f"{name}_qp_worst_or_tied"] = sum(r[f"{name}_q_then_p"] == r[f"{name}_{r[f'{name}_worst']}"] for r in R)
         for o in PAPER_ORDERS:
             out[f"{name}_best_{o}"] = sum(r[f"{name}_best"] == o for r in R)
             for m in sorted({r["model"] for r in R}):
@@ -271,6 +268,3 @@ def analyze(store, e1, paths, missing):
     res["v1_check"] = v1["check"] if v1 else None
     res["v1_files"] = v1["files"] if v1 else []
     return res
-
-
-_ = (short, skey)  # re-exported names used by callers that import from here
