@@ -1,0 +1,21 @@
+2026-11-10 11:16:23,290 INFO    MainThread:413 [wandb_init.py:setup_run_log_directory():740] Logging user logs to /home/user/esann2027-compose/wandb/run-20261110_111623-s3e6b6f80c184e8016fcb59a3/logs/debug.log
+2026-11-10 11:16:23,290 INFO    MainThread:413 [wandb_init.py:setup_run_log_directory():741] Logging internal logs to /home/user/esann2027-compose/wandb/run-20261110_111623-s3e6b6f80c184e8016fcb59a3/logs/debug-internal.log
+2026-11-10 11:16:23,290 INFO    MainThread:413 [wandb_init.py:init():784] calling init triggers
+2026-11-10 11:16:23,290 INFO    MainThread:413 [wandb_init.py:init():789] wandb.init called with sweep_config: {}
+config: {'state_id': 'SmolLM2-135M__joint__s0.5000__b4__seed0__float32', 'family': 'E1', 'model': 'HuggingFaceTB/SmolLM2-135M', 'order': 'joint', 'sparsity': 0.5, 'bits': 4, 'seed': 0, 'dtype': 'float32', 'tcr': 0.875, 'n_calib': 128, 'seqlen': 2048, 'groupsize': 128, 'compressed_weights': 106168320, 'eval_batch': {'arc_easy': 48, 'piqa': 48, 'hellaswag': 48, 'arc_challenge': 48, 'winogrande': 48, 'openbookqa': 48, 'boolq': 16, 'sciq': 16, 'lambada_openai': 16}, 'status': 'ok', 'storage': {'tcr': 2.0, 'bitmap': 3.0, 'entropy_nominal': 3.0, 'group_overhead': 0.15625, 'entropy_actual': 3.0, 'mask_frac_actual': 0.5, 'zero_frac_actual': 0.5005862213671207, 'symbol_entropy': 2.617428067833105}, 'git_repo': 'https://github.com/martin-cousseau/esann2027-compose', 'git_commit': 'c84bf2938ab98fcc01c42821d5fe4bcef7dba751', 'git_commit_url': 'https://github.com/martin-cousseau/esann2027-compose/commit/c84bf2938ab98fcc01c42821d5fe4bcef7dba751', 'hf_model_url': 'https://huggingface.co/martincousseau/esann2027-compose-v2/blob/main/models/SmolLM2-135M/SmolLM2-135M__joint__s0.5000__b4__seed0__float32.safetensors', 'hf_model_sha256': 'db9f34c83bbb364310122c58cf4a0ee9b5fb8c019630e866e15c9f71291243d0', 'code_hash': 'cef8af3eb1248742', 'gpu': 'NVIDIA L4', 'nvidia_smi': 'NVIDIA L4, 580.82.07, GPU-26c6f994-2459-cf0d-8fe6-961ef245b5c2, 00000000:00:03.0, 23034 MiB, 2040 MHz', 'colab_image': 'release-colab-external-images_20261106-060046_RC00', 'colab_runtime': 'esann-e1-a3', 'torch': '2.14.1+cu130', 'transformers': '5.22.1', 'lm_eval': '0.4.13', 'virtualization_mode': 'passthrough', 'started': '2026-11-10T07:42:56+00:00', 'finished': '2026-11-10T07:55:23+00:00', 'items_file': 'results/v2/items/SmolLM2-135M__joint__s0.5000__b4__seed0__float32.json.gz', 'items_url': 'https://github.com/martin-cousseau/esann2027-compose/blob/claude/busy-hopper-ghtynk/results/v2/items/SmolLM2-135M__joint__s0.5000__b4__seed0__float32.json.gz', '_wandb': {}}
+2026-11-10 11:16:23,290 INFO    MainThread:413 [wandb_init.py:init():832] starting backend
+2026-11-10 11:16:23,290 INFO    MainThread:413 [wandb_init.py:init():847] sending inform_init request
+2026-11-10 11:16:23,854 INFO    MainThread:413 [wandb_init.py:init():852] backend started and connected
+2026-11-10 11:16:23,855 INFO    MainThread:413 [wandb_init.py:init():922] updated telemetry
+2026-11-10 11:16:23,863 INFO    MainThread:413 [wandb_init.py:init():940] communicating run to backend with 90.0 second timeout
+2026-11-10 11:16:24,857 INFO    MainThread:413 [wandb_init.py:init():972] run resumed
+2026-11-10 11:16:24,858 INFO    MainThread:413 [wandb_init.py:init():977] starting run threads in backend
+2026-11-10 11:16:24,938 INFO    MainThread:413 [wandb_run.py:_console_start():2528] atexit reg
+2026-11-10 11:16:24,939 INFO    MainThread:413 [wandb_run.py:_redirect():2378] redirect: wrap_raw
+2026-11-10 11:16:24,939 INFO    MainThread:413 [wandb_run.py:_redirect():2447] Wrapping output streams.
+2026-11-10 11:16:24,939 INFO    MainThread:413 [wandb_run.py:_redirect():2470] Redirects installed.
+2026-11-10 11:16:24,939 INFO    MainThread:413 [wandb_init.py:init():1015] run started, returning control to user process
+2026-11-10 11:16:26,543 INFO    MainThread:413 [wandb_run.py:_finish():2300] finishing run martin-css/esann2027-compose-v2/s3e6b6f80c184e8016fcb59a3
+2026-11-10 11:16:26,543 INFO    MainThread:413 [wandb_run.py:_atexit_cleanup():2495] got exitcode: 0
+2026-11-10 11:16:26,543 INFO    MainThread:413 [wandb_run.py:_restore():2477] restore
+2026-11-10 11:16:26,544 INFO    MainThread:413 [wandb_run.py:_restore():2483] restore done

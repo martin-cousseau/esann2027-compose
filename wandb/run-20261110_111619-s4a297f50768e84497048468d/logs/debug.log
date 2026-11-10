@@ -1,0 +1,20 @@
+2026-11-10 11:16:19,398 INFO    MainThread:413 [wandb_init.py:setup_run_log_directory():740] Logging user logs to /home/user/esann2027-compose/wandb/run-20261110_111619-s4a297f50768e84497048468d/logs/debug.log
+2026-11-10 11:16:19,399 INFO    MainThread:413 [wandb_init.py:setup_run_log_directory():741] Logging internal logs to /home/user/esann2027-compose/wandb/run-20261110_111619-s4a297f50768e84497048468d/logs/debug-internal.log
+2026-11-10 11:16:19,399 INFO    MainThread:413 [wandb_init.py:init():784] calling init triggers
+2026-11-10 11:16:19,399 INFO    MainThread:413 [wandb_init.py:init():789] wandb.init called with sweep_config: {}
+config: {'state_id': 'SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32', 'family': 'E1', 'model': 'HuggingFaceTB/SmolLM2-135M', 'order': 'p_then_q', 'sparsity': 0.5, 'bits': 4, 'seed': 0, 'dtype': 'float32', 'tcr': 0.875, 'n_calib': 128, 'seqlen': 2048, 'groupsize': 128, 'compressed_weights': 106168320, 'eval_batch': 16, 'status': 'ok', 'storage': {'tcr': 2.0, 'bitmap': 3.0, 'entropy_nominal': 3.0, 'group_overhead': 0.15625, 'entropy_actual': 3.0, 'mask_frac_actual': 0.5, 'zero_frac_actual': 0.5007792409509421, 'symbol_entropy': 2.6196274731151794}, 'git_repo': 'https://github.com/martin-cousseau/esann2027-compose', 'git_commit': 'fb7bb8464a91120298ffdc015bcf93bfc5b678b2', 'git_commit_url': 'https://github.com/martin-cousseau/esann2027-compose/commit/fb7bb8464a91120298ffdc015bcf93bfc5b678b2', 'hf_model_url': 'https://huggingface.co/martincousseau/esann2027-compose-v2/blob/main/models/SmolLM2-135M/SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32.safetensors', 'hf_model_sha256': 'fc61b131bd5b4cea3582963aa609a0de20cbdda9e47818874620eb2afa490845', 'code_hash': 'cef8af3eb1248742', 'gpu': 'NVIDIA L4', 'nvidia_smi': 'NVIDIA L4, 580.82.07, GPU-87eaec50-08df-825c-7b8f-73a76595551a, 00000000:00:03.0, 23034 MiB, 2040 MHz', 'colab_image': 'release-colab-external-images_20261106-060046_RC00', 'colab_runtime': 'esann-e1-a', 'torch': '2.14.1+cu130', 'transformers': '5.22.1', 'lm_eval': '0.4.13', 'virtualization_mode': 'passthrough', 'started': '2026-11-10T06:59:09+00:00', 'finished': '2026-11-10T07:11:05+00:00', 'items_file': 'results/v2/items/SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32.json.gz', 'items_url': 'https://github.com/martin-cousseau/esann2027-compose/blob/claude/busy-hopper-ghtynk/results/v2/items/SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32.json.gz', '_wandb': {}}
+2026-11-10 11:16:19,399 INFO    MainThread:413 [wandb_init.py:init():832] starting backend
+2026-11-10 11:16:19,399 INFO    MainThread:413 [wandb_init.py:init():847] sending inform_init request
+2026-11-10 11:16:19,908 INFO    MainThread:413 [wandb_init.py:init():852] backend started and connected
+2026-11-10 11:16:19,908 INFO    MainThread:413 [wandb_init.py:init():922] updated telemetry
+2026-11-10 11:16:19,915 INFO    MainThread:413 [wandb_init.py:init():940] communicating run to backend with 90.0 second timeout
+2026-11-10 11:16:20,690 INFO    MainThread:413 [wandb_init.py:init():977] starting run threads in backend
+2026-11-10 11:16:20,773 INFO    MainThread:413 [wandb_run.py:_console_start():2528] atexit reg
+2026-11-10 11:16:20,773 INFO    MainThread:413 [wandb_run.py:_redirect():2378] redirect: wrap_raw
+2026-11-10 11:16:20,773 INFO    MainThread:413 [wandb_run.py:_redirect():2447] Wrapping output streams.
+2026-11-10 11:16:20,773 INFO    MainThread:413 [wandb_run.py:_redirect():2470] Redirects installed.
+2026-11-10 11:16:20,774 INFO    MainThread:413 [wandb_init.py:init():1015] run started, returning control to user process
+2026-11-10 11:16:21,088 INFO    MainThread:413 [wandb_run.py:_finish():2300] finishing run martin-css/esann2027-compose-v2/s4a297f50768e84497048468d
+2026-11-10 11:16:21,088 INFO    MainThread:413 [wandb_run.py:_atexit_cleanup():2495] got exitcode: 0
+2026-11-10 11:16:21,088 INFO    MainThread:413 [wandb_run.py:_restore():2477] restore
+2026-11-10 11:16:21,089 INFO    MainThread:413 [wandb_run.py:_restore():2483] restore done

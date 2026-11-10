@@ -1,0 +1,30 @@
+{
+  "os":  "Linux-6.18.44-fc-v338-x86_64-with-glibc2.39",
+  "python":  "CPython 3.13.18",
+  "startedAt":  "2026-11-10T11:16:08.621367Z",
+  "program":  "/home/user/esann2027-compose/scripts/wandb_sync.py",
+  "codePath":  "scripts/wandb_sync.py",
+  "codePathLocal":  "scripts/wandb_sync.py",
+  "git":  {
+    "remote":  "https://github.com/martin-cousseau/esann2027-compose",
+    "commit":  "438715a8708a26d1d03b0297f5fde30177dcf683"
+  },
+  "root":  "/home/user/esann2027-compose",
+  "host":  "vm",
+  "executable":  "/home/user/venv/bin/python",
+  "cpu_count":  4,
+  "cpu_count_logical":  4,
+  "disk":  {
+    "/":  {
+      "total":  "270553174016",
+      "used":  "13355040768"
+    }
+  },
+  "memory":  {
+    "total":  "16867737600"
+  },
+  "cpu":  {
+    "model":  "Intel(R) Xeon(R) Processor @ 2.10GHz"
+  },
+  "writerId":  "01a1c52c-2c19-76ba-9d55-8ba19f94951d"
+}
