@@ -1,16 +1,43 @@
 # NEWS (newest first)
 
 ## Read this first
-- **Angle:** not chosen yet (needs E1-E4 results).
-- **Status:** phase 0 passed (GPU checks all PASS; the Explainer is missing and you chose to proceed). E1 started
-  at 05:56 UTC on two L4 runtimes; E2 runs alongside E1 on runtime A. Results mirror into `results/v2/`.
-- **Blockers:** none. Colab allows only 2 GPU runtimes at once on this plan (a 3rd was refused).
-- **Decisions waiting on you:** none urgent (QUESTIONS.md: the Explainer and the original LaTeX source, if you have them).
+- **Angle:** not chosen yet (needs E1-E4). Early E2 evidence weakens angle A on SmolLM2-135M (see below).
+- **Status:** E1 and E2 running on two L4 runtimes (`esann-e1-a2`, `esann-e1-b2`) since 06:45 UTC, after two
+  fixes (memory in lm-eval; Colab reclaiming runtimes with an idle kernel). Analysis pipeline built.
+- **Blockers:** none. Colab allows 2 GPU runtimes at once here.
+- **Decisions waiting on you:** none urgent (QUESTIONS.md).
 - **GPU type locked:** NVIDIA L4, image `release-colab-external-images_20261106-060046_RC00`, fp32, TF32 off.
-- **CU (estimate, check the real balance on the Colab website):** about 4 spent (pilot; upper bound 14, see below),
-  about 96 left; 2 runtimes alive (`esann-e1-a`, `esann-e1-b`), burning about 4.5 CU/h together.
-- **Links:** draft PR https://github.com/martin-cousseau/esann2027-compose/pull/1 ; models (private until the end,
-  then public) https://huggingface.co/martincousseau/esann2027-compose-v2 ; W&B project being set up (public).
+- **CU (estimate; check the Colab website):** about 7 spent (pilot about 1-2, four runtimes about 0.7 h each,
+  two alive since 06:41), about 93 left; 2 runtimes alive, about 4.5 CU/h together.
+- **Links:** PR https://github.com/martin-cousseau/esann2027-compose/pull/1 ; W&B (public)
+  https://wandb.ai/martin-css/esann2027-compose-v2 ; models (private until the end)
+  https://huggingface.co/martincousseau/esann2027-compose-v2
+
+## 2026-11-10 06:55 UTC - fixes, first results
+- **Colab reclaims runtimes whose kernel is idle** (about 20 min after the last code execution), even with GPU
+  jobs running in the background: both runtimes died at about 06:33, and the pilot overnight the same way (so
+  the pilot cost about 1-2 CU, not 14). Finished units were safe (resume-safe runners, results mirrored every
+  90 s); two units in progress were lost. Chains now run from a kernel cell that blocks until they finish.
+- **lm-eval ran out of memory at batch 64** (fp32 logits of long BoolQ/SciQ passages). Now two fixed batch
+  groups: SmolLM2 48 (short tasks) / 16 (BoolQ, SciQ, LAMBADA); Qwen 24 / 8. Results write to `/content/out`
+  on the runtimes so code updates never touch live result files.
+- **Dense fp32 vs published 16-bit WikiText-2 perplexity:** 15.41532 vs 15.41535 (SmolLM2-135M), 13.06988 vs
+  13.07026 (Qwen2.5-0.5B) (`reports/analysis/`).
+- **E2 on SmolLM2-135M** (same Hessian, every 2nd block, 105 layers; `results/v2/E2/SmolLM2-135M.jsonl`,
+  `scripts/make_tables.py`): P->Q is sub-additive in all 6 cells (-4.1% to -12.2%), joint in all 6 (-6.4% to
+  -18.1%). Re-fitting the grid does not reduce the quantize-first penalty (it makes it 3-14% worse); reusing
+  the pruning-only mask removes 6-39%. So neither the stale grid (the paper's reading) nor mask selection
+  (Harma et al.'s) explains most of it on this model: angle A's 60% bar is not met here.
+- **E2, correlation:** each layer's P->Q interaction correlates with the mean |corr| of its Hessian (Spearman
+  0.48-0.55 on 135M, 0.54-0.61 on partial 360M): the review's synthetic prediction holds on real layers. With
+  one Hessian, block 0 of SmolLM2-360M is super-additive for P->Q in all 6 cells while deeper blocks are
+  sub-additive (partial data).
+- **Literature:** 30 BibTeX entries verified (`paper/refs.bib`, `reports/literature.md`). Caveats for the text:
+  Harma et al. measured the small SparseGPT order effect at 6-8 bits only; Kim et al.'s "often marginally
+  positive" is in their vision section; SparseGPT shows 50%+4-bit vs 3-bit only from 2.7B up.
+- **LaTeX:** the draft is re-created exactly in the ESANN template (`paper/v1/`, same page breaks).
+- **Next:** reproduction gate (3 SmolLM2-135M units), then the rest of E1; E2 on 360M and Qwen; CU plan for
+  E3-E6 from the measured timings.
 
 ## 2026-11-10 06:00 UTC - pilot done, E1 and E2 running
 - The session was suspended 23:51-05:49 UTC (usage limit). The pilot runtime had finished its checks at about
