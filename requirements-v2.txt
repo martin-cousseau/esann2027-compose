@@ -10,3 +10,4 @@ huggingface_hub==1.33.0
 numpy==2.4.6
 nvidia-ml-py==13.615.71
 pytest==8.4.2
+websocket-client==1.9.2
