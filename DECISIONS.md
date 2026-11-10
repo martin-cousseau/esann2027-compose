@@ -84,3 +84,12 @@ Every judgment call, with the reason and the date (UTC). Newest last.
 21. **2026-11-10, runtime names in metadata.** Units run on the replacement runtimes `esann-e1-a2`/`-b2` carry
     `colab_runtime_name` = `esann-e1-a`/`-b` (the chain scripts' names); the GPU UUID in `nvidia_smi` and
     `logs/runtimes.jsonl` identify the machine. chain_b2 records `esann-e1-b2` correctly.
+22. **2026-11-10, reproduction gate re-read after investigation.** fp32 on L4 vs the published 16-bit (T4)
+    runs of SmolLM2-135M: dense -0.000%, 4-bit +0.74%, 50%+4 P->Q +2.62%; Qwen2.5-0.5B dense -0.003%, 4-bit
+    +0.50%. The same code in 16-bit on L4 gives SmolLM2-135M 4-bit +1.50% vs the same published 16-bit run,
+    so the gap is not the precision change and not the pipeline (dense matches to 1e-5): tiny kernel-level
+    differences between GPU types flip greedy rounding and mask decisions, which cascade through the
+    sequential calibration. The 0.5% tolerance cannot hold across GPU types for compressed states; within the
+    locked type, determinism is checked bit for bit (DET). E1 proceeds; the cross-hardware sensitivity is
+    reported as part of the noise analysis (R6). The fp32 SmolLM2-360M check against the paper's own fp32
+    re-runs (REPRO32) completes the picture.
