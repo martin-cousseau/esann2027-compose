@@ -17,3 +17,6 @@ paper/**/build_stdout.log
 paper/**/main.log
 # compressed models live on Hugging Face, not in git
 models/
+# local bookkeeping of the container-side mirrors
+results/v2/.pull_manifest.json
+results/v2/.wandb_synced.json
