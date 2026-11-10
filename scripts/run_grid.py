@@ -267,7 +267,7 @@ def main():
         units = json.load(f)
     done = {r["state_id"] for r in P.read_jsonl(out) if r.get("status") in ("ok", "failed_check")}
     fails = {}
-    for r in P.read_jsonl(os.path.join(os.path.dirname(out), "failures.jsonl")):
+    for r in P.read_jsonl(os.path.join(os.path.dirname(out), f"failures__{short(args.model)}.jsonl")):
         fails[r["state_id"]] = fails.get(r["state_id"], 0) + 1
     gave_up = {k for k, v in fails.items() if v >= 2}
     if gave_up:
@@ -320,7 +320,7 @@ def main():
             failures += 1
             err = f"{type(e).__name__}: {str(e)[:500]}"
             log(f"FAILED {sid}: {err}\n{traceback.format_exc()[-2000:]}")
-            P.append_jsonl(os.path.join(os.path.dirname(out), "failures.jsonl"),
+            P.append_jsonl(os.path.join(os.path.dirname(out), f"failures__{short(args.model)}.jsonl"),
                            {"state_id": sid, "family": args.family, "model": args.model, "unit": u, "error": err,
                             "time": P.utcnow()})
             gc.collect()

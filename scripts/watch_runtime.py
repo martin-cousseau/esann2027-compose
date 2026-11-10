@@ -12,7 +12,9 @@ It exits with one summary line when:
   HEARTBEAT      --heartbeat-min minutes passed (for NEWS.md updates)
   UNREACHABLE    5 consecutive HTTP failures (runtime reclaimed or deleted?)
 
-Environment: COLAB_URL, COLAB_PROXY_TOKEN (never printed), COLAB_TOKEN_EXPIRES (RFC 3339).
+Runtimes come from a JSON file outside the repository (default /root/.config/esann/runtimes.json, mode 600):
+  {"runtimes": [{"name": "esann-e1-a", "url": "...", "token": "...", "expires": "RFC 3339"}, ...]}
+Tokens are never printed.
 """
 import argparse
 import datetime as dt
@@ -66,7 +68,7 @@ def count_failures(local_results):
     n = 0
     for dirpath, _, files in os.walk(local_results):
         for f in files:
-            if f == "failures.jsonl":
+            if f.startswith("failures"):
                 n += sum(1 for line in open(os.path.join(dirpath, f)) if line.strip())
     return n
 
@@ -75,42 +77,51 @@ def count_lines(local_results):
     out = {}
     for dirpath, _, files in os.walk(local_results):
         for f in files:
-            if f.endswith(".jsonl") and f != "failures.jsonl":
+            if f.endswith(".jsonl") and not f.startswith("failures"):
                 key = os.path.relpath(os.path.join(dirpath, f), local_results)
                 out[key] = sum(1 for line in open(os.path.join(dirpath, f)) if line.strip())
     return out
 
 
+def use(rt):
+    os.environ["COLAB_URL"], os.environ["COLAB_PROXY_TOKEN"] = rt["url"], rt["token"]
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--runtime", required=True)
+    ap.add_argument("--config", default="/root/.config/esann/runtimes.json")
     ap.add_argument("--interval", type=int, default=90)
     ap.add_argument("--stall-min", type=int, default=25)
     ap.add_argument("--heartbeat-min", type=int, default=60)
     ap.add_argument("--exit-on-unit", action="store_true", help="also exit when any new result line appears")
     a = ap.parse_args()
-    exp = parse_time(os.environ["COLAB_TOKEN_EXPIRES"])
+    with open(a.config) as f:
+        rts = json.load(f)["runtimes"]
     local_results = os.path.join(ROOT, "results", "v2")
-    t_start, errors = now(), 0
+    t_start, errors = now(), {r["name"]: 0 for r in rts}
     fail0 = count_failures(local_results)
     lines0 = count_lines(local_results)
     seen_finished = None
     while True:
-        try:
-            CJ.pull(f"{REMOTE}/results/v2", local_results)
-            status, logs = snapshot(a.runtime)
-            os.makedirs(os.path.join(ROOT, "logs", "status", a.runtime), exist_ok=True)
-            for k, v in status.items():
-                with open(os.path.join(ROOT, "logs", "status", a.runtime, f"{k}.json"), "w") as f:
-                    json.dump(v, f)
-            errors = 0
-        except Exception as ex:  # noqa: BLE001
-            errors += 1
-            if errors >= 5:
-                print(f"UNREACHABLE {a.runtime}: {type(ex).__name__}: {str(ex)[:160]}")
-                return 0
-            time.sleep(a.interval)
-            continue
+        status, logs = {}, {}
+        for rt in rts:
+            use(rt)
+            try:
+                CJ.pull(f"{REMOTE}/results/v2", local_results)
+                st, lg = snapshot(rt["name"])
+                os.makedirs(os.path.join(ROOT, "logs", "status", rt["name"]), exist_ok=True)
+                for k, v in st.items():
+                    with open(os.path.join(ROOT, "logs", "status", rt["name"], f"{k}.json"), "w") as f:
+                        json.dump(v, f)
+                status.update({f"{rt['name']}:{k}": v for k, v in st.items()})
+                logs.update({f"{rt['name']}:{k}": v for k, v in lg.items()})
+                errors[rt["name"]] = 0
+            except Exception as ex:  # noqa: BLE001
+                errors[rt["name"]] += 1
+                if errors[rt["name"]] >= 5:
+                    print(f"UNREACHABLE {rt['name']}: {type(ex).__name__}: {str(ex)[:160]}")
+                    return 0
+        a.runtime = ",".join(r["name"] for r in rts)
         lines = count_lines(local_results)
         summary = "; ".join(f"{k}:{v.get('stage')}({v.get('done')}/{(v.get('done') or 0) + (v.get('todo') or 0)})"
                             for k, v in sorted(status.items()))
@@ -124,14 +135,19 @@ def main():
         if count_failures(local_results) > fail0:
             print(f"FAILURE {a.runtime} failures={count_failures(local_results)} | {summary}")
             return 0
+        latest = {}  # newest log time per runtime (chains log to one file, runners to another)
+        for k, v in logs.items():
+            rn = k.split(":")[0]
+            latest[rn] = max(latest.get(rn, v), v)
         for k, v in status.items():
-            if v.get("stage") != "finished" and k in logs and (now() - logs[k]).total_seconds() > 60 * a.stall_min:
-                print(f"STALL {a.runtime} {k}: log unchanged for {(now() - logs[k]).total_seconds() / 60:.0f} min | {summary}")
+            rn = k.split(":")[0]
+            if v.get("stage") != "finished" and rn in latest and (now() - latest[rn]).total_seconds() > 60 * a.stall_min:
+                print(f"STALL {rn} {k}: no log activity for {(now() - latest[rn]).total_seconds() / 60:.0f} min | {summary}")
                 return 0
         if a.exit_on_unit and lines != lines0:
             print(f"UNIT_DONE {a.runtime} | {summary}")
             return 0
-        if (exp - now()).total_seconds() < 360:
+        if min((parse_time(r["expires"]) - now()).total_seconds() for r in rts) < 360:
             print(f"TOKEN_REFRESH {a.runtime} | {summary}")
             return 0
         if (now() - t_start).total_seconds() > 60 * a.heartbeat_min:
