@@ -1,1 +1,12 @@
-
+model,cell,sparsity,bits,seed,order_a,order_b,state_a,state_b,task,a_only,b_only,p
+SmolLM2-135M,50%+4,0.5,4,0,joint,p_then_q,SmolLM2-135M__joint__s0.5000__b4__seed0__float32,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,arc_easy,209,151,0.0026142441360678162
+SmolLM2-135M,50%+4,0.5,4,0,joint,p_then_q,SmolLM2-135M__joint__s0.5000__b4__seed0__float32,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,piqa,118,128,0.5661792835834814
+SmolLM2-135M,50%+4,0.5,4,0,joint,p_then_q,SmolLM2-135M__joint__s0.5000__b4__seed0__float32,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,hellaswag,547,548,1.0
+SmolLM2-135M,50%+4,0.5,4,0,joint,p_then_q,SmolLM2-135M__joint__s0.5000__b4__seed0__float32,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,arc_challenge,86,73,0.3412944918305005
+SmolLM2-135M,50%+4,0.5,4,0,joint,p_then_q,SmolLM2-135M__joint__s0.5000__b4__seed0__float32,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,winogrande,176,162,0.4795547549906454
+SmolLM2-135M,50%+4,0.5,4,0,joint,p_then_q,SmolLM2-135M__joint__s0.5000__b4__seed0__float32,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,openbookqa,30,27,0.7913664277791806
+SmolLM2-135M,50%+4,0.5,4,0,joint,p_then_q,SmolLM2-135M__joint__s0.5000__b4__seed0__float32,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,boolq,154,202,0.01262954249100768
+SmolLM2-135M,50%+4,0.5,4,0,joint,p_then_q,SmolLM2-135M__joint__s0.5000__b4__seed0__float32,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,sciq,149,49,6.285389762335701e-13
+SmolLM2-135M,50%+4,0.5,4,0,joint,p_then_q,SmolLM2-135M__joint__s0.5000__b4__seed0__float32,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,lambada_openai,234,473,1.5956430730852648e-19
+SmolLM2-135M,50%+4,0.5,4,0,joint,p_then_q,SmolLM2-135M__joint__s0.5000__b4__seed0__float32,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,pooled9,1703,1813,0.06601187061871717
+SmolLM2-135M,50%+4,0.5,4,0,joint,p_then_q,SmolLM2-135M__joint__s0.5000__b4__seed0__float32,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,pooled3,874,827,0.26470081936156376

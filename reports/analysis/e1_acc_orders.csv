@@ -1,1 +1,13 @@
-
+model,cell,sparsity,bits,seed,order_a,order_b,state_a,state_b,task,metric,diff,lo,hi
+SmolLM2-135M,50%+4,0.5,4,0,joint,p_then_q,SmolLM2-135M__joint__s0.5000__b4__seed0__float32,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,arc_easy,acc_norm,0.024410774410774383,0.008817340067340043,0.039562289562289576
+SmolLM2-135M,50%+4,0.5,4,0,joint,p_then_q,SmolLM2-135M__joint__s0.5000__b4__seed0__float32,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,piqa,acc_norm,-0.005440696409140466,-0.022306855277475557,0.010881392818280822
+SmolLM2-135M,50%+4,0.5,4,0,joint,p_then_q,SmolLM2-135M__joint__s0.5000__b4__seed0__float32,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,hellaswag,acc_norm,-9.958175662216906e-05,-0.0063732324238199856,0.006176558454491144
+SmolLM2-135M,50%+4,0.5,4,0,joint,p_then_q,SmolLM2-135M__joint__s0.5000__b4__seed0__float32,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,arc_challenge,acc_norm,0.011092150170648463,-0.009385665529010268,0.02986348122866897
+SmolLM2-135M,50%+4,0.5,4,0,joint,p_then_q,SmolLM2-135M__joint__s0.5000__b4__seed0__float32,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,winogrande,acc,0.011049723756906049,-0.01815311760063143,0.04183109707971583
+SmolLM2-135M,50%+4,0.5,4,0,joint,p_then_q,SmolLM2-135M__joint__s0.5000__b4__seed0__float32,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,openbookqa,acc_norm,0.006000000000000005,-0.023999999999999966,0.03404999999999998
+SmolLM2-135M,50%+4,0.5,4,0,joint,p_then_q,SmolLM2-135M__joint__s0.5000__b4__seed0__float32,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,boolq,acc,-0.014678899082568808,-0.02629969418960243,-0.0036620795107033715
+SmolLM2-135M,50%+4,0.5,4,0,joint,p_then_q,SmolLM2-135M__joint__s0.5000__b4__seed0__float32,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,sciq,acc,0.09999999999999998,0.07300000000000006,0.128
+SmolLM2-135M,50%+4,0.5,4,0,joint,p_then_q,SmolLM2-135M__joint__s0.5000__b4__seed0__float32,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,lambada_openai,acc,-0.04638074907820686,-0.05608383465942168,-0.037056083834659415
+SmolLM2-135M,50%+4,0.5,4,0,joint,p_then_q,SmolLM2-135M__joint__s0.5000__b4__seed0__float32,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,mean9_v2,v2,0.009550302445754555,0.003263754746758757,0.01585748552058809
+SmolLM2-135M,50%+4,0.5,4,0,joint,p_then_q,SmolLM2-135M__joint__s0.5000__b4__seed0__float32,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,mean3_v2,v2,0.00629016541500399,-0.0016775706927664251,0.013858519331742392
+SmolLM2-135M,50%+4,0.5,4,0,joint,p_then_q,SmolLM2-135M__joint__s0.5000__b4__seed0__float32,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,mean3_paper,paper,0.010745308063835501,0.002634241154671109,0.018597109975861125

@@ -1,1 +1,5 @@
-
+model,cell,sparsity,bits,seed,order_a,order_b,state_a,state_b,set,diff,lo,hi
+SmolLM2-135M,50%+4,0.5,4,0,joint,p_then_q,SmolLM2-135M__joint__s0.5000__b4__seed0__float32,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,sr3_v2,0.011087693105424012,-0.0029534766964146334,0.02471644372916044
+SmolLM2-135M,50%+4,0.5,4,0,joint,p_then_q,SmolLM2-135M__joint__s0.5000__b4__seed0__float32,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,sr3_paper,0.018317018095399762,0.004468168663093047,0.03154792445195109
+SmolLM2-135M,50%+4,0.5,4,0,joint,p_then_q,SmolLM2-135M__joint__s0.5000__b4__seed0__float32,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,sr9_v2,0.018158237807345823,0.0062206881209256465,0.03025495004904879
+SmolLM2-135M,50%+4,0.5,4,0,joint,p_then_q,SmolLM2-135M__joint__s0.5000__b4__seed0__float32,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,sr9_cn,0.04616581407150577,0.015489348950939142,0.07696094850566808
