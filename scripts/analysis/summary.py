@@ -209,7 +209,10 @@ def summary_md(store, e1, q, det, fr, e2, boolq, tex_info, missing, paths, B, fi
              f" {ck['item_vs_aggregate_n']} (state, task, metric) values.\n"
              f"- Pooled flips against extra_orders.flips: max |difference| {f(ck['flips_vs_extra_orders_max_abs'], 12)}.\n"
              f"- States whose item set differs from the common one: {len(ck['doc_id_notes'])}"
-             + (": " + "; ".join(ck["doc_id_notes"][:10]) if ck["doc_id_notes"] else "") + ".\n")
+             + (": " + "; ".join(ck["doc_id_notes"][:10]) if ck["doc_id_notes"] else "") + ".\n"
+             "- Dense accuracy at or below the task's chance level (v2 metric; that task has no headroom in the"
+             " chance-normalized Sr): " + ("; ".join(f"{x['model']} {x['task']} {f(x['dense_v2'], 4)} vs chance {f(x['chance'], 4)}"
+                                                    for x in ck.get("dense_at_or_below_chance", [])) or "none") + ".\n")
     L.append("\n## Outputs\n\n"
              f"- paper/generated/: table_main_rows.tex, table_kl_flips.tex, table_mechanism_rows.tex, macros.tex ({tex_info['macros']}"
              f" macros, {tex_info['macros_missing']} still --), MACROS.md, fig_frontier_*.dat.\n"

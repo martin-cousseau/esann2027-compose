@@ -124,6 +124,11 @@ def _model(store, model, sids, chance, missing, out, B, seed):
 
     dense = store.dense(model)
     dsid = dense["state_id"] if dense else None
+    for row in out["tasks"]:  # chance-normalized Sr needs dense headroom above chance on every task
+        c = chance.get(row["task"])
+        if dsid and row["state_id"] == dsid and c is not None and finite(row["v2"]) and row["v2"] <= c:
+            ck.setdefault("dense_at_or_below_chance", []).append(
+                {"model": model, "task": row["task"], "dense_v2": row["v2"], "chance": c})
     if dsid is None or dsid not in with_items:
         missing.add("E1 Sr/flips/I_Sr", f"{model}: every state", "dense state or its items not available yet")
         dsid = None

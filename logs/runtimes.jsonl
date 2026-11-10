@@ -5,3 +5,5 @@
 {"event":"reclaimed","name":"runtimes/esann-pilot","observed_utc":"2026-11-10T05:50:30Z","note":"absent from list_runtimes after the session was suspended 23:51-05:49 UTC; lifetime unknown (>= 23:38-00:00 active; upper bound 6.2 h)"}
 {"event":"reclaimed","name":"runtimes/esann-e1-a","observed_utc":"2026-11-10T06:40:21Z","note":"404 from ~06:33; last kernel execution 06:14; idle-kernel reclaim suspected (background processes do not count)","lifetime_h_est":0.67}
 {"event":"reclaimed","name":"runtimes/esann-e1-b","observed_utc":"2026-11-10T06:40:21Z","note":"same as esann-e1-a","lifetime_h_est":0.67}
+{"event":"create","name":"runtimes/esann-e1-a2","spec":"L4/STANDARD/GPU","created_utc":"2026-11-10T06:41:31Z","owner":"orchestrator","purpose":"E1 135M+360M, E2 (replaces esann-e1-a)"}
+{"event":"create","name":"runtimes/esann-e1-b2","spec":"L4/STANDARD/GPU","created_utc":"2026-11-10T06:41:34Z","owner":"orchestrator","purpose":"E1 Qwen2.5-0.5B (replaces esann-e1-b)"}

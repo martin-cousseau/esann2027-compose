@@ -97,7 +97,7 @@ def frontier(fr, store, paths, model):
                         textcoords="offset points", ha="right", fontsize=5.5, color=MUTED)
     h, lab = axs[1].get_legend_handles_labels() if (quant or sparse) else ([], [])
     if h:
-        fig.legend(h, lab, ncol=3, loc="outside upper center")
+        fig.legend(h, lab, ncol=3, loc="outside lower center")
     fig.suptitle(model, x=0.0, ha="left", fontsize=8, color=INK)
     files = _save(fig, paths, f"frontier_{model}")
     n = len(quant) + len(best)
