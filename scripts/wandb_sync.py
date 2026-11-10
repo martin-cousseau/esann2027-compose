@@ -72,8 +72,9 @@ def flat(prefix, d, out):
     return out
 
 
-def run_id(state_id):
-    return "s" + hashlib.sha1(state_id.encode()).hexdigest()[:24]
+def run_id(family, state_id):
+    """One W&B run per (family, state): E1 and its re-checks (DET, IMG, REPRO) stay separate runs."""
+    return "r" + hashlib.sha1(f"{family}|{state_id}".encode()).hexdigest()[:24]
 
 
 def sync_row(row):
@@ -109,7 +110,8 @@ def sync_row(row):
     summ["mean_rel_err"] = row.get("mean_rel_err")
     short = row["model"].split("/")[-1]
     tags = [row["order"], f"{row['bits']}bit", f"s{float(row['sparsity']):.2f}", row.get("family") or "", short]
-    run = wandb.init(entity=ENTITY, project=PROJECT, id=run_id(row["state_id"]), name=row["state_id"],
+    run = wandb.init(entity=ENTITY, project=PROJECT, id=run_id(row.get("family"), row["state_id"]),
+                     name=f"{row.get('family')}:{row['state_id']}",
                      group=short, job_type=row.get("family"), tags=[t for t in tags if t], config=cfg,
                      resume="allow", reinit="finish_previous", settings=wandb.Settings(silent=True))
     run.summary.update({k: v for k, v in summ.items() if v is not None})
@@ -128,6 +130,8 @@ def main():
     ap.add_argument("--setup", action="store_true")
     ap.add_argument("--e2", action="store_true")
     ap.add_argument("--limit", type=int, default=None)
+    ap.add_argument("--prune-old", action="store_true",
+                    help="delete runs of the project whose id is not a current (family, state) id")
     a = ap.parse_args()
     api_key()
     if a.setup:
@@ -148,7 +152,11 @@ def main():
             key = f"{row.get('family')}|{row['state_id']}"
             if state.get(key) == h:
                 continue
-            sync_row(row)
+            try:
+                sync_row(row)
+            except Exception as e:  # noqa: BLE001  (one W&B failure must not stop the others)
+                print(f"W&B sync failed for {key}: {type(e).__name__}: {str(e)[:160]}")
+                continue
             state[key] = h
             n += 1
             with open(STATE, "w") as fh:
@@ -156,6 +164,16 @@ def main():
             if a.limit and n >= a.limit:
                 break
     print(f"synced {n} runs to https://wandb.ai/{ENTITY}/{PROJECT}")
+    if a.prune_old:
+        import wandb
+        keep = {run_id(k.split("|", 1)[0], k.split("|", 1)[1]) for k in state}
+        api = wandb.Api(api_key=os.environ["WANDB_API_KEY"], timeout=60)
+        gone = 0
+        for r in api.runs(f"{ENTITY}/{PROJECT}"):
+            if r.id not in keep:
+                r.delete()
+                gone += 1
+        print(f"deleted {gone} runs with old ids")
 
 
 if __name__ == "__main__":
