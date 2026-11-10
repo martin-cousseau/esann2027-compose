@@ -110,3 +110,13 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     the mask counted; 25%+4-bit does not beat 4-bit at 4.0 bits/w) and C (Q->P at 25%+3 equals 3-bit exactly).
     The paper is drafted for B + C with the mechanism reported as a negative result; claims are macros, so the
     text follows the final numbers. Revisit when E1 for 360M and Qwen and E3/E4 are complete.
+26. **2026-11-10, second Colab image admitted.** Runtimes created at 18:04 came up on
+    `release-colab-external-images_20261109-060054_RC00` instead of the locked `..._20261106-060046_RC00`,
+    with identical package versions; the fingerprint check refused them, as designed. On both new runtimes,
+    SmolLM2-135M joint 50%+4 recomputed on the new image is bit-identical to the old image's E1 result
+    (WikiText-2 NLL sum and all 210 layer errors; `results/v2/IMG/` on the runtimes). The lock now lists both
+    images; units record which image they ran on.
+27. **2026-11-10, runtime-side keepalive.** The external keepalive needs a proxy token that expires hourly and
+    stops when this session is suspended (both runtimes died ~1 h after a suspension at 14:48). Each runtime
+    now also runs `colab/local_keepalive.py`, which executes a trivial cell through its own Jupyter server
+    every 4 min.
