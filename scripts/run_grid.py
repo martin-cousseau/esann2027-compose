@@ -199,13 +199,22 @@ def run_unit(ctx, u, log):
             c4m = P.lm_metrics(model, ctx["c4_win"], args.device, dense=dense if kl_on else None)
         log(f"  {sid}: c4 ppl {c4m['ppl']:.4f}" + (f" KL {c4m['kl']:.5f} top1 {c4m['top1']:.4f}" if kl_on else ""))
     tasks = u.get("tasks", P.ZERO_SHOT_TASKS)
-    agg, items, tmeta, bs_used = {}, {}, {}, None
+    agg, items, tmeta, bs_used = {}, {}, {"versions": {}, "n_shot": {}}, {}
     if tasks:
         write_status(ctx["status"], state_id=sid, stage="tasks", done=ctx["n_done"], todo=ctx["n_todo"])
+        groups = [("short", [x for x in tasks if x not in P.LONG_INPUT_TASKS], 3 * args.eval_batch),
+                  ("long", [x for x in tasks if x in P.LONG_INPUT_TASKS], args.eval_batch)]
         with P.timer(t, "tasks"):
-            agg, items, tmeta, bs_used = eval_tasks(model, tok, tasks, args.eval_batch, log,
-                                                    limit=2 if args.smoke else u.get("limit"),
-                                                    dense=dense if args.device == "cuda" else None)
+            for gname, gtasks, gbs in groups:
+                if not gtasks:
+                    continue
+                a_, i_, m_, b_ = eval_tasks(model, tok, gtasks, gbs, log, limit=2 if args.smoke else u.get("limit"),
+                                            dense=dense if args.device == "cuda" else None)
+                agg.update(a_)
+                items.update(i_)
+                tmeta["versions"].update(m_.get("versions", {}))
+                tmeta["n_shot"].update(m_.get("n_shot", {}))
+                bs_used.update({x: b_ for x in gtasks})
     fs = {}
     for task, k in (u.get("fewshot") or {}).items():
         write_status(ctx["status"], state_id=sid, stage=f"fewshot:{task}", done=ctx["n_done"], todo=ctx["n_todo"])

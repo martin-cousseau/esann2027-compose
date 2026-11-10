@@ -45,6 +45,10 @@ CALIB_SEEDS_EXCLUDED = (0, 1, 2)  # C4 evaluation windows avoid every document t
 PAPER_TASKS = ["arc_easy", "piqa", "hellaswag"]
 EXTENDED_TASKS = ["arc_challenge", "winogrande", "openbookqa", "boolq", "sciq", "lambada_openai"]
 ZERO_SHOT_TASKS = PAPER_TASKS + EXTENDED_TASKS
+# lm-eval batch groups: short-input tasks run at 3x the batch of the long-passage tasks (BoolQ passages,
+# SciQ supports, LAMBADA paragraphs), whose longest requests set the memory peak. Fixed sizes keep the
+# evaluation deterministic (no OOM probing).
+LONG_INPUT_TASKS = {"boolq", "sciq", "lambada_openai"}
 FEWSHOT_TASKS = {"mmlu": 5}   # only for models >= 1.5B, as a sanity check
 # v2 main metric per task (the protocol: acc_norm for these five, acc otherwise); both are always stored.
 ACC_NORM_TASKS = {"arc_easy", "arc_challenge", "hellaswag", "openbookqa", "piqa"}

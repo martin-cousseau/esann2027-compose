@@ -69,3 +69,9 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     done. Finished units were all safe (resume-safe runners, results pulled every 90 s); the two units in
     progress were lost and are re-run. Finished result files are pushed back to fresh runtimes so the runners
     skip them.
+19. **2026-11-10, lm-eval batch groups.** The benchmarks took about 75% of each unit at batch 16. Short-input
+    tasks (ARC-E/C, HellaSwag, OBQA, PIQA, WinoGrande) now run at 3x the batch of the long-passage tasks
+    (BoolQ, SciQ, LAMBADA), which set the memory peak: SmolLM2 48/16, Qwen 24/8. Fixed sizes, so the
+    evaluation stays deterministic. The first units (both dense models, and the 3 gate units of SmolLM2-135M)
+    ran at a single batch size; batch size changes only padding, so per-item results can differ at most on
+    near-tied items (checked at the end by re-evaluating the dense models).
