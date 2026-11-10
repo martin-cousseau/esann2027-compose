@@ -450,6 +450,17 @@ Qwen2.5-0.5B,Qwen2.5-0.5B__joint__s0.3333__b4__seed0__float32,sciq,1000,32,20,0.
 Qwen2.5-0.5B,Qwen2.5-0.5B__joint__s0.3333__b4__seed0__float32,lambada_openai,5153,718,178,0.1738792936153697
 Qwen2.5-0.5B,Qwen2.5-0.5B__joint__s0.3333__b4__seed0__float32,pooled9,26618,2885,1413,0.1614696821699602
 Qwen2.5-0.5B,Qwen2.5-0.5B__joint__s0.3333__b4__seed0__float32,pooled3,14256,844,550,0.09778338945005612
+Qwen2.5-0.5B,Qwen2.5-0.5B__p_then_q__s0.3333__b4__seed0__float32,arc_easy,2376,160,197,0.15025252525252525
+Qwen2.5-0.5B,Qwen2.5-0.5B__p_then_q__s0.3333__b4__seed0__float32,piqa,1838,98,64,0.088139281828074
+Qwen2.5-0.5B,Qwen2.5-0.5B__p_then_q__s0.3333__b4__seed0__float32,hellaswag,10042,636,258,0.08902609042023502
+Qwen2.5-0.5B,Qwen2.5-0.5B__p_then_q__s0.3333__b4__seed0__float32,arc_challenge,1172,85,75,0.13651877133105803
+Qwen2.5-0.5B,Qwen2.5-0.5B__p_then_q__s0.3333__b4__seed0__float32,winogrande,1267,154,156,0.244672454617206
+Qwen2.5-0.5B,Qwen2.5-0.5B__p_then_q__s0.3333__b4__seed0__float32,openbookqa,500,29,16,0.09
+Qwen2.5-0.5B,Qwen2.5-0.5B__p_then_q__s0.3333__b4__seed0__float32,boolq,3270,778,354,0.346177370030581
+Qwen2.5-0.5B,Qwen2.5-0.5B__p_then_q__s0.3333__b4__seed0__float32,sciq,1000,35,18,0.053
+Qwen2.5-0.5B,Qwen2.5-0.5B__p_then_q__s0.3333__b4__seed0__float32,lambada_openai,5153,730,183,0.17717834271298272
+Qwen2.5-0.5B,Qwen2.5-0.5B__p_then_q__s0.3333__b4__seed0__float32,pooled9,26618,2705,1321,0.15125103313547222
+Qwen2.5-0.5B,Qwen2.5-0.5B__p_then_q__s0.3333__b4__seed0__float32,pooled3,14256,894,519,0.09911616161616162
 Qwen2.5-0.5B,Qwen2.5-0.5B__joint__s0.5000__b4__seed0__float32,arc_easy,2376,314,189,0.2117003367003367
 Qwen2.5-0.5B,Qwen2.5-0.5B__joint__s0.5000__b4__seed0__float32,piqa,1838,173,85,0.14036996735582155
 Qwen2.5-0.5B,Qwen2.5-0.5B__joint__s0.5000__b4__seed0__float32,hellaswag,10042,1221,321,0.15355506871141206
