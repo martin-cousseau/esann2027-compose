@@ -15,6 +15,7 @@ Usage (on the GPU runtime, from the repository root):
 import os
 
 os.environ.setdefault("CUBLAS_WORKSPACE_CONFIG", ":4096:8")  # before torch initialises CUDA
+os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")  # less fragmentation in lm-eval
 
 import argparse  # noqa: E402
 import copy  # noqa: E402
@@ -125,18 +126,31 @@ def unit_checks(u, diags, wt):
     return c
 
 
-def eval_tasks(model, tok, tasks, bs, log, fewshot=0, limit=None):
+def eval_tasks(model, tok, tasks, bs, log, fewshot=0, limit=None, dense=None):
+    """lm-eval with one OOM retry at a quarter of the batch size.
+
+    The retry runs OUTSIDE the except block: inside it, the traceback still references lm-eval's frames and
+    their activations, so nothing could be freed. The dense copy (needed only for KL) waits on the CPU while
+    the tasks run, which frees its GPU memory for the logits."""
     import torch
-    try:
-        agg, items, meta = P.run_lmeval(model, tok, tasks, bs, num_fewshot=fewshot, limit=limit)
-        return agg, items, meta, bs
-    except torch.cuda.OutOfMemoryError:
-        log(f"OOM in lm-eval at batch {bs}; retrying once at batch {max(1, bs // 4)}")
-        gc.collect()
+    if dense is not None:
+        dense.to("cpu")
         torch.cuda.empty_cache()
-        bs2 = max(1, bs // 4)
-        agg, items, meta = P.run_lmeval(model, tok, tasks, bs2, num_fewshot=fewshot, limit=limit)
-        return agg, items, meta, bs2
+    try:
+        sizes = [bs, max(1, bs // 4)]
+        for attempt, b in enumerate(sizes):
+            try:
+                agg, items, meta = P.run_lmeval(model, tok, tasks, b, num_fewshot=fewshot, limit=limit)
+                return agg, items, meta, b
+            except torch.cuda.OutOfMemoryError:
+                pass
+            gc.collect()
+            torch.cuda.empty_cache()
+            log(f"OOM in lm-eval at batch {b}" + (f"; retrying once at batch {sizes[1]}" if attempt == 0 else ""))
+        raise torch.cuda.OutOfMemoryError(f"lm-eval out of memory at batch {sizes[0]} and {sizes[1]}")
+    finally:
+        if dense is not None:
+            dense.to("cuda")
 
 
 def run_unit(ctx, u, log):
@@ -190,13 +204,14 @@ def run_unit(ctx, u, log):
         write_status(ctx["status"], state_id=sid, stage="tasks", done=ctx["n_done"], todo=ctx["n_todo"])
         with P.timer(t, "tasks"):
             agg, items, tmeta, bs_used = eval_tasks(model, tok, tasks, args.eval_batch, log,
-                                                    limit=2 if args.smoke else u.get("limit"))
+                                                    limit=2 if args.smoke else u.get("limit"),
+                                                    dense=dense if args.device == "cuda" else None)
     fs = {}
     for task, k in (u.get("fewshot") or {}).items():
         write_status(ctx["status"], state_id=sid, stage=f"fewshot:{task}", done=ctx["n_done"], todo=ctx["n_todo"])
         with P.timer(t, f"fewshot_{task}"):
             a2, i2, m2, _ = eval_tasks(model, tok, [task], max(1, args.eval_batch // 4), log, fewshot=int(k),
-                                       limit=u.get("limit"))
+                                       limit=u.get("limit"), dense=dense if args.device == "cuda" else None)
         fs[task] = {"num_fewshot": int(k), "results": a2, "meta": m2}
         items.update({f"{kk}@{k}shot": vv for kk, vv in i2.items()})
     items_abs = os.path.join(ctx["items_root"], f"{sid}.json.gz")
