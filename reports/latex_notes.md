@@ -177,3 +177,111 @@ measured these values on the draft, on v1 and on the official example `esannV2.p
    * Tested: the template's two-institution block gives 7 pages (see "Page budget").
 8. **Harmless.** The warning "You have requested document class `esannV2', but the document class provides `esann'"
    comes from the official class itself.
+
+# Phase L2: the revised paper (2026-11-10)
+
+Author: `latex` subagent. Files written: `paper/main.tex`, `paper/figures/frontier.tex`, `paper/main.pdf`,
+`reports/latex_macro_requests.md`, this section. Build: `cd paper && latexmk -pdf main.tex` (pdflatex +
+BibTeX `unsrt`, 3 passes).
+
+## Result
+
+* 6 pages including references, A4 (595.276 x 841.89 pt). Margins measured on every page: 4.40 cm left and
+  right; the text block starts at 5.20 cm.
+* 0 errors, 0 overfull or underfull boxes, BibTeX 0 warnings, all fonts Type 1 and embedded. Remaining warnings:
+  the class-name warning, and pgfplots "plot has no coordinates" for the panels whose data are still empty.
+* Slack: about 26 pt (2 lines) at the bottom of page 6. Pages 1 to 5 are full.
+* 37 `\TBD` placeholders print, R1 to R29 (see `reports/latex_macro_requests.md`). Macros that are still `--`
+  print as an en dash (Table 1 rows of SmolLM2-360M, E3 shares, ...). Both are expected.
+* Title: "Counting the Mask: When Does Pruning Pay in Quantized Small Language Models?" (12 words).
+  Author: "A. Yaacoub" (README.md names A. Yaacoub as the author), affiliation "[Affiliation to be confirmed]".
+  Any further authors must be added. A one-institution block costs nothing; the template's
+  two-institution block cost a page in L1.
+* 15 references, all keys of `paper/refs.bib`: SparseGPT, GPTQ/OPTQ, OBC, Laborde et al., Zhou et al., Harma et
+  al., Kim et al., Bouriel et al., OBR, SmolLM2, Qwen2.5, Dutta et al., C4, WikiText-2, lm-eval. The nine
+  tasks are named and lm-eval is cited, but the eight dataset papers in refs.bib (ARC, HellaSwag, PIQA,
+  WinoGrande, OpenBookQA, BoolQ, SciQ, LAMBADA) are not: together they cost about 0.4 page. Restore them only
+  if space appears.
+
+## Structure and where the numbers come from
+
+Abstract; 1 Introduction (two paragraphs, related work phrased as `reports/literature.md` supports);
+2 One sweep, three orders; 3 Counting storage and interaction (TCr vs B(s,b), H2, symbol entropy; the v1
+decomposition with the hedge); 4 Experimental setup; 5 Results (Storage, Free zeros, Sub-additivity with one
+Hessian, Order + mechanism, Evaluation, Noise); 6 Conclusion.
+
+* Fig. 1 (`figures/frontier.tex`): pgfplots groupplot, one panel per model, built only from
+  `generated/fig_frontier_quant_<model>.dat` and `fig_frontier_sparse_<model>.dat`. Log y; black line:
+  quantization only; gray circles: best order per cell at `bits_tcr`; blue dots: at `bits_mask`; gray arrows
+  between the two (drawn as x error bars, because pgfplots quiver does not work on log axes). x is limited to
+  1 to 4.5 bits, so the 8-bit point is left out. A panel whose two files have no rows is drawn with y = 10
+  to 100 and the word "pending" (`\frontiercheck`). No number is typed in the figure.
+* Table 1 (equal storage): built in `main.tex` from the per-state macros (`\resQcell`, `\resQrow`,
+  `\resTabModel`). Per model, three rows (PPL, KL, flips) and 8 columns: 4-bit and the three orders of 25%+4
+  (4.0 bits/w), then 3-bit and the three orders of 50%+4 (3.0 bits/w). Bold: smallest of the four values at equal
+  storage, computed by TeX from the printed macro values (ties are both bold); no bold while one of the four is
+  `--`. I did not use `generated/table_main_rows.tex`: at 43 rows it does not fit, and it shows only the best order.
+* Table 2 (mechanism): built from the E2 per-cell macros (`\resMechRow`): 6 cells x 3 models x {penalty,
+  refit, mask, both}. E2 is complete, so the table is final. `generated/table_mechanism_rows.tex` (18 rows,
+  6 of them n/a) did not fit. E3 is quoted in the Order paragraph for one cell through
+  `\resEThreeRemoved{Refit,Pmask,Both}SmolSmallSFiftyBFourPct`.
+* Typed constants, all definitional: 128 windows, 2048 tokens, groups/blocks of 128, s and b of the grid,
+  4.0/3.0/3.25/2.25 bits per weight, 1/128 bit, H2(0.5) = 1, H2(0.25) = 0.81, 0.19 bit (= 4 - 3.81),
+  and the p < 0.05 threshold.
+* Requested macros use their final names, with a fallback `\providecommand{\resX}{\TBD{Rn}}` placed after
+  `\input{generated/macros}`. A macro added to make_tables.py under that name replaces the placeholder with
+  no edit to `main.tex`.
+
+## Switches for the families still running (preamble of main.tex)
+
+`\Ethreetrue`, `\Efourtrue` (on), `\Efivefalse`, `\Esixfalse` (off).
+* E3 off: drops the E3 clause in Sec. 4 and the E3 sentence in the Order paragraph.
+* E4 off: drops "E4 adds 2-bit, 60% and 60%+4-bit" in Sec. 4; the frontier plots whatever the `.dat`
+  files hold.
+* E5 on: adds one sentence on seed stability (requests R30, R31) to the Noise paragraph.
+* E6 on: SmolLM2-1.7B rows in Table 1, a fourth panel in Fig. 1 (panels narrowed so the four fit), "1.7B"
+  in the abstract, "four models" in the Noise paragraph. To make room, it also drops the
+  flips-vs-retention sentence of the Evaluation paragraph.
+* Tested builds (copies in the scratchpad): all off, 6 pages; E5 on, 6 pages; E6 on, 6 pages with no slack;
+  E5 and E6 on, 7 pages (about 40 pt over). All without errors or overfull boxes. With both on, cut first: the
+  E3 sentence (if E3 is settled in Table 2 or not needed), the "With four models ... no scale trend" sentence,
+  and then the free-zero paragraph's last sentence.
+* The page break is tight. Filling the placeholders usually shortens lines ("[R13]" is wider than "60"), but
+  values replacing `--` are wider. Check `pdfinfo` after every make_tables run.
+
+## Claims that depend on pending results (check when the numbers arrive)
+
+* Abstract and conclusion: "25%+4 ... does not beat [plain 4-bit]". This holds on SmolLM2-135M (21.99 vs
+  21.94). The v1 16-bit numbers suggest that joint 25%+4 may beat 4-bit on SmolLM2-360M by about 1%. If R5
+  turns out larger than the hardware noise, or a 25%+4 order wins on some model, rephrase as "is within R5% of
+  it". The Storage paragraph is already worded that way.
+* "50%+4 beats plain 3-bit at 3.0 bits on R1 of R2 models": in v1 the Qwen2.5-0.5B gap was only about 1.6%,
+  within the measured cross-hardware noise. If R1 < R2, or the Qwen gain is that small, say so.
+* "Quantizing first is the worst order in most settings" (abstract, conclusion): currently 3 of 4 cells of one
+  model (R19/R20 restrict this to 4-bit cells).
+* Storage paragraph: the SmolLM2-135M examples (P->Q best at 25%+4 and 50%+4) are final for that model.
+* Evaluation: "Q->P answers more items correctly, mostly on SciQ" (SmolLM2-135M, 50%+4) comes from
+  `e1_acc_orders.csv`: SciQ alone is -9.3 points, about 72% of the nine-task mean difference. It is final for
+  that model.
+* Mechanism wording follows E2 (complete): re-fitting the grid increases the penalty in every cell with a
+  penalty; the pruning-only mask removes at most 39% and is negative in several cells. If E3 contradicts this at
+  model level, the Order paragraph and the abstract need a sentence.
+* Literature phrasing as checked in `reports/literature.md`: Harma (6-8-bit formats for the SparseGPT/Wanda
+  order effect; "the analysis of [Harma] suggests" for the mask-selection reading, which the review attributes
+  to them); Kim (weaker-first rule; sequential; weights, activations and KV cache; the "marginally positive"
+  phrase is not used); Bouriel (about 1B, magnitude + bitsandbytes, at most 1-2 points for 4-bit hybrids at
+  20%); SparseGPT ("from 2.7B parameters up"; the bitmask is described as implied, with no "1-bit" attributed
+  to it); Zhou ("mostly of 1B to 3.8B parameters").
+
+## Other changes from v1 and layout decisions
+
+* Margins: the tested L1 fix is applied (`\voffset 0.06 cm \hoffset -0.14 cm`, `\textheight` + 0.1 cm), so the
+  margins are exactly 4.4/4.4/5.2/5.2 cm, as the template requires.
+* `\Urlmuskip=0mu plus 1mu` and `\emergencystretch=1em`: the three URLs in Sec. 4 overfilled a line in one switch
+  combination. Neither setting changes a paragraph that already sets without an overfull line.
+* Indicator in B(s,b) is `\mathbf{1}_{s>0}` (amssymb's `\mathbb{1}` prints a wrong glyph).
+* Dropped from v1: Table 2 (I_Sr, including the 7-8B rows from another pipeline), the old Fig. 1, the Q3 scale
+  claims (one disclaimer sentence remains), and Deep Compression/OBD/OBS/JSQ.
+* v1's own fp32-vs-16-bit gap (`\resFpMaxAbsDeltaPct`, 12.98%) was cut for space. The noise paragraph keeps the
+  cross-hardware 16-bit gaps (R27) and the bit-exact DET result.
+* `generated/table_kl_flips.tex` was not used (KL and flips of the two equal-storage cells are in Table 1).
