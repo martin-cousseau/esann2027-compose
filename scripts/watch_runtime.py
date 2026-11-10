@@ -26,6 +26,7 @@ import time
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, "scripts"))
 import colab_jupyter as CJ  # noqa: E402
+import colab_keepalive as KA  # noqa: E402
 
 REMOTE = "/content/out"  # ESANN_OUT on the runtimes (results, logs, caches, models)
 
@@ -95,6 +96,8 @@ def main():
     ap.add_argument("--stall-min", type=int, default=25)
     ap.add_argument("--heartbeat-min", type=int, default=60)
     ap.add_argument("--exit-on-unit", action="store_true", help="also exit when any new result line appears")
+    ap.add_argument("--keepalive-min", type=float, default=4.0,
+                    help="execute a trivial cell on every runtime this often (Colab reclaims client-idle runtimes)")
     a = ap.parse_args()
     with open(a.config) as f:
         rts = json.load(f)["runtimes"]
@@ -103,7 +106,24 @@ def main():
     fail0 = count_failures(local_results)
     lines0 = count_lines(local_results)
     seen_finished = None
+    last_ping = {r["name"]: 0.0 for r in rts}
+    ka_fail = {r["name"]: 0 for r in rts}
     while True:
+        for rt in rts:
+            if time.time() - last_ping[rt["name"]] >= 60 * a.keepalive_min:
+                try:
+                    KA.ping(rt)
+                    last_ping[rt["name"]], ka_fail[rt["name"]] = time.time(), 0
+                except Exception as ex:  # noqa: BLE001
+                    ka_fail[rt["name"]] += 1
+                    if ka_fail[rt["name"]] >= 3:
+                        print(f"UNREACHABLE {rt['name']}: keepalive failed 3 times: {type(ex).__name__}: {str(ex)[:120]}")
+                        return 0
+        try:  # remember the keepalive kernel ids
+            with open(a.config, "w") as f:
+                json.dump({"runtimes": rts}, f)
+        except Exception:  # noqa: BLE001
+            pass
         status, logs = {}, {}
         for rt in rts:
             use(rt)

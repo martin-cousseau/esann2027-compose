@@ -93,3 +93,13 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     locked type, determinism is checked bit for bit (DET). E1 proceeds; the cross-hardware sensitivity is
     reported as part of the noise analysis (R6). The fp32 SmolLM2-360M check against the paper's own fp32
     re-runs (REPRO32) completes the picture.
+23. **2026-11-10, phase-0 checks settled.** fp32 on L4 reproduces the paper's own fp32 re-runs of SmolLM2-360M
+    (T4) within the 0.5% tolerance: joint 25%+4 -0.11%, P->Q 25%+4 +0.37%, Q->P 25%+4 +0.37% (REPRO32). The
+    SmolLM2-135M joint 50%+4 state is bit-identical on two different L4 machines (WikiText-2 NLL and every
+    layer error). Both checks pass with matched precision; the 135M differences vs 16-bit T4 runs are the
+    hardware/precision effect of #22.
+24. **2026-11-10, keepalive over the kernel channel.** Runtimes kept dying 20-35 min after the last client
+    code execution even with a busy kernel cell (lost: esann-e1-a2, -b2, -a3). The watcher now executes a
+    trivial cell over the Jupyter websocket every 4 min on each runtime (`scripts/colab_keepalive.py`), the
+    same channel the connector's execute_code uses. Results the runtimes uploaded to the HF results dataset
+    after the watcher stopped were recovered from there.
