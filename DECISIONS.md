@@ -103,3 +103,10 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     trivial cell over the Jupyter websocket every 4 min on each runtime (`scripts/colab_keepalive.py`), the
     same channel the connector's execute_code uses. Results the runtimes uploaded to the HF results dataset
     after the watcher stopped were recovered from there.
+25. **2026-11-10, angle B + C (provisional, writing started).** E2 shows on all three core models that neither
+    re-fitting the grid nor the pruning-only mask removes most of the quantize-first penalty, so angle A's
+    evidence bar (one arm closes >= 60% on 2 of 3 models) fails at layer level; E3 will check it at model
+    level. The interim SmolLM2-135M frontier supports angle B (50%+4-bit beats plain 3-bit at 3.0 bits/w with
+    the mask counted; 25%+4-bit does not beat 4-bit at 4.0 bits/w) and C (Q->P at 25%+3 equals 3-bit exactly).
+    The paper is drafted for B + C with the mechanism reported as a negative result; claims are macros, so the
+    text follows the final numbers. Revisit when E1 for 360M and Qwen and E3/E4 are complete.

@@ -1,9 +1,22 @@
 [
  {
   "model": "SmolLM2-135M",
-  "q_then_p_state": null,
-  "quant3_state": null,
-  "status": "pending"
+  "q_then_p_state": "SmolLM2-135M__q_then_p__s0.2500__b3__seed0__float32",
+  "quant3_state": "SmolLM2-135M__quant__s0.0000__b3__seed0__float32",
+  "wt_ppl_qp": 57.55154411856475,
+  "wt_ppl_q3": 57.55154411856475,
+  "wt_ppl_equal": true,
+  "wt_nll_sum_equal": true,
+  "wt_ppl_abs_diff": 0.0,
+  "c4_ppl_equal": true,
+  "n_layers": 210,
+  "n_layers_only_one": 0,
+  "rel_err_max_abs_diff": 0.0,
+  "rel_err_all_equal": true,
+  "zero_frac_qp": 0.30715765509133536,
+  "zero_frac_q3": 0.30715765509133536,
+  "identical": true,
+  "status": "identical"
  },
  {
   "model": "SmolLM2-360M",

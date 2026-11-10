@@ -1,6 +1,6 @@
 model,cell,sparsity,bits,seed,wt_ppl_q_then_p,wt_ppl_p_then_q,wt_ppl_penalty,wt_ppl_q_then_p_refit,wt_ppl_removed_q_then_p_refit_pct,wt_ppl_q_then_p_pmask,wt_ppl_removed_q_then_p_pmask_pct,wt_ppl_q_then_p_pmask_refit,wt_ppl_removed_q_then_p_pmask_refit_pct,wt_ppl_p_then_q_stale,wt_ppl_stale_on_pq_pct,c4_ppl_q_then_p,c4_ppl_p_then_q,c4_ppl_penalty,c4_ppl_q_then_p_refit,c4_ppl_removed_q_then_p_refit_pct,c4_ppl_q_then_p_pmask,c4_ppl_removed_q_then_p_pmask_pct,c4_ppl_q_then_p_pmask_refit,c4_ppl_removed_q_then_p_pmask_refit_pct,c4_ppl_p_then_q_stale,c4_ppl_stale_on_pq_pct,wt_kl_q_then_p,wt_kl_p_then_q,wt_kl_penalty,wt_kl_q_then_p_refit,wt_kl_removed_q_then_p_refit_pct,wt_kl_q_then_p_pmask,wt_kl_removed_q_then_p_pmask_pct,wt_kl_q_then_p_pmask_refit,wt_kl_removed_q_then_p_pmask_refit_pct,wt_kl_p_then_q_stale,wt_kl_stale_on_pq_pct
-SmolLM2-135M,50%+4,0.5,4,0,,41.20490983533286,,,,,,,,,,,48.36823549271739,,,,,,,,,,,0.966125747567239,,,,,,,,,
-SmolLM2-135M,25%+3,0.25,3,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+SmolLM2-135M,50%+4,0.5,4,0,47.328286125841124,41.20490983533286,6.123376290508261,,,,,,,,,56.626483988340745,48.36823549271739,8.258248495623356,,,,,,,,,1.111864548526288,0.966125747567239,0.1457388009590489,,,,,,,,
+SmolLM2-135M,25%+3,0.25,3,0,57.55154411856475,53.13867144096536,4.412872677599388,,,,,,,,,62.31186073526118,55.20355237532516,7.108308359936018,,,,,,,,,1.2730441745374315,1.1916120893298359,0.0814320852075956,,,,,,,,
 SmolLM2-135M,33%+3,0.3333,3,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 SmolLM2-135M,50%+3,0.5,3,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 SmolLM2-360M,50%+4,0.5,4,0,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
