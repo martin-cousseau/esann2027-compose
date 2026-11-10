@@ -1,7 +1,7 @@
 model,seed,cell,sparsity,bits,wt_ppl_joint,wt_ppl_p_then_q,wt_ppl_q_then_p,c4_ppl_joint,c4_ppl_p_then_q,c4_ppl_q_then_p,wt_kl_joint,wt_kl_p_then_q,wt_kl_q_then_p,flips9_joint,flips9_p_then_q,flips9_q_then_p,sr3_v2_joint,sr3_v2_p_then_q,sr3_v2_q_then_p,c4_kl_joint,c4_kl_p_then_q,c4_kl_q_then_p,sr9_v2_joint,sr9_v2_p_then_q,sr9_v2_q_then_p,sr3_paper_joint,sr3_paper_p_then_q,sr3_paper_q_then_p
 SmolLM2-135M,0,25%+4,0.25,4,,,,,,,,,,,,,,,,,,,,,,,,
 SmolLM2-135M,0,33%+4,0.3333,4,,,,,,,,,,,,,,,,,,,,,,,,
-SmolLM2-135M,0,50%+4,0.5,4,,,,,,,,,,,,,,,,,,,,,,,,
+SmolLM2-135M,0,50%+4,0.5,4,,41.20490983533286,,,48.36823549271739,,,0.966125747567239,,,0.2204523254940266,,,0.7901645082252613,,,0.8776787263652902,,,0.8196814231419047,,,0.7785204625360935,
 SmolLM2-135M,0,60%+4,0.6,4,,,,,,,,,,,,,,,,,,,,,,,,
 SmolLM2-135M,0,25%+3,0.25,3,,,,,,,,,,,,,,,,,,,,,,,,
 SmolLM2-135M,0,33%+3,0.3333,3,,,,,,,,,,,,,,,,,,,,,,,,

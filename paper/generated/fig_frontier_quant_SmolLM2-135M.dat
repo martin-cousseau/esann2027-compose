@@ -2,5 +2,6 @@
 # SmolLM2-135M, seed 0, quantization only
 # bits = nominal bit-width b; bits_tcr = b(1-s) (TCr accounting); bits_mask = bits_tcr + 1-bit mask when s > 0;
 # ppl = WikiText-2 perplexity; kl = KL(dense || model) per token on WikiText-2 (nats); scale/zero overhead excluded
-# rows: none yet
+# rows: SmolLM2-135M__quant__s0.0000__b4__seed0__float32
 bits bits_tcr bits_mask ppl kl
+4 4 4 21.9359 0.345519
