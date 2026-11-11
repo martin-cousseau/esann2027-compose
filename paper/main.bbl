@@ -13,8 +13,7 @@ Elias Frantar, Saleh Ashkboos, Torsten Hoefler, and Dan Alistarh.
   transformers.
 \newblock In {\em International Conference on Learning Representations (ICLR)},
   2023.
-\newblock Preprint title: {GPTQ}: Accurate Post-Training Quantization for
-  Generative Pre-trained Transformers, arXiv:2210.17323.
+\newblock arXiv:2210.17323 as {GPTQ}.
 
 \bibitem{frantar2022obc}
 Elias Frantar, Sidak~Pal Singh, and Dan Alistarh.

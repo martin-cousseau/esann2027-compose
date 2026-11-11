@@ -511,6 +511,14 @@ def macros_questions(M, store, q):
     for arm in MECH_ARMS:
         M.add(sec, f"EThree{MECH_TAG[arm]}Helps", _n(sum(r[f"wt_ppl_removed_{arm}_pct"] > 0 for r in pen)) if pen else "--",
               f"E3 cells where {ORDER_TXT[arm]} removes a positive share of the Q->P ppl penalty", src3)
+    for m in store.models():
+        pm = [r for r in pen if r["model"] == m]
+        if not pm:
+            continue
+        M.add(sec, f"EThreeCells{model_tag(m)}", _n(len(pm)), f"{m}: E3 cells with a Q->P ppl penalty and all three arms", src3)
+        for arm in MECH_ARMS:
+            M.add(sec, f"EThree{MECH_TAG[arm]}Helps{model_tag(m)}", _n(sum(r[f"wt_ppl_removed_{arm}_pct"] > 0 for r in pm)),
+                  f"{m}: E3 cells where {ORDER_TXT[arm]} removes a positive share of the Q->P ppl penalty", src3)
 
 
 def macros_misc(M, store, e1, det, fr, e2res, boolq):

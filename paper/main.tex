@@ -208,17 +208,17 @@ without compensation; for SparseGPT and Wanda they report a much smaller
 order effect, measured with 6- to 8-bit formats. Kim et
 al.~\cite{kim2026order} propose to apply the weaker perturbation first, in
 sequential pipelines that also quantize activations and the KV cache. Bouriel
-et al.~\cite{bouriel2026interaction} combine magnitude pruning and
-bitsandbytes quantization on models of about 1B parameters; for 4-bit hybrids
-at 20\% sparsity the order changes the interaction by at most 1--2 points.
+et al.~\cite{bouriel2026interaction} find that, with magnitude pruning and
+bitsandbytes 4-bit quantization of models of about 1B parameters, the order
+changes the interaction by at most 1--2 points.
 None of these uses a joint sweep, and each uses magnitude pruning or
 quantizes activations. We ask the question in the one-shot, Hessian-compensated,
 weight-only pipeline used in practice~\cite{frantar2023sparsegpt,guo2026obr},
 on SmolLM2~\cite{benallal2025smollm2} and Qwen2.5~\cite{qwen2024qwen25}, with
 one sweep in which only the order differs, and count storage as SparseGPT does. We contribute a storage frontier with the mask counted, an
 exact free-zero effect, a same-Hessian test of a layer-error decomposition, a
-test of two order rules, a negative result on the cause of the order effect,
-and an evaluation with KL divergence and answer flips~\cite{dutta2024accuracy}.
+test of two order rules and of two proposed causes of the order effect, and an
+evaluation with KL divergence and answer flips~\cite{dutta2024accuracy}.
 
 \section{One sweep, three orders}
 \label{sec:framework}
@@ -296,8 +296,7 @@ included)\ifEfour; E4 adds 2-bit, 60\% and 60\%+4-bit\fi. E2 recomputes every
 variant of a layer with one dense-model Hessian, for every second
 block\ifEthree; E3 repeats its arms as full runs\fi\ifEfive; E5 adds
 calibration seeds 1 and 2 for the 4-bit cells of SmolLM2-360M\fi\ifEsix; E6
-runs SmolLM2-1.7B at 4 and 3 bits and at 25\% and 50\% with 4-bit
-weights\fi. All runs use fp32 on
+runs SmolLM2-1.7B\fi. All runs use fp32 on
 NVIDIA L4 GPUs, TF32 off. We report WikiText-2~\cite{merity2017pointer} and
 C4 perplexity, the token-level KL divergence from the dense to the compressed
 model on WikiText-2, and (E1, E4) zero-shot accuracy with
@@ -306,21 +305,20 @@ lm-eval~\cite{gao2026lmeval} on the full splits of nine tasks, logged per item
 SciQ, LAMBADA). Flips are the items whose correctness differs from the dense
 model, pooled over the tasks~\cite{dutta2024accuracy}; intervals are paired
 bootstraps (\resBootB{} resamples), and orders are compared item by item with
-exact McNemar tests. Code and results:
-\url{github.com/martin-cousseau/esann2027-compose}; models:
-\url{huggingface.co/martincousseau/esann2027-compose-v2}; runs:
-\url{wandb.ai/martin-css/esann2027-compose-v2}.
+exact McNemar tests. Code, results, models and runs:
+\url{github.com/martin-cousseau/esann2027-compose}.
 
 \begin{figure}[t]
 \centering
 \input{figures/frontier}
 \caption{Counting the mask moves every sparse configuration one bit to the
 right: plain quantization (black), and pruning + quantization (best order per
-cell) placed by TCr (gray) and with a 1-bit mask (blue).}
+cell) placed by TCr (gray) and with a 1-bit mask (blue). Plain 2-bit (perplexity
+\resQuantTwoPplMin{} to \resQuantTwoPplMax) is off scale and not drawn.}
 \label{fig:frontier}
 \end{figure}
 
-\begin{table}[t]
+\begin{table}[tb]
 \centering
 {\footnotesize
 \setlength{\tabcolsep}{2.8pt}
@@ -411,8 +409,8 @@ al.\ prove for magnitude pruning~\cite{harma2025interplay}, yet the reverse
 order costs up to \resESevenHarmaMaxGapPplAllPct\% in perplexity. The quantize-first
 penalty has two proposed causes: a stale grid, fitted before pruning (our earlier reading), or a mask
 chosen on rounded weights (as the analysis of~\cite{harma2025interplay}
-suggests). Four arms separate them on one Hessian (E2; per-cell values in
-the repository): Q$\to$P with the grid re-fitted on the kept
+suggests). Four arms separate them on one Hessian (E2): Q$\to$P with the grid
+re-fitted on the kept
 weights, with the mask of pruning alone, or both, and P$\to$Q on a stale grid.
 Re-fitting increases the penalty in \resETwoRefitWorse{} of the
 \resETwoPenaltyCells{} cells that have one; the pruning-only mask removes at
@@ -421,11 +419,12 @@ the stale grid changes the error of P$\to$Q by at most
 \resETwoStaleMaxAbsPct\%: per layer, neither reading explains the
 penalty.\ifEthree{} In full runs (E3), re-fitting the grid helps in
 \resEThreeRefitHelps{} of \resEThreeCells{} cells, the pruning-only mask in
-\resEThreePmaskHelps{} (at 50\%+4-bit it removes
+\resEThreePmaskHelps, but in \resEThreePmaskHelpsQwen{} of
+\resEThreeCellsQwen{} on Qwen2.5-0.5B (at 50\%+4-bit it removes
 \resEThreeRemovedPmaskSmolSmallSFiftyBFourPct\% and
-\resEThreeRemovedPmaskSmolMediumSFiftyBFourPct\% of the perplexity penalty on
-SmolLM2-135M and -360M): mask selection explains part of it, a stale grid
-little.\fi
+\resEThreeRemovedPmaskSmolMediumSFiftyBFourPct\% of the perplexity penalty of
+SmolLM2-135M and -360M): mask selection explains part of it on SmolLM2, a
+stale grid little.\fi
 
 
 \textbf{Evaluation.} C4 perplexity and KL rank the orders as WikiText-2
@@ -436,9 +435,9 @@ perplexity does in \resQTwoAgreePplCFour{} and \resQTwoAgreeKl{} of
 accuracy (Sr~\cite{laborde2025semantic}, three tasks) but flips
 \resFlipsPctSmolSmallQuantBFour\% of its answers.\fi{}
 McNemar tests separate P$\to$Q from Q$\to$P in \resMcNemarSigPQQP{} of
-\resMcNemarCellsPQQP{} cells ($p<0.05$), not always as perplexity does: at
-50\%+4-bit on SmolLM2-135M, Q$\to$P answers more items correctly (P$\to$Q
-minus Q$\to$P: \resAccDiffSmolSmallSFiftyBFourPQQP{} points, 95\% interval
+\resMcNemarCellsPQQP{} cells ($p<0.05$), not always as perplexity does (at
+50\%+4-bit on SmolLM2-135M, P$\to$Q minus Q$\to$P is
+\resAccDiffSmolSmallSFiftyBFourPQQP{} accuracy points, 95\% interval
 \resAccDiffLoSmolSmallSFiftyBFourPQQP{} to \resAccDiffHiSmolSmallSFiftyBFourPQQP).
 
 \textbf{Noise.} Within one GPU type results are bit-exact (two L4 machines
