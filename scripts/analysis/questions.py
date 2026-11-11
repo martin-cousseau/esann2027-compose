@@ -209,6 +209,46 @@ def q3(rows):
     return out
 
 
+def family_of(model):
+    return model.split("-")[0]  # "SmolLM2", "Qwen2.5"
+
+
+def scale_fit(store, q2rows, bits=4):
+    """E6: the order spread at 4 bits against log10(compressed weights), per family and cell (never across
+    families). Spread = 100 (max - min) / min of WikiText-2 ppl over the three orders (Q3); also the
+    mask-first gap 100 |joint - P->Q| / min. Fit: least squares slope per decade of compressed weights."""
+    import math
+    import numpy as np
+    pts = {}
+    for r in q2rows:
+        if r["bits"] != bits or not r.get("wt_ppl_ranking") or r.get("seed", 0) != 0:
+            continue
+        st = store.get(r["model"], "p_then_q", r["sparsity"], r["bits"], 0)
+        n = (st or {}).get("compressed_weights")
+        if not finite(n):
+            continue
+        vals = [r[f"wt_ppl_{o}"] for o in PAPER_ORDERS]
+        gap_mf = 100 * abs(r["wt_ppl_joint"] - r["wt_ppl_p_then_q"]) / min(vals)
+        pts.setdefault((family_of(r["model"]), r["cell"]), []).append(
+            {"model": r["model"], "n": n, "spread": r["wt_ppl_spread_pct"], "gap_mask_first": gap_mf})
+    rows = []
+    for (fam, cell), pp in sorted(pts.items()):
+        pp.sort(key=lambda x: x["n"])
+        row = {"family": fam, "cell": cell, "models": " ".join(x["model"] for x in pp), "n_models": len(pp),
+               "compressed_weights": " ".join(str(int(x["n"])) for x in pp),
+               "spread_pct": " ".join(f"{x['spread']:.4g}" for x in pp),
+               "gap_mask_first_pct": " ".join(f"{x['gap_mask_first']:.4g}" for x in pp)}
+        if len(pp) >= 2:
+            lx = [math.log10(x["n"]) for x in pp]
+            for key in ("spread", "gap_mask_first"):
+                y = [x[key] for x in pp]
+                row[f"slope_{key}_per_decade"] = float(np.polyfit(lx, y, 1)[0])
+                row[f"{key}_shrinks_monotonically"] = all(b < a for a, b in zip(y, y[1:]))
+            row["range_ratio"] = pp[-1]["n"] / pp[0]["n"]
+        rows.append(row)
+    return rows
+
+
 # ----------------------------------------------------------------------------- fp16 vs fp32
 def fp_compare(store, paths, missing):
     v1 = load_v1(paths)
@@ -315,12 +355,56 @@ def seed_stability(store):
     return rows
 
 
+def seed_pairs(store, bits=4):
+    """E5 paired comparisons of the orders over calibration seeds (4-bit cells of the multi-seed models).
+
+    Per (model, cell, pair of orders): the per-seed log ratio of WikiText-2 perplexity (> 0 = the second order
+    is better), its mean and sample sd, a paired t-test over seeds (scipy ttest_rel on log ppl; with 3 seeds it
+    has 2 degrees of freedom), and whether the sign is the same in every seed. Per (model, cell, seed): whether
+    joint is the best of the three orders and whether it beats P->Q (the draft's "joint best in 11 of 12";
+    among the mask-first orders, joint vs P->Q).
+    """
+    import math
+    import statistics as st
+    rows, best = [], []
+    multi = {v["short"] for v in store.plan.values() if v["seed"] > 0}
+    for m in [x for x in store.models() if x in multi]:
+        seeds = sorted({0} | {v["seed"] for v in store.plan.values() if v["short"] == m})
+        for s, b in store.cells(m, 0, PAPER_ORDERS):
+            if b != bits:
+                continue
+            ppl = {(o, sd): ((store.get(m, o, s, b, sd) or {}).get("wikitext2") or {}).get("ppl") for o in PAPER_ORDERS for sd in seeds}
+            for sd in seeds:
+                v = {o: ppl[(o, sd)] for o in PAPER_ORDERS}
+                if all(finite(x) for x in v.values()):
+                    bo = min(PAPER_ORDERS, key=lambda o: (v[o], PAPER_ORDERS.index(o)))
+                    best.append({"model": m, "cell": cell_label(s, b), "seed": sd, "best": bo, "joint_best": bo == "joint",
+                                 "joint_beats_pq": v["joint"] < v["p_then_q"]})
+            for a, c in (("joint", "p_then_q"), ("joint", "q_then_p"), ("p_then_q", "q_then_p")):
+                d = [math.log(ppl[(c, sd)] / ppl[(a, sd)]) for sd in seeds if finite(ppl[(a, sd)]) and finite(ppl[(c, sd)])]
+                row = {"model": m, "cell": cell_label(s, b), "order_a": a, "order_b": c, "n_seeds": len(d),
+                       "complete": len(d) == len(seeds), "mean_log_ratio_b_over_a": st.mean(d) if d else None,
+                       "sd_log_ratio": st.stdev(d) if len(d) > 1 else None,
+                       "a_better_all_seeds": bool(d) and all(x > 0 for x in d), "b_better_all_seeds": bool(d) and all(x < 0 for x in d)}
+                if len(d) >= 2:
+                    from scipy import stats as sps
+                    la = [math.log(ppl[(a, sd)]) for sd in seeds if finite(ppl[(a, sd)]) and finite(ppl[(c, sd)])]
+                    lc = [math.log(ppl[(c, sd)]) for sd in seeds if finite(ppl[(a, sd)]) and finite(ppl[(c, sd)])]
+                    t = sps.ttest_rel(lc, la)
+                    row["t"], row["p_paired_t"] = float(t.statistic), float(t.pvalue)
+                rows.append(row)
+    return rows, best
+
+
 def write(res, paths):
     R = paths.reports
     write_csv(os.path.join(R, "seed_order_stability.csv"), res["seed_stability"])
+    write_csv(os.path.join(R, "seed_order_pairs.csv"), res["seed_pairs"])
+    write_csv(os.path.join(R, "seed_best_order.csv"), res["seed_best"])
     write_csv(os.path.join(R, "q1_layer_interaction.csv"), res["q1"])
     write_csv(os.path.join(R, "q2_order_ranking.csv"), res["q2"])
     write_csv(os.path.join(R, "q3_order_spread.csv"), res["q3"])
+    write_csv(os.path.join(R, "e6_scale_spread.csv"), res["scale"])
     write_csv(os.path.join(R, "fp16_vs_fp32.csv"), res["fp"])
     write_csv(os.path.join(R, "e3_mechanism.csv"), res["e3"])
 
@@ -331,8 +415,10 @@ def analyze(store, e1, paths, missing):
     res["q2"] = q2(store, e1, missing)
     res["q2_summary"] = q2_summary(res["q2"])
     res["q3"] = q3(res["q2"])
+    res["scale"] = scale_fit(store, res["q2"])
     res["e3"] = mechanism_e3(store, missing)
     res["seed_stability"] = seed_stability(store)
+    res["seed_pairs"], res["seed_best"] = seed_pairs(store)
     res["fp"], v1 = fp_compare(store, paths, missing)
     res["fp_summary"] = fp_summary(res["fp"])
     res["v1_check"] = v1["check"] if v1 else None

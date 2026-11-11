@@ -1682,6 +1682,52 @@ Columns:
 - `AccDiffLo`: its paired-bootstrap 95% interval, lower end
 - `AccDiffHi`: its paired-bootstrap 95% interval, upper end
 
+## E5 calibration seeds (reports/analysis/seed_best_order.csv, seed_order_pairs.csv)
+
+| Macro | Value | Meaning | Source |
+|---|---|---|---|
+| `\resSeedJointBest` | `3` | (model, 4-bit cell, seed) with all three orders where joint has the lowest WikiText-2 ppl | reports/analysis/seed_best_order.csv |
+| `\resSeedJointBeatsPQ` | `3` | (model, 4-bit cell, seed) where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_best_order.csv |
+| `\resSeedCellSeeds` | `3` | (model, 4-bit cell, seed) with all three orders | reports/analysis/seed_best_order.csv |
+| `\resSeedPairJointPQAllSeeds` | `--` | 4-bit cells where joint has the lower ppl in every seed | reports/analysis/seed_order_pairs.csv (joint vs P->Q, complete cells) |
+| `\resSeedPairJointPQSig` | `--` | 4-bit cells where the paired t-test over seeds (log ppl) gives p < 0.05, joint vs P->Q | reports/analysis/seed_order_pairs.csv (joint vs P->Q, complete cells) |
+| `\resSeedPairJointPQCells` | `--` | 4-bit cells with every seed for both orders | reports/analysis/seed_order_pairs.csv (joint vs P->Q, complete cells) |
+| `\resSeedPairJointQPAllSeeds` | `--` | 4-bit cells where joint has the lower ppl in every seed | reports/analysis/seed_order_pairs.csv (joint vs Q->P, complete cells) |
+| `\resSeedPairJointQPSig` | `--` | 4-bit cells where the paired t-test over seeds (log ppl) gives p < 0.05, joint vs Q->P | reports/analysis/seed_order_pairs.csv (joint vs Q->P, complete cells) |
+| `\resSeedPairJointQPCells` | `--` | 4-bit cells with every seed for both orders | reports/analysis/seed_order_pairs.csv (joint vs Q->P, complete cells) |
+| `\resSeedPairPQQPAllSeeds` | `--` | 4-bit cells where P->Q has the lower ppl in every seed | reports/analysis/seed_order_pairs.csv (P->Q vs Q->P, complete cells) |
+| `\resSeedPairPQQPSig` | `--` | 4-bit cells where the paired t-test over seeds (log ppl) gives p < 0.05, P->Q vs Q->P | reports/analysis/seed_order_pairs.csv (P->Q vs Q->P, complete cells) |
+| `\resSeedPairPQQPCells` | `--` | 4-bit cells with every seed for both orders | reports/analysis/seed_order_pairs.csv (P->Q vs Q->P, complete cells) |
+
+## E6 order spread vs scale (reports/analysis/e6_scale_spread.csv)
+
+| Macro | Value | Meaning | Source |
+|---|---|---|---|
+| `\resScaleSlopeSmolSTwentyFiveBFour` | `\ensuremath{-3.8}` | SmolLM2 25%+4: slope of the 3-order spread (%) per decade of compressed weights | reports/analysis/e6_scale_spread.csv (WikiText-2 ppl, seed 0, least-squares slope per decade of compressed weights) |
+| `\resScaleShrinksSmolSTwentyFiveBFour` | `yes` | SmolLM2 25%+4: does the spread fall with every larger model? | reports/analysis/e6_scale_spread.csv (WikiText-2 ppl, seed 0, least-squares slope per decade of compressed weights) |
+| `\resScaleModelsSmolSTwentyFiveBFour` | `2` | SmolLM2 25%+4: models in the fit | reports/analysis/e6_scale_spread.csv (WikiText-2 ppl, seed 0, least-squares slope per decade of compressed weights) |
+| `\resScaleSlopeMaskFirstSmolSTwentyFiveBFour` | `\ensuremath{-12.42}` | SmolLM2 25%+4: slope of the joint vs P->Q gap (%) per decade | reports/analysis/e6_scale_spread.csv (WikiText-2 ppl, seed 0, least-squares slope per decade of compressed weights) |
+| `\resScaleSlopeSmolSThirtyThreeBFour` | `\ensuremath{+1.0}` | SmolLM2 33%+4: slope of the 3-order spread (%) per decade of compressed weights | reports/analysis/e6_scale_spread.csv (WikiText-2 ppl, seed 0, least-squares slope per decade of compressed weights) |
+| `\resScaleShrinksSmolSThirtyThreeBFour` | `no` | SmolLM2 33%+4: does the spread fall with every larger model? | reports/analysis/e6_scale_spread.csv (WikiText-2 ppl, seed 0, least-squares slope per decade of compressed weights) |
+| `\resScaleModelsSmolSThirtyThreeBFour` | `2` | SmolLM2 33%+4: models in the fit | reports/analysis/e6_scale_spread.csv (WikiText-2 ppl, seed 0, least-squares slope per decade of compressed weights) |
+| `\resScaleSlopeMaskFirstSmolSThirtyThreeBFour` | `\ensuremath{-12.70}` | SmolLM2 33%+4: slope of the joint vs P->Q gap (%) per decade | reports/analysis/e6_scale_spread.csv (WikiText-2 ppl, seed 0, least-squares slope per decade of compressed weights) |
+| `\resScaleSlopeSmolSFiftyBFour` | `\ensuremath{+1.1}` | SmolLM2 50%+4: slope of the 3-order spread (%) per decade of compressed weights | reports/analysis/e6_scale_spread.csv (WikiText-2 ppl, seed 0, least-squares slope per decade of compressed weights) |
+| `\resScaleShrinksSmolSFiftyBFour` | `no` | SmolLM2 50%+4: does the spread fall with every larger model? | reports/analysis/e6_scale_spread.csv (WikiText-2 ppl, seed 0, least-squares slope per decade of compressed weights) |
+| `\resScaleModelsSmolSFiftyBFour` | `2` | SmolLM2 50%+4: models in the fit | reports/analysis/e6_scale_spread.csv (WikiText-2 ppl, seed 0, least-squares slope per decade of compressed weights) |
+| `\resScaleSlopeMaskFirstSmolSFiftyBFour` | `\ensuremath{-8.45}` | SmolLM2 50%+4: slope of the joint vs P->Q gap (%) per decade | reports/analysis/e6_scale_spread.csv (WikiText-2 ppl, seed 0, least-squares slope per decade of compressed weights) |
+| `\resScaleSlopeQwenSTwentyFiveBFour` | `--` | Qwen2.5 25%+4: slope of the 3-order spread (%) per decade of compressed weights | reports/analysis/e6_scale_spread.csv (WikiText-2 ppl, seed 0, least-squares slope per decade of compressed weights) |
+| `\resScaleShrinksQwenSTwentyFiveBFour` | `--` | Qwen2.5 25%+4: does the spread fall with every larger model? | reports/analysis/e6_scale_spread.csv (WikiText-2 ppl, seed 0, least-squares slope per decade of compressed weights) |
+| `\resScaleModelsQwenSTwentyFiveBFour` | `1` | Qwen2.5 25%+4: models in the fit | reports/analysis/e6_scale_spread.csv (WikiText-2 ppl, seed 0, least-squares slope per decade of compressed weights) |
+| `\resScaleSlopeMaskFirstQwenSTwentyFiveBFour` | `--` | Qwen2.5 25%+4: slope of the joint vs P->Q gap (%) per decade | reports/analysis/e6_scale_spread.csv (WikiText-2 ppl, seed 0, least-squares slope per decade of compressed weights) |
+| `\resScaleSlopeQwenSThirtyThreeBFour` | `--` | Qwen2.5 33%+4: slope of the 3-order spread (%) per decade of compressed weights | reports/analysis/e6_scale_spread.csv (WikiText-2 ppl, seed 0, least-squares slope per decade of compressed weights) |
+| `\resScaleShrinksQwenSThirtyThreeBFour` | `--` | Qwen2.5 33%+4: does the spread fall with every larger model? | reports/analysis/e6_scale_spread.csv (WikiText-2 ppl, seed 0, least-squares slope per decade of compressed weights) |
+| `\resScaleModelsQwenSThirtyThreeBFour` | `1` | Qwen2.5 33%+4: models in the fit | reports/analysis/e6_scale_spread.csv (WikiText-2 ppl, seed 0, least-squares slope per decade of compressed weights) |
+| `\resScaleSlopeMaskFirstQwenSThirtyThreeBFour` | `--` | Qwen2.5 33%+4: slope of the joint vs P->Q gap (%) per decade | reports/analysis/e6_scale_spread.csv (WikiText-2 ppl, seed 0, least-squares slope per decade of compressed weights) |
+| `\resScaleSlopeQwenSFiftyBFour` | `--` | Qwen2.5 50%+4: slope of the 3-order spread (%) per decade of compressed weights | reports/analysis/e6_scale_spread.csv (WikiText-2 ppl, seed 0, least-squares slope per decade of compressed weights) |
+| `\resScaleShrinksQwenSFiftyBFour` | `--` | Qwen2.5 50%+4: does the spread fall with every larger model? | reports/analysis/e6_scale_spread.csv (WikiText-2 ppl, seed 0, least-squares slope per decade of compressed weights) |
+| `\resScaleModelsQwenSFiftyBFour` | `1` | Qwen2.5 50%+4: models in the fit | reports/analysis/e6_scale_spread.csv (WikiText-2 ppl, seed 0, least-squares slope per decade of compressed weights) |
+| `\resScaleSlopeMaskFirstQwenSFiftyBFour` | `--` | Qwen2.5 50%+4: slope of the joint vs P->Q gap (%) per decade | reports/analysis/e6_scale_spread.csv (WikiText-2 ppl, seed 0, least-squares slope per decade of compressed weights) |
+
 ## E7 order rules (reports/analysis/e7_summary.json; scripts/analysis/e7.py)
 
 | Macro | Value | Meaning | Source |

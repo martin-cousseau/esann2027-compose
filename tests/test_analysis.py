@@ -416,3 +416,28 @@ def test_e8_layer_error_vs_kl_on_fake_results(tmp_path):
     with open(os.path.join(root, "paper", "generated", "macros.tex")) as f:
         vals = dict(re.findall(r"^\\newcommand\{\\([^}]*)\}\{(.*)\}$", f.read(), flags=re.M))
     assert vals["resEEightCellsSmolSmall"] == "1" and vals["resEEightRhoSmolMedium"] == "--"
+
+
+def test_e5_seed_pairs_paired_test(tmp_path):
+    """Paired comparison over seeds: joint beats P->Q in every seed, t-test as scipy computes it."""
+    from scipy import stats as sps
+    from scripts.analysis import questions
+    root = str(tmp_path)
+    v2 = os.path.join(root, "results", "v2", "E1")
+    os.makedirs(v2)
+    m = "HuggingFaceTB/SmolLM2-360M"
+    ppl = {("joint", 0): 13.20, ("p_then_q", 0): 13.34, ("q_then_p", 0): 14.38, ("joint", 1): 13.25, ("p_then_q", 1): 13.31,
+           ("q_then_p", 1): 14.20, ("joint", 2): 13.10, ("p_then_q", 2): 13.40, ("q_then_p", 2): 14.50}
+    with open(os.path.join(v2, "SmolLM2-360M.jsonl"), "w") as f:
+        for (o, sd), v in ppl.items():
+            u = {"order": o, "sparsity": 0.25, "bits": 4, "seed": sd}
+            f.write(json.dumps({"state_id": state_id(m, u, "float32"), "family": "E1", "model": m, "order": o, "sparsity": 0.25,
+                                "bits": 4, "seed": sd, "dtype": "float32", "status": "ok", "wikitext2": {"ppl": v}}) + "\n")
+    store = Store(Paths(root=root))
+    rows, best = questions.seed_pairs(store)
+    r = [x for x in rows if x["cell"] == "25%+4" and x["order_a"] == "joint" and x["order_b"] == "p_then_q"][0]
+    assert r["complete"] and r["n_seeds"] == 3 and r["a_better_all_seeds"]
+    want = sps.ttest_rel([math.log(ppl[("p_then_q", s)]) for s in range(3)], [math.log(ppl[("joint", s)]) for s in range(3)])
+    assert abs(r["p_paired_t"] - want.pvalue) < 1e-12
+    b = [x for x in best if x["cell"] == "25%+4"]
+    assert len(b) == 3 and all(x["joint_best"] and x["joint_beats_pq"] for x in b)

@@ -684,6 +684,45 @@ def macros_requests(M, store, e1, q, fr, e2res, repro):
                           grid=dict(row, col=col, col_meaning=what, col_index=("diff", "lo", "hi").index(key)))
 
 
+def macros_e5(M, store, q):
+    """E5: joint best among the three orders / joint vs P->Q per (cell, seed), and paired tests over seeds."""
+    sec = "E5 calibration seeds (reports/analysis/seed_best_order.csv, seed_order_pairs.csv)"
+    B, R = q["seed_best"], q["seed_pairs"]
+    M.add(sec, "SeedJointBest", _n(sum(r["joint_best"] for r in B)) if B else "--",
+          "(model, 4-bit cell, seed) with all three orders where joint has the lowest WikiText-2 ppl", "reports/analysis/seed_best_order.csv")
+    M.add(sec, "SeedJointBeatsPQ", _n(sum(r["joint_beats_pq"] for r in B)) if B else "--",
+          "(model, 4-bit cell, seed) where joint has a lower WikiText-2 ppl than P->Q", "reports/analysis/seed_best_order.csv")
+    M.add(sec, "SeedCellSeeds", _n(len(B)) if B else "--", "(model, 4-bit cell, seed) with all three orders", "reports/analysis/seed_best_order.csv")
+    for a, c in (("joint", "p_then_q"), ("joint", "q_then_p"), ("p_then_q", "q_then_p")):
+        rr = [r for r in R if r["order_a"] == a and r["order_b"] == c and r["complete"]]
+        tag = ORDER_TAG[a] + ORDER_TAG[c]
+        src = f"reports/analysis/seed_order_pairs.csv ({ORDER_TXT[a]} vs {ORDER_TXT[c]}, complete cells)"
+        M.add(sec, f"SeedPair{tag}AllSeeds", _n(sum(r["a_better_all_seeds"] for r in rr)) if rr else "--",
+              f"4-bit cells where {ORDER_TXT[a]} has the lower ppl in every seed", src)
+        M.add(sec, f"SeedPair{tag}Sig", _n(sum(finite(r.get("p_paired_t")) and r["p_paired_t"] < 0.05 for r in rr)) if rr else "--",
+              f"4-bit cells where the paired t-test over seeds (log ppl) gives p < 0.05, {ORDER_TXT[a]} vs {ORDER_TXT[c]}", src)
+        M.add(sec, f"SeedPair{tag}Cells", _n(len(rr)) if rr else "--", "4-bit cells with every seed for both orders", src)
+
+
+def macros_e6(M, store, q):
+    """E6: order spread at 4 bits vs log10(compressed weights), per family and cell (reports/analysis/e6_scale_spread.csv)."""
+    sec = "E6 order spread vs scale (reports/analysis/e6_scale_spread.csv)"
+    src = "reports/analysis/e6_scale_spread.csv (WikiText-2 ppl, seed 0, least-squares slope per decade of compressed weights)"
+    have = {(r["family"], r["cell"]): r for r in q["scale"]}
+    for fam, ftag in (("SmolLM2", "Smol"), ("Qwen2.5", "Qwen")):
+        for s, b in ((0.25, 4), (1 / 3, 4), (0.5, 4)):
+            r = have.get((fam, cell_label(s, b)))
+            ok = r is not None and r.get("n_models", 0) >= 2
+            tag = ftag + cell_tag(s, b)
+            M.add(sec, f"ScaleSlope{tag}", signed(r.get("slope_spread_per_decade"), 1) if ok else "--",
+                  f"{fam} {cell_label(s, b)}: slope of the 3-order spread (%) per decade of compressed weights", src)
+            M.add(sec, f"ScaleShrinks{tag}", yesno(r.get("spread_shrinks_monotonically")) if ok else "--",
+                  f"{fam} {cell_label(s, b)}: does the spread fall with every larger model?", src)
+            M.add(sec, f"ScaleModels{tag}", _n(r.get("n_models")) if r else "--", f"{fam} {cell_label(s, b)}: models in the fit", src)
+            M.add(sec, f"ScaleSlopeMaskFirst{tag}", signed(r.get("slope_gap_mask_first_per_decade"), 2) if ok else "--",
+                  f"{fam} {cell_label(s, b)}: slope of the joint vs P->Q gap (%) per decade", src)
+
+
 E7_METRIC_TAG = {"wt_ppl": "Ppl", "c4_ppl": "CFourPpl", "wt_kl": "Kl", "sr9_v2": "Sr"}
 
 
@@ -765,6 +804,8 @@ def write_all(store, e1, q, det, fr, e2res, boolq, paths, missing, repro=(), e7r
     macros_questions(M, store, q)
     macros_misc(M, store, e1, det, fr, e2res, boolq)
     macros_requests(M, store, e1, q, fr, e2res, repro)
+    macros_e5(M, store, q)
+    macros_e6(M, store, q)
     if e7res is not None:
         macros_e7(M, store, e7res)
     if e8res is not None:

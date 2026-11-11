@@ -1,0 +1,4 @@
+model,cell,seed,best,joint_best,joint_beats_pq
+SmolLM2-360M,25%+4,0,joint,True,True
+SmolLM2-360M,33%+4,0,joint,True,True
+SmolLM2-360M,50%+4,0,joint,True,True

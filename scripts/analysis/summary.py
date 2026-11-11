@@ -213,6 +213,28 @@ def summary_md(store, e1, q, det, fr, e2, boolq, tex_info, missing, paths, B, fi
             + [f(r.get(f"wt_ppl_removed_{a}_pct"), 0, signed=True) for a in MECH_ARMS] + [f(r.get("wt_ppl_stale_on_pq_pct"), 1, signed=True)]
             for r in q["e3"] if finite(r.get("wt_ppl_q_then_p")) or finite(r.get("wt_ppl_p_then_q"))]
     L.append(table(["model", "cell", "Q->P ppl", "P->Q ppl", "refit removes %", "P-mask removes %", "both remove %", "stale on P->Q %"], rows))
+    # ------------------------------------------------------------------ E5 paired
+    if q.get("seed_pairs"):
+        L.append("\n## E5: orders over calibration seeds (4-bit cells)\n\nSources: reports/analysis/seed_order_pairs.csv,"
+                 " seed_best_order.csv. Log ratio = mean over seeds of log(ppl B / ppl A) (> 0: A better); paired t-test over seeds on"
+                 " log ppl.\n\n")
+        L.append(table(["model", "cell", "A", "B", "seeds", "mean log ratio", "sd", "A better in every seed", "p (paired t)"],
+                       [[r["model"], r["cell"], ORDER_TXT[r["order_a"]], ORDER_TXT[r["order_b"]], r["n_seeds"],
+                         f(r.get("mean_log_ratio_b_over_a"), 4, signed=True), f(r.get("sd_log_ratio"), 4), f(r["a_better_all_seeds"]),
+                         f(r.get("p_paired_t"), 3)] for r in q["seed_pairs"] if r["n_seeds"] >= 2]))
+        B = q["seed_best"]
+        L.append(f"Joint best of the three orders in {sum(r['joint_best'] for r in B)} of {len(B)} (cell, seed); joint below P->Q in"
+                 f" {sum(r['joint_beats_pq'] for r in B)} of {len(B)}.\n")
+    # ------------------------------------------------------------------ E6 scale
+    if q.get("scale"):
+        L.append("\n## E6: 4-bit order spread vs scale, per family\n\nSource: reports/analysis/e6_scale_spread.csv (spread ="
+                 " 100 (max - min)/min of WikiText-2 ppl over the three orders; slope per decade of compressed weights; families"
+                 " never mixed).\n\n")
+        L.append(table(["family", "cell", "models", "compressed weights", "spread %", "joint vs P->Q gap %", "slope spread/decade",
+                        "spread shrinks with size", "slope gap/decade"],
+                       [[r["family"], r["cell"], r["models"], r["compressed_weights"], r["spread_pct"], r["gap_mask_first_pct"],
+                         f(r.get("slope_spread_per_decade"), 2, signed=True), f(r.get("spread_shrinks_monotonically")),
+                         f(r.get("slope_gap_mask_first_per_decade"), 2, signed=True)] for r in q["scale"]]))
     # ------------------------------------------------------------------ E7
     if e7 is not None:
         sm = e7["summary"]
