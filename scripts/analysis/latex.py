@@ -594,6 +594,30 @@ def macros_requests(M, store, e1, q, fr, e2res, repro):
     gp = [abs(r["gap_pct"]) for r in four]
     add("FrontierFourGapMaxPct", num(max(gp), 1) if gp else "--",
         f"R5: largest |100(ppl_best(25%+4)/ppl(4-bit) - 1)| over the models with both ({names(four)})", src)
+    # below 3 bits: plain 2-bit vs 50%+3 (best order), over the models that have the 2-bit state (E4)
+    two = [(m, store.quant_only(m, 2)) for m in store.models()]
+    two = [(m, q) for m, q in two if q is not None and finite((q.get("wikitext2") or {}).get("ppl"))]
+    v2 = [q["wikitext2"]["ppl"] for _, q in two]
+    big = lambda v: f"{v:,.0f}".replace(",", "{,}")  # noqa: E731
+    src2 = "results/v2/E4/*.jsonl (quant 2-bit, wikitext2.ppl) and E1 50%+3 states (best of the three orders)"
+    add("QuantTwoModels", _n(len(v2)) if v2 else "--", f"models with a plain 2-bit state ({', '.join(m for m, _ in two)})", src2)
+    add("QuantTwoPplMin", big(min(v2)) if v2 else "--", "smallest WikiText-2 ppl of plain 2-bit over those models", src2)
+    add("QuantTwoPplMax", big(max(v2)) if v2 else "--", "largest WikiText-2 ppl of plain 2-bit over those models", src2)
+    b53 = []
+    for m, _ in two:
+        vals = [((store.get(m, o, 0.5, 3) or {}).get("wikitext2") or {}).get("ppl") for o in PAPER_ORDERS]
+        if all(finite(x) for x in vals):
+            b53.append(min(vals))
+    ok53 = two and len(b53) == len(two)
+    add("SFiftyBThreeBestPplMin", num(min(b53), 2) if ok53 else "--", "smallest best-order WikiText-2 ppl of 50%+3 over the 2-bit models", src2)
+    add("SFiftyBThreeBestPplMax", num(max(b53), 2) if ok53 else "--", "largest best-order WikiText-2 ppl of 50%+3 over the 2-bit models", src2)
+    g4 = [r["gain_pct"] for r in four]
+    add("FrontierFourGainMaxPct", num(max(g4), 1) if g4 and max(g4) > 0 else ("0" if g4 else "--"),
+        f"largest gain of the best 25%+4 order over 4-bit alone, 100(1 - ppl_best/ppl_4bit), over {names(four)} (0 if none gains)", src)
+    for r in [x for x in es if x["available"]]:
+        cmp = {"three": ("Three", "50%+4 vs 3-bit"), "four": ("Four", "25%+4 vs 4-bit")}[r["comparison"]]
+        add(f"Frontier{cmp[0]}Gain{model_tag(r['model'])}Pct", signed(r["gain_pct"], 1),
+            f"{r['model']}, {cmp[1]} at equal storage: 100(1 - ppl_best / ppl_quant), > 0 = pruning + quantization better", src)
     # R7-R8: Q->P 25%+3 = 3-bit
     av = [r for r in fr["identity"] if r.get("status") != "pending"]
     src = "reports/analysis/identity_qp25_3bit.json"
@@ -709,6 +733,14 @@ def macros_e6(M, store, q):
     sec = "E6 order spread vs scale (reports/analysis/e6_scale_spread.csv)"
     src = "reports/analysis/e6_scale_spread.csv (WikiText-2 ppl, seed 0, least-squares slope per decade of compressed weights)"
     have = {(r["family"], r["cell"]): r for r in q["scale"]}
+    for r in q["q2"]:
+        if r["bits"] == 4 and r.get("seed", 0) == 0 and finite(r.get("wt_ppl_spread_pct")) and cell_label(r["sparsity"], r["bits"]) in ("25%+4", "50%+4"):
+            M.add(sec, f"ScaleSpread{model_tag(r['model'])}{cell_tag(r['sparsity'], r['bits'])}Pct", num(r["wt_ppl_spread_pct"], 1),
+                  f"{r['model']} {cell_label(r['sparsity'], r['bits'])}: 100 (max - min) / min of WikiText-2 ppl over the three orders",
+                  "reports/analysis/q2_order_ranking.csv (wt_ppl_spread_pct)")
+            gap = 100 * abs(r["wt_ppl_joint"] - r["wt_ppl_p_then_q"]) / min(r[f"wt_ppl_{o}"] for o in PAPER_ORDERS)
+            M.add(sec, f"ScaleGapMaskFirst{model_tag(r['model'])}{cell_tag(r['sparsity'], r['bits'])}Pct", num(gap, 2),
+                  f"{r['model']} {cell_label(r['sparsity'], r['bits'])}: 100 |joint - P->Q| / min of WikiText-2 ppl", "reports/analysis/q2_order_ranking.csv")
     for fam, ftag in (("SmolLM2", "Smol"), ("Qwen2.5", "Qwen")):
         for s, b in ((0.25, 4), (1 / 3, 4), (0.5, 4)):
             r = have.get((fam, cell_label(s, b)))

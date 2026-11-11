@@ -4,6 +4,7 @@ base_model:
 - HuggingFaceTB/SmolLM2-135M
 - HuggingFaceTB/SmolLM2-360M
 - Qwen/Qwen2.5-0.5B
+- HuggingFaceTB/SmolLM2-1.7B
 tags:
 - pruning
 - quantization
@@ -15,7 +16,7 @@ tags:
 
 # Do pruning and quantization compose? Compressed model states (ESANN 2027 study, v2)
 
-This repository holds **89 compressed model states** of 3 base models, every state evaluated in the v2 study of the order of unstructured pruning and weight quantization under Hessian-based (OBS) compensation: pruning alone, quantization alone, and the two combined in three orders (prune then quantize, quantize then prune, and both in one joint sweep), plus the ablation arms that test why quantizing first hurts.
+This repository holds **148 compressed model states** of 4 base models, every state evaluated in the v2 study of the order of unstructured pruning and weight quantization under Hessian-based (OBS) compensation: pruning alone, quantization alone, and the two combined in three orders (prune then quantize, quantize then prune, and both in one joint sweep), plus the ablation arms that test why quantizing first hurts.
 
 - **Code, result lines and per-item benchmark logs:** [https://github.com/martin-cousseau/esann2027-compose](https://github.com/martin-cousseau/esann2027-compose/tree/claude/busy-hopper-ghtynk) (branch `claude/busy-hopper-ghtynk`)
 - **One Weights & Biases run per state (metrics, layer diagnostics, links back here):** [https://wandb.ai/martin-css/esann2027-compose-v2](https://wandb.ai/martin-css/esann2027-compose-v2)
@@ -58,7 +59,7 @@ Bitmaps use `numpy.packbits` order. The bitmap is stored to tell pruned weights 
 
 All states: fp32 model and Hessians on one GPU type (NVIDIA L4), TF32 off, deterministic kernels, the OBS sweep of the paper's code (`src/core.py`), 128 calibration windows of 2048 tokens from C4, asymmetric min-max quantization grid per group of 128 weights. Evaluation: WikiText-2 test perplexity, C4 validation perplexity (256 windows), KL divergence and top-1 agreement with the dense model, and (E1, E4) nine zero-shot tasks with lm-evaluation-harness 0.4.13 on full splits with per-item logs. Every result line records the GPU, driver, Colab image, library versions, commit and code hash; see the GitHub repository.
 
-States by experiment family: E1 (the paper's grid in fp32): 64, E3 (Q->P mechanism arms): 16, E4 (extra frontier points): 9.
+States by experiment family: E1 (the paper's grid in fp32): 72, E3 (Q->P mechanism arms): 31, E4 (extra frontier points): 15, E5 (calibration seeds 1 and 2): 20, E6 (scale within one family): 10.
 
 ## States
 
@@ -116,16 +117,18 @@ bits/w = bits per weight of the compressed linear layers with a 1-bit mask count
 
 </details>
 
-<details><summary><b>SmolLM2-360M</b> (16 states; base model <code>HuggingFaceTB/SmolLM2-360M</code>)</summary>
+<details><summary><b>SmolLM2-360M</b> (64 states; base model <code>HuggingFaceTB/SmolLM2-360M</code>)</summary>
 
 | state | family | seed | bits/w | PPL | C4 PPL | KL | file |
 |---|---|---|---|---|---|---|---|
 | 25% pruned | E1 | 0 | 13.00 | 12.08 | 16.74 | 0.051 | [SmolLM2-360M__prune__s0.2500__b16__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__prune__s0.2500__b16__seed0__float32.safetensors) |
 | 33% pruned | E1 | 0 | 11.67 | 12.86 | 17.58 | 0.118 | [SmolLM2-360M__prune__s0.3333__b16__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__prune__s0.3333__b16__seed0__float32.safetensors) |
 | 50% pruned | E1 | 0 | 9.00 | 18.63 | 23.99 | 0.497 | [SmolLM2-360M__prune__s0.5000__b16__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__prune__s0.5000__b16__seed0__float32.safetensors) |
+| 60% pruned | E4 | 0 | 7.40 | 34.64 | 44.30 | 1.106 | [SmolLM2-360M__prune__s0.6000__b16__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__prune__s0.6000__b16__seed0__float32.safetensors) |
 | 8-bit | E1 | 0 | 8.00 | 11.47 | 16.15 | 0.001 | [SmolLM2-360M__quant__s0.0000__b8__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__quant__s0.0000__b8__seed0__float32.safetensors) |
 | 4-bit | E1 | 0 | 4.00 | 13.27 | 18.06 | 0.143 | [SmolLM2-360M__quant__s0.0000__b4__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__quant__s0.0000__b4__seed0__float32.safetensors) |
 | 3-bit | E1 | 0 | 3.00 | 21.97 | 27.28 | 0.650 | [SmolLM2-360M__quant__s0.0000__b3__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__quant__s0.0000__b3__seed0__float32.safetensors) |
+| 2-bit | E4 | 0 | 2.00 | 32421.62 | 11417.49 | 7.903 | [SmolLM2-360M__quant__s0.0000__b2__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__quant__s0.0000__b2__seed0__float32.safetensors) |
 | 25%+4 joint | E1 | 0 | 4.00 | 13.20 | 17.88 | 0.139 | [SmolLM2-360M__joint__s0.2500__b4__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__joint__s0.2500__b4__seed0__float32.safetensors) |
 | 25%+4 P->Q | E1 | 0 | 4.00 | 13.34 | 18.02 | 0.146 | [SmolLM2-360M__p_then_q__s0.2500__b4__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__p_then_q__s0.2500__b4__seed0__float32.safetensors) |
 | 25%+4 Q->P | E1 | 0 | 4.00 | 14.38 | 19.17 | 0.222 | [SmolLM2-360M__q_then_p__s0.2500__b4__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__q_then_p__s0.2500__b4__seed0__float32.safetensors) |
@@ -134,12 +137,58 @@ bits/w = bits per weight of the compressed linear layers with a 1-bit mask count
 | 33%+4 Q->P | E1 | 0 | 3.67 | 15.58 | 20.45 | 0.302 | [SmolLM2-360M__q_then_p__s0.3333__b4__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__q_then_p__s0.3333__b4__seed0__float32.safetensors) |
 | 50%+4 joint | E1 | 0 | 3.00 | 20.48 | 26.32 | 0.589 | [SmolLM2-360M__joint__s0.5000__b4__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__joint__s0.5000__b4__seed0__float32.safetensors) |
 | 50%+4 P->Q | E1 | 0 | 3.00 | 21.29 | 26.84 | 0.631 | [SmolLM2-360M__p_then_q__s0.5000__b4__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__p_then_q__s0.5000__b4__seed0__float32.safetensors) |
+| 50%+4 P->Q stale grid | E3 | 0 | 3.00 | 21.01 | 27.03 | 0.617 | [SmolLM2-360M__p_then_q_stale__s0.5000__b4__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__p_then_q_stale__s0.5000__b4__seed0__float32.safetensors) |
 | 50%+4 Q->P | E1 | 0 | 3.00 | 23.63 | 29.48 | 0.727 | [SmolLM2-360M__q_then_p__s0.5000__b4__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__q_then_p__s0.5000__b4__seed0__float32.safetensors) |
+| 50%+4 Q->P P-mask | E3 | 0 | 3.00 | 22.17 | 28.12 | 0.670 | [SmolLM2-360M__q_then_p_pmask__s0.5000__b4__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__q_then_p_pmask__s0.5000__b4__seed0__float32.safetensors) |
+| 50%+4 Q->P P-mask refit | E3 | 0 | 3.00 | 21.76 | 27.89 | 0.654 | [SmolLM2-360M__q_then_p_pmask_refit__s0.5000__b4__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__q_then_p_pmask_refit__s0.5000__b4__seed0__float32.safetensors) |
+| 50%+4 Q->P refit | E3 | 0 | 3.00 | 23.04 | 28.65 | 0.702 | [SmolLM2-360M__q_then_p_refit__s0.5000__b4__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__q_then_p_refit__s0.5000__b4__seed0__float32.safetensors) |
+| 60%+4 joint | E4 | 0 | 2.60 | 38.47 | 49.06 | 1.217 | [SmolLM2-360M__joint__s0.6000__b4__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__joint__s0.6000__b4__seed0__float32.safetensors) |
+| 60%+4 P->Q | E4 | 0 | 2.60 | 39.01 | 48.31 | 1.233 | [SmolLM2-360M__p_then_q__s0.6000__b4__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__p_then_q__s0.6000__b4__seed0__float32.safetensors) |
+| 60%+4 Q->P | E4 | 0 | 2.60 | 43.96 | 58.27 | 1.343 | [SmolLM2-360M__q_then_p__s0.6000__b4__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__q_then_p__s0.6000__b4__seed0__float32.safetensors) |
 | 25%+3 joint | E1 | 0 | 3.25 | 20.00 | 25.01 | 0.564 | [SmolLM2-360M__joint__s0.2500__b3__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__joint__s0.2500__b3__seed0__float32.safetensors) |
+| 25%+3 P->Q | E1 | 0 | 3.25 | 20.38 | 25.35 | 0.575 | [SmolLM2-360M__p_then_q__s0.2500__b3__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__p_then_q__s0.2500__b3__seed0__float32.safetensors) |
+| 25%+3 P->Q stale grid | E3 | 0 | 3.25 | 20.31 | 25.31 | 0.578 | [SmolLM2-360M__p_then_q_stale__s0.2500__b3__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__p_then_q_stale__s0.2500__b3__seed0__float32.safetensors) |
+| 25%+3 Q->P | E1 | 0 | 3.25 | 21.97 | 27.28 | 0.650 | [SmolLM2-360M__q_then_p__s0.2500__b3__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__q_then_p__s0.2500__b3__seed0__float32.safetensors) |
+| 25%+3 Q->P P-mask | E3 | 0 | 3.25 | 22.72 | 26.52 | 0.686 | [SmolLM2-360M__q_then_p_pmask__s0.2500__b3__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__q_then_p_pmask__s0.2500__b3__seed0__float32.safetensors) |
+| 25%+3 Q->P P-mask refit | E3 | 0 | 3.25 | 21.52 | 26.49 | 0.632 | [SmolLM2-360M__q_then_p_pmask_refit__s0.2500__b3__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__q_then_p_pmask_refit__s0.2500__b3__seed0__float32.safetensors) |
+| 25%+3 Q->P refit | E3 | 0 | 3.25 | 25.85 | 26.79 | 0.805 | [SmolLM2-360M__q_then_p_refit__s0.2500__b3__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__q_then_p_refit__s0.2500__b3__seed0__float32.safetensors) |
+| 33%+3 joint | E1 | 0 | 3.00 | 20.03 | 25.10 | 0.567 | [SmolLM2-360M__joint__s0.3333__b3__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__joint__s0.3333__b3__seed0__float32.safetensors) |
+| 33%+3 P->Q | E1 | 0 | 3.00 | 20.68 | 26.07 | 0.596 | [SmolLM2-360M__p_then_q__s0.3333__b3__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__p_then_q__s0.3333__b3__seed0__float32.safetensors) |
+| 33%+3 P->Q stale grid | E3 | 0 | 3.00 | 20.65 | 26.06 | 0.595 | [SmolLM2-360M__p_then_q_stale__s0.3333__b3__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__p_then_q_stale__s0.3333__b3__seed0__float32.safetensors) |
+| 33%+3 Q->P | E1 | 0 | 3.00 | 28.88 | 29.77 | 0.923 | [SmolLM2-360M__q_then_p__s0.3333__b3__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__q_then_p__s0.3333__b3__seed0__float32.safetensors) |
+| 33%+3 Q->P P-mask | E3 | 0 | 3.00 | 22.52 | 27.82 | 0.674 | [SmolLM2-360M__q_then_p_pmask__s0.3333__b3__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__q_then_p_pmask__s0.3333__b3__seed0__float32.safetensors) |
+| 33%+3 Q->P P-mask refit | E3 | 0 | 3.00 | 23.04 | 28.52 | 0.702 | [SmolLM2-360M__q_then_p_pmask_refit__s0.3333__b3__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__q_then_p_pmask_refit__s0.3333__b3__seed0__float32.safetensors) |
+| 33%+3 Q->P refit | E3 | 0 | 3.00 | 29.71 | 29.95 | 0.946 | [SmolLM2-360M__q_then_p_refit__s0.3333__b3__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__q_then_p_refit__s0.3333__b3__seed0__float32.safetensors) |
+| 50%+3 joint | E1 | 0 | 2.50 | 29.14 | 34.72 | 0.938 | [SmolLM2-360M__joint__s0.5000__b3__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__joint__s0.5000__b3__seed0__float32.safetensors) |
+| 50%+3 P->Q | E1 | 0 | 2.50 | 29.62 | 37.18 | 0.954 | [SmolLM2-360M__p_then_q__s0.5000__b3__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__p_then_q__s0.5000__b3__seed0__float32.safetensors) |
+| 50%+3 Q->P | E1 | 0 | 2.50 | 49.29 | 52.46 | 1.462 | [SmolLM2-360M__q_then_p__s0.5000__b3__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__q_then_p__s0.5000__b3__seed0__float32.safetensors) |
+| 50%+3 Q->P P-mask | E3 | 0 | 2.50 | 37.59 | 47.29 | 1.200 | [SmolLM2-360M__q_then_p_pmask__s0.5000__b3__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__q_then_p_pmask__s0.5000__b3__seed0__float32.safetensors) |
+| 50%+3 Q->P P-mask refit | E3 | 0 | 2.50 | 39.20 | 46.99 | 1.235 | [SmolLM2-360M__q_then_p_pmask_refit__s0.5000__b3__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__q_then_p_pmask_refit__s0.5000__b3__seed0__float32.safetensors) |
+| 50%+3 Q->P refit | E3 | 0 | 2.50 | 62.75 | 51.20 | 1.693 | [SmolLM2-360M__q_then_p_refit__s0.5000__b3__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__q_then_p_refit__s0.5000__b3__seed0__float32.safetensors) |
+| 4-bit | E5 | 1 | 4.00 | 13.23 | 18.06 | 0.140 | [SmolLM2-360M__quant__s0.0000__b4__seed1__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__quant__s0.0000__b4__seed1__float32.safetensors) |
+| 25%+4 joint | E5 | 1 | 4.00 | 13.15 | 17.84 | 0.135 | [SmolLM2-360M__joint__s0.2500__b4__seed1__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__joint__s0.2500__b4__seed1__float32.safetensors) |
+| 25%+4 P->Q | E5 | 1 | 4.00 | 13.25 | 18.04 | 0.146 | [SmolLM2-360M__p_then_q__s0.2500__b4__seed1__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__p_then_q__s0.2500__b4__seed1__float32.safetensors) |
+| 25%+4 Q->P | E5 | 1 | 4.00 | 14.30 | 19.13 | 0.218 | [SmolLM2-360M__q_then_p__s0.2500__b4__seed1__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__q_then_p__s0.2500__b4__seed1__float32.safetensors) |
+| 33%+4 joint | E5 | 1 | 3.67 | 14.09 | 18.84 | 0.209 | [SmolLM2-360M__joint__s0.3333__b4__seed1__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__joint__s0.3333__b4__seed1__float32.safetensors) |
+| 33%+4 P->Q | E5 | 1 | 3.67 | 14.24 | 19.03 | 0.219 | [SmolLM2-360M__p_then_q__s0.3333__b4__seed1__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__p_then_q__s0.3333__b4__seed1__float32.safetensors) |
+| 33%+4 Q->P | E5 | 1 | 3.67 | 15.49 | 20.46 | 0.299 | [SmolLM2-360M__q_then_p__s0.3333__b4__seed1__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__q_then_p__s0.3333__b4__seed1__float32.safetensors) |
+| 50%+4 joint | E5 | 1 | 3.00 | 20.38 | 25.94 | 0.585 | [SmolLM2-360M__joint__s0.5000__b4__seed1__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__joint__s0.5000__b4__seed1__float32.safetensors) |
+| 50%+4 P->Q | E5 | 1 | 3.00 | 21.27 | 26.92 | 0.626 | [SmolLM2-360M__p_then_q__s0.5000__b4__seed1__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__p_then_q__s0.5000__b4__seed1__float32.safetensors) |
+| 50%+4 Q->P | E5 | 1 | 3.00 | 23.71 | 29.75 | 0.732 | [SmolLM2-360M__q_then_p__s0.5000__b4__seed1__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__q_then_p__s0.5000__b4__seed1__float32.safetensors) |
+| 4-bit | E5 | 2 | 4.00 | 13.22 | 18.02 | 0.145 | [SmolLM2-360M__quant__s0.0000__b4__seed2__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__quant__s0.0000__b4__seed2__float32.safetensors) |
+| 25%+4 joint | E5 | 2 | 4.00 | 13.20 | 17.87 | 0.142 | [SmolLM2-360M__joint__s0.2500__b4__seed2__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__joint__s0.2500__b4__seed2__float32.safetensors) |
+| 25%+4 P->Q | E5 | 2 | 4.00 | 13.27 | 17.96 | 0.146 | [SmolLM2-360M__p_then_q__s0.2500__b4__seed2__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__p_then_q__s0.2500__b4__seed2__float32.safetensors) |
+| 25%+4 Q->P | E5 | 2 | 4.00 | 14.29 | 19.07 | 0.219 | [SmolLM2-360M__q_then_p__s0.2500__b4__seed2__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__q_then_p__s0.2500__b4__seed2__float32.safetensors) |
+| 33%+4 joint | E5 | 2 | 3.67 | 14.16 | 18.82 | 0.213 | [SmolLM2-360M__joint__s0.3333__b4__seed2__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__joint__s0.3333__b4__seed2__float32.safetensors) |
+| 33%+4 P->Q | E5 | 2 | 3.67 | 14.46 | 19.08 | 0.235 | [SmolLM2-360M__p_then_q__s0.3333__b4__seed2__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__p_then_q__s0.3333__b4__seed2__float32.safetensors) |
+| 33%+4 Q->P | E5 | 2 | 3.67 | 15.67 | 20.50 | 0.311 | [SmolLM2-360M__q_then_p__s0.3333__b4__seed2__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__q_then_p__s0.3333__b4__seed2__float32.safetensors) |
+| 50%+4 joint | E5 | 2 | 3.00 | 20.51 | 25.85 | 0.587 | [SmolLM2-360M__joint__s0.5000__b4__seed2__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__joint__s0.5000__b4__seed2__float32.safetensors) |
+| 50%+4 P->Q | E5 | 2 | 3.00 | 21.16 | 26.93 | 0.625 | [SmolLM2-360M__p_then_q__s0.5000__b4__seed2__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__p_then_q__s0.5000__b4__seed2__float32.safetensors) |
+| 50%+4 Q->P | E5 | 2 | 3.00 | 23.44 | 29.12 | 0.722 | [SmolLM2-360M__q_then_p__s0.5000__b4__seed2__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__q_then_p__s0.5000__b4__seed2__float32.safetensors) |
 
 </details>
 
-<details><summary><b>Qwen2.5-0.5B</b> (28 states; base model <code>Qwen/Qwen2.5-0.5B</code>)</summary>
+<details><summary><b>Qwen2.5-0.5B</b> (29 states; base model <code>Qwen/Qwen2.5-0.5B</code>)</summary>
 
 | state | family | seed | bits/w | PPL | C4 PPL | KL | file |
 |---|---|---|---|---|---|---|---|
@@ -162,6 +211,7 @@ bits/w = bits per weight of the compressed linear layers with a 1-bit mask count
 | 50%+4 Q->P | E1 | 0 | 3.00 | 22.39 | 30.24 | 0.550 | [Qwen2.5-0.5B__q_then_p__s0.5000__b4__seed0__float32.safetensors](models/Qwen2.5-0.5B/Qwen2.5-0.5B__q_then_p__s0.5000__b4__seed0__float32.safetensors) |
 | 60%+4 joint | E4 | 0 | 2.60 | 42.75 | 49.44 | 1.190 | [Qwen2.5-0.5B__joint__s0.6000__b4__seed0__float32.safetensors](models/Qwen2.5-0.5B/Qwen2.5-0.5B__joint__s0.6000__b4__seed0__float32.safetensors) |
 | 60%+4 P->Q | E4 | 0 | 2.60 | 47.08 | 51.02 | 1.286 | [Qwen2.5-0.5B__p_then_q__s0.6000__b4__seed0__float32.safetensors](models/Qwen2.5-0.5B/Qwen2.5-0.5B__p_then_q__s0.6000__b4__seed0__float32.safetensors) |
+| 60%+4 Q->P | E4 | 0 | 2.60 | 48.26 | 55.50 | 1.316 | [Qwen2.5-0.5B__q_then_p__s0.6000__b4__seed0__float32.safetensors](models/Qwen2.5-0.5B/Qwen2.5-0.5B__q_then_p__s0.6000__b4__seed0__float32.safetensors) |
 | 25%+3 joint | E1 | 0 | 3.25 | 21.53 | 28.29 | 0.505 | [Qwen2.5-0.5B__joint__s0.2500__b3__seed0__float32.safetensors](models/Qwen2.5-0.5B/Qwen2.5-0.5B__joint__s0.2500__b3__seed0__float32.safetensors) |
 | 25%+3 P->Q | E1 | 0 | 3.25 | 21.92 | 28.69 | 0.521 | [Qwen2.5-0.5B__p_then_q__s0.2500__b3__seed0__float32.safetensors](models/Qwen2.5-0.5B/Qwen2.5-0.5B__p_then_q__s0.2500__b3__seed0__float32.safetensors) |
 | 25%+3 Q->P | E1 | 0 | 3.25 | 21.84 | 28.33 | 0.514 | [Qwen2.5-0.5B__q_then_p__s0.2500__b3__seed0__float32.safetensors](models/Qwen2.5-0.5B/Qwen2.5-0.5B__q_then_p__s0.2500__b3__seed0__float32.safetensors) |
@@ -171,6 +221,23 @@ bits/w = bits per weight of the compressed linear layers with a 1-bit mask count
 | 50%+3 joint | E1 | 0 | 2.50 | 28.62 | 35.45 | 0.792 | [Qwen2.5-0.5B__joint__s0.5000__b3__seed0__float32.safetensors](models/Qwen2.5-0.5B/Qwen2.5-0.5B__joint__s0.5000__b3__seed0__float32.safetensors) |
 | 50%+3 P->Q | E1 | 0 | 2.50 | 29.96 | 36.54 | 0.841 | [Qwen2.5-0.5B__p_then_q__s0.5000__b3__seed0__float32.safetensors](models/Qwen2.5-0.5B/Qwen2.5-0.5B__p_then_q__s0.5000__b3__seed0__float32.safetensors) |
 | 50%+3 Q->P | E1 | 0 | 2.50 | 34.63 | 42.36 | 0.976 | [Qwen2.5-0.5B__q_then_p__s0.5000__b3__seed0__float32.safetensors](models/Qwen2.5-0.5B/Qwen2.5-0.5B__q_then_p__s0.5000__b3__seed0__float32.safetensors) |
+
+</details>
+
+<details><summary><b>SmolLM2-1.7B</b> (10 states; base model <code>HuggingFaceTB/SmolLM2-1.7B</code>)</summary>
+
+| state | family | seed | bits/w | PPL | C4 PPL | KL | file |
+|---|---|---|---|---|---|---|---|
+| 25% pruned | E6 | 0 | 13.00 | 8.51 | 12.37 | 0.046 | [SmolLM2-1.7B__prune__s0.2500__b16__seed0__float32.safetensors](models/SmolLM2-1.7B/SmolLM2-1.7B__prune__s0.2500__b16__seed0__float32.safetensors) |
+| 50% pruned | E6 | 0 | 9.00 | 13.51 | 17.29 | 0.506 | [SmolLM2-1.7B__prune__s0.5000__b16__seed0__float32.safetensors](models/SmolLM2-1.7B/SmolLM2-1.7B__prune__s0.5000__b16__seed0__float32.safetensors) |
+| 4-bit | E6 | 0 | 4.00 | 8.71 | 12.58 | 0.070 | [SmolLM2-1.7B__quant__s0.0000__b4__seed0__float32.safetensors](models/SmolLM2-1.7B/SmolLM2-1.7B__quant__s0.0000__b4__seed0__float32.safetensors) |
+| 3-bit | E6 | 0 | 3.00 | 13.01 | 15.58 | 0.468 | [SmolLM2-1.7B__quant__s0.0000__b3__seed0__float32.safetensors](models/SmolLM2-1.7B/SmolLM2-1.7B__quant__s0.0000__b3__seed0__float32.safetensors) |
+| 25%+4 joint | E6 | 0 | 4.00 | 9.00 | 12.87 | 0.101 | [SmolLM2-1.7B__joint__s0.2500__b4__seed0__float32.safetensors](models/SmolLM2-1.7B/SmolLM2-1.7B__joint__s0.2500__b4__seed0__float32.safetensors) |
+| 25%+4 P->Q | E6 | 0 | 4.00 | 9.06 | 12.91 | 0.106 | [SmolLM2-1.7B__p_then_q__s0.2500__b4__seed0__float32.safetensors](models/SmolLM2-1.7B/SmolLM2-1.7B__p_then_q__s0.2500__b4__seed0__float32.safetensors) |
+| 25%+4 Q->P | E6 | 0 | 4.00 | 9.19 | 13.07 | 0.122 | [SmolLM2-1.7B__q_then_p__s0.2500__b4__seed0__float32.safetensors](models/SmolLM2-1.7B/SmolLM2-1.7B__q_then_p__s0.2500__b4__seed0__float32.safetensors) |
+| 50%+4 joint | E6 | 0 | 3.00 | 14.13 | 18.08 | 0.549 | [SmolLM2-1.7B__joint__s0.5000__b4__seed0__float32.safetensors](models/SmolLM2-1.7B/SmolLM2-1.7B__joint__s0.5000__b4__seed0__float32.safetensors) |
+| 50%+4 P->Q | E6 | 0 | 3.00 | 14.11 | 18.23 | 0.548 | [SmolLM2-1.7B__p_then_q__s0.5000__b4__seed0__float32.safetensors](models/SmolLM2-1.7B/SmolLM2-1.7B__p_then_q__s0.5000__b4__seed0__float32.safetensors) |
+| 50%+4 Q->P | E6 | 0 | 3.00 | 15.02 | 19.62 | 0.608 | [SmolLM2-1.7B__q_then_p__s0.5000__b4__seed0__float32.safetensors](models/SmolLM2-1.7B/SmolLM2-1.7B__q_then_p__s0.5000__b4__seed0__float32.safetensors) |
 
 </details>
 

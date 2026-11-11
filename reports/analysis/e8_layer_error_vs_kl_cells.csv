@@ -20,3 +20,5 @@ Qwen2.5-0.5B,33%+4,joint < p_then_q < q_then_p,joint < p_then_q < q_then_p,True,
 Qwen2.5-0.5B,50%+3,joint < p_then_q < q_then_p,joint < p_then_q < q_then_p,True,True
 Qwen2.5-0.5B,50%+4,joint < p_then_q < q_then_p,joint < p_then_q < q_then_p,True,True
 Qwen2.5-0.5B,60%+4,joint < p_then_q < q_then_p,joint < p_then_q < q_then_p,True,True
+SmolLM2-1.7B,25%+4,joint < p_then_q < q_then_p,joint < p_then_q < q_then_p,True,True
+SmolLM2-1.7B,50%+4,joint < p_then_q < q_then_p,p_then_q < joint < q_then_p,False,False
