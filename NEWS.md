@@ -16,7 +16,7 @@
   https://huggingface.co/martincousseau/esann2027-compose-v2 ; results
   https://huggingface.co/datasets/martincousseau/esann2027-v2-results ; runs https://wandb.ai/martin-css/esann2027-compose-v2
 
-## 2026-11-11 09:10 UTC - all runs done, runtimes deleted, release public
+## 2026-11-11 08:55 UTC - all runs done, runtimes deleted, release public
 - **E6 (SmolLM2-1.7B, 11 states):** at 3.0 bits per weight plain 3-bit beats the best 50%+4-bit order, at 4.0 bits
   plain 4-bit beats 25%+4-bit; within SmolLM2 the 4-bit order spread shrinks with size (FINDINGS.md R1, R5).
 - **E5 (seeds, SmolLM2-360M):** joint beats P->Q in every seed of every 4-bit cell; Q->P is always worst; seed sd of

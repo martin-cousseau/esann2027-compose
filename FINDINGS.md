@@ -6,7 +6,7 @@ seed). Numbers are quoted from script output (`python scripts/make_tables.py` re
 `reports/analysis/summary.md` and the CSVs under `reports/analysis/`); the paper takes them from
 `paper/generated/macros.tex`, never from this file.
 
-Status of the review's findings R1-R7 (final, 2026-11-11 09:00 UTC; E1 75 of 75; E2 complete at every second
+Status of the review's findings R1-R7 (final, 2026-11-11 08:50 UTC; E1 75 of 75; E2 complete at every second
 block; E3 40 of 40 as reduced (#35); E4 15 of 15; E5 20 of 20; E6 11 of 11; no failed state).
 
 | # | Review finding | Status | Evidence so far |
