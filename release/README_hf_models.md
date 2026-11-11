@@ -16,7 +16,7 @@ tags:
 
 # Do pruning and quantization compose? Compressed model states (ESANN 2027 study, v2)
 
-This repository holds **148 compressed model states** of 4 base models, every state evaluated in the v2 study of the order of unstructured pruning and weight quantization under Hessian-based (OBS) compensation: pruning alone, quantization alone, and the two combined in three orders (prune then quantize, quantize then prune, and both in one joint sweep), plus the ablation arms that test why quantizing first hurts.
+This repository holds **157 compressed model states** of 4 base models, every state evaluated in the v2 study of the order of unstructured pruning and weight quantization under Hessian-based (OBS) compensation: pruning alone, quantization alone, and the two combined in three orders (prune then quantize, quantize then prune, and both in one joint sweep), plus the ablation arms that test why quantizing first hurts.
 
 - **Code, result lines and per-item benchmark logs:** [https://github.com/martin-cousseau/esann2027-compose](https://github.com/martin-cousseau/esann2027-compose/tree/claude/busy-hopper-ghtynk) (branch `claude/busy-hopper-ghtynk`)
 - **One Weights & Biases run per state (metrics, layer diagnostics, links back here):** [https://wandb.ai/martin-css/esann2027-compose-v2](https://wandb.ai/martin-css/esann2027-compose-v2)
@@ -59,7 +59,7 @@ Bitmaps use `numpy.packbits` order. The bitmap is stored to tell pruned weights 
 
 All states: fp32 model and Hessians on one GPU type (NVIDIA L4), TF32 off, deterministic kernels, the OBS sweep of the paper's code (`src/core.py`), 128 calibration windows of 2048 tokens from C4, asymmetric min-max quantization grid per group of 128 weights. Evaluation: WikiText-2 test perplexity, C4 validation perplexity (256 windows), KL divergence and top-1 agreement with the dense model, and (E1, E4) nine zero-shot tasks with lm-evaluation-harness 0.4.13 on full splits with per-item logs. Every result line records the GPU, driver, Colab image, library versions, commit and code hash; see the GitHub repository.
 
-States by experiment family: E1 (the paper's grid in fp32): 72, E3 (Q->P mechanism arms): 31, E4 (extra frontier points): 15, E5 (calibration seeds 1 and 2): 20, E6 (scale within one family): 10.
+States by experiment family: E1 (the paper's grid in fp32): 72, E3 (Q->P mechanism arms): 40, E4 (extra frontier points): 15, E5 (calibration seeds 1 and 2): 20, E6 (scale within one family): 10.
 
 ## States
 
@@ -117,7 +117,7 @@ bits/w = bits per weight of the compressed linear layers with a 1-bit mask count
 
 </details>
 
-<details><summary><b>SmolLM2-360M</b> (64 states; base model <code>HuggingFaceTB/SmolLM2-360M</code>)</summary>
+<details><summary><b>SmolLM2-360M</b> (65 states; base model <code>HuggingFaceTB/SmolLM2-360M</code>)</summary>
 
 | state | family | seed | bits/w | PPL | C4 PPL | KL | file |
 |---|---|---|---|---|---|---|---|
@@ -161,6 +161,7 @@ bits/w = bits per weight of the compressed linear layers with a 1-bit mask count
 | 33%+3 Q->P refit | E3 | 0 | 3.00 | 29.71 | 29.95 | 0.946 | [SmolLM2-360M__q_then_p_refit__s0.3333__b3__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__q_then_p_refit__s0.3333__b3__seed0__float32.safetensors) |
 | 50%+3 joint | E1 | 0 | 2.50 | 29.14 | 34.72 | 0.938 | [SmolLM2-360M__joint__s0.5000__b3__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__joint__s0.5000__b3__seed0__float32.safetensors) |
 | 50%+3 P->Q | E1 | 0 | 2.50 | 29.62 | 37.18 | 0.954 | [SmolLM2-360M__p_then_q__s0.5000__b3__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__p_then_q__s0.5000__b3__seed0__float32.safetensors) |
+| 50%+3 P->Q stale grid | E3 | 0 | 2.50 | 30.66 | 37.69 | 0.987 | [SmolLM2-360M__p_then_q_stale__s0.5000__b3__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__p_then_q_stale__s0.5000__b3__seed0__float32.safetensors) |
 | 50%+3 Q->P | E1 | 0 | 2.50 | 49.29 | 52.46 | 1.462 | [SmolLM2-360M__q_then_p__s0.5000__b3__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__q_then_p__s0.5000__b3__seed0__float32.safetensors) |
 | 50%+3 Q->P P-mask | E3 | 0 | 2.50 | 37.59 | 47.29 | 1.200 | [SmolLM2-360M__q_then_p_pmask__s0.5000__b3__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__q_then_p_pmask__s0.5000__b3__seed0__float32.safetensors) |
 | 50%+3 Q->P P-mask refit | E3 | 0 | 2.50 | 39.20 | 46.99 | 1.235 | [SmolLM2-360M__q_then_p_pmask_refit__s0.5000__b3__seed0__float32.safetensors](models/SmolLM2-360M/SmolLM2-360M__q_then_p_pmask_refit__s0.5000__b3__seed0__float32.safetensors) |
@@ -188,7 +189,7 @@ bits/w = bits per weight of the compressed linear layers with a 1-bit mask count
 
 </details>
 
-<details><summary><b>Qwen2.5-0.5B</b> (29 states; base model <code>Qwen/Qwen2.5-0.5B</code>)</summary>
+<details><summary><b>Qwen2.5-0.5B</b> (37 states; base model <code>Qwen/Qwen2.5-0.5B</code>)</summary>
 
 | state | family | seed | bits/w | PPL | C4 PPL | KL | file |
 |---|---|---|---|---|---|---|---|
@@ -208,7 +209,11 @@ bits/w = bits per weight of the compressed linear layers with a 1-bit mask count
 | 33%+4 Q->P | E1 | 0 | 3.67 | 16.07 | 22.86 | 0.213 | [Qwen2.5-0.5B__q_then_p__s0.3333__b4__seed0__float32.safetensors](models/Qwen2.5-0.5B/Qwen2.5-0.5B__q_then_p__s0.3333__b4__seed0__float32.safetensors) |
 | 50%+4 joint | E1 | 0 | 3.00 | 21.91 | 28.74 | 0.523 | [Qwen2.5-0.5B__joint__s0.5000__b4__seed0__float32.safetensors](models/Qwen2.5-0.5B/Qwen2.5-0.5B__joint__s0.5000__b4__seed0__float32.safetensors) |
 | 50%+4 P->Q | E1 | 0 | 3.00 | 22.18 | 28.95 | 0.541 | [Qwen2.5-0.5B__p_then_q__s0.5000__b4__seed0__float32.safetensors](models/Qwen2.5-0.5B/Qwen2.5-0.5B__p_then_q__s0.5000__b4__seed0__float32.safetensors) |
+| 50%+4 P->Q stale grid | E3 | 0 | 3.00 | 23.05 | 29.93 | 0.577 | [Qwen2.5-0.5B__p_then_q_stale__s0.5000__b4__seed0__float32.safetensors](models/Qwen2.5-0.5B/Qwen2.5-0.5B__p_then_q_stale__s0.5000__b4__seed0__float32.safetensors) |
 | 50%+4 Q->P | E1 | 0 | 3.00 | 22.39 | 30.24 | 0.550 | [Qwen2.5-0.5B__q_then_p__s0.5000__b4__seed0__float32.safetensors](models/Qwen2.5-0.5B/Qwen2.5-0.5B__q_then_p__s0.5000__b4__seed0__float32.safetensors) |
+| 50%+4 Q->P P-mask | E3 | 0 | 3.00 | 22.79 | 29.93 | 0.567 | [Qwen2.5-0.5B__q_then_p_pmask__s0.5000__b4__seed0__float32.safetensors](models/Qwen2.5-0.5B/Qwen2.5-0.5B__q_then_p_pmask__s0.5000__b4__seed0__float32.safetensors) |
+| 50%+4 Q->P P-mask refit | E3 | 0 | 3.00 | 22.83 | 30.00 | 0.573 | [Qwen2.5-0.5B__q_then_p_pmask_refit__s0.5000__b4__seed0__float32.safetensors](models/Qwen2.5-0.5B/Qwen2.5-0.5B__q_then_p_pmask_refit__s0.5000__b4__seed0__float32.safetensors) |
+| 50%+4 Q->P refit | E3 | 0 | 3.00 | 22.60 | 30.01 | 0.563 | [Qwen2.5-0.5B__q_then_p_refit__s0.5000__b4__seed0__float32.safetensors](models/Qwen2.5-0.5B/Qwen2.5-0.5B__q_then_p_refit__s0.5000__b4__seed0__float32.safetensors) |
 | 60%+4 joint | E4 | 0 | 2.60 | 42.75 | 49.44 | 1.190 | [Qwen2.5-0.5B__joint__s0.6000__b4__seed0__float32.safetensors](models/Qwen2.5-0.5B/Qwen2.5-0.5B__joint__s0.6000__b4__seed0__float32.safetensors) |
 | 60%+4 P->Q | E4 | 0 | 2.60 | 47.08 | 51.02 | 1.286 | [Qwen2.5-0.5B__p_then_q__s0.6000__b4__seed0__float32.safetensors](models/Qwen2.5-0.5B/Qwen2.5-0.5B__p_then_q__s0.6000__b4__seed0__float32.safetensors) |
 | 60%+4 Q->P | E4 | 0 | 2.60 | 48.26 | 55.50 | 1.316 | [Qwen2.5-0.5B__q_then_p__s0.6000__b4__seed0__float32.safetensors](models/Qwen2.5-0.5B/Qwen2.5-0.5B__q_then_p__s0.6000__b4__seed0__float32.safetensors) |
@@ -220,7 +225,11 @@ bits/w = bits per weight of the compressed linear layers with a 1-bit mask count
 | 33%+3 Q->P | E1 | 0 | 3.00 | 23.15 | 29.40 | 0.580 | [Qwen2.5-0.5B__q_then_p__s0.3333__b3__seed0__float32.safetensors](models/Qwen2.5-0.5B/Qwen2.5-0.5B__q_then_p__s0.3333__b3__seed0__float32.safetensors) |
 | 50%+3 joint | E1 | 0 | 2.50 | 28.62 | 35.45 | 0.792 | [Qwen2.5-0.5B__joint__s0.5000__b3__seed0__float32.safetensors](models/Qwen2.5-0.5B/Qwen2.5-0.5B__joint__s0.5000__b3__seed0__float32.safetensors) |
 | 50%+3 P->Q | E1 | 0 | 2.50 | 29.96 | 36.54 | 0.841 | [Qwen2.5-0.5B__p_then_q__s0.5000__b3__seed0__float32.safetensors](models/Qwen2.5-0.5B/Qwen2.5-0.5B__p_then_q__s0.5000__b3__seed0__float32.safetensors) |
+| 50%+3 P->Q stale grid | E3 | 0 | 2.50 | 32.08 | 38.49 | 0.909 | [Qwen2.5-0.5B__p_then_q_stale__s0.5000__b3__seed0__float32.safetensors](models/Qwen2.5-0.5B/Qwen2.5-0.5B__p_then_q_stale__s0.5000__b3__seed0__float32.safetensors) |
 | 50%+3 Q->P | E1 | 0 | 2.50 | 34.63 | 42.36 | 0.976 | [Qwen2.5-0.5B__q_then_p__s0.5000__b3__seed0__float32.safetensors](models/Qwen2.5-0.5B/Qwen2.5-0.5B__q_then_p__s0.5000__b3__seed0__float32.safetensors) |
+| 50%+3 Q->P P-mask | E3 | 0 | 2.50 | 36.61 | 43.92 | 1.040 | [Qwen2.5-0.5B__q_then_p_pmask__s0.5000__b3__seed0__float32.safetensors](models/Qwen2.5-0.5B/Qwen2.5-0.5B__q_then_p_pmask__s0.5000__b3__seed0__float32.safetensors) |
+| 50%+3 Q->P P-mask refit | E3 | 0 | 2.50 | 34.02 | 41.63 | 0.963 | [Qwen2.5-0.5B__q_then_p_pmask_refit__s0.5000__b3__seed0__float32.safetensors](models/Qwen2.5-0.5B/Qwen2.5-0.5B__q_then_p_pmask_refit__s0.5000__b3__seed0__float32.safetensors) |
+| 50%+3 Q->P refit | E3 | 0 | 2.50 | 35.01 | 42.90 | 0.989 | [Qwen2.5-0.5B__q_then_p_refit__s0.5000__b3__seed0__float32.safetensors](models/Qwen2.5-0.5B/Qwen2.5-0.5B__q_then_p_refit__s0.5000__b3__seed0__float32.safetensors) |
 
 </details>
 
