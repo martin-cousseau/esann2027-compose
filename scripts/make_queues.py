@@ -36,7 +36,10 @@ def e1():
 def e3():
     # perplexity, C4 and KL only (tasks cut for budget, DECISIONS.md); the four review arms in four cells
     cells = [(0.25, 3), (1 / 3, 3), (0.5, 4), (0.5, 3)]
-    return {m: [u(a, s, b, tasks=[]) for s, b in cells for a in ARMS] for m in CORE}
+    # Qwen2.5-0.5B runs last on its runtime: its cell without a Q->P penalty (25%+3, where Q->P beats P->Q in E1)
+    # goes last, so a budget cut drops the least informative cell (DECISIONS.md #34)
+    order = {"Qwen/Qwen2.5-0.5B": [(0.5, 3), (0.5, 4), (1 / 3, 3), (0.25, 3)]}
+    return {m: [u(a, s, b, tasks=[]) for s, b in order.get(m, cells) for a in ARMS] for m in CORE}
 
 
 def e4():

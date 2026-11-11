@@ -159,3 +159,9 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     it" becomes "ties it". Angle A stays rejected (no arm closes 60% of the Q->P gap on 2 of 3 models in E2). The
     order paragraph changes: P->Q is no longer the usual winner (7 of 18 cells); a mask-first order is best in all 18
     and Q->P is strictly worst in 16 of 18.
+34. **2026-11-11, budget at 05:10 UTC: keep E6 whole, order E3 Qwen2.5 by information.** About 80 CU spent at the
+    planning rate; the armed queues need about 7.4 runtime-hours more (A: 6 E6 states, about 25 min each; B: E3
+    SmolLM2-360M then E3 Qwen2.5-0.5B, 32 states of 8-9 min), about 97 CU in total, 2 above the stop line. E6 keeps
+    its prune-only states (E7 asks for the order rules on E6). E3 Qwen2.5-0.5B now runs its cells in the order 50%+3,
+    50%+4, 33%+3, 25%+3 (`scripts/make_queues.py`; same 16 states): 25%+3 is the cell where Q->P beats P->Q in E1,
+    so it has no penalty to explain and is the one to drop (4 states, about 1.3 CU) if the 09:00 check says so.
