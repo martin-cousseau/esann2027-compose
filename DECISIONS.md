@@ -7,8 +7,9 @@ Every judgment call, with the reason and the date (UTC). Newest last.
    added later. Every review claim is re-verified independently anyway.
 2. **2026-11-09, where commits go.** The fork `martin-cousseau/esann2027-compose` is public. The author chose
    in session to push to it, with a draft PR only. The private inputs (review text, draft PDF, Drive exports)
-   stay out of git (`context/` is in `.gitignore`) and are backed up to the private HF dataset
-   `martincousseau/esann2027-v2-results` instead.
+   stay out of git (`context/` is in `.gitignore`) and are backed up to a private HF dataset instead
+   (done 2026-11-11 in a separate private dataset, `martincousseau/esann2027-v2-private-context`, so the
+   results dataset can be made public without carrying them in its history).
 3. **2026-11-09, branch name.** The session is bound to branch `claude/busy-hopper-ghtynk`; it plays the role
    of `exp/review-2026-11` in the brief. Nothing is pushed to `main` or to the author's repository.
 4. **2026-11-09, GPU type.** Rates found (logs/budget.md): L4 about 1.7-1.94 CU/h, A100 5.4-9, G4 8.7-10+.
