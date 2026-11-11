@@ -1,27 +1,35 @@
 # NEWS (newest first)
 
 ## Read this first
-- **Angle:** B + C (honest storage frontier with the mask counted, plus free zeros), provisional
-  (DECISIONS.md #25, #28). The 6-page LaTeX draft exists (`paper/main.tex`, `paper/main.pdf`); every number in
-  it is a generated macro. It is revised model by model as the runs finish.
-- **Status (03:25 UTC, Nov 11):** E1 complete for the three core models (75/75), E2 complete, E4 15/15,
-  E3 16/48, E5 5/20 (runtime B, then E3 SmolLM2-360M and Qwen2.5-0.5B, #32), E6 SmolLM2-1.7B 0/11 (runtime A,
-  started 03:18). Expected ends: A about 09:00, B about 10:00 UTC.
-- **New:** E7 (order rules) and the analysis half of E8 are in `make_tables.py`. Kim et al.'s weaker-first rule
-  fails in every cell where it predicts quantize-first; sparsity first (Harma et al.) wins in 14 of 15 cells
-  (FINDINGS.md R4, item 5).
-- **Blockers:** none. Risk: a usage-limit suspension of this session stops the client keepalive; the
-  runtime-side keepalive (DECISIONS.md #27) and per-unit uploads to the HF results dataset cover it.
-- **Decisions waiting on you:** none urgent (QUESTIONS.md). The draft is authored "A. Yaacoub" (from README.md),
-  affiliation to be confirmed.
-- **GPU type locked:** NVIDIA L4, fp32, TF32 off; images `..._20261106-060046_RC00` and `..._20261109-060054_RC00`
-  (the second admitted after a bit-exact check, #26).
-- **CU (estimate; check the Colab website):** about 60 spent at the planning rate (2.23 CU/h), about 35 more
-  planned for the armed queues (total about 95, #31); 2 runtimes alive (about 4.5 CU/h). Runtimes free
-  themselves when their queues end.
-- **Links:** PR https://github.com/martin-cousseau/esann2027-compose/pull/1 ; W&B (public)
-  https://wandb.ai/martin-css/esann2027-compose-v2 ; models (private until the end)
-  https://huggingface.co/martincousseau/esann2027-compose-v2
+- **Done:** every planned GPU run finished (E1 75, E2 3 models, E3 40, E4 15, E5 20, E6 11; no failed state), both
+  Colab runtimes are deleted (`list_runtimes` returns none), the models and results are public on Hugging Face, the
+  paper is revised on the complete data (6 pages, every number a generated macro). An independent audit is running.
+- **Angle:** B + C, counting the mask (DECISIONS.md #25, #28, #33). Headline: with the mask counted, pruning pays at
+  3.0 bits per weight on only 2 of 4 models (both small SmolLM2), less as SmolLM2 grows and not at 1.7B; at 4.0 bits it
+  never clearly does; plain 2-bit collapses; quantize-first is the worst order and no published rule predicts the
+  order; the mask chosen on rounded weights explains part of the quantize-first penalty on SmolLM2 only.
+- **CU (estimate; check the Colab website):** 41.8 L4-hours in total, about 93 CU at the planning rate (2.23 CU/h),
+  about 81 at the reported 1.94 CU/h (`logs/budget.md`, final account).
+- **Decisions waiting on you:** the paper is authored "A. Yaacoub" (from README.md) with the affiliation to be
+  confirmed; the Explainer document was never provided (QUESTIONS.md).
+- **Links:** PR https://github.com/martin-cousseau/esann2027-compose/pull/1 (draft) ; models
+  https://huggingface.co/martincousseau/esann2027-compose-v2 ; results
+  https://huggingface.co/datasets/martincousseau/esann2027-v2-results ; runs https://wandb.ai/martin-css/esann2027-compose-v2
+
+## 2026-11-11 09:10 UTC - all runs done, runtimes deleted, release public
+- **E6 (SmolLM2-1.7B, 11 states):** at 3.0 bits per weight plain 3-bit beats the best 50%+4-bit order, at 4.0 bits
+  plain 4-bit beats 25%+4-bit; within SmolLM2 the 4-bit order spread shrinks with size (FINDINGS.md R1, R5).
+- **E5 (seeds, SmolLM2-360M):** joint beats P->Q in every seed of every 4-bit cell; Q->P is always worst; seed sd of
+  perplexity at most 1.0% (R6).
+- **E3 (mechanism, 40 states):** re-fitting the grid helps in 2 of 10 cells; the pruning-only mask helps in 7 of 10, all
+  on SmolLM2, in none on Qwen2.5-0.5B (R3). E3 Qwen2.5-0.5B was reduced to its two 50% cells for budget (#35).
+- **Order rules (E7):** Kim et al.'s rule right in 14 of 20 cells, wrong in all 5 where it predicts quantize-first;
+  sparsity first wins in 19 of 20 (R4).
+- **Paper:** switched on E5 and E6, a scale paragraph, mechanism claims matched to E2 + E3, Fig. 1 made readable
+  (plain 2-bit off scale, stated in the caption), Table 1 with perplexity and KL for all four models.
+- **Release:** HF model repository (157 exported states verified by size and sha256, card, standalone loader) and
+  results dataset public (#36); README of this branch links them and W&B.
+- **Runtimes:** A deleted 07:21, B deleted 08:48 UTC.
 
 ## 2026-11-11 03:25 UTC - E1 complete; angle B + C confirmed on three models; paper revised
 - **E1 complete (75 states):** with the mask counted, 25%+4-bit ties plain 4-bit on every core model; 50%+4-bit
