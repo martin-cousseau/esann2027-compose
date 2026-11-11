@@ -88,7 +88,7 @@ Hosts that could not be reached from the sandbox: proceedings.neurips.cc, papers
 - **NeurIPS volume and page numbers** for frantar2022obc (draft: vol. 35), dutta2024accuracy, panferov2025unified and kuzmin2023pruning could not be checked, so they are dropped. The venue comes from OpenReview, plus the camera-ready footer for OBC.
 - **Harma's ICLR proceedings page and PDF** were unreachable. The Appendix F quote comes from arXiv v2 (ICLR 2025 camera-ready header), so the page number in the proceedings PDF may differ.
 - **Camera-ready wording**: quotes for Kim (arXiv v1, ICLR 2026 header), Dutta and Panferov (arXiv v1) and Laborde (arXiv v1) may differ slightly from the final PDFs, which sit behind the OpenReview challenge or IEEE.
-- **lm-eval version used**: not recorded (the notebooks run `pip install -q -U lm-eval`). Replace v0.4.3 with the logged version's Zenodo DOI after the re-runs.
+- **lm-eval version used**: not recorded (the notebooks run `pip install -q -U lm-eval`). Replace v0.4.3 with the logged version's Zenodo DOI after the re-runs. **Done 2026-11-11:** the v2 runs log lm_eval 0.4.13; `refs.bib` now cites v0.4.13 (key `gao2026lmeval`, DOI 10.5281/zenodo.22214970).
 - **Part C items 5 and 7**: the venue claims come only from arXiv comments.
 
 ## 5. Notes for the revision

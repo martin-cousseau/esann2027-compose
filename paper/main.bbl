@@ -94,10 +94,10 @@ Stephen Merity, Caiming Xiong, James Bradbury, and Richard Socher.
 \newblock In {\em International Conference on Learning Representations (ICLR)},
   2017.
 
-\bibitem{gao2024lmeval}
+\bibitem{gao2026lmeval}
 Leo Gao et~al.
 \newblock The language model evaluation harness.
-\newblock Zenodo, 2024.
-\newblock Version v0.4.3, doi:10.5281/zenodo.12608602.
+\newblock Zenodo, 2026.
+\newblock Version v0.4.13, doi:10.5281/zenodo.22214970.
 
 \end{thebibliography}
