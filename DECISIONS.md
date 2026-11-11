@@ -143,3 +143,11 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     run last and are dropped if a budget check before them says otherwise. The E5/E6 queues are now written by
     `scripts/make_queues.py` (e5, e6 = as run; e5_full, e6_full = the mission's design), so the analysis plan
     lists only states that are meant to exist.
+32. **2026-11-11, runtime B order: seeds before E3.** Measured unit times (SmolLM2-360M about 8 min without
+    benchmarks, Qwen2.5-0.5B about 9 min, 20 min with them) put the armed queues at about 97 CU at the planning
+    rate (2.23 CU/h; about 84 at the reported 1.94 CU/h), above the stop line of about 95. E5 (calibration seeds,
+    the review's R6) now runs before E3 SmolLM2-360M and E3 Qwen2.5-0.5B (`colab/chain_b6.sh`, which replaced
+    the rest of chain_b4 and all of chain_b5 at 01:05 UTC without touching the running E4 runner), so a cut,
+    if needed, falls on E3 Qwen2.5-0.5B, whose layer-level counterpart (E2) is complete. On runtime A the two
+    E6 prune-only states run last for the same reason. The decision to cut is taken from the CU estimate at
+    about 07:00 UTC.
