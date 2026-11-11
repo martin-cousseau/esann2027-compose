@@ -45,7 +45,8 @@ def e4():
                 u("q_then_p", 0.6, 4)] for m in CORE}
 
 
-def e5(bits=(4,)):
+def e5_full(bits=(4,)):
+    """The mission's E5 design (both models, prune-only seeds too); cut for budget, see e5()."""
     models = ["HuggingFaceTB/SmolLM2-360M", "Qwen/Qwen2.5-0.5B"]
     out = {}
     for m in models:
@@ -57,13 +58,38 @@ def e5(bits=(4,)):
     return out
 
 
-def e6(models=("HuggingFaceTB/SmolLM2-1.7B",)):
+def e5(bits=(4,)):
+    """E5 as run (DECISIONS.md #29): SmolLM2-360M, calibration seeds 1 and 2, 4-bit alone and every 4-bit cell
+    in the three orders; perplexity, C4 and KL only."""
+    q = []
+    for seed in (1, 2):
+        q += [u("quant", 0.0, b, seed, tasks=[]) for b in bits]
+        q += [u(o, s, b, seed, tasks=[]) for b in bits for s in SPARS for o in ORDERS]
+    return {"HuggingFaceTB/SmolLM2-360M": dedupe(q)}
+
+
+def e6_full(models=("HuggingFaceTB/SmolLM2-1.7B",)):
+    """The mission's E6 design (every cell in the three orders, MMLU on dense and 4-bit); cut for budget, see e6()."""
     out = {}
     for m in models:
         q = [u("dense", 0.0, 16, fewshot={"mmlu": 5}), u("quant", 0.0, 4, fewshot={"mmlu": 5}), u("quant", 0.0, 3)]
         q += [u("prune", s, 16) for s in (0.25, 0.5)]
         q += [u(o, s, b) for b in (4, 3) for s in (0.25, 0.5) for o in ORDERS]
         out[m] = q
+    return out
+
+
+def e6(models=("HuggingFaceTB/SmolLM2-1.7B",)):
+    """E6 as run (DECISIONS.md #29, #31): perplexity, C4 and KL only. First the 7 frontier states (dense, 4-bit,
+    3-bit, 50%+4 and 25%+4 in P->Q and joint), then Q->P at both 4-bit cells (the order spread at this scale)
+    and pruning alone at 50% and 25% (the single-method baselines of the interaction and of the order rules)."""
+    out = {}
+    for m in models:
+        q = [u("dense", 0.0, 16, tasks=[]), u("quant", 0.0, 4, tasks=[]), u("quant", 0.0, 3, tasks=[])]
+        q += [u(o, s, 4, tasks=[]) for s in (0.5, 0.25) for o in ("p_then_q", "joint")]
+        q += [u("q_then_p", s, 4, tasks=[]) for s in (0.5, 0.25)]
+        q += [u("prune", s, 16, tasks=[]) for s in (0.5, 0.25)]
+        out[m] = dedupe(q)
     return out
 
 

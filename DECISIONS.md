@@ -133,3 +133,12 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     any chain or runner process, so a finished runtime is freed by Colab within about half an hour even when
     this session is away; follow-on chains (E6 on A, E5 on B) are armed to start as soon as the current chain
     ends, so no runtime idles between queues.
+31. **2026-11-11, E6 gets Q->P and pruning alone (4 more states).** The 7-state E6 of #29 cannot answer E6's
+    own question (does the 4-bit order spread shrink within a family?), because Q->P, the order that makes the
+    spread, was cut, and without pruning alone neither the interaction nor the order rules of E7 can be
+    computed at this scale. Added after the 7 states, in this order: Q->P 50%+4, Q->P 25%+4, prune 50%,
+    prune 25% (perplexity, C4, KL). Cost about 2 h of L4 (about 4.5 CU at the planning rate), which brings the
+    plan to about 95 CU at the planning rate (about 83 at the reported 1.94 CU/h). The two prune-only states
+    run last and are dropped if a budget check before them says otherwise. The E5/E6 queues are now written by
+    `scripts/make_queues.py` (e5, e6 = as run; e5_full, e6_full = the mission's design), so the analysis plan
+    lists only states that are meant to exist.
