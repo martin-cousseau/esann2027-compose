@@ -17,3 +17,4 @@
 {"event":"lost","name":"runtimes/esann-b3","observed_utc":"2026-11-10T18:02:00Z","note":"same as esann-a4","lifetime_h_est":4.75}
 {"event":"create","name":"runtimes/esann-a5","spec":"L4/STANDARD/GPU (us-west4)","created_utc":"2026-11-10T18:03:59Z","owner":"orchestrator","purpose":"E3 135M rest, E1 360M"}
 {"event":"create","name":"runtimes/esann-b4","spec":"L4/STANDARD/GPU","created_utc":"2026-11-10T18:04:03Z","owner":"orchestrator","purpose":"E1 Qwen rest, E4/E3 Qwen and 360M"}
+{"runtime": "esann-a5", "event": "deleted", "time": "2026-11-11T07:21:06+00:00", "note": "queues done (E1 SmolLM2-360M, E3 SmolLM2-135M, E6 SmolLM2-1.7B); all exports verified on the Hub"}
