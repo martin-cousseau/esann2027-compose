@@ -49,7 +49,7 @@
 % Fig. 1, and changes the model range in the abstract.
 \newif\ifEthree \Ethreetrue
 \newif\ifEfour  \Efourtrue
-\newif\ifEfive  \Efivefalse
+\newif\ifEfive  \Efivetrue
 \newif\ifEsix   \Esixfalse
 \ifEsix \newcommand{\largestmodel}{1.7B}\newcommand{\nmodels}{four}
 \else   \newcommand{\largestmodel}{0.5B}\newcommand{\nmodels}{three}\fi
@@ -442,10 +442,13 @@ Across GPU types, the same 16-bit code changes SmolLM2-135M perplexity by
 presumably because flipped rounding and mask decisions cascade through the
 sequential calibration. Gaps of a few percent between orders are thus weak
 evidence on their own.\ifEfive{} Over
-three calibration seeds, the best order is the same in every seed in
-\resSeedBestStable{} of \resSeedBestCells{} 4-bit cells, and the standard
-deviation of perplexity reaches \resSeedSdMaxSinglePct\% for single methods
-and \resSeedSdMaxCombinedPct\% for combinations.\fi{} With \nmodels{} models
+three calibration seeds of SmolLM2-360M, the best order is the same in every
+seed in \resSeedBestStable{} of \resSeedBestCells{} 4-bit cells, joint beats
+P$\to$Q in every seed in \resSeedPairJointPQAllSeeds{} of
+\resSeedPairJointPQCells{} (paired $t$-test $p<0.05$ in
+\resSeedPairJointPQSig), and the
+standard deviation of perplexity reaches \resSeedSdMaxSinglePct\% for single
+methods and \resSeedSdMaxCombinedPct\% for combinations.\fi{} With \nmodels{} models
 of two families, we claim no scale trend.
 
 \section{Conclusion}

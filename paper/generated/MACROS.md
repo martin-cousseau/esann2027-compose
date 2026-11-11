@@ -426,16 +426,16 @@ Macro = `\res` + column + `SmolLarge` + row tag (e.g. `\resPplSmolLargeDense`). 
 
 | Row tag | State | Source | Ppl | PplCFour | Kl | KlCFour | TopOnePct | TopOneCFourPct | BitsTcr | BitsMask | BitsSym | FreeZerosPct | FlipsPct | FlipsCWPct | FlipsWCPct | SrThree | SrPaper | SrExt | SrCn |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| `Dense` | dense | `SmolLM2-1.7B__dense__s0.0000__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |  | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `QuantBFour` | 4-bit | `SmolLM2-1.7B__quant__s0.0000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `QuantBThree` | 3-bit | `SmolLM2-1.7B__quant__s0.0000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `Dense` | dense | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__dense__s0.0000__b16__seed0__float32` | `8.11` | `11.96` | `0.000` | `0.000` | `100.0` | `100.0` | `16.00` | `16.00` | `--` |  | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `QuantBFour` | 4-bit | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__quant__s0.0000__b4__seed0__float32` | `8.71` | `12.58` | `0.070` | `0.054` | `87.5` | `88.1` | `4.00` | `4.00` | `3.46` | `14.2` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `QuantBThree` | 3-bit | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__quant__s0.0000__b3__seed0__float32` | `13.01` | `15.58` | `0.468` | `0.276` | `72.3` | `74.8` | `3.00` | `3.00` | `2.45` | `29.7` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `PruneSTwentyFive` | 25% pruned | `SmolLM2-1.7B__prune__s0.2500__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `PruneSFifty` | 50% pruned | `SmolLM2-1.7B__prune__s0.5000__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `STwentyFiveBFourJoint` | 25%+4 joint | `SmolLM2-1.7B__joint__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `STwentyFiveBFourPQ` | 25%+4 P->Q | `SmolLM2-1.7B__p_then_q__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `STwentyFiveBFourQP` | 25%+4 Q->P | `SmolLM2-1.7B__q_then_p__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourJoint` | 50%+4 joint | `SmolLM2-1.7B__joint__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourPQ` | 50%+4 P->Q | `SmolLM2-1.7B__p_then_q__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourJoint` | 50%+4 joint | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__joint__s0.5000__b4__seed0__float32` | `14.13` | `18.08` | `0.549` | `0.435` | `67.6` | `68.1` | `2.00` | `3.00` | `2.61` | `50.0` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourPQ` | 50%+4 P->Q | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__p_then_q__s0.5000__b4__seed0__float32` | `14.11` | `18.23` | `0.548` | `0.444` | `67.4` | `67.9` | `2.00` | `3.00` | `2.62` | `50.0` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBFourQP` | 50%+4 Q->P | `SmolLM2-1.7B__q_then_p__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 
 Columns:
@@ -467,8 +467,8 @@ Macro = `\res` + column + `SmolLarge` + row tag (e.g. `\resISrThreeSmolLargeSTwe
 | `STwentyFiveBFourJoint` | 25%+4 joint | `SmolLM2-1.7B__joint__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `STwentyFiveBFourPQ` | 25%+4 P->Q | `SmolLM2-1.7B__p_then_q__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `STwentyFiveBFourQP` | 25%+4 Q->P | `SmolLM2-1.7B__q_then_p__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourJoint` | 50%+4 joint | `SmolLM2-1.7B__joint__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourPQ` | 50%+4 P->Q | `SmolLM2-1.7B__p_then_q__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourJoint` | 50%+4 joint | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__joint__s0.5000__b4__seed0__float32` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourPQ` | 50%+4 P->Q | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__p_then_q__s0.5000__b4__seed0__float32` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBFourQP` | 50%+4 Q->P | `SmolLM2-1.7B__q_then_p__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 
 Columns:
@@ -490,26 +490,26 @@ Columns:
 
 | Macro | Value | Meaning | Source |
 |---|---|---|---|
-| `\resPplMeanSmolMediumQuantBFour` | `13.25` | SmolLM2-360M quant quant only: mean WikiText-2 ppl over 2 seeds | reports/analysis/e1_seeds.csv (seeds 0 1) |
-| `\resPplSdSmolMediumQuantBFour` | `0.03` | SmolLM2-360M quant quant only: sample sd of WikiText-2 ppl over 2 seeds | reports/analysis/e1_seeds.csv (seeds 0 1) |
-| `\resPplMeanSmolMediumSTwentyFiveBFourJoint` | `13.18` | SmolLM2-360M 25%+4 joint: mean WikiText-2 ppl over 2 seeds | reports/analysis/e1_seeds.csv (seeds 0 1) |
-| `\resPplSdSmolMediumSTwentyFiveBFourJoint` | `0.04` | SmolLM2-360M 25%+4 joint: sample sd of WikiText-2 ppl over 2 seeds | reports/analysis/e1_seeds.csv (seeds 0 1) |
-| `\resPplMeanSmolMediumSTwentyFiveBFourPQ` | `13.29` | SmolLM2-360M 25%+4 P->Q: mean WikiText-2 ppl over 2 seeds | reports/analysis/e1_seeds.csv (seeds 0 1) |
-| `\resPplSdSmolMediumSTwentyFiveBFourPQ` | `0.06` | SmolLM2-360M 25%+4 P->Q: sample sd of WikiText-2 ppl over 2 seeds | reports/analysis/e1_seeds.csv (seeds 0 1) |
-| `\resPplMeanSmolMediumSTwentyFiveBFourQP` | `14.34` | SmolLM2-360M 25%+4 Q->P: mean WikiText-2 ppl over 2 seeds | reports/analysis/e1_seeds.csv (seeds 0 1) |
-| `\resPplSdSmolMediumSTwentyFiveBFourQP` | `0.06` | SmolLM2-360M 25%+4 Q->P: sample sd of WikiText-2 ppl over 2 seeds | reports/analysis/e1_seeds.csv (seeds 0 1) |
-| `\resPplMeanSmolMediumSThirtyThreeBFourJoint` | `14.05` | SmolLM2-360M 33%+4 joint: mean WikiText-2 ppl over 2 seeds | reports/analysis/e1_seeds.csv (seeds 0 1) |
-| `\resPplSdSmolMediumSThirtyThreeBFourJoint` | `0.06` | SmolLM2-360M 33%+4 joint: sample sd of WikiText-2 ppl over 2 seeds | reports/analysis/e1_seeds.csv (seeds 0 1) |
-| `\resPplMeanSmolMediumSThirtyThreeBFourPQ` | `--` | SmolLM2-360M 33%+4 P->Q: mean WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplSdSmolMediumSThirtyThreeBFourPQ` | `--` | SmolLM2-360M 33%+4 P->Q: sample sd of WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplMeanSmolMediumSThirtyThreeBFourQP` | `--` | SmolLM2-360M 33%+4 Q->P: mean WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplSdSmolMediumSThirtyThreeBFourQP` | `--` | SmolLM2-360M 33%+4 Q->P: sample sd of WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplMeanSmolMediumSFiftyBFourJoint` | `--` | SmolLM2-360M 50%+4 joint: mean WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplSdSmolMediumSFiftyBFourJoint` | `--` | SmolLM2-360M 50%+4 joint: sample sd of WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplMeanSmolMediumSFiftyBFourPQ` | `--` | SmolLM2-360M 50%+4 P->Q: mean WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplSdSmolMediumSFiftyBFourPQ` | `--` | SmolLM2-360M 50%+4 P->Q: sample sd of WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplMeanSmolMediumSFiftyBFourQP` | `--` | SmolLM2-360M 50%+4 Q->P: mean WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplSdSmolMediumSFiftyBFourQP` | `--` | SmolLM2-360M 50%+4 Q->P: sample sd of WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
+| `\resPplMeanSmolMediumQuantBFour` | `13.24` | SmolLM2-360M quant quant only: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdSmolMediumQuantBFour` | `0.03` | SmolLM2-360M quant quant only: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplMeanSmolMediumSTwentyFiveBFourJoint` | `13.19` | SmolLM2-360M 25%+4 joint: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdSmolMediumSTwentyFiveBFourJoint` | `0.03` | SmolLM2-360M 25%+4 joint: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplMeanSmolMediumSTwentyFiveBFourPQ` | `13.29` | SmolLM2-360M 25%+4 P->Q: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdSmolMediumSTwentyFiveBFourPQ` | `0.05` | SmolLM2-360M 25%+4 P->Q: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplMeanSmolMediumSTwentyFiveBFourQP` | `14.33` | SmolLM2-360M 25%+4 Q->P: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdSmolMediumSTwentyFiveBFourQP` | `0.05` | SmolLM2-360M 25%+4 Q->P: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplMeanSmolMediumSThirtyThreeBFourJoint` | `14.09` | SmolLM2-360M 33%+4 joint: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdSmolMediumSThirtyThreeBFourJoint` | `0.08` | SmolLM2-360M 33%+4 joint: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplMeanSmolMediumSThirtyThreeBFourPQ` | `14.30` | SmolLM2-360M 33%+4 P->Q: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdSmolMediumSThirtyThreeBFourPQ` | `0.14` | SmolLM2-360M 33%+4 P->Q: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplMeanSmolMediumSThirtyThreeBFourQP` | `15.58` | SmolLM2-360M 33%+4 Q->P: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdSmolMediumSThirtyThreeBFourQP` | `0.09` | SmolLM2-360M 33%+4 Q->P: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplMeanSmolMediumSFiftyBFourJoint` | `20.46` | SmolLM2-360M 50%+4 joint: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdSmolMediumSFiftyBFourJoint` | `0.07` | SmolLM2-360M 50%+4 joint: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplMeanSmolMediumSFiftyBFourPQ` | `21.24` | SmolLM2-360M 50%+4 P->Q: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdSmolMediumSFiftyBFourPQ` | `0.07` | SmolLM2-360M 50%+4 P->Q: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplMeanSmolMediumSFiftyBFourQP` | `23.59` | SmolLM2-360M 50%+4 Q->P: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdSmolMediumSFiftyBFourQP` | `0.14` | SmolLM2-360M 50%+4 Q->P: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
 
 ## Q1: layer-level interaction (seed 0; counts over the E1 grid: core models x E1 cells)
 
@@ -1375,7 +1375,7 @@ Columns:
 | `\resNItemsSciq` | `1000` | sciq: items evaluated per state | results/v2/items/*.json.gz |
 | `\resNItemsLambada` | `5153` | lambada_openai: items evaluated per state | results/v2/items/*.json.gz |
 | `\resBootB` | `10000` | bootstrap resamples (items within each task) | scripts/analysis/stats.py, make_tables.py --boot |
-| `\resNStates` | `111` | usable v2 model states (status ok) | results/v2/*/*.jsonl |
+| `\resNStates` | `131` | usable v2 model states (status ok) | results/v2/*/*.jsonl |
 | `\resNStatesPlanned` | `169` | model states in the study plan | scripts/make_queues.py |
 
 ## Requested by paper/main.tex (reports/latex_macro_requests.md, R1-R31)
@@ -1412,10 +1412,10 @@ Columns:
 | `\resHwDeltaSmolSmallSFiftyBFourPQPct` | `\ensuremath{+4.6}` | R27: SmolLM2-135M 50%+4 P->Q: 100(ppl REPRO16 / ppl results_full (16-bit, T4) - 1) | reports/analysis/repro_hardware.csv (`SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float16`) |
 | `\resHwDeltaSmolSmallQuantBFourPct` | `\ensuremath{+1.5}` | R27: SmolLM2-135M 4-bit: 100(ppl REPRO16 / ppl results_full (16-bit, T4) - 1) | reports/analysis/repro_hardware.csv (`SmolLM2-135M__quant__s0.0000__b4__seed0__float16`) |
 | `\resReproThirtyTwoMaxAbsPct` | `0.4` | R28: largest |100(ppl REPRO32 / ppl results_fix - 1)| over the 3 planned REPRO32 states (-- until all exist) | reports/analysis/repro_hardware.csv |
-| `\resSeedBestStable` | `--` | R30: 4-bit cells of the E5 models whose best order by WikiText-2 ppl is the same for every seed | reports/analysis/seed_order_stability.csv |
-| `\resSeedBestCells` | `--` | R30: 4-bit cells of the E5 models with every seed and order | reports/analysis/seed_order_stability.csv |
-| `\resSeedSdMaxSinglePct` | `--` | R31: largest 100 sd/mean of WikiText-2 ppl over three seeds, single states | reports/analysis/e1_seeds.csv |
-| `\resSeedSdMaxCombinedPct` | `--` | R31: largest 100 sd/mean of WikiText-2 ppl over three seeds, combined states | reports/analysis/e1_seeds.csv |
+| `\resSeedBestStable` | `3` | R30: 4-bit cells of the E5 models whose best order by WikiText-2 ppl is the same for every seed | reports/analysis/seed_order_stability.csv |
+| `\resSeedBestCells` | `3` | R30: 4-bit cells of the E5 models with every seed and order | reports/analysis/seed_order_stability.csv |
+| `\resSeedSdMaxSinglePct` | `0.2` | R31: largest 100 sd/mean of WikiText-2 ppl over three seeds, single states | reports/analysis/e1_seeds.csv |
+| `\resSeedSdMaxCombinedPct` | `1.0` | R31: largest 100 sd/mean of WikiText-2 ppl over three seeds, combined states | reports/analysis/e1_seeds.csv |
 
 ## Paired accuracy differences of SmolLM2-135M (R29; seed 0)
 
@@ -1686,18 +1686,18 @@ Columns:
 
 | Macro | Value | Meaning | Source |
 |---|---|---|---|
-| `\resSeedJointBest` | `5` | (model, 4-bit cell, seed) with all three orders where joint has the lowest WikiText-2 ppl | reports/analysis/seed_best_order.csv |
-| `\resSeedJointBeatsPQ` | `5` | (model, 4-bit cell, seed) where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_best_order.csv |
-| `\resSeedCellSeeds` | `5` | (model, 4-bit cell, seed) with all three orders | reports/analysis/seed_best_order.csv |
-| `\resSeedPairJointPQAllSeeds` | `--` | 4-bit cells where joint has the lower ppl in every seed | reports/analysis/seed_order_pairs.csv (joint vs P->Q, complete cells) |
-| `\resSeedPairJointPQSig` | `--` | 4-bit cells where the paired t-test over seeds (log ppl) gives p < 0.05, joint vs P->Q | reports/analysis/seed_order_pairs.csv (joint vs P->Q, complete cells) |
-| `\resSeedPairJointPQCells` | `--` | 4-bit cells with every seed for both orders | reports/analysis/seed_order_pairs.csv (joint vs P->Q, complete cells) |
-| `\resSeedPairJointQPAllSeeds` | `--` | 4-bit cells where joint has the lower ppl in every seed | reports/analysis/seed_order_pairs.csv (joint vs Q->P, complete cells) |
-| `\resSeedPairJointQPSig` | `--` | 4-bit cells where the paired t-test over seeds (log ppl) gives p < 0.05, joint vs Q->P | reports/analysis/seed_order_pairs.csv (joint vs Q->P, complete cells) |
-| `\resSeedPairJointQPCells` | `--` | 4-bit cells with every seed for both orders | reports/analysis/seed_order_pairs.csv (joint vs Q->P, complete cells) |
-| `\resSeedPairPQQPAllSeeds` | `--` | 4-bit cells where P->Q has the lower ppl in every seed | reports/analysis/seed_order_pairs.csv (P->Q vs Q->P, complete cells) |
-| `\resSeedPairPQQPSig` | `--` | 4-bit cells where the paired t-test over seeds (log ppl) gives p < 0.05, P->Q vs Q->P | reports/analysis/seed_order_pairs.csv (P->Q vs Q->P, complete cells) |
-| `\resSeedPairPQQPCells` | `--` | 4-bit cells with every seed for both orders | reports/analysis/seed_order_pairs.csv (P->Q vs Q->P, complete cells) |
+| `\resSeedJointBest` | `10` | (model, 4-bit cell, seed) with all three orders where joint has the lowest WikiText-2 ppl | reports/analysis/seed_best_order.csv |
+| `\resSeedJointBeatsPQ` | `10` | (model, 4-bit cell, seed) where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_best_order.csv |
+| `\resSeedCellSeeds` | `10` | (model, 4-bit cell, seed) with all three orders | reports/analysis/seed_best_order.csv |
+| `\resSeedPairJointPQAllSeeds` | `3` | 4-bit cells where joint has the lower ppl in every seed | reports/analysis/seed_order_pairs.csv (joint vs P->Q, complete cells) |
+| `\resSeedPairJointPQSig` | `3` | 4-bit cells where the paired t-test over seeds (log ppl) gives p < 0.05, joint vs P->Q | reports/analysis/seed_order_pairs.csv (joint vs P->Q, complete cells) |
+| `\resSeedPairJointPQCells` | `3` | 4-bit cells with every seed for both orders | reports/analysis/seed_order_pairs.csv (joint vs P->Q, complete cells) |
+| `\resSeedPairJointQPAllSeeds` | `3` | 4-bit cells where joint has the lower ppl in every seed | reports/analysis/seed_order_pairs.csv (joint vs Q->P, complete cells) |
+| `\resSeedPairJointQPSig` | `3` | 4-bit cells where the paired t-test over seeds (log ppl) gives p < 0.05, joint vs Q->P | reports/analysis/seed_order_pairs.csv (joint vs Q->P, complete cells) |
+| `\resSeedPairJointQPCells` | `3` | 4-bit cells with every seed for both orders | reports/analysis/seed_order_pairs.csv (joint vs Q->P, complete cells) |
+| `\resSeedPairPQQPAllSeeds` | `3` | 4-bit cells where P->Q has the lower ppl in every seed | reports/analysis/seed_order_pairs.csv (P->Q vs Q->P, complete cells) |
+| `\resSeedPairPQQPSig` | `3` | 4-bit cells where the paired t-test over seeds (log ppl) gives p < 0.05, P->Q vs Q->P | reports/analysis/seed_order_pairs.csv (P->Q vs Q->P, complete cells) |
+| `\resSeedPairPQQPCells` | `3` | 4-bit cells with every seed for both orders | reports/analysis/seed_order_pairs.csv (P->Q vs Q->P, complete cells) |
 
 ## E6 order spread vs scale (reports/analysis/e6_scale_spread.csv)
 
@@ -1923,6 +1923,6 @@ Columns:
 | `\resEEightRhoQwen` | `\ensuremath{+0.95}` | Qwen2.5-0.5B: Spearman rho of mean layer error vs KL over its compressed states (n = 29) | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
 | `\resEEightSameBestQwen` | `5` | Qwen2.5-0.5B: cells where the order with the smallest layer error also has the smallest KL | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
 | `\resEEightCellsQwen` | `7` | Qwen2.5-0.5B: cells with the three paper orders | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
-| `\resEEightRhoSmolLarge` | `--` | SmolLM2-1.7B: Spearman rho of mean layer error vs KL over its compressed states (n = 0) | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
+| `\resEEightRhoSmolLarge` | `\ensuremath{+0.80}` | SmolLM2-1.7B: Spearman rho of mean layer error vs KL over its compressed states (n = 4) | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
 | `\resEEightSameBestSmolLarge` | `--` | SmolLM2-1.7B: cells where the order with the smallest layer error also has the smallest KL | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
 | `\resEEightCellsSmolLarge` | `--` | SmolLM2-1.7B: cells with the three paper orders | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |

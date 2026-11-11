@@ -47,6 +47,22 @@
    "cells": 7,
    "cells_same_best": 5,
    "cells_same_ranking": 5
+  },
+  {
+   "model": "SmolLM2-1.7B",
+   "n_states": 4,
+   "rho_wt_kl": 0.7999999999999999,
+   "p_wt_kl": 0.2000000000000001,
+   "n_wt_kl": 4,
+   "rho_c4_kl": 1.0,
+   "p_c4_kl": 0.0,
+   "n_c4_kl": 4,
+   "rho_wt_kl_combined": null,
+   "p_wt_kl_combined": null,
+   "n_combined": 2,
+   "cells": 0,
+   "cells_same_best": 0,
+   "cells_same_ranking": 0
   }
  ]
 }
