@@ -2,22 +2,40 @@
 
 ## Read this first
 - **Angle:** B + C (honest storage frontier with the mask counted, plus free zeros), provisional
-  (DECISIONS.md #25). The 6-page LaTeX draft exists (`paper/main.tex`, `paper/main.pdf`); its numbers are
-  generated macros, and 29 new macros are being added.
-- **Status (21:00 UTC):** SmolLM2-135M complete (E1 25, E2, E3 16, E4 5): angle B + C confirmed on it. E1 Qwen
-  19/25, E1 SmolLM2-360M 5/25. Queued: A: 360M E1 (to ~02:30), then E6 SmolLM2-1.7B (7 states, to ~06:00);
-  B: Qwen E1, E4 Qwen/360M, E3 360M/Qwen (to ~06:00), then E5 SmolLM2-360M seeds (to ~08:30).
-- **Blockers:** none. Risk: this session was suspended twice by usage limits; each time the runtimes died about
-  an hour later. A runtime-side keepalive is now running too (DECISIONS.md #27); finished units are never lost.
+  (DECISIONS.md #25, #28). The 6-page LaTeX draft exists (`paper/main.tex`, `paper/main.pdf`); every number in
+  it is a generated macro. It is revised model by model as the runs finish.
+- **Status (00:55 UTC, Nov 11):** SmolLM2-135M and Qwen2.5-0.5B E1 complete (25 + 25), SmolLM2-360M E1 17/25,
+  E2 complete, E3 16/48, E4 9/15. Queued: A: 360M E1 (to ~02:30), then E6 SmolLM2-1.7B (11 states, to ~08:00);
+  B: E4 Qwen/360M, E3 360M/Qwen (to ~06:00), then E5 SmolLM2-360M seeds (to ~08:30).
+- **New:** E7 (order rules) and the analysis half of E8 are in `make_tables.py`. Kim et al.'s weaker-first rule
+  fails in every cell where it predicts quantize-first; sparsity first (Harma et al.) wins in 14 of 15 cells
+  (FINDINGS.md R4, item 5).
+- **Blockers:** none. Risk: a usage-limit suspension of this session stops the client keepalive; the
+  runtime-side keepalive (DECISIONS.md #27) and per-unit uploads to the HF results dataset cover it.
 - **Decisions waiting on you:** none urgent (QUESTIONS.md). The draft is authored "A. Yaacoub" (from README.md),
   affiliation to be confirmed.
 - **GPU type locked:** NVIDIA L4, fp32, TF32 off; images `..._20261106-060046_RC00` and `..._20261109-060054_RC00`
   (the second admitted after a bit-exact check, #26).
-- **CU (estimate; check the Colab website):** about 39 spent, about 61 left; the armed queues need about 53
-  (total about 92); 2 runtimes alive (about 4.5 CU/h). Runtimes free themselves when their queues end.
+- **CU (estimate; check the Colab website):** about 60 spent at the planning rate (2.23 CU/h), about 35 more
+  planned for the armed queues (total about 95, #31); 2 runtimes alive (about 4.5 CU/h). Runtimes free
+  themselves when their queues end.
 - **Links:** PR https://github.com/martin-cousseau/esann2027-compose/pull/1 ; W&B (public)
   https://wandb.ai/martin-css/esann2027-compose-v2 ; models (private until the end)
   https://huggingface.co/martincousseau/esann2027-compose-v2
+
+## 2026-11-11 00:55 UTC - order rules, E6 extended, release tooling
+- **E7 (analysis only):** Kim et al.'s weaker-first rule, with their compression-equivalent ratio, picks the
+  better of P->Q and Q->P in 10 of 15 complete cells by WikiText-2 perplexity and fails in all 4 cells where it
+  predicts quantize-first; their monotonicity hypothesis has the wrong sign on all three models. Harma et al.'s
+  sparsity-first order wins in 14 of 15 cells; their additive threshold is exceeded by Q->P in 12 of 15 states
+  but by P->Q in only 5 (`reports/analysis/summary.md`, section E7).
+- **E8 (analysis part):** the mean layer error predicts KL across states (Spearman +0.83 to +0.96) but on
+  SmolLM2-135M not which order wins within a cell (1 of 7 cells).
+- **E6 extended (#31):** the 1.7B queue now also has Q->P at 25%+4 and 50%+4 and pruning alone at 25% and 50%,
+  so E6 can measure the order spread at scale and the order rules; about 4.5 CU more.
+- **Release tooling:** `release/load_esann2027.py` (standalone loader, bit-exact with the pipeline) and
+  `release/make_hf_readme.py` (model card generated from the result lines, Hub sizes and hashes verified).
+- **Private inputs** backed up to a separate private HF dataset (DECISIONS.md #2).
 
 ## 2026-11-10 18:15 UTC - SmolLM2-135M complete; draft paper; restart after a suspension
 - **SmolLM2-135M, E1 complete** (`results/v2/E1/SmolLM2-135M.jsonl`, `reports/analysis/summary.md`): with the
