@@ -179,8 +179,9 @@ pruning with 4-bit weights beats plain 3-bit quantization at 3.0 bits per
 weight on only \resFrontierThreeWins{} of \resFrontierThreeModels{} models, by
 less as SmolLM2 grows and not at all at 1.7B; at 2 bits, plain quantization
 collapses on the three smaller models. Quantizing first is the worst order in most
-settings, also where a weaker-first rule predicts it to be best, and neither a
-stale quantization grid nor a mask chosen on rounded weights explains why.
+settings, also where a weaker-first rule predicts it to be best; a stale
+quantization grid does not explain why, a mask chosen on rounded weights only
+in part.
 \end{abstract}
 
 \section{Introduction}
@@ -394,7 +395,7 @@ per-layer ratio has a Spearman correlation of \resETwoRhoMin{} to
 \resETwoRhoMax{} ($p\le\resETwoRhoPMax$) with the mean absolute correlation
 between the layer's inputs.
 
-\textbf{Order: it matters, but no proposed rule or mechanism explains it.}
+\textbf{Order: it matters, and no rule or mechanism fully accounts for it.}
 Joint has the lowest WikiText-2 perplexity in \resQTwoBestJointPpl{} of the
 \resQTwoCellsPpl{} grid cells, P$\to$Q in \resQTwoBestPQPpl{}, Q$\to$P in
 \resQTwoBestQPPpl; Q$\to$P is the worst in \resQTwoQPWorstPplBFour{} of
@@ -417,11 +418,14 @@ Re-fitting increases the penalty in \resETwoRefitWorse{} of the
 \resETwoPenaltyCells{} cells that have one; the pruning-only mask removes at
 most \resETwoRemovedPmaskMaxPct\% of it, and a negative share in some cells;
 the stale grid changes the error of P$\to$Q by at most
-\resETwoStaleMaxAbsPct\%. Neither reading explains the penalty; its cause
-remains open.\ifEthree{} In full runs (E3, 50\%+4-bit, SmolLM2-135M), the arms
-remove \resEThreeRemovedRefitSmolSmallSFiftyBFourPct\%,
+\resETwoStaleMaxAbsPct\%: per layer, neither reading explains the
+penalty.\ifEthree{} In full runs (E3), re-fitting the grid helps in
+\resEThreeRefitHelps{} of \resEThreeCells{} cells, the pruning-only mask in
+\resEThreePmaskHelps{} (at 50\%+4-bit it removes
 \resEThreeRemovedPmaskSmolSmallSFiftyBFourPct\% and
-\resEThreeRemovedBothSmolSmallSFiftyBFourPct\% of the perplexity penalty.\fi
+\resEThreeRemovedPmaskSmolMediumSFiftyBFourPct\% of the perplexity penalty on
+SmolLM2-135M and -360M): mask selection explains part of it, a stale grid
+little.\fi
 
 
 \textbf{Evaluation.} C4 perplexity and KL rank the orders as WikiText-2
@@ -467,8 +471,8 @@ scaling law.
 \section{Conclusion}
 
 Inside one Hessian-compensated pipeline, quantizing first is the worst order
-in most settings, but neither a stale grid nor a mask chosen on rounded
-weights explains why, and mask-first orders are sub-additive in aggregate, not
+in most settings; a stale grid does not explain why, a mask chosen on rounded
+weights only in part, and mask-first orders are sub-additive in aggregate, not
 in every layer. Counted honestly, pruning pays only when it replaces a bit of
 precision: 50\% pruning with 4-bit weights beats plain 3-bit at 3.0 bits per
 weight on \resFrontierThreeWins{} of \resFrontierThreeModels{} models, less so as

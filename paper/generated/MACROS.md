@@ -763,6 +763,10 @@ Columns:
 | `\resEThreeRemovedPmaskQwenSFiftyBThreePct` | `--` | Qwen2.5-0.5B 50%+3: share of the Q->P ppl penalty removed by Q->P P-mask (%) | reports/analysis/e3_mechanism.csv |
 | `\resEThreeRemovedBothQwenSFiftyBThreePct` | `--` | Qwen2.5-0.5B 50%+3: share of the Q->P ppl penalty removed by Q->P P-mask refit (%) | reports/analysis/e3_mechanism.csv |
 | `\resEThreeStaleQwenSFiftyBThreePct` | `--` | Qwen2.5-0.5B 50%+3: P->Q ppl change with the stale grid (%) | reports/analysis/e3_mechanism.csv |
+| `\resEThreeCells` | `8` | E3 (model, cell) with a Q->P ppl penalty and all three arms | reports/analysis/e3_mechanism.csv (cells with all arms and a Q->P ppl penalty > 0: 8) |
+| `\resEThreeRefitHelps` | `2` | E3 cells where Q->P refit removes a positive share of the Q->P ppl penalty | reports/analysis/e3_mechanism.csv (cells with all arms and a Q->P ppl penalty > 0: 8) |
+| `\resEThreePmaskHelps` | `7` | E3 cells where Q->P P-mask removes a positive share of the Q->P ppl penalty | reports/analysis/e3_mechanism.csv (cells with all arms and a Q->P ppl penalty > 0: 8) |
+| `\resEThreeBothHelps` | `8` | E3 cells where Q->P P-mask refit removes a positive share of the Q->P ppl penalty | reports/analysis/e3_mechanism.csv (cells with all arms and a Q->P ppl penalty > 0: 8) |
 
 ## Determinism (DET vs the same state in E1)
 

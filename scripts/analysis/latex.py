@@ -504,6 +504,13 @@ def macros_questions(M, store, q):
                   f"{r['model']} {r['cell']}: share of the Q->P ppl penalty removed by {ORDER_TXT[arm]} (%)", "reports/analysis/e3_mechanism.csv")
         M.add(sec, f"EThreeStale{ct}Pct", signed(r.get("wt_ppl_stale_on_pq_pct"), 1),
               f"{r['model']} {r['cell']}: P->Q ppl change with the stale grid (%)", "reports/analysis/e3_mechanism.csv")
+    pen = [r for r in q["e3"] if finite(r.get("wt_ppl_penalty")) and r["wt_ppl_penalty"] > 0
+           and all(finite(r.get(f"wt_ppl_removed_{a}_pct")) for a in MECH_ARMS)]
+    src3 = f"reports/analysis/e3_mechanism.csv (cells with all arms and a Q->P ppl penalty > 0: {len(pen)})"
+    M.add(sec, "EThreeCells", _n(len(pen)) if pen else "--", "E3 (model, cell) with a Q->P ppl penalty and all three arms", src3)
+    for arm in MECH_ARMS:
+        M.add(sec, f"EThree{MECH_TAG[arm]}Helps", _n(sum(r[f"wt_ppl_removed_{arm}_pct"] > 0 for r in pen)) if pen else "--",
+              f"E3 cells where {ORDER_TXT[arm]} removes a positive share of the Q->P ppl penalty", src3)
 
 
 def macros_misc(M, store, e1, det, fr, e2res, boolq):
