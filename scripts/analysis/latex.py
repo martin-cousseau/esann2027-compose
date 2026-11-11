@@ -504,6 +504,11 @@ def macros_questions(M, store, q):
                   f"{r['model']} {r['cell']}: share of the Q->P ppl penalty removed by {ORDER_TXT[arm]} (%)", "reports/analysis/e3_mechanism.csv")
         M.add(sec, f"EThreeStale{ct}Pct", signed(r.get("wt_ppl_stale_on_pq_pct"), 1),
               f"{r['model']} {r['cell']}: P->Q ppl change with the stale grid (%)", "reports/analysis/e3_mechanism.csv")
+    st3 = [r["wt_ppl_stale_on_pq_pct"] for r in q["e3"] if finite(r.get("wt_ppl_stale_on_pq_pct"))]
+    M.add(sec, "EThreeStaleMinPct", signed(min(st3), 1) if st3 else "--", "smallest P->Q ppl change with a stale grid over E3 cells (%)",
+          "reports/analysis/e3_mechanism.csv (wt_ppl_stale_on_pq_pct)")
+    M.add(sec, "EThreeStaleMaxPct", signed(max(st3), 1) if st3 else "--", "largest P->Q ppl change with a stale grid over E3 cells (%)",
+          "reports/analysis/e3_mechanism.csv (wt_ppl_stale_on_pq_pct)")
     pen = [r for r in q["e3"] if finite(r.get("wt_ppl_penalty")) and r["wt_ppl_penalty"] > 0
            and all(finite(r.get(f"wt_ppl_removed_{a}_pct")) for a in MECH_ARMS)]
     src3 = f"reports/analysis/e3_mechanism.csv (cells with all arms and a Q->P ppl penalty > 0: {len(pen)})"
@@ -626,11 +631,17 @@ def macros_requests(M, store, e1, q, fr, e2res, repro):
     ok53 = two and len(b53) == len(two)
     add("SFiftyBThreeBestPplMin", num(min(b53), 2) if ok53 else "--", "smallest best-order WikiText-2 ppl of 50%+3 over the 2-bit models", src2)
     add("SFiftyBThreeBestPplMax", num(max(b53), 2) if ok53 else "--", "largest best-order WikiText-2 ppl of 50%+3 over the 2-bit models", src2)
+    t33 = [r for r in es if r["comparison"] == "threeb3" and r["available"]]
+    w33 = [r for r in t33 if r["best_ppl"] < r["quant_ppl"]]
+    add("FrontierThreeBThreeWins", _n(len(w33)) if t33 else "--",
+        f"models where the best order of 33%+3 (also 3.0 bits/w) beats 3-bit alone in WikiText-2 ppl ({names(w33)})", src)
+    add("FrontierThreeBThreeModels", _n(len(t33)) if t33 else "--", f"models with 3-bit and all three 33%+3 orders ({names(t33)})", src)
     g4 = [r["gain_pct"] for r in four]
     add("FrontierFourGainMaxPct", num(max(g4), 1) if g4 and max(g4) > 0 else ("0" if g4 else "--"),
         f"largest gain of the best 25%+4 order over 4-bit alone, 100(1 - ppl_best/ppl_4bit), over {names(four)} (0 if none gains)", src)
     for r in [x for x in es if x["available"]]:
-        cmp = {"three": ("Three", "50%+4 vs 3-bit"), "four": ("Four", "25%+4 vs 4-bit")}[r["comparison"]]
+        cmp = {"three": ("Three", "50%+4 vs 3-bit"), "four": ("Four", "25%+4 vs 4-bit"),
+               "threeb3": ("ThreeBThree", "33%+3 vs 3-bit")}[r["comparison"]]
         add(f"Frontier{cmp[0]}Gain{model_tag(r['model'])}Pct", signed(r["gain_pct"], 1),
             f"{r['model']}, {cmp[1]} at equal storage: 100(1 - ppl_best / ppl_quant), > 0 = pruning + quantization better", src)
     # R7-R8: Q->P 25%+3 = 3-bit
@@ -681,6 +692,8 @@ def macros_requests(M, store, e1, q, fr, e2res, repro):
     src = "reports/analysis/e1_mcnemar.csv (task pooled9, seed 0; extra_orders.mcnemar)"
     add("McNemarSigPQQP", _n(sum(x["p"] < 0.05 for x in mc)) if mc else "--", "R25: cells where P->Q vs Q->P has exact McNemar p < 0.05", src)
     add("McNemarCellsPQQP", _n(len(mc)) if mc else "--", "R26: cells with that test", src)
+    add("McNemarSigFavourQP", _n(sum(x["p"] < 0.05 and x["b_only"] > x["a_only"] for x in mc)) if mc else "--",
+        "cells where P->Q vs Q->P has p < 0.05 and Q->P is right on more items (b_only > a_only)", src)
     # R27-R28: hardware / precision
     src = "reports/analysis/repro_hardware.csv"
     for r in [x for x in repro if x["family"] == "REPRO16"]:

@@ -57,13 +57,6 @@ Iheb Bouriel, Qassim Nasir, and Manar Abu~Talib.
 \newblock In {\em Proceedings of the Thirty-Fifth International Joint
   Conference on Artificial Intelligence, {IJCAI-26}}, pages 5666--5674, 2026.
 
-\bibitem{guo2026obr}
-Hang Guo, Luca Benini, and Yawei Li.
-\newblock Optimal brain restoration for joint quantization and sparsification
-  of {LLMs}.
-\newblock In {\em International Conference on Learning Representations (ICLR)},
-  2026.
-
 \bibitem{benallal2025smollm2}
 Loubna Ben~Allal et~al.
 \newblock {SmolLM2}: When smol goes big --- data-centric training of a fully
@@ -80,6 +73,13 @@ Abhinav Dutta, Sanjeev Krishnan, Nipun Kwatra, and Ramachandran Ramjee.
 \newblock Accuracy is not all you need.
 \newblock In {\em Conference on Neural Information Processing Systems
   (NeurIPS)}, 2024.
+
+\bibitem{guo2026obr}
+Hang Guo, Luca Benini, and Yawei Li.
+\newblock Optimal brain restoration for joint quantization and sparsification
+  of {LLMs}.
+\newblock In {\em International Conference on Learning Representations (ICLR)},
+  2026.
 
 \bibitem{raffel2020t5}
 Colin Raffel et~al.

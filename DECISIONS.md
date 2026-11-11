@@ -176,3 +176,18 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     complete `results/v2` tree of this branch and a card) are public; both link to this branch and to the public W&B
     project. Before the switch, both were scanned for tokens and keys (none). The private inputs stay in the separate
     private dataset `martincousseau/esann2027-v2-private-context` (anonymous access refused, checked).
+37. **2026-11-11, response to the independent audit (`reports/audit.md`: 2 blockers, 5 major, 14 minor, 7 nits;
+    every number re-derived, 0 mismatches).** Changed in the paper: the "pays only when it replaces a bit" rule is
+    gone (33%+3 at 3.0 bits also beats 3-bit on both small SmolLM2 models; new macros), the order claim is "by
+    perplexity and KL" with the accuracy outcome of Kim et al.'s test reported (15 of 18), the mechanism claim is
+    per layer, with the E3 stale-grid control (-1.3% to +14.1%) given as the reason full-run shares are weak
+    evidence; Harma et al.'s App. N (sparsity first also wins with SparseGPT + 4-bit GPTQ, verified from the primary
+    source) is cited and OBR is no longer cited for a weight-only pipeline; the code link points to the v2 branch;
+    cell sets, E3/E6 scope, the C4 disjointness, the theory wording (1/2 factor, supports, sufficient conditions,
+    Cholesky factor), the Bouriel scope (20%), the joint-mode attribution, Fig. 1 (ticks, caption, header comment)
+    and the captions (best order chosen on the test set, gaps below the seed spread) are fixed. Outside the paper:
+    FINDINGS R3/R4 and items 2 and 5 corrected, a caveats section (lm-eval batch for four states, Cholesky fallback,
+    test-set order choice), the Drive ids removed from the current files, and QUESTIONS.md lists what only the
+    author can decide (authors, code link after a merge, review code licence, Drive sharing, an open 1-GPU-hour check).
+    Not changed: notation collisions (nit 25) and the harness author form (nit 26), for space and because either
+    form is acceptable.

@@ -3,11 +3,13 @@
 ## Read this first
 - **Done:** every planned GPU run finished (E1 75, E2 3 models, E3 40, E4 15, E5 20, E6 11; no failed state), both
   Colab runtimes are deleted (`list_runtimes` returns none), the models and results are public on Hugging Face, the
-  paper is revised on the complete data (6 pages, every number a generated macro). An independent audit is running.
+  paper is revised on the complete data and after an independent audit (6 pages, every number a generated macro;
+  `reports/audit.md`, DECISIONS.md #37).
 - **Angle:** B + C, counting the mask (DECISIONS.md #25, #28, #33). Headline: with the mask counted, pruning pays at
   3.0 bits per weight on only 2 of 4 models (both small SmolLM2), less as SmolLM2 grows and not at 1.7B; at 4.0 bits it
-  never clearly does; plain 2-bit collapses; quantize-first is the worst order and no published rule predicts the
-  order; the mask chosen on rounded weights explains part of the quantize-first penalty on SmolLM2 only.
+  never clearly does; plain 2-bit collapses. By perplexity and KL quantize-first is the worst order (Harma et al.'s
+  sparsity-first rule holds in 19 of 20 cells, Kim et al.'s weaker-first rule fails where it predicts quantize-first;
+  by accuracy the order effects are small and Kim's rule fits); per layer, neither proposed mechanism explains it.
 - **CU (estimate; check the Colab website):** 41.8 L4-hours in total, about 93 CU at the planning rate (2.23 CU/h),
   about 81 at the reported 1.94 CU/h (`logs/budget.md`, final account).
 - **Decisions waiting on you:** the paper is authored "A. Yaacoub" (from README.md) with the affiliation to be

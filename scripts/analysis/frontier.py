@@ -89,11 +89,12 @@ def _identity(store, model, missing, seed=0):
     return row
 
 
-EQUAL_STORAGE = (("three", (0.5, 4), 3), ("four", (0.25, 4), 4))  # cell whose 1-bit-mask cost equals b-bit alone
+EQUAL_STORAGE = (("three", (0.5, 4), 3), ("four", (0.25, 4), 4),   # cell whose 1-bit-mask cost equals b-bit alone
+                 ("threeb3", (round(1 / 3, 4), 3), 3))            # 33%+3: also 3.0 bits/w, at 3-bit precision
 
 
 def equal_storage(store, fr, seed=0):
-    """Best order of 50%+4 against 3-bit alone, and of 25%+4 against 4-bit alone (macros R1-R5)."""
+    """Best order of 50%+4 and of 33%+3 against 3-bit alone, and of 25%+4 against 4-bit alone (macros R1-R5)."""
     rows = []
     for model in store.models():
         for tag, (s, b), qb in EQUAL_STORAGE:

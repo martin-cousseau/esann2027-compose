@@ -104,3 +104,13 @@ Hosts that could not be reached from the sandbox: proceedings.neurips.cc, papers
 ## Addendum 2026-11-10 (orchestrator)
 
 OBD and OBS were verified through the web-fetch route on proceedings.neurips.cc (abstract pages and their BibTeX records) and added to refs.bib. The site gives no page ranges, so pages are omitted; the draft printed pages 598-605 (OBD) and 164-171 (OBS), which remain unverified.
+
+## Addendum 2026-11-11: Harma et al., Appendix N (found by the audit, verified from the primary source)
+
+Source: https://arxiv.org/html/2405.20935v2, Appendix N "Combining GPTQ with Sparsity". Table 10 (OPT-125M, magnitude 50%
++ GPTQ-4b on layers 0, 1, 10, 11): S->Q 30.93 vs Q->S 35.59 WikiText-2 ppl; text: "magnitude-based sparsity is most
+effective when applied before quantization (S→GPTQ: 30.93 vs. GPTQ→S: 35.59)". Table 11 (SparseGPT codebase, 2:4,
+3:4, 4:8 sparsity + 4-bit GPTQ, OPT-350M and OPT-1.3B, no fine-tuning, a subset of layers): S->Q lower in 17 of 18
+entries, e.g. OPT-350M 2:4 WikiText-2 56.27 vs 67.96 (exception: 3:4, OPT-1.3B, PTB, 24.30 vs 24.23). Text: "The
+mathematical study of the optimal compression order in second-order methods is beyond the scope of our work, and we
+leave it as future work." Whether those runs quantize inside the pruning sweep or after it is not stated.
