@@ -1,0 +1,52 @@
+{
+ "models": [
+  {
+   "model": "SmolLM2-135M",
+   "n_states": 45,
+   "rho_wt_kl": 0.8313459384676197,
+   "p_wt_kl": 1.5441104689204085e-12,
+   "n_wt_kl": 45,
+   "rho_c4_kl": 0.8326635483233413,
+   "p_c4_kl": 1.3228604577492963e-12,
+   "n_c4_kl": 45,
+   "rho_wt_kl_combined": 0.7425320056899003,
+   "p_wt_kl_combined": 1.4299105245449802e-07,
+   "n_combined": 37,
+   "cells": 7,
+   "cells_same_best": 1,
+   "cells_same_ranking": 1
+  },
+  {
+   "model": "SmolLM2-360M",
+   "n_states": 16,
+   "rho_wt_kl": 0.9647058823529412,
+   "p_wt_kl": 1.6662077463303363e-09,
+   "n_wt_kl": 16,
+   "rho_c4_kl": 0.9558823529411766,
+   "p_c4_kl": 7.760274461610307e-09,
+   "n_c4_kl": 16,
+   "rho_wt_kl_combined": 0.9636363636363635,
+   "p_wt_kl_combined": 7.3209748095299185e-06,
+   "n_combined": 10,
+   "cells": 3,
+   "cells_same_best": 3,
+   "cells_same_ranking": 3
+  },
+  {
+   "model": "Qwen2.5-0.5B",
+   "n_states": 28,
+   "rho_wt_kl": 0.9479879551053929,
+   "p_wt_kl": 1.9307030206011363e-14,
+   "n_wt_kl": 28,
+   "rho_c4_kl": 0.9392280317547222,
+   "p_c4_kl": 1.3892358985362523e-13,
+   "n_c4_kl": 28,
+   "rho_wt_kl_combined": 0.9052631578947368,
+   "p_wt_kl_combined": 4.121873801744548e-08,
+   "n_combined": 20,
+   "cells": 6,
+   "cells_same_best": 4,
+   "cells_same_ranking": 4
+  }
+ ]
+}

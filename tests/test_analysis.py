@@ -370,3 +370,49 @@ def test_macros_and_tables_on_fake_results(tmp_path):
     assert m and float(m.group(1)) == pytest.approx(round(e2["ratio_p_then_q_pct"], 1), abs=0.051)
     m = re.search(r"share of the penalty removed by q_then_p_refit\s+([+-]\d+\.\d)%", text)
     assert m and float(m.group(1)) == pytest.approx(round(e2["penalty_removed_q_then_p_refit_pct"], 1), abs=0.051)
+
+
+# ----------------------------------------------------------------------------- E7 order rules
+def test_e7_cer_matches_kims_worked_example():
+    """Kim et al. Sec. 3.2: 65% accuracy between quantization at C = 2 (70%) and C = 4 (60%) gives CER 3."""
+    from scripts.analysis import e7
+    assert e7.cer([(2.0, 70.0), (4.0, 60.0)], 65.0, -1) == (3.0, "inside")
+    assert e7.cer([(1.0, 15.0), (4.0, 21.0)], 14.0, 1) == (None, "below")
+    assert e7.cer([(1.0, 15.0), (4.0, 21.0)], 30.0, 1) == (None, "beyond")
+    assert e7.ratio_q(4) == 4.0 and abs(e7.ratio_q(3) - 16 / 3) < 1e-12
+
+
+def test_e7_rules_on_fake_results(tmp_path):
+    """Kim's prediction, Harma's thresholds and the E7 macros from the fake files (25%+4 cell)."""
+    root = str(tmp_path)
+    make_fake_repo(root)
+    from scripts.make_tables import run
+    out = run(paths=Paths(root=root), B=200, figures=False, fetch=False, log=lambda *a: None)
+    k = [r for r in out["e7"]["kim"] if r["metric"] == "wt_ppl" and r["cell"] == "25%+4"][0]
+    assert abs(k["cer_prune"] - (1 + 3 * 1.5 / 6)) < 1e-12        # dense 15 (C 1), 4-bit 21 (C 4), pruned 16.5
+    assert k["prediction"] == "p_then_q" and k["observed"] == "p_then_q" and k["correct"] is True
+    assert abs(k["advantage_pq"] - math.log(24.0 / 21.9)) < 1e-12
+    h = {r["order"]: r for r in out["e7"]["harma"] if r["metric"] == "wt_ppl" and r["cell"] == "25%+4"}
+    assert abs(h["joint"]["threshold_additive"] - 22.5) < 1e-12 and abs(h["joint"]["threshold_multiplicative"] - 15 * 1.1 * 1.4) < 1e-9
+    assert (h["joint"]["exceeds_additive"], h["joint"]["exceeds_multiplicative"]) == (True, False)    # 23.0
+    assert (h["p_then_q"]["exceeds_additive"], h["p_then_q"]["exceeds_multiplicative"]) == (False, False)  # 21.9
+    assert (h["q_then_p"]["exceeds_additive"], h["q_then_p"]["exceeds_multiplicative"]) == (True, True)    # 24.0
+    with open(os.path.join(root, "paper", "generated", "macros.tex")) as f:
+        vals = dict(re.findall(r"^\\newcommand\{\\([^}]*)\}\{(.*)\}$", f.read(), flags=re.M))
+    assert vals["resESevenKimCorrectPplSmolSmall"] == "1" and vals["resESevenKimCellsPplSmolSmall"] == "1"
+    assert vals["resESevenKimPredQPPplSmolSmall"] == "0"
+    assert vals["resESevenHarmaAddExceedsJointSmolSmall"] == "1" and vals["resESevenHarmaMultExceedsJointSmolSmall"] == "0"
+    assert vals["resESevenHarmaPQBetterPplSmolSmall"] == "1" and vals["resESevenHarmaOrderCellsPplSmolSmall"] == "1"
+    assert vals["resESevenKimCorrectPplSmolMedium"] == "--"          # planned model, no results
+
+
+def test_e8_layer_error_vs_kl_on_fake_results(tmp_path):
+    root = str(tmp_path)
+    make_fake_repo(root)
+    from scripts.make_tables import run
+    out = run(paths=Paths(root=root), B=200, figures=False, fetch=False, log=lambda *a: None)
+    m = out["e8"]["models"][0]
+    assert m["model"] == "SmolLM2-135M" and m["n_states"] == 7 and m["cells"] == 1   # 25%+4 has the three orders
+    with open(os.path.join(root, "paper", "generated", "macros.tex")) as f:
+        vals = dict(re.findall(r"^\\newcommand\{\\([^}]*)\}\{(.*)\}$", f.read(), flags=re.M))
+    assert vals["resEEightCellsSmolSmall"] == "1" and vals["resEEightRhoSmolMedium"] == "--"

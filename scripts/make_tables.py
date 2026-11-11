@@ -15,7 +15,9 @@ Reads   results/v2/**, results/results_full.jsonl, results/results_fix.jsonl, re
 Writes  paper/generated/   table_main_rows.tex, table_kl_flips.tex, table_mechanism_rows.tex, macros.tex,
                            MACROS.md, fig_frontier_quant_<model>.dat, fig_frontier_sparse_<model>.dat
         reports/figures/   frontier_<model>, orders_per_cell, e2_interaction_vs_hcorr (PNG + PDF), README.md
-        reports/analysis/  one CSV/JSON per analysis, summary.md, missing.md
+        reports/analysis/  one CSV/JSON per analysis (E7 order rules: e7_kim.csv, e7_harma.csv, e7_summary.json;
+                           E8 layer error vs KL: e8_layer_error_vs_kl*.csv/json),
+                           summary.md, missing.md
 """
 import argparse
 import os
@@ -25,7 +27,7 @@ import time
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
-from scripts.analysis import boolq_chance, det, e1, e2, frontier, latex, questions, repro, summary  # noqa: E402
+from scripts.analysis import boolq_chance, det, e1, e2, e7, e8, frontier, latex, questions, repro, summary  # noqa: E402
 from scripts.analysis import stats as S  # noqa: E402
 from scripts.analysis.common import Missing, Paths, Store  # noqa: E402
 
@@ -51,15 +53,19 @@ def run(paths=None, B=S.BOOT_B, figures=True, fetch=True, log=print):
     e2.write(e2res, paths)
     rep = repro.analyze(paths, missing)
     repro.write(rep, paths)
-    tex = latex.write_all(store, e1res, qres, detres, fr, e2res, boolq[:2], paths, missing, repro=rep)
+    e7res = e7.analyze(store, e1res, missing)
+    e7.write(e7res, paths)
+    e8res = e8.analyze(store, missing)
+    e8.write(e8res, paths)
+    tex = latex.write_all(store, e1res, qres, detres, fr, e2res, boolq[:2], paths, missing, repro=rep, e7res=e7res, e8res=e8res)
     figs = []
     if figures:
         from scripts.analysis import figures as F
         figs = F.write_all(store, fr, qres, e2res, paths)
-    summary.write(store, e1res, qres, detres, fr, e2res, boolq, tex, missing, paths, B, figs, rep)
+    summary.write(store, e1res, qres, detres, fr, e2res, boolq, tex, missing, paths, B, figs, rep, e7res, e8res)
     log(f"[make_tables] {tex['macros']} macros ({tex['macros_missing']} still --), {len(figs)} figures, "
         f"{len(missing.items)} missing entries; {time.time() - t0:.1f}s")
-    return {"store": store, "e1": e1res, "q": qres, "det": detres, "frontier": fr, "e2": e2res, "tex": tex, "repro": rep,
+    return {"store": store, "e1": e1res, "q": qres, "det": detres, "frontier": fr, "e2": e2res, "tex": tex, "repro": rep, "e7": e7res, "e8": e8res,
             "missing": missing, "figures": figs}
 
 

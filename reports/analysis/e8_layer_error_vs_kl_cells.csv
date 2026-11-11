@@ -1,0 +1,17 @@
+model,cell,layer_error_ranking,kl_ranking,same_best,same_ranking
+SmolLM2-135M,25%+3,q_then_p < joint < p_then_q,p_then_q < q_then_p < joint,False,False
+SmolLM2-135M,25%+4,joint < p_then_q < q_then_p,p_then_q < joint < q_then_p,False,False
+SmolLM2-135M,33%+3,joint < q_then_p < p_then_q,p_then_q < joint < q_then_p,False,False
+SmolLM2-135M,33%+4,joint < p_then_q < q_then_p,p_then_q < joint < q_then_p,False,False
+SmolLM2-135M,50%+3,joint < p_then_q < q_then_p,p_then_q < joint < q_then_p,False,False
+SmolLM2-135M,50%+4,joint < p_then_q < q_then_p,p_then_q < joint < q_then_p,False,False
+SmolLM2-135M,60%+4,joint < p_then_q < q_then_p,joint < p_then_q < q_then_p,True,True
+SmolLM2-360M,25%+4,joint < p_then_q < q_then_p,joint < p_then_q < q_then_p,True,True
+SmolLM2-360M,33%+4,joint < p_then_q < q_then_p,joint < p_then_q < q_then_p,True,True
+SmolLM2-360M,50%+4,joint < p_then_q < q_then_p,joint < p_then_q < q_then_p,True,True
+Qwen2.5-0.5B,25%+3,q_then_p < joint < p_then_q,joint < q_then_p < p_then_q,False,False
+Qwen2.5-0.5B,25%+4,joint < p_then_q < q_then_p,joint < p_then_q < q_then_p,True,True
+Qwen2.5-0.5B,33%+3,q_then_p < joint < p_then_q,joint < p_then_q < q_then_p,False,False
+Qwen2.5-0.5B,33%+4,joint < p_then_q < q_then_p,joint < p_then_q < q_then_p,True,True
+Qwen2.5-0.5B,50%+3,joint < p_then_q < q_then_p,joint < p_then_q < q_then_p,True,True
+Qwen2.5-0.5B,50%+4,joint < p_then_q < q_then_p,joint < p_then_q < q_then_p,True,True

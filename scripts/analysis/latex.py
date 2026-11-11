@@ -684,7 +684,76 @@ def macros_requests(M, store, e1, q, fr, e2res, repro):
                           grid=dict(row, col=col, col_meaning=what, col_index=("diff", "lo", "hi").index(key)))
 
 
-def write_all(store, e1, q, det, fr, e2res, boolq, paths, missing, repro=()):
+E7_METRIC_TAG = {"wt_ppl": "Ppl", "c4_ppl": "CFourPpl", "wt_kl": "Kl", "sr9_v2": "Sr"}
+
+
+def macros_e7(M, store, e7res):
+    """E7 order rules: counts per model and over all models (reports/analysis/e7_summary.json)."""
+    sm = e7res["summary"]
+    sec = "E7 order rules (reports/analysis/e7_summary.json; scripts/analysis/e7.py)"
+    src = "reports/analysis/e7_summary.json (cells of " + " and ".join(sm["scope"]) + ", seed 0)"
+    models = [m for m in store.models() if m in sm["models"] or any(v["short"] == m for v in store.plan.values())]
+    for name, mtag in E7_METRIC_TAG.items():
+        for m in models + ["all"]:
+            tag = "All" if m == "all" else model_tag(m)
+            k = sm["kim"].get(f"{name}|{m}") or {}
+            ok = bool(k.get("decided"))
+            who = "all models" if m == "all" else m
+            M.add(sec, f"ESevenKimCorrect{mtag}{tag}", _n(k.get("correct")) if ok else "--",
+                  f"{who}: cells where Kim et al.'s weaker-first rule (CER, {name}) picks the better of P->Q and Q->P", src)
+            M.add(sec, f"ESevenKimCells{mtag}{tag}", _n(k.get("decided")) if ok else "--",
+                  f"{who}: cells with a prediction and an outcome ({name})", src)
+            M.add(sec, f"ESevenKimPredQP{mtag}{tag}", _n(k.get("predicted_qp")) if ok else "--",
+                  f"{who}: cells where the rule predicts Q->P (pruning the stronger perturbation; {name})", src)
+            M.add(sec, f"ESevenKimPredQPCorrect{mtag}{tag}", _n(k.get("predicted_qp_correct")) if ok else "--",
+                  f"{who}: of those, cells where Q->P is in fact better ({name})", src)
+            if m != "all" and name in ("wt_ppl", "c4_ppl", "wt_kl"):
+                M.add(sec, f"ESevenKimRho{mtag}{tag}", signed(k.get("rho"), 2) if ok else "--",
+                      f"{who}: Spearman rho of the P->Q advantage vs CER(Q) - CER(P) over cells ({name}; n = {k.get('rho_n')})", src)
+            if name == "sr9_v2":
+                M.add(sec, f"ESevenKimSigCorrect{mtag}{tag}", _n(k.get("significant_correct")) if ok else "--",
+                      f"{who}: correct predictions among cells whose Sr-extended P->Q - Q->P interval excludes 0", src)
+                M.add(sec, f"ESevenKimSig{mtag}{tag}", _n(k.get("significant")) if ok else "--",
+                      f"{who}: cells whose Sr-extended P->Q - Q->P paired-bootstrap interval excludes 0", src)
+    for name in ("wt_ppl", "c4_ppl"):
+        mtag = E7_METRIC_TAG[name]
+        for m in models + ["all"]:
+            tag = "All" if m == "all" else model_tag(m)
+            who = "all models" if m == "all" else m
+            ho = sm["harma_order"].get(f"{name}|{m}") or {}
+            ok = bool(ho.get("cells"))
+            M.add(sec, f"ESevenHarmaPQBetter{mtag}{tag}", _n(ho.get("pq_better")) if ok else "--",
+                  f"{who}: cells where P->Q beats Q->P (Harma et al.'s sparsity-first order; {name})", src)
+            M.add(sec, f"ESevenHarmaOrderCells{mtag}{tag}", _n(ho.get("cells")) if ok else "--", f"{who}: cells with both orders ({name})", src)
+            M.add(sec, f"ESevenHarmaMaxGap{mtag}{tag}Pct", num(ho.get("max_gap_pct"), 1) if ok else "--",
+                  f"{who}: largest 100(ppl Q->P / ppl P->Q - 1) over those cells ({name})", src)
+            if name != "wt_ppl":
+                continue
+            for o in PAPER_ORDERS:
+                t = sm["harma_threshold"].get(f"{name}|{o}|{m}") or {}
+                okt = bool(t.get("n"))
+                M.add(sec, f"ESevenHarmaAddExceeds{ORDER_TAG[o]}{tag}", _n(t.get("exceeds_additive")) if okt else "--",
+                      f"{who}: {ORDER_TXT[o]} states above Harma et al.'s additive threshold ppl(dense) + dPPL(P) + dPPL(Q)", src)
+                M.add(sec, f"ESevenHarmaMultExceeds{ORDER_TAG[o]}{tag}", _n(t.get("exceeds_multiplicative")) if okt else "--",
+                      f"{who}: {ORDER_TXT[o]} states above the multiplicative null ppl(dense) ppl(P)/ppl(dense) ppl(Q)/ppl(dense)", src)
+                M.add(sec, f"ESevenHarmaN{ORDER_TAG[o]}{tag}", _n(t.get("n")) if okt else "--", f"{who}: {ORDER_TXT[o]} states tested", src)
+
+
+def macros_e8(M, store, e8res):
+    sec = "E8 layer error vs KL (reports/analysis/e8_layer_error_vs_kl.json; scripts/analysis/e8.py)"
+    src = "reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl)"
+    have = {m["model"]: m for m in e8res["models"]}
+    for model in store.models():
+        tag, m = model_tag(model), have.get(model)
+        M.add(sec, f"EEightRho{tag}", signed(m.get("rho_wt_kl"), 2) if m else "--",
+              f"{model}: Spearman rho of mean layer error vs KL over its compressed states (n = {m.get('n_wt_kl') if m else 0})", src)
+        M.add(sec, f"EEightSameBest{tag}", _n(m.get("cells_same_best")) if m and m.get("cells") else "--",
+              f"{model}: cells where the order with the smallest layer error also has the smallest KL", src)
+        M.add(sec, f"EEightCells{tag}", _n(m.get("cells")) if m and m.get("cells") else "--",
+              f"{model}: cells with the three paper orders", src)
+
+
+def write_all(store, e1, q, det, fr, e2res, boolq, paths, missing, repro=(), e7res=None, e8res=None):
     G = paths.generated
     write_text(os.path.join(G, "table_main_rows.tex"), table_main_rows(store, e1, fr, missing))
     write_text(os.path.join(G, "table_kl_flips.tex"), table_kl_flips(store, e1, missing))
@@ -696,6 +765,10 @@ def write_all(store, e1, q, det, fr, e2res, boolq, paths, missing, repro=()):
     macros_questions(M, store, q)
     macros_misc(M, store, e1, det, fr, e2res, boolq)
     macros_requests(M, store, e1, q, fr, e2res, repro)
+    if e7res is not None:
+        macros_e7(M, store, e7res)
+    if e8res is not None:
+        macros_e8(M, store, e8res)
     write_text(os.path.join(G, "macros.tex"), M.tex())
     write_text(os.path.join(G, "MACROS.md"), M.md(MACROS_HEADER))
     n_missing = sum(r["value"] == "--" for r in M.rows)
