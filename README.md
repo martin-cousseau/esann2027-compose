@@ -35,7 +35,7 @@ release/                   model loader and the generated model card of the Hugg
 tests/                     CPU tests of the pipeline and of the analysis
 ```
 
-Reproduce the analysis (CPU, a few minutes): `pip install -r requirements-v2.txt`, then
+Reproduce the analysis (CPU, a few minutes): `pip install -r requirements-analysis.txt`, then
 `python scripts/make_tables.py`. GPU runs (NVIDIA L4, fp32, TF32 off; the environment fingerprint is checked
 against `colab/locked_fingerprint.json`): `python scripts/run_grid.py --family E1 --model HuggingFaceTB/SmolLM2-135M
 --queue colab/queues/E1__SmolLM2-135M.json --locked colab/locked_fingerprint.json`.
