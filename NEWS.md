@@ -4,9 +4,9 @@
 - **Angle:** B + C (honest storage frontier with the mask counted, plus free zeros), provisional
   (DECISIONS.md #25, #28). The 6-page LaTeX draft exists (`paper/main.tex`, `paper/main.pdf`); every number in
   it is a generated macro. It is revised model by model as the runs finish.
-- **Status (00:55 UTC, Nov 11):** SmolLM2-135M and Qwen2.5-0.5B E1 complete (25 + 25), SmolLM2-360M E1 17/25,
-  E2 complete, E3 16/48, E4 9/15. Queued: A: 360M E1 (to ~02:30), then E6 SmolLM2-1.7B (11 states, to ~08:00);
-  B: E4 Qwen/360M, E3 360M/Qwen (to ~06:00), then E5 SmolLM2-360M seeds (to ~08:30).
+- **Status (03:40 UTC, Nov 11):** E1 complete for the three core models (75/75), E2 complete, E4 15/15,
+  E3 16/48, E5 5/20 (runtime B, then E3 SmolLM2-360M and Qwen2.5-0.5B, #32), E6 SmolLM2-1.7B 0/11 (runtime A,
+  started 03:18). Expected ends: A about 09:00, B about 10:00 UTC.
 - **New:** E7 (order rules) and the analysis half of E8 are in `make_tables.py`. Kim et al.'s weaker-first rule
   fails in every cell where it predicts quantize-first; sparsity first (Harma et al.) wins in 14 of 15 cells
   (FINDINGS.md R4, item 5).
@@ -22,6 +22,18 @@
 - **Links:** PR https://github.com/martin-cousseau/esann2027-compose/pull/1 ; W&B (public)
   https://wandb.ai/martin-css/esann2027-compose-v2 ; models (private until the end)
   https://huggingface.co/martincousseau/esann2027-compose-v2
+
+## 2026-11-11 03:40 UTC - E1 complete; angle B + C confirmed on three models; paper revised
+- **E1 complete (75 states):** with the mask counted, 25%+4-bit ties plain 4-bit on every core model; 50%+4-bit
+  beats plain 3-bit at 3.0 bits/w on both SmolLM2 models and ties it on Qwen2.5-0.5B; below 3 bits plain 2-bit
+  collapses on all three. Q->P at 25%+3 is the 3-bit model on all three (DECISIONS.md #33, FINDINGS.md R1).
+- **Order:** a mask-first order is best in all 18 cells (joint 11, P->Q 7); Q->P strictly worst in 16. Kim et al.'s
+  rule is right in 13 of 18 cells and wrong in all 4 where it predicts quantize-first, as the review said.
+- **Paper:** abstract, order paragraph (with the two order rules) and conclusion updated; the per-cell mechanism
+  table moved to the repository for space; still 6 pages, every number a macro.
+- **Operations:** the container of this session restarted at about 01:50 (watcher restarted, nothing lost). The
+  E6 chain on runtime A waited 5 min on a finished but unreaped (zombie) process; reaped by hand. Runtime B now
+  runs the seeds (E5) before E3 (#32).
 
 ## 2026-11-11 00:55 UTC - order rules, E6 extended, release tooling
 - **E7 (analysis only):** Kim et al.'s weaker-first rule, with their compression-equivalent ratio, picks the
