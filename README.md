@@ -6,6 +6,42 @@ Code, raw results and paper source for:
 
 It extends: S. Laborde, M. Cousseau, A. Yaacoub, L. Prevost. *Semantic Retention and Extreme Compression in LLMs: Can We Have Both?* IJCNN 2025 (arXiv:2505.07289).
 
+## v2 study (November 2026, branch `claude/busy-hopper-ghtynk`)
+
+A complete fp32 re-run of the study on one GPU type, answering a review of the draft, with a revised paper
+(`paper/main.tex`, "Counting the Mask: When Does Pruning Pay in Quantized Small Language Models?"). Everything
+below is on this branch; the original draft and its files are unchanged (`paper/v1/` is an exact rebuild of it).
+
+| What | Where |
+|---|---|
+| Compressed model states (exact codes, scales, masks) and a standalone loader | https://huggingface.co/martincousseau/esann2027-compose-v2 |
+| Result lines and per-item benchmark logs, as uploaded by the GPU runners | https://huggingface.co/datasets/martincousseau/esann2027-v2-results (and `results/v2/` here) |
+| One Weights & Biases run per model state (metrics, layer diagnostics, links back here) | https://wandb.ai/martin-css/esann2027-compose-v2 |
+| What was found, what was decided, the session log | `FINDINGS.md`, `DECISIONS.md`, `NEWS.md`, `QUESTIONS.md` |
+
+Layout of the v2 files:
+
+```
+src_v2/pipeline.py         v2 library on top of src/core.py (fp32, strict overflow check, metrics, storage, export)
+scripts/run_grid.py        resume-safe runner: one result line per model state (results/v2/<family>/<model>.jsonl)
+scripts/make_queues.py     the study plan (families E1, E3-E6) and the queue files in colab/queues/
+scripts/run_e2.py          E2, the same-Hessian layer ablation (review code, ablation/)
+scripts/make_tables.py     CPU only: every table, macro, figure and report from the result files
+scripts/analysis/          the analyses (E1 bootstrap and McNemar, Q1-Q3, frontier, E2, E3, E5, E6, E7, E8)
+colab/                     runtime chains, locked environment fingerprint, keepalive
+paper/generated/           macros.tex (every number the paper quotes), MACROS.md (the source of each), tables
+reports/                   analysis outputs, literature check, LaTeX notes, audit
+release/                   model loader and the generated model card of the Hugging Face repository
+tests/                     CPU tests of the pipeline and of the analysis
+```
+
+Reproduce the analysis (CPU, a few minutes): `pip install -r requirements-v2.txt`, then
+`python scripts/make_tables.py`. GPU runs (NVIDIA L4, fp32, TF32 off; the environment fingerprint is checked
+against `colab/locked_fingerprint.json`): `python scripts/run_grid.py --family E1 --model HuggingFaceTB/SmolLM2-135M
+--queue colab/queues/E1__SmolLM2-135M.json --locked colab/locked_fingerprint.json`.
+
+The text below describes the original (v1) study.
+
 ## What is in this repository
 
 ```
