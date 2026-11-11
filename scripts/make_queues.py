@@ -36,9 +36,9 @@ def e1():
 def e3():
     # perplexity, C4 and KL only (tasks cut for budget, DECISIONS.md); the four review arms in four cells
     cells = [(0.25, 3), (1 / 3, 3), (0.5, 4), (0.5, 3)]
-    # Qwen2.5-0.5B runs last on its runtime: its cell without a Q->P penalty (25%+3, where Q->P beats P->Q in E1)
-    # goes last, so a budget cut drops the least informative cell (DECISIONS.md #34)
-    order = {"Qwen/Qwen2.5-0.5B": [(0.5, 3), (0.5, 4), (1 / 3, 3), (0.25, 3)]}
+    # Qwen2.5-0.5B: only the two cells with a real Q->P penalty in E1 (50%+3 and 50%+4); 33%+3 (penalty under 1%)
+    # and 25%+3 (Q->P beats P->Q) were cut for budget (DECISIONS.md #34, #35)
+    order = {"Qwen/Qwen2.5-0.5B": [(0.5, 3), (0.5, 4)]}
     return {m: [u(a, s, b, tasks=[]) for s, b in order.get(m, cells) for a in ARMS] for m in CORE}
 
 

@@ -165,3 +165,8 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     its prune-only states (E7 asks for the order rules on E6). E3 Qwen2.5-0.5B now runs its cells in the order 50%+3,
     50%+4, 33%+3, 25%+3 (`scripts/make_queues.py`; same 16 states): 25%+3 is the cell where Q->P beats P->Q in E1,
     so it has no penalty to explain and is the one to drop (4 states, about 1.3 CU) if the 09:00 check says so.
+35. **2026-11-11 06:05 UTC, E3 Qwen2.5-0.5B reduced to its two 50% cells.** Measured times (1.7B states about
+    28 min, SmolLM2-360M E3 states about 9 min) raised the projection to about 98.5 CU at the planning rate (about 86
+    at the reported 1.94 CU/h). E3 Qwen2.5-0.5B now runs 50%+3 and 50%+4 only (8 states): in E1 the Q->P penalty on
+    Qwen2.5-0.5B is +15.6% at 50%+3, +0.9% at 50%+4, +0.9% at 33%+3 and negative at 25%+3, so the two cut cells have
+    almost no penalty to explain. Saves about 3 CU; projection about 95.5 at the planning rate. E6 stays whole.
