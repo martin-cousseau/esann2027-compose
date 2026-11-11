@@ -151,3 +151,11 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     if needed, falls on E3 Qwen2.5-0.5B, whose layer-level counterpart (E2) is complete. On runtime A the two
     E6 prune-only states run last for the same reason. The decision to cut is taken from the CU estimate at
     about 07:00 UTC.
+33. **2026-11-11, angle B + C confirmed on the three core models (E1 75/75, E2, E4 15/15).** The frontier with the
+    mask counted gives the same picture on every model: no gain from pruning at 4.0 bits/w (25%+4 within -0.5% to
+    +2.2% of 4-bit), a gain at 3.0 bits/w on both SmolLM2 models (50%+4 and 33%+3 beat 3-bit) but a tie on
+    Qwen2.5-0.5B, and the only usable points below 3 bits (plain 2-bit collapses on all three). Q->P at 25%+3 is the
+    3-bit model on all three. The paper states the Qwen tie and the 4-bit ties plainly; the abstract's "does not beat
+    it" becomes "ties it". Angle A stays rejected (no arm closes 60% of the Q->P gap on 2 of 3 models in E2). The
+    order paragraph changes: P->Q is no longer the usual winner (7 of 18 cells); a mask-first order is best in all 18
+    and Q->P is strictly worst in 16 of 18.

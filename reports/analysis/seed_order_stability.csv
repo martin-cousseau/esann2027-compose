@@ -1,5 +1,5 @@
 model,cell,seeds,best_by_seed,complete,stable
-SmolLM2-360M,25%+4,0 1 2,0:joint,False,False
+SmolLM2-360M,25%+4,0 1 2,0:joint 1:joint,False,False
 SmolLM2-360M,33%+4,0 1 2,0:joint,False,False
 SmolLM2-360M,50%+4,0 1 2,0:joint,False,False
-SmolLM2-360M,60%+4,0 1 2,,False,False
+SmolLM2-360M,60%+4,0 1 2,0:joint,False,False
