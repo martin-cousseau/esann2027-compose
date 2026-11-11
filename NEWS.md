@@ -4,7 +4,7 @@
 - **Angle:** B + C (honest storage frontier with the mask counted, plus free zeros), provisional
   (DECISIONS.md #25, #28). The 6-page LaTeX draft exists (`paper/main.tex`, `paper/main.pdf`); every number in
   it is a generated macro. It is revised model by model as the runs finish.
-- **Status (03:40 UTC, Nov 11):** E1 complete for the three core models (75/75), E2 complete, E4 15/15,
+- **Status (03:25 UTC, Nov 11):** E1 complete for the three core models (75/75), E2 complete, E4 15/15,
   E3 16/48, E5 5/20 (runtime B, then E3 SmolLM2-360M and Qwen2.5-0.5B, #32), E6 SmolLM2-1.7B 0/11 (runtime A,
   started 03:18). Expected ends: A about 09:00, B about 10:00 UTC.
 - **New:** E7 (order rules) and the analysis half of E8 are in `make_tables.py`. Kim et al.'s weaker-first rule
@@ -23,7 +23,7 @@
   https://wandb.ai/martin-css/esann2027-compose-v2 ; models (private until the end)
   https://huggingface.co/martincousseau/esann2027-compose-v2
 
-## 2026-11-11 03:40 UTC - E1 complete; angle B + C confirmed on three models; paper revised
+## 2026-11-11 03:25 UTC - E1 complete; angle B + C confirmed on three models; paper revised
 - **E1 complete (75 states):** with the mask counted, 25%+4-bit ties plain 4-bit on every core model; 50%+4-bit
   beats plain 3-bit at 3.0 bits/w on both SmolLM2 models and ties it on Qwen2.5-0.5B; below 3 bits plain 2-bit
   collapses on all three. Q->P at 25%+3 is the 3-bit model on all three (DECISIONS.md #33, FINDINGS.md R1).
