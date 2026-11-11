@@ -127,6 +127,12 @@
     \resQrow{Kl}{#2}{QuantBThree}{SFiftyBFour} \\
   & Flips (\%) & \resQrow{FlipsPct}{#2}{QuantBFour}{STwentyFiveBFour} &
     \resQrow{FlipsPct}{#2}{QuantBThree}{SFiftyBFour} \\}
+% \resTabModelTwo: the same without the flips row (E6 ran no benchmarks).
+\newcommand{\resTabModelTwo}[2]{%
+  #1 & PPL & \resQrow{Ppl}{#2}{QuantBFour}{STwentyFiveBFour} &
+    \resQrow{Ppl}{#2}{QuantBThree}{SFiftyBFour} \\
+  (dense \csname resPpl#2Dense\endcsname) & KL & \resQrow{Kl}{#2}{QuantBFour}{STwentyFiveBFour} &
+    \resQrow{Kl}{#2}{QuantBThree}{SFiftyBFour} \\}
 % Table 2 (E2, complete for the three core models): \resMechRow{<cell tag>}{<label>}
 % prints, per model, the Q->P penalty and the shares removed by the three arms.
 \newcommand{\resMechModel}[2]{\csname resETwoPenalty#1#2Pct\endcsname &
@@ -137,7 +143,7 @@
 % URLs may also break after a hyphen.
 \g@addto@macro\UrlBreaks{\do\-}
 \makeatother
-\ifEsix\def\resEsixRows{\midrule\resTabModel{SmolLM2-1.7B}{SmolLarge}}\else\def\resEsixRows{}\fi
+\ifEsix\def\resEsixRows{\midrule\resTabModelTwo{SmolLM2-1.7B}{SmolLarge}}\else\def\resEsixRows{}\fi
 
 \begin{document}
 
@@ -334,7 +340,8 @@ Model & & & joint & P$\to$Q & Q$\to$P & & joint & P$\to$Q & Q$\to$P \\
 \bottomrule
 \end{tabular}}
 \caption{Equal storage, mask counted: WikiText-2 perplexity, KL to the dense
-model (nats/token), flips (\% of items, nine tasks); seed 0; bold: best.}
+model (nats/token), flips (\% of items, nine tasks\ifEsix; none for 1.7B\fi);
+seed 0; bold: best.}
 \label{tab:storage}
 \end{table}
 
