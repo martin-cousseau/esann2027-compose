@@ -170,3 +170,9 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     at the reported 1.94 CU/h). E3 Qwen2.5-0.5B now runs 50%+3 and 50%+4 only (8 states): in E1 the Q->P penalty on
     Qwen2.5-0.5B is +15.6% at 50%+3, +0.9% at 50%+4, +0.9% at 33%+3 and negative at 25%+3, so the two cut cells have
     almost no penalty to explain. Saves about 3 CU; projection about 95.5 at the planning rate. E6 stays whole.
+36. **2026-11-11, public release on Hugging Face (as the author asked on 2026-11-10).** The model repository
+    `martincousseau/esann2027-compose-v2` (every exported state, verified by size and sha256 against its result
+    line; generated card; standalone loader) and the results dataset `martincousseau/esann2027-v2-results` (the
+    complete `results/v2` tree of this branch and a card) are public; both link to this branch and to the public W&B
+    project. Before the switch, both were scanned for tokens and keys (none). The private inputs stay in the separate
+    private dataset `martincousseau/esann2027-v2-private-context` (anonymous access refused, checked).
