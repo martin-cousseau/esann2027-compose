@@ -200,3 +200,8 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     among them both dense references), compared item by item with E1. About 20 CU at the planning rate. Check runs
     now write their per-item files under a family-suffixed name, so they never overwrite a study state's file
     (`scripts/run_grid.py`).
+39. **2026-11-12, third Colab image admitted.** The runtimes created at 19:47 came up on
+    `release-colab-external-images_20261111-060450_RC00` with identical package versions (torch 2.14.1+cu130,
+    transformers 5.22.1, lm_eval 0.4.13). SmolLM2-135M joint 50%+4 recomputed on it is bit-identical to its E1
+    result (WikiText-2 NLL sum and all 210 layer errors; `scripts/img_check.py`,
+    `results/v2/IMG/SmolLM2-135M__esann-a6.jsonl`), as for #26. The lock lists the three images.

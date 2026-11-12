@@ -19,3 +19,5 @@
 {"event":"create","name":"runtimes/esann-b4","spec":"L4/STANDARD/GPU","created_utc":"2026-11-10T18:04:03Z","owner":"orchestrator","purpose":"E1 Qwen rest, E4/E3 Qwen and 360M"}
 {"runtime": "esann-a5", "event": "deleted", "time": "2026-11-11T07:21:06+00:00", "note": "queues done (E1 SmolLM2-360M, E3 SmolLM2-135M, E6 SmolLM2-1.7B); all exports verified on the Hub"}
 {"runtime": "esann-b4", "event": "deleted", "time": "2026-11-11T08:47:59+00:00", "note": "queues done (E1/E4 Qwen2.5-0.5B, E4/E3/E5 SmolLM2-360M, E3 Qwen2.5-0.5B 50% cells); all exports verified on the Hub; list_runtimes empty"}
+{"runtime": "esann-a6", "event": "created", "time": "2026-11-12T19:47:00+00:00", "spec": "L4 standard", "image": "release-colab-external-images_20261111-060450_RC00", "note": "DECISIONS #38 runs"}
+{"runtime": "esann-b5", "event": "created", "time": "2026-11-12T19:47:00+00:00", "spec": "L4 standard", "image": "release-colab-external-images_20261111-060450_RC00", "note": "DECISIONS #38 runs"}
