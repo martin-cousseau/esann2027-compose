@@ -1,0 +1,170 @@
+[
+{
+"order": "dense",
+"sparsity": 0.0,
+"bits": 16,
+"seed": 0,
+"tasks": []
+},
+{
+"order": "quant",
+"sparsity": 0.0,
+"bits": 4,
+"seed": 0,
+"tasks": []
+},
+{
+"order": "quant",
+"sparsity": 0.0,
+"bits": 3,
+"seed": 0,
+"tasks": []
+},
+{
+"order": "p_then_q",
+"sparsity": 0.5,
+"bits": 4,
+"seed": 0,
+"tasks": []
+},
+{
+"order": "joint",
+"sparsity": 0.5,
+"bits": 4,
+"seed": 0,
+"tasks": []
+},
+{
+"order": "p_then_q",
+"sparsity": 0.25,
+"bits": 4,
+"seed": 0,
+"tasks": []
+},
+{
+"order": "joint",
+"sparsity": 0.25,
+"bits": 4,
+"seed": 0,
+"tasks": []
+},
+{
+"order": "q_then_p",
+"sparsity": 0.5,
+"bits": 4,
+"seed": 0,
+"tasks": []
+},
+{
+"order": "q_then_p",
+"sparsity": 0.25,
+"bits": 4,
+"seed": 0,
+"tasks": []
+},
+{
+"order": "prune",
+"sparsity": 0.5,
+"bits": 16,
+"seed": 0,
+"tasks": []
+},
+{
+"order": "prune",
+"sparsity": 0.25,
+"bits": 16,
+"seed": 0,
+"tasks": []
+},
+{
+"order": "prune",
+"sparsity": 0.3333333333333333,
+"bits": 16,
+"seed": 0,
+"tasks": []
+},
+{
+"order": "joint",
+"sparsity": 0.3333333333333333,
+"bits": 4,
+"seed": 0,
+"tasks": []
+},
+{
+"order": "p_then_q",
+"sparsity": 0.3333333333333333,
+"bits": 4,
+"seed": 0,
+"tasks": []
+},
+{
+"order": "q_then_p",
+"sparsity": 0.3333333333333333,
+"bits": 4,
+"seed": 0,
+"tasks": []
+},
+{
+"order": "joint",
+"sparsity": 0.25,
+"bits": 3,
+"seed": 0,
+"tasks": []
+},
+{
+"order": "p_then_q",
+"sparsity": 0.25,
+"bits": 3,
+"seed": 0,
+"tasks": []
+},
+{
+"order": "q_then_p",
+"sparsity": 0.25,
+"bits": 3,
+"seed": 0,
+"tasks": []
+},
+{
+"order": "joint",
+"sparsity": 0.3333333333333333,
+"bits": 3,
+"seed": 0,
+"tasks": []
+},
+{
+"order": "p_then_q",
+"sparsity": 0.3333333333333333,
+"bits": 3,
+"seed": 0,
+"tasks": []
+},
+{
+"order": "q_then_p",
+"sparsity": 0.3333333333333333,
+"bits": 3,
+"seed": 0,
+"tasks": []
+},
+{
+"order": "joint",
+"sparsity": 0.5,
+"bits": 3,
+"seed": 0,
+"tasks": []
+},
+{
+"order": "p_then_q",
+"sparsity": 0.5,
+"bits": 3,
+"seed": 0,
+"tasks": []
+},
+{
+"order": "q_then_p",
+"sparsity": 0.5,
+"bits": 3,
+"seed": 0,
+"tasks": []
+}
+]

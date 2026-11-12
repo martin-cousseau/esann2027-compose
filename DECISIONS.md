@@ -205,3 +205,12 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     transformers 5.22.1, lm_eval 0.4.13). SmolLM2-135M joint 50%+4 recomputed on it is bit-identical to its E1
     result (WikiText-2 NLL sum and all 210 layer errors; `scripts/img_check.py`,
     `results/v2/IMG/SmolLM2-135M__esann-a6.jsonl`), as for #26. The lock lists the three images.
+40. **2026-11-12, the 120-CU plan (the author confirms 120 CU available).** To strengthen the first author's three
+    questions, the GPU work now adds, in priority order: (1) the full E1 grid (without 8-bit) at SmolLM2-1.7B and
+    Qwen2.5-1.5B, so "Q->P is the worst order" is tested at 3 bits beyond 0.5B; (2) Qwen2.5-3B (base design,
+    perplexity only: a second fp32 copy for KL does not fit on the L4; no model export, its licence is not
+    Apache-2.0), the third size within Qwen; (3) OLMo-2-0425-1B (Apache-2.0, ungated, Llama-like; a smoke run passed),
+    a third family at about 1.1B compressed weights, so family and scale can be separated (two families at about
+    0.3B, three at about 1.3B, three sizes within SmolLM2 and within Qwen); (4) calibration seeds 1 and 2 for the
+    3-bit cells of SmolLM2-360M and Qwen2.5-0.5B and for every cell of SmolLM2-135M. About 85 CU at the planning
+    rate on top of #38; benchmarks at scale for the model-level interaction come last, if the balance allows.

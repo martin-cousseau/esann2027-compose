@@ -2,140 +2,140 @@
 {
 "order": "quant",
 "sparsity": 0.0,
-"bits": 4,
+"bits": 3,
 "seed": 1,
 "tasks": []
 },
 {
 "order": "joint",
 "sparsity": 0.25,
-"bits": 4,
+"bits": 3,
 "seed": 1,
 "tasks": []
 },
 {
 "order": "p_then_q",
 "sparsity": 0.25,
-"bits": 4,
+"bits": 3,
 "seed": 1,
 "tasks": []
 },
 {
 "order": "q_then_p",
 "sparsity": 0.25,
-"bits": 4,
+"bits": 3,
 "seed": 1,
 "tasks": []
 },
 {
 "order": "joint",
 "sparsity": 0.3333333333333333,
-"bits": 4,
+"bits": 3,
 "seed": 1,
 "tasks": []
 },
 {
 "order": "p_then_q",
 "sparsity": 0.3333333333333333,
-"bits": 4,
+"bits": 3,
 "seed": 1,
 "tasks": []
 },
 {
 "order": "q_then_p",
 "sparsity": 0.3333333333333333,
-"bits": 4,
+"bits": 3,
 "seed": 1,
 "tasks": []
 },
 {
 "order": "joint",
 "sparsity": 0.5,
-"bits": 4,
+"bits": 3,
 "seed": 1,
 "tasks": []
 },
 {
 "order": "p_then_q",
 "sparsity": 0.5,
-"bits": 4,
+"bits": 3,
 "seed": 1,
 "tasks": []
 },
 {
 "order": "q_then_p",
 "sparsity": 0.5,
-"bits": 4,
+"bits": 3,
 "seed": 1,
 "tasks": []
 },
 {
 "order": "quant",
 "sparsity": 0.0,
-"bits": 4,
+"bits": 3,
 "seed": 2,
 "tasks": []
 },
 {
 "order": "joint",
 "sparsity": 0.25,
-"bits": 4,
+"bits": 3,
 "seed": 2,
 "tasks": []
 },
 {
 "order": "p_then_q",
 "sparsity": 0.25,
-"bits": 4,
+"bits": 3,
 "seed": 2,
 "tasks": []
 },
 {
 "order": "q_then_p",
 "sparsity": 0.25,
-"bits": 4,
+"bits": 3,
 "seed": 2,
 "tasks": []
 },
 {
 "order": "joint",
 "sparsity": 0.3333333333333333,
-"bits": 4,
+"bits": 3,
 "seed": 2,
 "tasks": []
 },
 {
 "order": "p_then_q",
 "sparsity": 0.3333333333333333,
-"bits": 4,
+"bits": 3,
 "seed": 2,
 "tasks": []
 },
 {
 "order": "q_then_p",
 "sparsity": 0.3333333333333333,
-"bits": 4,
+"bits": 3,
 "seed": 2,
 "tasks": []
 },
 {
 "order": "joint",
 "sparsity": 0.5,
-"bits": 4,
+"bits": 3,
 "seed": 2,
 "tasks": []
 },
 {
 "order": "p_then_q",
 "sparsity": 0.5,
-"bits": 4,
+"bits": 3,
 "seed": 2,
 "tasks": []
 },
 {
 "order": "q_then_p",
 "sparsity": 0.5,
-"bits": 4,
+"bits": 3,
 "seed": 2,
 "tasks": []
 }

@@ -61,15 +61,17 @@ def e5_full(bits=(4,)):
     return out
 
 
-def e5(bits=(4,), models=("HuggingFaceTB/SmolLM2-360M", "Qwen/Qwen2.5-0.5B")):
-    """E5 as run (DECISIONS.md #29, #38): calibration seeds 1 and 2, 4-bit alone and every 4-bit cell in the three
-    orders; perplexity, C4 and KL only. SmolLM2-360M first (2026-11-11), Qwen2.5-0.5B added on 2026-11-12."""
+def e5(models=("HuggingFaceTB/SmolLM2-360M", "Qwen/Qwen2.5-0.5B", "HuggingFaceTB/SmolLM2-135M")):
+    """E5 as run (DECISIONS.md #29, #38, #40): calibration seeds 1 and 2, the quantization-only state and every cell in
+    the three orders; perplexity, C4 and KL only. 4-bit cells first (SmolLM2-360M on 2026-11-11, Qwen2.5-0.5B on
+    2026-11-12), then the 3-bit cells (2026-11-13), then SmolLM2-135M at both bit-widths."""
     out = {}
     for m in models:
         q = []
-        for seed in (1, 2):
-            q += [u("quant", 0.0, b, seed, tasks=[]) for b in bits]
-            q += [u(o, s, b, seed, tasks=[]) for b in bits for s in SPARS for o in ORDERS]
+        for b in (4, 3):
+            for seed in (1, 2):
+                q += [u("quant", 0.0, b, seed, tasks=[])]
+                q += [u(o, s, b, seed, tasks=[]) for s in SPARS for o in ORDERS]
         out[m] = dedupe(q)
     return out
 
@@ -85,17 +87,28 @@ def e6_full(models=("HuggingFaceTB/SmolLM2-1.7B",)):
     return out
 
 
-def e6(models=("HuggingFaceTB/SmolLM2-1.7B", "Qwen/Qwen2.5-1.5B")):
-    """E6 as run (DECISIONS.md #29, #31, #38; Qwen2.5-1.5B added on 2026-11-12 to test scale within a second
-    family): perplexity, C4 and KL only. First the 7 frontier states (dense, 4-bit,
-    3-bit, 50%+4 and 25%+4 in P->Q and joint), then Q->P at both 4-bit cells (the order spread at this scale)
-    and pruning alone at 50% and 25% (the single-method baselines of the interaction and of the order rules)."""
+E6_MODELS = ("HuggingFaceTB/SmolLM2-1.7B", "Qwen/Qwen2.5-1.5B", "Qwen/Qwen2.5-3B", "allenai/OLMo-2-0425-1B")
+E6_NO_KL = {"Qwen/Qwen2.5-3B"}        # a second fp32 copy for KL does not fit on the L4: perplexity only
+E6_GRID = {"HuggingFaceTB/SmolLM2-1.7B", "Qwen/Qwen2.5-1.5B", "allenai/OLMo-2-0425-1B"}  # the full E1 grid, not 8-bit
+
+
+def e6(models=E6_MODELS):
+    """E6, scale and family (DECISIONS.md #29, #31, #38, #40): perplexity, C4 and KL only (perplexity only where
+    E6_NO_KL). Base design first: dense, 4- and 3-bit, 50%+4 and 25%+4 in P->Q and joint, Q->P at both 4-bit cells,
+    pruning alone at 50% and 25%. For the models in E6_GRID it is then completed to the E1 grid without 8-bit:
+    pruning alone at 33%, the 33%+4 cell and the three 3-bit cells in the three orders."""
     out = {}
     for m in models:
-        q = [u("dense", 0.0, 16, tasks=[]), u("quant", 0.0, 4, tasks=[]), u("quant", 0.0, 3, tasks=[])]
-        q += [u(o, s, 4, tasks=[]) for s in (0.5, 0.25) for o in ("p_then_q", "joint")]
-        q += [u("q_then_p", s, 4, tasks=[]) for s in (0.5, 0.25)]
-        q += [u("prune", s, 16, tasks=[]) for s in (0.5, 0.25)]
+        kw = {"tasks": []}
+        if m in E6_NO_KL:
+            kw["kl"] = False
+        q = [u("dense", 0.0, 16, **kw), u("quant", 0.0, 4, **kw), u("quant", 0.0, 3, **kw)]
+        q += [u(o, s, 4, **kw) for s in (0.5, 0.25) for o in ("p_then_q", "joint")]
+        q += [u("q_then_p", s, 4, **kw) for s in (0.5, 0.25)]
+        q += [u("prune", s, 16, **kw) for s in (0.5, 0.25)]
+        if m in E6_GRID:
+            q += [u("prune", 1 / 3, 16, **kw)] + [u(o, 1 / 3, 4, **kw) for o in ORDERS]
+            q += [u(o, s, 3, **kw) for s in SPARS for o in ORDERS]
         out[m] = dedupe(q)
     return out
 
