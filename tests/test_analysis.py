@@ -435,7 +435,8 @@ def test_e5_seed_pairs_paired_test(tmp_path):
                                 "bits": 4, "seed": sd, "dtype": "float32", "status": "ok", "wikitext2": {"ppl": v}}) + "\n")
     store = Store(Paths(root=root))
     rows, best = questions.seed_pairs(store)
-    r = [x for x in rows if x["cell"] == "25%+4" and x["order_a"] == "joint" and x["order_b"] == "p_then_q"][0]
+    r = [x for x in rows if x["model"] == "SmolLM2-360M" and x["cell"] == "25%+4" and x["order_a"] == "joint"
+         and x["order_b"] == "p_then_q"][0]
     assert r["complete"] and r["n_seeds"] == 3 and r["a_better_all_seeds"]
     want = sps.ttest_rel([math.log(ppl[("p_then_q", s)]) for s in range(3)], [math.log(ppl[("joint", s)]) for s in range(3)])
     assert abs(r["p_paired_t"] - want.pvalue) < 1e-12

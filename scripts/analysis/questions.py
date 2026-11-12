@@ -7,14 +7,21 @@ Q1  layer level, from the per-layer diagnostics of the result lines: I_E / (E_P 
     inputs in all runs).
 Q2  per cell: the ranking of the three orders by WikiText-2 perplexity, C4 perplexity, KL, pooled flips
     and Sr; the cells where Q->P is worst; the worst/best perplexity ratio; agreement between metrics.
-Q3  the 4-bit order spread (max - min) / min per model.
+Q3  the order spread (max - min) / min per model and bit-width, over every cell and over the grid cells
+    (25/33/50%, E4's 60% left out).
+E5  calibration seeds, 4- and 3-bit cells of every multi-seed model: best and worst order per seed, stability,
+    Q->P worst, paired tests over seeds, mean and sd per order and cell, and the counts per scope and bit-width.
+E6  family vs scale: per model and cell the spread, the Q->P penalty 100 (QP/best - 1) and the mask-first gap;
+    per family and cell the least-squares slope against log10(compressed weights) (families never mixed); the
+    families compared at matched scale (MATCHED).
 fp  for every published (model, order, s, b) at seed 0: v2 fp32 perplexity against the value the paper
     used (16-bit from results_full, or the 32-bit re-run from results_fix) and the relative difference.
 """
 import os
 
-from .common import (ARMS, COMBINED, LAYER_TYPES, MECH_ARMS, MQ, ORDER_TXT, PAPER_ORDERS, cell_label, finite, layer_type,
-                     load_v1, short, skey, write_csv)
+from .common import (ARMS, COMBINED, FAMILY_ORDER, GRID_SPARSITIES, LAYER_TYPES, MECH_ARMS, MQ, ORDER_TXT, PAPER_ORDERS,
+                     cell_label, cell_sort_key, compressed_weights, family, finite, layer_type, load_v1, short, size_label, skey,
+                     write_csv)
 
 # Scope of the headline counts ("X of Y cells"): the paper's grid, i.e. the E1 cells of the core models
 # (scripts/make_queues.py). Other cells (E4's 60%, E6's model) are in the per-cell CSV files.
@@ -168,6 +175,22 @@ def q2(store, e1, missing, seed=0):
     return rows
 
 
+def q2_per_model(rows):
+    """Per model (every model, seed 0), over its grid cells (25/33/50%, both bit-widths; the E1 cells for the core
+    models): cells ranked by WikiText-2 ppl, how often each order is best, and Q->P strictly worst."""
+    out = {}
+    for r in rows:
+        if r.get("seed", 0) != 0 or skey(r["sparsity"]) not in GRID_SPARSITIES:
+            continue
+        d = out.setdefault(r["model"], {"planned": 0, "cells": 0, "qp_worst": 0, **{f"best_{o}": 0 for o in PAPER_ORDERS}})
+        d["planned"] += 1
+        if r.get("wt_ppl_ranking"):
+            d["cells"] += 1
+            d[f"best_{r['wt_ppl_best']}"] += 1
+            d["qp_worst"] += r["wt_ppl_worst"] == "q_then_p" and not r["wt_ppl_tie_at_worst"]
+    return out
+
+
 def q2_summary(rows):
     rows = [r for r in rows if in_grid(r)]
     out = {"cells": len(rows), "grid_cells": len(PAPER_GRID)}
@@ -196,6 +219,8 @@ def q2_summary(rows):
 
 
 def q3(rows):
+    """Order spread range per model, bit-width and metric: over every cell (E1 and E4), and over the grid cells only
+    (25/33/50%, E4's 60% left out); grid_complete = every planned grid cell has the three orders."""
     out = []
     for model in sorted({r["model"] for r in rows}, key=[r["model"] for r in rows].index):
         for b in (4, 3):
@@ -203,50 +228,128 @@ def q3(rows):
                 R = [r for r in rows if r["model"] == model and r["bits"] == b and r.get(f"{name}_spread_pct") is not None]
                 expected = [r for r in rows if r["model"] == model and r["bits"] == b]
                 v = [r[f"{name}_spread_pct"] for r in R]
+                G = [r for r in R if skey(r["sparsity"]) in GRID_SPARSITIES]
+                Ge = [r for r in expected if skey(r["sparsity"]) in GRID_SPARSITIES]
+                g = [r[f"{name}_spread_pct"] for r in G]
                 out.append({"model": model, "bits": b, "metric": name, "n_cells": len(v), "n_cells_planned": len(expected),
                             "spread_min_pct": min(v) if v else None, "spread_max_pct": max(v) if v else None,
-                            "cells": " ".join(f"{r['cell']}:{r[f'{name}_spread_pct']:.6g}" for r in R)})
+                            "cells": " ".join(f"{r['cell']}:{r[f'{name}_spread_pct']:.6g}" for r in R),
+                            "grid_n_cells": len(g), "grid_n_planned": len(Ge), "grid_complete": bool(Ge) and len(g) == len(Ge),
+                            "grid_spread_min_pct": min(g) if g else None, "grid_spread_max_pct": max(g) if g else None})
     return out
 
 
-def family_of(model):
-    return model.split("-")[0]  # "SmolLM2", "Qwen2.5"
-
-
-def scale_fit(store, q2rows, bits=4):
-    """E6: the order spread at 4 bits against log10(compressed weights), per family and cell (never across
-    families). Spread = 100 (max - min) / min of WikiText-2 ppl over the three orders (Q3); also the
-    mask-first gap 100 |joint - P->Q| / min. Fit: least squares slope per decade of compressed weights."""
+def scale_cells(store, q2rows, seed=0):
+    """Q3 / E6 per model and cell (seed 0): the order spread 100 (max - min) / min of WikiText-2 ppl over the three
+    orders, the Q->P penalty 100 (ppl Q->P / best - 1) (0 when Q->P is best), the mask-first gap
+    100 |joint - P->Q| / best, with the model's family and compressed weights (complete = all three orders)."""
     import math
-    import numpy as np
-    pts = {}
-    for r in q2rows:
-        if r["bits"] != bits or not r.get("wt_ppl_ranking") or r.get("seed", 0) != 0:
-            continue
-        st = store.get(r["model"], "p_then_q", r["sparsity"], r["bits"], 0)
-        n = (st or {}).get("compressed_weights")
-        if not finite(n):
-            continue
-        vals = [r[f"wt_ppl_{o}"] for o in PAPER_ORDERS]
-        gap_mf = 100 * abs(r["wt_ppl_joint"] - r["wt_ppl_p_then_q"]) / min(vals)
-        pts.setdefault((family_of(r["model"]), r["cell"]), []).append(
-            {"model": r["model"], "n": n, "spread": r["wt_ppl_spread_pct"], "gap_mask_first": gap_mf})
+    weights = {m: compressed_weights(store, m) for m in store.models()}
     rows = []
-    for (fam, cell), pp in sorted(pts.items()):
-        pp.sort(key=lambda x: x["n"])
-        row = {"family": fam, "cell": cell, "models": " ".join(x["model"] for x in pp), "n_models": len(pp),
-               "compressed_weights": " ".join(str(int(x["n"])) for x in pp),
-               "spread_pct": " ".join(f"{x['spread']:.4g}" for x in pp),
-               "gap_mask_first_pct": " ".join(f"{x['gap_mask_first']:.4g}" for x in pp)}
-        if len(pp) >= 2:
-            lx = [math.log10(x["n"]) for x in pp]
-            for key in ("spread", "gap_mask_first"):
-                y = [x[key] for x in pp]
-                row[f"slope_{key}_per_decade"] = float(np.polyfit(lx, y, 1)[0])
-                row[f"{key}_shrinks_monotonically"] = all(b < a for a, b in zip(y, y[1:]))
-            row["range_ratio"] = pp[-1]["n"] / pp[0]["n"]
+    for r in q2rows:
+        if r.get("seed", 0) != seed:
+            continue
+        m, n = r["model"], weights.get(r["model"])
+        vals = {o: r.get(f"wt_ppl_{o}") for o in PAPER_ORDERS}
+        row = {"model": m, "family": family(m), "size": size_label(m), "compressed_weights": n,
+               "log10_weights": math.log10(n) if finite(n) and n > 0 else None, "cell": r["cell"], "sparsity": r["sparsity"],
+               "bits": r["bits"], "in_grid": skey(r["sparsity"]) in GRID_SPARSITIES, "complete": bool(r.get("wt_ppl_ranking"))}
+        row.update({f"wt_ppl_{o}": vals[o] for o in PAPER_ORDERS})
+        row.update(best=None, worst=None, spread_pct=None, qp_penalty_pct=None, gap_mask_first_pct=None, qp_worst=None,
+                   c4_spread_pct=r.get("c4_ppl_spread_pct"))
+        if row["complete"]:
+            lo = min(vals.values())
+            row.update(best=r["wt_ppl_best"], worst=r["wt_ppl_worst"], spread_pct=r["wt_ppl_spread_pct"],
+                       qp_penalty_pct=100 * (vals["q_then_p"] / lo - 1),
+                       gap_mask_first_pct=100 * abs(vals["joint"] - vals["p_then_q"]) / lo,
+                       qp_worst=r["wt_ppl_worst"] == "q_then_p" and not r["wt_ppl_tie_at_worst"])
         rows.append(row)
     return rows
+
+
+def _family_rank(fam):
+    return FAMILY_ORDER.index(fam) if fam in FAMILY_ORDER else len(FAMILY_ORDER)
+
+
+SCALE_KEYS = (("spread", "spread_pct"), ("gap_mask_first", "gap_mask_first_pct"), ("qp_penalty", "qp_penalty_pct"))
+
+
+def scale_fit(cell_rows):
+    """E6: per family and cell (never across families), the order spread, the mask-first gap and the Q->P penalty
+    against log10(compressed weights): least-squares slope in percentage points per decade (numpy.polyfit, degree 1)
+    over the models of the family that have the cell with all three orders, and whether the value falls with every
+    larger model. Fewer than two models: values listed, no fit."""
+    import math
+    import numpy as np
+    groups = {}
+    for r in cell_rows:
+        if r["complete"] and finite(r["compressed_weights"]):
+            groups.setdefault((r["family"], r["sparsity"], r["bits"]), []).append(r)
+    rows = []
+    for (fam, s, b), pp in sorted(groups.items(), key=lambda kv: (_family_rank(kv[0][0]), cell_sort_key(kv[0][1:]))):
+        pp = sorted(pp, key=lambda x: x["compressed_weights"])
+        row = {"family": fam, "cell": cell_label(s, b), "sparsity": s, "bits": b, "models": " ".join(x["model"] for x in pp),
+               "n_models": len(pp), "compressed_weights": " ".join(str(int(x["compressed_weights"])) for x in pp)}
+        for key, col in SCALE_KEYS:
+            row[col] = " ".join(f"{x[col]:.4g}" for x in pp)
+        if len(pp) >= 2:
+            lx = [math.log10(x["compressed_weights"]) for x in pp]
+            for key, col in SCALE_KEYS:
+                y = [x[col] for x in pp]
+                row[f"slope_{key}_per_decade"] = float(np.polyfit(lx, y, 1)[0])
+                row[f"{key}_shrinks_monotonically"] = all(b2 < a2 for a2, b2 in zip(y, y[1:]))
+            row["range_ratio"] = pp[-1]["compressed_weights"] / pp[0]["compressed_weights"]
+        rows.append(row)
+    return rows
+
+
+# Cross-family comparison at matched scale (compressed weights): tag, label, models (one per family where possible).
+MATCHED = (("Small", "about 0.3B", ("SmolLM2-360M", "Qwen2.5-0.5B")),
+           ("Billion", "about 1.1-1.6B", ("SmolLM2-1.7B", "Qwen2.5-1.5B", "OLMo-2-0425-1B")))
+
+
+def matched_scale(cell_rows):
+    """Per matched-scale group and cell: the spread and the Q->P penalty of each model of the group (different
+    families at about the same number of compressed weights), their range and ratio, and the size ratio."""
+    rows = []
+    for tag, label, models in MATCHED:
+        cells = sorted({(r["sparsity"], r["bits"]) for r in cell_rows if r["model"] in models}, key=cell_sort_key)
+        for s, b in cells:
+            R = [r for r in cell_rows if r["model"] in models and (r["sparsity"], r["bits"]) == (s, b)]
+            ok = sorted([r for r in R if r["complete"] and finite(r["compressed_weights"])], key=lambda r: r["compressed_weights"])
+            row = {"group": tag, "label": label, "cell": cell_label(s, b), "sparsity": s, "bits": b,
+                   "models_planned": " ".join(r["model"] for r in R), "n_planned": len(R), "n_models": len(ok),
+                   "models": " ".join(r["model"] for r in ok), "families": " ".join(r["family"] for r in ok),
+                   "compressed_weights": " ".join(str(int(r["compressed_weights"])) for r in ok),
+                   "spread_pct": " ".join(f"{r['model']}:{r['spread_pct']:.4g}" for r in ok),
+                   "qp_penalty_pct": " ".join(f"{r['model']}:{r['qp_penalty_pct']:.4g}" for r in ok),
+                   "complete": len(ok) == len(R)}
+            if len(ok) >= 2:
+                lo, hi = min(ok, key=lambda r: r["spread_pct"]), max(ok, key=lambda r: r["spread_pct"])
+                plo, phi = min(ok, key=lambda r: r["qp_penalty_pct"]), max(ok, key=lambda r: r["qp_penalty_pct"])
+                row.update(spread_min_pct=lo["spread_pct"], spread_max_pct=hi["spread_pct"],
+                           spread_gap_pp=hi["spread_pct"] - lo["spread_pct"],
+                           spread_ratio=hi["spread_pct"] / lo["spread_pct"] if lo["spread_pct"] > 0 else None,
+                           largest_spread=hi["model"], smallest_spread=lo["model"],
+                           qp_penalty_min_pct=plo["qp_penalty_pct"], qp_penalty_max_pct=phi["qp_penalty_pct"],
+                           largest_qp_penalty=phi["model"], smallest_qp_penalty=plo["model"],
+                           weights_ratio=ok[-1]["compressed_weights"] / ok[0]["compressed_weights"])
+            rows.append(row)
+    return rows
+
+
+FIG_SCALE_CELLS = ("25%+4", "50%+4", "50%+3")
+
+
+def fig_scale_rows(cell_rows):
+    """The data of paper/generated/fig_order_scale.pdf (one row per plotted point)."""
+    out = []
+    for cell in FIG_SCALE_CELLS:
+        for r in sorted([r for r in cell_rows if r["cell"] == cell and r["complete"] and finite(r["compressed_weights"])],
+                        key=lambda r: (_family_rank(r["family"]), r["compressed_weights"])):
+            out.append({k: r[k] for k in ("cell", "family", "model", "size", "compressed_weights", "spread_pct",
+                                          "qp_penalty_pct", "best", "worst")})
+    return out
 
 
 # ----------------------------------------------------------------------------- fp16 vs fp32
@@ -333,56 +436,94 @@ def mechanism_e3(store, missing, seed=0):
     return rows
 
 
-def seed_stability(store):
-    """4-bit cells of the models planned with several calibration seeds (E5): the best order by WikiText-2
-    ppl for every seed, and whether it is the same for all of them (macro R30)."""
-    rows = []
+SEED_BITS = (4, 3)
+SEED_PAIRS = (("joint", "p_then_q"), ("joint", "q_then_p"), ("p_then_q", "q_then_p"))
+
+
+def seed_models(store):
+    """Models planned with calibration seeds > 0 (E5), in the order of store.models()."""
     multi = {v["short"] for v in store.plan.values() if v["seed"] > 0}
-    for m in [x for x in store.models() if x in multi]:
-        seeds = sorted({0} | {v["seed"] for v in store.plan.values() if v["short"] == m})
-        for s, b in store.cells(m, 0, PAPER_ORDERS):
-            if b != 4:
-                continue
-            best = {}
+    return [m for m in store.models() if m in multi]
+
+
+def model_seeds(store, m):
+    return sorted({0} | {v["seed"] for v in store.plan.values() if v["short"] == m})
+
+
+def _wt_ppl(store, m, o, s, b, sd):
+    return ((store.get(m, o, s, b, sd) or {}).get("wikitext2") or {}).get("ppl")
+
+
+def _seed_cells(store, m, bits):
+    """The (s, b) cells of a multi-seed model at these bit-widths (every seed-0 cell, E1 and E4)."""
+    return [(s, b) for s, b in store.cells(m, 0, PAPER_ORDERS) if b in bits]
+
+
+def _e5_cells(store, m):
+    return {(round(v["sparsity"], 4), v["bits"]) for v in store.plan.values()
+            if v["short"] == m and v["seed"] > 0 and v["order"] in PAPER_ORDERS}
+
+
+def seed_stability(store, bits=SEED_BITS):
+    """Cells of the models planned with several calibration seeds (E5), 4- and 3-bit: the best and the worst order
+    by WikiText-2 ppl for every seed, whether the best is the same for all of them (macro R30) and whether Q->P is
+    strictly the worst in every seed. complete = every seed has the three orders."""
+    rows = []
+    for m in seed_models(store):
+        seeds, e5 = model_seeds(store, m), _e5_cells(store, m)
+        for s, b in _seed_cells(store, m, bits):
+            best, worst = {}, {}
             for sd in seeds:
-                vals = {o: ((store.get(m, o, s, b, sd) or {}).get("wikitext2") or {}).get("ppl") for o in PAPER_ORDERS}
+                vals = {o: _wt_ppl(store, m, o, s, b, sd) for o in PAPER_ORDERS}
                 if all(finite(v) for v in vals.values()):
                     best[sd] = min(PAPER_ORDERS, key=lambda o: (vals[o], PAPER_ORDERS.index(o)))
+                    worst[sd] = "q_then_p" if vals["q_then_p"] > max(vals["joint"], vals["p_then_q"]) else \
+                        max(PAPER_ORDERS, key=lambda o: (vals[o], -PAPER_ORDERS.index(o)))
             complete = len(best) == len(seeds)
-            rows.append({"model": m, "cell": cell_label(s, b), "seeds": " ".join(map(str, seeds)),
+            rows.append({"model": m, "bits": b, "cell": cell_label(s, b), "sparsity": s, "e5_cell": (s, b) in e5,
+                         "seeds": " ".join(map(str, seeds)), "seeds_present": " ".join(map(str, sorted(best))),
                          "best_by_seed": " ".join(f"{sd}:{ORDER_TXT[o]}" for sd, o in sorted(best.items())),
-                         "complete": complete, "stable": complete and len(set(best.values())) == 1})
+                         "worst_by_seed": " ".join(f"{sd}:{ORDER_TXT[o]}" for sd, o in sorted(worst.items())),
+                         "complete": complete, "stable": complete and len(set(best.values())) == 1,
+                         "qp_worst_all_seeds": complete and all(o == "q_then_p" for o in worst.values())})
     return rows
 
 
-def seed_pairs(store, bits=4):
-    """E5 paired comparisons of the orders over calibration seeds (4-bit cells of the multi-seed models).
+def seed_pairs(store, bits=SEED_BITS):
+    """E5 paired comparisons of the orders over calibration seeds (4- and 3-bit cells of the multi-seed models).
 
     Per (model, cell, pair of orders): the per-seed log ratio of WikiText-2 perplexity (> 0 = the second order
     is better), its mean and sample sd, a paired t-test over seeds (scipy ttest_rel on log ppl; with 3 seeds it
     has 2 degrees of freedom), and whether the sign is the same in every seed. Per (model, cell, seed): whether
     joint is the best of the three orders and whether it beats P->Q (the draft's "joint best in 11 of 12";
-    among the mask-first orders, joint vs P->Q).
+    among the mask-first orders, joint vs P->Q), the worst order and whether Q->P is strictly the worst;
+    cell_complete = every seed of the cell has the three orders.
     """
     import math
     import statistics as st
+    if isinstance(bits, int):
+        bits = (bits,)
     rows, best = [], []
-    multi = {v["short"] for v in store.plan.values() if v["seed"] > 0}
-    for m in [x for x in store.models() if x in multi]:
-        seeds = sorted({0} | {v["seed"] for v in store.plan.values() if v["short"] == m})
-        for s, b in store.cells(m, 0, PAPER_ORDERS):
-            if b != bits:
-                continue
-            ppl = {(o, sd): ((store.get(m, o, s, b, sd) or {}).get("wikitext2") or {}).get("ppl") for o in PAPER_ORDERS for sd in seeds}
+    for m in seed_models(store):
+        seeds, e5 = model_seeds(store, m), _e5_cells(store, m)
+        for s, b in _seed_cells(store, m, bits):
+            ppl = {(o, sd): _wt_ppl(store, m, o, s, b, sd) for o in PAPER_ORDERS for sd in seeds}
+            cell_best = []
             for sd in seeds:
                 v = {o: ppl[(o, sd)] for o in PAPER_ORDERS}
                 if all(finite(x) for x in v.values()):
                     bo = min(PAPER_ORDERS, key=lambda o: (v[o], PAPER_ORDERS.index(o)))
-                    best.append({"model": m, "cell": cell_label(s, b), "seed": sd, "best": bo, "joint_best": bo == "joint",
-                                 "joint_beats_pq": v["joint"] < v["p_then_q"]})
-            for a, c in (("joint", "p_then_q"), ("joint", "q_then_p"), ("p_then_q", "q_then_p")):
+                    qw = v["q_then_p"] > max(v["joint"], v["p_then_q"])
+                    wo = "q_then_p" if qw else max(PAPER_ORDERS, key=lambda o: (v[o], -PAPER_ORDERS.index(o)))
+                    cell_best.append({"model": m, "bits": b, "cell": cell_label(s, b), "seed": sd, "best": bo, "worst": wo,
+                                      "joint_best": bo == "joint", "joint_beats_pq": v["joint"] < v["p_then_q"],
+                                      "qp_worst": qw, "e5_cell": (s, b) in e5})
+            for x in cell_best:
+                x["cell_complete"] = len(cell_best) == len(seeds)
+            best += cell_best
+            for a, c in SEED_PAIRS:
                 d = [math.log(ppl[(c, sd)] / ppl[(a, sd)]) for sd in seeds if finite(ppl[(a, sd)]) and finite(ppl[(c, sd)])]
-                row = {"model": m, "cell": cell_label(s, b), "order_a": a, "order_b": c, "n_seeds": len(d),
+                row = {"model": m, "bits": b, "cell": cell_label(s, b), "order_a": a, "order_b": c, "n_seeds": len(d),
                        "complete": len(d) == len(seeds), "mean_log_ratio_b_over_a": st.mean(d) if d else None,
                        "sd_log_ratio": st.stdev(d) if len(d) > 1 else None,
                        "a_better_all_seeds": bool(d) and all(x > 0 for x in d), "b_better_all_seeds": bool(d) and all(x < 0 for x in d)}
@@ -396,15 +537,87 @@ def seed_pairs(store, bits=4):
     return rows, best
 
 
+def seed_ppl_orders(store, bits=SEED_BITS):
+    """Mean and sample sd over calibration seeds of WikiText-2 ppl (also C4 ppl and KL), per model, bit-width, cell
+    and order, for the E5 cells (and the quant-only state of each bit-width, cell = 'b-bit')."""
+    import statistics as st
+    rows = []
+    for m in seed_models(store):
+        seeds, e5 = model_seeds(store, m), _e5_cells(store, m)
+        for b in bits:
+            cfgs = [("quant", 0.0, b)] + [(o, s, bb) for s, bb in sorted(e5, key=cell_sort_key) if bb == b for o in PAPER_ORDERS]
+            for o, s, bb in cfgs:
+                if not any(store.is_planned(m, o, s, bb, sd) or store.get(m, o, s, bb, sd) for sd in seeds if sd > 0):
+                    continue
+                row = {"model": m, "bits": bb, "cell": f"{bb}-bit" if o == "quant" else cell_label(s, bb), "sparsity": s,
+                       "order": o, "seeds_planned": " ".join(map(str, seeds))}
+                lines = {sd: store.get(m, o, s, bb, sd) for sd in seeds}
+                row["seeds_present"] = " ".join(str(sd) for sd, r in lines.items() if r is not None)
+                for key, get in (("wt_ppl", lambda r: (r.get("wikitext2") or {}).get("ppl")),
+                                 ("c4_ppl", lambda r: (r.get("c4") or {}).get("ppl")),
+                                 ("wt_kl", lambda r: (r.get("wikitext2") or {}).get("kl"))):
+                    v = {sd: get(r) for sd, r in lines.items() if r is not None and finite(get(r))}
+                    row[f"{key}_n"] = len(v)
+                    row[f"{key}_mean"] = st.mean(v.values()) if v else None
+                    row[f"{key}_sd"] = st.stdev(v.values()) if len(v) > 1 else None
+                    if key == "wt_ppl":
+                        row["wt_ppl_sd_pct"] = 100 * row["wt_ppl_sd"] / row["wt_ppl_mean"] if finite(row["wt_ppl_sd"]) else None
+                        for sd in seeds:
+                            row[f"wt_ppl_seed{sd}"] = v.get(sd)
+                row["complete"] = row["wt_ppl_n"] == len(seeds)
+                rows.append(row)
+    return rows
+
+
+def seed_overview(store, stability, pairs, best, e1_seeds):
+    """Counts for the E5 macros, per scope (every multi-seed model pooled = 'all', or one model) and bit-width
+    (4, 3, or 'both'). Cells count only when every seed has the three orders (complete); (cell, seed) pairs only
+    in complete cells; the seed sd only for configurations with three seeds."""
+    out = []
+    for m in [None] + seed_models(store):
+        for b in (4, 3, None):
+            def ok(r):
+                return (m is None or r["model"] == m) and (b is None or int(r["bits"]) == b)
+            S_ = [r for r in stability if ok(r) and r["complete"]]
+            runs = [r for r in best if ok(r) and r["cell_complete"]]
+            row = {"model": m or "all", "bits": b or "both", "cells": len(S_), "best_stable": sum(r["stable"] for r in S_),
+                   "qp_worst_all_seeds": sum(r["qp_worst_all_seeds"] for r in S_), "runs": len(runs),
+                   "runs_qp_worst": sum(r["qp_worst"] for r in runs), "runs_joint_best": sum(r["joint_best"] for r in runs),
+                   "runs_joint_beats_pq": sum(r["joint_beats_pq"] for r in runs),
+                   "models_complete": " ".join(x for x in seed_models(store) if any(r["model"] == x for r in S_))}
+            for a, c in SEED_PAIRS:
+                rr = [r for r in pairs if ok(r) and r["order_a"] == a and r["order_b"] == c and r["complete"]]
+                row[f"pair_{a}_{c}_cells"] = len(rr)
+                row[f"pair_{a}_{c}_a_all_seeds"] = sum(r["a_better_all_seeds"] for r in rr)
+                row[f"pair_{a}_{c}_sig"] = sum(finite(r.get("p_paired_t")) and r["p_paired_t"] < 0.05 for r in rr)
+            for name, sel in (("single", ("prune", "quant")), ("combined", COMBINED), ("any", ("prune", "quant") + COMBINED)):
+                v = [100 * r["wt_ppl_sd"] / r["wt_ppl_mean"] for r in e1_seeds if r["order"] in sel and r["n"] >= 3
+                     and (m is None or r["model"] == m) and (b is None or int(r["bits"]) == b)
+                     and finite(r.get("wt_ppl_sd")) and finite(r.get("wt_ppl_mean"))]
+                row[f"sd_max_{name}_pct"] = max(v) if v else None
+            states = [r for r in store.states.values() if int(r.get("seed", 0)) > 0 and (m is None or short(r["model"]) == m)
+                      and (b is None or int(r["bits"]) == b)]
+            planned = [v for v in store.plan.values() if v["seed"] > 0 and (m is None or v["short"] == m)
+                       and (b is None or v["bits"] == b)]
+            row["states"], row["states_planned"] = len(states), len(planned)
+            out.append(row)
+    return out
+
+
 def write(res, paths):
     R = paths.reports
     write_csv(os.path.join(R, "seed_order_stability.csv"), res["seed_stability"])
     write_csv(os.path.join(R, "seed_order_pairs.csv"), res["seed_pairs"])
     write_csv(os.path.join(R, "seed_best_order.csv"), res["seed_best"])
+    write_csv(os.path.join(R, "seed_ppl_orders.csv"), res["seed_ppl"])
+    write_csv(os.path.join(R, "seed_overview.csv"), res["seed_overview"])
     write_csv(os.path.join(R, "q1_layer_interaction.csv"), res["q1"])
     write_csv(os.path.join(R, "q2_order_ranking.csv"), res["q2"])
     write_csv(os.path.join(R, "q3_order_spread.csv"), res["q3"])
     write_csv(os.path.join(R, "e6_scale_spread.csv"), res["scale"])
+    write_csv(os.path.join(R, "scale_family_cells.csv"), res["scale_cells"])
+    write_csv(os.path.join(R, "scale_matched.csv"), res["scale_matched"])
+    write_csv(os.path.join(R, "fig_order_scale.csv"), res["fig_scale"])
     write_csv(os.path.join(R, "fp16_vs_fp32.csv"), res["fp"])
     write_csv(os.path.join(R, "e3_mechanism.csv"), res["e3"])
 
@@ -414,11 +627,17 @@ def analyze(store, e1, paths, missing):
     res["q1_summary"] = q1_summary(res["q1"])
     res["q2"] = q2(store, e1, missing)
     res["q2_summary"] = q2_summary(res["q2"])
+    res["q2_per_model"] = q2_per_model(res["q2"])
     res["q3"] = q3(res["q2"])
-    res["scale"] = scale_fit(store, res["q2"])
+    res["scale_cells"] = scale_cells(store, res["q2"])
+    res["scale"] = scale_fit(res["scale_cells"])
+    res["scale_matched"] = matched_scale(res["scale_cells"])
+    res["fig_scale"] = fig_scale_rows(res["scale_cells"])
     res["e3"] = mechanism_e3(store, missing)
     res["seed_stability"] = seed_stability(store)
     res["seed_pairs"], res["seed_best"] = seed_pairs(store)
+    res["seed_ppl"] = seed_ppl_orders(store)
+    res["seed_overview"] = seed_overview(store, res["seed_stability"], res["seed_pairs"], res["seed_best"], e1.get("seeds", []))
     res["fp"], v1 = fp_compare(store, paths, missing)
     res["fp_summary"] = fp_summary(res["fp"])
     res["v1_check"] = v1["check"] if v1 else None

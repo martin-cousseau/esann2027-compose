@@ -63,6 +63,150 @@
    "cells": 2,
    "cells_same_best": 1,
    "cells_same_ranking": 1
+  },
+  {
+   "model": "Qwen2.5-1.5B",
+   "n_states": 2,
+   "rho_wt_kl": null,
+   "p_wt_kl": null,
+   "n_wt_kl": 2,
+   "rho_c4_kl": null,
+   "p_c4_kl": null,
+   "n_c4_kl": 2,
+   "rho_wt_kl_combined": null,
+   "p_wt_kl_combined": null,
+   "n_combined": 0,
+   "cells": 0,
+   "cells_same_best": 0,
+   "cells_same_ranking": 0
+  }
+ ],
+ "joint_smallest": [
+  {
+   "scope": "all",
+   "bits": 4,
+   "cells": 14,
+   "joint_smallest": 14,
+   "not_joint": ""
+  },
+  {
+   "scope": "all",
+   "bits": 3,
+   "cells": 9,
+   "joint_smallest": 5,
+   "not_joint": "SmolLM2-135M 25%+3 SmolLM2-360M 25%+3 Qwen2.5-0.5B 25%+3 Qwen2.5-0.5B 33%+3"
+  },
+  {
+   "scope": "core",
+   "bits": 4,
+   "cells": 12,
+   "joint_smallest": 12,
+   "not_joint": ""
+  },
+  {
+   "scope": "core",
+   "bits": 3,
+   "cells": 9,
+   "joint_smallest": 5,
+   "not_joint": "SmolLM2-135M 25%+3 SmolLM2-360M 25%+3 Qwen2.5-0.5B 25%+3 Qwen2.5-0.5B 33%+3"
+  },
+  {
+   "scope": "SmolLM2-135M",
+   "bits": 4,
+   "cells": 4,
+   "joint_smallest": 4,
+   "not_joint": ""
+  },
+  {
+   "scope": "SmolLM2-135M",
+   "bits": 3,
+   "cells": 3,
+   "joint_smallest": 2,
+   "not_joint": "SmolLM2-135M 25%+3"
+  },
+  {
+   "scope": "SmolLM2-360M",
+   "bits": 4,
+   "cells": 4,
+   "joint_smallest": 4,
+   "not_joint": ""
+  },
+  {
+   "scope": "SmolLM2-360M",
+   "bits": 3,
+   "cells": 3,
+   "joint_smallest": 2,
+   "not_joint": "SmolLM2-360M 25%+3"
+  },
+  {
+   "scope": "Qwen2.5-0.5B",
+   "bits": 4,
+   "cells": 4,
+   "joint_smallest": 4,
+   "not_joint": ""
+  },
+  {
+   "scope": "Qwen2.5-0.5B",
+   "bits": 3,
+   "cells": 3,
+   "joint_smallest": 1,
+   "not_joint": "Qwen2.5-0.5B 25%+3 Qwen2.5-0.5B 33%+3"
+  },
+  {
+   "scope": "SmolLM2-1.7B",
+   "bits": 4,
+   "cells": 2,
+   "joint_smallest": 2,
+   "not_joint": ""
+  },
+  {
+   "scope": "SmolLM2-1.7B",
+   "bits": 3,
+   "cells": 0,
+   "joint_smallest": 0,
+   "not_joint": ""
+  },
+  {
+   "scope": "Qwen2.5-1.5B",
+   "bits": 4,
+   "cells": 0,
+   "joint_smallest": 0,
+   "not_joint": ""
+  },
+  {
+   "scope": "Qwen2.5-1.5B",
+   "bits": 3,
+   "cells": 0,
+   "joint_smallest": 0,
+   "not_joint": ""
+  },
+  {
+   "scope": "Qwen2.5-3B",
+   "bits": 4,
+   "cells": 0,
+   "joint_smallest": 0,
+   "not_joint": ""
+  },
+  {
+   "scope": "Qwen2.5-3B",
+   "bits": 3,
+   "cells": 0,
+   "joint_smallest": 0,
+   "not_joint": ""
+  },
+  {
+   "scope": "OLMo-2-0425-1B",
+   "bits": 4,
+   "cells": 0,
+   "joint_smallest": 0,
+   "not_joint": ""
+  },
+  {
+   "scope": "OLMo-2-0425-1B",
+   "bits": 3,
+   "cells": 0,
+   "joint_smallest": 0,
+   "not_joint": ""
   }
  ]
 }

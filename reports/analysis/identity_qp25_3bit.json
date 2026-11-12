@@ -65,6 +65,18 @@
  {
   "model": "Qwen2.5-1.5B",
   "q_then_p_state": null,
+  "quant3_state": "Qwen2.5-1.5B__quant__s0.0000__b3__seed0__float32",
+  "status": "pending"
+ },
+ {
+  "model": "Qwen2.5-3B",
+  "q_then_p_state": null,
+  "quant3_state": null,
+  "status": "pending"
+ },
+ {
+  "model": "OLMo-2-0425-1B",
+  "q_then_p_state": null,
   "quant3_state": null,
   "status": "pending"
  }

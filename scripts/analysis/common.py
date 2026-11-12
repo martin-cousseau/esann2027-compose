@@ -83,8 +83,65 @@ def cell_sort_key(cell):
     return (-int(b), float(s))
 
 
+# Model families (E6: scale within a family, never fitted across families) and the sparsities of the E1 grid.
+FAMILIES = (("SmolLM2", "SmolLM2-"), ("Qwen2.5", "Qwen2.5-"), ("OLMo-2", "OLMo-2-"))
+FAMILY_ORDER = tuple(f for f, _ in FAMILIES)
+GRID_SPARSITIES = tuple(round(float(s), 4) for s in MQ.SPARS)   # 25, 33.3, 50 % (E4's 60% is outside the grid)
+
+
+def family(model):
+    """'SmolLM2', 'Qwen2.5' or 'OLMo-2' from a short model name (else the part before the first hyphen)."""
+    for fam, prefix in FAMILIES:
+        if model.startswith(prefix):
+            return fam
+    return model.split("-")[0]
+
+
+def size_label(model):
+    """The size part of a short model name: SmolLM2-135M -> 135M, OLMo-2-0425-1B -> 1B."""
+    return model.split("-")[-1]
+
+
+def compressed_weights(store, model):
+    """Number of compressed weights (all linear layers of all decoder blocks) of a model, from the field
+    `compressed_weights` of its result lines (the dense line first); None while the model has no line."""
+    dense = store.dense(model)
+    if dense is not None and finite(dense.get("compressed_weights")):
+        return dense["compressed_weights"]
+    for sid in sorted(store.model_states(model)):
+        if finite(store.states[sid].get("compressed_weights")):
+            return store.states[sid]["compressed_weights"]
+    return None
+
+
 def finite(x):
     return isinstance(x, (int, float)) and not isinstance(x, bool) and math.isfinite(x)
+
+
+def read_items_file(path, sha256=None):
+    """(items, problem): the per-item records of a .json.gz file, checked against its sha256 when given."""
+    if not path or not os.path.exists(path):
+        return None, "items file not mirrored yet"
+    with open(path, "rb") as f:
+        blob = f.read()
+    if sha256 and hashlib.sha256(blob).hexdigest() != sha256:
+        return None, "items file sha256 differs from the result line (incomplete copy?)"
+    try:
+        return json.loads(gzip.decompress(blob)), None
+    except Exception as e:  # noqa: BLE001
+        return None, f"items file unreadable ({type(e).__name__})"
+
+
+def binary_items(items, kind="v2", tasks=None):
+    """{task: {doc_id: 0/1}} from per-item records: the v2 main metric ("v2") or the paper's metric ("paper")."""
+    if items is None:
+        return None
+    out = {}
+    for t in tasks or P.ZERO_SHOT_TASKS:
+        m = task_metric(t, kind)
+        if t in items and m and m in items[t]:
+            out[t] = {d: int(round(v)) for d, v in zip(items[t]["doc_id"], items[t][m])}
+    return out
 
 
 def layer_type(name):
@@ -322,38 +379,15 @@ class Store:
             return self._items[sid]
         out, r = None, self.states.get(sid)
         if r is not None and r.get("items_file"):
-            path = self.items_path(sid)
-            if path is None:
-                self.item_problems[sid] = "items file not mirrored yet"
-            else:
-                with open(path, "rb") as f:
-                    blob = f.read()
-                want = r.get("items_sha256")
-                if want and hashlib.sha256(blob).hexdigest() != want:
-                    self.item_problems[sid] = "items file sha256 differs from the result line (incomplete copy?)"
-                else:
-                    try:
-                        out = json.loads(gzip.decompress(blob))
-                    except Exception as e:  # noqa: BLE001
-                        self.item_problems[sid] = f"items file unreadable ({type(e).__name__})"
+            out, problem = read_items_file(self.items_path(sid), r.get("items_sha256"))
+            if problem:
+                self.item_problems[sid] = problem
         self._items[sid] = out
         return out
 
     def binary(self, sid, kind="v2", tasks=None):
         """{task: {doc_id: 0/1}}: v2 main metric per task ("v2") or the paper's metric ("paper")."""
-        items = self.items(sid)
-        if items is None:
-            return None
-        tasks = tasks or P.ZERO_SHOT_TASKS
-        out = {}
-        for t in tasks:
-            if t not in items:
-                continue
-            m = task_metric(t, kind)
-            if m is None or m not in items[t]:
-                continue
-            out[t] = {d: int(round(v)) for d, v in zip(items[t]["doc_id"], items[t][m])}
-        return out
+        return binary_items(self.items(sid), kind, tasks)
 
 
 def task_metric(task, kind):

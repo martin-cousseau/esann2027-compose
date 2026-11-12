@@ -13,6 +13,8 @@ C = 16 / b (the dense model C = 1), and the CER of quantization is its own ratio
               says A grows monotonically with the CER difference CER_Q - CER_P: Spearman rho per model.
 A CER beyond the strongest quantization point on the curve is reported as such (no extrapolation); the
 prediction is still defined, because that pruning is stronger than every quantizer on the curve.
+Metrics: WikiText-2 and C4 perplexity, KL (WikiText-2), Sr-extended (9 tasks) and the paper's Sr (ARC-E acc, PIQA
+acc, HellaSwag acc_norm); for the two Sr the outcome also gets the paired-bootstrap interval of Sr(P->Q) - Sr(Q->P).
 
 Harma et al. (ICLR 2025, arXiv 2405.20935):
   threshold   their orthogonality threshold (Def. 3.11, Eq. 12) for a lower-is-better metric M:
@@ -32,12 +34,14 @@ calibration-seed runs (E5) have no pruning-only states, so neither rule can be e
 import math
 import os
 
-from .common import PAPER_ORDERS, ORDER_TXT, cell_label, finite, write_csv, write_json
+from .common import MQ, PAPER_ORDERS, ORDER_TXT, cell_label, finite, write_csv, write_json
 from .questions import _metric
 
 # name, label, sign (+1 = lower is better), log-scale advantage
 KIM_METRICS = (("wt_ppl", "WikiText-2 ppl", 1, True), ("c4_ppl", "C4 ppl", 1, True),
-               ("wt_kl", "KL (WikiText-2)", 1, True), ("sr9_v2", "Sr-extended (9 tasks)", -1, False))
+               ("wt_kl", "KL (WikiText-2)", 1, True), ("sr9_v2", "Sr-extended (9 tasks)", -1, False),
+               ("sr3_paper", "Sr (ARC-E acc, PIQA acc, HellaSwag acc_norm: the paper's Sr)", -1, False))
+NO_KL = {m.split("/")[-1] for m in MQ.E6_NO_KL}   # run without KL by design (a second fp32 copy does not fit)
 HARMA_METRICS = (("wt_ppl", "WikiText-2 ppl"), ("c4_ppl", "C4 ppl"))
 COUNT_FAMILIES = ("E1", "E6")
 BASE_BITS = 16  # Kim et al.: C_Q = B_orig / B_Q, starting from a 16-bit model
@@ -105,10 +109,10 @@ def _scope(store, model, s, b, seed=0):
     return "unplanned"
 
 
-def _sr_order_ci(e1, model, s, b, seed):
-    """Paired-bootstrap 95% interval of Sr-extended(P->Q) - Sr-extended(Q->P) from the E1 analysis, or None."""
+def _sr_order_ci(e1, model, s, b, seed, sr_set="sr9_v2"):
+    """Paired-bootstrap 95% interval of Sr(P->Q) - Sr(Q->P) (Sr set sr_set) from the E1 analysis, or None."""
     for x in e1.get("sr_orders", []):
-        if (x["model"] == model and x["cell"] == cell_label(s, b) and x["seed"] == seed and x["set"] == "sr9_v2"
+        if (x["model"] == model and x["cell"] == cell_label(s, b) and x["seed"] == seed and x["set"] == sr_set
                 and {x["order_a"], x["order_b"]} == {"p_then_q", "q_then_p"}):
             f = 1 if x["order_a"] == "p_then_q" else -1
             lo, hi = sorted((f * x["lo"], f * x["hi"]))
@@ -132,7 +136,9 @@ def kim(store, e1, missing, seed=0):
                 mp, mq = _metric(store, e1, pr["state_id"], name), _metric(store, e1, qr["state_id"], name)
                 mpq, mqp = _metric(store, e1, pq["state_id"], name), _metric(store, e1, qp["state_id"], name)
                 if not all(finite(v) for v in (mp, mq, mpq, mqp)):
-                    if name != "sr9_v2" or any(st.get("items_file") for st in (pr, qr, pq, qp)):
+                    if name == "wt_kl" and model in NO_KL:
+                        continue  # not measured by design (scripts/make_queues.py E6_NO_KL)
+                    if not name.startswith("sr") or any(st.get("items_file") for st in (pr, qr, pq, qp)):
                         missing.add("E7 order rules (Kim)", f"{model} {cell_label(s, b)} {label}", "metric not available for all four states")
                     continue
                 c_p, where = cer(curves[name], mp, sign)
@@ -148,7 +154,7 @@ def kim(store, e1, missing, seed=0):
                 direct = "p_then_q" if sign * mp < sign * mq else ("q_then_p" if sign * mp > sign * mq else "tie")
                 adv = _advantage(mqp, mpq, sign, log)
                 obs = None if adv is None else ("p_then_q" if adv > 0 else ("q_then_p" if adv < 0 else "tie"))
-                ci = _sr_order_ci(e1, model, s, b, seed) if name == "sr9_v2" else None
+                ci = _sr_order_ci(e1, model, s, b, seed, name) if name.startswith("sr") else None
                 sig = None if ci is None else (ci[1] > 0 or ci[2] < 0)  # interval excludes 0
                 rows.append({
                     "model": model, "family": fam, "in_counts": fam in COUNT_FAMILIES, "seed": seed,
@@ -240,7 +246,7 @@ def summarize(kim_rows, harma_rows):
                  "prediction_disagrees_direct": sum(not r["prediction_agrees_direct"] for r in R),
                  "smallest_abs_advantage": min((abs(r["advantage_pq"]) for r in R), default=None)}
             S_ = [r for r in D if r["observed_significant"]]
-            if name == "sr9_v2":  # outcome decided by a paired-bootstrap interval that excludes 0
+            if name.startswith("sr"):  # outcome decided by a paired-bootstrap interval that excludes 0
                 k.update({"significant": len(S_), "significant_correct": sum(r["correct"] for r in S_)})
             if m != "all":  # Hypothesis 1: monotone in the CER difference, within one model
                 k["rho"], k["rho_p"], k["rho_n"] = _spearman([(r["cer_diff"], r["advantage_pq"]) for r in R])

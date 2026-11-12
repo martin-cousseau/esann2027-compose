@@ -1,0 +1,13 @@
+model,bits,cells,best_stable,qp_worst_all_seeds,runs,runs_qp_worst,runs_joint_best,runs_joint_beats_pq,models_complete,pair_joint_p_then_q_cells,pair_joint_p_then_q_a_all_seeds,pair_joint_p_then_q_sig,pair_joint_q_then_p_cells,pair_joint_q_then_p_a_all_seeds,pair_joint_q_then_p_sig,pair_p_then_q_q_then_p_cells,pair_p_then_q_q_then_p_a_all_seeds,pair_p_then_q_q_then_p_sig,sd_max_single_pct,sd_max_combined_pct,sd_max_any_pct,states,states_planned
+all,4,3,3,3,9,9,9,9,SmolLM2-360M,3,3,3,3,3,3,3,3,3,0.19408977311203746,0.9954375710099397,0.9954375710099397,21,60
+all,3,0,0,0,0,0,0,0,,0,0,0,0,0,0,0,0,0,,,,0,60
+all,both,3,3,3,9,9,9,9,SmolLM2-360M,3,3,3,3,3,3,3,3,3,0.19408977311203746,0.9954375710099397,0.9954375710099397,21,120
+SmolLM2-135M,4,0,0,0,0,0,0,0,,0,0,0,0,0,0,0,0,0,,,,0,20
+SmolLM2-135M,3,0,0,0,0,0,0,0,,0,0,0,0,0,0,0,0,0,,,,0,20
+SmolLM2-135M,both,0,0,0,0,0,0,0,,0,0,0,0,0,0,0,0,0,,,,0,40
+SmolLM2-360M,4,3,3,3,9,9,9,9,SmolLM2-360M,3,3,3,3,3,3,3,3,3,0.19408977311203746,0.9954375710099397,0.9954375710099397,20,20
+SmolLM2-360M,3,0,0,0,0,0,0,0,,0,0,0,0,0,0,0,0,0,,,,0,20
+SmolLM2-360M,both,3,3,3,9,9,9,9,SmolLM2-360M,3,3,3,3,3,3,3,3,3,0.19408977311203746,0.9954375710099397,0.9954375710099397,20,40
+Qwen2.5-0.5B,4,0,0,0,0,0,0,0,,0,0,0,0,0,0,0,0,0,,,,1,20
+Qwen2.5-0.5B,3,0,0,0,0,0,0,0,,0,0,0,0,0,0,0,0,0,,,,0,20
+Qwen2.5-0.5B,both,0,0,0,0,0,0,0,,0,0,0,0,0,0,0,0,0,,,,1,40
