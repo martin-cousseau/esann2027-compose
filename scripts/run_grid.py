@@ -32,6 +32,8 @@ sys.path.insert(0, ROOT)
 from src_v2 import pipeline as P  # noqa: E402
 
 
+STUDY_FAMILIES = ("E1", "E3", "E4", "E5", "E6")
+
 def short(model):
     return model.split("/")[-1]
 
@@ -223,7 +225,10 @@ def run_unit(ctx, u, log):
                                        limit=u.get("limit"), dense=dense if args.device == "cuda" else None)
         fs[task] = {"num_fewshot": int(k), "results": a2, "meta": m2}
         items.update({f"{kk}@{k}shot": vv for kk, vv in i2.items()})
-    items_abs = os.path.join(ctx["items_root"], f"{sid}.json.gz")
+    # study families share one per-item file per state; check families (BATCH, DET, ...) re-evaluate a state that
+    # already exists, so their file carries the family name and never overwrites the study's file
+    items_name = f"{sid}.json.gz" if args.family in STUDY_FAMILIES else f"{sid}__{args.family}.json.gz"
+    items_abs = os.path.join(ctx["items_root"], items_name)
     items_rel = os.path.relpath(items_abs, P.OUT)
     sha = P.write_items(items_abs, items) if items else None
     checks = unit_checks(u, diags, wt)

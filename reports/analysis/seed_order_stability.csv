@@ -3,3 +3,7 @@ SmolLM2-360M,25%+4,0 1 2,0:joint 1:joint 2:joint,True,True
 SmolLM2-360M,33%+4,0 1 2,0:joint 1:joint 2:joint,True,True
 SmolLM2-360M,50%+4,0 1 2,0:joint 1:joint 2:joint,True,True
 SmolLM2-360M,60%+4,0 1 2,0:joint,False,False
+Qwen2.5-0.5B,25%+4,0 1 2,0:joint,False,False
+Qwen2.5-0.5B,33%+4,0 1 2,0:P->Q,False,False
+Qwen2.5-0.5B,50%+4,0 1 2,0:joint,False,False
+Qwen2.5-0.5B,60%+4,0 1 2,0:joint,False,False

@@ -470,10 +470,96 @@ Columns:
 - `ISrCnLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (chance-normalized Sr over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
 - `ISrCnHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (chance-normalized Sr over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
 
+## States of Qwen2.5-1.5B (seed 0)
+
+Macro = `\res` + column + `QwenTwoFiveOneFiveB` + row tag (e.g. `\resPplQwenTwoFiveOneFiveBDense`). Row source: the state's result line; column source: below the table.
+
+| Row tag | State | Source | Ppl | PplCFour | Kl | KlCFour | TopOnePct | TopOneCFourPct | BitsTcr | BitsMask | BitsSym | FreeZerosPct | FlipsPct | FlipsCWPct | FlipsWCPct | SrThree | SrPaper | SrExt | SrCn |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| `Dense` | dense | `Qwen2.5-1.5B__dense__s0.0000__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |  | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `QuantBFour` | 4-bit | `Qwen2.5-1.5B__quant__s0.0000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `QuantBThree` | 3-bit | `Qwen2.5-1.5B__quant__s0.0000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `PruneSTwentyFive` | 25% pruned | `Qwen2.5-1.5B__prune__s0.2500__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `PruneSFifty` | 50% pruned | `Qwen2.5-1.5B__prune__s0.5000__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBFourJoint` | 25%+4 joint | `Qwen2.5-1.5B__joint__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBFourPQ` | 25%+4 P->Q | `Qwen2.5-1.5B__p_then_q__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBFourQP` | 25%+4 Q->P | `Qwen2.5-1.5B__q_then_p__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourJoint` | 50%+4 joint | `Qwen2.5-1.5B__joint__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourPQ` | 50%+4 P->Q | `Qwen2.5-1.5B__p_then_q__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourQP` | 50%+4 Q->P | `Qwen2.5-1.5B__q_then_p__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+
+Columns:
+
+- `Ppl`: WikiText-2 perplexity; field `wikitext2.ppl`
+- `PplCFour`: C4 perplexity (256 windows of 2048 tokens); field `c4.ppl`
+- `Kl`: mean token KL(dense, model) on WikiText-2, nats; field `wikitext2.kl`
+- `KlCFour`: the same on C4; field `c4.kl`
+- `TopOnePct`: top-1 agreement with the dense model on WikiText-2 (%); field `wikitext2.top1`
+- `TopOneCFourPct`: top-1 agreement on C4 (%); field `c4.top1`
+- `BitsTcr`: bits per weight as TCr counts them, b(1-s); field `storage.tcr`
+- `BitsMask`: bits per weight with a 1-bit mask; field `storage.bitmap`
+- `BitsSym`: plug-in entropy of the stored symbols per group of 128, zeros included, bits per weight; field `storage.symbol_entropy` (measured for quantized states only)
+- `FlipsPct`: items whose correctness differs from dense, pooled over the 9 zero-shot tasks, v2 metric (%); per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
+- `FlipsCWPct`: correct-to-wrong items against dense, pooled (% of items); per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
+- `FlipsWCPct`: wrong-to-correct items against dense, pooled (% of items); per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
+- `SrThree`: Sr over ARC-E, PIQA, HellaSwag, v2 metric; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
+- `SrPaper`: Sr over ARC-E, PIQA, HellaSwag, paper metric (acc, acc, acc_norm); per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
+- `SrExt`: Sr-extended over the 9 zero-shot tasks, v2 metric; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
+- `SrCn`: chance-normalized Sr over the 9 zero-shot tasks, v2 metric (BoolQ chance: majority-class rate); per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
+- `FreeZerosPct`: weights exactly zero after compression (%); field `storage.zero_frac_actual` (not measured for dense)
+
+## I_Sr of the combined states of Qwen2.5-1.5B (seed 0)
+
+Macro = `\res` + column + `QwenTwoFiveOneFiveB` + row tag (e.g. `\resISrThreeQwenTwoFiveOneFiveBSTwentyFiveBFourJoint`). Row source: the state's result line; column source: below the table.
+
+| Row tag | State | Source | ISrThree | ISrThreeLo | ISrThreeHi | ISrPaper | ISrPaperLo | ISrPaperHi | ISrExt | ISrExtLo | ISrExtHi | ISrCn | ISrCnLo | ISrCnHi |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| `STwentyFiveBFourJoint` | 25%+4 joint | `Qwen2.5-1.5B__joint__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBFourPQ` | 25%+4 P->Q | `Qwen2.5-1.5B__p_then_q__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBFourQP` | 25%+4 Q->P | `Qwen2.5-1.5B__q_then_p__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourJoint` | 50%+4 joint | `Qwen2.5-1.5B__joint__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourPQ` | 50%+4 P->Q | `Qwen2.5-1.5B__p_then_q__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourQP` | 50%+4 Q->P | `Qwen2.5-1.5B__q_then_p__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+
+Columns:
+
+- `ISrThree`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
+- `ISrThreeLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
+- `ISrThreeHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
+- `ISrPaper`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, paper metric (acc, acc, acc_norm)), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
+- `ISrPaperLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, paper metric (acc, acc, acc_norm)), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
+- `ISrPaperHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr over ARC-E, PIQA, HellaSwag, paper metric (acc, acc, acc_norm)), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
+- `ISrExt`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr-extended over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
+- `ISrExtLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr-extended over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
+- `ISrExtHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (Sr-extended over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
+- `ISrCn`: I_Sr = Sr_PQ - Sr_P Sr_Q (chance-normalized Sr over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py
+- `ISrCnLo`: I_Sr = Sr_PQ - Sr_P Sr_Q (chance-normalized Sr over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, lower end
+- `ISrCnHi`: I_Sr = Sr_PQ - Sr_P Sr_Q (chance-normalized Sr over the 9 zero-shot tasks, v2 metric), P and Q the prune-only and quant-only states at the same s and b; paired bootstrap (10000 resamples) gives Lo/Hi; per-item files of this state and of the dense state (results/v2/items/<state_id>.json.gz), scripts/analysis/e1.py 95% interval, upper end
+
 ## Calibration seeds
 
 | Macro | Value | Meaning | Source |
 |---|---|---|---|
+| `\resPplMeanQwenQuantBFour` | `--` | Qwen2.5-0.5B quant quant only: mean WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
+| `\resPplSdQwenQuantBFour` | `--` | Qwen2.5-0.5B quant quant only: sample sd of WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
+| `\resPplMeanQwenSTwentyFiveBFourJoint` | `--` | Qwen2.5-0.5B 25%+4 joint: mean WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
+| `\resPplSdQwenSTwentyFiveBFourJoint` | `--` | Qwen2.5-0.5B 25%+4 joint: sample sd of WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
+| `\resPplMeanQwenSTwentyFiveBFourPQ` | `--` | Qwen2.5-0.5B 25%+4 P->Q: mean WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
+| `\resPplSdQwenSTwentyFiveBFourPQ` | `--` | Qwen2.5-0.5B 25%+4 P->Q: sample sd of WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
+| `\resPplMeanQwenSTwentyFiveBFourQP` | `--` | Qwen2.5-0.5B 25%+4 Q->P: mean WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
+| `\resPplSdQwenSTwentyFiveBFourQP` | `--` | Qwen2.5-0.5B 25%+4 Q->P: sample sd of WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
+| `\resPplMeanQwenSThirtyThreeBFourJoint` | `--` | Qwen2.5-0.5B 33%+4 joint: mean WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
+| `\resPplSdQwenSThirtyThreeBFourJoint` | `--` | Qwen2.5-0.5B 33%+4 joint: sample sd of WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
+| `\resPplMeanQwenSThirtyThreeBFourPQ` | `--` | Qwen2.5-0.5B 33%+4 P->Q: mean WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
+| `\resPplSdQwenSThirtyThreeBFourPQ` | `--` | Qwen2.5-0.5B 33%+4 P->Q: sample sd of WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
+| `\resPplMeanQwenSThirtyThreeBFourQP` | `--` | Qwen2.5-0.5B 33%+4 Q->P: mean WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
+| `\resPplSdQwenSThirtyThreeBFourQP` | `--` | Qwen2.5-0.5B 33%+4 Q->P: sample sd of WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
+| `\resPplMeanQwenSFiftyBFourJoint` | `--` | Qwen2.5-0.5B 50%+4 joint: mean WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
+| `\resPplSdQwenSFiftyBFourJoint` | `--` | Qwen2.5-0.5B 50%+4 joint: sample sd of WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
+| `\resPplMeanQwenSFiftyBFourPQ` | `--` | Qwen2.5-0.5B 50%+4 P->Q: mean WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
+| `\resPplSdQwenSFiftyBFourPQ` | `--` | Qwen2.5-0.5B 50%+4 P->Q: sample sd of WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
+| `\resPplMeanQwenSFiftyBFourQP` | `--` | Qwen2.5-0.5B 50%+4 Q->P: mean WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
+| `\resPplSdQwenSFiftyBFourQP` | `--` | Qwen2.5-0.5B 50%+4 Q->P: sample sd of WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
 | `\resPplMeanSmolMediumQuantBFour` | `13.24` | SmolLM2-360M quant quant only: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
 | `\resPplSdSmolMediumQuantBFour` | `0.03` | SmolLM2-360M quant quant only: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
 | `\resPplMeanSmolMediumSTwentyFiveBFourJoint` | `13.19` | SmolLM2-360M 25%+4 joint: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
@@ -693,6 +779,8 @@ Columns:
 | `\resQTwoRatioQwenSFiftyBThree` | `1.21` | Qwen2.5-0.5B 50%+3: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioSmolLargeSTwentyFiveBFour` | `1.02` | SmolLM2-1.7B 25%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioSmolLargeSFiftyBFour` | `1.06` | SmolLM2-1.7B 50%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoRatioQwenTwoFiveOneFiveBSTwentyFiveBFour` | `--` | Qwen2.5-1.5B 25%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoRatioQwenTwoFiveOneFiveBSFiftyBFour` | `--` | Qwen2.5-1.5B 50%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 
 ## Q3: 4-bit order spread
 
@@ -706,6 +794,8 @@ Columns:
 | `\resQThreeSpreadMaxQwenPct` | `12.9` | Qwen2.5-0.5B: largest 4-bit order spread (%) | reports/analysis/q3_order_spread.csv |
 | `\resQThreeSpreadMinSmolLargePct` | `2.1` | SmolLM2-1.7B: smallest (max-min)/min of WikiText-2 ppl over the orders, 4-bit cells (%) | reports/analysis/q3_order_spread.csv |
 | `\resQThreeSpreadMaxSmolLargePct` | `6.4` | SmolLM2-1.7B: largest 4-bit order spread (%) | reports/analysis/q3_order_spread.csv |
+| `\resQThreeSpreadMinQwenTwoFiveOneFiveBPct` | `--` | Qwen2.5-1.5B: smallest (max-min)/min of WikiText-2 ppl over the orders, 4-bit cells (%) | reports/analysis/q3_order_spread.csv |
+| `\resQThreeSpreadMaxQwenTwoFiveOneFiveBPct` | `--` | Qwen2.5-1.5B: largest 4-bit order spread (%) | reports/analysis/q3_order_spread.csv |
 
 ## fp16 vs fp32 (published v1 vs v2)
 
@@ -718,6 +808,7 @@ Columns:
 | `\resFpMaxAbsDeltaSmolMediumPct` | `15.25` | SmolLM2-360M: largest |relative ppl difference| (%) | reports/analysis/fp16_vs_fp32.csv (v2 fp32 vs results/merged published values) |
 | `\resFpMaxAbsDeltaQwenPct` | `2.80` | Qwen2.5-0.5B: largest |relative ppl difference| (%) | reports/analysis/fp16_vs_fp32.csv (v2 fp32 vs results/merged published values) |
 | `\resFpMaxAbsDeltaSmolLargePct` | `--` | SmolLM2-1.7B: largest |relative ppl difference| (%) | reports/analysis/fp16_vs_fp32.csv (v2 fp32 vs results/merged published values) |
+| `\resFpMaxAbsDeltaQwenTwoFiveOneFiveBPct` | `--` | Qwen2.5-1.5B: largest |relative ppl difference| (%) | reports/analysis/fp16_vs_fp32.csv (v2 fp32 vs results/merged published values) |
 
 ## E3: Q->P penalty removed in full runs (WikiText-2 ppl)
 
@@ -803,6 +894,8 @@ Columns:
 | `\resIdentityRelErrMaxDiffQwen` | `0` | Qwen2.5-0.5B: largest |rel_err difference| | reports/analysis/identity_qp25_3bit.json |
 | `\resIdentityQPThreeSmolLarge` | `--` | SmolLM2-1.7B: Q->P 25%+3 identical to 3-bit (ppl and every rel_err) | reports/analysis/identity_qp25_3bit.json |
 | `\resIdentityRelErrMaxDiffSmolLarge` | `--` | SmolLM2-1.7B: largest |rel_err difference| | reports/analysis/identity_qp25_3bit.json |
+| `\resIdentityQPThreeQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: Q->P 25%+3 identical to 3-bit (ppl and every rel_err) | reports/analysis/identity_qp25_3bit.json |
+| `\resIdentityRelErrMaxDiffQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: largest |rel_err difference| | reports/analysis/identity_qp25_3bit.json |
 | `\resGroupOverheadBFour` | `0.156` | 4-bit: scale and zero point bits per weight | results/v2/E1/Qwen2.5-0.5B.jsonl, state `Qwen2.5-0.5B__quant__s0.0000__b4__seed0__float32`, field `storage.group_overhead` |
 | `\resGroupOverheadBThree` | `0.148` | 3-bit: scale and zero point bits per weight | results/v2/E1/Qwen2.5-0.5B.jsonl, state `Qwen2.5-0.5B__quant__s0.0000__b3__seed0__float32`, field `storage.group_overhead` |
 | `\resGroupOverheadBTwo` | `0.141` | 2-bit: scale and zero point bits per weight | results/v2/E4/Qwen2.5-0.5B.jsonl, state `Qwen2.5-0.5B__quant__s0.0000__b2__seed0__float32`, field `storage.group_overhead` |
@@ -1370,7 +1463,7 @@ Columns:
 | `\resNItemsLambada` | `5153` | lambada_openai: items evaluated per state | results/v2/items/*.json.gz |
 | `\resBootB` | `10000` | bootstrap resamples (items within each task) | scripts/analysis/stats.py, make_tables.py --boot |
 | `\resNStates` | `161` | usable v2 model states (status ok) | results/v2/*/*.jsonl |
-| `\resNStatesPlanned` | `161` | model states in the study plan | scripts/make_queues.py |
+| `\resNStatesPlanned` | `192` | model states in the study plan | scripts/make_queues.py |
 
 ## Requested by paper/main.tex (reports/latex_macro_requests.md, R1-R31)
 
@@ -1672,13 +1765,32 @@ Columns:
 - `AccDiffLo`: its paired-bootstrap 95% interval, lower end
 - `AccDiffHi`: its paired-bootstrap 95% interval, upper end
 
+## Paired accuracy differences of Qwen2.5-1.5B (R29; seed 0)
+
+Macro = `\res` + column + `QwenTwoFiveOneFiveB` + row tag (e.g. `\resAccDiffQwenTwoFiveOneFiveBSTwentyFiveBFourJointPQ`). Row source: the state's result line; column source: below the table.
+
+| Row tag | State | Source | AccDiff | AccDiffLo | AccDiffHi |
+|---|---|---|---|---|---|
+| `STwentyFiveBFourJointPQ` | 25%+4: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBFourJointQP` | 25%+4: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBFourPQQP` | 25%+4: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourJointPQ` | 50%+4: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourJointQP` | 50%+4: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourPQQP` | 50%+4: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+
+Columns:
+
+- `AccDiff`: mean accuracy difference over the 9 tasks, v2 metric, points (x100)
+- `AccDiffLo`: its paired-bootstrap 95% interval, lower end
+- `AccDiffHi`: its paired-bootstrap 95% interval, upper end
+
 ## E5 calibration seeds (reports/analysis/seed_best_order.csv, seed_order_pairs.csv)
 
 | Macro | Value | Meaning | Source |
 |---|---|---|---|
-| `\resSeedJointBest` | `10` | (model, 4-bit cell, seed) with all three orders where joint has the lowest WikiText-2 ppl | reports/analysis/seed_best_order.csv |
-| `\resSeedJointBeatsPQ` | `10` | (model, 4-bit cell, seed) where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_best_order.csv |
-| `\resSeedCellSeeds` | `10` | (model, 4-bit cell, seed) with all three orders | reports/analysis/seed_best_order.csv |
+| `\resSeedJointBest` | `13` | (model, 4-bit cell, seed) with all three orders where joint has the lowest WikiText-2 ppl | reports/analysis/seed_best_order.csv |
+| `\resSeedJointBeatsPQ` | `13` | (model, 4-bit cell, seed) where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_best_order.csv |
+| `\resSeedCellSeeds` | `14` | (model, 4-bit cell, seed) with all three orders | reports/analysis/seed_best_order.csv |
 | `\resSeedPairJointPQAllSeeds` | `3` | 4-bit cells where joint has the lower ppl in every seed | reports/analysis/seed_order_pairs.csv (joint vs P->Q, complete cells) |
 | `\resSeedPairJointPQSig` | `3` | 4-bit cells where the paired t-test over seeds (log ppl) gives p < 0.05, joint vs P->Q | reports/analysis/seed_order_pairs.csv (joint vs P->Q, complete cells) |
 | `\resSeedPairJointPQCells` | `3` | 4-bit cells with every seed for both orders | reports/analysis/seed_order_pairs.csv (joint vs P->Q, complete cells) |
@@ -1758,6 +1870,11 @@ Columns:
 | `\resESevenKimPredQPPplSmolLarge` | `1` | SmolLM2-1.7B: cells where the rule predicts Q->P (pruning the stronger perturbation; wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimPredQPCorrectPplSmolLarge` | `0` | SmolLM2-1.7B: of those, cells where Q->P is in fact better (wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimRhoPplSmolLarge` | `--` | SmolLM2-1.7B: Spearman rho of the P->Q advantage vs CER(Q) - CER(P) over cells (wt_ppl; n = 1) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimCorrectPplQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: cells where Kim et al.'s weaker-first rule (CER, wt_ppl) picks the better of P->Q and Q->P | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimCellsPplQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: cells with a prediction and an outcome (wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimPredQPPplQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: cells where the rule predicts Q->P (pruning the stronger perturbation; wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimPredQPCorrectPplQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: of those, cells where Q->P is in fact better (wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimRhoPplQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: Spearman rho of the P->Q advantage vs CER(Q) - CER(P) over cells (wt_ppl; n = None) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimCorrectPplAll` | `14` | all models: cells where Kim et al.'s weaker-first rule (CER, wt_ppl) picks the better of P->Q and Q->P | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimCellsPplAll` | `20` | all models: cells with a prediction and an outcome (wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimPredQPPplAll` | `5` | all models: cells where the rule predicts Q->P (pruning the stronger perturbation; wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
@@ -1782,6 +1899,11 @@ Columns:
 | `\resESevenKimPredQPCFourPplSmolLarge` | `1` | SmolLM2-1.7B: cells where the rule predicts Q->P (pruning the stronger perturbation; c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimPredQPCorrectCFourPplSmolLarge` | `0` | SmolLM2-1.7B: of those, cells where Q->P is in fact better (c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimRhoCFourPplSmolLarge` | `--` | SmolLM2-1.7B: Spearman rho of the P->Q advantage vs CER(Q) - CER(P) over cells (c4_ppl; n = 1) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimCorrectCFourPplQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: cells where Kim et al.'s weaker-first rule (CER, c4_ppl) picks the better of P->Q and Q->P | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimCellsCFourPplQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: cells with a prediction and an outcome (c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimPredQPCFourPplQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: cells where the rule predicts Q->P (pruning the stronger perturbation; c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimPredQPCorrectCFourPplQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: of those, cells where Q->P is in fact better (c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimRhoCFourPplQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: Spearman rho of the P->Q advantage vs CER(Q) - CER(P) over cells (c4_ppl; n = None) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimCorrectCFourPplAll` | `13` | all models: cells where Kim et al.'s weaker-first rule (CER, c4_ppl) picks the better of P->Q and Q->P | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimCellsCFourPplAll` | `20` | all models: cells with a prediction and an outcome (c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimPredQPCFourPplAll` | `5` | all models: cells where the rule predicts Q->P (pruning the stronger perturbation; c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
@@ -1806,6 +1928,11 @@ Columns:
 | `\resESevenKimPredQPKlSmolLarge` | `1` | SmolLM2-1.7B: cells where the rule predicts Q->P (pruning the stronger perturbation; wt_kl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimPredQPCorrectKlSmolLarge` | `0` | SmolLM2-1.7B: of those, cells where Q->P is in fact better (wt_kl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimRhoKlSmolLarge` | `--` | SmolLM2-1.7B: Spearman rho of the P->Q advantage vs CER(Q) - CER(P) over cells (wt_kl; n = 1) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimCorrectKlQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: cells where Kim et al.'s weaker-first rule (CER, wt_kl) picks the better of P->Q and Q->P | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimCellsKlQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: cells with a prediction and an outcome (wt_kl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimPredQPKlQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: cells where the rule predicts Q->P (pruning the stronger perturbation; wt_kl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimPredQPCorrectKlQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: of those, cells where Q->P is in fact better (wt_kl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimRhoKlQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: Spearman rho of the P->Q advantage vs CER(Q) - CER(P) over cells (wt_kl; n = None) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimCorrectKlAll` | `14` | all models: cells where Kim et al.'s weaker-first rule (CER, wt_kl) picks the better of P->Q and Q->P | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimCellsKlAll` | `20` | all models: cells with a prediction and an outcome (wt_kl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimPredQPKlAll` | `5` | all models: cells where the rule predicts Q->P (pruning the stronger perturbation; wt_kl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
@@ -1834,6 +1961,12 @@ Columns:
 | `\resESevenKimPredQPCorrectSrSmolLarge` | `--` | SmolLM2-1.7B: of those, cells where Q->P is in fact better (sr9_v2) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimSigCorrectSrSmolLarge` | `--` | SmolLM2-1.7B: correct predictions among cells whose Sr-extended P->Q - Q->P interval excludes 0 | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimSigSrSmolLarge` | `--` | SmolLM2-1.7B: cells whose Sr-extended P->Q - Q->P paired-bootstrap interval excludes 0 | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimCorrectSrQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: cells where Kim et al.'s weaker-first rule (CER, sr9_v2) picks the better of P->Q and Q->P | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimCellsSrQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: cells with a prediction and an outcome (sr9_v2) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimPredQPSrQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: cells where the rule predicts Q->P (pruning the stronger perturbation; sr9_v2) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimPredQPCorrectSrQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: of those, cells where Q->P is in fact better (sr9_v2) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimSigCorrectSrQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: correct predictions among cells whose Sr-extended P->Q - Q->P interval excludes 0 | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimSigSrQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: cells whose Sr-extended P->Q - Q->P paired-bootstrap interval excludes 0 | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimCorrectSrAll` | `15` | all models: cells where Kim et al.'s weaker-first rule (CER, sr9_v2) picks the better of P->Q and Q->P | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimCellsSrAll` | `18` | all models: cells with a prediction and an outcome (sr9_v2) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimPredQPSrAll` | `4` | all models: cells where the rule predicts Q->P (pruning the stronger perturbation; sr9_v2) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
@@ -1888,6 +2021,18 @@ Columns:
 | `\resESevenHarmaAddExceedsQPSmolLarge` | `2` | SmolLM2-1.7B: Q->P states above Harma et al.'s additive threshold ppl(dense) + dPPL(P) + dPPL(Q) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaMultExceedsQPSmolLarge` | `2` | SmolLM2-1.7B: Q->P states above the multiplicative null ppl(dense) ppl(P)/ppl(dense) ppl(Q)/ppl(dense) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaNQPSmolLarge` | `2` | SmolLM2-1.7B: Q->P states tested | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaPQBetterPplQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: cells where P->Q beats Q->P (Harma et al.'s sparsity-first order; wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaOrderCellsPplQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: cells with both orders (wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaMaxGapPplQwenTwoFiveOneFiveBPct` | `--` | Qwen2.5-1.5B: largest 100(ppl Q->P / ppl P->Q - 1) over those cells (wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaAddExceedsJointQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: joint states above Harma et al.'s additive threshold ppl(dense) + dPPL(P) + dPPL(Q) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaMultExceedsJointQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: joint states above the multiplicative null ppl(dense) ppl(P)/ppl(dense) ppl(Q)/ppl(dense) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaNJointQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: joint states tested | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaAddExceedsPQQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: P->Q states above Harma et al.'s additive threshold ppl(dense) + dPPL(P) + dPPL(Q) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaMultExceedsPQQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: P->Q states above the multiplicative null ppl(dense) ppl(P)/ppl(dense) ppl(Q)/ppl(dense) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaNPQQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: P->Q states tested | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaAddExceedsQPQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: Q->P states above Harma et al.'s additive threshold ppl(dense) + dPPL(P) + dPPL(Q) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaMultExceedsQPQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: Q->P states above the multiplicative null ppl(dense) ppl(P)/ppl(dense) ppl(Q)/ppl(dense) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaNQPQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: Q->P states tested | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaPQBetterPplAll` | `19` | all models: cells where P->Q beats Q->P (Harma et al.'s sparsity-first order; wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaOrderCellsPplAll` | `20` | all models: cells with both orders (wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaMaxGapPplAllPct` | `77.3` | all models: largest 100(ppl Q->P / ppl P->Q - 1) over those cells (wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
@@ -1912,6 +2057,9 @@ Columns:
 | `\resESevenHarmaPQBetterCFourPplSmolLarge` | `2` | SmolLM2-1.7B: cells where P->Q beats Q->P (Harma et al.'s sparsity-first order; c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaOrderCellsCFourPplSmolLarge` | `2` | SmolLM2-1.7B: cells with both orders (c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaMaxGapCFourPplSmolLargePct` | `7.6` | SmolLM2-1.7B: largest 100(ppl Q->P / ppl P->Q - 1) over those cells (c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaPQBetterCFourPplQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: cells where P->Q beats Q->P (Harma et al.'s sparsity-first order; c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaOrderCellsCFourPplQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: cells with both orders (c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaMaxGapCFourPplQwenTwoFiveOneFiveBPct` | `--` | Qwen2.5-1.5B: largest 100(ppl Q->P / ppl P->Q - 1) over those cells (c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaPQBetterCFourPplAll` | `18` | all models: cells where P->Q beats Q->P (Harma et al.'s sparsity-first order; c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaOrderCellsCFourPplAll` | `20` | all models: cells with both orders (c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaMaxGapCFourPplAllPct` | `59.7` | all models: largest 100(ppl Q->P / ppl P->Q - 1) over those cells (c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
@@ -1932,3 +2080,6 @@ Columns:
 | `\resEEightRhoSmolLarge` | `\ensuremath{+0.99}` | SmolLM2-1.7B: Spearman rho of mean layer error vs KL over its compressed states (n = 10) | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
 | `\resEEightSameBestSmolLarge` | `1` | SmolLM2-1.7B: cells where the order with the smallest layer error also has the smallest KL | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
 | `\resEEightCellsSmolLarge` | `2` | SmolLM2-1.7B: cells with the three paper orders | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
+| `\resEEightRhoQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: Spearman rho of mean layer error vs KL over its compressed states (n = 0) | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
+| `\resEEightSameBestQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: cells where the order with the smallest layer error also has the smallest KL | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
+| `\resEEightCellsQwenTwoFiveOneFiveB` | `--` | Qwen2.5-1.5B: cells with the three paper orders | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |

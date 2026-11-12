@@ -191,3 +191,12 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     author can decide (authors, code link after a merge, review code licence, Drive sharing, an open 1-GPU-hour check).
     Not changed: notation collisions (nit 25) and the harness author form (nit 26), for space and because either
     form is acceptable.
+38. **2026-11-12, more runs with the larger budget (the author's account has 120 CU, not 100).** The first author's
+    new draft makes the order effect the main contribution and attributes its decrease to the model family rather
+    than to scale; E6 on SmolLM2-1.7B already shows the 4-bit order spread falling within one family. Three runs
+    test what that draft now relies on: (1) Qwen2.5-1.5B in the E6 design (11 states), for scale within Qwen; (2)
+    calibration seeds 1 and 2 for the 4-bit cells of Qwen2.5-0.5B (20 states), where the gaps between orders are
+    0.1-1%; (3) the BATCH check of audit finding 17 (the four states whose benchmarks ran with one batch size,
+    among them both dense references), compared item by item with E1. About 20 CU at the planning rate. Check runs
+    now write their per-item files under a family-suffixed name, so they never overwrite a study state's file
+    (`scripts/run_grid.py`).

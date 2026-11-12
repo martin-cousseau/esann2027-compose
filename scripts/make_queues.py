@@ -61,14 +61,17 @@ def e5_full(bits=(4,)):
     return out
 
 
-def e5(bits=(4,)):
-    """E5 as run (DECISIONS.md #29): SmolLM2-360M, calibration seeds 1 and 2, 4-bit alone and every 4-bit cell
-    in the three orders; perplexity, C4 and KL only."""
-    q = []
-    for seed in (1, 2):
-        q += [u("quant", 0.0, b, seed, tasks=[]) for b in bits]
-        q += [u(o, s, b, seed, tasks=[]) for b in bits for s in SPARS for o in ORDERS]
-    return {"HuggingFaceTB/SmolLM2-360M": dedupe(q)}
+def e5(bits=(4,), models=("HuggingFaceTB/SmolLM2-360M", "Qwen/Qwen2.5-0.5B")):
+    """E5 as run (DECISIONS.md #29, #38): calibration seeds 1 and 2, 4-bit alone and every 4-bit cell in the three
+    orders; perplexity, C4 and KL only. SmolLM2-360M first (2026-11-11), Qwen2.5-0.5B added on 2026-11-12."""
+    out = {}
+    for m in models:
+        q = []
+        for seed in (1, 2):
+            q += [u("quant", 0.0, b, seed, tasks=[]) for b in bits]
+            q += [u(o, s, b, seed, tasks=[]) for b in bits for s in SPARS for o in ORDERS]
+        out[m] = dedupe(q)
+    return out
 
 
 def e6_full(models=("HuggingFaceTB/SmolLM2-1.7B",)):
@@ -82,8 +85,9 @@ def e6_full(models=("HuggingFaceTB/SmolLM2-1.7B",)):
     return out
 
 
-def e6(models=("HuggingFaceTB/SmolLM2-1.7B",)):
-    """E6 as run (DECISIONS.md #29, #31): perplexity, C4 and KL only. First the 7 frontier states (dense, 4-bit,
+def e6(models=("HuggingFaceTB/SmolLM2-1.7B", "Qwen/Qwen2.5-1.5B")):
+    """E6 as run (DECISIONS.md #29, #31, #38; Qwen2.5-1.5B added on 2026-11-12 to test scale within a second
+    family): perplexity, C4 and KL only. First the 7 frontier states (dense, 4-bit,
     3-bit, 50%+4 and 25%+4 in P->Q and joint), then Q->P at both 4-bit cells (the order spread at this scale)
     and pruning alone at 50% and 25% (the single-method baselines of the interaction and of the order rules)."""
     out = {}
@@ -118,13 +122,29 @@ def done_states():
     return done
 
 
+def batch():
+    """BATCH check (audit finding 17, DECISIONS.md #38): the four states whose benchmarks ran with one batch size
+    (both dense references among them), re-evaluated with the batch groups used for every later state; compared
+    item by item with E1. Not a study family: its per-item files carry the family name (scripts/run_grid.py)."""
+    return {"HuggingFaceTB/SmolLM2-135M": [u("dense", 0.0, 16), u("quant", 0.0, 4), u("p_then_q", 0.5, 4)],
+            "Qwen/Qwen2.5-0.5B": [u("dense", 0.0, 16)]}
+
+
 FAMILIES = {"E1": e1, "E3": e3, "E4": e4, "E5": e5, "E6": e6}
+CHECKS = {"BATCH": batch}  # queues for re-checks of existing states; not part of the analysis plan
 
 
 def main(argv):
     from scripts.run_grid import state_id
     fams = list(FAMILIES) if argv == ["all"] else argv
     done = done_states()
+    for fam in [f for f in fams if f in CHECKS]:  # re-checks run even though the state exists
+        for model, q in CHECKS[fam]().items():
+            path = os.path.join(ROOT, "colab", "queues", f"{fam}__{model.split('/')[-1]}.json")
+            with open(path, "w") as f:
+                json.dump(q, f, indent=0)
+            print(f"{fam} {model}: {len(q)} units queued ({path})")
+    fams = [f for f in fams if f not in CHECKS]
     os.makedirs(os.path.join(ROOT, "colab", "queues"), exist_ok=True)
     for fam in fams:
         for model, q in FAMILIES[fam]().items():
