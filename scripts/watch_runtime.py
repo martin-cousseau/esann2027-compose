@@ -128,7 +128,11 @@ def main():
         for rt in rts:
             use(rt)
             try:
-                CJ.pull(f"{REMOTE}/results/v2", local_results)
+                try:
+                    CJ.pull(f"{REMOTE}/results/v2", local_results)
+                except Exception as ex:  # noqa: BLE001
+                    if "404" not in str(ex):  # no results folder yet: the first unit has not finished
+                        raise
                 st, lg = snapshot(rt["name"])
                 os.makedirs(os.path.join(ROOT, "logs", "status", rt["name"]), exist_ok=True)
                 for k, v in st.items():
