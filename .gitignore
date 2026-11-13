@@ -21,5 +21,7 @@ models/
 results/v2/.pull_manifest.json
 results/v2/.wandb_synced.json
 logs/status/
+# every runtime writes its image check to the same name; the record is the per-runtime copy IMG/<model>__<runtime>.jsonl
+results/v2/IMG/SmolLM2-135M.jsonl
 # W&B local run files (the sync script writes them under /root/.cache/esann-wandb)
 wandb/
