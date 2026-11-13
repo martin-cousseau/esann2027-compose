@@ -41,9 +41,9 @@ SmolLM2-360M,3,33%+3,p_then_q,q_then_p,1,False,0.33401805437634674,,True,False,,
 SmolLM2-360M,3,50%+3,joint,p_then_q,1,False,0.0164883663360978,,True,False,,
 SmolLM2-360M,3,50%+3,joint,q_then_p,1,False,0.5257378998002187,,True,False,,
 SmolLM2-360M,3,50%+3,p_then_q,q_then_p,1,False,0.5092495334641209,,True,False,,
-Qwen2.5-0.5B,4,25%+4,joint,p_then_q,1,False,0.009490798311072425,,True,False,,
-Qwen2.5-0.5B,4,25%+4,joint,q_then_p,1,False,0.02969851492782417,,True,False,,
-Qwen2.5-0.5B,4,25%+4,p_then_q,q_then_p,1,False,0.020207716616751886,,True,False,,
+Qwen2.5-0.5B,4,25%+4,joint,p_then_q,2,False,0.0066690761048629685,0.003990517813270745,True,False,2.3634772020388697,0.2548165000084747
+Qwen2.5-0.5B,4,25%+4,joint,q_then_p,2,False,0.026746162513446907,0.004175256825317278,True,False,9.059271644942852,0.06998938460325127
+Qwen2.5-0.5B,4,25%+4,p_then_q,q_then_p,2,False,0.020077086408583966,0.00018473901204669072,True,False,153.69405507482963,0.0041420651488649355
 Qwen2.5-0.5B,4,33%+4,joint,p_then_q,1,False,-0.0010335593068458587,,False,True,,
 Qwen2.5-0.5B,4,33%+4,joint,q_then_p,1,False,0.026644992609464964,,True,False,,
 Qwen2.5-0.5B,4,33%+4,p_then_q,q_then_p,1,False,0.02767855191631081,,True,False,,

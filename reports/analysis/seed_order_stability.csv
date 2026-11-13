@@ -13,7 +13,7 @@ SmolLM2-360M,4,60%+4,0.6,False,0 1 2,0,0:joint,0:Q->P,False,False,False
 SmolLM2-360M,3,25%+3,0.25,True,0 1 2,0,0:joint,0:Q->P,False,False,False
 SmolLM2-360M,3,33%+3,0.3333,True,0 1 2,0,0:joint,0:Q->P,False,False,False
 SmolLM2-360M,3,50%+3,0.5,True,0 1 2,0,0:joint,0:Q->P,False,False,False
-Qwen2.5-0.5B,4,25%+4,0.25,True,0 1 2,0,0:joint,0:Q->P,False,False,False
+Qwen2.5-0.5B,4,25%+4,0.25,True,0 1 2,0 1,0:joint 1:joint,0:Q->P 1:Q->P,False,False,False
 Qwen2.5-0.5B,4,33%+4,0.3333,True,0 1 2,0,0:P->Q,0:Q->P,False,False,False
 Qwen2.5-0.5B,4,50%+4,0.5,True,0 1 2,0,0:joint,0:Q->P,False,False,False
 Qwen2.5-0.5B,4,60%+4,0.6,False,0 1 2,0,0:joint,0:Q->P,False,False,False
