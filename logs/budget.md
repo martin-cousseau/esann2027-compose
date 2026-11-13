@@ -66,3 +66,16 @@ Total runtime lifetime (creation to deletion, idle time included): **41.8 L4-hou
 The Colab connector does not report the balance: **the author should read the real number on the Colab website.**
 The GPU work stopped with all queues done; three cuts kept the plan near the stop line of about 95 CU at the
 planning rate (DECISIONS.md #29 E5/E6 scope, #34-#35 E3 Qwen2.5-0.5B reduced to its two 50% cells).
+
+## Second budget (12-13 Nov; DECISIONS.md #38, #40, #42, #44)
+
+You reported 120 CU available on 12 Nov and **114.97 CU on 13 Nov at about 18:30 UTC**. Between the two, two L4
+runtimes lived 19:47 to about 21:35 UTC on 12 Nov (about 3.6 L4-hours): 5.03 CU for 3.6 hours, about 1.4 CU per
+L4-hour, below the planning rate. Plan for this round: about 53 L4-hours without the optional Qwen2.5-3B tail.
+
+| Runtime | Created (UTC) | Deleted (UTC) | Hours | Note |
+|---|---|---|---|---|
+| esann-a6 | 2026-11-12 19:47 | reclaimed ~21:35 | ~1.8 | stopped when the session paused (#42) |
+| esann-b5 | 2026-11-12 19:47 | reclaimed ~21:35 | ~1.8 | stopped when the session paused (#42) |
+| esann-a7 | 2026-11-13 18:41 | | | E6B benchmarks, E6 Qwen2.5-1.5B, E5 SmolLM2 seeds |
+| esann-b6 | 2026-11-13 18:41 | | | E5 Qwen2.5-0.5B seeds, E6 SmolLM2-1.7B and OLMo-2-1B |

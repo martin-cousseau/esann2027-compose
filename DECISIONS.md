@@ -249,3 +249,17 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     weights; the run count, which the paper does not break down, is dropped; the note no longer claims printed page
     numbers or runs that have not happened. To stay at 6 pages, the unit-check sentence and the layer-error sentence of
     Q2 are cut (offered back in the note). The Fig. 1 legend drops the internal label "(E2)" (`paper_figures.py`).
+44. **2026-11-13 18:40 UTC, benchmarks at 1-2B and the restart (you asked for both; 114.97 CU available).** Two new
+    L4 runtimes (esann-a7, esann-b6) run, in priority order: (1) the nine zero-shot tasks on the I_Sr states (dense, P
+    alone, Q alone, P->Q at 25%+4 and 33%+3) of SmolLM2-1.7B, Qwen2.5-1.5B and OLMo-2-1B, so Table 2 gets rows at
+    1-2B; states that had run without benchmarks are re-run as family E6B, and the analysis replaces an E6 line by its
+    E6B twin only after checking that the WikiText-2 NLL sum is identical; SmolLM2-1.7B also gets its weaker-first cell
+    (50%+4, pruning alone and the three orders) with benchmarks, to test the small models' accuracy reversal at 1.7B;
+    (2) the rest of the E6 grids (Qwen2.5-1.5B, SmolLM2-1.7B, OLMo-2-1B); (3) the remaining E5 seeds (Qwen2.5-0.5B at
+    4 and 3 bits, SmolLM2-360M at 3 bits, SmolLM2-135M). Qwen2.5-3B is an optional tail, started on the first free
+    runtime if the budget allows. Estimate: about 53 L4-hours without the tail (about 90 CU at 1.71 CU/h, 118 at the
+    planning rate of 2.23), 61 with it. Each result file has exactly one writer runtime, and its existing lines are
+    pushed to that runtime first, because the watcher mirrors remote files over local ones. The runtimes came up on a
+    new image (20261112), so each first recomputes a known state (`colab/image_gate.sh`) and waits for admission. The
+    watcher runs with the two-hour background limit and a heartbeat below it, so a background timeout cannot silently
+    end the keepalive again (#42).
