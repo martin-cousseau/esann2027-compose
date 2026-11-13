@@ -263,3 +263,11 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     new image (20261112), so each first recomputes a known state (`colab/image_gate.sh`) and waits for admission. The
     watcher runs with the two-hour background limit and a heartbeat below it, so a background timeout cannot silently
     end the keepalive again (#42).
+45. **2026-11-13 19:15 UTC, Qwen2.5-3B now (you asked: the real CU use is well below the estimates).** A third GPU
+    runtime is refused ("precondition failed"; L4 is eligible, so it is the two-runtime limit), so the chains are
+    rebalanced instead: runtime A ends with Qwen2.5-3B after Qwen2.5-1.5B (`colab/chain_a12.sh`), runtime B takes the
+    SmolLM2 seed queues (`colab/chain_b10.sh`; the existing SmolLM2-360M seed lines were pushed to B and A's copy
+    removed, so each result file keeps one writer). The running steps were not interrupted: each new chain waits for
+    the step of the chain it replaces. Both runtimes now end after about 30 hours. Operational note: `pkill -f` with
+    the chain's name also matched the shell that ran it (its command text contains the name), so that call stopped the
+    old chain and itself; the rest was redone from Python with `subprocess`, without a pattern.
