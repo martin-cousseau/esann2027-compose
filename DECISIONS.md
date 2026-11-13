@@ -214,3 +214,26 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     0.3B, three at about 1.3B, three sizes within SmolLM2 and within Qwen); (4) calibration seeds 1 and 2 for the
     3-bit cells of SmolLM2-360M and Qwen2.5-0.5B and for every cell of SmolLM2-135M. About 85 CU at the planning
     rate on top of #38; benchmarks at scale for the model-level interaction come last, if the balance allows.
+41. **2026-11-12, the author package: his paper, revised, not ours.** The first author's 12 Nov draft (order effect
+    as the main contribution) is revised in place rather than replaced by "Counting the Mask": his framing is
+    supported by the fp32 data (Q->P worst in 16 of 18 cells again, the same four weaker-first cells), and replacing
+    a first author's framing six days before the deadline is a collaboration risk the data do not require. The
+    package (private, `context/author_package/`, gitignored) holds: `revised/main.tex` (his file; every number a
+    macro from `paper/generated/macros.tex`), `diff/main_diff.pdf` (latexdiff against his draft, with the numbers
+    inlined by `scripts/flatten_macros.py` so the diff shows values, not macro names, and with both reference
+    lists inlined so bibliography fixes show), and `NOTE.md`, rendered from a template by
+    `scripts/render_template.py` (every number from the macros, tables from `scripts/note_tables.py`). Three of
+    his statements change because the data contradict them: "family more than scale" (E6), the stale-grid
+    explanation of the Q->P penalty (E2/E3), and the 16-bit values (25.92, "twice"). One disagreement is reported
+    rather than hidden: by accuracy over nine tasks, Q->P beats P->Q in 3 of the 4 weaker-first cells (on his three
+    tasks, in fewer; E7 with his three-task metric gives the count). The build is `context/author_package/build.sh`; it fails on undefined macros, on a flattened
+    text that differs from the macro version, and reports the page count.
+42. **2026-11-13, after the stop.** The v3 runtimes stopped on 12 Nov at about 21:35 UTC because the container
+    watcher (the client keepalive) ended with the session's pause; about 4 L4-hours were used. Finished states are on
+    the Hub and the runner resumes from them, so nothing is re-run. Two scope choices for the restart: (1) no
+    benchmarks for the larger models for now: E6 measures perplexity and KL, so Table 2 keeps its rows (three small
+    models with fp32 intervals, two 7-8B rows); adding the three paper tasks at 25%+4 for SmolLM2-1.7B, Qwen2.5-1.5B
+    and OLMo-2-1B would cost about 12 states (roughly 25 CU at the planning rate) and is offered to the author
+    (note, decision 7); (2) the paper names only models whose runs are complete (today SmolLM2-1.7B, two 4-bit cells),
+    so the abstract, setup and Q3 grow with the data instead of announcing it. The watcher must run with the longest
+    background timeout and a heartbeat below it, so that a timeout cannot silently end the keepalive again.

@@ -1,22 +1,33 @@
 # NEWS (newest first)
 
 ## Read this first
-- **Done:** every planned GPU run finished (E1 75, E2 3 models, E3 40, E4 15, E5 20, E6 11; no failed state), both
-  Colab runtimes are deleted (`list_runtimes` returns none), the models and results are public on Hugging Face, the
-  paper is revised on the complete data and after an independent audit (6 pages, every number a generated macro;
-  `reports/audit.md`, DECISIONS.md #37).
-- **Angle:** B + C, counting the mask (DECISIONS.md #25, #28, #33). Headline: with the mask counted, pruning pays at
-  3.0 bits per weight on only 2 of 4 models (both small SmolLM2), less as SmolLM2 grows and not at 1.7B; at 4.0 bits it
-  never clearly does; plain 2-bit collapses. By perplexity and KL quantize-first is the worst order (Harma et al.'s
-  sparsity-first rule holds in 19 of 20 cells, Kim et al.'s weaker-first rule fails where it predicts quantize-first;
-  by accuracy the order effects are small and Kim's rule fits); per layer, neither proposed mechanism explains it.
-- **CU (estimate; check the Colab website):** 41.8 L4-hours in total, about 93 CU at the planning rate (2.23 CU/h),
-  about 81 at the reported 1.94 CU/h (`logs/budget.md`, final account).
-- **Decisions waiting on you:** the paper is authored "A. Yaacoub" (from README.md) with the affiliation to be
-  confirmed; the Explainer document was never provided (QUESTIONS.md).
+- **Now (13 Nov):** the first author's new draft (12 Nov; the order effect as the main contribution) is revised in
+  place, not replaced: his structure and framing, every number from the fp32 macros, a tracked-changes PDF against his
+  draft and a note with the evidence for each change. Private package in `context/author_package/` (gitignored; backed
+  up to the private Hugging Face dataset), delivered to you as v1 (DECISIONS.md #41).
+- **What changes in his paper:** "family more than scale" (contradicted within SmolLM2 at 1.7B), the stale-grid
+  explanation of the Q->P penalty (refuted by E2), the 16-bit numbers (25.92, "twice"), the attribution of the joint
+  sweep (OBC is prune-then-quantize), and the scope of Harma et al. and Kim et al. His main claim holds in fp32:
+  quantize-first is the worst order in 16 of 18 cells, also by KL, C4 perplexity and 3-task accuracy (not over nine).
+- **GPU (#40):** started 12 Nov 19:47 UTC on two L4 runtimes, stopped at about 21:35 UTC when this session was paused
+  (the watcher keeps the runtimes alive); about 4 L4-hours used. Done: the batch-size check (all four states identical,
+  audit caveat closed), Qwen2.5-1.5B 4 of 23 states, Qwen2.5-0.5B seeds 5 of 20. The Colab connector fails to connect
+  in this session (503), so the queues wait; they resume from the last result line.
 - **Links:** PR https://github.com/martin-cousseau/esann2027-compose/pull/1 (draft) ; models
   https://huggingface.co/martincousseau/esann2027-compose-v2 ; results
   https://huggingface.co/datasets/martincousseau/esann2027-v2-results ; runs https://wandb.ai/martin-css/esann2027-compose-v2
+
+## 2026-11-13 13:45 UTC - author package v1; runs stopped; Colab connector down
+- **Package v1 delivered:** `revised/main.pdf` (6 pages), `diff/main_diff.pdf`, `NOTE.md` (change log C1-C38, every
+  quote checked against the paper by `check_quotes.py`), corrected bibliography and literature check. Independent
+  audit running.
+- **Tools (public):** `scripts/flatten_macros.py` (inline macros for latexdiff), `scripts/render_template.py` (reports
+  that quote no number by hand), `scripts/note_tables.py` (the note's tables from the analysis outputs).
+- **Analysis (subagent, commit 7a68106):** seeds at 4 and 3 bits, family vs scale at matched size, BATCH check,
+  Table-2 I_Sr with intervals, the 7-8B I_Sr parsed from the author's script, Fig. 1 v2 with the E2 values.
+- **Literature check:** four wrong references fixed (OBR is ICLR 2026, SmolLM2 COLM 2025, OPTQ title, lm-eval v0.4.13);
+  OBC is prune-then-quantize; Kim et al. tested pruning up to 30%; the IJCNN 7-8B models did not keep the mask.
+- **Runs:** stopped 12 Nov ~21:35 UTC (see above); restart needs the Colab connector.
 
 ## 2026-11-11 08:55 UTC - all runs done, runtimes deleted, release public
 - **E6 (SmolLM2-1.7B, 11 states):** at 3.0 bits per weight plain 3-bit beats the best 50%+4-bit order, at 4.0 bits
