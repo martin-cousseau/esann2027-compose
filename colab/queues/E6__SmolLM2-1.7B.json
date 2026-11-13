@@ -3,8 +3,7 @@
 "order": "prune",
 "sparsity": 0.3333333333333333,
 "bits": 16,
-"seed": 0,
-"tasks": []
+"seed": 0
 },
 {
 "order": "joint",
@@ -59,8 +58,7 @@
 "order": "p_then_q",
 "sparsity": 0.3333333333333333,
 "bits": 3,
-"seed": 0,
-"tasks": []
+"seed": 0
 },
 {
 "order": "q_then_p",

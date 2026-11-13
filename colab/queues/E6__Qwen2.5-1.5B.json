@@ -1,26 +1,5 @@
 [
 {
-"order": "quant",
-"sparsity": 0.0,
-"bits": 4,
-"seed": 0,
-"tasks": []
-},
-{
-"order": "quant",
-"sparsity": 0.0,
-"bits": 3,
-"seed": 0,
-"tasks": []
-},
-{
-"order": "p_then_q",
-"sparsity": 0.5,
-"bits": 4,
-"seed": 0,
-"tasks": []
-},
-{
 "order": "joint",
 "sparsity": 0.5,
 "bits": 4,
@@ -31,8 +10,7 @@
 "order": "p_then_q",
 "sparsity": 0.25,
 "bits": 4,
-"seed": 0,
-"tasks": []
+"seed": 0
 },
 {
 "order": "joint",
@@ -66,15 +44,13 @@
 "order": "prune",
 "sparsity": 0.25,
 "bits": 16,
-"seed": 0,
-"tasks": []
+"seed": 0
 },
 {
 "order": "prune",
 "sparsity": 0.3333333333333333,
 "bits": 16,
-"seed": 0,
-"tasks": []
+"seed": 0
 },
 {
 "order": "joint",
@@ -129,8 +105,7 @@
 "order": "p_then_q",
 "sparsity": 0.3333333333333333,
 "bits": 3,
-"seed": 0,
-"tasks": []
+"seed": 0
 },
 {
 "order": "q_then_p",

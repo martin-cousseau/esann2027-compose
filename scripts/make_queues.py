@@ -92,25 +92,51 @@ E6_NO_KL = {"Qwen/Qwen2.5-3B"}        # a second fp32 copy for KL does not fit o
 E6_GRID = {"HuggingFaceTB/SmolLM2-1.7B", "Qwen/Qwen2.5-1.5B", "allenai/OLMo-2-0425-1B"}  # the full E1 grid, not 8-bit
 
 
+E6_BENCH = {"HuggingFaceTB/SmolLM2-1.7B", "Qwen/Qwen2.5-1.5B", "allenai/OLMo-2-0425-1B"}
+# The states that give I_Sr at 25%+4 and 33%+3 (dense, P alone, Q alone, P->Q): benchmarked on the nine zero-shot
+# tasks for the models in E6_BENCH (DECISIONS.md #44), so Table 2 of the first author's paper gets rows at 1-2B.
+ISR_STATES = [("dense", 0.0, 16), ("prune", 0.25, 16), ("quant", 0.0, 4), ("p_then_q", 0.25, 4),
+              ("prune", 1 / 3, 16), ("quant", 0.0, 3), ("p_then_q", 1 / 3, 3)]
+
+
+def _bench(m, order, s, b):
+    return m in E6_BENCH and any(order == o and abs(s - s2) < 1e-6 and b == b2 for o, s2, b2 in ISR_STATES)
+
+
 def e6(models=E6_MODELS):
-    """E6, scale and family (DECISIONS.md #29, #31, #38, #40): perplexity, C4 and KL only (perplexity only where
-    E6_NO_KL). Base design first: dense, 4- and 3-bit, 50%+4 and 25%+4 in P->Q and joint, Q->P at both 4-bit cells,
-    pruning alone at 50% and 25%. For the models in E6_GRID it is then completed to the E1 grid without 8-bit:
-    pruning alone at 33%, the 33%+4 cell and the three 3-bit cells in the three orders."""
+    """E6, scale and family (DECISIONS.md #29, #31, #38, #40, #44): perplexity, C4 and KL (perplexity only where
+    E6_NO_KL); the I_Sr states of the E6_BENCH models also run the nine zero-shot tasks. Base design first: dense, 4-
+    and 3-bit, 50%+4 and 25%+4 in P->Q and joint, Q->P at both 4-bit cells, pruning alone at 50% and 25%. For the
+    models in E6_GRID it is then completed to the E1 grid without 8-bit: pruning alone at 33%, the 33%+4 cell and the
+    three 3-bit cells in the three orders."""
     out = {}
     for m in models:
-        kw = {"tasks": []}
-        if m in E6_NO_KL:
-            kw["kl"] = False
-        q = [u("dense", 0.0, 16, **kw), u("quant", 0.0, 4, **kw), u("quant", 0.0, 3, **kw)]
-        q += [u(o, s, 4, **kw) for s in (0.5, 0.25) for o in ("p_then_q", "joint")]
-        q += [u("q_then_p", s, 4, **kw) for s in (0.5, 0.25)]
-        q += [u("prune", s, 16, **kw) for s in (0.5, 0.25)]
+        def v(order, s, b):
+            kw = {} if _bench(m, order, s, b) else {"tasks": []}
+            if m in E6_NO_KL:
+                kw["kl"] = False
+            return u(order, s, b, **kw)
+        q = [v("dense", 0.0, 16), v("quant", 0.0, 4), v("quant", 0.0, 3)]
+        q += [v(o, s, 4) for s in (0.5, 0.25) for o in ("p_then_q", "joint")]
+        q += [v("q_then_p", s, 4) for s in (0.5, 0.25)]
+        q += [v("prune", s, 16) for s in (0.5, 0.25)]
         if m in E6_GRID:
-            q += [u("prune", 1 / 3, 16, **kw)] + [u(o, 1 / 3, 4, **kw) for o in ORDERS]
-            q += [u(o, s, 3, **kw) for s in SPARS for o in ORDERS]
+            q += [v("prune", 1 / 3, 16)] + [v(o, 1 / 3, 4) for o in ORDERS]
+            q += [v(o, s, 3) for s in SPARS for o in ORDERS]
         out[m] = dedupe(q)
     return out
+
+
+def e6b():
+    """E6B (DECISIONS.md #44): the E6 states that had already run without benchmarks when the benchmarks were added,
+    re-run with the nine zero-shot tasks. The compression is deterministic, so the analysis (scripts/analysis/
+    common.py, Store) replaces the E6 line by its E6B twin only after checking that the WikiText-2 NLL sum is
+    identical. SmolLM2-1.7B also gets its weaker-first cell (50%+4: pruning alone and the three orders), to test the
+    accuracy result of the four small-model weaker-first cells at 1.7B."""
+    return {"HuggingFaceTB/SmolLM2-1.7B": [u("dense", 0.0, 16), u("prune", 0.25, 16), u("quant", 0.0, 4),
+                                           u("p_then_q", 0.25, 4), u("quant", 0.0, 3), u("prune", 0.5, 16),
+                                           u("p_then_q", 0.5, 4), u("q_then_p", 0.5, 4), u("joint", 0.5, 4)],
+            "Qwen/Qwen2.5-1.5B": [u("dense", 0.0, 16), u("quant", 0.0, 4), u("quant", 0.0, 3)]}
 
 
 def dedupe(q):
@@ -144,7 +170,7 @@ def batch():
 
 
 FAMILIES = {"E1": e1, "E3": e3, "E4": e4, "E5": e5, "E6": e6}
-CHECKS = {"BATCH": batch}  # queues for re-checks of existing states; not part of the analysis plan
+CHECKS = {"BATCH": batch, "E6B": e6b}  # re-runs of existing states; not part of the analysis plan
 
 
 def main(argv):

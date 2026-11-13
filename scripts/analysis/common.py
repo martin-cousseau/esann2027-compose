@@ -237,6 +237,9 @@ def planned_models():
 
 
 # ----------------------------------------------------------------------------- result store
+UPGRADE_FAMILIES = ("E6B",)  # re-runs that add benchmarks to existing study states (DECISIONS.md #44)
+
+
 class Store:
     """Every usable v2 model state, keyed by state_id, plus the DET lines, failures and item files."""
 
@@ -247,6 +250,7 @@ class Store:
         self.not_ok, self.failures, self.duplicates, self.other_dtype = [], [], [], []
         self.archived_failures, self.ignored_files = [], []
         self.item_problems = {}
+        self.upgraded, self.upgrade_problems = [], []
         self._items = {}
         self.index = {}
         self.plan = planned_states()
@@ -270,7 +274,7 @@ class Store:
                     continue
                 if fam == "E2":
                     continue  # different schema (one line per layer), read by e2.py
-                if fam != "DET" and fam not in MQ.FAMILIES:
+                if fam != "DET" and fam not in MQ.FAMILIES and fam not in UPGRADE_FAMILIES:
                     self.ignored_files.append(self.paths.rel(path))  # e.g. a pilot: not a study family
                     continue
                 for r in P.read_jsonl(path):
@@ -288,12 +292,31 @@ class Store:
                     if r.get("dtype", DTYPE) != DTYPE:
                         self.other_dtype.append({"state_id": sid, "file": self.paths.rel(path)})
                         continue
+                    if fam in UPGRADE_FAMILIES:
+                        self._upgrade(sid, r, self.paths.rel(path))
+                        continue
                     if sid in self.states:
                         self.duplicates.append({"state_id": sid, "kept": self.source[sid], "ignored": self.paths.rel(path)})
                         continue
                     self.states[sid], self.source[sid] = r, self.paths.rel(path)
         for sid, r in self.states.items():
             self.index[(short(r["model"]), r["order"], skey(r["sparsity"]), int(r["bits"]), int(r.get("seed", 0)))] = sid
+
+    def _upgrade(self, sid, r, src):
+        """An E6B line re-runs an E6 state with benchmarks: it replaces the E6 line when that line has no per-item
+        file and the WikiText-2 NLL sums are identical (the compression is deterministic); otherwise it is ignored and
+        recorded in self.upgrade_problems."""
+        old = self.states.get(sid)
+        nll = lambda x: (x.get("wikitext2") or {}).get("nll_sum")  # noqa: E731
+        if old is None:
+            self.upgrade_problems.append({"state_id": sid, "file": src, "why": "no study line to upgrade"})
+        elif old.get("items_file"):
+            self.upgrade_problems.append({"state_id": sid, "file": src, "why": "study line already has benchmarks"})
+        elif nll(old) is None or nll(old) != nll(r):
+            self.upgrade_problems.append({"state_id": sid, "file": src, "why": f"WikiText-2 NLL differs: {nll(old)!r} vs {nll(r)!r}"})
+        else:
+            self.states[sid], self.source[sid] = r, src
+            self.upgraded.append({"state_id": sid, "from": src})
 
     # ------------------------------------------------------------------ lookups
     def sid(self, model, order, s, b, seed=0):
