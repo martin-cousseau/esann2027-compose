@@ -131,7 +131,7 @@ def fig1_interaction(rows, models, paths, e2=True, height_cm=FIG1_HEIGHT_CM):
                 if e2 and e2pts:
                     n_e2 += len(e2pts)
                     ax.plot([p for p, _ in e2pts], [v for _, v in e2pts], ls="none", marker="o", ms=2.4, mfc="white",
-                            mec="black", mew=0.5, zorder=3, label="one shared Hessian (E2)")
+                            mec="black", mew=0.5, zorder=3, label="one shared Hessian")
             ax.set_title(m)
             if not have:
                 _pending(ax)
@@ -152,7 +152,7 @@ def fig1_interaction(rows, models, paths, e2=True, height_cm=FIG1_HEIGHT_CM):
         handles = [Patch(facecolor=c, edgecolor="black", linewidth=0.4, hatch=h, label=lab) for _, lab, c, h in BAR_STYLE]
         if e2 and n_e2:
             handles.append(Line2D([], [], ls="none", marker="o", ms=2.4, mfc="white", mec="black", mew=0.5,
-                                  label="one shared Hessian (E2)"))
+                                  label="one shared Hessian"))
         fig.legend(handles=handles, ncol=len(handles), loc="outside upper center")
         files = _save(fig, paths, "fig1_interaction_v2")
     cap = (f"Fig. 1 (v2, fp32, seed 0): layer-level interaction I_E/(E_P+E_Q), ratio of mean errors over layers, of the"

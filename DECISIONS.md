@@ -237,3 +237,15 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     (note, decision 7); (2) the paper names only models whose runs are complete (today SmolLM2-1.7B, two 4-bit cells),
     so the abstract, setup and Q3 grow with the data instead of announcing it. The watcher must run with the longest
     background timeout and a heartbeat below it, so that a timeout cannot silently end the keepalive again.
+43. **2026-11-13, the package audit.** An independent audit of package v1 (`context/author_package/note_src/audit.md`,
+    private) found every macro value correct and three blockers in the wording: the nine-task accuracy result in the
+    four weaker-first cells was only implicit (now stated next to the claim; the abstract and conclusion say "by
+    perplexity" / "for perplexity and KL"); "its penalty grows with compression" was false for Qwen2.5-0.5B at 4 bits in
+    fp32 (now "at 3 bits ... on all three models"); "what decides is whether the grid is fitted after the mask is
+    known" was contradicted by the re-fit test (now "the order, mask before grid; why is open", at the layer level). The
+    majors are fixed as well: E2 is every second block and in aggregate; the 50%+3 Q->P case turns super-additive with
+    one Hessian; the family effect fades at 60%+4 and the SmolLM2 scale trend is not monotone; the equal-storage 3-bit
+    win holds on the small SmolLM2 models only; Table 2 names its tasks; the IJCNN models re-quantized the pruned
+    weights; the run count, which the paper does not break down, is dropped; the note no longer claims printed page
+    numbers or runs that have not happened. To stay at 6 pages, the unit-check sentence and the layer-error sentence of
+    Q2 are cut (offered back in the note). The Fig. 1 legend drops the internal label "(E2)" (`paper_figures.py`).
