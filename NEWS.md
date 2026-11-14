@@ -18,6 +18,14 @@
   https://huggingface.co/martincousseau/esann2027-compose-v2 ; results
   https://huggingface.co/datasets/martincousseau/esann2027-v2-results ; runs https://wandb.ai/martin-css/esann2027-compose-v2
 
+## 2026-11-14 16:35 UTC - interim package v2 sent
+- At your request, an interim package for the team (private; sent as a zip and backed up to the private dataset):
+  the revised paper (6 pages) now counts SmolLM2-1.7B with the three small models (full grid, Table 2 row) and
+  leaves out the models still running (DECISIONS.md #48). Every number is generated; every sentence that turns
+  numbers into words is checked by `check_claims.py` (20 of 20 hold); the note lists the changes since v1.1.
+- The final package (seven models, Table 2 rows at 1-2B, seeds of the three small models) follows when the runs end
+  (about 15:30 UTC on 15 November).
+
 ## 2026-11-14 13:30 UTC - SmolLM2-1.7B complete; Qwen2.5-3B to the full grid
 - SmolLM2-1.7B, full grid: quantize-first is the worst order by perplexity in 5 of 6 cells (not at 33%+4, where the
   joint sweep is worst by 2.4%); its penalty at 50%+3 is 1.34 times the best perplexity. At 25%+3, quantize-first
