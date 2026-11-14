@@ -849,7 +849,7 @@
    "min_excess_multiplicative_pct": -3.165377237066369
   },
   "wt_ppl|p_then_q|Qwen2.5-1.5B": {
-   "n": 4,
+   "n": 5,
    "exceeds_additive": 0,
    "exceeds_multiplicative": 0,
    "max_excess_additive_pct": -1.2307955843325669,
@@ -867,22 +867,22 @@
    "min_excess_multiplicative_pct": -2.9728299841932704
   },
   "wt_ppl|joint|OLMo-2-0425-1B": {
-   "n": 5,
-   "exceeds_additive": 2,
+   "n": 6,
+   "exceeds_additive": 3,
    "exceeds_multiplicative": 0,
-   "max_excess_additive_pct": 1.896952644162786,
+   "max_excess_additive_pct": 2.2646335656244077,
    "min_excess_additive_pct": -4.641574833822237,
    "max_excess_multiplicative_pct": -0.8230454886686278,
-   "min_excess_multiplicative_pct": -7.939405770680697
+   "min_excess_multiplicative_pct": -10.518613061947269
   },
   "wt_ppl|p_then_q|OLMo-2-0425-1B": {
-   "n": 5,
-   "exceeds_additive": 1,
+   "n": 6,
+   "exceeds_additive": 2,
    "exceeds_multiplicative": 0,
-   "max_excess_additive_pct": 1.4654945132693387,
+   "max_excess_additive_pct": 3.0753117136726127,
    "min_excess_additive_pct": -4.406426407914765,
    "max_excess_multiplicative_pct": -1.0023947315677462,
-   "min_excess_multiplicative_pct": -7.7123896073641784
+   "min_excess_multiplicative_pct": -9.809271009680742
   },
   "wt_ppl|q_then_p|OLMo-2-0425-1B": {
    "n": 5,
@@ -894,8 +894,8 @@
    "min_excess_multiplicative_pct": -3.898745257757863
   },
   "wt_ppl|joint|all": {
-   "n": 34,
-   "exceeds_additive": 14,
+   "n": 35,
+   "exceeds_additive": 15,
    "exceeds_multiplicative": 5,
    "max_excess_additive_pct": 32.40826181241434,
    "min_excess_additive_pct": -14.278804624659369,
@@ -903,8 +903,8 @@
    "min_excess_multiplicative_pct": -18.996343463283228
   },
   "wt_ppl|p_then_q|all": {
-   "n": 33,
-   "exceeds_additive": 9,
+   "n": 35,
+   "exceeds_additive": 10,
    "exceeds_multiplicative": 1,
    "max_excess_additive_pct": 14.777284990717575,
    "min_excess_additive_pct": -12.013927393907709,
@@ -1038,13 +1038,13 @@
    "min_excess_multiplicative_pct": -3.5493119149070163
   },
   "c4_ppl|p_then_q|Qwen2.5-1.5B": {
-   "n": 4,
+   "n": 5,
    "exceeds_additive": 1,
    "exceeds_multiplicative": 0,
    "max_excess_additive_pct": 0.4151268678575626,
-   "min_excess_additive_pct": -3.206603985403711,
+   "min_excess_additive_pct": -5.321947337467236,
    "max_excess_multiplicative_pct": -0.8268507524590185,
-   "min_excess_multiplicative_pct": -3.828341996295348
+   "min_excess_multiplicative_pct": -6.833422241313524
   },
   "c4_ppl|q_then_p|Qwen2.5-1.5B": {
    "n": 4,
@@ -1056,19 +1056,19 @@
    "min_excess_multiplicative_pct": -2.170958154874869
   },
   "c4_ppl|joint|OLMo-2-0425-1B": {
-   "n": 5,
-   "exceeds_additive": 1,
+   "n": 6,
+   "exceeds_additive": 2,
    "exceeds_multiplicative": 1,
-   "max_excess_additive_pct": 1.9407477404243645,
+   "max_excess_additive_pct": 3.068296173560925,
    "min_excess_additive_pct": -3.5177015265089873,
    "max_excess_multiplicative_pct": 0.16360562573847215,
    "min_excess_multiplicative_pct": -5.241929916999299
   },
   "c4_ppl|p_then_q|OLMo-2-0425-1B": {
-   "n": 5,
-   "exceeds_additive": 1,
+   "n": 6,
+   "exceeds_additive": 2,
    "exceeds_multiplicative": 1,
-   "max_excess_additive_pct": 1.7788269099158427,
+   "max_excess_additive_pct": 3.5270021571103927,
    "min_excess_additive_pct": -2.784449455409166,
    "max_excess_multiplicative_pct": 0.00450757545784608,
    "min_excess_multiplicative_pct": -4.521781742245013
@@ -1083,8 +1083,8 @@
    "min_excess_multiplicative_pct": -2.5836029744198963
   },
   "c4_ppl|joint|all": {
-   "n": 34,
-   "exceeds_additive": 13,
+   "n": 35,
+   "exceeds_additive": 14,
    "exceeds_multiplicative": 6,
    "max_excess_additive_pct": 41.121652027956365,
    "min_excess_additive_pct": -12.632434217088907,
@@ -1092,8 +1092,8 @@
    "min_excess_multiplicative_pct": -15.562893189115767
   },
   "c4_ppl|p_then_q|all": {
-   "n": 33,
-   "exceeds_additive": 11,
+   "n": 35,
+   "exceeds_additive": 12,
    "exceeds_multiplicative": 4,
    "max_excess_additive_pct": 14.170892835979343,
    "min_excess_additive_pct": -16.04478965854431,
