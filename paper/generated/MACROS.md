@@ -3335,6 +3335,115 @@ Columns:
 | `\resQTwoMaxRatioAllModels` | `1.77` | AllModels: largest worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resQTwoMaxRatioWhereAllModels` | `SmolLM2-135M 50\%+3` | AllModels: where it occurs | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 
+## Q1 over model groups: layer-level interaction sign (seed 0, grid cells 25/33/50%, ratio of mean layer errors)
+
+| Macro | Value | Meaning | Source |
+|---|---|---|---|
+| `\resQOneMaskFirstTotalCore` | `36` | Core: joint and P->Q combinations with E_P, E_Q, E_PQ | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
+| `\resQOneMaskFirstSubCore` | `36` | Core: of those, sub-additive (mean I_E < 0) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
+| `\resQOneQPBFourTotalCore` | `9` | Core: Q->P 4-bit combinations | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
+| `\resQOneSuperQPBFourCore` | `9` | Core: of those, super-additive (mean I_E > 0) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
+| `\resQOneModelsCore` | `3` | Core: models with layer diagnostics | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
+| `\resQOneMaskFirstTotalLarger` | `12` | Larger: joint and P->Q combinations with E_P, E_Q, E_PQ | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
+| `\resQOneMaskFirstSubLarger` | `12` | Larger: of those, sub-additive (mean I_E < 0) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
+| `\resQOneQPBFourTotalLarger` | `3` | Larger: Q->P 4-bit combinations | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
+| `\resQOneSuperQPBFourLarger` | `3` | Larger: of those, super-additive (mean I_E > 0) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
+| `\resQOneModelsLarger` | `1` | Larger: models with layer diagnostics | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
+| `\resQOneMaskFirstTotalAllModels` | `48` | AllModels: joint and P->Q combinations with E_P, E_Q, E_PQ | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
+| `\resQOneMaskFirstSubAllModels` | `48` | AllModels: of those, sub-additive (mean I_E < 0) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
+| `\resQOneQPBFourTotalAllModels` | `12` | AllModels: Q->P 4-bit combinations | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
+| `\resQOneSuperQPBFourAllModels` | `12` | AllModels: of those, super-additive (mean I_E > 0) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
+| `\resQOneModelsAllModels` | `4` | AllModels: models with layer diagnostics | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
+
+## Q2 per cell: on how many metrics Q->P is strictly the worst order (seed 0)
+
+| Macro | Value | Meaning | Source |
+|---|---|---|---|
+| `\resQTwoMetricsSmolSmallSTwentyFiveBFour` | `8` | SmolLM2-135M 25%+4: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsSmolSmallSTwentyFiveBFour` | `7` | SmolLM2-135M 25%+4: of those, Q->P strictly worst (wt_ppl, c4_ppl, wt_kl, flips9, sr3_v2, c4_kl, sr3_paper) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsSmolSmallSThirtyThreeBFour` | `8` | SmolLM2-135M 33%+4: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsSmolSmallSThirtyThreeBFour` | `5` | SmolLM2-135M 33%+4: of those, Q->P strictly worst (wt_ppl, c4_ppl, wt_kl, flips9, c4_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsSmolSmallSFiftyBFour` | `8` | SmolLM2-135M 50%+4: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsSmolSmallSFiftyBFour` | `4` | SmolLM2-135M 50%+4: of those, Q->P strictly worst (wt_ppl, c4_ppl, wt_kl, c4_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsSmolSmallSTwentyFiveBThree` | `8` | SmolLM2-135M 25%+3: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsSmolSmallSTwentyFiveBThree` | `4` | SmolLM2-135M 25%+3: of those, Q->P strictly worst (flips9, sr3_v2, sr9_v2, sr3_paper) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsSmolSmallSThirtyThreeBThree` | `8` | SmolLM2-135M 33%+3: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsSmolSmallSThirtyThreeBThree` | `6` | SmolLM2-135M 33%+3: of those, Q->P strictly worst (wt_ppl, c4_ppl, wt_kl, sr3_v2, c4_kl, sr3_paper) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsSmolSmallSFiftyBThree` | `8` | SmolLM2-135M 50%+3: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsSmolSmallSFiftyBThree` | `7` | SmolLM2-135M 50%+3: of those, Q->P strictly worst (wt_ppl, c4_ppl, wt_kl, flips9, sr3_v2, c4_kl, sr3_paper) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsSmolMediumSTwentyFiveBFour` | `8` | SmolLM2-360M 25%+4: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsSmolMediumSTwentyFiveBFour` | `8` | SmolLM2-360M 25%+4: of those, Q->P strictly worst (wt_ppl, c4_ppl, wt_kl, flips9, sr3_v2, c4_kl, sr9_v2, sr3_paper) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsSmolMediumSThirtyThreeBFour` | `8` | SmolLM2-360M 33%+4: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsSmolMediumSThirtyThreeBFour` | `8` | SmolLM2-360M 33%+4: of those, Q->P strictly worst (wt_ppl, c4_ppl, wt_kl, flips9, sr3_v2, c4_kl, sr9_v2, sr3_paper) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsSmolMediumSFiftyBFour` | `8` | SmolLM2-360M 50%+4: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsSmolMediumSFiftyBFour` | `8` | SmolLM2-360M 50%+4: of those, Q->P strictly worst (wt_ppl, c4_ppl, wt_kl, flips9, sr3_v2, c4_kl, sr9_v2, sr3_paper) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsSmolMediumSTwentyFiveBThree` | `8` | SmolLM2-360M 25%+3: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsSmolMediumSTwentyFiveBThree` | `8` | SmolLM2-360M 25%+3: of those, Q->P strictly worst (wt_ppl, c4_ppl, wt_kl, flips9, sr3_v2, c4_kl, sr9_v2, sr3_paper) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsSmolMediumSThirtyThreeBThree` | `8` | SmolLM2-360M 33%+3: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsSmolMediumSThirtyThreeBThree` | `8` | SmolLM2-360M 33%+3: of those, Q->P strictly worst (wt_ppl, c4_ppl, wt_kl, flips9, sr3_v2, c4_kl, sr9_v2, sr3_paper) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsSmolMediumSFiftyBThree` | `8` | SmolLM2-360M 50%+3: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsSmolMediumSFiftyBThree` | `8` | SmolLM2-360M 50%+3: of those, Q->P strictly worst (wt_ppl, c4_ppl, wt_kl, flips9, sr3_v2, c4_kl, sr9_v2, sr3_paper) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsQwenSTwentyFiveBFour` | `8` | Qwen2.5-0.5B 25%+4: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsQwenSTwentyFiveBFour` | `8` | Qwen2.5-0.5B 25%+4: of those, Q->P strictly worst (wt_ppl, c4_ppl, wt_kl, flips9, sr3_v2, c4_kl, sr9_v2, sr3_paper) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsQwenSThirtyThreeBFour` | `8` | Qwen2.5-0.5B 33%+4: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsQwenSThirtyThreeBFour` | `6` | Qwen2.5-0.5B 33%+4: of those, Q->P strictly worst (wt_ppl, c4_ppl, wt_kl, sr3_v2, c4_kl, sr3_paper) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsQwenSFiftyBFour` | `8` | Qwen2.5-0.5B 50%+4: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsQwenSFiftyBFour` | `6` | Qwen2.5-0.5B 50%+4: of those, Q->P strictly worst (wt_ppl, c4_ppl, wt_kl, sr3_v2, c4_kl, sr3_paper) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsQwenSTwentyFiveBThree` | `8` | Qwen2.5-0.5B 25%+3: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsQwenSTwentyFiveBThree` | `4` | Qwen2.5-0.5B 25%+3: of those, Q->P strictly worst (flips9, sr3_v2, sr9_v2, sr3_paper) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsQwenSThirtyThreeBThree` | `8` | Qwen2.5-0.5B 33%+3: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsQwenSThirtyThreeBThree` | `2` | Qwen2.5-0.5B 33%+3: of those, Q->P strictly worst (wt_ppl, wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsQwenSFiftyBThree` | `8` | Qwen2.5-0.5B 50%+3: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsQwenSFiftyBThree` | `8` | Qwen2.5-0.5B 50%+3: of those, Q->P strictly worst (wt_ppl, c4_ppl, wt_kl, flips9, sr3_v2, c4_kl, sr9_v2, sr3_paper) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsSmolLargeSTwentyFiveBFour` | `4` | SmolLM2-1.7B 25%+4: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsSmolLargeSTwentyFiveBFour` | `4` | SmolLM2-1.7B 25%+4: of those, Q->P strictly worst (wt_ppl, c4_ppl, wt_kl, c4_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsSmolLargeSThirtyThreeBFour` | `4` | SmolLM2-1.7B 33%+4: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsSmolLargeSThirtyThreeBFour` | `2` | SmolLM2-1.7B 33%+4: of those, Q->P strictly worst (c4_ppl, c4_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsSmolLargeSFiftyBFour` | `8` | SmolLM2-1.7B 50%+4: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsSmolLargeSFiftyBFour` | `8` | SmolLM2-1.7B 50%+4: of those, Q->P strictly worst (wt_ppl, c4_ppl, wt_kl, flips9, sr3_v2, c4_kl, sr9_v2, sr3_paper) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsSmolLargeSTwentyFiveBThree` | `4` | SmolLM2-1.7B 25%+3: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsSmolLargeSTwentyFiveBThree` | `2` | SmolLM2-1.7B 25%+3: of those, Q->P strictly worst (wt_ppl, wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsSmolLargeSThirtyThreeBThree` | `4` | SmolLM2-1.7B 33%+3: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsSmolLargeSThirtyThreeBThree` | `4` | SmolLM2-1.7B 33%+3: of those, Q->P strictly worst (wt_ppl, c4_ppl, wt_kl, c4_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsSmolLargeSFiftyBThree` | `4` | SmolLM2-1.7B 50%+3: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsSmolLargeSFiftyBThree` | `4` | SmolLM2-1.7B 50%+3: of those, Q->P strictly worst (wt_ppl, c4_ppl, wt_kl, c4_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsQwenMidSTwentyFiveBFour` | `0` | Qwen2.5-1.5B 25%+4: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsQwenMidSTwentyFiveBFour` | `0` | Qwen2.5-1.5B 25%+4: of those, Q->P strictly worst (none) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsQwenMidSThirtyThreeBFour` | `0` | Qwen2.5-1.5B 33%+4: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsQwenMidSThirtyThreeBFour` | `0` | Qwen2.5-1.5B 33%+4: of those, Q->P strictly worst (none) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsQwenMidSFiftyBFour` | `0` | Qwen2.5-1.5B 50%+4: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsQwenMidSFiftyBFour` | `0` | Qwen2.5-1.5B 50%+4: of those, Q->P strictly worst (none) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsQwenMidSTwentyFiveBThree` | `0` | Qwen2.5-1.5B 25%+3: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsQwenMidSTwentyFiveBThree` | `0` | Qwen2.5-1.5B 25%+3: of those, Q->P strictly worst (none) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsQwenMidSThirtyThreeBThree` | `0` | Qwen2.5-1.5B 33%+3: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsQwenMidSThirtyThreeBThree` | `0` | Qwen2.5-1.5B 33%+3: of those, Q->P strictly worst (none) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsQwenMidSFiftyBThree` | `0` | Qwen2.5-1.5B 50%+3: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsQwenMidSFiftyBThree` | `0` | Qwen2.5-1.5B 50%+3: of those, Q->P strictly worst (none) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsQwenLargeSTwentyFiveBFour` | `0` | Qwen2.5-3B 25%+4: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsQwenLargeSTwentyFiveBFour` | `0` | Qwen2.5-3B 25%+4: of those, Q->P strictly worst (none) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsQwenLargeSThirtyThreeBFour` | `0` | Qwen2.5-3B 33%+4: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsQwenLargeSThirtyThreeBFour` | `0` | Qwen2.5-3B 33%+4: of those, Q->P strictly worst (none) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsQwenLargeSFiftyBFour` | `0` | Qwen2.5-3B 50%+4: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsQwenLargeSFiftyBFour` | `0` | Qwen2.5-3B 50%+4: of those, Q->P strictly worst (none) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsQwenLargeSTwentyFiveBThree` | `0` | Qwen2.5-3B 25%+3: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsQwenLargeSTwentyFiveBThree` | `0` | Qwen2.5-3B 25%+3: of those, Q->P strictly worst (none) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsQwenLargeSThirtyThreeBThree` | `0` | Qwen2.5-3B 33%+3: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsQwenLargeSThirtyThreeBThree` | `0` | Qwen2.5-3B 33%+3: of those, Q->P strictly worst (none) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsQwenLargeSFiftyBThree` | `0` | Qwen2.5-3B 50%+3: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsQwenLargeSFiftyBThree` | `0` | Qwen2.5-3B 50%+3: of those, Q->P strictly worst (none) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsOlmoSTwentyFiveBFour` | `0` | OLMo-2-0425-1B 25%+4: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsOlmoSTwentyFiveBFour` | `0` | OLMo-2-0425-1B 25%+4: of those, Q->P strictly worst (none) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsOlmoSThirtyThreeBFour` | `0` | OLMo-2-0425-1B 33%+4: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsOlmoSThirtyThreeBFour` | `0` | OLMo-2-0425-1B 33%+4: of those, Q->P strictly worst (none) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsOlmoSFiftyBFour` | `0` | OLMo-2-0425-1B 50%+4: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsOlmoSFiftyBFour` | `0` | OLMo-2-0425-1B 50%+4: of those, Q->P strictly worst (none) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsOlmoSTwentyFiveBThree` | `0` | OLMo-2-0425-1B 25%+3: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsOlmoSTwentyFiveBThree` | `0` | OLMo-2-0425-1B 25%+3: of those, Q->P strictly worst (none) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsOlmoSThirtyThreeBThree` | `0` | OLMo-2-0425-1B 33%+3: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsOlmoSThirtyThreeBThree` | `0` | OLMo-2-0425-1B 33%+3: of those, Q->P strictly worst (none) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMetricsOlmoSFiftyBThree` | `0` | OLMo-2-0425-1B 50%+3: metrics with the three orders ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstMetricsOlmoSFiftyBThree` | `0` | OLMo-2-0425-1B 50%+3: of those, Q->P strictly worst (none) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+
 ## Q3 over model groups: range of the order spread (grid cells 25/33/50%; -- until every model of the group has its grid)
 
 | Macro | Value | Meaning | Source |
@@ -6045,6 +6154,42 @@ Columns:
 | `\resESevenHarmaPQBetterCFourPplOLMoTwoZeroFourTwoFiveOneB` | `--` | = `\resESevenHarmaPQBetterCFourPplOlmo` | see that macro |
 | `\resESevenHarmaOrderCellsCFourPplOLMoTwoZeroFourTwoFiveOneB` | `--` | = `\resESevenHarmaOrderCellsCFourPplOlmo` | see that macro |
 | `\resESevenHarmaMaxGapCFourPplOLMoTwoZeroFourTwoFiveOneBPct` | `--` | = `\resESevenHarmaMaxGapCFourPplOlmoPct` | see that macro |
+| `\resQTwoMetricsQwenTwoFiveOneFiveBSTwentyFiveBFour` | `0` | = `\resQTwoMetricsQwenMidSTwentyFiveBFour` | see that macro |
+| `\resQTwoQPWorstMetricsQwenTwoFiveOneFiveBSTwentyFiveBFour` | `0` | = `\resQTwoQPWorstMetricsQwenMidSTwentyFiveBFour` | see that macro |
+| `\resQTwoMetricsQwenTwoFiveOneFiveBSThirtyThreeBFour` | `0` | = `\resQTwoMetricsQwenMidSThirtyThreeBFour` | see that macro |
+| `\resQTwoQPWorstMetricsQwenTwoFiveOneFiveBSThirtyThreeBFour` | `0` | = `\resQTwoQPWorstMetricsQwenMidSThirtyThreeBFour` | see that macro |
+| `\resQTwoMetricsQwenTwoFiveOneFiveBSFiftyBFour` | `0` | = `\resQTwoMetricsQwenMidSFiftyBFour` | see that macro |
+| `\resQTwoQPWorstMetricsQwenTwoFiveOneFiveBSFiftyBFour` | `0` | = `\resQTwoQPWorstMetricsQwenMidSFiftyBFour` | see that macro |
+| `\resQTwoMetricsQwenTwoFiveOneFiveBSTwentyFiveBThree` | `0` | = `\resQTwoMetricsQwenMidSTwentyFiveBThree` | see that macro |
+| `\resQTwoQPWorstMetricsQwenTwoFiveOneFiveBSTwentyFiveBThree` | `0` | = `\resQTwoQPWorstMetricsQwenMidSTwentyFiveBThree` | see that macro |
+| `\resQTwoMetricsQwenTwoFiveOneFiveBSThirtyThreeBThree` | `0` | = `\resQTwoMetricsQwenMidSThirtyThreeBThree` | see that macro |
+| `\resQTwoQPWorstMetricsQwenTwoFiveOneFiveBSThirtyThreeBThree` | `0` | = `\resQTwoQPWorstMetricsQwenMidSThirtyThreeBThree` | see that macro |
+| `\resQTwoMetricsQwenTwoFiveOneFiveBSFiftyBThree` | `0` | = `\resQTwoMetricsQwenMidSFiftyBThree` | see that macro |
+| `\resQTwoQPWorstMetricsQwenTwoFiveOneFiveBSFiftyBThree` | `0` | = `\resQTwoQPWorstMetricsQwenMidSFiftyBThree` | see that macro |
+| `\resQTwoMetricsQwenTwoFiveThreeBSTwentyFiveBFour` | `0` | = `\resQTwoMetricsQwenLargeSTwentyFiveBFour` | see that macro |
+| `\resQTwoQPWorstMetricsQwenTwoFiveThreeBSTwentyFiveBFour` | `0` | = `\resQTwoQPWorstMetricsQwenLargeSTwentyFiveBFour` | see that macro |
+| `\resQTwoMetricsQwenTwoFiveThreeBSThirtyThreeBFour` | `0` | = `\resQTwoMetricsQwenLargeSThirtyThreeBFour` | see that macro |
+| `\resQTwoQPWorstMetricsQwenTwoFiveThreeBSThirtyThreeBFour` | `0` | = `\resQTwoQPWorstMetricsQwenLargeSThirtyThreeBFour` | see that macro |
+| `\resQTwoMetricsQwenTwoFiveThreeBSFiftyBFour` | `0` | = `\resQTwoMetricsQwenLargeSFiftyBFour` | see that macro |
+| `\resQTwoQPWorstMetricsQwenTwoFiveThreeBSFiftyBFour` | `0` | = `\resQTwoQPWorstMetricsQwenLargeSFiftyBFour` | see that macro |
+| `\resQTwoMetricsQwenTwoFiveThreeBSTwentyFiveBThree` | `0` | = `\resQTwoMetricsQwenLargeSTwentyFiveBThree` | see that macro |
+| `\resQTwoQPWorstMetricsQwenTwoFiveThreeBSTwentyFiveBThree` | `0` | = `\resQTwoQPWorstMetricsQwenLargeSTwentyFiveBThree` | see that macro |
+| `\resQTwoMetricsQwenTwoFiveThreeBSThirtyThreeBThree` | `0` | = `\resQTwoMetricsQwenLargeSThirtyThreeBThree` | see that macro |
+| `\resQTwoQPWorstMetricsQwenTwoFiveThreeBSThirtyThreeBThree` | `0` | = `\resQTwoQPWorstMetricsQwenLargeSThirtyThreeBThree` | see that macro |
+| `\resQTwoMetricsQwenTwoFiveThreeBSFiftyBThree` | `0` | = `\resQTwoMetricsQwenLargeSFiftyBThree` | see that macro |
+| `\resQTwoQPWorstMetricsQwenTwoFiveThreeBSFiftyBThree` | `0` | = `\resQTwoQPWorstMetricsQwenLargeSFiftyBThree` | see that macro |
+| `\resQTwoMetricsOLMoTwoZeroFourTwoFiveOneBSTwentyFiveBFour` | `0` | = `\resQTwoMetricsOlmoSTwentyFiveBFour` | see that macro |
+| `\resQTwoQPWorstMetricsOLMoTwoZeroFourTwoFiveOneBSTwentyFiveBFour` | `0` | = `\resQTwoQPWorstMetricsOlmoSTwentyFiveBFour` | see that macro |
+| `\resQTwoMetricsOLMoTwoZeroFourTwoFiveOneBSThirtyThreeBFour` | `0` | = `\resQTwoMetricsOlmoSThirtyThreeBFour` | see that macro |
+| `\resQTwoQPWorstMetricsOLMoTwoZeroFourTwoFiveOneBSThirtyThreeBFour` | `0` | = `\resQTwoQPWorstMetricsOlmoSThirtyThreeBFour` | see that macro |
+| `\resQTwoMetricsOLMoTwoZeroFourTwoFiveOneBSFiftyBFour` | `0` | = `\resQTwoMetricsOlmoSFiftyBFour` | see that macro |
+| `\resQTwoQPWorstMetricsOLMoTwoZeroFourTwoFiveOneBSFiftyBFour` | `0` | = `\resQTwoQPWorstMetricsOlmoSFiftyBFour` | see that macro |
+| `\resQTwoMetricsOLMoTwoZeroFourTwoFiveOneBSTwentyFiveBThree` | `0` | = `\resQTwoMetricsOlmoSTwentyFiveBThree` | see that macro |
+| `\resQTwoQPWorstMetricsOLMoTwoZeroFourTwoFiveOneBSTwentyFiveBThree` | `0` | = `\resQTwoQPWorstMetricsOlmoSTwentyFiveBThree` | see that macro |
+| `\resQTwoMetricsOLMoTwoZeroFourTwoFiveOneBSThirtyThreeBThree` | `0` | = `\resQTwoMetricsOlmoSThirtyThreeBThree` | see that macro |
+| `\resQTwoQPWorstMetricsOLMoTwoZeroFourTwoFiveOneBSThirtyThreeBThree` | `0` | = `\resQTwoQPWorstMetricsOlmoSThirtyThreeBThree` | see that macro |
+| `\resQTwoMetricsOLMoTwoZeroFourTwoFiveOneBSFiftyBThree` | `0` | = `\resQTwoMetricsOlmoSFiftyBThree` | see that macro |
+| `\resQTwoQPWorstMetricsOLMoTwoZeroFourTwoFiveOneBSFiftyBThree` | `0` | = `\resQTwoQPWorstMetricsOlmoSFiftyBThree` | see that macro |
 | `\resEEightRhoQwenTwoFiveOneFiveB` | `\ensuremath{+1.00}` | = `\resEEightRhoQwenMid` | see that macro |
 | `\resEEightSameBestQwenTwoFiveOneFiveB` | `--` | = `\resEEightSameBestQwenMid` | see that macro |
 | `\resEEightCellsQwenTwoFiveOneFiveB` | `--` | = `\resEEightCellsQwenMid` | see that macro |

@@ -1084,6 +1084,31 @@ def macros_order_all_models(M, store, q, e7res):
         rat = [(r["wt_ppl_worst_best_ratio"], r["model"], r["cell"]) for r in K if finite(r.get("wt_ppl_worst_best_ratio"))]
         M.add(sec, f"QTwoMaxRatio{g}", num(max(rat)[0], 2) if rat else "--", f"{g}: largest worst/best WikiText-2 ppl ratio", src)
         M.add(sec, f"QTwoMaxRatioWhere{g}", tex_escape(f"{max(rat)[1]} {max(rat)[2]}") if rat else "--", f"{g}: where it occurs", src)
+    sec = "Q1 over model groups: layer-level interaction sign (seed 0, grid cells 25/33/50%, ratio of mean layer errors)"
+    src1 = "reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1)"
+    q1 = [r for r in q["q1"] if r["seed"] == 0 and r["order"] in PAPER_ORDERS and r["ratio_mean_pct"] is not None
+          and skey(r["sparsity"]) in GRID_SPARSITIES]
+    for g, sel in groups.items():
+        R = [r for r in q1 if sel(r["model"])]
+        mf = [r for r in R if r["order"] in ("joint", "p_then_q")]
+        qp4 = [r for r in R if r["order"] == "q_then_p" and int(r["bits"]) == 4]
+        M.add(sec, f"QOneMaskFirstTotal{g}", _n(len(mf)) if R else "--", f"{g}: joint and P->Q combinations with E_P, E_Q, E_PQ", src1)
+        M.add(sec, f"QOneMaskFirstSub{g}", _n(sum(r["ratio_mean_pct"] < 0 for r in mf)) if R else "--",
+              f"{g}: of those, sub-additive (mean I_E < 0)", src1)
+        M.add(sec, f"QOneQPBFourTotal{g}", _n(len(qp4)) if R else "--", f"{g}: Q->P 4-bit combinations", src1)
+        M.add(sec, f"QOneSuperQPBFour{g}", _n(sum(r["ratio_mean_pct"] > 0 for r in qp4)) if R else "--",
+              f"{g}: of those, super-additive (mean I_E > 0)", src1)
+        M.add(sec, f"QOneModels{g}", _n(len({r['model'] for r in R})) if R else "--", f"{g}: models with layer diagnostics", src1)
+    sec = "Q2 per cell: on how many metrics Q->P is strictly the worst order (seed 0)"
+    from .questions import Q2_METRICS
+    names = [n for n, *_ in Q2_METRICS]
+    for r in rows:
+        ranked = [n for n in names if r.get(f"{n}_ranking")]
+        worst = [n for n in ranked if r[f"{n}_worst"] == "q_then_p" and not r[f"{n}_tie_at_worst"]]
+        ct = model_tag(r["model"]) + cell_tag(r["sparsity"], r["bits"])
+        M.add(sec, f"QTwoMetrics{ct}", _n(len(ranked)), f"{r['model']} {r['cell']}: metrics with the three orders ranked", src)
+        M.add(sec, f"QTwoQPWorstMetrics{ct}", _n(len(worst)), f"{r['model']} {r['cell']}: of those, Q->P strictly worst "
+              f"({', '.join(worst) or 'none'})", src)
     sec = "Q3 over model groups: range of the order spread (grid cells 25/33/50%; -- until every model of the group has its grid)"
     src3 = "reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl)"
     q3 = [r for r in q["q3"] if r["metric"] == "wt_ppl"]
