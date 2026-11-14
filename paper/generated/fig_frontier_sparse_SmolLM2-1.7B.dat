@@ -2,7 +2,9 @@
 # SmolLM2-1.7B, seed 0, pruning + quantization, best order per cell (lowest WikiText-2 ppl)
 # bits = nominal bit-width b; bits_tcr = b(1-s) (TCr accounting); bits_mask = bits_tcr + 1-bit mask when s > 0;
 # ppl = WikiText-2 perplexity; kl = KL(dense || model) per token on WikiText-2 (nats); scale/zero overhead excluded
-# rows: SmolLM2-1.7B__joint__s0.2500__b4__seed0__float32; SmolLM2-1.7B__p_then_q__s0.5000__b4__seed0__float32
+# rows: SmolLM2-1.7B__joint__s0.2500__b4__seed0__float32; SmolLM2-1.7B__p_then_q__s0.3333__b4__seed0__float32; SmolLM2-1.7B__p_then_q__s0.2500__b3__seed0__float32; SmolLM2-1.7B__p_then_q__s0.5000__b4__seed0__float32
 bits bits_tcr bits_mask ppl kl
 4 3 4 9.00198 0.101208
+4 2.66667 3.66667 9.65661 0.173901
+3 2.25 3.25 11.9857 0.38527
 4 2 3 14.1131 0.547985

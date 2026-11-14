@@ -423,26 +423,26 @@ Macro = `\res` + column + `SmolLarge` + row tag (e.g. `\resPplSmolLargeDense`). 
 
 | Row tag | State | Source | Ppl | PplCFour | Kl | KlCFour | TopOnePct | TopOneCFourPct | BitsTcr | BitsMask | BitsSym | FreeZerosPct | FlipsPct | FlipsCWPct | FlipsWCPct | SrThree | SrPaper | SrExt | SrCn |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| `Dense` | dense | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__dense__s0.0000__b16__seed0__float32` | `8.11` | `11.96` | `0.000` | `0.000` | `100.0` | `100.0` | `16.00` | `16.00` | `--` |  | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `QuantBFour` | 4-bit | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__quant__s0.0000__b4__seed0__float32` | `8.71` | `12.58` | `0.070` | `0.054` | `87.5` | `88.1` | `4.00` | `4.00` | `3.46` | `14.2` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `QuantBThree` | 3-bit | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__quant__s0.0000__b3__seed0__float32` | `13.01` | `15.58` | `0.468` | `0.276` | `72.3` | `74.8` | `3.00` | `3.00` | `2.45` | `29.7` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `PruneSTwentyFive` | 25% pruned | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__prune__s0.2500__b16__seed0__float32` | `8.51` | `12.37` | `0.046` | `0.037` | `89.9` | `90.2` | `12.00` | `13.00` | `--` | `25.0` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `PruneSThirtyThree` | 33% pruned | `SmolLM2-1.7B__prune__s0.3333__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `PruneSFifty` | 50% pruned | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__prune__s0.5000__b16__seed0__float32` | `13.51` | `17.29` | `0.506` | `0.389` | `68.9` | `69.6` | `8.00` | `9.00` | `--` | `50.0` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `Dense` | dense | `results/v2/E6B/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__dense__s0.0000__b16__seed0__float32` | `8.11` | `11.96` | `0.000` | `0.000` | `100.0` | `100.0` | `16.00` | `16.00` | `--` |  | `0.0` | `0.0` | `0.0` | `1.000` | `1.000` | `1.000` | `1.000` |
+| `QuantBFour` | 4-bit | `results/v2/E6B/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__quant__s0.0000__b4__seed0__float32` | `8.71` | `12.58` | `0.070` | `0.054` | `87.5` | `88.1` | `4.00` | `4.00` | `3.46` | `14.2` | `6.3` | `3.8` | `2.5` | `0.994` | `0.988` | `0.983` | `0.967` |
+| `QuantBThree` | 3-bit | `results/v2/E6B/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__quant__s0.0000__b3__seed0__float32` | `13.01` | `15.58` | `0.468` | `0.276` | `72.3` | `74.8` | `3.00` | `3.00` | `2.45` | `29.7` | `14.3` | `10.3` | `3.9` | `0.925` | `0.932` | `0.914` | `0.838` |
+| `PruneSTwentyFive` | 25% pruned | `results/v2/E6B/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__prune__s0.2500__b16__seed0__float32` | `8.51` | `12.37` | `0.046` | `0.037` | `89.9` | `90.2` | `12.00` | `13.00` | `--` | `25.0` | `4.8` | `2.3` | `2.5` | `0.995` | `1.000` | `1.004` | `1.007` |
+| `PruneSThirtyThree` | 33% pruned | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__prune__s0.3333__b16__seed0__float32` | `9.04` | `12.92` | `0.107` | `0.084` | `84.8` | `85.4` | `10.67` | `11.67` | `--` | `33.3` | `7.2` | `4.0` | `3.2` | `0.984` | `0.987` | `0.987` | `0.975` |
+| `PruneSFifty` | 50% pruned | `results/v2/E6B/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__prune__s0.5000__b16__seed0__float32` | `13.51` | `17.29` | `0.506` | `0.389` | `68.9` | `69.6` | `8.00` | `9.00` | `--` | `50.0` | `15.1` | `10.7` | `4.4` | `0.899` | `0.901` | `0.922` | `0.853` |
 | `STwentyFiveBFourJoint` | 25%+4 joint | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__joint__s0.2500__b4__seed0__float32` | `9.00` | `12.87` | `0.101` | `0.078` | `85.1` | `85.6` | `3.00` | `4.00` | `3.35` | `25.2` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBFourPQ` | 25%+4 P->Q | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__p_then_q__s0.2500__b4__seed0__float32` | `9.06` | `12.91` | `0.106` | `0.082` | `85.0` | `85.5` | `3.00` | `4.00` | `3.35` | `25.3` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBFourPQ` | 25%+4 P->Q | `results/v2/E6B/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__p_then_q__s0.2500__b4__seed0__float32` | `9.06` | `12.91` | `0.106` | `0.082` | `85.0` | `85.5` | `3.00` | `4.00` | `3.35` | `25.3` | `7.4` | `4.1` | `3.3` | `0.985` | `0.985` | `0.985` | `0.972` |
 | `STwentyFiveBFourQP` | 25%+4 Q->P | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__q_then_p__s0.2500__b4__seed0__float32` | `9.19` | `13.07` | `0.122` | `0.095` | `83.8` | `84.4` | `3.00` | `4.00` | `3.32` | `25.0` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBFourJoint` | 33%+4 joint | `SmolLM2-1.7B__joint__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBFourPQ` | 33%+4 P->Q | `SmolLM2-1.7B__p_then_q__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBFourQP` | 33%+4 Q->P | `SmolLM2-1.7B__q_then_p__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourJoint` | 50%+4 joint | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__joint__s0.5000__b4__seed0__float32` | `14.13` | `18.08` | `0.549` | `0.435` | `67.6` | `68.1` | `2.00` | `3.00` | `2.61` | `50.0` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourPQ` | 50%+4 P->Q | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__p_then_q__s0.5000__b4__seed0__float32` | `14.11` | `18.23` | `0.548` | `0.444` | `67.4` | `67.9` | `2.00` | `3.00` | `2.62` | `50.0` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourQP` | 50%+4 Q->P | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__q_then_p__s0.5000__b4__seed0__float32` | `15.02` | `19.62` | `0.608` | `0.516` | `66.1` | `65.9` | `2.00` | `3.00` | `2.60` | `50.0` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBThreeJoint` | 25%+3 joint | `SmolLM2-1.7B__joint__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBThreePQ` | 25%+3 P->Q | `SmolLM2-1.7B__p_then_q__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBThreeQP` | 25%+3 Q->P | `SmolLM2-1.7B__q_then_p__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBThreeJoint` | 33%+3 joint | `SmolLM2-1.7B__joint__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBThreePQ` | 33%+3 P->Q | `SmolLM2-1.7B__p_then_q__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBFourJoint` | 33%+4 joint | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__joint__s0.3333__b4__seed0__float32` | `9.89` | `13.50` | `0.197` | `0.130` | `81.0` | `82.1` | `2.67` | `3.67` | `3.15` | `33.4` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBFourPQ` | 33%+4 P->Q | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__p_then_q__s0.3333__b4__seed0__float32` | `9.66` | `13.56` | `0.174` | `0.134` | `81.1` | `82.0` | `2.67` | `3.67` | `3.15` | `33.4` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBFourQP` | 33%+4 Q->P | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__q_then_p__s0.3333__b4__seed0__float32` | `9.84` | `13.67` | `0.188` | `0.144` | `80.3` | `81.0` | `2.67` | `3.67` | `3.13` | `33.3` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourJoint` | 50%+4 joint | `results/v2/E6B/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__joint__s0.5000__b4__seed0__float32` | `14.13` | `18.08` | `0.549` | `0.435` | `67.6` | `68.1` | `2.00` | `3.00` | `2.61` | `50.0` | `16.2` | `11.7` | `4.5` | `0.893` | `0.894` | `0.910` | `0.831` |
+| `SFiftyBFourPQ` | 50%+4 P->Q | `results/v2/E6B/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__p_then_q__s0.5000__b4__seed0__float32` | `14.11` | `18.23` | `0.548` | `0.444` | `67.4` | `67.9` | `2.00` | `3.00` | `2.62` | `50.0` | `16.5` | `12.0` | `4.5` | `0.880` | `0.889` | `0.906` | `0.824` |
+| `SFiftyBFourQP` | 50%+4 Q->P | `results/v2/E6B/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__q_then_p__s0.5000__b4__seed0__float32` | `15.02` | `19.62` | `0.608` | `0.516` | `66.1` | `65.9` | `2.00` | `3.00` | `2.60` | `50.0` | `17.7` | `13.1` | `4.6` | `0.873` | `0.876` | `0.895` | `0.803` |
+| `STwentyFiveBThreeJoint` | 25%+3 joint | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__joint__s0.2500__b3__seed0__float32` | `12.52` | `15.60` | `0.427` | `0.278` | `72.1` | `74.8` | `2.25` | `3.25` | `2.44` | `30.5` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBThreePQ` | 25%+3 P->Q | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__p_then_q__s0.2500__b3__seed0__float32` | `11.99` | `15.67` | `0.385` | `0.283` | `72.6` | `74.2` | `2.25` | `3.25` | `2.43` | `31.8` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBThreeQP` | 25%+3 Q->P | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__q_then_p__s0.2500__b3__seed0__float32` | `13.01` | `15.58` | `0.468` | `0.276` | `72.3` | `74.8` | `2.25` | `3.25` | `2.45` | `29.7` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBThreeJoint` | 33%+3 joint | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__joint__s0.3333__b3__seed0__float32` | `12.01` | `15.77` | `0.388` | `0.290` | `72.5` | `74.0` | `2.00` | `3.00` | `2.41` | `34.9` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBThreePQ` | 33%+3 P->Q | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__p_then_q__s0.3333__b3__seed0__float32` | `12.32` | `16.03` | `0.416` | `0.307` | `71.2` | `73.3` | `2.00` | `3.00` | `2.40` | `36.0` | `14.4` | `10.3` | `4.2` | `0.926` | `0.931` | `0.920` | `0.849` |
 | `SThirtyThreeBThreeQP` | 33%+3 Q->P | `SmolLM2-1.7B__q_then_p__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBThreeJoint` | 50%+3 joint | `SmolLM2-1.7B__joint__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBThreePQ` | 50%+3 P->Q | `SmolLM2-1.7B__p_then_q__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
@@ -475,19 +475,19 @@ Macro = `\res` + column + `SmolLarge` + row tag (e.g. `\resISrThreeSmolLargeSTwe
 | Row tag | State | Source | ISrThree | ISrThreeLo | ISrThreeHi | ISrPaper | ISrPaperLo | ISrPaperHi | ISrExt | ISrExtLo | ISrExtHi | ISrCn | ISrCnLo | ISrCnHi |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | `STwentyFiveBFourJoint` | 25%+4 joint | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__joint__s0.2500__b4__seed0__float32` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBFourPQ` | 25%+4 P->Q | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__p_then_q__s0.2500__b4__seed0__float32` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBFourPQ` | 25%+4 P->Q | `results/v2/E6B/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__p_then_q__s0.2500__b4__seed0__float32` | `\ensuremath{-0.004}` | `\ensuremath{-0.012}` | `\ensuremath{+0.004}` | `\ensuremath{-0.002}` | `\ensuremath{-0.010}` | `\ensuremath{+0.005}` | `\ensuremath{-0.001}` | `\ensuremath{-0.009}` | `\ensuremath{+0.006}` | `\ensuremath{-0.002}` | `\ensuremath{-0.016}` | `\ensuremath{+0.012}` |
 | `STwentyFiveBFourQP` | 25%+4 Q->P | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__q_then_p__s0.2500__b4__seed0__float32` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBFourJoint` | 33%+4 joint | `SmolLM2-1.7B__joint__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBFourPQ` | 33%+4 P->Q | `SmolLM2-1.7B__p_then_q__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBFourQP` | 33%+4 Q->P | `SmolLM2-1.7B__q_then_p__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourJoint` | 50%+4 joint | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__joint__s0.5000__b4__seed0__float32` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourPQ` | 50%+4 P->Q | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__p_then_q__s0.5000__b4__seed0__float32` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourQP` | 50%+4 Q->P | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__q_then_p__s0.5000__b4__seed0__float32` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBThreeJoint` | 25%+3 joint | `SmolLM2-1.7B__joint__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBThreePQ` | 25%+3 P->Q | `SmolLM2-1.7B__p_then_q__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBThreeQP` | 25%+3 Q->P | `SmolLM2-1.7B__q_then_p__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBThreeJoint` | 33%+3 joint | `SmolLM2-1.7B__joint__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SThirtyThreeBThreePQ` | 33%+3 P->Q | `SmolLM2-1.7B__p_then_q__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBFourJoint` | 33%+4 joint | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__joint__s0.3333__b4__seed0__float32` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBFourPQ` | 33%+4 P->Q | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__p_then_q__s0.3333__b4__seed0__float32` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBFourQP` | 33%+4 Q->P | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__q_then_p__s0.3333__b4__seed0__float32` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourJoint` | 50%+4 joint | `results/v2/E6B/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__joint__s0.5000__b4__seed0__float32` | `\ensuremath{+0.000}` | `\ensuremath{-0.009}` | `\ensuremath{+0.009}` | `\ensuremath{+0.004}` | `\ensuremath{-0.005}` | `\ensuremath{+0.013}` | `\ensuremath{+0.004}` | `\ensuremath{-0.005}` | `\ensuremath{+0.013}` | `\ensuremath{+0.006}` | `\ensuremath{-0.010}` | `\ensuremath{+0.022}` |
+| `SFiftyBFourPQ` | 50%+4 P->Q | `results/v2/E6B/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__p_then_q__s0.5000__b4__seed0__float32` | `\ensuremath{-0.013}` | `\ensuremath{-0.022}` | `\ensuremath{-0.003}` | `\ensuremath{-0.001}` | `\ensuremath{-0.010}` | `\ensuremath{+0.008}` | `\ensuremath{+0.001}` | `\ensuremath{-0.008}` | `\ensuremath{+0.009}` | `\ensuremath{-0.001}` | `\ensuremath{-0.016}` | `\ensuremath{+0.014}` |
+| `SFiftyBFourQP` | 50%+4 Q->P | `results/v2/E6B/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__q_then_p__s0.5000__b4__seed0__float32` | `\ensuremath{-0.020}` | `\ensuremath{-0.030}` | `\ensuremath{-0.009}` | `\ensuremath{-0.015}` | `\ensuremath{-0.025}` | `\ensuremath{-0.004}` | `\ensuremath{-0.011}` | `\ensuremath{-0.020}` | `\ensuremath{-0.001}` | `\ensuremath{-0.022}` | `\ensuremath{-0.040}` | `\ensuremath{-0.005}` |
+| `STwentyFiveBThreeJoint` | 25%+3 joint | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__joint__s0.2500__b3__seed0__float32` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBThreePQ` | 25%+3 P->Q | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__p_then_q__s0.2500__b3__seed0__float32` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBThreeQP` | 25%+3 Q->P | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__q_then_p__s0.2500__b3__seed0__float32` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBThreeJoint` | 33%+3 joint | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__joint__s0.3333__b3__seed0__float32` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBThreePQ` | 33%+3 P->Q | `results/v2/E6/SmolLM2-1.7B.jsonl` `SmolLM2-1.7B__p_then_q__s0.3333__b3__seed0__float32` | `\ensuremath{+0.016}` | `\ensuremath{+0.005}` | `\ensuremath{+0.027}` | `\ensuremath{+0.011}` | `\ensuremath{-0.000}` | `\ensuremath{+0.023}` | `\ensuremath{+0.018}` | `\ensuremath{+0.007}` | `\ensuremath{+0.028}` | `\ensuremath{+0.032}` | `\ensuremath{+0.012}` | `\ensuremath{+0.051}` |
 | `SThirtyThreeBThreeQP` | 33%+3 Q->P | `SmolLM2-1.7B__q_then_p__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBThreeJoint` | 50%+3 joint | `SmolLM2-1.7B__joint__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBThreePQ` | 50%+3 P->Q | `SmolLM2-1.7B__p_then_q__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
@@ -760,46 +760,46 @@ Columns:
 
 | Macro | Value | Meaning | Source |
 |---|---|---|---|
-| `\resPplMeanQwenQuantBThree` | `--` | Qwen2.5-0.5B quant quant only: mean WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplSdQwenQuantBThree` | `--` | Qwen2.5-0.5B quant quant only: sample sd of WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplMeanQwenSTwentyFiveBThreeJoint` | `--` | Qwen2.5-0.5B 25%+3 joint: mean WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplSdQwenSTwentyFiveBThreeJoint` | `--` | Qwen2.5-0.5B 25%+3 joint: sample sd of WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplMeanQwenSTwentyFiveBThreePQ` | `--` | Qwen2.5-0.5B 25%+3 P->Q: mean WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplSdQwenSTwentyFiveBThreePQ` | `--` | Qwen2.5-0.5B 25%+3 P->Q: sample sd of WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplMeanQwenSTwentyFiveBThreeQP` | `--` | Qwen2.5-0.5B 25%+3 Q->P: mean WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplSdQwenSTwentyFiveBThreeQP` | `--` | Qwen2.5-0.5B 25%+3 Q->P: sample sd of WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplMeanQwenSThirtyThreeBThreeJoint` | `--` | Qwen2.5-0.5B 33%+3 joint: mean WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplSdQwenSThirtyThreeBThreeJoint` | `--` | Qwen2.5-0.5B 33%+3 joint: sample sd of WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplMeanQwenSThirtyThreeBThreePQ` | `--` | Qwen2.5-0.5B 33%+3 P->Q: mean WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplSdQwenSThirtyThreeBThreePQ` | `--` | Qwen2.5-0.5B 33%+3 P->Q: sample sd of WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplMeanQwenSThirtyThreeBThreeQP` | `--` | Qwen2.5-0.5B 33%+3 Q->P: mean WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplSdQwenSThirtyThreeBThreeQP` | `--` | Qwen2.5-0.5B 33%+3 Q->P: sample sd of WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplMeanQwenSFiftyBThreeJoint` | `--` | Qwen2.5-0.5B 50%+3 joint: mean WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplSdQwenSFiftyBThreeJoint` | `--` | Qwen2.5-0.5B 50%+3 joint: sample sd of WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplMeanQwenSFiftyBThreePQ` | `--` | Qwen2.5-0.5B 50%+3 P->Q: mean WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplSdQwenSFiftyBThreePQ` | `--` | Qwen2.5-0.5B 50%+3 P->Q: sample sd of WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplMeanQwenSFiftyBThreeQP` | `--` | Qwen2.5-0.5B 50%+3 Q->P: mean WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplSdQwenSFiftyBThreeQP` | `--` | Qwen2.5-0.5B 50%+3 Q->P: sample sd of WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplMeanQwenQuantBFour` | `14.30` | Qwen2.5-0.5B quant quant only: mean WikiText-2 ppl over 2 seeds | reports/analysis/e1_seeds.csv (seeds 0 1) |
-| `\resPplSdQwenQuantBFour` | `0.02` | Qwen2.5-0.5B quant quant only: sample sd of WikiText-2 ppl over 2 seeds | reports/analysis/e1_seeds.csv (seeds 0 1) |
-| `\resPplMeanQwenSTwentyFiveBFourJoint` | `14.63` | Qwen2.5-0.5B 25%+4 joint: mean WikiText-2 ppl over 2 seeds | reports/analysis/e1_seeds.csv (seeds 0 1) |
-| `\resPplSdQwenSTwentyFiveBFourJoint` | `0.00` | Qwen2.5-0.5B 25%+4 joint: sample sd of WikiText-2 ppl over 2 seeds | reports/analysis/e1_seeds.csv (seeds 0 1) |
-| `\resPplMeanQwenSTwentyFiveBFourPQ` | `14.73` | Qwen2.5-0.5B 25%+4 P->Q: mean WikiText-2 ppl over 2 seeds | reports/analysis/e1_seeds.csv (seeds 0 1) |
-| `\resPplSdQwenSTwentyFiveBFourPQ` | `0.06` | Qwen2.5-0.5B 25%+4 P->Q: sample sd of WikiText-2 ppl over 2 seeds | reports/analysis/e1_seeds.csv (seeds 0 1) |
-| `\resPplMeanQwenSTwentyFiveBFourQP` | `15.03` | Qwen2.5-0.5B 25%+4 Q->P: mean WikiText-2 ppl over 2 seeds | reports/analysis/e1_seeds.csv (seeds 0 1) |
-| `\resPplSdQwenSTwentyFiveBFourQP` | `0.06` | Qwen2.5-0.5B 25%+4 Q->P: sample sd of WikiText-2 ppl over 2 seeds | reports/analysis/e1_seeds.csv (seeds 0 1) |
-| `\resPplMeanQwenSThirtyThreeBFourJoint` | `15.60` | Qwen2.5-0.5B 33%+4 joint: mean WikiText-2 ppl over 2 seeds | reports/analysis/e1_seeds.csv (seeds 0 1) |
-| `\resPplSdQwenSThirtyThreeBFourJoint` | `0.07` | Qwen2.5-0.5B 33%+4 joint: sample sd of WikiText-2 ppl over 2 seeds | reports/analysis/e1_seeds.csv (seeds 0 1) |
-| `\resPplMeanQwenSThirtyThreeBFourPQ` | `--` | Qwen2.5-0.5B 33%+4 P->Q: mean WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplSdQwenSThirtyThreeBFourPQ` | `--` | Qwen2.5-0.5B 33%+4 P->Q: sample sd of WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplMeanQwenSThirtyThreeBFourQP` | `--` | Qwen2.5-0.5B 33%+4 Q->P: mean WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplSdQwenSThirtyThreeBFourQP` | `--` | Qwen2.5-0.5B 33%+4 Q->P: sample sd of WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplMeanQwenSFiftyBFourJoint` | `--` | Qwen2.5-0.5B 50%+4 joint: mean WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplSdQwenSFiftyBFourJoint` | `--` | Qwen2.5-0.5B 50%+4 joint: sample sd of WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplMeanQwenSFiftyBFourPQ` | `--` | Qwen2.5-0.5B 50%+4 P->Q: mean WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplSdQwenSFiftyBFourPQ` | `--` | Qwen2.5-0.5B 50%+4 P->Q: sample sd of WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplMeanQwenSFiftyBFourQP` | `--` | Qwen2.5-0.5B 50%+4 Q->P: mean WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
-| `\resPplSdQwenSFiftyBFourQP` | `--` | Qwen2.5-0.5B 50%+4 Q->P: sample sd of WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
+| `\resPplMeanQwenQuantBThree` | `21.72` | Qwen2.5-0.5B quant quant only: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdQwenQuantBThree` | `0.11` | Qwen2.5-0.5B quant quant only: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplMeanQwenSTwentyFiveBThreeJoint` | `21.65` | Qwen2.5-0.5B 25%+3 joint: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdQwenSTwentyFiveBThreeJoint` | `0.18` | Qwen2.5-0.5B 25%+3 joint: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplMeanQwenSTwentyFiveBThreePQ` | `21.87` | Qwen2.5-0.5B 25%+3 P->Q: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdQwenSTwentyFiveBThreePQ` | `0.14` | Qwen2.5-0.5B 25%+3 P->Q: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplMeanQwenSTwentyFiveBThreeQP` | `21.72` | Qwen2.5-0.5B 25%+3 Q->P: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdQwenSTwentyFiveBThreeQP` | `0.11` | Qwen2.5-0.5B 25%+3 Q->P: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplMeanQwenSThirtyThreeBThreeJoint` | `21.97` | Qwen2.5-0.5B 33%+3 joint: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdQwenSThirtyThreeBThreeJoint` | `0.04` | Qwen2.5-0.5B 33%+3 joint: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplMeanQwenSThirtyThreeBThreePQ` | `22.63` | Qwen2.5-0.5B 33%+3 P->Q: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdQwenSThirtyThreeBThreePQ` | `0.44` | Qwen2.5-0.5B 33%+3 P->Q: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplMeanQwenSThirtyThreeBThreeQP` | `22.89` | Qwen2.5-0.5B 33%+3 Q->P: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdQwenSThirtyThreeBThreeQP` | `0.25` | Qwen2.5-0.5B 33%+3 Q->P: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplMeanQwenSFiftyBThreeJoint` | `28.78` | Qwen2.5-0.5B 50%+3 joint: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdQwenSFiftyBThreeJoint` | `0.27` | Qwen2.5-0.5B 50%+3 joint: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplMeanQwenSFiftyBThreePQ` | `29.90` | Qwen2.5-0.5B 50%+3 P->Q: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdQwenSFiftyBThreePQ` | `0.38` | Qwen2.5-0.5B 50%+3 P->Q: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplMeanQwenSFiftyBThreeQP` | `35.14` | Qwen2.5-0.5B 50%+3 Q->P: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdQwenSFiftyBThreeQP` | `0.49` | Qwen2.5-0.5B 50%+3 Q->P: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplMeanQwenQuantBFour` | `14.29` | Qwen2.5-0.5B quant quant only: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdQwenQuantBFour` | `0.02` | Qwen2.5-0.5B quant quant only: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplMeanQwenSTwentyFiveBFourJoint` | `14.64` | Qwen2.5-0.5B 25%+4 joint: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdQwenSTwentyFiveBFourJoint` | `0.01` | Qwen2.5-0.5B 25%+4 joint: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplMeanQwenSTwentyFiveBFourPQ` | `14.73` | Qwen2.5-0.5B 25%+4 P->Q: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdQwenSTwentyFiveBFourPQ` | `0.04` | Qwen2.5-0.5B 25%+4 P->Q: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplMeanQwenSTwentyFiveBFourQP` | `15.01` | Qwen2.5-0.5B 25%+4 Q->P: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdQwenSTwentyFiveBFourQP` | `0.06` | Qwen2.5-0.5B 25%+4 Q->P: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplMeanQwenSThirtyThreeBFourJoint` | `15.59` | Qwen2.5-0.5B 33%+4 joint: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdQwenSThirtyThreeBFourJoint` | `0.05` | Qwen2.5-0.5B 33%+4 joint: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplMeanQwenSThirtyThreeBFourPQ` | `15.66` | Qwen2.5-0.5B 33%+4 P->Q: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdQwenSThirtyThreeBFourPQ` | `0.05` | Qwen2.5-0.5B 33%+4 P->Q: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplMeanQwenSThirtyThreeBFourQP` | `16.04` | Qwen2.5-0.5B 33%+4 Q->P: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdQwenSThirtyThreeBFourQP` | `0.05` | Qwen2.5-0.5B 33%+4 Q->P: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplMeanQwenSFiftyBFourJoint` | `21.99` | Qwen2.5-0.5B 50%+4 joint: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdQwenSFiftyBFourJoint` | `0.12` | Qwen2.5-0.5B 50%+4 joint: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplMeanQwenSFiftyBFourPQ` | `22.20` | Qwen2.5-0.5B 50%+4 P->Q: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdQwenSFiftyBFourPQ` | `0.14` | Qwen2.5-0.5B 50%+4 P->Q: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplMeanQwenSFiftyBFourQP` | `22.54` | Qwen2.5-0.5B 50%+4 Q->P: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdQwenSFiftyBFourQP` | `0.35` | Qwen2.5-0.5B 50%+4 Q->P: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
 | `\resPplMeanSmolSmallQuantBThree` | `--` | SmolLM2-135M quant quant only: mean WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
 | `\resPplSdSmolSmallQuantBThree` | `--` | SmolLM2-135M quant quant only: sample sd of WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
 | `\resPplMeanSmolSmallSTwentyFiveBThreeJoint` | `--` | SmolLM2-135M 25%+3 joint: mean WikiText-2 ppl over 0 seeds | reports/analysis/e1_seeds.csv (seeds pending) |
@@ -1078,9 +1078,9 @@ Columns:
 | `\resQTwoRatioQwenSThirtyThreeBThree` | `1.05` | Qwen2.5-0.5B 33%+3: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioQwenSFiftyBThree` | `1.21` | Qwen2.5-0.5B 50%+3: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioSmolLargeSTwentyFiveBFour` | `1.02` | SmolLM2-1.7B 25%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoRatioSmolLargeSThirtyThreeBFour` | `--` | SmolLM2-1.7B 33%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoRatioSmolLargeSThirtyThreeBFour` | `1.02` | SmolLM2-1.7B 33%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioSmolLargeSFiftyBFour` | `1.06` | SmolLM2-1.7B 50%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
-| `\resQTwoRatioSmolLargeSTwentyFiveBThree` | `--` | SmolLM2-1.7B 25%+3: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoRatioSmolLargeSTwentyFiveBThree` | `1.09` | SmolLM2-1.7B 25%+3: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioSmolLargeSThirtyThreeBThree` | `--` | SmolLM2-1.7B 33%+3: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioSmolLargeSFiftyBThree` | `--` | SmolLM2-1.7B 50%+3: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioQwenMidSTwentyFiveBFour` | `--` | Qwen2.5-1.5B 25%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
@@ -1139,12 +1139,12 @@ Columns:
 | `\resQThreeSpreadMinQwenBThreePct` | `1.8` | Qwen2.5-0.5B, 3-bit cells 25/33/50% (3 planned): smallest order spread 100 (max - min) / min of WikiText-2 ppl (%) | reports/analysis/q3_order_spread.csv (grid_*; -- until every planned grid cell has the three orders) |
 | `\resQThreeSpreadMaxQwenBThreePct` | `21.0` | Qwen2.5-0.5B, 3-bit cells 25/33/50% (3 planned): largest order spread (%) | reports/analysis/q3_order_spread.csv (grid_*; -- until every planned grid cell has the three orders) |
 | `\resQThreeSpreadCellsQwenBThree` | `3` | Qwen2.5-0.5B, 3-bit cells 25/33/50% (3 planned): cells with the three orders | reports/analysis/q3_order_spread.csv (grid_*; -- until every planned grid cell has the three orders) |
-| `\resQThreeSpreadMinSmolLargeBFourPct` | `--` | SmolLM2-1.7B, 4-bit cells 25/33/50% (3 planned): smallest order spread 100 (max - min) / min of WikiText-2 ppl (%) | reports/analysis/q3_order_spread.csv (grid_*; -- until every planned grid cell has the three orders) |
-| `\resQThreeSpreadMaxSmolLargeBFourPct` | `--` | SmolLM2-1.7B, 4-bit cells 25/33/50% (3 planned): largest order spread (%) | reports/analysis/q3_order_spread.csv (grid_*; -- until every planned grid cell has the three orders) |
-| `\resQThreeSpreadCellsSmolLargeBFour` | `2` | SmolLM2-1.7B, 4-bit cells 25/33/50% (3 planned): cells with the three orders | reports/analysis/q3_order_spread.csv (grid_*; -- until every planned grid cell has the three orders) |
+| `\resQThreeSpreadMinSmolLargeBFourPct` | `2.1` | SmolLM2-1.7B, 4-bit cells 25/33/50% (3 planned): smallest order spread 100 (max - min) / min of WikiText-2 ppl (%) | reports/analysis/q3_order_spread.csv (grid_*; -- until every planned grid cell has the three orders) |
+| `\resQThreeSpreadMaxSmolLargeBFourPct` | `6.4` | SmolLM2-1.7B, 4-bit cells 25/33/50% (3 planned): largest order spread (%) | reports/analysis/q3_order_spread.csv (grid_*; -- until every planned grid cell has the three orders) |
+| `\resQThreeSpreadCellsSmolLargeBFour` | `3` | SmolLM2-1.7B, 4-bit cells 25/33/50% (3 planned): cells with the three orders | reports/analysis/q3_order_spread.csv (grid_*; -- until every planned grid cell has the three orders) |
 | `\resQThreeSpreadMinSmolLargeBThreePct` | `--` | SmolLM2-1.7B, 3-bit cells 25/33/50% (3 planned): smallest order spread 100 (max - min) / min of WikiText-2 ppl (%) | reports/analysis/q3_order_spread.csv (grid_*; -- until every planned grid cell has the three orders) |
 | `\resQThreeSpreadMaxSmolLargeBThreePct` | `--` | SmolLM2-1.7B, 3-bit cells 25/33/50% (3 planned): largest order spread (%) | reports/analysis/q3_order_spread.csv (grid_*; -- until every planned grid cell has the three orders) |
-| `\resQThreeSpreadCellsSmolLargeBThree` | `0` | SmolLM2-1.7B, 3-bit cells 25/33/50% (3 planned): cells with the three orders | reports/analysis/q3_order_spread.csv (grid_*; -- until every planned grid cell has the three orders) |
+| `\resQThreeSpreadCellsSmolLargeBThree` | `1` | SmolLM2-1.7B, 3-bit cells 25/33/50% (3 planned): cells with the three orders | reports/analysis/q3_order_spread.csv (grid_*; -- until every planned grid cell has the three orders) |
 | `\resQThreeSpreadMinQwenMidBFourPct` | `--` | Qwen2.5-1.5B, 4-bit cells 25/33/50% (3 planned): smallest order spread 100 (max - min) / min of WikiText-2 ppl (%) | reports/analysis/q3_order_spread.csv (grid_*; -- until every planned grid cell has the three orders) |
 | `\resQThreeSpreadMaxQwenMidBFourPct` | `--` | Qwen2.5-1.5B, 4-bit cells 25/33/50% (3 planned): largest order spread (%) | reports/analysis/q3_order_spread.csv (grid_*; -- until every planned grid cell has the three orders) |
 | `\resQThreeSpreadCellsQwenMidBFour` | `0` | Qwen2.5-1.5B, 4-bit cells 25/33/50% (3 planned): cells with the three orders | reports/analysis/q3_order_spread.csv (grid_*; -- until every planned grid cell has the three orders) |
@@ -1175,10 +1175,10 @@ Columns:
 | `\resQTwoCellsPplQwen` | `6` | Qwen2.5-0.5B: grid cells with the three orders | reports/analysis/q2_order_ranking.csv (WikiText-2 ppl; the E1 cells for the core models) |
 | `\resQTwoQPWorstPplQwen` | `5` | Qwen2.5-0.5B: grid cells where Q->P has strictly the highest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (WikiText-2 ppl; the E1 cells for the core models) |
 | `\resQTwoBestJointPplSmolLarge` | `1` | SmolLM2-1.7B: grid cells where joint has the lowest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (WikiText-2 ppl; the E1 cells for the core models) |
-| `\resQTwoBestPQPplSmolLarge` | `1` | SmolLM2-1.7B: grid cells where P->Q has the lowest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (WikiText-2 ppl; the E1 cells for the core models) |
+| `\resQTwoBestPQPplSmolLarge` | `3` | SmolLM2-1.7B: grid cells where P->Q has the lowest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (WikiText-2 ppl; the E1 cells for the core models) |
 | `\resQTwoBestQPPplSmolLarge` | `0` | SmolLM2-1.7B: grid cells where Q->P has the lowest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (WikiText-2 ppl; the E1 cells for the core models) |
-| `\resQTwoCellsPplSmolLarge` | `2` | SmolLM2-1.7B: grid cells with the three orders | reports/analysis/q2_order_ranking.csv (WikiText-2 ppl; the E1 cells for the core models) |
-| `\resQTwoQPWorstPplSmolLarge` | `2` | SmolLM2-1.7B: grid cells where Q->P has strictly the highest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (WikiText-2 ppl; the E1 cells for the core models) |
+| `\resQTwoCellsPplSmolLarge` | `4` | SmolLM2-1.7B: grid cells with the three orders | reports/analysis/q2_order_ranking.csv (WikiText-2 ppl; the E1 cells for the core models) |
+| `\resQTwoQPWorstPplSmolLarge` | `3` | SmolLM2-1.7B: grid cells where Q->P has strictly the highest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (WikiText-2 ppl; the E1 cells for the core models) |
 | `\resQTwoBestJointPplQwenMid` | `--` | Qwen2.5-1.5B: grid cells where joint has the lowest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (WikiText-2 ppl; the E1 cells for the core models) |
 | `\resQTwoBestPQPplQwenMid` | `--` | Qwen2.5-1.5B: grid cells where P->Q has the lowest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (WikiText-2 ppl; the E1 cells for the core models) |
 | `\resQTwoBestQPPplQwenMid` | `--` | Qwen2.5-1.5B: grid cells where Q->P has the lowest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (WikiText-2 ppl; the E1 cells for the core models) |
@@ -1292,8 +1292,8 @@ Columns:
 | `\resIdentityRelErrMaxDiffSmolMedium` | `0` | SmolLM2-360M: largest |rel_err difference| | reports/analysis/identity_qp25_3bit.json |
 | `\resIdentityQPThreeQwen` | `yes` | Qwen2.5-0.5B: Q->P 25%+3 identical to 3-bit (ppl and every rel_err) | reports/analysis/identity_qp25_3bit.json |
 | `\resIdentityRelErrMaxDiffQwen` | `0` | Qwen2.5-0.5B: largest |rel_err difference| | reports/analysis/identity_qp25_3bit.json |
-| `\resIdentityQPThreeSmolLarge` | `--` | SmolLM2-1.7B: Q->P 25%+3 identical to 3-bit (ppl and every rel_err) | reports/analysis/identity_qp25_3bit.json |
-| `\resIdentityRelErrMaxDiffSmolLarge` | `--` | SmolLM2-1.7B: largest |rel_err difference| | reports/analysis/identity_qp25_3bit.json |
+| `\resIdentityQPThreeSmolLarge` | `yes` | SmolLM2-1.7B: Q->P 25%+3 identical to 3-bit (ppl and every rel_err) | reports/analysis/identity_qp25_3bit.json |
+| `\resIdentityRelErrMaxDiffSmolLarge` | `0` | SmolLM2-1.7B: largest |rel_err difference| | reports/analysis/identity_qp25_3bit.json |
 | `\resIdentityQPThreeQwenMid` | `--` | Qwen2.5-1.5B: Q->P 25%+3 identical to 3-bit (ppl and every rel_err) | reports/analysis/identity_qp25_3bit.json |
 | `\resIdentityRelErrMaxDiffQwenMid` | `--` | Qwen2.5-1.5B: largest |rel_err difference| | reports/analysis/identity_qp25_3bit.json |
 | `\resIdentityQPThreeQwenLarge` | `--` | Qwen2.5-3B: Q->P 25%+3 identical to 3-bit (ppl and every rel_err) | reports/analysis/identity_qp25_3bit.json |
@@ -1866,7 +1866,7 @@ Columns:
 | `\resNItemsSciq` | `1000` | sciq: items evaluated per state | results/v2/items/*.json.gz |
 | `\resNItemsLambada` | `5153` | lambada_openai: items evaluated per state | results/v2/items/*.json.gz |
 | `\resBootB` | `10000` | bootstrap resamples (items within each task) | scripts/analysis/stats.py, make_tables.py --boot |
-| `\resNStates` | `170` | usable v2 model states (status ok) | results/v2/*/*.jsonl |
+| `\resNStates` | `214` | usable v2 model states (status ok) | results/v2/*/*.jsonl |
 | `\resNStatesPlanned` | `333` | model states in the study plan | scripts/make_queues.py |
 
 ## Requested by paper/main.tex (reports/latex_macro_requests.md, R1-R31)
@@ -1897,8 +1897,8 @@ Columns:
 | `\resFrontierThreeBThreeGainQwenPct` | `\ensuremath{-0.5}` | Qwen2.5-0.5B, 33%+3 vs 3-bit at equal storage: 100(1 - ppl_best / ppl_quant), > 0 = pruning + quantization better | reports/analysis/frontier_equal_storage.csv (wikitext2.ppl; best order = lowest of the three) |
 | `\resFrontierThreeGainSmolLargePct` | `\ensuremath{-8.5}` | SmolLM2-1.7B, 50%+4 vs 3-bit at equal storage: 100(1 - ppl_best / ppl_quant), > 0 = pruning + quantization better | reports/analysis/frontier_equal_storage.csv (wikitext2.ppl; best order = lowest of the three) |
 | `\resFrontierFourGainSmolLargePct` | `\ensuremath{-3.4}` | SmolLM2-1.7B, 25%+4 vs 4-bit at equal storage: 100(1 - ppl_best / ppl_quant), > 0 = pruning + quantization better | reports/analysis/frontier_equal_storage.csv (wikitext2.ppl; best order = lowest of the three) |
-| `\resIdentityQPThreeCount` | `3` | R7: models where Q->P 25%+3 is identical to 3-bit (ppl and every rel_err) (SmolLM2-135M, SmolLM2-360M, Qwen2.5-0.5B) | reports/analysis/identity_qp25_3bit.json |
-| `\resIdentityQPThreeModels` | `3` | R8: models where both states exist (SmolLM2-135M, SmolLM2-360M, Qwen2.5-0.5B) | reports/analysis/identity_qp25_3bit.json |
+| `\resIdentityQPThreeCount` | `4` | R7: models where Q->P 25%+3 is identical to 3-bit (ppl and every rel_err) (SmolLM2-135M, SmolLM2-360M, Qwen2.5-0.5B, SmolLM2-1.7B) | reports/analysis/identity_qp25_3bit.json |
+| `\resIdentityQPThreeModels` | `4` | R8: models where both states exist (SmolLM2-135M, SmolLM2-360M, Qwen2.5-0.5B, SmolLM2-1.7B) | reports/analysis/identity_qp25_3bit.json |
 | `\resETwoMaskFirstSub` | `36` | R9: E2 (model, cell, order in joint/P->Q) with summed-layer I_E/(E_P+E_Q) < 0 | reports/analysis/e2_cells.csv (18 model-cells; planned E2 layer lines still missing: 0) |
 | `\resETwoMaskFirstTotal` | `36` | R10: such combinations available | reports/analysis/e2_cells.csv (18 model-cells; planned E2 layer lines still missing: 0) |
 | `\resETwoSubJointMinPct` | `97` | R11: smallest share of sub-additive layers, joint, over cells (%) | reports/analysis/e2_cells.csv (18 model-cells; planned E2 layer lines still missing: 0) |
@@ -1915,10 +1915,10 @@ Columns:
 | `\resETwoPenaltyCells` | `12` | R22: cells with qp_penalty_sum > 0 | reports/analysis/e2_cells.csv (18 model-cells; planned E2 layer lines still missing: 0) |
 | `\resETwoRemovedPmaskMaxPct` | `39` | R23: largest share removed by the pruning-only mask over the R22 cells (%) | reports/analysis/e2_cells.csv (18 model-cells; planned E2 layer lines still missing: 0) |
 | `\resETwoStaleMaxAbsPct` | `0.4` | R24: largest |stale grid imposed on P->Q| over cells (% of its error) | reports/analysis/e2_cells.csv (18 model-cells; planned E2 layer lines still missing: 0) |
-| `\resQTwoQPWorstPplBFour` | `14` | R19: 4-bit cells (25/33/50/60%) where Q->P has the strictly highest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (seed 0, every 4-bit cell with three orders: 14) |
-| `\resQTwoCellsPplBFour` | `14` | R20: 4-bit cells with all three orders ranked | reports/analysis/q2_order_ranking.csv (seed 0, every 4-bit cell with three orders: 14) |
-| `\resMcNemarSigPQQP` | `17` | R25: cells where P->Q vs Q->P has exact McNemar p < 0.05 | reports/analysis/e1_mcnemar.csv (task pooled9, seed 0; extra_orders.mcnemar) |
-| `\resMcNemarCellsPQQP` | `21` | R26: cells with that test | reports/analysis/e1_mcnemar.csv (task pooled9, seed 0; extra_orders.mcnemar) |
+| `\resQTwoQPWorstPplBFour` | `14` | R19: 4-bit cells (25/33/50/60%) where Q->P has the strictly highest WikiText-2 ppl | reports/analysis/q2_order_ranking.csv (seed 0, every 4-bit cell with three orders: 15) |
+| `\resQTwoCellsPplBFour` | `15` | R20: 4-bit cells with all three orders ranked | reports/analysis/q2_order_ranking.csv (seed 0, every 4-bit cell with three orders: 15) |
+| `\resMcNemarSigPQQP` | `18` | R25: cells where P->Q vs Q->P has exact McNemar p < 0.05 | reports/analysis/e1_mcnemar.csv (task pooled9, seed 0; extra_orders.mcnemar) |
+| `\resMcNemarCellsPQQP` | `22` | R26: cells with that test | reports/analysis/e1_mcnemar.csv (task pooled9, seed 0; extra_orders.mcnemar) |
 | `\resMcNemarSigFavourQP` | `5` | cells where P->Q vs Q->P has p < 0.05 and Q->P is right on more items (b_only > a_only) | reports/analysis/e1_mcnemar.csv (task pooled9, seed 0; extra_orders.mcnemar) |
 | `\resHwDeltaSmolSmallSFiftyBFourPQPct` | `\ensuremath{+4.6}` | R27: SmolLM2-135M 50%+4 P->Q: 100(ppl REPRO16 / ppl results_full (16-bit, T4) - 1) | reports/analysis/repro_hardware.csv (`SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float16`) |
 | `\resHwDeltaSmolSmallQuantBFourPct` | `\ensuremath{+1.5}` | R27: SmolLM2-135M 4-bit: 100(ppl REPRO16 / ppl results_full (16-bit, T4) - 1) | reports/analysis/repro_hardware.csv (`SmolLM2-135M__quant__s0.0000__b4__seed0__float16`) |
@@ -2162,9 +2162,9 @@ Macro = `\res` + column + `SmolLarge` + row tag (e.g. `\resAccDiffSmolLargeSTwen
 | `SThirtyThreeBFourJointPQ` | 33%+4: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `SThirtyThreeBFourJointQP` | 33%+4: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `SThirtyThreeBFourPQQP` | 33%+4: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
-| `SFiftyBFourJointPQ` | 50%+4: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
-| `SFiftyBFourJointQP` | 50%+4: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
-| `SFiftyBFourPQQP` | 50%+4: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBFourJointPQ` | 50%+4: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{+0.2}` | `\ensuremath{-0.3}` | `\ensuremath{+0.7}` |
+| `SFiftyBFourJointQP` | 50%+4: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{+1.0}` | `\ensuremath{+0.4}` | `\ensuremath{+1.6}` |
+| `SFiftyBFourPQQP` | 50%+4: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` | `\ensuremath{+0.8}` | `\ensuremath{+0.2}` | `\ensuremath{+1.3}` |
 | `STwentyFiveBThreeJointPQ` | 25%+3: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `STwentyFiveBThreeJointQP` | 25%+3: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `STwentyFiveBThreePQQP` | 25%+3: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
@@ -2266,9 +2266,9 @@ Columns:
 
 | Macro | Value | Meaning | Source |
 |---|---|---|---|
-| `\resSeedJointBest` | `15` | (model, 4-bit cell, seed) with all three orders where joint has the lowest WikiText-2 ppl (every multi-seed model; seed-0-only cells included) | reports/analysis/seed_best_order.csv (4-bit rows, every multi-seed model) |
-| `\resSeedJointBeatsPQ` | `15` | (model, 4-bit cell, seed) where joint has a lower WikiText-2 ppl than P->Q (as SeedJointBest) | reports/analysis/seed_best_order.csv (4-bit rows, every multi-seed model) |
-| `\resSeedCellSeeds` | `19` | (model, 4-bit cell, seed) with all three orders (as SeedJointBest) | reports/analysis/seed_best_order.csv (4-bit rows, every multi-seed model) |
+| `\resSeedJointBest` | `20` | (model, 4-bit cell, seed) with all three orders where joint has the lowest WikiText-2 ppl (every multi-seed model; seed-0-only cells included) | reports/analysis/seed_best_order.csv (4-bit rows, every multi-seed model) |
+| `\resSeedJointBeatsPQ` | `20` | (model, 4-bit cell, seed) where joint has a lower WikiText-2 ppl than P->Q (as SeedJointBest) | reports/analysis/seed_best_order.csv (4-bit rows, every multi-seed model) |
+| `\resSeedCellSeeds` | `24` | (model, 4-bit cell, seed) with all three orders (as SeedJointBest) | reports/analysis/seed_best_order.csv (4-bit rows, every multi-seed model) |
 | `\resSeedPairJointPQAllSeeds` | `3` | SmolLM2-360M: 4-bit cells where joint has the lower ppl in every seed | reports/analysis/seed_order_pairs.csv (SmolLM2-360M, 4-bit, joint vs P->Q, complete cells; = SeedPairJointPQ...SmolMediumBFour) |
 | `\resSeedPairJointPQSig` | `3` | SmolLM2-360M: 4-bit cells where the paired t-test over seeds (log ppl) gives p < 0.05, joint vs P->Q | reports/analysis/seed_order_pairs.csv (SmolLM2-360M, 4-bit, joint vs P->Q, complete cells; = SeedPairJointPQ...SmolMediumBFour) |
 | `\resSeedPairJointPQCells` | `3` | SmolLM2-360M: 4-bit cells with every seed for both orders | reports/analysis/seed_order_pairs.csv (SmolLM2-360M, 4-bit, joint vs P->Q, complete cells; = SeedPairJointPQ...SmolMediumBFour) |
@@ -2283,71 +2283,71 @@ Columns:
 
 | Macro | Value | Meaning | Source |
 |---|---|---|---|
-| `\resSeedBestCellsAllBFour` | `3` | every E5 model, 4-bit cells: cells with every seed and order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedBestStableAllBFour` | `3` | every E5 model, 4-bit cells: cells whose best order by WikiText-2 ppl is the same in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedQPWorstAllSeedsAllBFour` | `3` | every E5 model, 4-bit cells: cells where Q->P has strictly the highest WikiText-2 ppl in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsAllBFour` | `9` | every E5 model, 4-bit cells: (cell, seed) pairs of those cells | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsQPWorstAllBFour` | `9` | every E5 model, 4-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsQPWorstAllBFourPct` | `100` | every E5 model, 4-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsJointBestAllBFour` | `9` | every E5 model, 4-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsJointBeatsPQAllBFour` | `9` | every E5 model, 4-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointPQAllSeedsAllBFour` | `3` | every E5 model, 4-bit cells: cells where joint has a lower ppl than P->Q in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointPQSigAllBFour` | `3` | every E5 model, 4-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointPQCellsAllBFour` | `3` | every E5 model, 4-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointQPAllSeedsAllBFour` | `3` | every E5 model, 4-bit cells: cells where joint has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointQPSigAllBFour` | `3` | every E5 model, 4-bit cells: cells where the paired t-test over seeds (log ppl, joint vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointQPCellsAllBFour` | `3` | every E5 model, 4-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairPQQPAllSeedsAllBFour` | `3` | every E5 model, 4-bit cells: cells where P->Q has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairPQQPSigAllBFour` | `3` | every E5 model, 4-bit cells: cells where the paired t-test over seeds (log ppl, P->Q vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairPQQPCellsAllBFour` | `3` | every E5 model, 4-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedBestCellsAllBFour` | `6` | every E5 model, 4-bit cells: cells with every seed and order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedBestStableAllBFour` | `5` | every E5 model, 4-bit cells: cells whose best order by WikiText-2 ppl is the same in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedQPWorstAllSeedsAllBFour` | `5` | every E5 model, 4-bit cells: cells where Q->P has strictly the highest WikiText-2 ppl in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsAllBFour` | `18` | every E5 model, 4-bit cells: (cell, seed) pairs of those cells | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPWorstAllBFour` | `17` | every E5 model, 4-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPWorstAllBFourPct` | `94` | every E5 model, 4-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsJointBestAllBFour` | `17` | every E5 model, 4-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsJointBeatsPQAllBFour` | `17` | every E5 model, 4-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointPQAllSeedsAllBFour` | `5` | every E5 model, 4-bit cells: cells where joint has a lower ppl than P->Q in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointPQSigAllBFour` | `4` | every E5 model, 4-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointPQCellsAllBFour` | `6` | every E5 model, 4-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointQPAllSeedsAllBFour` | `6` | every E5 model, 4-bit cells: cells where joint has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointQPSigAllBFour` | `5` | every E5 model, 4-bit cells: cells where the paired t-test over seeds (log ppl, joint vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointQPCellsAllBFour` | `6` | every E5 model, 4-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairPQQPAllSeedsAllBFour` | `5` | every E5 model, 4-bit cells: cells where P->Q has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairPQQPSigAllBFour` | `5` | every E5 model, 4-bit cells: cells where the paired t-test over seeds (log ppl, P->Q vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairPQQPCellsAllBFour` | `6` | every E5 model, 4-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedSdMaxSingleAllBFourPct` | `0.2` | every E5 model, 4-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single states (%) | reports/analysis/e1_seeds.csv |
-| `\resSeedSdMaxCombinedAllBFourPct` | `1.0` | every E5 model, 4-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, combined states (%) | reports/analysis/e1_seeds.csv |
-| `\resSeedSdMaxAllBFourPct` | `1.0` | every E5 model, 4-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single or combined states (%) | reports/analysis/e1_seeds.csv |
-| `\resSeedStatesAllBFour` | `25` | every E5 model, 4-bit cells: E5 states (seeds 1 and 2) available | results/v2/E5/*.jsonl |
+| `\resSeedSdMaxCombinedAllBFourPct` | `1.5` | every E5 model, 4-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, combined states (%) | reports/analysis/e1_seeds.csv |
+| `\resSeedSdMaxAllBFourPct` | `1.5` | every E5 model, 4-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single or combined states (%) | reports/analysis/e1_seeds.csv |
+| `\resSeedStatesAllBFour` | `40` | every E5 model, 4-bit cells: E5 states (seeds 1 and 2) available | results/v2/E5/*.jsonl |
 | `\resSeedStatesPlannedAllBFour` | `60` | every E5 model, 4-bit cells: E5 states planned | scripts/make_queues.py e5() |
-| `\resSeedBestCellsAllBThree` | `--` | every E5 model, 3-bit cells: cells with every seed and order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedBestStableAllBThree` | `--` | every E5 model, 3-bit cells: cells whose best order by WikiText-2 ppl is the same in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedQPWorstAllSeedsAllBThree` | `--` | every E5 model, 3-bit cells: cells where Q->P has strictly the highest WikiText-2 ppl in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsAllBThree` | `--` | every E5 model, 3-bit cells: (cell, seed) pairs of those cells | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsQPWorstAllBThree` | `--` | every E5 model, 3-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsQPWorstAllBThreePct` | `--` | every E5 model, 3-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsJointBestAllBThree` | `--` | every E5 model, 3-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsJointBeatsPQAllBThree` | `--` | every E5 model, 3-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointPQAllSeedsAllBThree` | `--` | every E5 model, 3-bit cells: cells where joint has a lower ppl than P->Q in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointPQSigAllBThree` | `--` | every E5 model, 3-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointPQCellsAllBThree` | `--` | every E5 model, 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointQPAllSeedsAllBThree` | `--` | every E5 model, 3-bit cells: cells where joint has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointQPSigAllBThree` | `--` | every E5 model, 3-bit cells: cells where the paired t-test over seeds (log ppl, joint vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointQPCellsAllBThree` | `--` | every E5 model, 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairPQQPAllSeedsAllBThree` | `--` | every E5 model, 3-bit cells: cells where P->Q has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairPQQPSigAllBThree` | `--` | every E5 model, 3-bit cells: cells where the paired t-test over seeds (log ppl, P->Q vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairPQQPCellsAllBThree` | `--` | every E5 model, 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedSdMaxSingleAllBThreePct` | `--` | every E5 model, 3-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single states (%) | reports/analysis/e1_seeds.csv |
-| `\resSeedSdMaxCombinedAllBThreePct` | `--` | every E5 model, 3-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, combined states (%) | reports/analysis/e1_seeds.csv |
-| `\resSeedSdMaxAllBThreePct` | `--` | every E5 model, 3-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single or combined states (%) | reports/analysis/e1_seeds.csv |
-| `\resSeedStatesAllBThree` | `0` | every E5 model, 3-bit cells: E5 states (seeds 1 and 2) available | results/v2/E5/*.jsonl |
+| `\resSeedBestCellsAllBThree` | `3` | every E5 model, 3-bit cells: cells with every seed and order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedBestStableAllBThree` | `2` | every E5 model, 3-bit cells: cells whose best order by WikiText-2 ppl is the same in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedQPWorstAllSeedsAllBThree` | `2` | every E5 model, 3-bit cells: cells where Q->P has strictly the highest WikiText-2 ppl in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsAllBThree` | `9` | every E5 model, 3-bit cells: (cell, seed) pairs of those cells | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPWorstAllBThree` | `6` | every E5 model, 3-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPWorstAllBThreePct` | `67` | every E5 model, 3-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsJointBestAllBThree` | `8` | every E5 model, 3-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsJointBeatsPQAllBThree` | `8` | every E5 model, 3-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointPQAllSeedsAllBThree` | `2` | every E5 model, 3-bit cells: cells where joint has a lower ppl than P->Q in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointPQSigAllBThree` | `0` | every E5 model, 3-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointPQCellsAllBThree` | `3` | every E5 model, 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointQPAllSeedsAllBThree` | `2` | every E5 model, 3-bit cells: cells where joint has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointQPSigAllBThree` | `2` | every E5 model, 3-bit cells: cells where the paired t-test over seeds (log ppl, joint vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointQPCellsAllBThree` | `3` | every E5 model, 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairPQQPAllSeedsAllBThree` | `2` | every E5 model, 3-bit cells: cells where P->Q has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairPQQPSigAllBThree` | `1` | every E5 model, 3-bit cells: cells where the paired t-test over seeds (log ppl, P->Q vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairPQQPCellsAllBThree` | `3` | every E5 model, 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedSdMaxSingleAllBThreePct` | `0.5` | every E5 model, 3-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single states (%) | reports/analysis/e1_seeds.csv |
+| `\resSeedSdMaxCombinedAllBThreePct` | `1.9` | every E5 model, 3-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, combined states (%) | reports/analysis/e1_seeds.csv |
+| `\resSeedSdMaxAllBThreePct` | `1.9` | every E5 model, 3-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single or combined states (%) | reports/analysis/e1_seeds.csv |
+| `\resSeedStatesAllBThree` | `20` | every E5 model, 3-bit cells: E5 states (seeds 1 and 2) available | results/v2/E5/*.jsonl |
 | `\resSeedStatesPlannedAllBThree` | `60` | every E5 model, 3-bit cells: E5 states planned | scripts/make_queues.py e5() |
-| `\resSeedBestCellsAllBoth` | `3` | every E5 model, 4- and 3-bit cells: cells with every seed and order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedBestStableAllBoth` | `3` | every E5 model, 4- and 3-bit cells: cells whose best order by WikiText-2 ppl is the same in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedQPWorstAllSeedsAllBoth` | `3` | every E5 model, 4- and 3-bit cells: cells where Q->P has strictly the highest WikiText-2 ppl in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsAllBoth` | `9` | every E5 model, 4- and 3-bit cells: (cell, seed) pairs of those cells | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsQPWorstAllBoth` | `9` | every E5 model, 4- and 3-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsQPWorstAllBothPct` | `100` | every E5 model, 4- and 3-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsJointBestAllBoth` | `9` | every E5 model, 4- and 3-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsJointBeatsPQAllBoth` | `9` | every E5 model, 4- and 3-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointPQAllSeedsAllBoth` | `3` | every E5 model, 4- and 3-bit cells: cells where joint has a lower ppl than P->Q in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointPQSigAllBoth` | `3` | every E5 model, 4- and 3-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointPQCellsAllBoth` | `3` | every E5 model, 4- and 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointQPAllSeedsAllBoth` | `3` | every E5 model, 4- and 3-bit cells: cells where joint has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointQPSigAllBoth` | `3` | every E5 model, 4- and 3-bit cells: cells where the paired t-test over seeds (log ppl, joint vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointQPCellsAllBoth` | `3` | every E5 model, 4- and 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairPQQPAllSeedsAllBoth` | `3` | every E5 model, 4- and 3-bit cells: cells where P->Q has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairPQQPSigAllBoth` | `3` | every E5 model, 4- and 3-bit cells: cells where the paired t-test over seeds (log ppl, P->Q vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairPQQPCellsAllBoth` | `3` | every E5 model, 4- and 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedSdMaxSingleAllBothPct` | `0.2` | every E5 model, 4- and 3-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single states (%) | reports/analysis/e1_seeds.csv |
-| `\resSeedSdMaxCombinedAllBothPct` | `1.0` | every E5 model, 4- and 3-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, combined states (%) | reports/analysis/e1_seeds.csv |
-| `\resSeedSdMaxAllBothPct` | `1.0` | every E5 model, 4- and 3-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single or combined states (%) | reports/analysis/e1_seeds.csv |
-| `\resSeedStatesAllBoth` | `25` | every E5 model, 4- and 3-bit cells: E5 states (seeds 1 and 2) available | results/v2/E5/*.jsonl |
+| `\resSeedBestCellsAllBoth` | `9` | every E5 model, 4- and 3-bit cells: cells with every seed and order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedBestStableAllBoth` | `7` | every E5 model, 4- and 3-bit cells: cells whose best order by WikiText-2 ppl is the same in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedQPWorstAllSeedsAllBoth` | `7` | every E5 model, 4- and 3-bit cells: cells where Q->P has strictly the highest WikiText-2 ppl in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsAllBoth` | `27` | every E5 model, 4- and 3-bit cells: (cell, seed) pairs of those cells | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPWorstAllBoth` | `23` | every E5 model, 4- and 3-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPWorstAllBothPct` | `85` | every E5 model, 4- and 3-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsJointBestAllBoth` | `25` | every E5 model, 4- and 3-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsJointBeatsPQAllBoth` | `25` | every E5 model, 4- and 3-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointPQAllSeedsAllBoth` | `7` | every E5 model, 4- and 3-bit cells: cells where joint has a lower ppl than P->Q in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointPQSigAllBoth` | `4` | every E5 model, 4- and 3-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointPQCellsAllBoth` | `9` | every E5 model, 4- and 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointQPAllSeedsAllBoth` | `8` | every E5 model, 4- and 3-bit cells: cells where joint has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointQPSigAllBoth` | `7` | every E5 model, 4- and 3-bit cells: cells where the paired t-test over seeds (log ppl, joint vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointQPCellsAllBoth` | `9` | every E5 model, 4- and 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairPQQPAllSeedsAllBoth` | `7` | every E5 model, 4- and 3-bit cells: cells where P->Q has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairPQQPSigAllBoth` | `6` | every E5 model, 4- and 3-bit cells: cells where the paired t-test over seeds (log ppl, P->Q vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairPQQPCellsAllBoth` | `9` | every E5 model, 4- and 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedSdMaxSingleAllBothPct` | `0.5` | every E5 model, 4- and 3-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single states (%) | reports/analysis/e1_seeds.csv |
+| `\resSeedSdMaxCombinedAllBothPct` | `1.9` | every E5 model, 4- and 3-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, combined states (%) | reports/analysis/e1_seeds.csv |
+| `\resSeedSdMaxAllBothPct` | `1.9` | every E5 model, 4- and 3-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single or combined states (%) | reports/analysis/e1_seeds.csv |
+| `\resSeedStatesAllBoth` | `60` | every E5 model, 4- and 3-bit cells: E5 states (seeds 1 and 2) available | results/v2/E5/*.jsonl |
 | `\resSeedStatesPlannedAllBoth` | `120` | every E5 model, 4- and 3-bit cells: E5 states planned | scripts/make_queues.py e5() |
 | `\resSeedBestCellsSmolSmallBFour` | `--` | SmolLM2-135M, 4-bit cells: cells with every seed and order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedBestStableSmolSmallBFour` | `--` | SmolLM2-135M, 4-bit cells: cells whose best order by WikiText-2 ppl is the same in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
@@ -2481,71 +2481,71 @@ Columns:
 | `\resSeedSdMaxSmolMediumBothPct` | `1.0` | SmolLM2-360M, 4- and 3-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single or combined states (%) | reports/analysis/e1_seeds.csv |
 | `\resSeedStatesSmolMediumBoth` | `20` | SmolLM2-360M, 4- and 3-bit cells: E5 states (seeds 1 and 2) available | results/v2/E5/*.jsonl |
 | `\resSeedStatesPlannedSmolMediumBoth` | `40` | SmolLM2-360M, 4- and 3-bit cells: E5 states planned | scripts/make_queues.py e5() |
-| `\resSeedBestCellsQwenBFour` | `--` | Qwen2.5-0.5B, 4-bit cells: cells with every seed and order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedBestStableQwenBFour` | `--` | Qwen2.5-0.5B, 4-bit cells: cells whose best order by WikiText-2 ppl is the same in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedQPWorstAllSeedsQwenBFour` | `--` | Qwen2.5-0.5B, 4-bit cells: cells where Q->P has strictly the highest WikiText-2 ppl in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsQwenBFour` | `--` | Qwen2.5-0.5B, 4-bit cells: (cell, seed) pairs of those cells | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsQPWorstQwenBFour` | `--` | Qwen2.5-0.5B, 4-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsQPWorstQwenBFourPct` | `--` | Qwen2.5-0.5B, 4-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsJointBestQwenBFour` | `--` | Qwen2.5-0.5B, 4-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsJointBeatsPQQwenBFour` | `--` | Qwen2.5-0.5B, 4-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointPQAllSeedsQwenBFour` | `--` | Qwen2.5-0.5B, 4-bit cells: cells where joint has a lower ppl than P->Q in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointPQSigQwenBFour` | `--` | Qwen2.5-0.5B, 4-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointPQCellsQwenBFour` | `--` | Qwen2.5-0.5B, 4-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointQPAllSeedsQwenBFour` | `--` | Qwen2.5-0.5B, 4-bit cells: cells where joint has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointQPSigQwenBFour` | `--` | Qwen2.5-0.5B, 4-bit cells: cells where the paired t-test over seeds (log ppl, joint vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointQPCellsQwenBFour` | `--` | Qwen2.5-0.5B, 4-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairPQQPAllSeedsQwenBFour` | `--` | Qwen2.5-0.5B, 4-bit cells: cells where P->Q has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairPQQPSigQwenBFour` | `--` | Qwen2.5-0.5B, 4-bit cells: cells where the paired t-test over seeds (log ppl, P->Q vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairPQQPCellsQwenBFour` | `--` | Qwen2.5-0.5B, 4-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedSdMaxSingleQwenBFourPct` | `--` | Qwen2.5-0.5B, 4-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single states (%) | reports/analysis/e1_seeds.csv |
-| `\resSeedSdMaxCombinedQwenBFourPct` | `--` | Qwen2.5-0.5B, 4-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, combined states (%) | reports/analysis/e1_seeds.csv |
-| `\resSeedSdMaxQwenBFourPct` | `--` | Qwen2.5-0.5B, 4-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single or combined states (%) | reports/analysis/e1_seeds.csv |
-| `\resSeedStatesQwenBFour` | `5` | Qwen2.5-0.5B, 4-bit cells: E5 states (seeds 1 and 2) available | results/v2/E5/*.jsonl |
+| `\resSeedBestCellsQwenBFour` | `3` | Qwen2.5-0.5B, 4-bit cells: cells with every seed and order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedBestStableQwenBFour` | `2` | Qwen2.5-0.5B, 4-bit cells: cells whose best order by WikiText-2 ppl is the same in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedQPWorstAllSeedsQwenBFour` | `2` | Qwen2.5-0.5B, 4-bit cells: cells where Q->P has strictly the highest WikiText-2 ppl in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQwenBFour` | `9` | Qwen2.5-0.5B, 4-bit cells: (cell, seed) pairs of those cells | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPWorstQwenBFour` | `8` | Qwen2.5-0.5B, 4-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPWorstQwenBFourPct` | `89` | Qwen2.5-0.5B, 4-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsJointBestQwenBFour` | `8` | Qwen2.5-0.5B, 4-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsJointBeatsPQQwenBFour` | `8` | Qwen2.5-0.5B, 4-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointPQAllSeedsQwenBFour` | `2` | Qwen2.5-0.5B, 4-bit cells: cells where joint has a lower ppl than P->Q in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointPQSigQwenBFour` | `1` | Qwen2.5-0.5B, 4-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointPQCellsQwenBFour` | `3` | Qwen2.5-0.5B, 4-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointQPAllSeedsQwenBFour` | `3` | Qwen2.5-0.5B, 4-bit cells: cells where joint has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointQPSigQwenBFour` | `2` | Qwen2.5-0.5B, 4-bit cells: cells where the paired t-test over seeds (log ppl, joint vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointQPCellsQwenBFour` | `3` | Qwen2.5-0.5B, 4-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairPQQPAllSeedsQwenBFour` | `2` | Qwen2.5-0.5B, 4-bit cells: cells where P->Q has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairPQQPSigQwenBFour` | `2` | Qwen2.5-0.5B, 4-bit cells: cells where the paired t-test over seeds (log ppl, P->Q vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairPQQPCellsQwenBFour` | `3` | Qwen2.5-0.5B, 4-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedSdMaxSingleQwenBFourPct` | `0.1` | Qwen2.5-0.5B, 4-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single states (%) | reports/analysis/e1_seeds.csv |
+| `\resSeedSdMaxCombinedQwenBFourPct` | `1.5` | Qwen2.5-0.5B, 4-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, combined states (%) | reports/analysis/e1_seeds.csv |
+| `\resSeedSdMaxQwenBFourPct` | `1.5` | Qwen2.5-0.5B, 4-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single or combined states (%) | reports/analysis/e1_seeds.csv |
+| `\resSeedStatesQwenBFour` | `20` | Qwen2.5-0.5B, 4-bit cells: E5 states (seeds 1 and 2) available | results/v2/E5/*.jsonl |
 | `\resSeedStatesPlannedQwenBFour` | `20` | Qwen2.5-0.5B, 4-bit cells: E5 states planned | scripts/make_queues.py e5() |
-| `\resSeedBestCellsQwenBThree` | `--` | Qwen2.5-0.5B, 3-bit cells: cells with every seed and order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedBestStableQwenBThree` | `--` | Qwen2.5-0.5B, 3-bit cells: cells whose best order by WikiText-2 ppl is the same in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedQPWorstAllSeedsQwenBThree` | `--` | Qwen2.5-0.5B, 3-bit cells: cells where Q->P has strictly the highest WikiText-2 ppl in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsQwenBThree` | `--` | Qwen2.5-0.5B, 3-bit cells: (cell, seed) pairs of those cells | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsQPWorstQwenBThree` | `--` | Qwen2.5-0.5B, 3-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsQPWorstQwenBThreePct` | `--` | Qwen2.5-0.5B, 3-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsJointBestQwenBThree` | `--` | Qwen2.5-0.5B, 3-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsJointBeatsPQQwenBThree` | `--` | Qwen2.5-0.5B, 3-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointPQAllSeedsQwenBThree` | `--` | Qwen2.5-0.5B, 3-bit cells: cells where joint has a lower ppl than P->Q in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointPQSigQwenBThree` | `--` | Qwen2.5-0.5B, 3-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointPQCellsQwenBThree` | `--` | Qwen2.5-0.5B, 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointQPAllSeedsQwenBThree` | `--` | Qwen2.5-0.5B, 3-bit cells: cells where joint has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointQPSigQwenBThree` | `--` | Qwen2.5-0.5B, 3-bit cells: cells where the paired t-test over seeds (log ppl, joint vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointQPCellsQwenBThree` | `--` | Qwen2.5-0.5B, 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairPQQPAllSeedsQwenBThree` | `--` | Qwen2.5-0.5B, 3-bit cells: cells where P->Q has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairPQQPSigQwenBThree` | `--` | Qwen2.5-0.5B, 3-bit cells: cells where the paired t-test over seeds (log ppl, P->Q vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairPQQPCellsQwenBThree` | `--` | Qwen2.5-0.5B, 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedSdMaxSingleQwenBThreePct` | `--` | Qwen2.5-0.5B, 3-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single states (%) | reports/analysis/e1_seeds.csv |
-| `\resSeedSdMaxCombinedQwenBThreePct` | `--` | Qwen2.5-0.5B, 3-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, combined states (%) | reports/analysis/e1_seeds.csv |
-| `\resSeedSdMaxQwenBThreePct` | `--` | Qwen2.5-0.5B, 3-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single or combined states (%) | reports/analysis/e1_seeds.csv |
-| `\resSeedStatesQwenBThree` | `0` | Qwen2.5-0.5B, 3-bit cells: E5 states (seeds 1 and 2) available | results/v2/E5/*.jsonl |
+| `\resSeedBestCellsQwenBThree` | `3` | Qwen2.5-0.5B, 3-bit cells: cells with every seed and order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedBestStableQwenBThree` | `2` | Qwen2.5-0.5B, 3-bit cells: cells whose best order by WikiText-2 ppl is the same in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedQPWorstAllSeedsQwenBThree` | `2` | Qwen2.5-0.5B, 3-bit cells: cells where Q->P has strictly the highest WikiText-2 ppl in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQwenBThree` | `9` | Qwen2.5-0.5B, 3-bit cells: (cell, seed) pairs of those cells | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPWorstQwenBThree` | `6` | Qwen2.5-0.5B, 3-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPWorstQwenBThreePct` | `67` | Qwen2.5-0.5B, 3-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsJointBestQwenBThree` | `8` | Qwen2.5-0.5B, 3-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsJointBeatsPQQwenBThree` | `8` | Qwen2.5-0.5B, 3-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointPQAllSeedsQwenBThree` | `2` | Qwen2.5-0.5B, 3-bit cells: cells where joint has a lower ppl than P->Q in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointPQSigQwenBThree` | `0` | Qwen2.5-0.5B, 3-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointPQCellsQwenBThree` | `3` | Qwen2.5-0.5B, 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointQPAllSeedsQwenBThree` | `2` | Qwen2.5-0.5B, 3-bit cells: cells where joint has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointQPSigQwenBThree` | `2` | Qwen2.5-0.5B, 3-bit cells: cells where the paired t-test over seeds (log ppl, joint vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointQPCellsQwenBThree` | `3` | Qwen2.5-0.5B, 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairPQQPAllSeedsQwenBThree` | `2` | Qwen2.5-0.5B, 3-bit cells: cells where P->Q has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairPQQPSigQwenBThree` | `1` | Qwen2.5-0.5B, 3-bit cells: cells where the paired t-test over seeds (log ppl, P->Q vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairPQQPCellsQwenBThree` | `3` | Qwen2.5-0.5B, 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedSdMaxSingleQwenBThreePct` | `0.5` | Qwen2.5-0.5B, 3-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single states (%) | reports/analysis/e1_seeds.csv |
+| `\resSeedSdMaxCombinedQwenBThreePct` | `1.9` | Qwen2.5-0.5B, 3-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, combined states (%) | reports/analysis/e1_seeds.csv |
+| `\resSeedSdMaxQwenBThreePct` | `1.9` | Qwen2.5-0.5B, 3-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single or combined states (%) | reports/analysis/e1_seeds.csv |
+| `\resSeedStatesQwenBThree` | `20` | Qwen2.5-0.5B, 3-bit cells: E5 states (seeds 1 and 2) available | results/v2/E5/*.jsonl |
 | `\resSeedStatesPlannedQwenBThree` | `20` | Qwen2.5-0.5B, 3-bit cells: E5 states planned | scripts/make_queues.py e5() |
-| `\resSeedBestCellsQwenBoth` | `--` | Qwen2.5-0.5B, 4- and 3-bit cells: cells with every seed and order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedBestStableQwenBoth` | `--` | Qwen2.5-0.5B, 4- and 3-bit cells: cells whose best order by WikiText-2 ppl is the same in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedQPWorstAllSeedsQwenBoth` | `--` | Qwen2.5-0.5B, 4- and 3-bit cells: cells where Q->P has strictly the highest WikiText-2 ppl in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsQwenBoth` | `--` | Qwen2.5-0.5B, 4- and 3-bit cells: (cell, seed) pairs of those cells | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsQPWorstQwenBoth` | `--` | Qwen2.5-0.5B, 4- and 3-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsQPWorstQwenBothPct` | `--` | Qwen2.5-0.5B, 4- and 3-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsJointBestQwenBoth` | `--` | Qwen2.5-0.5B, 4- and 3-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsJointBeatsPQQwenBoth` | `--` | Qwen2.5-0.5B, 4- and 3-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointPQAllSeedsQwenBoth` | `--` | Qwen2.5-0.5B, 4- and 3-bit cells: cells where joint has a lower ppl than P->Q in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointPQSigQwenBoth` | `--` | Qwen2.5-0.5B, 4- and 3-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointPQCellsQwenBoth` | `--` | Qwen2.5-0.5B, 4- and 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointQPAllSeedsQwenBoth` | `--` | Qwen2.5-0.5B, 4- and 3-bit cells: cells where joint has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointQPSigQwenBoth` | `--` | Qwen2.5-0.5B, 4- and 3-bit cells: cells where the paired t-test over seeds (log ppl, joint vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointQPCellsQwenBoth` | `--` | Qwen2.5-0.5B, 4- and 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairPQQPAllSeedsQwenBoth` | `--` | Qwen2.5-0.5B, 4- and 3-bit cells: cells where P->Q has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairPQQPSigQwenBoth` | `--` | Qwen2.5-0.5B, 4- and 3-bit cells: cells where the paired t-test over seeds (log ppl, P->Q vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairPQQPCellsQwenBoth` | `--` | Qwen2.5-0.5B, 4- and 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedSdMaxSingleQwenBothPct` | `--` | Qwen2.5-0.5B, 4- and 3-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single states (%) | reports/analysis/e1_seeds.csv |
-| `\resSeedSdMaxCombinedQwenBothPct` | `--` | Qwen2.5-0.5B, 4- and 3-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, combined states (%) | reports/analysis/e1_seeds.csv |
-| `\resSeedSdMaxQwenBothPct` | `--` | Qwen2.5-0.5B, 4- and 3-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single or combined states (%) | reports/analysis/e1_seeds.csv |
-| `\resSeedStatesQwenBoth` | `5` | Qwen2.5-0.5B, 4- and 3-bit cells: E5 states (seeds 1 and 2) available | results/v2/E5/*.jsonl |
+| `\resSeedBestCellsQwenBoth` | `6` | Qwen2.5-0.5B, 4- and 3-bit cells: cells with every seed and order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedBestStableQwenBoth` | `4` | Qwen2.5-0.5B, 4- and 3-bit cells: cells whose best order by WikiText-2 ppl is the same in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedQPWorstAllSeedsQwenBoth` | `4` | Qwen2.5-0.5B, 4- and 3-bit cells: cells where Q->P has strictly the highest WikiText-2 ppl in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQwenBoth` | `18` | Qwen2.5-0.5B, 4- and 3-bit cells: (cell, seed) pairs of those cells | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPWorstQwenBoth` | `14` | Qwen2.5-0.5B, 4- and 3-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPWorstQwenBothPct` | `78` | Qwen2.5-0.5B, 4- and 3-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsJointBestQwenBoth` | `16` | Qwen2.5-0.5B, 4- and 3-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsJointBeatsPQQwenBoth` | `16` | Qwen2.5-0.5B, 4- and 3-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointPQAllSeedsQwenBoth` | `4` | Qwen2.5-0.5B, 4- and 3-bit cells: cells where joint has a lower ppl than P->Q in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointPQSigQwenBoth` | `1` | Qwen2.5-0.5B, 4- and 3-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointPQCellsQwenBoth` | `6` | Qwen2.5-0.5B, 4- and 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointQPAllSeedsQwenBoth` | `5` | Qwen2.5-0.5B, 4- and 3-bit cells: cells where joint has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointQPSigQwenBoth` | `4` | Qwen2.5-0.5B, 4- and 3-bit cells: cells where the paired t-test over seeds (log ppl, joint vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointQPCellsQwenBoth` | `6` | Qwen2.5-0.5B, 4- and 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairPQQPAllSeedsQwenBoth` | `4` | Qwen2.5-0.5B, 4- and 3-bit cells: cells where P->Q has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairPQQPSigQwenBoth` | `3` | Qwen2.5-0.5B, 4- and 3-bit cells: cells where the paired t-test over seeds (log ppl, P->Q vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairPQQPCellsQwenBoth` | `6` | Qwen2.5-0.5B, 4- and 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedSdMaxSingleQwenBothPct` | `0.5` | Qwen2.5-0.5B, 4- and 3-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single states (%) | reports/analysis/e1_seeds.csv |
+| `\resSeedSdMaxCombinedQwenBothPct` | `1.9` | Qwen2.5-0.5B, 4- and 3-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, combined states (%) | reports/analysis/e1_seeds.csv |
+| `\resSeedSdMaxQwenBothPct` | `1.9` | Qwen2.5-0.5B, 4- and 3-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single or combined states (%) | reports/analysis/e1_seeds.csv |
+| `\resSeedStatesQwenBoth` | `40` | Qwen2.5-0.5B, 4- and 3-bit cells: E5 states (seeds 1 and 2) available | results/v2/E5/*.jsonl |
 | `\resSeedStatesPlannedQwenBoth` | `40` | Qwen2.5-0.5B, 4- and 3-bit cells: E5 states planned | scripts/make_queues.py e5() |
 
 ## E6 order spread vs scale, per model and cell (reports/analysis/scale_family_cells.csv)
@@ -2618,15 +2618,15 @@ Columns:
 | `\resScaleSpreadSmolLargeSTwentyFiveBFourPct` | `2.1` | SmolLM2-1.7B 25%+4: 100 (max - min) / min of WikiText-2 ppl over the three orders | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
 | `\resScaleGapMaskFirstSmolLargeSTwentyFiveBFourPct` | `0.62` | SmolLM2-1.7B 25%+4: 100 |joint - P->Q| / min of WikiText-2 ppl | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
 | `\resScalePenaltyQPSmolLargeSTwentyFiveBFourPct` | `2.1` | SmolLM2-1.7B 25%+4: Q->P penalty 100 (ppl Q->P / best of the three - 1) (0 if Q->P is best) | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
-| `\resScaleSpreadSmolLargeSThirtyThreeBFourPct` | `--` | SmolLM2-1.7B 33%+4: 100 (max - min) / min of WikiText-2 ppl over the three orders | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
-| `\resScaleGapMaskFirstSmolLargeSThirtyThreeBFourPct` | `--` | SmolLM2-1.7B 33%+4: 100 |joint - P->Q| / min of WikiText-2 ppl | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
-| `\resScalePenaltyQPSmolLargeSThirtyThreeBFourPct` | `--` | SmolLM2-1.7B 33%+4: Q->P penalty 100 (ppl Q->P / best of the three - 1) (0 if Q->P is best) | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
+| `\resScaleSpreadSmolLargeSThirtyThreeBFourPct` | `2.4` | SmolLM2-1.7B 33%+4: 100 (max - min) / min of WikiText-2 ppl over the three orders | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
+| `\resScaleGapMaskFirstSmolLargeSThirtyThreeBFourPct` | `2.44` | SmolLM2-1.7B 33%+4: 100 |joint - P->Q| / min of WikiText-2 ppl | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
+| `\resScalePenaltyQPSmolLargeSThirtyThreeBFourPct` | `1.9` | SmolLM2-1.7B 33%+4: Q->P penalty 100 (ppl Q->P / best of the three - 1) (0 if Q->P is best) | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
 | `\resScaleSpreadSmolLargeSFiftyBFourPct` | `6.4` | SmolLM2-1.7B 50%+4: 100 (max - min) / min of WikiText-2 ppl over the three orders | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
 | `\resScaleGapMaskFirstSmolLargeSFiftyBFourPct` | `0.08` | SmolLM2-1.7B 50%+4: 100 |joint - P->Q| / min of WikiText-2 ppl | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
 | `\resScalePenaltyQPSmolLargeSFiftyBFourPct` | `6.4` | SmolLM2-1.7B 50%+4: Q->P penalty 100 (ppl Q->P / best of the three - 1) (0 if Q->P is best) | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
-| `\resScaleSpreadSmolLargeSTwentyFiveBThreePct` | `--` | SmolLM2-1.7B 25%+3: 100 (max - min) / min of WikiText-2 ppl over the three orders | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
-| `\resScaleGapMaskFirstSmolLargeSTwentyFiveBThreePct` | `--` | SmolLM2-1.7B 25%+3: 100 |joint - P->Q| / min of WikiText-2 ppl | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
-| `\resScalePenaltyQPSmolLargeSTwentyFiveBThreePct` | `--` | SmolLM2-1.7B 25%+3: Q->P penalty 100 (ppl Q->P / best of the three - 1) (0 if Q->P is best) | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
+| `\resScaleSpreadSmolLargeSTwentyFiveBThreePct` | `8.6` | SmolLM2-1.7B 25%+3: 100 (max - min) / min of WikiText-2 ppl over the three orders | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
+| `\resScaleGapMaskFirstSmolLargeSTwentyFiveBThreePct` | `4.47` | SmolLM2-1.7B 25%+3: 100 |joint - P->Q| / min of WikiText-2 ppl | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
+| `\resScalePenaltyQPSmolLargeSTwentyFiveBThreePct` | `8.6` | SmolLM2-1.7B 25%+3: Q->P penalty 100 (ppl Q->P / best of the three - 1) (0 if Q->P is best) | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
 | `\resScaleSpreadSmolLargeSThirtyThreeBThreePct` | `--` | SmolLM2-1.7B 33%+3: 100 (max - min) / min of WikiText-2 ppl over the three orders | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
 | `\resScaleGapMaskFirstSmolLargeSThirtyThreeBThreePct` | `--` | SmolLM2-1.7B 33%+3: 100 |joint - P->Q| / min of WikiText-2 ppl | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
 | `\resScalePenaltyQPSmolLargeSThirtyThreeBThreePct` | `--` | SmolLM2-1.7B 33%+3: Q->P penalty 100 (ppl Q->P / best of the three - 1) (0 if Q->P is best) | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
@@ -2686,11 +2686,11 @@ Columns:
 | `\resScaleSlopeMaskFirstSmolSTwentyFiveBFour` | `\ensuremath{-4.92}` | SmolLM2 25%+4: slope of the joint vs P->Q gap (%) per decade | reports/analysis/e6_scale_spread.csv (seed 0; least-squares slope in points per decade of compressed weights, one family per fit) |
 | `\resScaleSlopePenaltySmolSTwentyFiveBFour` | `\ensuremath{-7.5}` | SmolLM2 25%+4: slope of the Q->P penalty (%) per decade of compressed weights | reports/analysis/e6_scale_spread.csv (seed 0; least-squares slope in points per decade of compressed weights, one family per fit) |
 | `\resScalePenaltyShrinksSmolSTwentyFiveBFour` | `yes` | SmolLM2 25%+4: does the Q->P penalty fall with every larger model? | reports/analysis/e6_scale_spread.csv (seed 0; least-squares slope in points per decade of compressed weights, one family per fit) |
-| `\resScaleSlopeSmolSThirtyThreeBFour` | `\ensuremath{+1.0}` | SmolLM2 33%+4: slope of the 3-order spread (%) per decade of compressed weights | reports/analysis/e6_scale_spread.csv (seed 0; least-squares slope in points per decade of compressed weights, one family per fit) |
+| `\resScaleSlopeSmolSThirtyThreeBFour` | `\ensuremath{-7.5}` | SmolLM2 33%+4: slope of the 3-order spread (%) per decade of compressed weights | reports/analysis/e6_scale_spread.csv (seed 0; least-squares slope in points per decade of compressed weights, one family per fit) |
 | `\resScaleShrinksSmolSThirtyThreeBFour` | `no` | SmolLM2 33%+4: does the spread fall with every larger model? | reports/analysis/e6_scale_spread.csv (seed 0; least-squares slope in points per decade of compressed weights, one family per fit) |
-| `\resScaleModelsSmolSThirtyThreeBFour` | `2` | SmolLM2 33%+4: models in the fit | reports/analysis/e6_scale_spread.csv (seed 0; least-squares slope in points per decade of compressed weights, one family per fit) |
-| `\resScaleSlopeMaskFirstSmolSThirtyThreeBFour` | `\ensuremath{-12.70}` | SmolLM2 33%+4: slope of the joint vs P->Q gap (%) per decade | reports/analysis/e6_scale_spread.csv (seed 0; least-squares slope in points per decade of compressed weights, one family per fit) |
-| `\resScaleSlopePenaltySmolSThirtyThreeBFour` | `\ensuremath{+1.0}` | SmolLM2 33%+4: slope of the Q->P penalty (%) per decade of compressed weights | reports/analysis/e6_scale_spread.csv (seed 0; least-squares slope in points per decade of compressed weights, one family per fit) |
+| `\resScaleModelsSmolSThirtyThreeBFour` | `3` | SmolLM2 33%+4: models in the fit | reports/analysis/e6_scale_spread.csv (seed 0; least-squares slope in points per decade of compressed weights, one family per fit) |
+| `\resScaleSlopeMaskFirstSmolSThirtyThreeBFour` | `\ensuremath{-3.65}` | SmolLM2 33%+4: slope of the joint vs P->Q gap (%) per decade | reports/analysis/e6_scale_spread.csv (seed 0; least-squares slope in points per decade of compressed weights, one family per fit) |
+| `\resScaleSlopePenaltySmolSThirtyThreeBFour` | `\ensuremath{-8.0}` | SmolLM2 33%+4: slope of the Q->P penalty (%) per decade of compressed weights | reports/analysis/e6_scale_spread.csv (seed 0; least-squares slope in points per decade of compressed weights, one family per fit) |
 | `\resScalePenaltyShrinksSmolSThirtyThreeBFour` | `no` | SmolLM2 33%+4: does the Q->P penalty fall with every larger model? | reports/analysis/e6_scale_spread.csv (seed 0; least-squares slope in points per decade of compressed weights, one family per fit) |
 | `\resScaleSlopeSmolSFiftyBFour` | `\ensuremath{-7.6}` | SmolLM2 50%+4: slope of the 3-order spread (%) per decade of compressed weights | reports/analysis/e6_scale_spread.csv (seed 0; least-squares slope in points per decade of compressed weights, one family per fit) |
 | `\resScaleShrinksSmolSFiftyBFour` | `no` | SmolLM2 50%+4: does the spread fall with every larger model? | reports/analysis/e6_scale_spread.csv (seed 0; least-squares slope in points per decade of compressed weights, one family per fit) |
@@ -2704,11 +2704,11 @@ Columns:
 | `\resScaleSlopeMaskFirstSmolSSixtyBFour` | `\ensuremath{-11.47}` | SmolLM2 60%+4: slope of the joint vs P->Q gap (%) per decade | reports/analysis/e6_scale_spread.csv (seed 0; least-squares slope in points per decade of compressed weights, one family per fit) |
 | `\resScaleSlopePenaltySmolSSixtyBFour` | `\ensuremath{-57.1}` | SmolLM2 60%+4: slope of the Q->P penalty (%) per decade of compressed weights | reports/analysis/e6_scale_spread.csv (seed 0; least-squares slope in points per decade of compressed weights, one family per fit) |
 | `\resScalePenaltyShrinksSmolSSixtyBFour` | `yes` | SmolLM2 60%+4: does the Q->P penalty fall with every larger model? | reports/analysis/e6_scale_spread.csv (seed 0; least-squares slope in points per decade of compressed weights, one family per fit) |
-| `\resScaleSlopeSmolSTwentyFiveBThree` | `\ensuremath{-41.5}` | SmolLM2 25%+3: slope of the 3-order spread (%) per decade of compressed weights | reports/analysis/e6_scale_spread.csv (seed 0; least-squares slope in points per decade of compressed weights, one family per fit) |
+| `\resScaleSlopeSmolSTwentyFiveBThree` | `\ensuremath{-16.4}` | SmolLM2 25%+3: slope of the 3-order spread (%) per decade of compressed weights | reports/analysis/e6_scale_spread.csv (seed 0; least-squares slope in points per decade of compressed weights, one family per fit) |
 | `\resScaleShrinksSmolSTwentyFiveBThree` | `yes` | SmolLM2 25%+3: does the spread fall with every larger model? | reports/analysis/e6_scale_spread.csv (seed 0; least-squares slope in points per decade of compressed weights, one family per fit) |
-| `\resScaleModelsSmolSTwentyFiveBThree` | `2` | SmolLM2 25%+3: models in the fit | reports/analysis/e6_scale_spread.csv (seed 0; least-squares slope in points per decade of compressed weights, one family per fit) |
-| `\resScaleSlopeMaskFirstSmolSTwentyFiveBThree` | `\ensuremath{-58.36}` | SmolLM2 25%+3: slope of the joint vs P->Q gap (%) per decade | reports/analysis/e6_scale_spread.csv (seed 0; least-squares slope in points per decade of compressed weights, one family per fit) |
-| `\resScaleSlopePenaltySmolSTwentyFiveBThree` | `\ensuremath{+3.3}` | SmolLM2 25%+3: slope of the Q->P penalty (%) per decade of compressed weights | reports/analysis/e6_scale_spread.csv (seed 0; least-squares slope in points per decade of compressed weights, one family per fit) |
+| `\resScaleModelsSmolSTwentyFiveBThree` | `3` | SmolLM2 25%+3: models in the fit | reports/analysis/e6_scale_spread.csv (seed 0; least-squares slope in points per decade of compressed weights, one family per fit) |
+| `\resScaleSlopeMaskFirstSmolSTwentyFiveBThree` | `\ensuremath{-19.17}` | SmolLM2 25%+3: slope of the joint vs P->Q gap (%) per decade | reports/analysis/e6_scale_spread.csv (seed 0; least-squares slope in points per decade of compressed weights, one family per fit) |
+| `\resScaleSlopePenaltySmolSTwentyFiveBThree` | `\ensuremath{+0.1}` | SmolLM2 25%+3: slope of the Q->P penalty (%) per decade of compressed weights | reports/analysis/e6_scale_spread.csv (seed 0; least-squares slope in points per decade of compressed weights, one family per fit) |
 | `\resScalePenaltyShrinksSmolSTwentyFiveBThree` | `no` | SmolLM2 25%+3: does the Q->P penalty fall with every larger model? | reports/analysis/e6_scale_spread.csv (seed 0; least-squares slope in points per decade of compressed weights, one family per fit) |
 | `\resScaleSlopeSmolSThirtyThreeBThree` | `\ensuremath{+32.5}` | SmolLM2 33%+3: slope of the 3-order spread (%) per decade of compressed weights | reports/analysis/e6_scale_spread.csv (seed 0; least-squares slope in points per decade of compressed weights, one family per fit) |
 | `\resScaleShrinksSmolSThirtyThreeBThree` | `no` | SmolLM2 33%+3: does the spread fall with every larger model? | reports/analysis/e6_scale_spread.csv (seed 0; least-squares slope in points per decade of compressed weights, one family per fit) |
@@ -2843,7 +2843,7 @@ Columns:
 | `\resScaleMatchedBillionSTwentyFiveBFourSmallest` | `--` | about 1.1-1.6B 25%+4 (SmolLM2-1.7B Qwen2.5-1.5B OLMo-2-0425-1B): model with the smallest spread | reports/analysis/scale_matched.csv (seed 0; -- until every model of the group has the cell with all three orders) |
 | `\resScaleMatchedBillionSTwentyFiveBFourPenaltyMinPct` | `--` | about 1.1-1.6B 25%+4 (SmolLM2-1.7B Qwen2.5-1.5B OLMo-2-0425-1B): smallest Q->P penalty (%) | reports/analysis/scale_matched.csv (seed 0; -- until every model of the group has the cell with all three orders) |
 | `\resScaleMatchedBillionSTwentyFiveBFourPenaltyMaxPct` | `--` | about 1.1-1.6B 25%+4 (SmolLM2-1.7B Qwen2.5-1.5B OLMo-2-0425-1B): largest Q->P penalty (%) | reports/analysis/scale_matched.csv (seed 0; -- until every model of the group has the cell with all three orders) |
-| `\resScaleMatchedBillionSThirtyThreeBFourModels` | `0` | about 1.1-1.6B 33%+4 (SmolLM2-1.7B Qwen2.5-1.5B OLMo-2-0425-1B): models with the cell and all three orders | reports/analysis/scale_matched.csv (seed 0; -- until every model of the group has the cell with all three orders) |
+| `\resScaleMatchedBillionSThirtyThreeBFourModels` | `1` | about 1.1-1.6B 33%+4 (SmolLM2-1.7B Qwen2.5-1.5B OLMo-2-0425-1B): models with the cell and all three orders | reports/analysis/scale_matched.csv (seed 0; -- until every model of the group has the cell with all three orders) |
 | `\resScaleMatchedBillionSThirtyThreeBFourMinPct` | `--` | about 1.1-1.6B 33%+4 (SmolLM2-1.7B Qwen2.5-1.5B OLMo-2-0425-1B): smallest order spread (%) | reports/analysis/scale_matched.csv (seed 0; -- until every model of the group has the cell with all three orders) |
 | `\resScaleMatchedBillionSThirtyThreeBFourMaxPct` | `--` | about 1.1-1.6B 33%+4 (SmolLM2-1.7B Qwen2.5-1.5B OLMo-2-0425-1B): largest order spread (%) | reports/analysis/scale_matched.csv (seed 0; -- until every model of the group has the cell with all three orders) |
 | `\resScaleMatchedBillionSThirtyThreeBFourGapPct` | `--` | about 1.1-1.6B 33%+4 (SmolLM2-1.7B Qwen2.5-1.5B OLMo-2-0425-1B): largest minus smallest spread (points) | reports/analysis/scale_matched.csv (seed 0; -- until every model of the group has the cell with all three orders) |
@@ -2861,7 +2861,7 @@ Columns:
 | `\resScaleMatchedBillionSFiftyBFourSmallest` | `--` | about 1.1-1.6B 50%+4 (SmolLM2-1.7B Qwen2.5-1.5B OLMo-2-0425-1B): model with the smallest spread | reports/analysis/scale_matched.csv (seed 0; -- until every model of the group has the cell with all three orders) |
 | `\resScaleMatchedBillionSFiftyBFourPenaltyMinPct` | `--` | about 1.1-1.6B 50%+4 (SmolLM2-1.7B Qwen2.5-1.5B OLMo-2-0425-1B): smallest Q->P penalty (%) | reports/analysis/scale_matched.csv (seed 0; -- until every model of the group has the cell with all three orders) |
 | `\resScaleMatchedBillionSFiftyBFourPenaltyMaxPct` | `--` | about 1.1-1.6B 50%+4 (SmolLM2-1.7B Qwen2.5-1.5B OLMo-2-0425-1B): largest Q->P penalty (%) | reports/analysis/scale_matched.csv (seed 0; -- until every model of the group has the cell with all three orders) |
-| `\resScaleMatchedBillionSTwentyFiveBThreeModels` | `0` | about 1.1-1.6B 25%+3 (SmolLM2-1.7B Qwen2.5-1.5B OLMo-2-0425-1B): models with the cell and all three orders | reports/analysis/scale_matched.csv (seed 0; -- until every model of the group has the cell with all three orders) |
+| `\resScaleMatchedBillionSTwentyFiveBThreeModels` | `1` | about 1.1-1.6B 25%+3 (SmolLM2-1.7B Qwen2.5-1.5B OLMo-2-0425-1B): models with the cell and all three orders | reports/analysis/scale_matched.csv (seed 0; -- until every model of the group has the cell with all three orders) |
 | `\resScaleMatchedBillionSTwentyFiveBThreeMinPct` | `--` | about 1.1-1.6B 25%+3 (SmolLM2-1.7B Qwen2.5-1.5B OLMo-2-0425-1B): smallest order spread (%) | reports/analysis/scale_matched.csv (seed 0; -- until every model of the group has the cell with all three orders) |
 | `\resScaleMatchedBillionSTwentyFiveBThreeMaxPct` | `--` | about 1.1-1.6B 25%+3 (SmolLM2-1.7B Qwen2.5-1.5B OLMo-2-0425-1B): largest order spread (%) | reports/analysis/scale_matched.csv (seed 0; -- until every model of the group has the cell with all three orders) |
 | `\resScaleMatchedBillionSTwentyFiveBThreeGapPct` | `--` | about 1.1-1.6B 25%+3 (SmolLM2-1.7B Qwen2.5-1.5B OLMo-2-0425-1B): largest minus smallest spread (points) | reports/analysis/scale_matched.csv (seed 0; -- until every model of the group has the cell with all three orders) |
@@ -2927,11 +2927,11 @@ Columns:
 | `\resESevenKimPredQPPplQwen` | `2` | Qwen2.5-0.5B: cells where the rule predicts Q->P (pruning the stronger perturbation; wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimPredQPCorrectPplQwen` | `0` | Qwen2.5-0.5B: of those, cells where Q->P is in fact better (wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimRhoPplQwen` | `\ensuremath{-0.60}` | Qwen2.5-0.5B: Spearman rho of the P->Q advantage vs CER(Q) - CER(P) over cells (wt_ppl; n = 6) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimCorrectPplSmolLarge` | `1` | SmolLM2-1.7B: cells where Kim et al.'s weaker-first rule (CER, wt_ppl) picks the better of P->Q and Q->P | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimCellsPplSmolLarge` | `2` | SmolLM2-1.7B: cells with a prediction and an outcome (wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimPredQPPplSmolLarge` | `1` | SmolLM2-1.7B: cells where the rule predicts Q->P (pruning the stronger perturbation; wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimCorrectPplSmolLarge` | `2` | SmolLM2-1.7B: cells where Kim et al.'s weaker-first rule (CER, wt_ppl) picks the better of P->Q and Q->P | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimCellsPplSmolLarge` | `4` | SmolLM2-1.7B: cells with a prediction and an outcome (wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimPredQPPplSmolLarge` | `2` | SmolLM2-1.7B: cells where the rule predicts Q->P (pruning the stronger perturbation; wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimPredQPCorrectPplSmolLarge` | `0` | SmolLM2-1.7B: of those, cells where Q->P is in fact better (wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimRhoPplSmolLarge` | `--` | SmolLM2-1.7B: Spearman rho of the P->Q advantage vs CER(Q) - CER(P) over cells (wt_ppl; n = 1) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimRhoPplSmolLarge` | `\ensuremath{+0.50}` | SmolLM2-1.7B: Spearman rho of the P->Q advantage vs CER(Q) - CER(P) over cells (wt_ppl; n = 3) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimCorrectPplQwenMid` | `--` | Qwen2.5-1.5B: cells where Kim et al.'s weaker-first rule (CER, wt_ppl) picks the better of P->Q and Q->P | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimCellsPplQwenMid` | `--` | Qwen2.5-1.5B: cells with a prediction and an outcome (wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimPredQPPplQwenMid` | `--` | Qwen2.5-1.5B: cells where the rule predicts Q->P (pruning the stronger perturbation; wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
@@ -2947,9 +2947,9 @@ Columns:
 | `\resESevenKimPredQPPplOlmo` | `--` | OLMo-2-0425-1B: cells where the rule predicts Q->P (pruning the stronger perturbation; wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimPredQPCorrectPplOlmo` | `--` | OLMo-2-0425-1B: of those, cells where Q->P is in fact better (wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimRhoPplOlmo` | `--` | OLMo-2-0425-1B: Spearman rho of the P->Q advantage vs CER(Q) - CER(P) over cells (wt_ppl; n = None) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimCorrectPplAll` | `14` | all models: cells where Kim et al.'s weaker-first rule (CER, wt_ppl) picks the better of P->Q and Q->P | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimCellsPplAll` | `20` | all models: cells with a prediction and an outcome (wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimPredQPPplAll` | `5` | all models: cells where the rule predicts Q->P (pruning the stronger perturbation; wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimCorrectPplAll` | `15` | all models: cells where Kim et al.'s weaker-first rule (CER, wt_ppl) picks the better of P->Q and Q->P | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimCellsPplAll` | `22` | all models: cells with a prediction and an outcome (wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimPredQPPplAll` | `6` | all models: cells where the rule predicts Q->P (pruning the stronger perturbation; wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimPredQPCorrectPplAll` | `0` | all models: of those, cells where Q->P is in fact better (wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimCorrectCFourPplSmolSmall` | `5` | SmolLM2-135M: cells where Kim et al.'s weaker-first rule (CER, c4_ppl) picks the better of P->Q and Q->P | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimCellsCFourPplSmolSmall` | `6` | SmolLM2-135M: cells with a prediction and an outcome (c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
@@ -2967,10 +2967,10 @@ Columns:
 | `\resESevenKimPredQPCorrectCFourPplQwen` | `0` | Qwen2.5-0.5B: of those, cells where Q->P is in fact better (c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimRhoCFourPplQwen` | `\ensuremath{-0.83}` | Qwen2.5-0.5B: Spearman rho of the P->Q advantage vs CER(Q) - CER(P) over cells (c4_ppl; n = 6) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimCorrectCFourPplSmolLarge` | `1` | SmolLM2-1.7B: cells where Kim et al.'s weaker-first rule (CER, c4_ppl) picks the better of P->Q and Q->P | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimCellsCFourPplSmolLarge` | `2` | SmolLM2-1.7B: cells with a prediction and an outcome (c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimPredQPCFourPplSmolLarge` | `1` | SmolLM2-1.7B: cells where the rule predicts Q->P (pruning the stronger perturbation; c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimCellsCFourPplSmolLarge` | `4` | SmolLM2-1.7B: cells with a prediction and an outcome (c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimPredQPCFourPplSmolLarge` | `2` | SmolLM2-1.7B: cells where the rule predicts Q->P (pruning the stronger perturbation; c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimPredQPCorrectCFourPplSmolLarge` | `0` | SmolLM2-1.7B: of those, cells where Q->P is in fact better (c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimRhoCFourPplSmolLarge` | `--` | SmolLM2-1.7B: Spearman rho of the P->Q advantage vs CER(Q) - CER(P) over cells (c4_ppl; n = 1) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimRhoCFourPplSmolLarge` | `\ensuremath{-0.50}` | SmolLM2-1.7B: Spearman rho of the P->Q advantage vs CER(Q) - CER(P) over cells (c4_ppl; n = 3) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimCorrectCFourPplQwenMid` | `--` | Qwen2.5-1.5B: cells where Kim et al.'s weaker-first rule (CER, c4_ppl) picks the better of P->Q and Q->P | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimCellsCFourPplQwenMid` | `--` | Qwen2.5-1.5B: cells with a prediction and an outcome (c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimPredQPCFourPplQwenMid` | `--` | Qwen2.5-1.5B: cells where the rule predicts Q->P (pruning the stronger perturbation; c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
@@ -2987,8 +2987,8 @@ Columns:
 | `\resESevenKimPredQPCorrectCFourPplOlmo` | `--` | OLMo-2-0425-1B: of those, cells where Q->P is in fact better (c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimRhoCFourPplOlmo` | `--` | OLMo-2-0425-1B: Spearman rho of the P->Q advantage vs CER(Q) - CER(P) over cells (c4_ppl; n = None) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimCorrectCFourPplAll` | `13` | all models: cells where Kim et al.'s weaker-first rule (CER, c4_ppl) picks the better of P->Q and Q->P | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimCellsCFourPplAll` | `20` | all models: cells with a prediction and an outcome (c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimPredQPCFourPplAll` | `5` | all models: cells where the rule predicts Q->P (pruning the stronger perturbation; c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimCellsCFourPplAll` | `22` | all models: cells with a prediction and an outcome (c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimPredQPCFourPplAll` | `6` | all models: cells where the rule predicts Q->P (pruning the stronger perturbation; c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimPredQPCorrectCFourPplAll` | `0` | all models: of those, cells where Q->P is in fact better (c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimCorrectKlSmolSmall` | `5` | SmolLM2-135M: cells where Kim et al.'s weaker-first rule (CER, wt_kl) picks the better of P->Q and Q->P | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimCellsKlSmolSmall` | `6` | SmolLM2-135M: cells with a prediction and an outcome (wt_kl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
@@ -3005,11 +3005,11 @@ Columns:
 | `\resESevenKimPredQPKlQwen` | `2` | Qwen2.5-0.5B: cells where the rule predicts Q->P (pruning the stronger perturbation; wt_kl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimPredQPCorrectKlQwen` | `0` | Qwen2.5-0.5B: of those, cells where Q->P is in fact better (wt_kl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimRhoKlQwen` | `\ensuremath{-0.26}` | Qwen2.5-0.5B: Spearman rho of the P->Q advantage vs CER(Q) - CER(P) over cells (wt_kl; n = 6) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimCorrectKlSmolLarge` | `1` | SmolLM2-1.7B: cells where Kim et al.'s weaker-first rule (CER, wt_kl) picks the better of P->Q and Q->P | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimCellsKlSmolLarge` | `2` | SmolLM2-1.7B: cells with a prediction and an outcome (wt_kl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimPredQPKlSmolLarge` | `1` | SmolLM2-1.7B: cells where the rule predicts Q->P (pruning the stronger perturbation; wt_kl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimCorrectKlSmolLarge` | `2` | SmolLM2-1.7B: cells where Kim et al.'s weaker-first rule (CER, wt_kl) picks the better of P->Q and Q->P | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimCellsKlSmolLarge` | `4` | SmolLM2-1.7B: cells with a prediction and an outcome (wt_kl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimPredQPKlSmolLarge` | `2` | SmolLM2-1.7B: cells where the rule predicts Q->P (pruning the stronger perturbation; wt_kl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimPredQPCorrectKlSmolLarge` | `0` | SmolLM2-1.7B: of those, cells where Q->P is in fact better (wt_kl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimRhoKlSmolLarge` | `--` | SmolLM2-1.7B: Spearman rho of the P->Q advantage vs CER(Q) - CER(P) over cells (wt_kl; n = 1) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimRhoKlSmolLarge` | `\ensuremath{+1.00}` | SmolLM2-1.7B: Spearman rho of the P->Q advantage vs CER(Q) - CER(P) over cells (wt_kl; n = 3) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimCorrectKlQwenMid` | `--` | Qwen2.5-1.5B: cells where Kim et al.'s weaker-first rule (CER, wt_kl) picks the better of P->Q and Q->P | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimCellsKlQwenMid` | `--` | Qwen2.5-1.5B: cells with a prediction and an outcome (wt_kl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimPredQPKlQwenMid` | `--` | Qwen2.5-1.5B: cells where the rule predicts Q->P (pruning the stronger perturbation; wt_kl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
@@ -3025,9 +3025,9 @@ Columns:
 | `\resESevenKimPredQPKlOlmo` | `--` | OLMo-2-0425-1B: cells where the rule predicts Q->P (pruning the stronger perturbation; wt_kl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimPredQPCorrectKlOlmo` | `--` | OLMo-2-0425-1B: of those, cells where Q->P is in fact better (wt_kl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimRhoKlOlmo` | `--` | OLMo-2-0425-1B: Spearman rho of the P->Q advantage vs CER(Q) - CER(P) over cells (wt_kl; n = None) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimCorrectKlAll` | `14` | all models: cells where Kim et al.'s weaker-first rule (CER, wt_kl) picks the better of P->Q and Q->P | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimCellsKlAll` | `20` | all models: cells with a prediction and an outcome (wt_kl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimPredQPKlAll` | `5` | all models: cells where the rule predicts Q->P (pruning the stronger perturbation; wt_kl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimCorrectKlAll` | `15` | all models: cells where Kim et al.'s weaker-first rule (CER, wt_kl) picks the better of P->Q and Q->P | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimCellsKlAll` | `22` | all models: cells with a prediction and an outcome (wt_kl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimPredQPKlAll` | `6` | all models: cells where the rule predicts Q->P (pruning the stronger perturbation; wt_kl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimPredQPCorrectKlAll` | `0` | all models: of those, cells where Q->P is in fact better (wt_kl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimCorrectSrSmolSmall` | `5` | SmolLM2-135M: cells where Kim et al.'s weaker-first rule (CER, sr9_v2) picks the better of P->Q and Q->P | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimCellsSrSmolSmall` | `6` | SmolLM2-135M: cells with a prediction and an outcome (sr9_v2) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
@@ -3047,12 +3047,12 @@ Columns:
 | `\resESevenKimPredQPCorrectSrQwen` | `2` | Qwen2.5-0.5B: of those, cells where Q->P is in fact better (sr9_v2) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimSigCorrectSrQwen` | `2` | Qwen2.5-0.5B: correct predictions among cells whose sr9_v2 P->Q - Q->P interval excludes 0 | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimSigSrQwen` | `2` | Qwen2.5-0.5B: cells whose sr9_v2 P->Q - Q->P paired-bootstrap interval excludes 0 | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimCorrectSrSmolLarge` | `--` | SmolLM2-1.7B: cells where Kim et al.'s weaker-first rule (CER, sr9_v2) picks the better of P->Q and Q->P | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimCellsSrSmolLarge` | `--` | SmolLM2-1.7B: cells with a prediction and an outcome (sr9_v2) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimPredQPSrSmolLarge` | `--` | SmolLM2-1.7B: cells where the rule predicts Q->P (pruning the stronger perturbation; sr9_v2) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimPredQPCorrectSrSmolLarge` | `--` | SmolLM2-1.7B: of those, cells where Q->P is in fact better (sr9_v2) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimSigCorrectSrSmolLarge` | `--` | SmolLM2-1.7B: correct predictions among cells whose sr9_v2 P->Q - Q->P interval excludes 0 | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimSigSrSmolLarge` | `--` | SmolLM2-1.7B: cells whose sr9_v2 P->Q - Q->P paired-bootstrap interval excludes 0 | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimCorrectSrSmolLarge` | `0` | SmolLM2-1.7B: cells where Kim et al.'s weaker-first rule (CER, sr9_v2) picks the better of P->Q and Q->P | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimCellsSrSmolLarge` | `1` | SmolLM2-1.7B: cells with a prediction and an outcome (sr9_v2) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimPredQPSrSmolLarge` | `1` | SmolLM2-1.7B: cells where the rule predicts Q->P (pruning the stronger perturbation; sr9_v2) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimPredQPCorrectSrSmolLarge` | `0` | SmolLM2-1.7B: of those, cells where Q->P is in fact better (sr9_v2) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimSigCorrectSrSmolLarge` | `0` | SmolLM2-1.7B: correct predictions among cells whose sr9_v2 P->Q - Q->P interval excludes 0 | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimSigSrSmolLarge` | `1` | SmolLM2-1.7B: cells whose sr9_v2 P->Q - Q->P paired-bootstrap interval excludes 0 | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimCorrectSrQwenMid` | `--` | Qwen2.5-1.5B: cells where Kim et al.'s weaker-first rule (CER, sr9_v2) picks the better of P->Q and Q->P | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimCellsSrQwenMid` | `--` | Qwen2.5-1.5B: cells with a prediction and an outcome (sr9_v2) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimPredQPSrQwenMid` | `--` | Qwen2.5-1.5B: cells where the rule predicts Q->P (pruning the stronger perturbation; sr9_v2) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
@@ -3072,11 +3072,11 @@ Columns:
 | `\resESevenKimSigCorrectSrOlmo` | `--` | OLMo-2-0425-1B: correct predictions among cells whose sr9_v2 P->Q - Q->P interval excludes 0 | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimSigSrOlmo` | `--` | OLMo-2-0425-1B: cells whose sr9_v2 P->Q - Q->P paired-bootstrap interval excludes 0 | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimCorrectSrAll` | `15` | all models: cells where Kim et al.'s weaker-first rule (CER, sr9_v2) picks the better of P->Q and Q->P | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimCellsSrAll` | `18` | all models: cells with a prediction and an outcome (sr9_v2) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimPredQPSrAll` | `4` | all models: cells where the rule predicts Q->P (pruning the stronger perturbation; sr9_v2) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimCellsSrAll` | `19` | all models: cells with a prediction and an outcome (sr9_v2) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimPredQPSrAll` | `5` | all models: cells where the rule predicts Q->P (pruning the stronger perturbation; sr9_v2) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimPredQPCorrectSrAll` | `3` | all models: of those, cells where Q->P is in fact better (sr9_v2) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimSigCorrectSrAll` | `10` | all models: correct predictions among cells whose sr9_v2 P->Q - Q->P interval excludes 0 | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimSigSrAll` | `11` | all models: cells whose sr9_v2 P->Q - Q->P paired-bootstrap interval excludes 0 | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimSigSrAll` | `12` | all models: cells whose sr9_v2 P->Q - Q->P paired-bootstrap interval excludes 0 | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimCorrectSrPaperSmolSmall` | `6` | SmolLM2-135M: cells where Kim et al.'s weaker-first rule (CER, sr3_paper) picks the better of P->Q and Q->P | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimCellsSrPaperSmolSmall` | `6` | SmolLM2-135M: cells with a prediction and an outcome (sr3_paper) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimPredQPSrPaperSmolSmall` | `1` | SmolLM2-135M: cells where the rule predicts Q->P (pruning the stronger perturbation; sr3_paper) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
@@ -3095,12 +3095,12 @@ Columns:
 | `\resESevenKimPredQPCorrectSrPaperQwen` | `0` | Qwen2.5-0.5B: of those, cells where Q->P is in fact better (sr3_paper) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimSigCorrectSrPaperQwen` | `2` | Qwen2.5-0.5B: correct predictions among cells whose sr3_paper P->Q - Q->P interval excludes 0 | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimSigSrPaperQwen` | `3` | Qwen2.5-0.5B: cells whose sr3_paper P->Q - Q->P paired-bootstrap interval excludes 0 | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimCorrectSrPaperSmolLarge` | `--` | SmolLM2-1.7B: cells where Kim et al.'s weaker-first rule (CER, sr3_paper) picks the better of P->Q and Q->P | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimCellsSrPaperSmolLarge` | `--` | SmolLM2-1.7B: cells with a prediction and an outcome (sr3_paper) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimPredQPSrPaperSmolLarge` | `--` | SmolLM2-1.7B: cells where the rule predicts Q->P (pruning the stronger perturbation; sr3_paper) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimPredQPCorrectSrPaperSmolLarge` | `--` | SmolLM2-1.7B: of those, cells where Q->P is in fact better (sr3_paper) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimSigCorrectSrPaperSmolLarge` | `--` | SmolLM2-1.7B: correct predictions among cells whose sr3_paper P->Q - Q->P interval excludes 0 | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimSigSrPaperSmolLarge` | `--` | SmolLM2-1.7B: cells whose sr3_paper P->Q - Q->P paired-bootstrap interval excludes 0 | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimCorrectSrPaperSmolLarge` | `0` | SmolLM2-1.7B: cells where Kim et al.'s weaker-first rule (CER, sr3_paper) picks the better of P->Q and Q->P | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimCellsSrPaperSmolLarge` | `1` | SmolLM2-1.7B: cells with a prediction and an outcome (sr3_paper) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimPredQPSrPaperSmolLarge` | `1` | SmolLM2-1.7B: cells where the rule predicts Q->P (pruning the stronger perturbation; sr3_paper) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimPredQPCorrectSrPaperSmolLarge` | `0` | SmolLM2-1.7B: of those, cells where Q->P is in fact better (sr3_paper) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimSigCorrectSrPaperSmolLarge` | `0` | SmolLM2-1.7B: correct predictions among cells whose sr3_paper P->Q - Q->P interval excludes 0 | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimSigSrPaperSmolLarge` | `1` | SmolLM2-1.7B: cells whose sr3_paper P->Q - Q->P paired-bootstrap interval excludes 0 | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimCorrectSrPaperQwenMid` | `--` | Qwen2.5-1.5B: cells where Kim et al.'s weaker-first rule (CER, sr3_paper) picks the better of P->Q and Q->P | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimCellsSrPaperQwenMid` | `--` | Qwen2.5-1.5B: cells with a prediction and an outcome (sr3_paper) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimPredQPSrPaperQwenMid` | `--` | Qwen2.5-1.5B: cells where the rule predicts Q->P (pruning the stronger perturbation; sr3_paper) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
@@ -3120,11 +3120,11 @@ Columns:
 | `\resESevenKimSigCorrectSrPaperOlmo` | `--` | OLMo-2-0425-1B: correct predictions among cells whose sr3_paper P->Q - Q->P interval excludes 0 | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimSigSrPaperOlmo` | `--` | OLMo-2-0425-1B: cells whose sr3_paper P->Q - Q->P paired-bootstrap interval excludes 0 | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimCorrectSrPaperAll` | `15` | all models: cells where Kim et al.'s weaker-first rule (CER, sr3_paper) picks the better of P->Q and Q->P | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimCellsSrPaperAll` | `18` | all models: cells with a prediction and an outcome (sr3_paper) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimPredQPSrPaperAll` | `3` | all models: cells where the rule predicts Q->P (pruning the stronger perturbation; sr3_paper) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimCellsSrPaperAll` | `19` | all models: cells with a prediction and an outcome (sr3_paper) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimPredQPSrPaperAll` | `4` | all models: cells where the rule predicts Q->P (pruning the stronger perturbation; sr3_paper) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimPredQPCorrectSrPaperAll` | `1` | all models: of those, cells where Q->P is in fact better (sr3_paper) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenKimSigCorrectSrPaperAll` | `10` | all models: correct predictions among cells whose sr3_paper P->Q - Q->P interval excludes 0 | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenKimSigSrPaperAll` | `12` | all models: cells whose sr3_paper P->Q - Q->P paired-bootstrap interval excludes 0 | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenKimSigSrPaperAll` | `13` | all models: cells whose sr3_paper P->Q - Q->P paired-bootstrap interval excludes 0 | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaPQBetterPplSmolSmall` | `6` | SmolLM2-135M: cells where P->Q beats Q->P (Harma et al.'s sparsity-first order; wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaOrderCellsPplSmolSmall` | `6` | SmolLM2-135M: cells with both orders (wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaMaxGapPplSmolSmallPct` | `77.3` | SmolLM2-135M: largest 100(ppl Q->P / ppl P->Q - 1) over those cells (wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
@@ -3161,18 +3161,18 @@ Columns:
 | `\resESevenHarmaAddExceedsQPQwen` | `4` | Qwen2.5-0.5B: Q->P states above Harma et al.'s additive threshold ppl(dense) + dPPL(P) + dPPL(Q) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaMultExceedsQPQwen` | `4` | Qwen2.5-0.5B: Q->P states above the multiplicative null ppl(dense) ppl(P)/ppl(dense) ppl(Q)/ppl(dense) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaNQPQwen` | `6` | Qwen2.5-0.5B: Q->P states tested | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenHarmaPQBetterPplSmolLarge` | `2` | SmolLM2-1.7B: cells where P->Q beats Q->P (Harma et al.'s sparsity-first order; wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenHarmaOrderCellsPplSmolLarge` | `2` | SmolLM2-1.7B: cells with both orders (wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenHarmaMaxGapPplSmolLargePct` | `6.4` | SmolLM2-1.7B: largest 100(ppl Q->P / ppl P->Q - 1) over those cells (wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenHarmaAddExceedsJointSmolLarge` | `1` | SmolLM2-1.7B: joint states above Harma et al.'s additive threshold ppl(dense) + dPPL(P) + dPPL(Q) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenHarmaMultExceedsJointSmolLarge` | `0` | SmolLM2-1.7B: joint states above the multiplicative null ppl(dense) ppl(P)/ppl(dense) ppl(Q)/ppl(dense) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenHarmaNJointSmolLarge` | `2` | SmolLM2-1.7B: joint states tested | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenHarmaAddExceedsPQSmolLarge` | `1` | SmolLM2-1.7B: P->Q states above Harma et al.'s additive threshold ppl(dense) + dPPL(P) + dPPL(Q) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaPQBetterPplSmolLarge` | `4` | SmolLM2-1.7B: cells where P->Q beats Q->P (Harma et al.'s sparsity-first order; wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaOrderCellsPplSmolLarge` | `4` | SmolLM2-1.7B: cells with both orders (wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaMaxGapPplSmolLargePct` | `8.6` | SmolLM2-1.7B: largest 100(ppl Q->P / ppl P->Q - 1) over those cells (wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaAddExceedsJointSmolLarge` | `2` | SmolLM2-1.7B: joint states above Harma et al.'s additive threshold ppl(dense) + dPPL(P) + dPPL(Q) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaMultExceedsJointSmolLarge` | `1` | SmolLM2-1.7B: joint states above the multiplicative null ppl(dense) ppl(P)/ppl(dense) ppl(Q)/ppl(dense) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaNJointSmolLarge` | `5` | SmolLM2-1.7B: joint states tested | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaAddExceedsPQSmolLarge` | `2` | SmolLM2-1.7B: P->Q states above Harma et al.'s additive threshold ppl(dense) + dPPL(P) + dPPL(Q) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaMultExceedsPQSmolLarge` | `0` | SmolLM2-1.7B: P->Q states above the multiplicative null ppl(dense) ppl(P)/ppl(dense) ppl(Q)/ppl(dense) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenHarmaNPQSmolLarge` | `2` | SmolLM2-1.7B: P->Q states tested | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenHarmaAddExceedsQPSmolLarge` | `2` | SmolLM2-1.7B: Q->P states above Harma et al.'s additive threshold ppl(dense) + dPPL(P) + dPPL(Q) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenHarmaMultExceedsQPSmolLarge` | `2` | SmolLM2-1.7B: Q->P states above the multiplicative null ppl(dense) ppl(P)/ppl(dense) ppl(Q)/ppl(dense) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenHarmaNQPSmolLarge` | `2` | SmolLM2-1.7B: Q->P states tested | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaNPQSmolLarge` | `5` | SmolLM2-1.7B: P->Q states tested | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaAddExceedsQPSmolLarge` | `3` | SmolLM2-1.7B: Q->P states above Harma et al.'s additive threshold ppl(dense) + dPPL(P) + dPPL(Q) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaMultExceedsQPSmolLarge` | `3` | SmolLM2-1.7B: Q->P states above the multiplicative null ppl(dense) ppl(P)/ppl(dense) ppl(Q)/ppl(dense) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaNQPSmolLarge` | `4` | SmolLM2-1.7B: Q->P states tested | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaPQBetterPplQwenMid` | `--` | Qwen2.5-1.5B: cells where P->Q beats Q->P (Harma et al.'s sparsity-first order; wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaOrderCellsPplQwenMid` | `--` | Qwen2.5-1.5B: cells with both orders (wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaMaxGapPplQwenMidPct` | `--` | Qwen2.5-1.5B: largest 100(ppl Q->P / ppl P->Q - 1) over those cells (wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
@@ -3209,18 +3209,18 @@ Columns:
 | `\resESevenHarmaAddExceedsQPOlmo` | `--` | OLMo-2-0425-1B: Q->P states above Harma et al.'s additive threshold ppl(dense) + dPPL(P) + dPPL(Q) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaMultExceedsQPOlmo` | `--` | OLMo-2-0425-1B: Q->P states above the multiplicative null ppl(dense) ppl(P)/ppl(dense) ppl(Q)/ppl(dense) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaNQPOlmo` | `--` | OLMo-2-0425-1B: Q->P states tested | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenHarmaPQBetterPplAll` | `19` | all models: cells where P->Q beats Q->P (Harma et al.'s sparsity-first order; wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenHarmaOrderCellsPplAll` | `20` | all models: cells with both orders (wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaPQBetterPplAll` | `21` | all models: cells where P->Q beats Q->P (Harma et al.'s sparsity-first order; wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaOrderCellsPplAll` | `22` | all models: cells with both orders (wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaMaxGapPplAllPct` | `77.3` | all models: largest 100(ppl Q->P / ppl P->Q - 1) over those cells (wt_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenHarmaAddExceedsJointAll` | `9` | all models: joint states above Harma et al.'s additive threshold ppl(dense) + dPPL(P) + dPPL(Q) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenHarmaMultExceedsJointAll` | `3` | all models: joint states above the multiplicative null ppl(dense) ppl(P)/ppl(dense) ppl(Q)/ppl(dense) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenHarmaNJointAll` | `20` | all models: joint states tested | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenHarmaAddExceedsPQAll` | `7` | all models: P->Q states above Harma et al.'s additive threshold ppl(dense) + dPPL(P) + dPPL(Q) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaAddExceedsJointAll` | `10` | all models: joint states above Harma et al.'s additive threshold ppl(dense) + dPPL(P) + dPPL(Q) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaMultExceedsJointAll` | `4` | all models: joint states above the multiplicative null ppl(dense) ppl(P)/ppl(dense) ppl(Q)/ppl(dense) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaNJointAll` | `23` | all models: joint states tested | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaAddExceedsPQAll` | `8` | all models: P->Q states above Harma et al.'s additive threshold ppl(dense) + dPPL(P) + dPPL(Q) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaMultExceedsPQAll` | `1` | all models: P->Q states above the multiplicative null ppl(dense) ppl(P)/ppl(dense) ppl(Q)/ppl(dense) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenHarmaNPQAll` | `20` | all models: P->Q states tested | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenHarmaAddExceedsQPAll` | `16` | all models: Q->P states above Harma et al.'s additive threshold ppl(dense) + dPPL(P) + dPPL(Q) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenHarmaMultExceedsQPAll` | `15` | all models: Q->P states above the multiplicative null ppl(dense) ppl(P)/ppl(dense) ppl(Q)/ppl(dense) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenHarmaNQPAll` | `20` | all models: Q->P states tested | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaNPQAll` | `23` | all models: P->Q states tested | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaAddExceedsQPAll` | `17` | all models: Q->P states above Harma et al.'s additive threshold ppl(dense) + dPPL(P) + dPPL(Q) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaMultExceedsQPAll` | `16` | all models: Q->P states above the multiplicative null ppl(dense) ppl(P)/ppl(dense) ppl(Q)/ppl(dense) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaNQPAll` | `22` | all models: Q->P states tested | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaPQBetterCFourPplSmolSmall` | `6` | SmolLM2-135M: cells where P->Q beats Q->P (Harma et al.'s sparsity-first order; c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaOrderCellsCFourPplSmolSmall` | `6` | SmolLM2-135M: cells with both orders (c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaMaxGapCFourPplSmolSmallPct` | `59.7` | SmolLM2-135M: largest 100(ppl Q->P / ppl P->Q - 1) over those cells (c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
@@ -3230,8 +3230,8 @@ Columns:
 | `\resESevenHarmaPQBetterCFourPplQwen` | `4` | Qwen2.5-0.5B: cells where P->Q beats Q->P (Harma et al.'s sparsity-first order; c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaOrderCellsCFourPplQwen` | `6` | Qwen2.5-0.5B: cells with both orders (c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaMaxGapCFourPplQwenPct` | `15.9` | Qwen2.5-0.5B: largest 100(ppl Q->P / ppl P->Q - 1) over those cells (c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenHarmaPQBetterCFourPplSmolLarge` | `2` | SmolLM2-1.7B: cells where P->Q beats Q->P (Harma et al.'s sparsity-first order; c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenHarmaOrderCellsCFourPplSmolLarge` | `2` | SmolLM2-1.7B: cells with both orders (c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaPQBetterCFourPplSmolLarge` | `3` | SmolLM2-1.7B: cells where P->Q beats Q->P (Harma et al.'s sparsity-first order; c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaOrderCellsCFourPplSmolLarge` | `4` | SmolLM2-1.7B: cells with both orders (c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaMaxGapCFourPplSmolLargePct` | `7.6` | SmolLM2-1.7B: largest 100(ppl Q->P / ppl P->Q - 1) over those cells (c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaPQBetterCFourPplQwenMid` | `--` | Qwen2.5-1.5B: cells where P->Q beats Q->P (Harma et al.'s sparsity-first order; c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaOrderCellsCFourPplQwenMid` | `--` | Qwen2.5-1.5B: cells with both orders (c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
@@ -3242,8 +3242,8 @@ Columns:
 | `\resESevenHarmaPQBetterCFourPplOlmo` | `--` | OLMo-2-0425-1B: cells where P->Q beats Q->P (Harma et al.'s sparsity-first order; c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaOrderCellsCFourPplOlmo` | `--` | OLMo-2-0425-1B: cells with both orders (c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaMaxGapCFourPplOlmoPct` | `--` | OLMo-2-0425-1B: largest 100(ppl Q->P / ppl P->Q - 1) over those cells (c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenHarmaPQBetterCFourPplAll` | `18` | all models: cells where P->Q beats Q->P (Harma et al.'s sparsity-first order; c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
-| `\resESevenHarmaOrderCellsCFourPplAll` | `20` | all models: cells with both orders (c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaPQBetterCFourPplAll` | `19` | all models: cells where P->Q beats Q->P (Harma et al.'s sparsity-first order; c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+| `\resESevenHarmaOrderCellsCFourPplAll` | `22` | all models: cells with both orders (c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaMaxGapCFourPplAllPct` | `59.7` | all models: largest 100(ppl Q->P / ppl P->Q - 1) over those cells (c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 
 ## E8 layer error vs KL (reports/analysis/e8_layer_error_vs_kl.json; scripts/analysis/e8.py)
@@ -3259,9 +3259,9 @@ Columns:
 | `\resEEightRhoQwen` | `\ensuremath{+0.90}` | Qwen2.5-0.5B: Spearman rho of mean layer error vs KL over its compressed states (n = 37) | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
 | `\resEEightSameBestQwen` | `5` | Qwen2.5-0.5B: cells where the order with the smallest layer error also has the smallest KL | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
 | `\resEEightCellsQwen` | `7` | Qwen2.5-0.5B: cells with the three paper orders | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
-| `\resEEightRhoSmolLarge` | `\ensuremath{+0.99}` | SmolLM2-1.7B: Spearman rho of mean layer error vs KL over its compressed states (n = 10) | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
+| `\resEEightRhoSmolLarge` | `\ensuremath{+0.92}` | SmolLM2-1.7B: Spearman rho of mean layer error vs KL over its compressed states (n = 19) | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
 | `\resEEightSameBestSmolLarge` | `1` | SmolLM2-1.7B: cells where the order with the smallest layer error also has the smallest KL | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
-| `\resEEightCellsSmolLarge` | `2` | SmolLM2-1.7B: cells with the three paper orders | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
+| `\resEEightCellsSmolLarge` | `4` | SmolLM2-1.7B: cells with the three paper orders | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
 | `\resEEightRhoQwenMid` | `\ensuremath{+1.00}` | Qwen2.5-1.5B: Spearman rho of mean layer error vs KL over its compressed states (n = 3) | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
 | `\resEEightSameBestQwenMid` | `--` | Qwen2.5-1.5B: cells where the order with the smallest layer error also has the smallest KL | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
 | `\resEEightCellsQwenMid` | `--` | Qwen2.5-1.5B: cells with the three paper orders | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
@@ -3276,10 +3276,10 @@ Columns:
 
 | Macro | Value | Meaning | Source |
 |---|---|---|---|
-| `\resEEightJointSmallestBFour` | `14` | every model: 4-bit cells where the joint sweep has strictly the smallest mean layer error of the three orders | reports/analysis/e8_layer_error_by_order.csv (seed 0; mean_rel_err of the three orders per cell) |
-| `\resEEightCellsBFour` | `14` | every model: 4-bit cells with the three orders | reports/analysis/e8_layer_error_by_order.csv (seed 0; mean_rel_err of the three orders per cell) |
+| `\resEEightJointSmallestBFour` | `15` | every model: 4-bit cells where the joint sweep has strictly the smallest mean layer error of the three orders | reports/analysis/e8_layer_error_by_order.csv (seed 0; mean_rel_err of the three orders per cell) |
+| `\resEEightCellsBFour` | `15` | every model: 4-bit cells with the three orders | reports/analysis/e8_layer_error_by_order.csv (seed 0; mean_rel_err of the three orders per cell) |
 | `\resEEightJointSmallestBThree` | `5` | every model: 3-bit cells where the joint sweep has strictly the smallest mean layer error of the three orders | reports/analysis/e8_layer_error_by_order.csv (seed 0; mean_rel_err of the three orders per cell) |
-| `\resEEightCellsBThree` | `9` | every model: 3-bit cells with the three orders | reports/analysis/e8_layer_error_by_order.csv (seed 0; mean_rel_err of the three orders per cell) |
+| `\resEEightCellsBThree` | `10` | every model: 3-bit cells with the three orders | reports/analysis/e8_layer_error_by_order.csv (seed 0; mean_rel_err of the three orders per cell) |
 | `\resEEightJointSmallestCoreBFour` | `12` | the core models (E1, E4): 4-bit cells where the joint sweep has strictly the smallest mean layer error of the three orders | reports/analysis/e8_layer_error_by_order.csv (seed 0; mean_rel_err of the three orders per cell) |
 | `\resEEightCellsCoreBFour` | `12` | the core models (E1, E4): 4-bit cells with the three orders | reports/analysis/e8_layer_error_by_order.csv (seed 0; mean_rel_err of the three orders per cell) |
 | `\resEEightJointSmallestCoreBThree` | `5` | the core models (E1, E4): 3-bit cells where the joint sweep has strictly the smallest mean layer error of the three orders | reports/analysis/e8_layer_error_by_order.csv (seed 0; mean_rel_err of the three orders per cell) |
@@ -3296,10 +3296,10 @@ Columns:
 | `\resEEightCellsQwenBFour` | `4` | Qwen2.5-0.5B: 4-bit cells with the three orders | reports/analysis/e8_layer_error_by_order.csv (seed 0; mean_rel_err of the three orders per cell) |
 | `\resEEightJointSmallestQwenBThree` | `1` | Qwen2.5-0.5B: 3-bit cells where the joint sweep has strictly the smallest mean layer error of the three orders | reports/analysis/e8_layer_error_by_order.csv (seed 0; mean_rel_err of the three orders per cell) |
 | `\resEEightCellsQwenBThree` | `3` | Qwen2.5-0.5B: 3-bit cells with the three orders | reports/analysis/e8_layer_error_by_order.csv (seed 0; mean_rel_err of the three orders per cell) |
-| `\resEEightJointSmallestSmolLargeBFour` | `2` | SmolLM2-1.7B: 4-bit cells where the joint sweep has strictly the smallest mean layer error of the three orders | reports/analysis/e8_layer_error_by_order.csv (seed 0; mean_rel_err of the three orders per cell) |
-| `\resEEightCellsSmolLargeBFour` | `2` | SmolLM2-1.7B: 4-bit cells with the three orders | reports/analysis/e8_layer_error_by_order.csv (seed 0; mean_rel_err of the three orders per cell) |
-| `\resEEightJointSmallestSmolLargeBThree` | `--` | SmolLM2-1.7B: 3-bit cells where the joint sweep has strictly the smallest mean layer error of the three orders | reports/analysis/e8_layer_error_by_order.csv (seed 0; mean_rel_err of the three orders per cell) |
-| `\resEEightCellsSmolLargeBThree` | `--` | SmolLM2-1.7B: 3-bit cells with the three orders | reports/analysis/e8_layer_error_by_order.csv (seed 0; mean_rel_err of the three orders per cell) |
+| `\resEEightJointSmallestSmolLargeBFour` | `3` | SmolLM2-1.7B: 4-bit cells where the joint sweep has strictly the smallest mean layer error of the three orders | reports/analysis/e8_layer_error_by_order.csv (seed 0; mean_rel_err of the three orders per cell) |
+| `\resEEightCellsSmolLargeBFour` | `3` | SmolLM2-1.7B: 4-bit cells with the three orders | reports/analysis/e8_layer_error_by_order.csv (seed 0; mean_rel_err of the three orders per cell) |
+| `\resEEightJointSmallestSmolLargeBThree` | `0` | SmolLM2-1.7B: 3-bit cells where the joint sweep has strictly the smallest mean layer error of the three orders | reports/analysis/e8_layer_error_by_order.csv (seed 0; mean_rel_err of the three orders per cell) |
+| `\resEEightCellsSmolLargeBThree` | `1` | SmolLM2-1.7B: 3-bit cells with the three orders | reports/analysis/e8_layer_error_by_order.csv (seed 0; mean_rel_err of the three orders per cell) |
 | `\resEEightJointSmallestQwenMidBFour` | `--` | Qwen2.5-1.5B: 4-bit cells where the joint sweep has strictly the smallest mean layer error of the three orders | reports/analysis/e8_layer_error_by_order.csv (seed 0; mean_rel_err of the three orders per cell) |
 | `\resEEightCellsQwenMidBFour` | `--` | Qwen2.5-1.5B: 4-bit cells with the three orders | reports/analysis/e8_layer_error_by_order.csv (seed 0; mean_rel_err of the three orders per cell) |
 | `\resEEightJointSmallestQwenMidBThree` | `--` | Qwen2.5-1.5B: 3-bit cells where the joint sweep has strictly the smallest mean layer error of the three orders | reports/analysis/e8_layer_error_by_order.csv (seed 0; mean_rel_err of the three orders per cell) |

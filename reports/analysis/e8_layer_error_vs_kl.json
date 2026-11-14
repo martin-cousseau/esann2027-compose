@@ -50,17 +50,17 @@
   },
   {
    "model": "SmolLM2-1.7B",
-   "n_states": 10,
-   "rho_wt_kl": 0.9878787878787878,
-   "p_wt_kl": 9.307459988955516e-08,
-   "n_wt_kl": 10,
-   "rho_c4_kl": 0.9999999999999999,
-   "p_c4_kl": 6.64689742203186e-64,
-   "n_c4_kl": 10,
-   "rho_wt_kl_combined": 0.942857142857143,
-   "p_wt_kl_combined": 0.004804664723032055,
-   "n_combined": 6,
-   "cells": 2,
+   "n_states": 19,
+   "rho_wt_kl": 0.922739244951712,
+   "p_wt_kl": 1.87205350689887e-08,
+   "n_wt_kl": 19,
+   "rho_c4_kl": 0.9929762949956101,
+   "p_c4_kl": 3.3469644618566537e-17,
+   "n_c4_kl": 19,
+   "rho_wt_kl_combined": 0.9120879120879121,
+   "p_wt_kl_combined": 5.502099746344892e-06,
+   "n_combined": 14,
+   "cells": 4,
    "cells_same_best": 1,
    "cells_same_ranking": 1
   },
@@ -85,16 +85,16 @@
   {
    "scope": "all",
    "bits": 4,
-   "cells": 14,
-   "joint_smallest": 14,
+   "cells": 15,
+   "joint_smallest": 15,
    "not_joint": ""
   },
   {
    "scope": "all",
    "bits": 3,
-   "cells": 9,
+   "cells": 10,
    "joint_smallest": 5,
-   "not_joint": "SmolLM2-135M 25%+3 SmolLM2-360M 25%+3 Qwen2.5-0.5B 25%+3 Qwen2.5-0.5B 33%+3"
+   "not_joint": "SmolLM2-135M 25%+3 SmolLM2-360M 25%+3 Qwen2.5-0.5B 25%+3 Qwen2.5-0.5B 33%+3 SmolLM2-1.7B 25%+3"
   },
   {
    "scope": "core",
@@ -155,16 +155,16 @@
   {
    "scope": "SmolLM2-1.7B",
    "bits": 4,
-   "cells": 2,
-   "joint_smallest": 2,
+   "cells": 3,
+   "joint_smallest": 3,
    "not_joint": ""
   },
   {
    "scope": "SmolLM2-1.7B",
    "bits": 3,
-   "cells": 0,
+   "cells": 1,
    "joint_smallest": 0,
-   "not_joint": ""
+   "not_joint": "SmolLM2-1.7B 25%+3"
   },
   {
    "scope": "Qwen2.5-1.5B",
