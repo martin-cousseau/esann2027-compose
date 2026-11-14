@@ -3355,6 +3355,46 @@ Columns:
 | `\resQOneSuperQPBFourAllModels` | `12` | AllModels: of those, super-additive (mean I_E > 0) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
 | `\resQOneModelsAllModels` | `4` | AllModels: models with layer diagnostics | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
 
+## Scale within a family: grid cells (25/33/50%, 4 and 3 bits) where the order spread / Q->P penalty falls with size
+
+| Macro | Value | Meaning | Source |
+|---|---|---|---|
+| `\resScaleCellsThreeFamSmol` | `6` | SmolLM2: grid cells with three sizes in the three orders | reports/analysis/e6_scale_spread.csv (models of the family with the cell in the three orders, by compressed weights) |
+| `\resScaleSpreadEndsShrinkFamSmol` | `6` | SmolLM2: of those, cells where the largest model has a smaller spread than the smallest | reports/analysis/e6_scale_spread.csv (models of the family with the cell in the three orders, by compressed weights) |
+| `\resScaleSpreadMonoShrinkFamSmol` | `3` | SmolLM2: of those, cells where the spread falls with every larger model | reports/analysis/e6_scale_spread.csv (models of the family with the cell in the three orders, by compressed weights) |
+| `\resScalePenaltyEndsShrinkFamSmol` | `5` | SmolLM2: of those, cells where the largest model has a smaller qp_penalty than the smallest | reports/analysis/e6_scale_spread.csv (models of the family with the cell in the three orders, by compressed weights) |
+| `\resScalePenaltyMonoShrinkFamSmol` | `2` | SmolLM2: of those, cells where the qp_penalty falls with every larger model | reports/analysis/e6_scale_spread.csv (models of the family with the cell in the three orders, by compressed weights) |
+| `\resScaleCellsThreeFamQwen` | `0` | Qwen2.5: grid cells with three sizes in the three orders | reports/analysis/e6_scale_spread.csv (models of the family with the cell in the three orders, by compressed weights) |
+| `\resScaleSpreadEndsShrinkFamQwen` | `--` | Qwen2.5: of those, cells where the largest model has a smaller spread than the smallest | reports/analysis/e6_scale_spread.csv (models of the family with the cell in the three orders, by compressed weights) |
+| `\resScaleSpreadMonoShrinkFamQwen` | `--` | Qwen2.5: of those, cells where the spread falls with every larger model | reports/analysis/e6_scale_spread.csv (models of the family with the cell in the three orders, by compressed weights) |
+| `\resScalePenaltyEndsShrinkFamQwen` | `--` | Qwen2.5: of those, cells where the largest model has a smaller qp_penalty than the smallest | reports/analysis/e6_scale_spread.csv (models of the family with the cell in the three orders, by compressed weights) |
+| `\resScalePenaltyMonoShrinkFamQwen` | `--` | Qwen2.5: of those, cells where the qp_penalty falls with every larger model | reports/analysis/e6_scale_spread.csv (models of the family with the cell in the three orders, by compressed weights) |
+| `\resScaleCellsThreeFamBoth` | `6` | SmolLM2/Qwen2.5: grid cells with three sizes in the three orders | reports/analysis/e6_scale_spread.csv (models of the family with the cell in the three orders, by compressed weights) |
+| `\resScaleSpreadEndsShrinkFamBoth` | `6` | SmolLM2/Qwen2.5: of those, cells where the largest model has a smaller spread than the smallest | reports/analysis/e6_scale_spread.csv (models of the family with the cell in the three orders, by compressed weights) |
+| `\resScaleSpreadMonoShrinkFamBoth` | `3` | SmolLM2/Qwen2.5: of those, cells where the spread falls with every larger model | reports/analysis/e6_scale_spread.csv (models of the family with the cell in the three orders, by compressed weights) |
+| `\resScalePenaltyEndsShrinkFamBoth` | `5` | SmolLM2/Qwen2.5: of those, cells where the largest model has a smaller qp_penalty than the smallest | reports/analysis/e6_scale_spread.csv (models of the family with the cell in the three orders, by compressed weights) |
+| `\resScalePenaltyMonoShrinkFamBoth` | `2` | SmolLM2/Qwen2.5: of those, cells where the qp_penalty falls with every larger model | reports/analysis/e6_scale_spread.csv (models of the family with the cell in the three orders, by compressed weights) |
+
+## Free zeros over model groups: 3-bit quantization alone and Q->P at 25%+3 (seed 0)
+
+| Macro | Value | Meaning | Source |
+|---|---|---|---|
+| `\resFreeZerosPctMinCoreQuantBThree` | `31` | Core: smallest share of exact zeros after 3-bit quantization alone (%) | results/v2 (storage.zero_frac_actual; wikitext2.nll_sum) |
+| `\resFreeZerosPctMaxCoreQuantBThree` | `32` | Core: largest share (%) | results/v2 (storage.zero_frac_actual; wikitext2.nll_sum) |
+| `\resFreeZerosModelsCoreQuantBThree` | `3` | Core: models with 3-bit quantization alone | results/v2 (storage.zero_frac_actual; wikitext2.nll_sum) |
+| `\resQOneQPEqualsQuantCoreSTwentyFiveBThree` | `3` | Core: models where Q->P at 25%+3 has the WikiText-2 NLL sum of 3-bit quantization alone | results/v2 (storage.zero_frac_actual; wikitext2.nll_sum) |
+| `\resQOneQPEqualsQuantModelsCoreSTwentyFiveBThree` | `3` | Core: models with both states | results/v2 (storage.zero_frac_actual; wikitext2.nll_sum) |
+| `\resFreeZerosPctMinLargerQuantBThree` | `30` | Larger: smallest share of exact zeros after 3-bit quantization alone (%) | results/v2 (storage.zero_frac_actual; wikitext2.nll_sum) |
+| `\resFreeZerosPctMaxLargerQuantBThree` | `31` | Larger: largest share (%) | results/v2 (storage.zero_frac_actual; wikitext2.nll_sum) |
+| `\resFreeZerosModelsLargerQuantBThree` | `2` | Larger: models with 3-bit quantization alone | results/v2 (storage.zero_frac_actual; wikitext2.nll_sum) |
+| `\resQOneQPEqualsQuantLargerSTwentyFiveBThree` | `1` | Larger: models where Q->P at 25%+3 has the WikiText-2 NLL sum of 3-bit quantization alone | results/v2 (storage.zero_frac_actual; wikitext2.nll_sum) |
+| `\resQOneQPEqualsQuantModelsLargerSTwentyFiveBThree` | `1` | Larger: models with both states | results/v2 (storage.zero_frac_actual; wikitext2.nll_sum) |
+| `\resFreeZerosPctMinAllModelsQuantBThree` | `30` | AllModels: smallest share of exact zeros after 3-bit quantization alone (%) | results/v2 (storage.zero_frac_actual; wikitext2.nll_sum) |
+| `\resFreeZerosPctMaxAllModelsQuantBThree` | `32` | AllModels: largest share (%) | results/v2 (storage.zero_frac_actual; wikitext2.nll_sum) |
+| `\resFreeZerosModelsAllModelsQuantBThree` | `5` | AllModels: models with 3-bit quantization alone | results/v2 (storage.zero_frac_actual; wikitext2.nll_sum) |
+| `\resQOneQPEqualsQuantAllModelsSTwentyFiveBThree` | `4` | AllModels: models where Q->P at 25%+3 has the WikiText-2 NLL sum of 3-bit quantization alone | results/v2 (storage.zero_frac_actual; wikitext2.nll_sum) |
+| `\resQOneQPEqualsQuantModelsAllModelsSTwentyFiveBThree` | `4` | AllModels: models with both states | results/v2 (storage.zero_frac_actual; wikitext2.nll_sum) |
+
 ## Q2 per cell: on how many metrics Q->P is strictly the worst order (seed 0)
 
 | Macro | Value | Meaning | Source |

@@ -8908,6 +8908,40 @@
 \newcommand{\resQOneSuperQPBFourAllModels}{12}
 \newcommand{\resQOneModelsAllModels}{4}
 
+% ---- Scale within a family: grid cells (25/33/50%, 4 and 3 bits) where the order spread / Q->P penalty falls with size
+\newcommand{\resScaleCellsThreeFamSmol}{6}
+\newcommand{\resScaleSpreadEndsShrinkFamSmol}{6}
+\newcommand{\resScaleSpreadMonoShrinkFamSmol}{3}
+\newcommand{\resScalePenaltyEndsShrinkFamSmol}{5}
+\newcommand{\resScalePenaltyMonoShrinkFamSmol}{2}
+\newcommand{\resScaleCellsThreeFamQwen}{0}
+\newcommand{\resScaleSpreadEndsShrinkFamQwen}{--}
+\newcommand{\resScaleSpreadMonoShrinkFamQwen}{--}
+\newcommand{\resScalePenaltyEndsShrinkFamQwen}{--}
+\newcommand{\resScalePenaltyMonoShrinkFamQwen}{--}
+\newcommand{\resScaleCellsThreeFamBoth}{6}
+\newcommand{\resScaleSpreadEndsShrinkFamBoth}{6}
+\newcommand{\resScaleSpreadMonoShrinkFamBoth}{3}
+\newcommand{\resScalePenaltyEndsShrinkFamBoth}{5}
+\newcommand{\resScalePenaltyMonoShrinkFamBoth}{2}
+
+% ---- Free zeros over model groups: 3-bit quantization alone and Q->P at 25%+3 (seed 0)
+\newcommand{\resFreeZerosPctMinCoreQuantBThree}{31}
+\newcommand{\resFreeZerosPctMaxCoreQuantBThree}{32}
+\newcommand{\resFreeZerosModelsCoreQuantBThree}{3}
+\newcommand{\resQOneQPEqualsQuantCoreSTwentyFiveBThree}{3}
+\newcommand{\resQOneQPEqualsQuantModelsCoreSTwentyFiveBThree}{3}
+\newcommand{\resFreeZerosPctMinLargerQuantBThree}{30}
+\newcommand{\resFreeZerosPctMaxLargerQuantBThree}{31}
+\newcommand{\resFreeZerosModelsLargerQuantBThree}{2}
+\newcommand{\resQOneQPEqualsQuantLargerSTwentyFiveBThree}{1}
+\newcommand{\resQOneQPEqualsQuantModelsLargerSTwentyFiveBThree}{1}
+\newcommand{\resFreeZerosPctMinAllModelsQuantBThree}{30}
+\newcommand{\resFreeZerosPctMaxAllModelsQuantBThree}{32}
+\newcommand{\resFreeZerosModelsAllModelsQuantBThree}{5}
+\newcommand{\resQOneQPEqualsQuantAllModelsSTwentyFiveBThree}{4}
+\newcommand{\resQOneQPEqualsQuantModelsAllModelsSTwentyFiveBThree}{4}
+
 % ---- Q2 per cell: on how many metrics Q->P is strictly the worst order (seed 0)
 \newcommand{\resQTwoMetricsSmolSmallSTwentyFiveBFour}{8}
 \newcommand{\resQTwoQPWorstMetricsSmolSmallSTwentyFiveBFour}{7}

@@ -1099,6 +1099,39 @@ def macros_order_all_models(M, store, q, e7res):
         M.add(sec, f"QOneSuperQPBFour{g}", _n(sum(r["ratio_mean_pct"] > 0 for r in qp4)) if R else "--",
               f"{g}: of those, super-additive (mean I_E > 0)", src1)
         M.add(sec, f"QOneModels{g}", _n(len({r['model'] for r in R})) if R else "--", f"{g}: models with layer diagnostics", src1)
+    sec = "Scale within a family: grid cells (25/33/50%, 4 and 3 bits) where the order spread / Q->P penalty falls with size"
+    srcs = "reports/analysis/e6_scale_spread.csv (models of the family with the cell in the three orders, by compressed weights)"
+    fams = {"FamSmol": ("SmolLM2",), "FamQwen": ("Qwen2.5",), "FamBoth": ("SmolLM2", "Qwen2.5")}
+    for ft, fl in fams.items():
+        R = [r for r in q["scale"] if r["family"] in fl and skey(r["sparsity"]) in GRID_SPARSITIES and r["n_models"] >= 3]
+        def first_last(r, col):
+            v = [float(x) for x in str(r[col]).split()]
+            return v[0], v[-1]
+        M.add(sec, f"ScaleCellsThree{ft}", _n(len(R)), f"{'/'.join(fl)}: grid cells with three sizes in the three orders", srcs)
+        for col, key, tag in (("spread_pct", "spread", "Spread"), ("qp_penalty_pct", "qp_penalty", "Penalty")):
+            ends = sum(first_last(r, col)[1] < first_last(r, col)[0] for r in R)
+            mono = sum(bool(r.get(f"{key}_shrinks_monotonically")) for r in R)
+            M.add(sec, f"Scale{tag}EndsShrink{ft}", _n(ends) if R else "--",
+                  f"{'/'.join(fl)}: of those, cells where the largest model has a smaller {key} than the smallest", srcs)
+            M.add(sec, f"Scale{tag}MonoShrink{ft}", _n(mono) if R else "--",
+                  f"{'/'.join(fl)}: of those, cells where the {key} falls with every larger model", srcs)
+    sec = "Free zeros over model groups: 3-bit quantization alone and Q->P at 25%+3 (seed 0)"
+    srcz = "results/v2 (storage.zero_frac_actual; wikitext2.nll_sum)"
+    for g, sel in groups.items():
+        Z, same, n = [], 0, 0
+        for m in [x for x in store.models() if sel(x)]:
+            qr, qp = store.get(m, "quant", 0.0, 3, 0), store.get(m, "q_then_p", 0.25, 3, 0)
+            z = ((qr or {}).get("storage") or {}).get("zero_frac_actual")
+            if finite(z):
+                Z.append(100 * z)
+            if qr and qp:
+                n += 1
+                same += (qr.get("wikitext2") or {}).get("nll_sum") == (qp.get("wikitext2") or {}).get("nll_sum")
+        M.add(sec, f"FreeZerosPctMin{g}QuantBThree", num(min(Z), 0) if Z else "--", f"{g}: smallest share of exact zeros after 3-bit quantization alone (%)", srcz)
+        M.add(sec, f"FreeZerosPctMax{g}QuantBThree", num(max(Z), 0) if Z else "--", f"{g}: largest share (%)", srcz)
+        M.add(sec, f"FreeZerosModels{g}QuantBThree", _n(len(Z)), f"{g}: models with 3-bit quantization alone", srcz)
+        M.add(sec, f"QOneQPEqualsQuant{g}STwentyFiveBThree", _n(same), f"{g}: models where Q->P at 25%+3 has the WikiText-2 NLL sum of 3-bit quantization alone", srcz)
+        M.add(sec, f"QOneQPEqualsQuantModels{g}STwentyFiveBThree", _n(n), f"{g}: models with both states", srcz)
     sec = "Q2 per cell: on how many metrics Q->P is strictly the worst order (seed 0)"
     from .questions import Q2_METRICS
     names = [n for n, *_ in Q2_METRICS]
