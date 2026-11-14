@@ -1058,6 +1058,51 @@ def macros_batch(M, store, bres):
           "cells whose ranking by flips changes when the re-run items replace both the dense reference and the re-run states", src)
 
 
+def macros_order_all_models(M, store, q, e7res):
+    """Q2 and the weaker-first test over every model (DECISIONS.md #47): the order counts of the three core models,
+    of the larger models (E6) and of both together, and, in the cells where Kim et al.'s rule (by WikiText-2 ppl)
+    recommends quantizing first, how often Q->P is the worst of the three orders by perplexity and by KL. Grid cells
+    25/33/50% with 4 and 3 bits, seed 0; a cell counts once all three orders are there."""
+    from .common import GRID_SPARSITIES, skey
+    core = {g[0] for g in PAPER_GRID}
+    sec = "Q2 over all models: core (E1), larger (E6) and all (seed 0, grid cells with the three orders)"
+    src = "reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py)"
+    rows = [r for r in q["q2"] if r.get("seed", 0) == 0 and skey(r["sparsity"]) in GRID_SPARSITIES]
+    groups = {"Core": lambda m: m in core, "Larger": lambda m: m not in core, "AllModels": lambda m: True}
+    for g, sel in groups.items():
+        R = [r for r in rows if sel(r["model"])]
+        for key, tag in (("wt_ppl", "Ppl"), ("wt_kl", "Kl"), ("c4_ppl", "PplCFour")):
+            K = [r for r in R if r.get(f"{key}_ranking")]
+            worst = sum(r[f"{key}_worst"] == "q_then_p" and not r[f"{key}_tie_at_worst"] for r in K)
+            M.add(sec, f"QTwoCells{tag}{g}", _n(len(K)) if K else "--", f"{g}: grid cells with the three orders ranked by {key}", src)
+            M.add(sec, f"QTwoQPWorst{tag}{g}", _n(worst) if K else "--", f"{g}: of those, cells where Q->P is strictly worst ({key})", src)
+        K = [r for r in R if r.get("wt_ppl_ranking")]
+        models = sorted({r["model"] for r in K})
+        full = [m for m in models if sum(r["model"] == m for r in K) == len(GRID_SPARSITIES) * 2]
+        M.add(sec, f"QTwoModels{g}", _n(len(models)) if K else "--", f"{g}: models with at least one ranked grid cell", src)
+        M.add(sec, f"QTwoModelsFull{g}", _n(len(full)) if K else "--", f"{g}: models with all six grid cells ranked", src)
+        rat = [(r["wt_ppl_worst_best_ratio"], r["model"], r["cell"]) for r in K if finite(r.get("wt_ppl_worst_best_ratio"))]
+        M.add(sec, f"QTwoMaxRatio{g}", num(max(rat)[0], 2) if rat else "--", f"{g}: largest worst/best WikiText-2 ppl ratio", src)
+        M.add(sec, f"QTwoMaxRatioWhere{g}", tex_escape(f"{max(rat)[1]} {max(rat)[2]}") if rat else "--", f"{g}: where it occurs", src)
+    if e7res is None:
+        return
+    sec = "Weaker-first rule vs the three orders (cells where the rule, by WikiText-2 ppl, recommends Q->P; seed 0)"
+    by_cell = {(r["model"], r["cell"]): r for r in rows}
+    pred = [r for r in e7res["kim"] if r["metric"] == "wt_ppl" and r["in_counts"] and r["seed"] == 0
+            and r["prediction"] == "q_then_p"]
+    for g, sel in groups.items():
+        P_ = [by_cell.get((r["model"], r["cell"])) for r in pred if sel(r["model"])]
+        P_ = [x for x in P_ if x and x.get("wt_ppl_ranking")]
+        for key, tag in (("wt_ppl", "Ppl"), ("wt_kl", "Kl")):
+            K = [x for x in P_ if x.get(f"{key}_ranking")]
+            worst = sum(x[f"{key}_worst"] == "q_then_p" and not x[f"{key}_tie_at_worst"] for x in K)
+            best = sum(x[f"{key}_best"] == "q_then_p" for x in K)
+            M.add(sec, f"ESevenKimPredQPCells{tag}{g}", _n(len(K)) if P_ else "--",
+                  f"{g}: cells where the rule recommends Q->P and the three orders are ranked by {key}", src)
+            M.add(sec, f"ESevenKimPredQPWorst{tag}{g}", _n(worst) if P_ else "--", f"{g}: of those, Q->P strictly worst ({key})", src)
+            M.add(sec, f"ESevenKimPredQPBest{tag}{g}", _n(best) if P_ else "--", f"{g}: of those, Q->P best of the three ({key})", src)
+
+
 def build_macros(store, e1, q, det, fr, e2res, boolq, missing, repro=(), e7res=None, e8res=None, isr=None, batch=None):
     M = Macros()
     macros_states(M, store, e1)
@@ -1069,6 +1114,7 @@ def build_macros(store, e1, q, det, fr, e2res, boolq, missing, repro=(), e7res=N
     macros_e6(M, store, q)
     if e7res is not None:
         macros_e7(M, store, e7res)
+    macros_order_all_models(M, store, q, e7res)
     if e8res is not None:
         macros_e8(M, store, e8res)
     if isr is not None:

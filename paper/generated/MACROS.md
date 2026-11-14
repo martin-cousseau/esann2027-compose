@@ -609,13 +609,26 @@ Macro = `\res` + column + `QwenLarge` + row tag (e.g. `\resPplQwenLargeDense`). 
 | `QuantBFour` | 4-bit | `Qwen2.5-3B__quant__s0.0000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `QuantBThree` | 3-bit | `Qwen2.5-3B__quant__s0.0000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `PruneSTwentyFive` | 25% pruned | `Qwen2.5-3B__prune__s0.2500__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `PruneSThirtyThree` | 33% pruned | `Qwen2.5-3B__prune__s0.3333__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `PruneSFifty` | 50% pruned | `Qwen2.5-3B__prune__s0.5000__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `STwentyFiveBFourJoint` | 25%+4 joint | `Qwen2.5-3B__joint__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `STwentyFiveBFourPQ` | 25%+4 P->Q | `Qwen2.5-3B__p_then_q__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `STwentyFiveBFourQP` | 25%+4 Q->P | `Qwen2.5-3B__q_then_p__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBFourJoint` | 33%+4 joint | `Qwen2.5-3B__joint__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBFourPQ` | 33%+4 P->Q | `Qwen2.5-3B__p_then_q__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBFourQP` | 33%+4 Q->P | `Qwen2.5-3B__q_then_p__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBFourJoint` | 50%+4 joint | `Qwen2.5-3B__joint__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBFourPQ` | 50%+4 P->Q | `Qwen2.5-3B__p_then_q__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBFourQP` | 50%+4 Q->P | `Qwen2.5-3B__q_then_p__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBThreeJoint` | 25%+3 joint | `Qwen2.5-3B__joint__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBThreePQ` | 25%+3 P->Q | `Qwen2.5-3B__p_then_q__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBThreeQP` | 25%+3 Q->P | `Qwen2.5-3B__q_then_p__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBThreeJoint` | 33%+3 joint | `Qwen2.5-3B__joint__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBThreePQ` | 33%+3 P->Q | `Qwen2.5-3B__p_then_q__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBThreeQP` | 33%+3 Q->P | `Qwen2.5-3B__q_then_p__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBThreeJoint` | 50%+3 joint | `Qwen2.5-3B__joint__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBThreePQ` | 50%+3 P->Q | `Qwen2.5-3B__p_then_q__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBThreeQP` | 50%+3 Q->P | `Qwen2.5-3B__q_then_p__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 
 Columns:
 
@@ -646,9 +659,21 @@ Macro = `\res` + column + `QwenLarge` + row tag (e.g. `\resISrThreeQwenLargeSTwe
 | `STwentyFiveBFourJoint` | 25%+4 joint | `Qwen2.5-3B__joint__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `STwentyFiveBFourPQ` | 25%+4 P->Q | `Qwen2.5-3B__p_then_q__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `STwentyFiveBFourQP` | 25%+4 Q->P | `Qwen2.5-3B__q_then_p__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBFourJoint` | 33%+4 joint | `Qwen2.5-3B__joint__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBFourPQ` | 33%+4 P->Q | `Qwen2.5-3B__p_then_q__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBFourQP` | 33%+4 Q->P | `Qwen2.5-3B__q_then_p__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBFourJoint` | 50%+4 joint | `Qwen2.5-3B__joint__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBFourPQ` | 50%+4 P->Q | `Qwen2.5-3B__p_then_q__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBFourQP` | 50%+4 Q->P | `Qwen2.5-3B__q_then_p__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBThreeJoint` | 25%+3 joint | `Qwen2.5-3B__joint__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBThreePQ` | 25%+3 P->Q | `Qwen2.5-3B__p_then_q__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBThreeQP` | 25%+3 Q->P | `Qwen2.5-3B__q_then_p__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBThreeJoint` | 33%+3 joint | `Qwen2.5-3B__joint__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBThreePQ` | 33%+3 P->Q | `Qwen2.5-3B__p_then_q__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SThirtyThreeBThreeQP` | 33%+3 Q->P | `Qwen2.5-3B__q_then_p__s0.3333__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBThreeJoint` | 50%+3 joint | `Qwen2.5-3B__joint__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBThreePQ` | 50%+3 P->Q | `Qwen2.5-3B__p_then_q__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBThreeQP` | 50%+3 Q->P | `Qwen2.5-3B__q_then_p__s0.5000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 
 Columns:
 
@@ -1090,7 +1115,11 @@ Columns:
 | `\resQTwoRatioQwenMidSThirtyThreeBThree` | `--` | Qwen2.5-1.5B 33%+3: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioQwenMidSFiftyBThree` | `--` | Qwen2.5-1.5B 50%+3: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioQwenLargeSTwentyFiveBFour` | `--` | Qwen2.5-3B 25%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoRatioQwenLargeSThirtyThreeBFour` | `--` | Qwen2.5-3B 33%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioQwenLargeSFiftyBFour` | `--` | Qwen2.5-3B 50%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoRatioQwenLargeSTwentyFiveBThree` | `--` | Qwen2.5-3B 25%+3: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoRatioQwenLargeSThirtyThreeBThree` | `--` | Qwen2.5-3B 33%+3: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
+| `\resQTwoRatioQwenLargeSFiftyBThree` | `--` | Qwen2.5-3B 50%+3: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioOlmoSTwentyFiveBFour` | `--` | OLMo-2-0425-1B 25%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioOlmoSThirtyThreeBFour` | `--` | OLMo-2-0425-1B 33%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
 | `\resQTwoRatioOlmoSFiftyBFour` | `--` | OLMo-2-0425-1B 50%+4: worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv (scripts/analysis/questions.py) |
@@ -1151,12 +1180,12 @@ Columns:
 | `\resQThreeSpreadMinQwenMidBThreePct` | `--` | Qwen2.5-1.5B, 3-bit cells 25/33/50% (3 planned): smallest order spread 100 (max - min) / min of WikiText-2 ppl (%) | reports/analysis/q3_order_spread.csv (grid_*; -- until every planned grid cell has the three orders) |
 | `\resQThreeSpreadMaxQwenMidBThreePct` | `--` | Qwen2.5-1.5B, 3-bit cells 25/33/50% (3 planned): largest order spread (%) | reports/analysis/q3_order_spread.csv (grid_*; -- until every planned grid cell has the three orders) |
 | `\resQThreeSpreadCellsQwenMidBThree` | `0` | Qwen2.5-1.5B, 3-bit cells 25/33/50% (3 planned): cells with the three orders | reports/analysis/q3_order_spread.csv (grid_*; -- until every planned grid cell has the three orders) |
-| `\resQThreeSpreadMinQwenLargeBFourPct` | `--` | Qwen2.5-3B, 4-bit cells 25/33/50% (2 planned): smallest order spread 100 (max - min) / min of WikiText-2 ppl (%) | reports/analysis/q3_order_spread.csv (grid_*; -- until every planned grid cell has the three orders) |
-| `\resQThreeSpreadMaxQwenLargeBFourPct` | `--` | Qwen2.5-3B, 4-bit cells 25/33/50% (2 planned): largest order spread (%) | reports/analysis/q3_order_spread.csv (grid_*; -- until every planned grid cell has the three orders) |
-| `\resQThreeSpreadCellsQwenLargeBFour` | `0` | Qwen2.5-3B, 4-bit cells 25/33/50% (2 planned): cells with the three orders | reports/analysis/q3_order_spread.csv (grid_*; -- until every planned grid cell has the three orders) |
-| `\resQThreeSpreadMinQwenLargeBThreePct` | `--` | Qwen2.5-3B, 3-bit cells 25/33/50% (0 planned): smallest order spread 100 (max - min) / min of WikiText-2 ppl (%) | reports/analysis/q3_order_spread.csv (grid_*; -- until every planned grid cell has the three orders) |
-| `\resQThreeSpreadMaxQwenLargeBThreePct` | `--` | Qwen2.5-3B, 3-bit cells 25/33/50% (0 planned): largest order spread (%) | reports/analysis/q3_order_spread.csv (grid_*; -- until every planned grid cell has the three orders) |
-| `\resQThreeSpreadCellsQwenLargeBThree` | `--` | Qwen2.5-3B, 3-bit cells 25/33/50% (0 planned): cells with the three orders | reports/analysis/q3_order_spread.csv (grid_*; -- until every planned grid cell has the three orders) |
+| `\resQThreeSpreadMinQwenLargeBFourPct` | `--` | Qwen2.5-3B, 4-bit cells 25/33/50% (3 planned): smallest order spread 100 (max - min) / min of WikiText-2 ppl (%) | reports/analysis/q3_order_spread.csv (grid_*; -- until every planned grid cell has the three orders) |
+| `\resQThreeSpreadMaxQwenLargeBFourPct` | `--` | Qwen2.5-3B, 4-bit cells 25/33/50% (3 planned): largest order spread (%) | reports/analysis/q3_order_spread.csv (grid_*; -- until every planned grid cell has the three orders) |
+| `\resQThreeSpreadCellsQwenLargeBFour` | `0` | Qwen2.5-3B, 4-bit cells 25/33/50% (3 planned): cells with the three orders | reports/analysis/q3_order_spread.csv (grid_*; -- until every planned grid cell has the three orders) |
+| `\resQThreeSpreadMinQwenLargeBThreePct` | `--` | Qwen2.5-3B, 3-bit cells 25/33/50% (3 planned): smallest order spread 100 (max - min) / min of WikiText-2 ppl (%) | reports/analysis/q3_order_spread.csv (grid_*; -- until every planned grid cell has the three orders) |
+| `\resQThreeSpreadMaxQwenLargeBThreePct` | `--` | Qwen2.5-3B, 3-bit cells 25/33/50% (3 planned): largest order spread (%) | reports/analysis/q3_order_spread.csv (grid_*; -- until every planned grid cell has the three orders) |
+| `\resQThreeSpreadCellsQwenLargeBThree` | `0` | Qwen2.5-3B, 3-bit cells 25/33/50% (3 planned): cells with the three orders | reports/analysis/q3_order_spread.csv (grid_*; -- until every planned grid cell has the three orders) |
 | `\resQThreeSpreadMinOlmoBFourPct` | `--` | OLMo-2-0425-1B, 4-bit cells 25/33/50% (3 planned): smallest order spread 100 (max - min) / min of WikiText-2 ppl (%) | reports/analysis/q3_order_spread.csv (grid_*; -- until every planned grid cell has the three orders) |
 | `\resQThreeSpreadMaxOlmoBFourPct` | `--` | OLMo-2-0425-1B, 4-bit cells 25/33/50% (3 planned): largest order spread (%) | reports/analysis/q3_order_spread.csv (grid_*; -- until every planned grid cell has the three orders) |
 | `\resQThreeSpreadCellsOlmoBFour` | `0` | OLMo-2-0425-1B, 4-bit cells 25/33/50% (3 planned): cells with the three orders | reports/analysis/q3_order_spread.csv (grid_*; -- until every planned grid cell has the three orders) |
@@ -1867,7 +1896,7 @@ Columns:
 | `\resNItemsLambada` | `5153` | lambada_openai: items evaluated per state | results/v2/items/*.json.gz |
 | `\resBootB` | `10000` | bootstrap resamples (items within each task) | scripts/analysis/stats.py, make_tables.py --boot |
 | `\resNStates` | `218` | usable v2 model states (status ok) | results/v2/*/*.jsonl |
-| `\resNStatesPlanned` | `333` | model states in the study plan | scripts/make_queues.py |
+| `\resNStatesPlanned` | `346` | model states in the study plan | scripts/make_queues.py |
 
 ## Requested by paper/main.tex (reports/latex_macro_requests.md, R1-R31)
 
@@ -2222,9 +2251,21 @@ Macro = `\res` + column + `QwenLarge` + row tag (e.g. `\resAccDiffQwenLargeSTwen
 | `STwentyFiveBFourJointPQ` | 25%+4: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `STwentyFiveBFourJointQP` | 25%+4: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `STwentyFiveBFourPQQP` | 25%+4: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBFourJointPQ` | 33%+4: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBFourJointQP` | 33%+4: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBFourPQQP` | 33%+4: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `SFiftyBFourJointPQ` | 50%+4: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `SFiftyBFourJointQP` | 50%+4: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 | `SFiftyBFourPQQP` | 50%+4: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreeJointPQ` | 25%+3: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreeJointQP` | 25%+3: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `STwentyFiveBThreePQQP` | 25%+3: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreeJointPQ` | 33%+3: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreeJointQP` | 33%+3: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SThirtyThreeBThreePQQP` | 33%+3: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreeJointPQ` | 50%+3: joint minus P->Q | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreeJointQP` | 50%+3: joint minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
+| `SFiftyBThreePQQP` | 50%+3: P->Q minus Q->P | `reports/analysis/e1_acc_orders.csv` task `mean9_v2` (not available yet) | `--` | `--` | `--` |
 
 Columns:
 
@@ -2655,9 +2696,21 @@ Columns:
 | `\resScaleSpreadQwenLargeSTwentyFiveBFourPct` | `--` | Qwen2.5-3B 25%+4: 100 (max - min) / min of WikiText-2 ppl over the three orders | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
 | `\resScaleGapMaskFirstQwenLargeSTwentyFiveBFourPct` | `--` | Qwen2.5-3B 25%+4: 100 |joint - P->Q| / min of WikiText-2 ppl | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
 | `\resScalePenaltyQPQwenLargeSTwentyFiveBFourPct` | `--` | Qwen2.5-3B 25%+4: Q->P penalty 100 (ppl Q->P / best of the three - 1) (0 if Q->P is best) | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
+| `\resScaleSpreadQwenLargeSThirtyThreeBFourPct` | `--` | Qwen2.5-3B 33%+4: 100 (max - min) / min of WikiText-2 ppl over the three orders | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
+| `\resScaleGapMaskFirstQwenLargeSThirtyThreeBFourPct` | `--` | Qwen2.5-3B 33%+4: 100 |joint - P->Q| / min of WikiText-2 ppl | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
+| `\resScalePenaltyQPQwenLargeSThirtyThreeBFourPct` | `--` | Qwen2.5-3B 33%+4: Q->P penalty 100 (ppl Q->P / best of the three - 1) (0 if Q->P is best) | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
 | `\resScaleSpreadQwenLargeSFiftyBFourPct` | `--` | Qwen2.5-3B 50%+4: 100 (max - min) / min of WikiText-2 ppl over the three orders | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
 | `\resScaleGapMaskFirstQwenLargeSFiftyBFourPct` | `--` | Qwen2.5-3B 50%+4: 100 |joint - P->Q| / min of WikiText-2 ppl | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
 | `\resScalePenaltyQPQwenLargeSFiftyBFourPct` | `--` | Qwen2.5-3B 50%+4: Q->P penalty 100 (ppl Q->P / best of the three - 1) (0 if Q->P is best) | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
+| `\resScaleSpreadQwenLargeSTwentyFiveBThreePct` | `--` | Qwen2.5-3B 25%+3: 100 (max - min) / min of WikiText-2 ppl over the three orders | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
+| `\resScaleGapMaskFirstQwenLargeSTwentyFiveBThreePct` | `--` | Qwen2.5-3B 25%+3: 100 |joint - P->Q| / min of WikiText-2 ppl | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
+| `\resScalePenaltyQPQwenLargeSTwentyFiveBThreePct` | `--` | Qwen2.5-3B 25%+3: Q->P penalty 100 (ppl Q->P / best of the three - 1) (0 if Q->P is best) | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
+| `\resScaleSpreadQwenLargeSThirtyThreeBThreePct` | `--` | Qwen2.5-3B 33%+3: 100 (max - min) / min of WikiText-2 ppl over the three orders | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
+| `\resScaleGapMaskFirstQwenLargeSThirtyThreeBThreePct` | `--` | Qwen2.5-3B 33%+3: 100 |joint - P->Q| / min of WikiText-2 ppl | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
+| `\resScalePenaltyQPQwenLargeSThirtyThreeBThreePct` | `--` | Qwen2.5-3B 33%+3: Q->P penalty 100 (ppl Q->P / best of the three - 1) (0 if Q->P is best) | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
+| `\resScaleSpreadQwenLargeSFiftyBThreePct` | `--` | Qwen2.5-3B 50%+3: 100 (max - min) / min of WikiText-2 ppl over the three orders | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
+| `\resScaleGapMaskFirstQwenLargeSFiftyBThreePct` | `--` | Qwen2.5-3B 50%+3: 100 |joint - P->Q| / min of WikiText-2 ppl | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
+| `\resScalePenaltyQPQwenLargeSFiftyBThreePct` | `--` | Qwen2.5-3B 50%+3: Q->P penalty 100 (ppl Q->P / best of the three - 1) (0 if Q->P is best) | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
 | `\resScaleSpreadOlmoSTwentyFiveBFourPct` | `--` | OLMo-2-0425-1B 25%+4: 100 (max - min) / min of WikiText-2 ppl over the three orders | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
 | `\resScaleGapMaskFirstOlmoSTwentyFiveBFourPct` | `--` | OLMo-2-0425-1B 25%+4: 100 |joint - P->Q| / min of WikiText-2 ppl | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
 | `\resScalePenaltyQPOlmoSTwentyFiveBFourPct` | `--` | OLMo-2-0425-1B 25%+4: Q->P penalty 100 (ppl Q->P / best of the three - 1) (0 if Q->P is best) | reports/analysis/scale_family_cells.csv (WikiText-2 ppl, seed 0; -- until the cell has all three orders) |
@@ -3246,6 +3299,64 @@ Columns:
 | `\resESevenHarmaPQBetterCFourPplAll` | `21` | all models: cells where P->Q beats Q->P (Harma et al.'s sparsity-first order; c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaOrderCellsCFourPplAll` | `24` | all models: cells with both orders (c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
 | `\resESevenHarmaMaxGapCFourPplAllPct` | `59.7` | all models: largest 100(ppl Q->P / ppl P->Q - 1) over those cells (c4_ppl) | reports/analysis/e7_summary.json (cells of E1 and E6, seed 0) |
+
+## Q2 over all models: core (E1), larger (E6) and all (seed 0, grid cells with the three orders)
+
+| Macro | Value | Meaning | Source |
+|---|---|---|---|
+| `\resQTwoCellsPplCore` | `18` | Core: grid cells with the three orders ranked by wt_ppl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstPplCore` | `16` | Core: of those, cells where Q->P is strictly worst (wt_ppl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoCellsKlCore` | `18` | Core: grid cells with the three orders ranked by wt_kl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstKlCore` | `16` | Core: of those, cells where Q->P is strictly worst (wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoCellsPplCFourCore` | `18` | Core: grid cells with the three orders ranked by c4_ppl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstPplCFourCore` | `15` | Core: of those, cells where Q->P is strictly worst (c4_ppl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoModelsCore` | `3` | Core: models with at least one ranked grid cell | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoModelsFullCore` | `3` | Core: models with all six grid cells ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMaxRatioCore` | `1.77` | Core: largest worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMaxRatioWhereCore` | `SmolLM2-135M 50\%+3` | Core: where it occurs | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoCellsPplLarger` | `6` | Larger: grid cells with the three orders ranked by wt_ppl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstPplLarger` | `5` | Larger: of those, cells where Q->P is strictly worst (wt_ppl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoCellsKlLarger` | `6` | Larger: grid cells with the three orders ranked by wt_kl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstKlLarger` | `5` | Larger: of those, cells where Q->P is strictly worst (wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoCellsPplCFourLarger` | `6` | Larger: grid cells with the three orders ranked by c4_ppl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstPplCFourLarger` | `5` | Larger: of those, cells where Q->P is strictly worst (c4_ppl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoModelsLarger` | `1` | Larger: models with at least one ranked grid cell | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoModelsFullLarger` | `1` | Larger: models with all six grid cells ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMaxRatioLarger` | `1.34` | Larger: largest worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMaxRatioWhereLarger` | `SmolLM2-1.7B 50\%+3` | Larger: where it occurs | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoCellsPplAllModels` | `24` | AllModels: grid cells with the three orders ranked by wt_ppl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstPplAllModels` | `21` | AllModels: of those, cells where Q->P is strictly worst (wt_ppl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoCellsKlAllModels` | `24` | AllModels: grid cells with the three orders ranked by wt_kl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstKlAllModels` | `21` | AllModels: of those, cells where Q->P is strictly worst (wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoCellsPplCFourAllModels` | `24` | AllModels: grid cells with the three orders ranked by c4_ppl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPWorstPplCFourAllModels` | `20` | AllModels: of those, cells where Q->P is strictly worst (c4_ppl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoModelsAllModels` | `4` | AllModels: models with at least one ranked grid cell | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoModelsFullAllModels` | `4` | AllModels: models with all six grid cells ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMaxRatioAllModels` | `1.77` | AllModels: largest worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoMaxRatioWhereAllModels` | `SmolLM2-135M 50\%+3` | AllModels: where it occurs | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+
+## Weaker-first rule vs the three orders (cells where the rule, by WikiText-2 ppl, recommends Q->P; seed 0)
+
+| Macro | Value | Meaning | Source |
+|---|---|---|---|
+| `\resESevenKimPredQPCellsPplCore` | `4` | Core: cells where the rule recommends Q->P and the three orders are ranked by wt_ppl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resESevenKimPredQPWorstPplCore` | `4` | Core: of those, Q->P strictly worst (wt_ppl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resESevenKimPredQPBestPplCore` | `0` | Core: of those, Q->P best of the three (wt_ppl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resESevenKimPredQPCellsKlCore` | `4` | Core: cells where the rule recommends Q->P and the three orders are ranked by wt_kl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resESevenKimPredQPWorstKlCore` | `4` | Core: of those, Q->P strictly worst (wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resESevenKimPredQPBestKlCore` | `0` | Core: of those, Q->P best of the three (wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resESevenKimPredQPCellsPplLarger` | `3` | Larger: cells where the rule recommends Q->P and the three orders are ranked by wt_ppl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resESevenKimPredQPWorstPplLarger` | `2` | Larger: of those, Q->P strictly worst (wt_ppl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resESevenKimPredQPBestPplLarger` | `0` | Larger: of those, Q->P best of the three (wt_ppl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resESevenKimPredQPCellsKlLarger` | `3` | Larger: cells where the rule recommends Q->P and the three orders are ranked by wt_kl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resESevenKimPredQPWorstKlLarger` | `2` | Larger: of those, Q->P strictly worst (wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resESevenKimPredQPBestKlLarger` | `0` | Larger: of those, Q->P best of the three (wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resESevenKimPredQPCellsPplAllModels` | `7` | AllModels: cells where the rule recommends Q->P and the three orders are ranked by wt_ppl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resESevenKimPredQPWorstPplAllModels` | `6` | AllModels: of those, Q->P strictly worst (wt_ppl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resESevenKimPredQPBestPplAllModels` | `0` | AllModels: of those, Q->P best of the three (wt_ppl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resESevenKimPredQPCellsKlAllModels` | `7` | AllModels: cells where the rule recommends Q->P and the three orders are ranked by wt_kl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resESevenKimPredQPWorstKlAllModels` | `6` | AllModels: of those, Q->P strictly worst (wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resESevenKimPredQPBestKlAllModels` | `0` | AllModels: of those, Q->P best of the three (wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 
 ## E8 layer error vs KL (reports/analysis/e8_layer_error_vs_kl.json; scripts/analysis/e8.py)
 
@@ -4265,6 +4376,23 @@ Columns:
 | `\resSrPaperQwenTwoFiveThreeBPruneSTwentyFive` | `--` | = `\resSrPaperQwenLargePruneSTwentyFive` | see that macro |
 | `\resSrExtQwenTwoFiveThreeBPruneSTwentyFive` | `--` | = `\resSrExtQwenLargePruneSTwentyFive` | see that macro |
 | `\resSrCnQwenTwoFiveThreeBPruneSTwentyFive` | `--` | = `\resSrCnQwenLargePruneSTwentyFive` | see that macro |
+| `\resPplQwenTwoFiveThreeBPruneSThirtyThree` | `--` | = `\resPplQwenLargePruneSThirtyThree` | see that macro |
+| `\resPplCFourQwenTwoFiveThreeBPruneSThirtyThree` | `--` | = `\resPplCFourQwenLargePruneSThirtyThree` | see that macro |
+| `\resKlQwenTwoFiveThreeBPruneSThirtyThree` | `--` | = `\resKlQwenLargePruneSThirtyThree` | see that macro |
+| `\resKlCFourQwenTwoFiveThreeBPruneSThirtyThree` | `--` | = `\resKlCFourQwenLargePruneSThirtyThree` | see that macro |
+| `\resTopOnePctQwenTwoFiveThreeBPruneSThirtyThree` | `--` | = `\resTopOnePctQwenLargePruneSThirtyThree` | see that macro |
+| `\resTopOneCFourPctQwenTwoFiveThreeBPruneSThirtyThree` | `--` | = `\resTopOneCFourPctQwenLargePruneSThirtyThree` | see that macro |
+| `\resBitsTcrQwenTwoFiveThreeBPruneSThirtyThree` | `--` | = `\resBitsTcrQwenLargePruneSThirtyThree` | see that macro |
+| `\resBitsMaskQwenTwoFiveThreeBPruneSThirtyThree` | `--` | = `\resBitsMaskQwenLargePruneSThirtyThree` | see that macro |
+| `\resBitsSymQwenTwoFiveThreeBPruneSThirtyThree` | `--` | = `\resBitsSymQwenLargePruneSThirtyThree` | see that macro |
+| `\resFreeZerosPctQwenTwoFiveThreeBPruneSThirtyThree` | `--` | = `\resFreeZerosPctQwenLargePruneSThirtyThree` | see that macro |
+| `\resFlipsPctQwenTwoFiveThreeBPruneSThirtyThree` | `--` | = `\resFlipsPctQwenLargePruneSThirtyThree` | see that macro |
+| `\resFlipsCWPctQwenTwoFiveThreeBPruneSThirtyThree` | `--` | = `\resFlipsCWPctQwenLargePruneSThirtyThree` | see that macro |
+| `\resFlipsWCPctQwenTwoFiveThreeBPruneSThirtyThree` | `--` | = `\resFlipsWCPctQwenLargePruneSThirtyThree` | see that macro |
+| `\resSrThreeQwenTwoFiveThreeBPruneSThirtyThree` | `--` | = `\resSrThreeQwenLargePruneSThirtyThree` | see that macro |
+| `\resSrPaperQwenTwoFiveThreeBPruneSThirtyThree` | `--` | = `\resSrPaperQwenLargePruneSThirtyThree` | see that macro |
+| `\resSrExtQwenTwoFiveThreeBPruneSThirtyThree` | `--` | = `\resSrExtQwenLargePruneSThirtyThree` | see that macro |
+| `\resSrCnQwenTwoFiveThreeBPruneSThirtyThree` | `--` | = `\resSrCnQwenLargePruneSThirtyThree` | see that macro |
 | `\resPplQwenTwoFiveThreeBPruneSFifty` | `--` | = `\resPplQwenLargePruneSFifty` | see that macro |
 | `\resPplCFourQwenTwoFiveThreeBPruneSFifty` | `--` | = `\resPplCFourQwenLargePruneSFifty` | see that macro |
 | `\resKlQwenTwoFiveThreeBPruneSFifty` | `--` | = `\resKlQwenLargePruneSFifty` | see that macro |
@@ -4333,6 +4461,57 @@ Columns:
 | `\resSrPaperQwenTwoFiveThreeBSTwentyFiveBFourQP` | `--` | = `\resSrPaperQwenLargeSTwentyFiveBFourQP` | see that macro |
 | `\resSrExtQwenTwoFiveThreeBSTwentyFiveBFourQP` | `--` | = `\resSrExtQwenLargeSTwentyFiveBFourQP` | see that macro |
 | `\resSrCnQwenTwoFiveThreeBSTwentyFiveBFourQP` | `--` | = `\resSrCnQwenLargeSTwentyFiveBFourQP` | see that macro |
+| `\resPplQwenTwoFiveThreeBSThirtyThreeBFourJoint` | `--` | = `\resPplQwenLargeSThirtyThreeBFourJoint` | see that macro |
+| `\resPplCFourQwenTwoFiveThreeBSThirtyThreeBFourJoint` | `--` | = `\resPplCFourQwenLargeSThirtyThreeBFourJoint` | see that macro |
+| `\resKlQwenTwoFiveThreeBSThirtyThreeBFourJoint` | `--` | = `\resKlQwenLargeSThirtyThreeBFourJoint` | see that macro |
+| `\resKlCFourQwenTwoFiveThreeBSThirtyThreeBFourJoint` | `--` | = `\resKlCFourQwenLargeSThirtyThreeBFourJoint` | see that macro |
+| `\resTopOnePctQwenTwoFiveThreeBSThirtyThreeBFourJoint` | `--` | = `\resTopOnePctQwenLargeSThirtyThreeBFourJoint` | see that macro |
+| `\resTopOneCFourPctQwenTwoFiveThreeBSThirtyThreeBFourJoint` | `--` | = `\resTopOneCFourPctQwenLargeSThirtyThreeBFourJoint` | see that macro |
+| `\resBitsTcrQwenTwoFiveThreeBSThirtyThreeBFourJoint` | `--` | = `\resBitsTcrQwenLargeSThirtyThreeBFourJoint` | see that macro |
+| `\resBitsMaskQwenTwoFiveThreeBSThirtyThreeBFourJoint` | `--` | = `\resBitsMaskQwenLargeSThirtyThreeBFourJoint` | see that macro |
+| `\resBitsSymQwenTwoFiveThreeBSThirtyThreeBFourJoint` | `--` | = `\resBitsSymQwenLargeSThirtyThreeBFourJoint` | see that macro |
+| `\resFreeZerosPctQwenTwoFiveThreeBSThirtyThreeBFourJoint` | `--` | = `\resFreeZerosPctQwenLargeSThirtyThreeBFourJoint` | see that macro |
+| `\resFlipsPctQwenTwoFiveThreeBSThirtyThreeBFourJoint` | `--` | = `\resFlipsPctQwenLargeSThirtyThreeBFourJoint` | see that macro |
+| `\resFlipsCWPctQwenTwoFiveThreeBSThirtyThreeBFourJoint` | `--` | = `\resFlipsCWPctQwenLargeSThirtyThreeBFourJoint` | see that macro |
+| `\resFlipsWCPctQwenTwoFiveThreeBSThirtyThreeBFourJoint` | `--` | = `\resFlipsWCPctQwenLargeSThirtyThreeBFourJoint` | see that macro |
+| `\resSrThreeQwenTwoFiveThreeBSThirtyThreeBFourJoint` | `--` | = `\resSrThreeQwenLargeSThirtyThreeBFourJoint` | see that macro |
+| `\resSrPaperQwenTwoFiveThreeBSThirtyThreeBFourJoint` | `--` | = `\resSrPaperQwenLargeSThirtyThreeBFourJoint` | see that macro |
+| `\resSrExtQwenTwoFiveThreeBSThirtyThreeBFourJoint` | `--` | = `\resSrExtQwenLargeSThirtyThreeBFourJoint` | see that macro |
+| `\resSrCnQwenTwoFiveThreeBSThirtyThreeBFourJoint` | `--` | = `\resSrCnQwenLargeSThirtyThreeBFourJoint` | see that macro |
+| `\resPplQwenTwoFiveThreeBSThirtyThreeBFourPQ` | `--` | = `\resPplQwenLargeSThirtyThreeBFourPQ` | see that macro |
+| `\resPplCFourQwenTwoFiveThreeBSThirtyThreeBFourPQ` | `--` | = `\resPplCFourQwenLargeSThirtyThreeBFourPQ` | see that macro |
+| `\resKlQwenTwoFiveThreeBSThirtyThreeBFourPQ` | `--` | = `\resKlQwenLargeSThirtyThreeBFourPQ` | see that macro |
+| `\resKlCFourQwenTwoFiveThreeBSThirtyThreeBFourPQ` | `--` | = `\resKlCFourQwenLargeSThirtyThreeBFourPQ` | see that macro |
+| `\resTopOnePctQwenTwoFiveThreeBSThirtyThreeBFourPQ` | `--` | = `\resTopOnePctQwenLargeSThirtyThreeBFourPQ` | see that macro |
+| `\resTopOneCFourPctQwenTwoFiveThreeBSThirtyThreeBFourPQ` | `--` | = `\resTopOneCFourPctQwenLargeSThirtyThreeBFourPQ` | see that macro |
+| `\resBitsTcrQwenTwoFiveThreeBSThirtyThreeBFourPQ` | `--` | = `\resBitsTcrQwenLargeSThirtyThreeBFourPQ` | see that macro |
+| `\resBitsMaskQwenTwoFiveThreeBSThirtyThreeBFourPQ` | `--` | = `\resBitsMaskQwenLargeSThirtyThreeBFourPQ` | see that macro |
+| `\resBitsSymQwenTwoFiveThreeBSThirtyThreeBFourPQ` | `--` | = `\resBitsSymQwenLargeSThirtyThreeBFourPQ` | see that macro |
+| `\resFreeZerosPctQwenTwoFiveThreeBSThirtyThreeBFourPQ` | `--` | = `\resFreeZerosPctQwenLargeSThirtyThreeBFourPQ` | see that macro |
+| `\resFlipsPctQwenTwoFiveThreeBSThirtyThreeBFourPQ` | `--` | = `\resFlipsPctQwenLargeSThirtyThreeBFourPQ` | see that macro |
+| `\resFlipsCWPctQwenTwoFiveThreeBSThirtyThreeBFourPQ` | `--` | = `\resFlipsCWPctQwenLargeSThirtyThreeBFourPQ` | see that macro |
+| `\resFlipsWCPctQwenTwoFiveThreeBSThirtyThreeBFourPQ` | `--` | = `\resFlipsWCPctQwenLargeSThirtyThreeBFourPQ` | see that macro |
+| `\resSrThreeQwenTwoFiveThreeBSThirtyThreeBFourPQ` | `--` | = `\resSrThreeQwenLargeSThirtyThreeBFourPQ` | see that macro |
+| `\resSrPaperQwenTwoFiveThreeBSThirtyThreeBFourPQ` | `--` | = `\resSrPaperQwenLargeSThirtyThreeBFourPQ` | see that macro |
+| `\resSrExtQwenTwoFiveThreeBSThirtyThreeBFourPQ` | `--` | = `\resSrExtQwenLargeSThirtyThreeBFourPQ` | see that macro |
+| `\resSrCnQwenTwoFiveThreeBSThirtyThreeBFourPQ` | `--` | = `\resSrCnQwenLargeSThirtyThreeBFourPQ` | see that macro |
+| `\resPplQwenTwoFiveThreeBSThirtyThreeBFourQP` | `--` | = `\resPplQwenLargeSThirtyThreeBFourQP` | see that macro |
+| `\resPplCFourQwenTwoFiveThreeBSThirtyThreeBFourQP` | `--` | = `\resPplCFourQwenLargeSThirtyThreeBFourQP` | see that macro |
+| `\resKlQwenTwoFiveThreeBSThirtyThreeBFourQP` | `--` | = `\resKlQwenLargeSThirtyThreeBFourQP` | see that macro |
+| `\resKlCFourQwenTwoFiveThreeBSThirtyThreeBFourQP` | `--` | = `\resKlCFourQwenLargeSThirtyThreeBFourQP` | see that macro |
+| `\resTopOnePctQwenTwoFiveThreeBSThirtyThreeBFourQP` | `--` | = `\resTopOnePctQwenLargeSThirtyThreeBFourQP` | see that macro |
+| `\resTopOneCFourPctQwenTwoFiveThreeBSThirtyThreeBFourQP` | `--` | = `\resTopOneCFourPctQwenLargeSThirtyThreeBFourQP` | see that macro |
+| `\resBitsTcrQwenTwoFiveThreeBSThirtyThreeBFourQP` | `--` | = `\resBitsTcrQwenLargeSThirtyThreeBFourQP` | see that macro |
+| `\resBitsMaskQwenTwoFiveThreeBSThirtyThreeBFourQP` | `--` | = `\resBitsMaskQwenLargeSThirtyThreeBFourQP` | see that macro |
+| `\resBitsSymQwenTwoFiveThreeBSThirtyThreeBFourQP` | `--` | = `\resBitsSymQwenLargeSThirtyThreeBFourQP` | see that macro |
+| `\resFreeZerosPctQwenTwoFiveThreeBSThirtyThreeBFourQP` | `--` | = `\resFreeZerosPctQwenLargeSThirtyThreeBFourQP` | see that macro |
+| `\resFlipsPctQwenTwoFiveThreeBSThirtyThreeBFourQP` | `--` | = `\resFlipsPctQwenLargeSThirtyThreeBFourQP` | see that macro |
+| `\resFlipsCWPctQwenTwoFiveThreeBSThirtyThreeBFourQP` | `--` | = `\resFlipsCWPctQwenLargeSThirtyThreeBFourQP` | see that macro |
+| `\resFlipsWCPctQwenTwoFiveThreeBSThirtyThreeBFourQP` | `--` | = `\resFlipsWCPctQwenLargeSThirtyThreeBFourQP` | see that macro |
+| `\resSrThreeQwenTwoFiveThreeBSThirtyThreeBFourQP` | `--` | = `\resSrThreeQwenLargeSThirtyThreeBFourQP` | see that macro |
+| `\resSrPaperQwenTwoFiveThreeBSThirtyThreeBFourQP` | `--` | = `\resSrPaperQwenLargeSThirtyThreeBFourQP` | see that macro |
+| `\resSrExtQwenTwoFiveThreeBSThirtyThreeBFourQP` | `--` | = `\resSrExtQwenLargeSThirtyThreeBFourQP` | see that macro |
+| `\resSrCnQwenTwoFiveThreeBSThirtyThreeBFourQP` | `--` | = `\resSrCnQwenLargeSThirtyThreeBFourQP` | see that macro |
 | `\resPplQwenTwoFiveThreeBSFiftyBFourJoint` | `--` | = `\resPplQwenLargeSFiftyBFourJoint` | see that macro |
 | `\resPplCFourQwenTwoFiveThreeBSFiftyBFourJoint` | `--` | = `\resPplCFourQwenLargeSFiftyBFourJoint` | see that macro |
 | `\resKlQwenTwoFiveThreeBSFiftyBFourJoint` | `--` | = `\resKlQwenLargeSFiftyBFourJoint` | see that macro |
@@ -4384,6 +4563,159 @@ Columns:
 | `\resSrPaperQwenTwoFiveThreeBSFiftyBFourQP` | `--` | = `\resSrPaperQwenLargeSFiftyBFourQP` | see that macro |
 | `\resSrExtQwenTwoFiveThreeBSFiftyBFourQP` | `--` | = `\resSrExtQwenLargeSFiftyBFourQP` | see that macro |
 | `\resSrCnQwenTwoFiveThreeBSFiftyBFourQP` | `--` | = `\resSrCnQwenLargeSFiftyBFourQP` | see that macro |
+| `\resPplQwenTwoFiveThreeBSTwentyFiveBThreeJoint` | `--` | = `\resPplQwenLargeSTwentyFiveBThreeJoint` | see that macro |
+| `\resPplCFourQwenTwoFiveThreeBSTwentyFiveBThreeJoint` | `--` | = `\resPplCFourQwenLargeSTwentyFiveBThreeJoint` | see that macro |
+| `\resKlQwenTwoFiveThreeBSTwentyFiveBThreeJoint` | `--` | = `\resKlQwenLargeSTwentyFiveBThreeJoint` | see that macro |
+| `\resKlCFourQwenTwoFiveThreeBSTwentyFiveBThreeJoint` | `--` | = `\resKlCFourQwenLargeSTwentyFiveBThreeJoint` | see that macro |
+| `\resTopOnePctQwenTwoFiveThreeBSTwentyFiveBThreeJoint` | `--` | = `\resTopOnePctQwenLargeSTwentyFiveBThreeJoint` | see that macro |
+| `\resTopOneCFourPctQwenTwoFiveThreeBSTwentyFiveBThreeJoint` | `--` | = `\resTopOneCFourPctQwenLargeSTwentyFiveBThreeJoint` | see that macro |
+| `\resBitsTcrQwenTwoFiveThreeBSTwentyFiveBThreeJoint` | `--` | = `\resBitsTcrQwenLargeSTwentyFiveBThreeJoint` | see that macro |
+| `\resBitsMaskQwenTwoFiveThreeBSTwentyFiveBThreeJoint` | `--` | = `\resBitsMaskQwenLargeSTwentyFiveBThreeJoint` | see that macro |
+| `\resBitsSymQwenTwoFiveThreeBSTwentyFiveBThreeJoint` | `--` | = `\resBitsSymQwenLargeSTwentyFiveBThreeJoint` | see that macro |
+| `\resFreeZerosPctQwenTwoFiveThreeBSTwentyFiveBThreeJoint` | `--` | = `\resFreeZerosPctQwenLargeSTwentyFiveBThreeJoint` | see that macro |
+| `\resFlipsPctQwenTwoFiveThreeBSTwentyFiveBThreeJoint` | `--` | = `\resFlipsPctQwenLargeSTwentyFiveBThreeJoint` | see that macro |
+| `\resFlipsCWPctQwenTwoFiveThreeBSTwentyFiveBThreeJoint` | `--` | = `\resFlipsCWPctQwenLargeSTwentyFiveBThreeJoint` | see that macro |
+| `\resFlipsWCPctQwenTwoFiveThreeBSTwentyFiveBThreeJoint` | `--` | = `\resFlipsWCPctQwenLargeSTwentyFiveBThreeJoint` | see that macro |
+| `\resSrThreeQwenTwoFiveThreeBSTwentyFiveBThreeJoint` | `--` | = `\resSrThreeQwenLargeSTwentyFiveBThreeJoint` | see that macro |
+| `\resSrPaperQwenTwoFiveThreeBSTwentyFiveBThreeJoint` | `--` | = `\resSrPaperQwenLargeSTwentyFiveBThreeJoint` | see that macro |
+| `\resSrExtQwenTwoFiveThreeBSTwentyFiveBThreeJoint` | `--` | = `\resSrExtQwenLargeSTwentyFiveBThreeJoint` | see that macro |
+| `\resSrCnQwenTwoFiveThreeBSTwentyFiveBThreeJoint` | `--` | = `\resSrCnQwenLargeSTwentyFiveBThreeJoint` | see that macro |
+| `\resPplQwenTwoFiveThreeBSTwentyFiveBThreePQ` | `--` | = `\resPplQwenLargeSTwentyFiveBThreePQ` | see that macro |
+| `\resPplCFourQwenTwoFiveThreeBSTwentyFiveBThreePQ` | `--` | = `\resPplCFourQwenLargeSTwentyFiveBThreePQ` | see that macro |
+| `\resKlQwenTwoFiveThreeBSTwentyFiveBThreePQ` | `--` | = `\resKlQwenLargeSTwentyFiveBThreePQ` | see that macro |
+| `\resKlCFourQwenTwoFiveThreeBSTwentyFiveBThreePQ` | `--` | = `\resKlCFourQwenLargeSTwentyFiveBThreePQ` | see that macro |
+| `\resTopOnePctQwenTwoFiveThreeBSTwentyFiveBThreePQ` | `--` | = `\resTopOnePctQwenLargeSTwentyFiveBThreePQ` | see that macro |
+| `\resTopOneCFourPctQwenTwoFiveThreeBSTwentyFiveBThreePQ` | `--` | = `\resTopOneCFourPctQwenLargeSTwentyFiveBThreePQ` | see that macro |
+| `\resBitsTcrQwenTwoFiveThreeBSTwentyFiveBThreePQ` | `--` | = `\resBitsTcrQwenLargeSTwentyFiveBThreePQ` | see that macro |
+| `\resBitsMaskQwenTwoFiveThreeBSTwentyFiveBThreePQ` | `--` | = `\resBitsMaskQwenLargeSTwentyFiveBThreePQ` | see that macro |
+| `\resBitsSymQwenTwoFiveThreeBSTwentyFiveBThreePQ` | `--` | = `\resBitsSymQwenLargeSTwentyFiveBThreePQ` | see that macro |
+| `\resFreeZerosPctQwenTwoFiveThreeBSTwentyFiveBThreePQ` | `--` | = `\resFreeZerosPctQwenLargeSTwentyFiveBThreePQ` | see that macro |
+| `\resFlipsPctQwenTwoFiveThreeBSTwentyFiveBThreePQ` | `--` | = `\resFlipsPctQwenLargeSTwentyFiveBThreePQ` | see that macro |
+| `\resFlipsCWPctQwenTwoFiveThreeBSTwentyFiveBThreePQ` | `--` | = `\resFlipsCWPctQwenLargeSTwentyFiveBThreePQ` | see that macro |
+| `\resFlipsWCPctQwenTwoFiveThreeBSTwentyFiveBThreePQ` | `--` | = `\resFlipsWCPctQwenLargeSTwentyFiveBThreePQ` | see that macro |
+| `\resSrThreeQwenTwoFiveThreeBSTwentyFiveBThreePQ` | `--` | = `\resSrThreeQwenLargeSTwentyFiveBThreePQ` | see that macro |
+| `\resSrPaperQwenTwoFiveThreeBSTwentyFiveBThreePQ` | `--` | = `\resSrPaperQwenLargeSTwentyFiveBThreePQ` | see that macro |
+| `\resSrExtQwenTwoFiveThreeBSTwentyFiveBThreePQ` | `--` | = `\resSrExtQwenLargeSTwentyFiveBThreePQ` | see that macro |
+| `\resSrCnQwenTwoFiveThreeBSTwentyFiveBThreePQ` | `--` | = `\resSrCnQwenLargeSTwentyFiveBThreePQ` | see that macro |
+| `\resPplQwenTwoFiveThreeBSTwentyFiveBThreeQP` | `--` | = `\resPplQwenLargeSTwentyFiveBThreeQP` | see that macro |
+| `\resPplCFourQwenTwoFiveThreeBSTwentyFiveBThreeQP` | `--` | = `\resPplCFourQwenLargeSTwentyFiveBThreeQP` | see that macro |
+| `\resKlQwenTwoFiveThreeBSTwentyFiveBThreeQP` | `--` | = `\resKlQwenLargeSTwentyFiveBThreeQP` | see that macro |
+| `\resKlCFourQwenTwoFiveThreeBSTwentyFiveBThreeQP` | `--` | = `\resKlCFourQwenLargeSTwentyFiveBThreeQP` | see that macro |
+| `\resTopOnePctQwenTwoFiveThreeBSTwentyFiveBThreeQP` | `--` | = `\resTopOnePctQwenLargeSTwentyFiveBThreeQP` | see that macro |
+| `\resTopOneCFourPctQwenTwoFiveThreeBSTwentyFiveBThreeQP` | `--` | = `\resTopOneCFourPctQwenLargeSTwentyFiveBThreeQP` | see that macro |
+| `\resBitsTcrQwenTwoFiveThreeBSTwentyFiveBThreeQP` | `--` | = `\resBitsTcrQwenLargeSTwentyFiveBThreeQP` | see that macro |
+| `\resBitsMaskQwenTwoFiveThreeBSTwentyFiveBThreeQP` | `--` | = `\resBitsMaskQwenLargeSTwentyFiveBThreeQP` | see that macro |
+| `\resBitsSymQwenTwoFiveThreeBSTwentyFiveBThreeQP` | `--` | = `\resBitsSymQwenLargeSTwentyFiveBThreeQP` | see that macro |
+| `\resFreeZerosPctQwenTwoFiveThreeBSTwentyFiveBThreeQP` | `--` | = `\resFreeZerosPctQwenLargeSTwentyFiveBThreeQP` | see that macro |
+| `\resFlipsPctQwenTwoFiveThreeBSTwentyFiveBThreeQP` | `--` | = `\resFlipsPctQwenLargeSTwentyFiveBThreeQP` | see that macro |
+| `\resFlipsCWPctQwenTwoFiveThreeBSTwentyFiveBThreeQP` | `--` | = `\resFlipsCWPctQwenLargeSTwentyFiveBThreeQP` | see that macro |
+| `\resFlipsWCPctQwenTwoFiveThreeBSTwentyFiveBThreeQP` | `--` | = `\resFlipsWCPctQwenLargeSTwentyFiveBThreeQP` | see that macro |
+| `\resSrThreeQwenTwoFiveThreeBSTwentyFiveBThreeQP` | `--` | = `\resSrThreeQwenLargeSTwentyFiveBThreeQP` | see that macro |
+| `\resSrPaperQwenTwoFiveThreeBSTwentyFiveBThreeQP` | `--` | = `\resSrPaperQwenLargeSTwentyFiveBThreeQP` | see that macro |
+| `\resSrExtQwenTwoFiveThreeBSTwentyFiveBThreeQP` | `--` | = `\resSrExtQwenLargeSTwentyFiveBThreeQP` | see that macro |
+| `\resSrCnQwenTwoFiveThreeBSTwentyFiveBThreeQP` | `--` | = `\resSrCnQwenLargeSTwentyFiveBThreeQP` | see that macro |
+| `\resPplQwenTwoFiveThreeBSThirtyThreeBThreeJoint` | `--` | = `\resPplQwenLargeSThirtyThreeBThreeJoint` | see that macro |
+| `\resPplCFourQwenTwoFiveThreeBSThirtyThreeBThreeJoint` | `--` | = `\resPplCFourQwenLargeSThirtyThreeBThreeJoint` | see that macro |
+| `\resKlQwenTwoFiveThreeBSThirtyThreeBThreeJoint` | `--` | = `\resKlQwenLargeSThirtyThreeBThreeJoint` | see that macro |
+| `\resKlCFourQwenTwoFiveThreeBSThirtyThreeBThreeJoint` | `--` | = `\resKlCFourQwenLargeSThirtyThreeBThreeJoint` | see that macro |
+| `\resTopOnePctQwenTwoFiveThreeBSThirtyThreeBThreeJoint` | `--` | = `\resTopOnePctQwenLargeSThirtyThreeBThreeJoint` | see that macro |
+| `\resTopOneCFourPctQwenTwoFiveThreeBSThirtyThreeBThreeJoint` | `--` | = `\resTopOneCFourPctQwenLargeSThirtyThreeBThreeJoint` | see that macro |
+| `\resBitsTcrQwenTwoFiveThreeBSThirtyThreeBThreeJoint` | `--` | = `\resBitsTcrQwenLargeSThirtyThreeBThreeJoint` | see that macro |
+| `\resBitsMaskQwenTwoFiveThreeBSThirtyThreeBThreeJoint` | `--` | = `\resBitsMaskQwenLargeSThirtyThreeBThreeJoint` | see that macro |
+| `\resBitsSymQwenTwoFiveThreeBSThirtyThreeBThreeJoint` | `--` | = `\resBitsSymQwenLargeSThirtyThreeBThreeJoint` | see that macro |
+| `\resFreeZerosPctQwenTwoFiveThreeBSThirtyThreeBThreeJoint` | `--` | = `\resFreeZerosPctQwenLargeSThirtyThreeBThreeJoint` | see that macro |
+| `\resFlipsPctQwenTwoFiveThreeBSThirtyThreeBThreeJoint` | `--` | = `\resFlipsPctQwenLargeSThirtyThreeBThreeJoint` | see that macro |
+| `\resFlipsCWPctQwenTwoFiveThreeBSThirtyThreeBThreeJoint` | `--` | = `\resFlipsCWPctQwenLargeSThirtyThreeBThreeJoint` | see that macro |
+| `\resFlipsWCPctQwenTwoFiveThreeBSThirtyThreeBThreeJoint` | `--` | = `\resFlipsWCPctQwenLargeSThirtyThreeBThreeJoint` | see that macro |
+| `\resSrThreeQwenTwoFiveThreeBSThirtyThreeBThreeJoint` | `--` | = `\resSrThreeQwenLargeSThirtyThreeBThreeJoint` | see that macro |
+| `\resSrPaperQwenTwoFiveThreeBSThirtyThreeBThreeJoint` | `--` | = `\resSrPaperQwenLargeSThirtyThreeBThreeJoint` | see that macro |
+| `\resSrExtQwenTwoFiveThreeBSThirtyThreeBThreeJoint` | `--` | = `\resSrExtQwenLargeSThirtyThreeBThreeJoint` | see that macro |
+| `\resSrCnQwenTwoFiveThreeBSThirtyThreeBThreeJoint` | `--` | = `\resSrCnQwenLargeSThirtyThreeBThreeJoint` | see that macro |
+| `\resPplQwenTwoFiveThreeBSThirtyThreeBThreePQ` | `--` | = `\resPplQwenLargeSThirtyThreeBThreePQ` | see that macro |
+| `\resPplCFourQwenTwoFiveThreeBSThirtyThreeBThreePQ` | `--` | = `\resPplCFourQwenLargeSThirtyThreeBThreePQ` | see that macro |
+| `\resKlQwenTwoFiveThreeBSThirtyThreeBThreePQ` | `--` | = `\resKlQwenLargeSThirtyThreeBThreePQ` | see that macro |
+| `\resKlCFourQwenTwoFiveThreeBSThirtyThreeBThreePQ` | `--` | = `\resKlCFourQwenLargeSThirtyThreeBThreePQ` | see that macro |
+| `\resTopOnePctQwenTwoFiveThreeBSThirtyThreeBThreePQ` | `--` | = `\resTopOnePctQwenLargeSThirtyThreeBThreePQ` | see that macro |
+| `\resTopOneCFourPctQwenTwoFiveThreeBSThirtyThreeBThreePQ` | `--` | = `\resTopOneCFourPctQwenLargeSThirtyThreeBThreePQ` | see that macro |
+| `\resBitsTcrQwenTwoFiveThreeBSThirtyThreeBThreePQ` | `--` | = `\resBitsTcrQwenLargeSThirtyThreeBThreePQ` | see that macro |
+| `\resBitsMaskQwenTwoFiveThreeBSThirtyThreeBThreePQ` | `--` | = `\resBitsMaskQwenLargeSThirtyThreeBThreePQ` | see that macro |
+| `\resBitsSymQwenTwoFiveThreeBSThirtyThreeBThreePQ` | `--` | = `\resBitsSymQwenLargeSThirtyThreeBThreePQ` | see that macro |
+| `\resFreeZerosPctQwenTwoFiveThreeBSThirtyThreeBThreePQ` | `--` | = `\resFreeZerosPctQwenLargeSThirtyThreeBThreePQ` | see that macro |
+| `\resFlipsPctQwenTwoFiveThreeBSThirtyThreeBThreePQ` | `--` | = `\resFlipsPctQwenLargeSThirtyThreeBThreePQ` | see that macro |
+| `\resFlipsCWPctQwenTwoFiveThreeBSThirtyThreeBThreePQ` | `--` | = `\resFlipsCWPctQwenLargeSThirtyThreeBThreePQ` | see that macro |
+| `\resFlipsWCPctQwenTwoFiveThreeBSThirtyThreeBThreePQ` | `--` | = `\resFlipsWCPctQwenLargeSThirtyThreeBThreePQ` | see that macro |
+| `\resSrThreeQwenTwoFiveThreeBSThirtyThreeBThreePQ` | `--` | = `\resSrThreeQwenLargeSThirtyThreeBThreePQ` | see that macro |
+| `\resSrPaperQwenTwoFiveThreeBSThirtyThreeBThreePQ` | `--` | = `\resSrPaperQwenLargeSThirtyThreeBThreePQ` | see that macro |
+| `\resSrExtQwenTwoFiveThreeBSThirtyThreeBThreePQ` | `--` | = `\resSrExtQwenLargeSThirtyThreeBThreePQ` | see that macro |
+| `\resSrCnQwenTwoFiveThreeBSThirtyThreeBThreePQ` | `--` | = `\resSrCnQwenLargeSThirtyThreeBThreePQ` | see that macro |
+| `\resPplQwenTwoFiveThreeBSThirtyThreeBThreeQP` | `--` | = `\resPplQwenLargeSThirtyThreeBThreeQP` | see that macro |
+| `\resPplCFourQwenTwoFiveThreeBSThirtyThreeBThreeQP` | `--` | = `\resPplCFourQwenLargeSThirtyThreeBThreeQP` | see that macro |
+| `\resKlQwenTwoFiveThreeBSThirtyThreeBThreeQP` | `--` | = `\resKlQwenLargeSThirtyThreeBThreeQP` | see that macro |
+| `\resKlCFourQwenTwoFiveThreeBSThirtyThreeBThreeQP` | `--` | = `\resKlCFourQwenLargeSThirtyThreeBThreeQP` | see that macro |
+| `\resTopOnePctQwenTwoFiveThreeBSThirtyThreeBThreeQP` | `--` | = `\resTopOnePctQwenLargeSThirtyThreeBThreeQP` | see that macro |
+| `\resTopOneCFourPctQwenTwoFiveThreeBSThirtyThreeBThreeQP` | `--` | = `\resTopOneCFourPctQwenLargeSThirtyThreeBThreeQP` | see that macro |
+| `\resBitsTcrQwenTwoFiveThreeBSThirtyThreeBThreeQP` | `--` | = `\resBitsTcrQwenLargeSThirtyThreeBThreeQP` | see that macro |
+| `\resBitsMaskQwenTwoFiveThreeBSThirtyThreeBThreeQP` | `--` | = `\resBitsMaskQwenLargeSThirtyThreeBThreeQP` | see that macro |
+| `\resBitsSymQwenTwoFiveThreeBSThirtyThreeBThreeQP` | `--` | = `\resBitsSymQwenLargeSThirtyThreeBThreeQP` | see that macro |
+| `\resFreeZerosPctQwenTwoFiveThreeBSThirtyThreeBThreeQP` | `--` | = `\resFreeZerosPctQwenLargeSThirtyThreeBThreeQP` | see that macro |
+| `\resFlipsPctQwenTwoFiveThreeBSThirtyThreeBThreeQP` | `--` | = `\resFlipsPctQwenLargeSThirtyThreeBThreeQP` | see that macro |
+| `\resFlipsCWPctQwenTwoFiveThreeBSThirtyThreeBThreeQP` | `--` | = `\resFlipsCWPctQwenLargeSThirtyThreeBThreeQP` | see that macro |
+| `\resFlipsWCPctQwenTwoFiveThreeBSThirtyThreeBThreeQP` | `--` | = `\resFlipsWCPctQwenLargeSThirtyThreeBThreeQP` | see that macro |
+| `\resSrThreeQwenTwoFiveThreeBSThirtyThreeBThreeQP` | `--` | = `\resSrThreeQwenLargeSThirtyThreeBThreeQP` | see that macro |
+| `\resSrPaperQwenTwoFiveThreeBSThirtyThreeBThreeQP` | `--` | = `\resSrPaperQwenLargeSThirtyThreeBThreeQP` | see that macro |
+| `\resSrExtQwenTwoFiveThreeBSThirtyThreeBThreeQP` | `--` | = `\resSrExtQwenLargeSThirtyThreeBThreeQP` | see that macro |
+| `\resSrCnQwenTwoFiveThreeBSThirtyThreeBThreeQP` | `--` | = `\resSrCnQwenLargeSThirtyThreeBThreeQP` | see that macro |
+| `\resPplQwenTwoFiveThreeBSFiftyBThreeJoint` | `--` | = `\resPplQwenLargeSFiftyBThreeJoint` | see that macro |
+| `\resPplCFourQwenTwoFiveThreeBSFiftyBThreeJoint` | `--` | = `\resPplCFourQwenLargeSFiftyBThreeJoint` | see that macro |
+| `\resKlQwenTwoFiveThreeBSFiftyBThreeJoint` | `--` | = `\resKlQwenLargeSFiftyBThreeJoint` | see that macro |
+| `\resKlCFourQwenTwoFiveThreeBSFiftyBThreeJoint` | `--` | = `\resKlCFourQwenLargeSFiftyBThreeJoint` | see that macro |
+| `\resTopOnePctQwenTwoFiveThreeBSFiftyBThreeJoint` | `--` | = `\resTopOnePctQwenLargeSFiftyBThreeJoint` | see that macro |
+| `\resTopOneCFourPctQwenTwoFiveThreeBSFiftyBThreeJoint` | `--` | = `\resTopOneCFourPctQwenLargeSFiftyBThreeJoint` | see that macro |
+| `\resBitsTcrQwenTwoFiveThreeBSFiftyBThreeJoint` | `--` | = `\resBitsTcrQwenLargeSFiftyBThreeJoint` | see that macro |
+| `\resBitsMaskQwenTwoFiveThreeBSFiftyBThreeJoint` | `--` | = `\resBitsMaskQwenLargeSFiftyBThreeJoint` | see that macro |
+| `\resBitsSymQwenTwoFiveThreeBSFiftyBThreeJoint` | `--` | = `\resBitsSymQwenLargeSFiftyBThreeJoint` | see that macro |
+| `\resFreeZerosPctQwenTwoFiveThreeBSFiftyBThreeJoint` | `--` | = `\resFreeZerosPctQwenLargeSFiftyBThreeJoint` | see that macro |
+| `\resFlipsPctQwenTwoFiveThreeBSFiftyBThreeJoint` | `--` | = `\resFlipsPctQwenLargeSFiftyBThreeJoint` | see that macro |
+| `\resFlipsCWPctQwenTwoFiveThreeBSFiftyBThreeJoint` | `--` | = `\resFlipsCWPctQwenLargeSFiftyBThreeJoint` | see that macro |
+| `\resFlipsWCPctQwenTwoFiveThreeBSFiftyBThreeJoint` | `--` | = `\resFlipsWCPctQwenLargeSFiftyBThreeJoint` | see that macro |
+| `\resSrThreeQwenTwoFiveThreeBSFiftyBThreeJoint` | `--` | = `\resSrThreeQwenLargeSFiftyBThreeJoint` | see that macro |
+| `\resSrPaperQwenTwoFiveThreeBSFiftyBThreeJoint` | `--` | = `\resSrPaperQwenLargeSFiftyBThreeJoint` | see that macro |
+| `\resSrExtQwenTwoFiveThreeBSFiftyBThreeJoint` | `--` | = `\resSrExtQwenLargeSFiftyBThreeJoint` | see that macro |
+| `\resSrCnQwenTwoFiveThreeBSFiftyBThreeJoint` | `--` | = `\resSrCnQwenLargeSFiftyBThreeJoint` | see that macro |
+| `\resPplQwenTwoFiveThreeBSFiftyBThreePQ` | `--` | = `\resPplQwenLargeSFiftyBThreePQ` | see that macro |
+| `\resPplCFourQwenTwoFiveThreeBSFiftyBThreePQ` | `--` | = `\resPplCFourQwenLargeSFiftyBThreePQ` | see that macro |
+| `\resKlQwenTwoFiveThreeBSFiftyBThreePQ` | `--` | = `\resKlQwenLargeSFiftyBThreePQ` | see that macro |
+| `\resKlCFourQwenTwoFiveThreeBSFiftyBThreePQ` | `--` | = `\resKlCFourQwenLargeSFiftyBThreePQ` | see that macro |
+| `\resTopOnePctQwenTwoFiveThreeBSFiftyBThreePQ` | `--` | = `\resTopOnePctQwenLargeSFiftyBThreePQ` | see that macro |
+| `\resTopOneCFourPctQwenTwoFiveThreeBSFiftyBThreePQ` | `--` | = `\resTopOneCFourPctQwenLargeSFiftyBThreePQ` | see that macro |
+| `\resBitsTcrQwenTwoFiveThreeBSFiftyBThreePQ` | `--` | = `\resBitsTcrQwenLargeSFiftyBThreePQ` | see that macro |
+| `\resBitsMaskQwenTwoFiveThreeBSFiftyBThreePQ` | `--` | = `\resBitsMaskQwenLargeSFiftyBThreePQ` | see that macro |
+| `\resBitsSymQwenTwoFiveThreeBSFiftyBThreePQ` | `--` | = `\resBitsSymQwenLargeSFiftyBThreePQ` | see that macro |
+| `\resFreeZerosPctQwenTwoFiveThreeBSFiftyBThreePQ` | `--` | = `\resFreeZerosPctQwenLargeSFiftyBThreePQ` | see that macro |
+| `\resFlipsPctQwenTwoFiveThreeBSFiftyBThreePQ` | `--` | = `\resFlipsPctQwenLargeSFiftyBThreePQ` | see that macro |
+| `\resFlipsCWPctQwenTwoFiveThreeBSFiftyBThreePQ` | `--` | = `\resFlipsCWPctQwenLargeSFiftyBThreePQ` | see that macro |
+| `\resFlipsWCPctQwenTwoFiveThreeBSFiftyBThreePQ` | `--` | = `\resFlipsWCPctQwenLargeSFiftyBThreePQ` | see that macro |
+| `\resSrThreeQwenTwoFiveThreeBSFiftyBThreePQ` | `--` | = `\resSrThreeQwenLargeSFiftyBThreePQ` | see that macro |
+| `\resSrPaperQwenTwoFiveThreeBSFiftyBThreePQ` | `--` | = `\resSrPaperQwenLargeSFiftyBThreePQ` | see that macro |
+| `\resSrExtQwenTwoFiveThreeBSFiftyBThreePQ` | `--` | = `\resSrExtQwenLargeSFiftyBThreePQ` | see that macro |
+| `\resSrCnQwenTwoFiveThreeBSFiftyBThreePQ` | `--` | = `\resSrCnQwenLargeSFiftyBThreePQ` | see that macro |
+| `\resPplQwenTwoFiveThreeBSFiftyBThreeQP` | `--` | = `\resPplQwenLargeSFiftyBThreeQP` | see that macro |
+| `\resPplCFourQwenTwoFiveThreeBSFiftyBThreeQP` | `--` | = `\resPplCFourQwenLargeSFiftyBThreeQP` | see that macro |
+| `\resKlQwenTwoFiveThreeBSFiftyBThreeQP` | `--` | = `\resKlQwenLargeSFiftyBThreeQP` | see that macro |
+| `\resKlCFourQwenTwoFiveThreeBSFiftyBThreeQP` | `--` | = `\resKlCFourQwenLargeSFiftyBThreeQP` | see that macro |
+| `\resTopOnePctQwenTwoFiveThreeBSFiftyBThreeQP` | `--` | = `\resTopOnePctQwenLargeSFiftyBThreeQP` | see that macro |
+| `\resTopOneCFourPctQwenTwoFiveThreeBSFiftyBThreeQP` | `--` | = `\resTopOneCFourPctQwenLargeSFiftyBThreeQP` | see that macro |
+| `\resBitsTcrQwenTwoFiveThreeBSFiftyBThreeQP` | `--` | = `\resBitsTcrQwenLargeSFiftyBThreeQP` | see that macro |
+| `\resBitsMaskQwenTwoFiveThreeBSFiftyBThreeQP` | `--` | = `\resBitsMaskQwenLargeSFiftyBThreeQP` | see that macro |
+| `\resBitsSymQwenTwoFiveThreeBSFiftyBThreeQP` | `--` | = `\resBitsSymQwenLargeSFiftyBThreeQP` | see that macro |
+| `\resFreeZerosPctQwenTwoFiveThreeBSFiftyBThreeQP` | `--` | = `\resFreeZerosPctQwenLargeSFiftyBThreeQP` | see that macro |
+| `\resFlipsPctQwenTwoFiveThreeBSFiftyBThreeQP` | `--` | = `\resFlipsPctQwenLargeSFiftyBThreeQP` | see that macro |
+| `\resFlipsCWPctQwenTwoFiveThreeBSFiftyBThreeQP` | `--` | = `\resFlipsCWPctQwenLargeSFiftyBThreeQP` | see that macro |
+| `\resFlipsWCPctQwenTwoFiveThreeBSFiftyBThreeQP` | `--` | = `\resFlipsWCPctQwenLargeSFiftyBThreeQP` | see that macro |
+| `\resSrThreeQwenTwoFiveThreeBSFiftyBThreeQP` | `--` | = `\resSrThreeQwenLargeSFiftyBThreeQP` | see that macro |
+| `\resSrPaperQwenTwoFiveThreeBSFiftyBThreeQP` | `--` | = `\resSrPaperQwenLargeSFiftyBThreeQP` | see that macro |
+| `\resSrExtQwenTwoFiveThreeBSFiftyBThreeQP` | `--` | = `\resSrExtQwenLargeSFiftyBThreeQP` | see that macro |
+| `\resSrCnQwenTwoFiveThreeBSFiftyBThreeQP` | `--` | = `\resSrCnQwenLargeSFiftyBThreeQP` | see that macro |
 | `\resISrThreeQwenTwoFiveThreeBSTwentyFiveBFourJoint` | `--` | = `\resISrThreeQwenLargeSTwentyFiveBFourJoint` | see that macro |
 | `\resISrThreeLoQwenTwoFiveThreeBSTwentyFiveBFourJoint` | `--` | = `\resISrThreeLoQwenLargeSTwentyFiveBFourJoint` | see that macro |
 | `\resISrThreeHiQwenTwoFiveThreeBSTwentyFiveBFourJoint` | `--` | = `\resISrThreeHiQwenLargeSTwentyFiveBFourJoint` | see that macro |
@@ -4420,6 +4752,42 @@ Columns:
 | `\resISrCnQwenTwoFiveThreeBSTwentyFiveBFourQP` | `--` | = `\resISrCnQwenLargeSTwentyFiveBFourQP` | see that macro |
 | `\resISrCnLoQwenTwoFiveThreeBSTwentyFiveBFourQP` | `--` | = `\resISrCnLoQwenLargeSTwentyFiveBFourQP` | see that macro |
 | `\resISrCnHiQwenTwoFiveThreeBSTwentyFiveBFourQP` | `--` | = `\resISrCnHiQwenLargeSTwentyFiveBFourQP` | see that macro |
+| `\resISrThreeQwenTwoFiveThreeBSThirtyThreeBFourJoint` | `--` | = `\resISrThreeQwenLargeSThirtyThreeBFourJoint` | see that macro |
+| `\resISrThreeLoQwenTwoFiveThreeBSThirtyThreeBFourJoint` | `--` | = `\resISrThreeLoQwenLargeSThirtyThreeBFourJoint` | see that macro |
+| `\resISrThreeHiQwenTwoFiveThreeBSThirtyThreeBFourJoint` | `--` | = `\resISrThreeHiQwenLargeSThirtyThreeBFourJoint` | see that macro |
+| `\resISrPaperQwenTwoFiveThreeBSThirtyThreeBFourJoint` | `--` | = `\resISrPaperQwenLargeSThirtyThreeBFourJoint` | see that macro |
+| `\resISrPaperLoQwenTwoFiveThreeBSThirtyThreeBFourJoint` | `--` | = `\resISrPaperLoQwenLargeSThirtyThreeBFourJoint` | see that macro |
+| `\resISrPaperHiQwenTwoFiveThreeBSThirtyThreeBFourJoint` | `--` | = `\resISrPaperHiQwenLargeSThirtyThreeBFourJoint` | see that macro |
+| `\resISrExtQwenTwoFiveThreeBSThirtyThreeBFourJoint` | `--` | = `\resISrExtQwenLargeSThirtyThreeBFourJoint` | see that macro |
+| `\resISrExtLoQwenTwoFiveThreeBSThirtyThreeBFourJoint` | `--` | = `\resISrExtLoQwenLargeSThirtyThreeBFourJoint` | see that macro |
+| `\resISrExtHiQwenTwoFiveThreeBSThirtyThreeBFourJoint` | `--` | = `\resISrExtHiQwenLargeSThirtyThreeBFourJoint` | see that macro |
+| `\resISrCnQwenTwoFiveThreeBSThirtyThreeBFourJoint` | `--` | = `\resISrCnQwenLargeSThirtyThreeBFourJoint` | see that macro |
+| `\resISrCnLoQwenTwoFiveThreeBSThirtyThreeBFourJoint` | `--` | = `\resISrCnLoQwenLargeSThirtyThreeBFourJoint` | see that macro |
+| `\resISrCnHiQwenTwoFiveThreeBSThirtyThreeBFourJoint` | `--` | = `\resISrCnHiQwenLargeSThirtyThreeBFourJoint` | see that macro |
+| `\resISrThreeQwenTwoFiveThreeBSThirtyThreeBFourPQ` | `--` | = `\resISrThreeQwenLargeSThirtyThreeBFourPQ` | see that macro |
+| `\resISrThreeLoQwenTwoFiveThreeBSThirtyThreeBFourPQ` | `--` | = `\resISrThreeLoQwenLargeSThirtyThreeBFourPQ` | see that macro |
+| `\resISrThreeHiQwenTwoFiveThreeBSThirtyThreeBFourPQ` | `--` | = `\resISrThreeHiQwenLargeSThirtyThreeBFourPQ` | see that macro |
+| `\resISrPaperQwenTwoFiveThreeBSThirtyThreeBFourPQ` | `--` | = `\resISrPaperQwenLargeSThirtyThreeBFourPQ` | see that macro |
+| `\resISrPaperLoQwenTwoFiveThreeBSThirtyThreeBFourPQ` | `--` | = `\resISrPaperLoQwenLargeSThirtyThreeBFourPQ` | see that macro |
+| `\resISrPaperHiQwenTwoFiveThreeBSThirtyThreeBFourPQ` | `--` | = `\resISrPaperHiQwenLargeSThirtyThreeBFourPQ` | see that macro |
+| `\resISrExtQwenTwoFiveThreeBSThirtyThreeBFourPQ` | `--` | = `\resISrExtQwenLargeSThirtyThreeBFourPQ` | see that macro |
+| `\resISrExtLoQwenTwoFiveThreeBSThirtyThreeBFourPQ` | `--` | = `\resISrExtLoQwenLargeSThirtyThreeBFourPQ` | see that macro |
+| `\resISrExtHiQwenTwoFiveThreeBSThirtyThreeBFourPQ` | `--` | = `\resISrExtHiQwenLargeSThirtyThreeBFourPQ` | see that macro |
+| `\resISrCnQwenTwoFiveThreeBSThirtyThreeBFourPQ` | `--` | = `\resISrCnQwenLargeSThirtyThreeBFourPQ` | see that macro |
+| `\resISrCnLoQwenTwoFiveThreeBSThirtyThreeBFourPQ` | `--` | = `\resISrCnLoQwenLargeSThirtyThreeBFourPQ` | see that macro |
+| `\resISrCnHiQwenTwoFiveThreeBSThirtyThreeBFourPQ` | `--` | = `\resISrCnHiQwenLargeSThirtyThreeBFourPQ` | see that macro |
+| `\resISrThreeQwenTwoFiveThreeBSThirtyThreeBFourQP` | `--` | = `\resISrThreeQwenLargeSThirtyThreeBFourQP` | see that macro |
+| `\resISrThreeLoQwenTwoFiveThreeBSThirtyThreeBFourQP` | `--` | = `\resISrThreeLoQwenLargeSThirtyThreeBFourQP` | see that macro |
+| `\resISrThreeHiQwenTwoFiveThreeBSThirtyThreeBFourQP` | `--` | = `\resISrThreeHiQwenLargeSThirtyThreeBFourQP` | see that macro |
+| `\resISrPaperQwenTwoFiveThreeBSThirtyThreeBFourQP` | `--` | = `\resISrPaperQwenLargeSThirtyThreeBFourQP` | see that macro |
+| `\resISrPaperLoQwenTwoFiveThreeBSThirtyThreeBFourQP` | `--` | = `\resISrPaperLoQwenLargeSThirtyThreeBFourQP` | see that macro |
+| `\resISrPaperHiQwenTwoFiveThreeBSThirtyThreeBFourQP` | `--` | = `\resISrPaperHiQwenLargeSThirtyThreeBFourQP` | see that macro |
+| `\resISrExtQwenTwoFiveThreeBSThirtyThreeBFourQP` | `--` | = `\resISrExtQwenLargeSThirtyThreeBFourQP` | see that macro |
+| `\resISrExtLoQwenTwoFiveThreeBSThirtyThreeBFourQP` | `--` | = `\resISrExtLoQwenLargeSThirtyThreeBFourQP` | see that macro |
+| `\resISrExtHiQwenTwoFiveThreeBSThirtyThreeBFourQP` | `--` | = `\resISrExtHiQwenLargeSThirtyThreeBFourQP` | see that macro |
+| `\resISrCnQwenTwoFiveThreeBSThirtyThreeBFourQP` | `--` | = `\resISrCnQwenLargeSThirtyThreeBFourQP` | see that macro |
+| `\resISrCnLoQwenTwoFiveThreeBSThirtyThreeBFourQP` | `--` | = `\resISrCnLoQwenLargeSThirtyThreeBFourQP` | see that macro |
+| `\resISrCnHiQwenTwoFiveThreeBSThirtyThreeBFourQP` | `--` | = `\resISrCnHiQwenLargeSThirtyThreeBFourQP` | see that macro |
 | `\resISrThreeQwenTwoFiveThreeBSFiftyBFourJoint` | `--` | = `\resISrThreeQwenLargeSFiftyBFourJoint` | see that macro |
 | `\resISrThreeLoQwenTwoFiveThreeBSFiftyBFourJoint` | `--` | = `\resISrThreeLoQwenLargeSFiftyBFourJoint` | see that macro |
 | `\resISrThreeHiQwenTwoFiveThreeBSFiftyBFourJoint` | `--` | = `\resISrThreeHiQwenLargeSFiftyBFourJoint` | see that macro |
@@ -4456,6 +4824,114 @@ Columns:
 | `\resISrCnQwenTwoFiveThreeBSFiftyBFourQP` | `--` | = `\resISrCnQwenLargeSFiftyBFourQP` | see that macro |
 | `\resISrCnLoQwenTwoFiveThreeBSFiftyBFourQP` | `--` | = `\resISrCnLoQwenLargeSFiftyBFourQP` | see that macro |
 | `\resISrCnHiQwenTwoFiveThreeBSFiftyBFourQP` | `--` | = `\resISrCnHiQwenLargeSFiftyBFourQP` | see that macro |
+| `\resISrThreeQwenTwoFiveThreeBSTwentyFiveBThreeJoint` | `--` | = `\resISrThreeQwenLargeSTwentyFiveBThreeJoint` | see that macro |
+| `\resISrThreeLoQwenTwoFiveThreeBSTwentyFiveBThreeJoint` | `--` | = `\resISrThreeLoQwenLargeSTwentyFiveBThreeJoint` | see that macro |
+| `\resISrThreeHiQwenTwoFiveThreeBSTwentyFiveBThreeJoint` | `--` | = `\resISrThreeHiQwenLargeSTwentyFiveBThreeJoint` | see that macro |
+| `\resISrPaperQwenTwoFiveThreeBSTwentyFiveBThreeJoint` | `--` | = `\resISrPaperQwenLargeSTwentyFiveBThreeJoint` | see that macro |
+| `\resISrPaperLoQwenTwoFiveThreeBSTwentyFiveBThreeJoint` | `--` | = `\resISrPaperLoQwenLargeSTwentyFiveBThreeJoint` | see that macro |
+| `\resISrPaperHiQwenTwoFiveThreeBSTwentyFiveBThreeJoint` | `--` | = `\resISrPaperHiQwenLargeSTwentyFiveBThreeJoint` | see that macro |
+| `\resISrExtQwenTwoFiveThreeBSTwentyFiveBThreeJoint` | `--` | = `\resISrExtQwenLargeSTwentyFiveBThreeJoint` | see that macro |
+| `\resISrExtLoQwenTwoFiveThreeBSTwentyFiveBThreeJoint` | `--` | = `\resISrExtLoQwenLargeSTwentyFiveBThreeJoint` | see that macro |
+| `\resISrExtHiQwenTwoFiveThreeBSTwentyFiveBThreeJoint` | `--` | = `\resISrExtHiQwenLargeSTwentyFiveBThreeJoint` | see that macro |
+| `\resISrCnQwenTwoFiveThreeBSTwentyFiveBThreeJoint` | `--` | = `\resISrCnQwenLargeSTwentyFiveBThreeJoint` | see that macro |
+| `\resISrCnLoQwenTwoFiveThreeBSTwentyFiveBThreeJoint` | `--` | = `\resISrCnLoQwenLargeSTwentyFiveBThreeJoint` | see that macro |
+| `\resISrCnHiQwenTwoFiveThreeBSTwentyFiveBThreeJoint` | `--` | = `\resISrCnHiQwenLargeSTwentyFiveBThreeJoint` | see that macro |
+| `\resISrThreeQwenTwoFiveThreeBSTwentyFiveBThreePQ` | `--` | = `\resISrThreeQwenLargeSTwentyFiveBThreePQ` | see that macro |
+| `\resISrThreeLoQwenTwoFiveThreeBSTwentyFiveBThreePQ` | `--` | = `\resISrThreeLoQwenLargeSTwentyFiveBThreePQ` | see that macro |
+| `\resISrThreeHiQwenTwoFiveThreeBSTwentyFiveBThreePQ` | `--` | = `\resISrThreeHiQwenLargeSTwentyFiveBThreePQ` | see that macro |
+| `\resISrPaperQwenTwoFiveThreeBSTwentyFiveBThreePQ` | `--` | = `\resISrPaperQwenLargeSTwentyFiveBThreePQ` | see that macro |
+| `\resISrPaperLoQwenTwoFiveThreeBSTwentyFiveBThreePQ` | `--` | = `\resISrPaperLoQwenLargeSTwentyFiveBThreePQ` | see that macro |
+| `\resISrPaperHiQwenTwoFiveThreeBSTwentyFiveBThreePQ` | `--` | = `\resISrPaperHiQwenLargeSTwentyFiveBThreePQ` | see that macro |
+| `\resISrExtQwenTwoFiveThreeBSTwentyFiveBThreePQ` | `--` | = `\resISrExtQwenLargeSTwentyFiveBThreePQ` | see that macro |
+| `\resISrExtLoQwenTwoFiveThreeBSTwentyFiveBThreePQ` | `--` | = `\resISrExtLoQwenLargeSTwentyFiveBThreePQ` | see that macro |
+| `\resISrExtHiQwenTwoFiveThreeBSTwentyFiveBThreePQ` | `--` | = `\resISrExtHiQwenLargeSTwentyFiveBThreePQ` | see that macro |
+| `\resISrCnQwenTwoFiveThreeBSTwentyFiveBThreePQ` | `--` | = `\resISrCnQwenLargeSTwentyFiveBThreePQ` | see that macro |
+| `\resISrCnLoQwenTwoFiveThreeBSTwentyFiveBThreePQ` | `--` | = `\resISrCnLoQwenLargeSTwentyFiveBThreePQ` | see that macro |
+| `\resISrCnHiQwenTwoFiveThreeBSTwentyFiveBThreePQ` | `--` | = `\resISrCnHiQwenLargeSTwentyFiveBThreePQ` | see that macro |
+| `\resISrThreeQwenTwoFiveThreeBSTwentyFiveBThreeQP` | `--` | = `\resISrThreeQwenLargeSTwentyFiveBThreeQP` | see that macro |
+| `\resISrThreeLoQwenTwoFiveThreeBSTwentyFiveBThreeQP` | `--` | = `\resISrThreeLoQwenLargeSTwentyFiveBThreeQP` | see that macro |
+| `\resISrThreeHiQwenTwoFiveThreeBSTwentyFiveBThreeQP` | `--` | = `\resISrThreeHiQwenLargeSTwentyFiveBThreeQP` | see that macro |
+| `\resISrPaperQwenTwoFiveThreeBSTwentyFiveBThreeQP` | `--` | = `\resISrPaperQwenLargeSTwentyFiveBThreeQP` | see that macro |
+| `\resISrPaperLoQwenTwoFiveThreeBSTwentyFiveBThreeQP` | `--` | = `\resISrPaperLoQwenLargeSTwentyFiveBThreeQP` | see that macro |
+| `\resISrPaperHiQwenTwoFiveThreeBSTwentyFiveBThreeQP` | `--` | = `\resISrPaperHiQwenLargeSTwentyFiveBThreeQP` | see that macro |
+| `\resISrExtQwenTwoFiveThreeBSTwentyFiveBThreeQP` | `--` | = `\resISrExtQwenLargeSTwentyFiveBThreeQP` | see that macro |
+| `\resISrExtLoQwenTwoFiveThreeBSTwentyFiveBThreeQP` | `--` | = `\resISrExtLoQwenLargeSTwentyFiveBThreeQP` | see that macro |
+| `\resISrExtHiQwenTwoFiveThreeBSTwentyFiveBThreeQP` | `--` | = `\resISrExtHiQwenLargeSTwentyFiveBThreeQP` | see that macro |
+| `\resISrCnQwenTwoFiveThreeBSTwentyFiveBThreeQP` | `--` | = `\resISrCnQwenLargeSTwentyFiveBThreeQP` | see that macro |
+| `\resISrCnLoQwenTwoFiveThreeBSTwentyFiveBThreeQP` | `--` | = `\resISrCnLoQwenLargeSTwentyFiveBThreeQP` | see that macro |
+| `\resISrCnHiQwenTwoFiveThreeBSTwentyFiveBThreeQP` | `--` | = `\resISrCnHiQwenLargeSTwentyFiveBThreeQP` | see that macro |
+| `\resISrThreeQwenTwoFiveThreeBSThirtyThreeBThreeJoint` | `--` | = `\resISrThreeQwenLargeSThirtyThreeBThreeJoint` | see that macro |
+| `\resISrThreeLoQwenTwoFiveThreeBSThirtyThreeBThreeJoint` | `--` | = `\resISrThreeLoQwenLargeSThirtyThreeBThreeJoint` | see that macro |
+| `\resISrThreeHiQwenTwoFiveThreeBSThirtyThreeBThreeJoint` | `--` | = `\resISrThreeHiQwenLargeSThirtyThreeBThreeJoint` | see that macro |
+| `\resISrPaperQwenTwoFiveThreeBSThirtyThreeBThreeJoint` | `--` | = `\resISrPaperQwenLargeSThirtyThreeBThreeJoint` | see that macro |
+| `\resISrPaperLoQwenTwoFiveThreeBSThirtyThreeBThreeJoint` | `--` | = `\resISrPaperLoQwenLargeSThirtyThreeBThreeJoint` | see that macro |
+| `\resISrPaperHiQwenTwoFiveThreeBSThirtyThreeBThreeJoint` | `--` | = `\resISrPaperHiQwenLargeSThirtyThreeBThreeJoint` | see that macro |
+| `\resISrExtQwenTwoFiveThreeBSThirtyThreeBThreeJoint` | `--` | = `\resISrExtQwenLargeSThirtyThreeBThreeJoint` | see that macro |
+| `\resISrExtLoQwenTwoFiveThreeBSThirtyThreeBThreeJoint` | `--` | = `\resISrExtLoQwenLargeSThirtyThreeBThreeJoint` | see that macro |
+| `\resISrExtHiQwenTwoFiveThreeBSThirtyThreeBThreeJoint` | `--` | = `\resISrExtHiQwenLargeSThirtyThreeBThreeJoint` | see that macro |
+| `\resISrCnQwenTwoFiveThreeBSThirtyThreeBThreeJoint` | `--` | = `\resISrCnQwenLargeSThirtyThreeBThreeJoint` | see that macro |
+| `\resISrCnLoQwenTwoFiveThreeBSThirtyThreeBThreeJoint` | `--` | = `\resISrCnLoQwenLargeSThirtyThreeBThreeJoint` | see that macro |
+| `\resISrCnHiQwenTwoFiveThreeBSThirtyThreeBThreeJoint` | `--` | = `\resISrCnHiQwenLargeSThirtyThreeBThreeJoint` | see that macro |
+| `\resISrThreeQwenTwoFiveThreeBSThirtyThreeBThreePQ` | `--` | = `\resISrThreeQwenLargeSThirtyThreeBThreePQ` | see that macro |
+| `\resISrThreeLoQwenTwoFiveThreeBSThirtyThreeBThreePQ` | `--` | = `\resISrThreeLoQwenLargeSThirtyThreeBThreePQ` | see that macro |
+| `\resISrThreeHiQwenTwoFiveThreeBSThirtyThreeBThreePQ` | `--` | = `\resISrThreeHiQwenLargeSThirtyThreeBThreePQ` | see that macro |
+| `\resISrPaperQwenTwoFiveThreeBSThirtyThreeBThreePQ` | `--` | = `\resISrPaperQwenLargeSThirtyThreeBThreePQ` | see that macro |
+| `\resISrPaperLoQwenTwoFiveThreeBSThirtyThreeBThreePQ` | `--` | = `\resISrPaperLoQwenLargeSThirtyThreeBThreePQ` | see that macro |
+| `\resISrPaperHiQwenTwoFiveThreeBSThirtyThreeBThreePQ` | `--` | = `\resISrPaperHiQwenLargeSThirtyThreeBThreePQ` | see that macro |
+| `\resISrExtQwenTwoFiveThreeBSThirtyThreeBThreePQ` | `--` | = `\resISrExtQwenLargeSThirtyThreeBThreePQ` | see that macro |
+| `\resISrExtLoQwenTwoFiveThreeBSThirtyThreeBThreePQ` | `--` | = `\resISrExtLoQwenLargeSThirtyThreeBThreePQ` | see that macro |
+| `\resISrExtHiQwenTwoFiveThreeBSThirtyThreeBThreePQ` | `--` | = `\resISrExtHiQwenLargeSThirtyThreeBThreePQ` | see that macro |
+| `\resISrCnQwenTwoFiveThreeBSThirtyThreeBThreePQ` | `--` | = `\resISrCnQwenLargeSThirtyThreeBThreePQ` | see that macro |
+| `\resISrCnLoQwenTwoFiveThreeBSThirtyThreeBThreePQ` | `--` | = `\resISrCnLoQwenLargeSThirtyThreeBThreePQ` | see that macro |
+| `\resISrCnHiQwenTwoFiveThreeBSThirtyThreeBThreePQ` | `--` | = `\resISrCnHiQwenLargeSThirtyThreeBThreePQ` | see that macro |
+| `\resISrThreeQwenTwoFiveThreeBSThirtyThreeBThreeQP` | `--` | = `\resISrThreeQwenLargeSThirtyThreeBThreeQP` | see that macro |
+| `\resISrThreeLoQwenTwoFiveThreeBSThirtyThreeBThreeQP` | `--` | = `\resISrThreeLoQwenLargeSThirtyThreeBThreeQP` | see that macro |
+| `\resISrThreeHiQwenTwoFiveThreeBSThirtyThreeBThreeQP` | `--` | = `\resISrThreeHiQwenLargeSThirtyThreeBThreeQP` | see that macro |
+| `\resISrPaperQwenTwoFiveThreeBSThirtyThreeBThreeQP` | `--` | = `\resISrPaperQwenLargeSThirtyThreeBThreeQP` | see that macro |
+| `\resISrPaperLoQwenTwoFiveThreeBSThirtyThreeBThreeQP` | `--` | = `\resISrPaperLoQwenLargeSThirtyThreeBThreeQP` | see that macro |
+| `\resISrPaperHiQwenTwoFiveThreeBSThirtyThreeBThreeQP` | `--` | = `\resISrPaperHiQwenLargeSThirtyThreeBThreeQP` | see that macro |
+| `\resISrExtQwenTwoFiveThreeBSThirtyThreeBThreeQP` | `--` | = `\resISrExtQwenLargeSThirtyThreeBThreeQP` | see that macro |
+| `\resISrExtLoQwenTwoFiveThreeBSThirtyThreeBThreeQP` | `--` | = `\resISrExtLoQwenLargeSThirtyThreeBThreeQP` | see that macro |
+| `\resISrExtHiQwenTwoFiveThreeBSThirtyThreeBThreeQP` | `--` | = `\resISrExtHiQwenLargeSThirtyThreeBThreeQP` | see that macro |
+| `\resISrCnQwenTwoFiveThreeBSThirtyThreeBThreeQP` | `--` | = `\resISrCnQwenLargeSThirtyThreeBThreeQP` | see that macro |
+| `\resISrCnLoQwenTwoFiveThreeBSThirtyThreeBThreeQP` | `--` | = `\resISrCnLoQwenLargeSThirtyThreeBThreeQP` | see that macro |
+| `\resISrCnHiQwenTwoFiveThreeBSThirtyThreeBThreeQP` | `--` | = `\resISrCnHiQwenLargeSThirtyThreeBThreeQP` | see that macro |
+| `\resISrThreeQwenTwoFiveThreeBSFiftyBThreeJoint` | `--` | = `\resISrThreeQwenLargeSFiftyBThreeJoint` | see that macro |
+| `\resISrThreeLoQwenTwoFiveThreeBSFiftyBThreeJoint` | `--` | = `\resISrThreeLoQwenLargeSFiftyBThreeJoint` | see that macro |
+| `\resISrThreeHiQwenTwoFiveThreeBSFiftyBThreeJoint` | `--` | = `\resISrThreeHiQwenLargeSFiftyBThreeJoint` | see that macro |
+| `\resISrPaperQwenTwoFiveThreeBSFiftyBThreeJoint` | `--` | = `\resISrPaperQwenLargeSFiftyBThreeJoint` | see that macro |
+| `\resISrPaperLoQwenTwoFiveThreeBSFiftyBThreeJoint` | `--` | = `\resISrPaperLoQwenLargeSFiftyBThreeJoint` | see that macro |
+| `\resISrPaperHiQwenTwoFiveThreeBSFiftyBThreeJoint` | `--` | = `\resISrPaperHiQwenLargeSFiftyBThreeJoint` | see that macro |
+| `\resISrExtQwenTwoFiveThreeBSFiftyBThreeJoint` | `--` | = `\resISrExtQwenLargeSFiftyBThreeJoint` | see that macro |
+| `\resISrExtLoQwenTwoFiveThreeBSFiftyBThreeJoint` | `--` | = `\resISrExtLoQwenLargeSFiftyBThreeJoint` | see that macro |
+| `\resISrExtHiQwenTwoFiveThreeBSFiftyBThreeJoint` | `--` | = `\resISrExtHiQwenLargeSFiftyBThreeJoint` | see that macro |
+| `\resISrCnQwenTwoFiveThreeBSFiftyBThreeJoint` | `--` | = `\resISrCnQwenLargeSFiftyBThreeJoint` | see that macro |
+| `\resISrCnLoQwenTwoFiveThreeBSFiftyBThreeJoint` | `--` | = `\resISrCnLoQwenLargeSFiftyBThreeJoint` | see that macro |
+| `\resISrCnHiQwenTwoFiveThreeBSFiftyBThreeJoint` | `--` | = `\resISrCnHiQwenLargeSFiftyBThreeJoint` | see that macro |
+| `\resISrThreeQwenTwoFiveThreeBSFiftyBThreePQ` | `--` | = `\resISrThreeQwenLargeSFiftyBThreePQ` | see that macro |
+| `\resISrThreeLoQwenTwoFiveThreeBSFiftyBThreePQ` | `--` | = `\resISrThreeLoQwenLargeSFiftyBThreePQ` | see that macro |
+| `\resISrThreeHiQwenTwoFiveThreeBSFiftyBThreePQ` | `--` | = `\resISrThreeHiQwenLargeSFiftyBThreePQ` | see that macro |
+| `\resISrPaperQwenTwoFiveThreeBSFiftyBThreePQ` | `--` | = `\resISrPaperQwenLargeSFiftyBThreePQ` | see that macro |
+| `\resISrPaperLoQwenTwoFiveThreeBSFiftyBThreePQ` | `--` | = `\resISrPaperLoQwenLargeSFiftyBThreePQ` | see that macro |
+| `\resISrPaperHiQwenTwoFiveThreeBSFiftyBThreePQ` | `--` | = `\resISrPaperHiQwenLargeSFiftyBThreePQ` | see that macro |
+| `\resISrExtQwenTwoFiveThreeBSFiftyBThreePQ` | `--` | = `\resISrExtQwenLargeSFiftyBThreePQ` | see that macro |
+| `\resISrExtLoQwenTwoFiveThreeBSFiftyBThreePQ` | `--` | = `\resISrExtLoQwenLargeSFiftyBThreePQ` | see that macro |
+| `\resISrExtHiQwenTwoFiveThreeBSFiftyBThreePQ` | `--` | = `\resISrExtHiQwenLargeSFiftyBThreePQ` | see that macro |
+| `\resISrCnQwenTwoFiveThreeBSFiftyBThreePQ` | `--` | = `\resISrCnQwenLargeSFiftyBThreePQ` | see that macro |
+| `\resISrCnLoQwenTwoFiveThreeBSFiftyBThreePQ` | `--` | = `\resISrCnLoQwenLargeSFiftyBThreePQ` | see that macro |
+| `\resISrCnHiQwenTwoFiveThreeBSFiftyBThreePQ` | `--` | = `\resISrCnHiQwenLargeSFiftyBThreePQ` | see that macro |
+| `\resISrThreeQwenTwoFiveThreeBSFiftyBThreeQP` | `--` | = `\resISrThreeQwenLargeSFiftyBThreeQP` | see that macro |
+| `\resISrThreeLoQwenTwoFiveThreeBSFiftyBThreeQP` | `--` | = `\resISrThreeLoQwenLargeSFiftyBThreeQP` | see that macro |
+| `\resISrThreeHiQwenTwoFiveThreeBSFiftyBThreeQP` | `--` | = `\resISrThreeHiQwenLargeSFiftyBThreeQP` | see that macro |
+| `\resISrPaperQwenTwoFiveThreeBSFiftyBThreeQP` | `--` | = `\resISrPaperQwenLargeSFiftyBThreeQP` | see that macro |
+| `\resISrPaperLoQwenTwoFiveThreeBSFiftyBThreeQP` | `--` | = `\resISrPaperLoQwenLargeSFiftyBThreeQP` | see that macro |
+| `\resISrPaperHiQwenTwoFiveThreeBSFiftyBThreeQP` | `--` | = `\resISrPaperHiQwenLargeSFiftyBThreeQP` | see that macro |
+| `\resISrExtQwenTwoFiveThreeBSFiftyBThreeQP` | `--` | = `\resISrExtQwenLargeSFiftyBThreeQP` | see that macro |
+| `\resISrExtLoQwenTwoFiveThreeBSFiftyBThreeQP` | `--` | = `\resISrExtLoQwenLargeSFiftyBThreeQP` | see that macro |
+| `\resISrExtHiQwenTwoFiveThreeBSFiftyBThreeQP` | `--` | = `\resISrExtHiQwenLargeSFiftyBThreeQP` | see that macro |
+| `\resISrCnQwenTwoFiveThreeBSFiftyBThreeQP` | `--` | = `\resISrCnQwenLargeSFiftyBThreeQP` | see that macro |
+| `\resISrCnLoQwenTwoFiveThreeBSFiftyBThreeQP` | `--` | = `\resISrCnLoQwenLargeSFiftyBThreeQP` | see that macro |
+| `\resISrCnHiQwenTwoFiveThreeBSFiftyBThreeQP` | `--` | = `\resISrCnHiQwenLargeSFiftyBThreeQP` | see that macro |
 | `\resPplOLMoTwoZeroFourTwoFiveOneBDense` | `--` | = `\resPplOlmoDense` | see that macro |
 | `\resPplCFourOLMoTwoZeroFourTwoFiveOneBDense` | `--` | = `\resPplCFourOlmoDense` | see that macro |
 | `\resKlOLMoTwoZeroFourTwoFiveOneBDense` | `--` | = `\resKlOlmoDense` | see that macro |
@@ -5086,7 +5562,11 @@ Columns:
 | `\resQTwoRatioQwenTwoFiveOneFiveBSThirtyThreeBThree` | `--` | = `\resQTwoRatioQwenMidSThirtyThreeBThree` | see that macro |
 | `\resQTwoRatioQwenTwoFiveOneFiveBSFiftyBThree` | `--` | = `\resQTwoRatioQwenMidSFiftyBThree` | see that macro |
 | `\resQTwoRatioQwenTwoFiveThreeBSTwentyFiveBFour` | `--` | = `\resQTwoRatioQwenLargeSTwentyFiveBFour` | see that macro |
+| `\resQTwoRatioQwenTwoFiveThreeBSThirtyThreeBFour` | `--` | = `\resQTwoRatioQwenLargeSThirtyThreeBFour` | see that macro |
 | `\resQTwoRatioQwenTwoFiveThreeBSFiftyBFour` | `--` | = `\resQTwoRatioQwenLargeSFiftyBFour` | see that macro |
+| `\resQTwoRatioQwenTwoFiveThreeBSTwentyFiveBThree` | `--` | = `\resQTwoRatioQwenLargeSTwentyFiveBThree` | see that macro |
+| `\resQTwoRatioQwenTwoFiveThreeBSThirtyThreeBThree` | `--` | = `\resQTwoRatioQwenLargeSThirtyThreeBThree` | see that macro |
+| `\resQTwoRatioQwenTwoFiveThreeBSFiftyBThree` | `--` | = `\resQTwoRatioQwenLargeSFiftyBThree` | see that macro |
 | `\resQTwoRatioOLMoTwoZeroFourTwoFiveOneBSTwentyFiveBFour` | `--` | = `\resQTwoRatioOlmoSTwentyFiveBFour` | see that macro |
 | `\resQTwoRatioOLMoTwoZeroFourTwoFiveOneBSThirtyThreeBFour` | `--` | = `\resQTwoRatioOlmoSThirtyThreeBFour` | see that macro |
 | `\resQTwoRatioOLMoTwoZeroFourTwoFiveOneBSFiftyBFour` | `--` | = `\resQTwoRatioOlmoSFiftyBFour` | see that macro |
@@ -5110,7 +5590,7 @@ Columns:
 | `\resQThreeSpreadCellsQwenTwoFiveThreeBBFour` | `0` | = `\resQThreeSpreadCellsQwenLargeBFour` | see that macro |
 | `\resQThreeSpreadMinQwenTwoFiveThreeBBThreePct` | `--` | = `\resQThreeSpreadMinQwenLargeBThreePct` | see that macro |
 | `\resQThreeSpreadMaxQwenTwoFiveThreeBBThreePct` | `--` | = `\resQThreeSpreadMaxQwenLargeBThreePct` | see that macro |
-| `\resQThreeSpreadCellsQwenTwoFiveThreeBBThree` | `--` | = `\resQThreeSpreadCellsQwenLargeBThree` | see that macro |
+| `\resQThreeSpreadCellsQwenTwoFiveThreeBBThree` | `0` | = `\resQThreeSpreadCellsQwenLargeBThree` | see that macro |
 | `\resQThreeSpreadMinOLMoTwoZeroFourTwoFiveOneBBFourPct` | `--` | = `\resQThreeSpreadMinOlmoBFourPct` | see that macro |
 | `\resQThreeSpreadMaxOLMoTwoZeroFourTwoFiveOneBBFourPct` | `--` | = `\resQThreeSpreadMaxOlmoBFourPct` | see that macro |
 | `\resQThreeSpreadCellsOLMoTwoZeroFourTwoFiveOneBBFour` | `0` | = `\resQThreeSpreadCellsOlmoBFour` | see that macro |
@@ -5204,6 +5684,15 @@ Columns:
 | `\resAccDiffQwenTwoFiveThreeBSTwentyFiveBFourPQQP` | `--` | = `\resAccDiffQwenLargeSTwentyFiveBFourPQQP` | see that macro |
 | `\resAccDiffLoQwenTwoFiveThreeBSTwentyFiveBFourPQQP` | `--` | = `\resAccDiffLoQwenLargeSTwentyFiveBFourPQQP` | see that macro |
 | `\resAccDiffHiQwenTwoFiveThreeBSTwentyFiveBFourPQQP` | `--` | = `\resAccDiffHiQwenLargeSTwentyFiveBFourPQQP` | see that macro |
+| `\resAccDiffQwenTwoFiveThreeBSThirtyThreeBFourJointPQ` | `--` | = `\resAccDiffQwenLargeSThirtyThreeBFourJointPQ` | see that macro |
+| `\resAccDiffLoQwenTwoFiveThreeBSThirtyThreeBFourJointPQ` | `--` | = `\resAccDiffLoQwenLargeSThirtyThreeBFourJointPQ` | see that macro |
+| `\resAccDiffHiQwenTwoFiveThreeBSThirtyThreeBFourJointPQ` | `--` | = `\resAccDiffHiQwenLargeSThirtyThreeBFourJointPQ` | see that macro |
+| `\resAccDiffQwenTwoFiveThreeBSThirtyThreeBFourJointQP` | `--` | = `\resAccDiffQwenLargeSThirtyThreeBFourJointQP` | see that macro |
+| `\resAccDiffLoQwenTwoFiveThreeBSThirtyThreeBFourJointQP` | `--` | = `\resAccDiffLoQwenLargeSThirtyThreeBFourJointQP` | see that macro |
+| `\resAccDiffHiQwenTwoFiveThreeBSThirtyThreeBFourJointQP` | `--` | = `\resAccDiffHiQwenLargeSThirtyThreeBFourJointQP` | see that macro |
+| `\resAccDiffQwenTwoFiveThreeBSThirtyThreeBFourPQQP` | `--` | = `\resAccDiffQwenLargeSThirtyThreeBFourPQQP` | see that macro |
+| `\resAccDiffLoQwenTwoFiveThreeBSThirtyThreeBFourPQQP` | `--` | = `\resAccDiffLoQwenLargeSThirtyThreeBFourPQQP` | see that macro |
+| `\resAccDiffHiQwenTwoFiveThreeBSThirtyThreeBFourPQQP` | `--` | = `\resAccDiffHiQwenLargeSThirtyThreeBFourPQQP` | see that macro |
 | `\resAccDiffQwenTwoFiveThreeBSFiftyBFourJointPQ` | `--` | = `\resAccDiffQwenLargeSFiftyBFourJointPQ` | see that macro |
 | `\resAccDiffLoQwenTwoFiveThreeBSFiftyBFourJointPQ` | `--` | = `\resAccDiffLoQwenLargeSFiftyBFourJointPQ` | see that macro |
 | `\resAccDiffHiQwenTwoFiveThreeBSFiftyBFourJointPQ` | `--` | = `\resAccDiffHiQwenLargeSFiftyBFourJointPQ` | see that macro |
@@ -5213,6 +5702,33 @@ Columns:
 | `\resAccDiffQwenTwoFiveThreeBSFiftyBFourPQQP` | `--` | = `\resAccDiffQwenLargeSFiftyBFourPQQP` | see that macro |
 | `\resAccDiffLoQwenTwoFiveThreeBSFiftyBFourPQQP` | `--` | = `\resAccDiffLoQwenLargeSFiftyBFourPQQP` | see that macro |
 | `\resAccDiffHiQwenTwoFiveThreeBSFiftyBFourPQQP` | `--` | = `\resAccDiffHiQwenLargeSFiftyBFourPQQP` | see that macro |
+| `\resAccDiffQwenTwoFiveThreeBSTwentyFiveBThreeJointPQ` | `--` | = `\resAccDiffQwenLargeSTwentyFiveBThreeJointPQ` | see that macro |
+| `\resAccDiffLoQwenTwoFiveThreeBSTwentyFiveBThreeJointPQ` | `--` | = `\resAccDiffLoQwenLargeSTwentyFiveBThreeJointPQ` | see that macro |
+| `\resAccDiffHiQwenTwoFiveThreeBSTwentyFiveBThreeJointPQ` | `--` | = `\resAccDiffHiQwenLargeSTwentyFiveBThreeJointPQ` | see that macro |
+| `\resAccDiffQwenTwoFiveThreeBSTwentyFiveBThreeJointQP` | `--` | = `\resAccDiffQwenLargeSTwentyFiveBThreeJointQP` | see that macro |
+| `\resAccDiffLoQwenTwoFiveThreeBSTwentyFiveBThreeJointQP` | `--` | = `\resAccDiffLoQwenLargeSTwentyFiveBThreeJointQP` | see that macro |
+| `\resAccDiffHiQwenTwoFiveThreeBSTwentyFiveBThreeJointQP` | `--` | = `\resAccDiffHiQwenLargeSTwentyFiveBThreeJointQP` | see that macro |
+| `\resAccDiffQwenTwoFiveThreeBSTwentyFiveBThreePQQP` | `--` | = `\resAccDiffQwenLargeSTwentyFiveBThreePQQP` | see that macro |
+| `\resAccDiffLoQwenTwoFiveThreeBSTwentyFiveBThreePQQP` | `--` | = `\resAccDiffLoQwenLargeSTwentyFiveBThreePQQP` | see that macro |
+| `\resAccDiffHiQwenTwoFiveThreeBSTwentyFiveBThreePQQP` | `--` | = `\resAccDiffHiQwenLargeSTwentyFiveBThreePQQP` | see that macro |
+| `\resAccDiffQwenTwoFiveThreeBSThirtyThreeBThreeJointPQ` | `--` | = `\resAccDiffQwenLargeSThirtyThreeBThreeJointPQ` | see that macro |
+| `\resAccDiffLoQwenTwoFiveThreeBSThirtyThreeBThreeJointPQ` | `--` | = `\resAccDiffLoQwenLargeSThirtyThreeBThreeJointPQ` | see that macro |
+| `\resAccDiffHiQwenTwoFiveThreeBSThirtyThreeBThreeJointPQ` | `--` | = `\resAccDiffHiQwenLargeSThirtyThreeBThreeJointPQ` | see that macro |
+| `\resAccDiffQwenTwoFiveThreeBSThirtyThreeBThreeJointQP` | `--` | = `\resAccDiffQwenLargeSThirtyThreeBThreeJointQP` | see that macro |
+| `\resAccDiffLoQwenTwoFiveThreeBSThirtyThreeBThreeJointQP` | `--` | = `\resAccDiffLoQwenLargeSThirtyThreeBThreeJointQP` | see that macro |
+| `\resAccDiffHiQwenTwoFiveThreeBSThirtyThreeBThreeJointQP` | `--` | = `\resAccDiffHiQwenLargeSThirtyThreeBThreeJointQP` | see that macro |
+| `\resAccDiffQwenTwoFiveThreeBSThirtyThreeBThreePQQP` | `--` | = `\resAccDiffQwenLargeSThirtyThreeBThreePQQP` | see that macro |
+| `\resAccDiffLoQwenTwoFiveThreeBSThirtyThreeBThreePQQP` | `--` | = `\resAccDiffLoQwenLargeSThirtyThreeBThreePQQP` | see that macro |
+| `\resAccDiffHiQwenTwoFiveThreeBSThirtyThreeBThreePQQP` | `--` | = `\resAccDiffHiQwenLargeSThirtyThreeBThreePQQP` | see that macro |
+| `\resAccDiffQwenTwoFiveThreeBSFiftyBThreeJointPQ` | `--` | = `\resAccDiffQwenLargeSFiftyBThreeJointPQ` | see that macro |
+| `\resAccDiffLoQwenTwoFiveThreeBSFiftyBThreeJointPQ` | `--` | = `\resAccDiffLoQwenLargeSFiftyBThreeJointPQ` | see that macro |
+| `\resAccDiffHiQwenTwoFiveThreeBSFiftyBThreeJointPQ` | `--` | = `\resAccDiffHiQwenLargeSFiftyBThreeJointPQ` | see that macro |
+| `\resAccDiffQwenTwoFiveThreeBSFiftyBThreeJointQP` | `--` | = `\resAccDiffQwenLargeSFiftyBThreeJointQP` | see that macro |
+| `\resAccDiffLoQwenTwoFiveThreeBSFiftyBThreeJointQP` | `--` | = `\resAccDiffLoQwenLargeSFiftyBThreeJointQP` | see that macro |
+| `\resAccDiffHiQwenTwoFiveThreeBSFiftyBThreeJointQP` | `--` | = `\resAccDiffHiQwenLargeSFiftyBThreeJointQP` | see that macro |
+| `\resAccDiffQwenTwoFiveThreeBSFiftyBThreePQQP` | `--` | = `\resAccDiffQwenLargeSFiftyBThreePQQP` | see that macro |
+| `\resAccDiffLoQwenTwoFiveThreeBSFiftyBThreePQQP` | `--` | = `\resAccDiffLoQwenLargeSFiftyBThreePQQP` | see that macro |
+| `\resAccDiffHiQwenTwoFiveThreeBSFiftyBThreePQQP` | `--` | = `\resAccDiffHiQwenLargeSFiftyBThreePQQP` | see that macro |
 | `\resAccDiffOLMoTwoZeroFourTwoFiveOneBSTwentyFiveBFourJointPQ` | `--` | = `\resAccDiffOlmoSTwentyFiveBFourJointPQ` | see that macro |
 | `\resAccDiffLoOLMoTwoZeroFourTwoFiveOneBSTwentyFiveBFourJointPQ` | `--` | = `\resAccDiffLoOlmoSTwentyFiveBFourJointPQ` | see that macro |
 | `\resAccDiffHiOLMoTwoZeroFourTwoFiveOneBSTwentyFiveBFourJointPQ` | `--` | = `\resAccDiffHiOlmoSTwentyFiveBFourJointPQ` | see that macro |
@@ -5288,9 +5804,21 @@ Columns:
 | `\resScaleSpreadQwenTwoFiveThreeBSTwentyFiveBFourPct` | `--` | = `\resScaleSpreadQwenLargeSTwentyFiveBFourPct` | see that macro |
 | `\resScaleGapMaskFirstQwenTwoFiveThreeBSTwentyFiveBFourPct` | `--` | = `\resScaleGapMaskFirstQwenLargeSTwentyFiveBFourPct` | see that macro |
 | `\resScalePenaltyQPQwenTwoFiveThreeBSTwentyFiveBFourPct` | `--` | = `\resScalePenaltyQPQwenLargeSTwentyFiveBFourPct` | see that macro |
+| `\resScaleSpreadQwenTwoFiveThreeBSThirtyThreeBFourPct` | `--` | = `\resScaleSpreadQwenLargeSThirtyThreeBFourPct` | see that macro |
+| `\resScaleGapMaskFirstQwenTwoFiveThreeBSThirtyThreeBFourPct` | `--` | = `\resScaleGapMaskFirstQwenLargeSThirtyThreeBFourPct` | see that macro |
+| `\resScalePenaltyQPQwenTwoFiveThreeBSThirtyThreeBFourPct` | `--` | = `\resScalePenaltyQPQwenLargeSThirtyThreeBFourPct` | see that macro |
 | `\resScaleSpreadQwenTwoFiveThreeBSFiftyBFourPct` | `--` | = `\resScaleSpreadQwenLargeSFiftyBFourPct` | see that macro |
 | `\resScaleGapMaskFirstQwenTwoFiveThreeBSFiftyBFourPct` | `--` | = `\resScaleGapMaskFirstQwenLargeSFiftyBFourPct` | see that macro |
 | `\resScalePenaltyQPQwenTwoFiveThreeBSFiftyBFourPct` | `--` | = `\resScalePenaltyQPQwenLargeSFiftyBFourPct` | see that macro |
+| `\resScaleSpreadQwenTwoFiveThreeBSTwentyFiveBThreePct` | `--` | = `\resScaleSpreadQwenLargeSTwentyFiveBThreePct` | see that macro |
+| `\resScaleGapMaskFirstQwenTwoFiveThreeBSTwentyFiveBThreePct` | `--` | = `\resScaleGapMaskFirstQwenLargeSTwentyFiveBThreePct` | see that macro |
+| `\resScalePenaltyQPQwenTwoFiveThreeBSTwentyFiveBThreePct` | `--` | = `\resScalePenaltyQPQwenLargeSTwentyFiveBThreePct` | see that macro |
+| `\resScaleSpreadQwenTwoFiveThreeBSThirtyThreeBThreePct` | `--` | = `\resScaleSpreadQwenLargeSThirtyThreeBThreePct` | see that macro |
+| `\resScaleGapMaskFirstQwenTwoFiveThreeBSThirtyThreeBThreePct` | `--` | = `\resScaleGapMaskFirstQwenLargeSThirtyThreeBThreePct` | see that macro |
+| `\resScalePenaltyQPQwenTwoFiveThreeBSThirtyThreeBThreePct` | `--` | = `\resScalePenaltyQPQwenLargeSThirtyThreeBThreePct` | see that macro |
+| `\resScaleSpreadQwenTwoFiveThreeBSFiftyBThreePct` | `--` | = `\resScaleSpreadQwenLargeSFiftyBThreePct` | see that macro |
+| `\resScaleGapMaskFirstQwenTwoFiveThreeBSFiftyBThreePct` | `--` | = `\resScaleGapMaskFirstQwenLargeSFiftyBThreePct` | see that macro |
+| `\resScalePenaltyQPQwenTwoFiveThreeBSFiftyBThreePct` | `--` | = `\resScalePenaltyQPQwenLargeSFiftyBThreePct` | see that macro |
 | `\resScaleSpreadOLMoTwoZeroFourTwoFiveOneBSTwentyFiveBFourPct` | `--` | = `\resScaleSpreadOlmoSTwentyFiveBFourPct` | see that macro |
 | `\resScaleGapMaskFirstOLMoTwoZeroFourTwoFiveOneBSTwentyFiveBFourPct` | `--` | = `\resScaleGapMaskFirstOlmoSTwentyFiveBFourPct` | see that macro |
 | `\resScalePenaltyQPOLMoTwoZeroFourTwoFiveOneBSTwentyFiveBFourPct` | `--` | = `\resScalePenaltyQPOlmoSTwentyFiveBFourPct` | see that macro |
