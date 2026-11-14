@@ -3381,6 +3381,59 @@ Columns:
 | `\resESevenKimPredQPWorstKlAllModels` | `6` | AllModels: of those, Q->P strictly worst (wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPBestKlAllModels` | `0` | AllModels: of those, Q->P best of the three (wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 
+## I_Sr of Table 2 over model groups (P->Q, Sr set sr3_paper, seed 0)
+
+| Macro | Value | Meaning | Source |
+|---|---|---|---|
+| `\resISrPaperNCoreSTwentyFiveBFourPQ` | `3` | Core, P->Q 25%+4: models with I_Sr and its interval | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMinCoreSTwentyFiveBFourPQ` | `\ensuremath{+0.009}` | Core, P->Q 25%+4: smallest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMinWhereCoreSTwentyFiveBFourPQ` | `Qwen2.5-0.5B` | Core, P->Q 25%+4: model with the smallest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMaxCoreSTwentyFiveBFourPQ` | `\ensuremath{+0.016}` | Core, P->Q 25%+4: largest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMaxWhereCoreSTwentyFiveBFourPQ` | `SmolLM2-135M` | Core, P->Q 25%+4: model with the largest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperLoMinCoreSTwentyFiveBFourPQ` | `\ensuremath{-0.003}` | Core, P->Q 25%+4: lowest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperHiMaxCoreSTwentyFiveBFourPQ` | `\ensuremath{+0.030}` | Core, P->Q 25%+4: highest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperZeroInCoreSTwentyFiveBFourPQ` | `1` | Core, P->Q 25%+4: models whose 95% interval contains 0 | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperNLargerSTwentyFiveBFourPQ` | `1` | Larger, P->Q 25%+4: models with I_Sr and its interval | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMinLargerSTwentyFiveBFourPQ` | `\ensuremath{-0.002}` | Larger, P->Q 25%+4: smallest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMinWhereLargerSTwentyFiveBFourPQ` | `SmolLM2-1.7B` | Larger, P->Q 25%+4: model with the smallest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMaxLargerSTwentyFiveBFourPQ` | `\ensuremath{-0.002}` | Larger, P->Q 25%+4: largest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMaxWhereLargerSTwentyFiveBFourPQ` | `SmolLM2-1.7B` | Larger, P->Q 25%+4: model with the largest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperLoMinLargerSTwentyFiveBFourPQ` | `\ensuremath{-0.010}` | Larger, P->Q 25%+4: lowest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperHiMaxLargerSTwentyFiveBFourPQ` | `\ensuremath{+0.005}` | Larger, P->Q 25%+4: highest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperZeroInLargerSTwentyFiveBFourPQ` | `1` | Larger, P->Q 25%+4: models whose 95% interval contains 0 | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperNAllModelsSTwentyFiveBFourPQ` | `4` | AllModels, P->Q 25%+4: models with I_Sr and its interval | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMinAllModelsSTwentyFiveBFourPQ` | `\ensuremath{-0.002}` | AllModels, P->Q 25%+4: smallest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMinWhereAllModelsSTwentyFiveBFourPQ` | `SmolLM2-1.7B` | AllModels, P->Q 25%+4: model with the smallest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMaxAllModelsSTwentyFiveBFourPQ` | `\ensuremath{+0.016}` | AllModels, P->Q 25%+4: largest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMaxWhereAllModelsSTwentyFiveBFourPQ` | `SmolLM2-135M` | AllModels, P->Q 25%+4: model with the largest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperLoMinAllModelsSTwentyFiveBFourPQ` | `\ensuremath{-0.010}` | AllModels, P->Q 25%+4: lowest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperHiMaxAllModelsSTwentyFiveBFourPQ` | `\ensuremath{+0.030}` | AllModels, P->Q 25%+4: highest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperZeroInAllModelsSTwentyFiveBFourPQ` | `2` | AllModels, P->Q 25%+4: models whose 95% interval contains 0 | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperNCoreSThirtyThreeBThreePQ` | `3` | Core, P->Q 33%+3: models with I_Sr and its interval | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMinCoreSThirtyThreeBThreePQ` | `\ensuremath{+0.012}` | Core, P->Q 33%+3: smallest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMinWhereCoreSThirtyThreeBThreePQ` | `Qwen2.5-0.5B` | Core, P->Q 33%+3: model with the smallest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMaxCoreSThirtyThreeBThreePQ` | `\ensuremath{+0.062}` | Core, P->Q 33%+3: largest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMaxWhereCoreSThirtyThreeBThreePQ` | `SmolLM2-360M` | Core, P->Q 33%+3: model with the largest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperLoMinCoreSThirtyThreeBThreePQ` | `\ensuremath{-0.003}` | Core, P->Q 33%+3: lowest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperHiMaxCoreSThirtyThreeBThreePQ` | `\ensuremath{+0.077}` | Core, P->Q 33%+3: highest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperZeroInCoreSThirtyThreeBThreePQ` | `1` | Core, P->Q 33%+3: models whose 95% interval contains 0 | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperNLargerSThirtyThreeBThreePQ` | `1` | Larger, P->Q 33%+3: models with I_Sr and its interval | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMinLargerSThirtyThreeBThreePQ` | `\ensuremath{+0.011}` | Larger, P->Q 33%+3: smallest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMinWhereLargerSThirtyThreeBThreePQ` | `SmolLM2-1.7B` | Larger, P->Q 33%+3: model with the smallest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMaxLargerSThirtyThreeBThreePQ` | `\ensuremath{+0.011}` | Larger, P->Q 33%+3: largest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMaxWhereLargerSThirtyThreeBThreePQ` | `SmolLM2-1.7B` | Larger, P->Q 33%+3: model with the largest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperLoMinLargerSThirtyThreeBThreePQ` | `\ensuremath{-0.000}` | Larger, P->Q 33%+3: lowest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperHiMaxLargerSThirtyThreeBThreePQ` | `\ensuremath{+0.023}` | Larger, P->Q 33%+3: highest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperZeroInLargerSThirtyThreeBThreePQ` | `1` | Larger, P->Q 33%+3: models whose 95% interval contains 0 | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperNAllModelsSThirtyThreeBThreePQ` | `4` | AllModels, P->Q 33%+3: models with I_Sr and its interval | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMinAllModelsSThirtyThreeBThreePQ` | `\ensuremath{+0.011}` | AllModels, P->Q 33%+3: smallest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMinWhereAllModelsSThirtyThreeBThreePQ` | `SmolLM2-1.7B` | AllModels, P->Q 33%+3: model with the smallest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMaxAllModelsSThirtyThreeBThreePQ` | `\ensuremath{+0.062}` | AllModels, P->Q 33%+3: largest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMaxWhereAllModelsSThirtyThreeBThreePQ` | `SmolLM2-360M` | AllModels, P->Q 33%+3: model with the largest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperLoMinAllModelsSThirtyThreeBThreePQ` | `\ensuremath{-0.003}` | AllModels, P->Q 33%+3: lowest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperHiMaxAllModelsSThirtyThreeBThreePQ` | `\ensuremath{+0.077}` | AllModels, P->Q 33%+3: highest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperZeroInAllModelsSThirtyThreeBThreePQ` | `2` | AllModels, P->Q 33%+3: models whose 95% interval contains 0 | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+
 ## E8 layer error vs KL (reports/analysis/e8_layer_error_vs_kl.json; scripts/analysis/e8.py)
 
 | Macro | Value | Meaning | Source |

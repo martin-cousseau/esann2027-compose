@@ -1116,6 +1116,36 @@ def macros_order_all_models(M, store, q, e7res):
             M.add(sec, f"ESevenKimPredQPBest{tag}{g}", _n(best) if P_ else "--", f"{g}: of those, Q->P best of the three ({key})", src)
 
 
+def macros_isr_groups(M, store, e1):
+    """Table 2 over model groups (DECISIONS.md #47): for P->Q at 25%+4 and 33%+3 (sr3_paper, seed 0), the smallest and
+    largest I_Sr over the models of a group, the widest interval ends, and how many intervals contain 0."""
+    core = {g[0] for g in PAPER_GRID}
+    groups = {"Core": lambda m: m in core, "Larger": lambda m: m not in core, "AllModels": lambda m: True}
+    sec = "I_Sr of Table 2 over model groups (P->Q, Sr set sr3_paper, seed 0)"
+    src = "reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items)"
+    for s, b in ((0.25, 4), (1 / 3, 3)):
+        ct, vals = cell_tag(s, b), []
+        for m in store.models():
+            sid = store.sid(m, "p_then_q", s, b, 0)
+            bs = e1["by_sid"].get(sid, {}) if sid else {}
+            v, lo, hi = (_sr(bs, "isr", "sr3_paper", i) for i in range(3))
+            if finite(v) and finite(lo) and finite(hi):
+                vals.append((m, v, lo, hi))
+        for g, sel in groups.items():
+            V = [x for x in vals if sel(x[0])]
+            lab = f"{g}, P->Q {cell_label(s, b)}"
+            M.add(sec, f"ISrPaperN{g}{ct}PQ", _n(len(V)), f"{lab}: models with I_Sr and its interval", src)
+            mn, mx = (min(V, key=lambda x: x[1]), max(V, key=lambda x: x[1])) if V else (None, None)
+            M.add(sec, f"ISrPaperMin{g}{ct}PQ", signed(mn[1], 3) if V else "--", f"{lab}: smallest I_Sr", src)
+            M.add(sec, f"ISrPaperMinWhere{g}{ct}PQ", tex_escape(mn[0]) if V else "--", f"{lab}: model with the smallest I_Sr", src)
+            M.add(sec, f"ISrPaperMax{g}{ct}PQ", signed(mx[1], 3) if V else "--", f"{lab}: largest I_Sr", src)
+            M.add(sec, f"ISrPaperMaxWhere{g}{ct}PQ", tex_escape(mx[0]) if V else "--", f"{lab}: model with the largest I_Sr", src)
+            M.add(sec, f"ISrPaperLoMin{g}{ct}PQ", signed(min(x[2] for x in V), 3) if V else "--", f"{lab}: lowest interval end", src)
+            M.add(sec, f"ISrPaperHiMax{g}{ct}PQ", signed(max(x[3] for x in V), 3) if V else "--", f"{lab}: highest interval end", src)
+            M.add(sec, f"ISrPaperZeroIn{g}{ct}PQ", _n(sum(x[2] <= 0 <= x[3] for x in V)) if V else "--",
+                  f"{lab}: models whose 95% interval contains 0", src)
+
+
 def build_macros(store, e1, q, det, fr, e2res, boolq, missing, repro=(), e7res=None, e8res=None, isr=None, batch=None):
     M = Macros()
     macros_states(M, store, e1)
@@ -1128,6 +1158,7 @@ def build_macros(store, e1, q, det, fr, e2res, boolq, missing, repro=(), e7res=N
     if e7res is not None:
         macros_e7(M, store, e7res)
     macros_order_all_models(M, store, q, e7res)
+    macros_isr_groups(M, store, e1)
     if e8res is not None:
         macros_e8(M, store, e8res)
     if isr is not None:
