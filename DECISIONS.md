@@ -271,3 +271,14 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     the step of the chain it replaces. Both runtimes now end after about 30 hours. Operational note: `pkill -f` with
     the chain's name also matched the shell that ran it (its command text contains the name), so that call stopped the
     old chain and itself; the rest was redone from Python with `subprocess`, without a pattern.
+46. **2026-11-14 06:30 UTC, the second stop and a safety net.** At about 22:32 UTC on 13 Nov this session's worker
+    restarted in the middle of a token refresh; the watcher (a background task of the worker) ended with it, and Colab
+    reclaimed both runtimes at about 23:30 (last upload 23:27). The session resumed only at 06:17. Nothing finished was
+    lost: the runners upload every state to the Hub, and the missing lines (7 Qwen2.5-0.5B 3-bit seed states, the
+    SmolLM2-1.7B P->Q 25%+4 benchmark state and its per-item file) were copied back. The runtimes billed about 4.8
+    hours each in this round. Resume: two new runtimes (esann-a8, esann-b7) on the admitted image, the existing result
+    lines pushed to each file's single writer, chains `chain_a13.sh` / `chain_b11.sh` (same plan as #45, finished
+    states skipped). A detached keepalive loop (`scripts/keepalive_loop.py`, setsid) did not survive the next worker
+    restart either: the container's processes end with the worker. The safety net is therefore a scheduled hourly
+    check-in into this session (trigger "ESANN GPU keepalive check-in", minute 26), which restarts the watcher and
+    refreshes the tokens if the watcher is gone; it is deleted when the runs end.
