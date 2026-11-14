@@ -1,0 +1,7 @@
+model,cell,order,source,tasks,sr_pq,sr_p,sr_q,isr_ratio_of_sums,isr_mean_of_ratios
+SmolLM2-135M,25%+4,p_then_q,"results/results_full.jsonl, results/results_fix.jsonl",arc_easy piqa hellaswag,0.9620253164556963,1.0103567318757192,0.9401611047180668,0.012127215256084622,0.007007916311224105
+SmolLM2-135M,33%+3,p_then_q,"results/results_full.jsonl, results/results_fix.jsonl",arc_easy piqa hellaswag,0.8158803222094361,0.9792865362485615,0.7790563866513234,0.05296089178334151,0.04842193068540257
+SmolLM2-360M,25%+4,p_then_q,"results/results_full.jsonl, results/results_fix.jsonl",arc_easy piqa hellaswag,0.9563894523326573,0.9858012170385395,0.9614604462474645,0.008580574287489484,0.010751703287536385
+SmolLM2-360M,33%+3,p_then_q,"results/results_full.jsonl, results/results_fix.jsonl",arc_easy piqa hellaswag,0.8853955375253549,0.9655172413793103,0.8245436105476674,0.08928446527243472,0.08940233616675652
+Qwen2.5-0.5B,25%+4,p_then_q,"results/results_full.jsonl, results/results_fix.jsonl",arc_easy piqa hellaswag,1.0021482277121374,0.9946294307196561,0.9989258861439312,0.008587142245671031,0.007254014905640482
+Qwen2.5-0.5B,33%+3,p_then_q,"results/results_full.jsonl, results/results_fix.jsonl",arc_easy piqa hellaswag,0.882921589688507,0.9871106337271751,0.8818474758324383,0.01244056896883905,0.010499802772938382

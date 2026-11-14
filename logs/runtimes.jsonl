@@ -1,0 +1,30 @@
+{"event":"create","name":"runtimes/esann-pilot","spec":"L4/STANDARD/GPU","image":"latest (unspecified)","created_utc":"2026-11-09T23:38:09Z","owner":"orchestrator","purpose":"phase-0 pilot"}
+{"event":"create","name":"runtimes/esann-e1-a","spec":"L4/STANDARD/GPU","created_utc":"2026-11-10T05:53:32Z","owner":"orchestrator","purpose":"E1 135M+360M, E2"}
+{"event":"create","name":"runtimes/esann-e1-b","spec":"L4/STANDARD/GPU","created_utc":"2026-11-10T05:53:35Z","owner":"orchestrator","purpose":"DET, E1 Qwen2.5-0.5B"}
+{"event":"create_failed","name":"runtimes/esann-e2-a","spec":"L4/STANDARD/GPU","utc":"2026-11-10T05:53:40Z","error":"Precondition check failed (likely the 2-concurrent-GPU-runtime limit)"}
+{"event":"reclaimed","name":"runtimes/esann-pilot","observed_utc":"2026-11-10T05:50:30Z","note":"absent from list_runtimes after the session was suspended 23:51-05:49 UTC; lifetime unknown (>= 23:38-00:00 active; upper bound 6.2 h)"}
+{"event":"reclaimed","name":"runtimes/esann-e1-a","observed_utc":"2026-11-10T06:40:21Z","note":"404 from ~06:33; last kernel execution 06:14; idle-kernel reclaim suspected (background processes do not count)","lifetime_h_est":0.67}
+{"event":"reclaimed","name":"runtimes/esann-e1-b","observed_utc":"2026-11-10T06:40:21Z","note":"same as esann-e1-a","lifetime_h_est":0.67}
+{"event":"create","name":"runtimes/esann-e1-a2","spec":"L4/STANDARD/GPU","created_utc":"2026-11-10T06:41:31Z","owner":"orchestrator","purpose":"E1 135M+360M, E2 (replaces esann-e1-a)"}
+{"event":"create","name":"runtimes/esann-e1-b2","spec":"L4/STANDARD/GPU","created_utc":"2026-11-10T06:41:34Z","owner":"orchestrator","purpose":"E1 Qwen2.5-0.5B (replaces esann-e1-b)"}
+{"event":"lost","name":"runtimes/esann-e1-a2","observed_utc":"2026-11-10T07:19:30Z","note":"Requested entity was not found; last status 07:13:48; a keepalive cell was running; cause unknown (possibly preemption); B2 created at the same time is alive","lifetime_h_est":0.58}
+{"event":"create","name":"runtimes/esann-e1-a3","spec":"L4/STANDARD/GPU","created_utc":"2026-11-10T07:15:48Z","owner":"orchestrator","purpose":"reproduction investigation, E2 Qwen, then E1 135M/360M (replaces esann-e1-a2)"}
+{"event":"lost","name":"runtimes/esann-e1-b2","observed_utc":"2026-11-10T07:38:33Z","lifetime_h_est":0.9}
+{"event":"lost","name":"runtimes/esann-e1-a3","observed_utc":"2026-11-10T11:05:00Z","note":"last upload 07:55, model upload after; died ~08:00-08:10","lifetime_h_est":0.85}
+{"event":"create","name":"runtimes/esann-a4","spec":"L4/STANDARD/GPU","created_utc":"2026-11-10T11:06:39Z","owner":"orchestrator","purpose":"E1 135M+360M, E2 Qwen"}
+{"event":"create","name":"runtimes/esann-b3","spec":"L4/STANDARD/GPU","created_utc":"2026-11-10T11:06:43Z","owner":"orchestrator","purpose":"E1 Qwen, E4, E3"}
+{"event":"lost","name":"runtimes/esann-a4","observed_utc":"2026-11-10T18:02:00Z","note":"last upload 15:45; tokens expired 14:54 during a session suspension (usage limit), keepalive stopped","lifetime_h_est":4.75}
+{"event":"lost","name":"runtimes/esann-b3","observed_utc":"2026-11-10T18:02:00Z","note":"same as esann-a4","lifetime_h_est":4.75}
+{"event":"create","name":"runtimes/esann-a5","spec":"L4/STANDARD/GPU (us-west4)","created_utc":"2026-11-10T18:03:59Z","owner":"orchestrator","purpose":"E3 135M rest, E1 360M"}
+{"event":"create","name":"runtimes/esann-b4","spec":"L4/STANDARD/GPU","created_utc":"2026-11-10T18:04:03Z","owner":"orchestrator","purpose":"E1 Qwen rest, E4/E3 Qwen and 360M"}
+{"runtime": "esann-a5", "event": "deleted", "time": "2026-11-11T07:21:06+00:00", "note": "queues done (E1 SmolLM2-360M, E3 SmolLM2-135M, E6 SmolLM2-1.7B); all exports verified on the Hub"}
+{"runtime": "esann-b4", "event": "deleted", "time": "2026-11-11T08:47:59+00:00", "note": "queues done (E1/E4 Qwen2.5-0.5B, E4/E3/E5 SmolLM2-360M, E3 Qwen2.5-0.5B 50% cells); all exports verified on the Hub; list_runtimes empty"}
+{"runtime": "esann-a6", "event": "created", "time": "2026-11-12T19:47:00+00:00", "spec": "L4 standard", "image": "release-colab-external-images_20261111-060450_RC00", "note": "DECISIONS #38 runs"}
+{"runtime": "esann-b5", "event": "created", "time": "2026-11-12T19:47:00+00:00", "spec": "L4 standard", "image": "release-colab-external-images_20261111-060450_RC00", "note": "DECISIONS #38 runs"}
+{"runtime": "esann-a7", "event": "created", "time": "2026-11-13T18:41:29+00:00", "spec": "L4 standard", "note": "DECISIONS #44: E6B benchmarks for Table 2, remaining E6/E5"}
+{"runtime": "esann-b6", "event": "created", "time": "2026-11-13T18:41:33+00:00", "spec": "L4 standard", "note": "DECISIONS #44: remaining E6/E5"}
+{"runtime": "esann-a7", "event": "reclaimed", "time": "2026-11-13T23:30:00+00:00", "note": "worker restart ended the watcher during a token refresh (#46)"}
+{"runtime": "esann-b6", "event": "reclaimed", "time": "2026-11-13T23:30:00+00:00", "note": "worker restart ended the watcher during a token refresh (#46)"}
+{"runtime": "esann-a8", "event": "created", "time": "2026-11-14T06:18:58+00:00", "spec": "L4 standard", "note": "#46 resume chain_a13"}
+{"runtime": "esann-b7", "event": "created", "time": "2026-11-14T06:19:03+00:00", "spec": "L4 standard", "note": "#46 resume chain_b11"}
+{"runtime": "esann-b7", "event": "chain_queued", "time": "2026-11-14T13:29:00+00:00", "note": "#47 chain_b12.sh waits for chain_b11, then Qwen2.5-3B grid completion (13 states, own result file)"}

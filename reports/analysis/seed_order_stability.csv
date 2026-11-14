@@ -1,0 +1,22 @@
+model,bits,cell,sparsity,e5_cell,seeds,seeds_present,best_by_seed,worst_by_seed,complete,stable,qp_worst_all_seeds
+SmolLM2-135M,4,25%+4,0.25,True,0 1 2,0,0:P->Q,0:Q->P,False,False,False
+SmolLM2-135M,4,33%+4,0.3333,True,0 1 2,0,0:P->Q,0:Q->P,False,False,False
+SmolLM2-135M,4,50%+4,0.5,True,0 1 2,0,0:P->Q,0:Q->P,False,False,False
+SmolLM2-135M,4,60%+4,0.6,False,0 1 2,0,0:joint,0:Q->P,False,False,False
+SmolLM2-135M,3,25%+3,0.25,True,0 1 2,0,0:P->Q,0:joint,False,False,False
+SmolLM2-135M,3,33%+3,0.3333,True,0 1 2,0,0:P->Q,0:Q->P,False,False,False
+SmolLM2-135M,3,50%+3,0.5,True,0 1 2,0,0:P->Q,0:Q->P,False,False,False
+SmolLM2-360M,4,25%+4,0.25,True,0 1 2,0 1 2,0:joint 1:joint 2:joint,0:Q->P 1:Q->P 2:Q->P,True,True,True
+SmolLM2-360M,4,33%+4,0.3333,True,0 1 2,0 1 2,0:joint 1:joint 2:joint,0:Q->P 1:Q->P 2:Q->P,True,True,True
+SmolLM2-360M,4,50%+4,0.5,True,0 1 2,0 1 2,0:joint 1:joint 2:joint,0:Q->P 1:Q->P 2:Q->P,True,True,True
+SmolLM2-360M,4,60%+4,0.6,False,0 1 2,0,0:joint,0:Q->P,False,False,False
+SmolLM2-360M,3,25%+3,0.25,True,0 1 2,0,0:joint,0:Q->P,False,False,False
+SmolLM2-360M,3,33%+3,0.3333,True,0 1 2,0,0:joint,0:Q->P,False,False,False
+SmolLM2-360M,3,50%+3,0.5,True,0 1 2,0,0:joint,0:Q->P,False,False,False
+Qwen2.5-0.5B,4,25%+4,0.25,True,0 1 2,0 1 2,0:joint 1:joint 2:joint,0:Q->P 1:Q->P 2:Q->P,True,True,True
+Qwen2.5-0.5B,4,33%+4,0.3333,True,0 1 2,0 1 2,0:P->Q 1:joint 2:joint,0:Q->P 1:Q->P 2:Q->P,True,False,True
+Qwen2.5-0.5B,4,50%+4,0.5,True,0 1 2,0 1 2,0:joint 1:joint 2:joint,0:Q->P 1:Q->P 2:P->Q,True,True,False
+Qwen2.5-0.5B,4,60%+4,0.6,False,0 1 2,0,0:joint,0:Q->P,False,False,False
+Qwen2.5-0.5B,3,25%+3,0.25,True,0 1 2,0 1 2,0:joint 1:Q->P 2:joint,0:P->Q 1:joint 2:P->Q,True,False,False
+Qwen2.5-0.5B,3,33%+3,0.3333,True,0 1 2,0 1 2,0:joint 1:joint 2:joint,0:Q->P 1:Q->P 2:Q->P,True,True,True
+Qwen2.5-0.5B,3,50%+3,0.5,True,0 1 2,0 1 2,0:joint 1:joint 2:joint,0:Q->P 1:Q->P 2:Q->P,True,True,True

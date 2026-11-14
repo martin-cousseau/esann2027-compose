@@ -1,0 +1,29 @@
+{
+ "rate": 0.6217125382262997,
+ "majority_label": "1",
+ "counts": {
+  "0": 1237,
+  "1": 2033
+ },
+ "n": 3270,
+ "label_names": "0 = no / False, 1 = yes / True (lm-eval doc_to_choice ['no', 'yes'], target = label)",
+ "dataset": "aps/super_glue",
+ "config": "boolq",
+ "split": "validation",
+ "revision": "3de24cf8022e94f4ee4b9d55a6f539891524d646",
+ "files": [
+  "https://huggingface.co/datasets/aps/super_glue/resolve/3de24cf8022e94f4ee4b9d55a6f539891524d646/boolq/validation-00000-of-00001.parquet"
+ ],
+ "sha256": {
+  "boolq/validation-00000-of-00001.parquet": "f46438b8cce048184552a2bfcdb8252eadb3a2602f0c22334caccd9b6ea547d6"
+ },
+ "lm_eval_task": {
+  "file": "/home/user/venv/lib/python3.13/site-packages/lm_eval/tasks/super_glue/boolq/default.yaml",
+  "lm_eval_version": "0.4.13",
+  "task": "boolq",
+  "dataset_path": "aps/super_glue",
+  "dataset_name": "boolq",
+  "validation_split": "validation"
+ },
+ "retrieved_utc": "2026-11-10T06:22:33+00:00"
+}

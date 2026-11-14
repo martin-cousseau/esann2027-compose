@@ -1,0 +1,37 @@
+task,metric,n,n_only_one,differ,differ_any,model,state_id,label,share
+arc_easy,acc_norm,2376,0,0,0,SmolLM2-135M,SmolLM2-135M__dense__s0.0000__b16__seed0__float32,dense,0.0
+piqa,acc_norm,1838,0,0,0,SmolLM2-135M,SmolLM2-135M__dense__s0.0000__b16__seed0__float32,dense,0.0
+hellaswag,acc_norm,10042,0,0,0,SmolLM2-135M,SmolLM2-135M__dense__s0.0000__b16__seed0__float32,dense,0.0
+arc_challenge,acc_norm,1172,0,0,0,SmolLM2-135M,SmolLM2-135M__dense__s0.0000__b16__seed0__float32,dense,0.0
+winogrande,acc,1267,0,0,0,SmolLM2-135M,SmolLM2-135M__dense__s0.0000__b16__seed0__float32,dense,0.0
+openbookqa,acc_norm,500,0,0,0,SmolLM2-135M,SmolLM2-135M__dense__s0.0000__b16__seed0__float32,dense,0.0
+boolq,acc,3270,0,0,0,SmolLM2-135M,SmolLM2-135M__dense__s0.0000__b16__seed0__float32,dense,0.0
+sciq,acc,1000,0,0,0,SmolLM2-135M,SmolLM2-135M__dense__s0.0000__b16__seed0__float32,dense,0.0
+lambada_openai,acc,5153,0,0,0,SmolLM2-135M,SmolLM2-135M__dense__s0.0000__b16__seed0__float32,dense,0.0
+arc_easy,acc_norm,2376,0,0,0,SmolLM2-135M,SmolLM2-135M__quant__s0.0000__b4__seed0__float32,4-bit,0.0
+piqa,acc_norm,1838,0,0,0,SmolLM2-135M,SmolLM2-135M__quant__s0.0000__b4__seed0__float32,4-bit,0.0
+hellaswag,acc_norm,10042,0,0,0,SmolLM2-135M,SmolLM2-135M__quant__s0.0000__b4__seed0__float32,4-bit,0.0
+arc_challenge,acc_norm,1172,0,0,0,SmolLM2-135M,SmolLM2-135M__quant__s0.0000__b4__seed0__float32,4-bit,0.0
+winogrande,acc,1267,0,0,0,SmolLM2-135M,SmolLM2-135M__quant__s0.0000__b4__seed0__float32,4-bit,0.0
+openbookqa,acc_norm,500,0,0,0,SmolLM2-135M,SmolLM2-135M__quant__s0.0000__b4__seed0__float32,4-bit,0.0
+boolq,acc,3270,0,0,0,SmolLM2-135M,SmolLM2-135M__quant__s0.0000__b4__seed0__float32,4-bit,0.0
+sciq,acc,1000,0,0,0,SmolLM2-135M,SmolLM2-135M__quant__s0.0000__b4__seed0__float32,4-bit,0.0
+lambada_openai,acc,5153,0,0,0,SmolLM2-135M,SmolLM2-135M__quant__s0.0000__b4__seed0__float32,4-bit,0.0
+arc_easy,acc_norm,2376,0,0,0,SmolLM2-135M,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,50%+4 P->Q,0.0
+piqa,acc_norm,1838,0,0,0,SmolLM2-135M,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,50%+4 P->Q,0.0
+hellaswag,acc_norm,10042,0,0,0,SmolLM2-135M,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,50%+4 P->Q,0.0
+arc_challenge,acc_norm,1172,0,0,0,SmolLM2-135M,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,50%+4 P->Q,0.0
+winogrande,acc,1267,0,0,0,SmolLM2-135M,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,50%+4 P->Q,0.0
+openbookqa,acc_norm,500,0,0,0,SmolLM2-135M,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,50%+4 P->Q,0.0
+boolq,acc,3270,0,0,0,SmolLM2-135M,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,50%+4 P->Q,0.0
+sciq,acc,1000,0,0,0,SmolLM2-135M,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,50%+4 P->Q,0.0
+lambada_openai,acc,5153,0,0,0,SmolLM2-135M,SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float32,50%+4 P->Q,0.0
+arc_easy,acc_norm,2376,0,0,0,Qwen2.5-0.5B,Qwen2.5-0.5B__dense__s0.0000__b16__seed0__float32,dense,0.0
+piqa,acc_norm,1838,0,0,0,Qwen2.5-0.5B,Qwen2.5-0.5B__dense__s0.0000__b16__seed0__float32,dense,0.0
+hellaswag,acc_norm,10042,0,0,0,Qwen2.5-0.5B,Qwen2.5-0.5B__dense__s0.0000__b16__seed0__float32,dense,0.0
+arc_challenge,acc_norm,1172,0,0,0,Qwen2.5-0.5B,Qwen2.5-0.5B__dense__s0.0000__b16__seed0__float32,dense,0.0
+winogrande,acc,1267,0,0,0,Qwen2.5-0.5B,Qwen2.5-0.5B__dense__s0.0000__b16__seed0__float32,dense,0.0
+openbookqa,acc_norm,500,0,0,0,Qwen2.5-0.5B,Qwen2.5-0.5B__dense__s0.0000__b16__seed0__float32,dense,0.0
+boolq,acc,3270,0,0,0,Qwen2.5-0.5B,Qwen2.5-0.5B__dense__s0.0000__b16__seed0__float32,dense,0.0
+sciq,acc,1000,0,0,0,Qwen2.5-0.5B,Qwen2.5-0.5B__dense__s0.0000__b16__seed0__float32,dense,0.0
+lambada_openai,acc,5153,0,0,0,Qwen2.5-0.5B,Qwen2.5-0.5B__dense__s0.0000__b16__seed0__float32,dense,0.0
