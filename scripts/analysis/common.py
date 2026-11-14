@@ -238,6 +238,10 @@ def planned_models():
 
 # ----------------------------------------------------------------------------- result store
 UPGRADE_FAMILIES = ("E6B",)  # re-runs that add benchmarks to existing study states (DECISIONS.md #44)
+# Interim builds (DECISIONS.md #48): models whose runs are still in progress can be left out of every analysis by
+# short name, e.g. ESANN_EXCLUDE_MODELS="Qwen2.5-1.5B,OLMo-2-0425-1B", so that the generated numbers describe only
+# complete models. The default (unset) uses every state.
+EXCLUDE_ENV = "ESANN_EXCLUDE_MODELS"
 
 
 class Store:
@@ -249,6 +253,8 @@ class Store:
         self.det, self.det_source = {}, {}
         self.not_ok, self.failures, self.duplicates, self.other_dtype = [], [], [], []
         self.archived_failures, self.ignored_files = [], []
+        self.excluded_models = sorted({x.strip() for x in os.environ.get(EXCLUDE_ENV, "").split(",") if x.strip()})
+        self.excluded = []
         self.item_problems = {}
         self.upgraded, self.upgrade_problems = [], []
         self._items = {}
@@ -281,6 +287,9 @@ class Store:
                     if not isinstance(r, dict) or "state_id" not in r:
                         continue
                     sid = r["state_id"]
+                    if self.excluded_models and short(r.get("model", "")) in self.excluded_models:
+                        self.excluded.append({"state_id": sid, "file": self.paths.rel(path)})
+                        continue
                     if r.get("status") != "ok":
                         self.not_ok.append({"state_id": sid, "status": r.get("status"), "file": self.paths.rel(path),
                                             "checks": r.get("checks")})

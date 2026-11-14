@@ -1206,6 +1206,8 @@ def macros_isr_groups(M, store, e1):
 
 def build_macros(store, e1, q, det, fr, e2res, boolq, missing, repro=(), e7res=None, e8res=None, isr=None, batch=None):
     M = Macros()
+    M.add("Build", "BuildExcludedModels", tex_escape(", ".join(store.excluded_models)) if store.excluded_models else "none",
+          "models left out of this build (interim builds only; ESANN_EXCLUDE_MODELS, DECISIONS.md #48)", "environment")
     macros_states(M, store, e1)
     macros_seeds(M, store, e1)
     macros_questions(M, store, q)

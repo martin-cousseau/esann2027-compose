@@ -37,6 +37,12 @@ Suffix `Pct`: the value is a percentage (the macro holds the number only). Signe
 `\ensuremath`, so they work in text and in math. Text values (model names) are escaped for LaTeX.
 
 
+## Build
+
+| Macro | Value | Meaning | Source |
+|---|---|---|---|
+| `\resBuildExcludedModels` | `none` | models left out of this build (interim builds only; ESANN_EXCLUDE_MODELS, DECISIONS.md #48) | environment |
+
 ## States of SmolLM2-135M (seed 0)
 
 Macro = `\res` + column + `SmolSmall` + row tag (e.g. `\resPplSmolSmallDense`). Row source: the state's result line; column source: below the table.
@@ -515,18 +521,18 @@ Macro = `\res` + column + `QwenMid` + row tag (e.g. `\resPplQwenMidDense`). Row 
 | Row tag | State | Source | Ppl | PplCFour | Kl | KlCFour | TopOnePct | TopOneCFourPct | BitsTcr | BitsMask | BitsSym | FreeZerosPct | FlipsPct | FlipsCWPct | FlipsWCPct | SrThree | SrPaper | SrExt | SrCn |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | `Dense` | dense | `results/v2/E6B/Qwen2.5-1.5B.jsonl` `Qwen2.5-1.5B__dense__s0.0000__b16__seed0__float32` | `9.26` | `14.65` | `0.000` | `0.000` | `100.0` | `100.0` | `16.00` | `16.00` | `--` |  | `0.0` | `0.0` | `0.0` | `1.000` | `1.000` | `1.000` | `1.000` |
-| `QuantBFour` | 4-bit | `results/v2/E6/Qwen2.5-1.5B.jsonl` `Qwen2.5-1.5B__quant__s0.0000__b4__seed0__float32` | `11.16` | `15.51` | `0.205` | `0.063` | `81.8` | `87.1` | `4.00` | `4.00` | `3.43` | `14.9` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `QuantBThree` | 3-bit | `results/v2/E6/Qwen2.5-1.5B.jsonl` `Qwen2.5-1.5B__quant__s0.0000__b3__seed0__float32` | `17.57` | `20.80` | `0.682` | `0.365` | `65.5` | `71.0` | `3.00` | `3.00` | `2.41` | `31.0` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `QuantBFour` | 4-bit | `results/v2/E6B/Qwen2.5-1.5B.jsonl` `Qwen2.5-1.5B__quant__s0.0000__b4__seed0__float32` | `11.16` | `15.51` | `0.205` | `0.063` | `81.8` | `87.1` | `4.00` | `4.00` | `3.43` | `14.9` | `8.4` | `5.2` | `3.3` | `0.982` | `0.977` | `0.976` | `0.953` |
+| `QuantBThree` | 3-bit | `results/v2/E6B/Qwen2.5-1.5B.jsonl` `Qwen2.5-1.5B__quant__s0.0000__b3__seed0__float32` | `17.57` | `20.80` | `0.682` | `0.365` | `65.5` | `71.0` | `3.00` | `3.00` | `2.41` | `31.0` | `19.5` | `15.0` | `4.5` | `0.891` | `0.904` | `0.859` | `0.727` |
 | `PruneSTwentyFive` | 25% pruned | `Qwen2.5-1.5B__prune__s0.2500__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `PruneSThirtyThree` | 33% pruned | `Qwen2.5-1.5B__prune__s0.3333__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `PruneSFifty` | 50% pruned | `Qwen2.5-1.5B__prune__s0.5000__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `STwentyFiveBFourJoint` | 25%+4 joint | `Qwen2.5-1.5B__joint__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBFourPQ` | 25%+4 P->Q | `Qwen2.5-1.5B__p_then_q__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBFourPQ` | 25%+4 P->Q | `results/v2/E6/Qwen2.5-1.5B.jsonl` `Qwen2.5-1.5B__p_then_q__s0.2500__b4__seed0__float32` | `11.31` | `15.72` | `0.217` | `0.076` | `81.0` | `85.7` | `3.00` | `4.00` | `3.32` | `25.6` | `9.9` | `6.4` | `3.6` | `0.969` | `0.971` | `0.960` | `0.923` |
 | `STwentyFiveBFourQP` | 25%+4 Q->P | `Qwen2.5-1.5B__q_then_p__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SThirtyThreeBFourJoint` | 33%+4 joint | `Qwen2.5-1.5B__joint__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SThirtyThreeBFourPQ` | 33%+4 P->Q | `Qwen2.5-1.5B__p_then_q__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SThirtyThreeBFourQP` | 33%+4 Q->P | `Qwen2.5-1.5B__q_then_p__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourJoint` | 50%+4 joint | `Qwen2.5-1.5B__joint__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourJoint` | 50%+4 joint | `results/v2/E6/Qwen2.5-1.5B.jsonl` `Qwen2.5-1.5B__joint__s0.5000__b4__seed0__float32` | `15.48` | `19.85` | `0.554` | `0.318` | `67.5` | `71.4` | `2.00` | `3.00` | `2.62` | `50.0` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBFourPQ` | 50%+4 P->Q | `results/v2/E6/Qwen2.5-1.5B.jsonl` `Qwen2.5-1.5B__p_then_q__s0.5000__b4__seed0__float32` | `14.35` | `19.88` | `0.478` | `0.319` | `69.3` | `71.3` | `2.00` | `3.00` | `2.62` | `50.1` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBFourQP` | 50%+4 Q->P | `Qwen2.5-1.5B__q_then_p__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `STwentyFiveBThreeJoint` | 25%+3 joint | `Qwen2.5-1.5B__joint__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
@@ -566,12 +572,12 @@ Macro = `\res` + column + `QwenMid` + row tag (e.g. `\resISrThreeQwenMidSTwentyF
 | Row tag | State | Source | ISrThree | ISrThreeLo | ISrThreeHi | ISrPaper | ISrPaperLo | ISrPaperHi | ISrExt | ISrExtLo | ISrExtHi | ISrCn | ISrCnLo | ISrCnHi |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | `STwentyFiveBFourJoint` | 25%+4 joint | `Qwen2.5-1.5B__joint__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `STwentyFiveBFourPQ` | 25%+4 P->Q | `Qwen2.5-1.5B__p_then_q__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `STwentyFiveBFourPQ` | 25%+4 P->Q | `results/v2/E6/Qwen2.5-1.5B.jsonl` `Qwen2.5-1.5B__p_then_q__s0.2500__b4__seed0__float32` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `STwentyFiveBFourQP` | 25%+4 Q->P | `Qwen2.5-1.5B__q_then_p__s0.2500__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SThirtyThreeBFourJoint` | 33%+4 joint | `Qwen2.5-1.5B__joint__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SThirtyThreeBFourPQ` | 33%+4 P->Q | `Qwen2.5-1.5B__p_then_q__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SThirtyThreeBFourQP` | 33%+4 Q->P | `Qwen2.5-1.5B__q_then_p__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourJoint` | 50%+4 joint | `Qwen2.5-1.5B__joint__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourJoint` | 50%+4 joint | `results/v2/E6/Qwen2.5-1.5B.jsonl` `Qwen2.5-1.5B__joint__s0.5000__b4__seed0__float32` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBFourPQ` | 50%+4 P->Q | `results/v2/E6/Qwen2.5-1.5B.jsonl` `Qwen2.5-1.5B__p_then_q__s0.5000__b4__seed0__float32` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBFourQP` | 50%+4 Q->P | `Qwen2.5-1.5B__q_then_p__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `STwentyFiveBThreeJoint` | 25%+3 joint | `Qwen2.5-1.5B__joint__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
@@ -696,9 +702,9 @@ Macro = `\res` + column + `Olmo` + row tag (e.g. `\resPplOlmoDense`). Row source
 
 | Row tag | State | Source | Ppl | PplCFour | Kl | KlCFour | TopOnePct | TopOneCFourPct | BitsTcr | BitsMask | BitsSym | FreeZerosPct | FlipsPct | FlipsCWPct | FlipsWCPct | SrThree | SrPaper | SrExt | SrCn |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| `Dense` | dense | `OLMo-2-0425-1B__dense__s0.0000__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |  | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `QuantBFour` | 4-bit | `OLMo-2-0425-1B__quant__s0.0000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `QuantBThree` | 3-bit | `OLMo-2-0425-1B__quant__s0.0000__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `Dense` | dense | `results/v2/E6/OLMo-2-0425-1B.jsonl` `OLMo-2-0425-1B__dense__s0.0000__b16__seed0__float32` | `9.27` | `14.92` | `0.000` | `0.000` | `100.0` | `100.0` | `16.00` | `16.00` | `--` |  | `0.0` | `0.0` | `0.0` | `1.000` | `1.000` | `1.000` | `1.000` |
+| `QuantBFour` | 4-bit | `results/v2/E6/OLMo-2-0425-1B.jsonl` `OLMo-2-0425-1B__quant__s0.0000__b4__seed0__float32` | `10.11` | `15.94` | `0.088` | `0.069` | `85.5` | `86.0` | `4.00` | `4.00` | `3.47` | `14.0` | `9.4` | `6.0` | `3.4` | `0.982` | `0.983` | `0.971` | `0.943` |
+| `QuantBThree` | 3-bit | `results/v2/E6/OLMo-2-0425-1B.jsonl` `OLMo-2-0425-1B__quant__s0.0000__b3__seed0__float32` | `14.07` | `20.42` | `0.423` | `0.325` | `70.5` | `71.1` | `3.00` | `3.00` | `2.46` | `29.4` | `21.6` | `16.4` | `5.1` | `0.870` | `0.877` | `0.857` | `0.720` |
 | `PruneSTwentyFive` | 25% pruned | `OLMo-2-0425-1B__prune__s0.2500__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `PruneSThirtyThree` | 33% pruned | `OLMo-2-0425-1B__prune__s0.3333__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `PruneSFifty` | 50% pruned | `OLMo-2-0425-1B__prune__s0.5000__b16__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
@@ -708,8 +714,8 @@ Macro = `\res` + column + `Olmo` + row tag (e.g. `\resPplOlmoDense`). Row source
 | `SThirtyThreeBFourJoint` | 33%+4 joint | `OLMo-2-0425-1B__joint__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SThirtyThreeBFourPQ` | 33%+4 P->Q | `OLMo-2-0425-1B__p_then_q__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SThirtyThreeBFourQP` | 33%+4 Q->P | `OLMo-2-0425-1B__q_then_p__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourJoint` | 50%+4 joint | `OLMo-2-0425-1B__joint__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourPQ` | 50%+4 P->Q | `OLMo-2-0425-1B__p_then_q__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourJoint` | 50%+4 joint | `results/v2/E6/OLMo-2-0425-1B.jsonl` `OLMo-2-0425-1B__joint__s0.5000__b4__seed0__float32` | `15.76` | `21.94` | `0.532` | `0.400` | `67.3` | `68.4` | `2.00` | `3.00` | `2.61` | `50.0` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourPQ` | 50%+4 P->Q | `results/v2/E6/OLMo-2-0425-1B.jsonl` `OLMo-2-0425-1B__p_then_q__s0.5000__b4__seed0__float32` | `15.69` | `21.91` | `0.525` | `0.399` | `67.4` | `68.4` | `2.00` | `3.00` | `2.61` | `50.0` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBFourQP` | 50%+4 Q->P | `OLMo-2-0425-1B__q_then_p__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `STwentyFiveBThreeJoint` | 25%+3 joint | `OLMo-2-0425-1B__joint__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `STwentyFiveBThreePQ` | 25%+3 P->Q | `OLMo-2-0425-1B__p_then_q__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
@@ -753,8 +759,8 @@ Macro = `\res` + column + `Olmo` + row tag (e.g. `\resISrThreeOlmoSTwentyFiveBFo
 | `SThirtyThreeBFourJoint` | 33%+4 joint | `OLMo-2-0425-1B__joint__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SThirtyThreeBFourPQ` | 33%+4 P->Q | `OLMo-2-0425-1B__p_then_q__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SThirtyThreeBFourQP` | 33%+4 Q->P | `OLMo-2-0425-1B__q_then_p__s0.3333__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourJoint` | 50%+4 joint | `OLMo-2-0425-1B__joint__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
-| `SFiftyBFourPQ` | 50%+4 P->Q | `OLMo-2-0425-1B__p_then_q__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourJoint` | 50%+4 joint | `results/v2/E6/OLMo-2-0425-1B.jsonl` `OLMo-2-0425-1B__joint__s0.5000__b4__seed0__float32` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
+| `SFiftyBFourPQ` | 50%+4 P->Q | `results/v2/E6/OLMo-2-0425-1B.jsonl` `OLMo-2-0425-1B__p_then_q__s0.5000__b4__seed0__float32` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `SFiftyBFourQP` | 50%+4 Q->P | `OLMo-2-0425-1B__q_then_p__s0.5000__b4__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `STwentyFiveBThreeJoint` | 25%+3 joint | `OLMo-2-0425-1B__joint__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
 | `STwentyFiveBThreePQ` | 25%+3 P->Q | `OLMo-2-0425-1B__p_then_q__s0.2500__b3__seed0__float32` (planned, not available yet) | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` | `--` |
@@ -1895,7 +1901,7 @@ Columns:
 | `\resNItemsSciq` | `1000` | sciq: items evaluated per state | results/v2/items/*.json.gz |
 | `\resNItemsLambada` | `5153` | lambada_openai: items evaluated per state | results/v2/items/*.json.gz |
 | `\resBootB` | `10000` | bootstrap resamples (items within each task) | scripts/analysis/stats.py, make_tables.py --boot |
-| `\resNStates` | `218` | usable v2 model states (status ok) | results/v2/*/*.jsonl |
+| `\resNStates` | `225` | usable v2 model states (status ok) | results/v2/*/*.jsonl |
 | `\resNStatesPlanned` | `346` | model states in the study plan | scripts/make_queues.py |
 
 ## Requested by paper/main.tex (reports/latex_macro_requests.md, R1-R31)
@@ -2824,7 +2830,7 @@ Columns:
 | Macro | Value | Meaning | Source |
 |---|---|---|---|
 | `\resScaleMatchedSmallSizeRatio` | `1.14` | about 0.3B (SmolLM2-360M, Qwen2.5-0.5B): largest / smallest number of compressed weights | result lines, field compressed_weights |
-| `\resScaleMatchedBillionSizeRatio` | `--` | about 1.1-1.6B (SmolLM2-1.7B, Qwen2.5-1.5B, OLMo-2-0425-1B): largest / smallest number of compressed weights | result lines, field compressed_weights |
+| `\resScaleMatchedBillionSizeRatio` | `1.50` | about 1.1-1.6B (SmolLM2-1.7B, Qwen2.5-1.5B, OLMo-2-0425-1B): largest / smallest number of compressed weights | result lines, field compressed_weights |
 | `\resScaleMatchedSmallSTwentyFiveBFourModels` | `2` | about 0.3B 25%+4 (SmolLM2-360M Qwen2.5-0.5B): models with the cell and all three orders | reports/analysis/scale_matched.csv (seed 0; -- until every model of the group has the cell with all three orders) |
 | `\resScaleMatchedSmallSTwentyFiveBFourMinPct` | `3.0` | about 0.3B 25%+4 (SmolLM2-360M Qwen2.5-0.5B): smallest order spread (%) | reports/analysis/scale_matched.csv (seed 0; -- until every model of the group has the cell with all three orders) |
 | `\resScaleMatchedSmallSTwentyFiveBFourMaxPct` | `8.9` | about 0.3B 25%+4 (SmolLM2-360M Qwen2.5-0.5B): largest order spread (%) | reports/analysis/scale_matched.csv (seed 0; -- until every model of the group has the cell with all three orders) |
@@ -2959,8 +2965,8 @@ Columns:
 | `\resNWeightsQwenMidB` | `1.31` | Qwen2.5-1.5B: compressed weights, billions (2 decimals) | result lines of Qwen2.5-1.5B, field compressed_weights |
 | `\resNWeightsQwenLargeM` | `--` | Qwen2.5-3B: compressed weights, millions (integer) | Qwen2.5-3B: no result line yet |
 | `\resNWeightsQwenLargeB` | `--` | Qwen2.5-3B: compressed weights, billions (2 decimals) | Qwen2.5-3B: no result line yet |
-| `\resNWeightsOlmoM` | `--` | OLMo-2-0425-1B: compressed weights, millions (integer) | OLMo-2-0425-1B: no result line yet |
-| `\resNWeightsOlmoB` | `--` | OLMo-2-0425-1B: compressed weights, billions (2 decimals) | OLMo-2-0425-1B: no result line yet |
+| `\resNWeightsOlmoM` | `1074` | OLMo-2-0425-1B: compressed weights, millions (integer) | result lines of OLMo-2-0425-1B, field compressed_weights |
+| `\resNWeightsOlmoB` | `1.07` | OLMo-2-0425-1B: compressed weights, billions (2 decimals) | result lines of OLMo-2-0425-1B, field compressed_weights |
 
 ## E7 order rules (reports/analysis/e7_summary.json; scripts/analysis/e7.py)
 
@@ -3384,14 +3390,14 @@ Columns:
 | `\resFreeZerosModelsCoreQuantBThree` | `3` | Core: models with 3-bit quantization alone | results/v2 (storage.zero_frac_actual; wikitext2.nll_sum) |
 | `\resQOneQPEqualsQuantCoreSTwentyFiveBThree` | `3` | Core: models where Q->P at 25%+3 has the WikiText-2 NLL sum of 3-bit quantization alone | results/v2 (storage.zero_frac_actual; wikitext2.nll_sum) |
 | `\resQOneQPEqualsQuantModelsCoreSTwentyFiveBThree` | `3` | Core: models with both states | results/v2 (storage.zero_frac_actual; wikitext2.nll_sum) |
-| `\resFreeZerosPctMinLargerQuantBThree` | `30` | Larger: smallest share of exact zeros after 3-bit quantization alone (%) | results/v2 (storage.zero_frac_actual; wikitext2.nll_sum) |
+| `\resFreeZerosPctMinLargerQuantBThree` | `29` | Larger: smallest share of exact zeros after 3-bit quantization alone (%) | results/v2 (storage.zero_frac_actual; wikitext2.nll_sum) |
 | `\resFreeZerosPctMaxLargerQuantBThree` | `31` | Larger: largest share (%) | results/v2 (storage.zero_frac_actual; wikitext2.nll_sum) |
-| `\resFreeZerosModelsLargerQuantBThree` | `2` | Larger: models with 3-bit quantization alone | results/v2 (storage.zero_frac_actual; wikitext2.nll_sum) |
+| `\resFreeZerosModelsLargerQuantBThree` | `3` | Larger: models with 3-bit quantization alone | results/v2 (storage.zero_frac_actual; wikitext2.nll_sum) |
 | `\resQOneQPEqualsQuantLargerSTwentyFiveBThree` | `1` | Larger: models where Q->P at 25%+3 has the WikiText-2 NLL sum of 3-bit quantization alone | results/v2 (storage.zero_frac_actual; wikitext2.nll_sum) |
 | `\resQOneQPEqualsQuantModelsLargerSTwentyFiveBThree` | `1` | Larger: models with both states | results/v2 (storage.zero_frac_actual; wikitext2.nll_sum) |
-| `\resFreeZerosPctMinAllModelsQuantBThree` | `30` | AllModels: smallest share of exact zeros after 3-bit quantization alone (%) | results/v2 (storage.zero_frac_actual; wikitext2.nll_sum) |
+| `\resFreeZerosPctMinAllModelsQuantBThree` | `29` | AllModels: smallest share of exact zeros after 3-bit quantization alone (%) | results/v2 (storage.zero_frac_actual; wikitext2.nll_sum) |
 | `\resFreeZerosPctMaxAllModelsQuantBThree` | `32` | AllModels: largest share (%) | results/v2 (storage.zero_frac_actual; wikitext2.nll_sum) |
-| `\resFreeZerosModelsAllModelsQuantBThree` | `5` | AllModels: models with 3-bit quantization alone | results/v2 (storage.zero_frac_actual; wikitext2.nll_sum) |
+| `\resFreeZerosModelsAllModelsQuantBThree` | `6` | AllModels: models with 3-bit quantization alone | results/v2 (storage.zero_frac_actual; wikitext2.nll_sum) |
 | `\resQOneQPEqualsQuantAllModelsSTwentyFiveBThree` | `4` | AllModels: models where Q->P at 25%+3 has the WikiText-2 NLL sum of 3-bit quantization alone | results/v2 (storage.zero_frac_actual; wikitext2.nll_sum) |
 | `\resQOneQPEqualsQuantModelsAllModelsSTwentyFiveBThree` | `4` | AllModels: models with both states | results/v2 (storage.zero_frac_actual; wikitext2.nll_sum) |
 
@@ -3599,13 +3605,13 @@ Columns:
 | `\resEEightRhoSmolLarge` | `\ensuremath{+0.94}` | SmolLM2-1.7B: Spearman rho of mean layer error vs KL over its compressed states (n = 23) | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
 | `\resEEightSameBestSmolLarge` | `3` | SmolLM2-1.7B: cells where the order with the smallest layer error also has the smallest KL | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
 | `\resEEightCellsSmolLarge` | `6` | SmolLM2-1.7B: cells with the three paper orders | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
-| `\resEEightRhoQwenMid` | `\ensuremath{+1.00}` | Qwen2.5-1.5B: Spearman rho of mean layer error vs KL over its compressed states (n = 3) | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
+| `\resEEightRhoQwenMid` | `\ensuremath{+0.90}` | Qwen2.5-1.5B: Spearman rho of mean layer error vs KL over its compressed states (n = 5) | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
 | `\resEEightSameBestQwenMid` | `--` | Qwen2.5-1.5B: cells where the order with the smallest layer error also has the smallest KL | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
 | `\resEEightCellsQwenMid` | `--` | Qwen2.5-1.5B: cells with the three paper orders | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
 | `\resEEightRhoQwenLarge` | `--` | Qwen2.5-3B: Spearman rho of mean layer error vs KL over its compressed states (n = 0) | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
 | `\resEEightSameBestQwenLarge` | `--` | Qwen2.5-3B: cells where the order with the smallest layer error also has the smallest KL | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
 | `\resEEightCellsQwenLarge` | `--` | Qwen2.5-3B: cells with the three paper orders | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
-| `\resEEightRhoOlmo` | `--` | OLMo-2-0425-1B: Spearman rho of mean layer error vs KL over its compressed states (n = 0) | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
+| `\resEEightRhoOlmo` | `\ensuremath{+0.80}` | OLMo-2-0425-1B: Spearman rho of mean layer error vs KL over its compressed states (n = 4) | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
 | `\resEEightSameBestOlmo` | `--` | OLMo-2-0425-1B: cells where the order with the smallest layer error also has the smallest KL | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
 | `\resEEightCellsOlmo` | `--` | OLMo-2-0425-1B: cells with the three paper orders | reports/analysis/e8_layer_error_vs_kl.json (seed 0; mean_rel_err vs wikitext2.kl) |
 
@@ -3937,13 +3943,13 @@ Columns:
 | `\resBitsMaskQwenTwoFiveOneFiveBQuantBFour` | `4.00` | = `\resBitsMaskQwenMidQuantBFour` | see that macro |
 | `\resBitsSymQwenTwoFiveOneFiveBQuantBFour` | `3.43` | = `\resBitsSymQwenMidQuantBFour` | see that macro |
 | `\resFreeZerosPctQwenTwoFiveOneFiveBQuantBFour` | `14.9` | = `\resFreeZerosPctQwenMidQuantBFour` | see that macro |
-| `\resFlipsPctQwenTwoFiveOneFiveBQuantBFour` | `--` | = `\resFlipsPctQwenMidQuantBFour` | see that macro |
-| `\resFlipsCWPctQwenTwoFiveOneFiveBQuantBFour` | `--` | = `\resFlipsCWPctQwenMidQuantBFour` | see that macro |
-| `\resFlipsWCPctQwenTwoFiveOneFiveBQuantBFour` | `--` | = `\resFlipsWCPctQwenMidQuantBFour` | see that macro |
-| `\resSrThreeQwenTwoFiveOneFiveBQuantBFour` | `--` | = `\resSrThreeQwenMidQuantBFour` | see that macro |
-| `\resSrPaperQwenTwoFiveOneFiveBQuantBFour` | `--` | = `\resSrPaperQwenMidQuantBFour` | see that macro |
-| `\resSrExtQwenTwoFiveOneFiveBQuantBFour` | `--` | = `\resSrExtQwenMidQuantBFour` | see that macro |
-| `\resSrCnQwenTwoFiveOneFiveBQuantBFour` | `--` | = `\resSrCnQwenMidQuantBFour` | see that macro |
+| `\resFlipsPctQwenTwoFiveOneFiveBQuantBFour` | `8.4` | = `\resFlipsPctQwenMidQuantBFour` | see that macro |
+| `\resFlipsCWPctQwenTwoFiveOneFiveBQuantBFour` | `5.2` | = `\resFlipsCWPctQwenMidQuantBFour` | see that macro |
+| `\resFlipsWCPctQwenTwoFiveOneFiveBQuantBFour` | `3.3` | = `\resFlipsWCPctQwenMidQuantBFour` | see that macro |
+| `\resSrThreeQwenTwoFiveOneFiveBQuantBFour` | `0.982` | = `\resSrThreeQwenMidQuantBFour` | see that macro |
+| `\resSrPaperQwenTwoFiveOneFiveBQuantBFour` | `0.977` | = `\resSrPaperQwenMidQuantBFour` | see that macro |
+| `\resSrExtQwenTwoFiveOneFiveBQuantBFour` | `0.976` | = `\resSrExtQwenMidQuantBFour` | see that macro |
+| `\resSrCnQwenTwoFiveOneFiveBQuantBFour` | `0.953` | = `\resSrCnQwenMidQuantBFour` | see that macro |
 | `\resPplQwenTwoFiveOneFiveBQuantBThree` | `17.57` | = `\resPplQwenMidQuantBThree` | see that macro |
 | `\resPplCFourQwenTwoFiveOneFiveBQuantBThree` | `20.80` | = `\resPplCFourQwenMidQuantBThree` | see that macro |
 | `\resKlQwenTwoFiveOneFiveBQuantBThree` | `0.682` | = `\resKlQwenMidQuantBThree` | see that macro |
@@ -3954,13 +3960,13 @@ Columns:
 | `\resBitsMaskQwenTwoFiveOneFiveBQuantBThree` | `3.00` | = `\resBitsMaskQwenMidQuantBThree` | see that macro |
 | `\resBitsSymQwenTwoFiveOneFiveBQuantBThree` | `2.41` | = `\resBitsSymQwenMidQuantBThree` | see that macro |
 | `\resFreeZerosPctQwenTwoFiveOneFiveBQuantBThree` | `31.0` | = `\resFreeZerosPctQwenMidQuantBThree` | see that macro |
-| `\resFlipsPctQwenTwoFiveOneFiveBQuantBThree` | `--` | = `\resFlipsPctQwenMidQuantBThree` | see that macro |
-| `\resFlipsCWPctQwenTwoFiveOneFiveBQuantBThree` | `--` | = `\resFlipsCWPctQwenMidQuantBThree` | see that macro |
-| `\resFlipsWCPctQwenTwoFiveOneFiveBQuantBThree` | `--` | = `\resFlipsWCPctQwenMidQuantBThree` | see that macro |
-| `\resSrThreeQwenTwoFiveOneFiveBQuantBThree` | `--` | = `\resSrThreeQwenMidQuantBThree` | see that macro |
-| `\resSrPaperQwenTwoFiveOneFiveBQuantBThree` | `--` | = `\resSrPaperQwenMidQuantBThree` | see that macro |
-| `\resSrExtQwenTwoFiveOneFiveBQuantBThree` | `--` | = `\resSrExtQwenMidQuantBThree` | see that macro |
-| `\resSrCnQwenTwoFiveOneFiveBQuantBThree` | `--` | = `\resSrCnQwenMidQuantBThree` | see that macro |
+| `\resFlipsPctQwenTwoFiveOneFiveBQuantBThree` | `19.5` | = `\resFlipsPctQwenMidQuantBThree` | see that macro |
+| `\resFlipsCWPctQwenTwoFiveOneFiveBQuantBThree` | `15.0` | = `\resFlipsCWPctQwenMidQuantBThree` | see that macro |
+| `\resFlipsWCPctQwenTwoFiveOneFiveBQuantBThree` | `4.5` | = `\resFlipsWCPctQwenMidQuantBThree` | see that macro |
+| `\resSrThreeQwenTwoFiveOneFiveBQuantBThree` | `0.891` | = `\resSrThreeQwenMidQuantBThree` | see that macro |
+| `\resSrPaperQwenTwoFiveOneFiveBQuantBThree` | `0.904` | = `\resSrPaperQwenMidQuantBThree` | see that macro |
+| `\resSrExtQwenTwoFiveOneFiveBQuantBThree` | `0.859` | = `\resSrExtQwenMidQuantBThree` | see that macro |
+| `\resSrCnQwenTwoFiveOneFiveBQuantBThree` | `0.727` | = `\resSrCnQwenMidQuantBThree` | see that macro |
 | `\resPplQwenTwoFiveOneFiveBPruneSTwentyFive` | `--` | = `\resPplQwenMidPruneSTwentyFive` | see that macro |
 | `\resPplCFourQwenTwoFiveOneFiveBPruneSTwentyFive` | `--` | = `\resPplCFourQwenMidPruneSTwentyFive` | see that macro |
 | `\resKlQwenTwoFiveOneFiveBPruneSTwentyFive` | `--` | = `\resKlQwenMidPruneSTwentyFive` | see that macro |
@@ -4029,23 +4035,23 @@ Columns:
 | `\resSrPaperQwenTwoFiveOneFiveBSTwentyFiveBFourJoint` | `--` | = `\resSrPaperQwenMidSTwentyFiveBFourJoint` | see that macro |
 | `\resSrExtQwenTwoFiveOneFiveBSTwentyFiveBFourJoint` | `--` | = `\resSrExtQwenMidSTwentyFiveBFourJoint` | see that macro |
 | `\resSrCnQwenTwoFiveOneFiveBSTwentyFiveBFourJoint` | `--` | = `\resSrCnQwenMidSTwentyFiveBFourJoint` | see that macro |
-| `\resPplQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `--` | = `\resPplQwenMidSTwentyFiveBFourPQ` | see that macro |
-| `\resPplCFourQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `--` | = `\resPplCFourQwenMidSTwentyFiveBFourPQ` | see that macro |
-| `\resKlQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `--` | = `\resKlQwenMidSTwentyFiveBFourPQ` | see that macro |
-| `\resKlCFourQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `--` | = `\resKlCFourQwenMidSTwentyFiveBFourPQ` | see that macro |
-| `\resTopOnePctQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `--` | = `\resTopOnePctQwenMidSTwentyFiveBFourPQ` | see that macro |
-| `\resTopOneCFourPctQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `--` | = `\resTopOneCFourPctQwenMidSTwentyFiveBFourPQ` | see that macro |
-| `\resBitsTcrQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `--` | = `\resBitsTcrQwenMidSTwentyFiveBFourPQ` | see that macro |
-| `\resBitsMaskQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `--` | = `\resBitsMaskQwenMidSTwentyFiveBFourPQ` | see that macro |
-| `\resBitsSymQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `--` | = `\resBitsSymQwenMidSTwentyFiveBFourPQ` | see that macro |
-| `\resFreeZerosPctQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `--` | = `\resFreeZerosPctQwenMidSTwentyFiveBFourPQ` | see that macro |
-| `\resFlipsPctQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `--` | = `\resFlipsPctQwenMidSTwentyFiveBFourPQ` | see that macro |
-| `\resFlipsCWPctQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `--` | = `\resFlipsCWPctQwenMidSTwentyFiveBFourPQ` | see that macro |
-| `\resFlipsWCPctQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `--` | = `\resFlipsWCPctQwenMidSTwentyFiveBFourPQ` | see that macro |
-| `\resSrThreeQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `--` | = `\resSrThreeQwenMidSTwentyFiveBFourPQ` | see that macro |
-| `\resSrPaperQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `--` | = `\resSrPaperQwenMidSTwentyFiveBFourPQ` | see that macro |
-| `\resSrExtQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `--` | = `\resSrExtQwenMidSTwentyFiveBFourPQ` | see that macro |
-| `\resSrCnQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `--` | = `\resSrCnQwenMidSTwentyFiveBFourPQ` | see that macro |
+| `\resPplQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `11.31` | = `\resPplQwenMidSTwentyFiveBFourPQ` | see that macro |
+| `\resPplCFourQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `15.72` | = `\resPplCFourQwenMidSTwentyFiveBFourPQ` | see that macro |
+| `\resKlQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `0.217` | = `\resKlQwenMidSTwentyFiveBFourPQ` | see that macro |
+| `\resKlCFourQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `0.076` | = `\resKlCFourQwenMidSTwentyFiveBFourPQ` | see that macro |
+| `\resTopOnePctQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `81.0` | = `\resTopOnePctQwenMidSTwentyFiveBFourPQ` | see that macro |
+| `\resTopOneCFourPctQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `85.7` | = `\resTopOneCFourPctQwenMidSTwentyFiveBFourPQ` | see that macro |
+| `\resBitsTcrQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `3.00` | = `\resBitsTcrQwenMidSTwentyFiveBFourPQ` | see that macro |
+| `\resBitsMaskQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `4.00` | = `\resBitsMaskQwenMidSTwentyFiveBFourPQ` | see that macro |
+| `\resBitsSymQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `3.32` | = `\resBitsSymQwenMidSTwentyFiveBFourPQ` | see that macro |
+| `\resFreeZerosPctQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `25.6` | = `\resFreeZerosPctQwenMidSTwentyFiveBFourPQ` | see that macro |
+| `\resFlipsPctQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `9.9` | = `\resFlipsPctQwenMidSTwentyFiveBFourPQ` | see that macro |
+| `\resFlipsCWPctQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `6.4` | = `\resFlipsCWPctQwenMidSTwentyFiveBFourPQ` | see that macro |
+| `\resFlipsWCPctQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `3.6` | = `\resFlipsWCPctQwenMidSTwentyFiveBFourPQ` | see that macro |
+| `\resSrThreeQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `0.969` | = `\resSrThreeQwenMidSTwentyFiveBFourPQ` | see that macro |
+| `\resSrPaperQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `0.971` | = `\resSrPaperQwenMidSTwentyFiveBFourPQ` | see that macro |
+| `\resSrExtQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `0.960` | = `\resSrExtQwenMidSTwentyFiveBFourPQ` | see that macro |
+| `\resSrCnQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `0.923` | = `\resSrCnQwenMidSTwentyFiveBFourPQ` | see that macro |
 | `\resPplQwenTwoFiveOneFiveBSTwentyFiveBFourQP` | `--` | = `\resPplQwenMidSTwentyFiveBFourQP` | see that macro |
 | `\resPplCFourQwenTwoFiveOneFiveBSTwentyFiveBFourQP` | `--` | = `\resPplCFourQwenMidSTwentyFiveBFourQP` | see that macro |
 | `\resKlQwenTwoFiveOneFiveBSTwentyFiveBFourQP` | `--` | = `\resKlQwenMidSTwentyFiveBFourQP` | see that macro |
@@ -4114,16 +4120,16 @@ Columns:
 | `\resSrPaperQwenTwoFiveOneFiveBSThirtyThreeBFourQP` | `--` | = `\resSrPaperQwenMidSThirtyThreeBFourQP` | see that macro |
 | `\resSrExtQwenTwoFiveOneFiveBSThirtyThreeBFourQP` | `--` | = `\resSrExtQwenMidSThirtyThreeBFourQP` | see that macro |
 | `\resSrCnQwenTwoFiveOneFiveBSThirtyThreeBFourQP` | `--` | = `\resSrCnQwenMidSThirtyThreeBFourQP` | see that macro |
-| `\resPplQwenTwoFiveOneFiveBSFiftyBFourJoint` | `--` | = `\resPplQwenMidSFiftyBFourJoint` | see that macro |
-| `\resPplCFourQwenTwoFiveOneFiveBSFiftyBFourJoint` | `--` | = `\resPplCFourQwenMidSFiftyBFourJoint` | see that macro |
-| `\resKlQwenTwoFiveOneFiveBSFiftyBFourJoint` | `--` | = `\resKlQwenMidSFiftyBFourJoint` | see that macro |
-| `\resKlCFourQwenTwoFiveOneFiveBSFiftyBFourJoint` | `--` | = `\resKlCFourQwenMidSFiftyBFourJoint` | see that macro |
-| `\resTopOnePctQwenTwoFiveOneFiveBSFiftyBFourJoint` | `--` | = `\resTopOnePctQwenMidSFiftyBFourJoint` | see that macro |
-| `\resTopOneCFourPctQwenTwoFiveOneFiveBSFiftyBFourJoint` | `--` | = `\resTopOneCFourPctQwenMidSFiftyBFourJoint` | see that macro |
-| `\resBitsTcrQwenTwoFiveOneFiveBSFiftyBFourJoint` | `--` | = `\resBitsTcrQwenMidSFiftyBFourJoint` | see that macro |
-| `\resBitsMaskQwenTwoFiveOneFiveBSFiftyBFourJoint` | `--` | = `\resBitsMaskQwenMidSFiftyBFourJoint` | see that macro |
-| `\resBitsSymQwenTwoFiveOneFiveBSFiftyBFourJoint` | `--` | = `\resBitsSymQwenMidSFiftyBFourJoint` | see that macro |
-| `\resFreeZerosPctQwenTwoFiveOneFiveBSFiftyBFourJoint` | `--` | = `\resFreeZerosPctQwenMidSFiftyBFourJoint` | see that macro |
+| `\resPplQwenTwoFiveOneFiveBSFiftyBFourJoint` | `15.48` | = `\resPplQwenMidSFiftyBFourJoint` | see that macro |
+| `\resPplCFourQwenTwoFiveOneFiveBSFiftyBFourJoint` | `19.85` | = `\resPplCFourQwenMidSFiftyBFourJoint` | see that macro |
+| `\resKlQwenTwoFiveOneFiveBSFiftyBFourJoint` | `0.554` | = `\resKlQwenMidSFiftyBFourJoint` | see that macro |
+| `\resKlCFourQwenTwoFiveOneFiveBSFiftyBFourJoint` | `0.318` | = `\resKlCFourQwenMidSFiftyBFourJoint` | see that macro |
+| `\resTopOnePctQwenTwoFiveOneFiveBSFiftyBFourJoint` | `67.5` | = `\resTopOnePctQwenMidSFiftyBFourJoint` | see that macro |
+| `\resTopOneCFourPctQwenTwoFiveOneFiveBSFiftyBFourJoint` | `71.4` | = `\resTopOneCFourPctQwenMidSFiftyBFourJoint` | see that macro |
+| `\resBitsTcrQwenTwoFiveOneFiveBSFiftyBFourJoint` | `2.00` | = `\resBitsTcrQwenMidSFiftyBFourJoint` | see that macro |
+| `\resBitsMaskQwenTwoFiveOneFiveBSFiftyBFourJoint` | `3.00` | = `\resBitsMaskQwenMidSFiftyBFourJoint` | see that macro |
+| `\resBitsSymQwenTwoFiveOneFiveBSFiftyBFourJoint` | `2.62` | = `\resBitsSymQwenMidSFiftyBFourJoint` | see that macro |
+| `\resFreeZerosPctQwenTwoFiveOneFiveBSFiftyBFourJoint` | `50.0` | = `\resFreeZerosPctQwenMidSFiftyBFourJoint` | see that macro |
 | `\resFlipsPctQwenTwoFiveOneFiveBSFiftyBFourJoint` | `--` | = `\resFlipsPctQwenMidSFiftyBFourJoint` | see that macro |
 | `\resFlipsCWPctQwenTwoFiveOneFiveBSFiftyBFourJoint` | `--` | = `\resFlipsCWPctQwenMidSFiftyBFourJoint` | see that macro |
 | `\resFlipsWCPctQwenTwoFiveOneFiveBSFiftyBFourJoint` | `--` | = `\resFlipsWCPctQwenMidSFiftyBFourJoint` | see that macro |
@@ -5157,56 +5163,56 @@ Columns:
 | `\resISrCnQwenTwoFiveThreeBSFiftyBThreeQP` | `--` | = `\resISrCnQwenLargeSFiftyBThreeQP` | see that macro |
 | `\resISrCnLoQwenTwoFiveThreeBSFiftyBThreeQP` | `--` | = `\resISrCnLoQwenLargeSFiftyBThreeQP` | see that macro |
 | `\resISrCnHiQwenTwoFiveThreeBSFiftyBThreeQP` | `--` | = `\resISrCnHiQwenLargeSFiftyBThreeQP` | see that macro |
-| `\resPplOLMoTwoZeroFourTwoFiveOneBDense` | `--` | = `\resPplOlmoDense` | see that macro |
-| `\resPplCFourOLMoTwoZeroFourTwoFiveOneBDense` | `--` | = `\resPplCFourOlmoDense` | see that macro |
-| `\resKlOLMoTwoZeroFourTwoFiveOneBDense` | `--` | = `\resKlOlmoDense` | see that macro |
-| `\resKlCFourOLMoTwoZeroFourTwoFiveOneBDense` | `--` | = `\resKlCFourOlmoDense` | see that macro |
-| `\resTopOnePctOLMoTwoZeroFourTwoFiveOneBDense` | `--` | = `\resTopOnePctOlmoDense` | see that macro |
-| `\resTopOneCFourPctOLMoTwoZeroFourTwoFiveOneBDense` | `--` | = `\resTopOneCFourPctOlmoDense` | see that macro |
-| `\resBitsTcrOLMoTwoZeroFourTwoFiveOneBDense` | `--` | = `\resBitsTcrOlmoDense` | see that macro |
-| `\resBitsMaskOLMoTwoZeroFourTwoFiveOneBDense` | `--` | = `\resBitsMaskOlmoDense` | see that macro |
+| `\resPplOLMoTwoZeroFourTwoFiveOneBDense` | `9.27` | = `\resPplOlmoDense` | see that macro |
+| `\resPplCFourOLMoTwoZeroFourTwoFiveOneBDense` | `14.92` | = `\resPplCFourOlmoDense` | see that macro |
+| `\resKlOLMoTwoZeroFourTwoFiveOneBDense` | `0.000` | = `\resKlOlmoDense` | see that macro |
+| `\resKlCFourOLMoTwoZeroFourTwoFiveOneBDense` | `0.000` | = `\resKlCFourOlmoDense` | see that macro |
+| `\resTopOnePctOLMoTwoZeroFourTwoFiveOneBDense` | `100.0` | = `\resTopOnePctOlmoDense` | see that macro |
+| `\resTopOneCFourPctOLMoTwoZeroFourTwoFiveOneBDense` | `100.0` | = `\resTopOneCFourPctOlmoDense` | see that macro |
+| `\resBitsTcrOLMoTwoZeroFourTwoFiveOneBDense` | `16.00` | = `\resBitsTcrOlmoDense` | see that macro |
+| `\resBitsMaskOLMoTwoZeroFourTwoFiveOneBDense` | `16.00` | = `\resBitsMaskOlmoDense` | see that macro |
 | `\resBitsSymOLMoTwoZeroFourTwoFiveOneBDense` | `--` | = `\resBitsSymOlmoDense` | see that macro |
-| `\resFlipsPctOLMoTwoZeroFourTwoFiveOneBDense` | `--` | = `\resFlipsPctOlmoDense` | see that macro |
-| `\resFlipsCWPctOLMoTwoZeroFourTwoFiveOneBDense` | `--` | = `\resFlipsCWPctOlmoDense` | see that macro |
-| `\resFlipsWCPctOLMoTwoZeroFourTwoFiveOneBDense` | `--` | = `\resFlipsWCPctOlmoDense` | see that macro |
-| `\resSrThreeOLMoTwoZeroFourTwoFiveOneBDense` | `--` | = `\resSrThreeOlmoDense` | see that macro |
-| `\resSrPaperOLMoTwoZeroFourTwoFiveOneBDense` | `--` | = `\resSrPaperOlmoDense` | see that macro |
-| `\resSrExtOLMoTwoZeroFourTwoFiveOneBDense` | `--` | = `\resSrExtOlmoDense` | see that macro |
-| `\resSrCnOLMoTwoZeroFourTwoFiveOneBDense` | `--` | = `\resSrCnOlmoDense` | see that macro |
-| `\resPplOLMoTwoZeroFourTwoFiveOneBQuantBFour` | `--` | = `\resPplOlmoQuantBFour` | see that macro |
-| `\resPplCFourOLMoTwoZeroFourTwoFiveOneBQuantBFour` | `--` | = `\resPplCFourOlmoQuantBFour` | see that macro |
-| `\resKlOLMoTwoZeroFourTwoFiveOneBQuantBFour` | `--` | = `\resKlOlmoQuantBFour` | see that macro |
-| `\resKlCFourOLMoTwoZeroFourTwoFiveOneBQuantBFour` | `--` | = `\resKlCFourOlmoQuantBFour` | see that macro |
-| `\resTopOnePctOLMoTwoZeroFourTwoFiveOneBQuantBFour` | `--` | = `\resTopOnePctOlmoQuantBFour` | see that macro |
-| `\resTopOneCFourPctOLMoTwoZeroFourTwoFiveOneBQuantBFour` | `--` | = `\resTopOneCFourPctOlmoQuantBFour` | see that macro |
-| `\resBitsTcrOLMoTwoZeroFourTwoFiveOneBQuantBFour` | `--` | = `\resBitsTcrOlmoQuantBFour` | see that macro |
-| `\resBitsMaskOLMoTwoZeroFourTwoFiveOneBQuantBFour` | `--` | = `\resBitsMaskOlmoQuantBFour` | see that macro |
-| `\resBitsSymOLMoTwoZeroFourTwoFiveOneBQuantBFour` | `--` | = `\resBitsSymOlmoQuantBFour` | see that macro |
-| `\resFreeZerosPctOLMoTwoZeroFourTwoFiveOneBQuantBFour` | `--` | = `\resFreeZerosPctOlmoQuantBFour` | see that macro |
-| `\resFlipsPctOLMoTwoZeroFourTwoFiveOneBQuantBFour` | `--` | = `\resFlipsPctOlmoQuantBFour` | see that macro |
-| `\resFlipsCWPctOLMoTwoZeroFourTwoFiveOneBQuantBFour` | `--` | = `\resFlipsCWPctOlmoQuantBFour` | see that macro |
-| `\resFlipsWCPctOLMoTwoZeroFourTwoFiveOneBQuantBFour` | `--` | = `\resFlipsWCPctOlmoQuantBFour` | see that macro |
-| `\resSrThreeOLMoTwoZeroFourTwoFiveOneBQuantBFour` | `--` | = `\resSrThreeOlmoQuantBFour` | see that macro |
-| `\resSrPaperOLMoTwoZeroFourTwoFiveOneBQuantBFour` | `--` | = `\resSrPaperOlmoQuantBFour` | see that macro |
-| `\resSrExtOLMoTwoZeroFourTwoFiveOneBQuantBFour` | `--` | = `\resSrExtOlmoQuantBFour` | see that macro |
-| `\resSrCnOLMoTwoZeroFourTwoFiveOneBQuantBFour` | `--` | = `\resSrCnOlmoQuantBFour` | see that macro |
-| `\resPplOLMoTwoZeroFourTwoFiveOneBQuantBThree` | `--` | = `\resPplOlmoQuantBThree` | see that macro |
-| `\resPplCFourOLMoTwoZeroFourTwoFiveOneBQuantBThree` | `--` | = `\resPplCFourOlmoQuantBThree` | see that macro |
-| `\resKlOLMoTwoZeroFourTwoFiveOneBQuantBThree` | `--` | = `\resKlOlmoQuantBThree` | see that macro |
-| `\resKlCFourOLMoTwoZeroFourTwoFiveOneBQuantBThree` | `--` | = `\resKlCFourOlmoQuantBThree` | see that macro |
-| `\resTopOnePctOLMoTwoZeroFourTwoFiveOneBQuantBThree` | `--` | = `\resTopOnePctOlmoQuantBThree` | see that macro |
-| `\resTopOneCFourPctOLMoTwoZeroFourTwoFiveOneBQuantBThree` | `--` | = `\resTopOneCFourPctOlmoQuantBThree` | see that macro |
-| `\resBitsTcrOLMoTwoZeroFourTwoFiveOneBQuantBThree` | `--` | = `\resBitsTcrOlmoQuantBThree` | see that macro |
-| `\resBitsMaskOLMoTwoZeroFourTwoFiveOneBQuantBThree` | `--` | = `\resBitsMaskOlmoQuantBThree` | see that macro |
-| `\resBitsSymOLMoTwoZeroFourTwoFiveOneBQuantBThree` | `--` | = `\resBitsSymOlmoQuantBThree` | see that macro |
-| `\resFreeZerosPctOLMoTwoZeroFourTwoFiveOneBQuantBThree` | `--` | = `\resFreeZerosPctOlmoQuantBThree` | see that macro |
-| `\resFlipsPctOLMoTwoZeroFourTwoFiveOneBQuantBThree` | `--` | = `\resFlipsPctOlmoQuantBThree` | see that macro |
-| `\resFlipsCWPctOLMoTwoZeroFourTwoFiveOneBQuantBThree` | `--` | = `\resFlipsCWPctOlmoQuantBThree` | see that macro |
-| `\resFlipsWCPctOLMoTwoZeroFourTwoFiveOneBQuantBThree` | `--` | = `\resFlipsWCPctOlmoQuantBThree` | see that macro |
-| `\resSrThreeOLMoTwoZeroFourTwoFiveOneBQuantBThree` | `--` | = `\resSrThreeOlmoQuantBThree` | see that macro |
-| `\resSrPaperOLMoTwoZeroFourTwoFiveOneBQuantBThree` | `--` | = `\resSrPaperOlmoQuantBThree` | see that macro |
-| `\resSrExtOLMoTwoZeroFourTwoFiveOneBQuantBThree` | `--` | = `\resSrExtOlmoQuantBThree` | see that macro |
-| `\resSrCnOLMoTwoZeroFourTwoFiveOneBQuantBThree` | `--` | = `\resSrCnOlmoQuantBThree` | see that macro |
+| `\resFlipsPctOLMoTwoZeroFourTwoFiveOneBDense` | `0.0` | = `\resFlipsPctOlmoDense` | see that macro |
+| `\resFlipsCWPctOLMoTwoZeroFourTwoFiveOneBDense` | `0.0` | = `\resFlipsCWPctOlmoDense` | see that macro |
+| `\resFlipsWCPctOLMoTwoZeroFourTwoFiveOneBDense` | `0.0` | = `\resFlipsWCPctOlmoDense` | see that macro |
+| `\resSrThreeOLMoTwoZeroFourTwoFiveOneBDense` | `1.000` | = `\resSrThreeOlmoDense` | see that macro |
+| `\resSrPaperOLMoTwoZeroFourTwoFiveOneBDense` | `1.000` | = `\resSrPaperOlmoDense` | see that macro |
+| `\resSrExtOLMoTwoZeroFourTwoFiveOneBDense` | `1.000` | = `\resSrExtOlmoDense` | see that macro |
+| `\resSrCnOLMoTwoZeroFourTwoFiveOneBDense` | `1.000` | = `\resSrCnOlmoDense` | see that macro |
+| `\resPplOLMoTwoZeroFourTwoFiveOneBQuantBFour` | `10.11` | = `\resPplOlmoQuantBFour` | see that macro |
+| `\resPplCFourOLMoTwoZeroFourTwoFiveOneBQuantBFour` | `15.94` | = `\resPplCFourOlmoQuantBFour` | see that macro |
+| `\resKlOLMoTwoZeroFourTwoFiveOneBQuantBFour` | `0.088` | = `\resKlOlmoQuantBFour` | see that macro |
+| `\resKlCFourOLMoTwoZeroFourTwoFiveOneBQuantBFour` | `0.069` | = `\resKlCFourOlmoQuantBFour` | see that macro |
+| `\resTopOnePctOLMoTwoZeroFourTwoFiveOneBQuantBFour` | `85.5` | = `\resTopOnePctOlmoQuantBFour` | see that macro |
+| `\resTopOneCFourPctOLMoTwoZeroFourTwoFiveOneBQuantBFour` | `86.0` | = `\resTopOneCFourPctOlmoQuantBFour` | see that macro |
+| `\resBitsTcrOLMoTwoZeroFourTwoFiveOneBQuantBFour` | `4.00` | = `\resBitsTcrOlmoQuantBFour` | see that macro |
+| `\resBitsMaskOLMoTwoZeroFourTwoFiveOneBQuantBFour` | `4.00` | = `\resBitsMaskOlmoQuantBFour` | see that macro |
+| `\resBitsSymOLMoTwoZeroFourTwoFiveOneBQuantBFour` | `3.47` | = `\resBitsSymOlmoQuantBFour` | see that macro |
+| `\resFreeZerosPctOLMoTwoZeroFourTwoFiveOneBQuantBFour` | `14.0` | = `\resFreeZerosPctOlmoQuantBFour` | see that macro |
+| `\resFlipsPctOLMoTwoZeroFourTwoFiveOneBQuantBFour` | `9.4` | = `\resFlipsPctOlmoQuantBFour` | see that macro |
+| `\resFlipsCWPctOLMoTwoZeroFourTwoFiveOneBQuantBFour` | `6.0` | = `\resFlipsCWPctOlmoQuantBFour` | see that macro |
+| `\resFlipsWCPctOLMoTwoZeroFourTwoFiveOneBQuantBFour` | `3.4` | = `\resFlipsWCPctOlmoQuantBFour` | see that macro |
+| `\resSrThreeOLMoTwoZeroFourTwoFiveOneBQuantBFour` | `0.982` | = `\resSrThreeOlmoQuantBFour` | see that macro |
+| `\resSrPaperOLMoTwoZeroFourTwoFiveOneBQuantBFour` | `0.983` | = `\resSrPaperOlmoQuantBFour` | see that macro |
+| `\resSrExtOLMoTwoZeroFourTwoFiveOneBQuantBFour` | `0.971` | = `\resSrExtOlmoQuantBFour` | see that macro |
+| `\resSrCnOLMoTwoZeroFourTwoFiveOneBQuantBFour` | `0.943` | = `\resSrCnOlmoQuantBFour` | see that macro |
+| `\resPplOLMoTwoZeroFourTwoFiveOneBQuantBThree` | `14.07` | = `\resPplOlmoQuantBThree` | see that macro |
+| `\resPplCFourOLMoTwoZeroFourTwoFiveOneBQuantBThree` | `20.42` | = `\resPplCFourOlmoQuantBThree` | see that macro |
+| `\resKlOLMoTwoZeroFourTwoFiveOneBQuantBThree` | `0.423` | = `\resKlOlmoQuantBThree` | see that macro |
+| `\resKlCFourOLMoTwoZeroFourTwoFiveOneBQuantBThree` | `0.325` | = `\resKlCFourOlmoQuantBThree` | see that macro |
+| `\resTopOnePctOLMoTwoZeroFourTwoFiveOneBQuantBThree` | `70.5` | = `\resTopOnePctOlmoQuantBThree` | see that macro |
+| `\resTopOneCFourPctOLMoTwoZeroFourTwoFiveOneBQuantBThree` | `71.1` | = `\resTopOneCFourPctOlmoQuantBThree` | see that macro |
+| `\resBitsTcrOLMoTwoZeroFourTwoFiveOneBQuantBThree` | `3.00` | = `\resBitsTcrOlmoQuantBThree` | see that macro |
+| `\resBitsMaskOLMoTwoZeroFourTwoFiveOneBQuantBThree` | `3.00` | = `\resBitsMaskOlmoQuantBThree` | see that macro |
+| `\resBitsSymOLMoTwoZeroFourTwoFiveOneBQuantBThree` | `2.46` | = `\resBitsSymOlmoQuantBThree` | see that macro |
+| `\resFreeZerosPctOLMoTwoZeroFourTwoFiveOneBQuantBThree` | `29.4` | = `\resFreeZerosPctOlmoQuantBThree` | see that macro |
+| `\resFlipsPctOLMoTwoZeroFourTwoFiveOneBQuantBThree` | `21.6` | = `\resFlipsPctOlmoQuantBThree` | see that macro |
+| `\resFlipsCWPctOLMoTwoZeroFourTwoFiveOneBQuantBThree` | `16.4` | = `\resFlipsCWPctOlmoQuantBThree` | see that macro |
+| `\resFlipsWCPctOLMoTwoZeroFourTwoFiveOneBQuantBThree` | `5.1` | = `\resFlipsWCPctOlmoQuantBThree` | see that macro |
+| `\resSrThreeOLMoTwoZeroFourTwoFiveOneBQuantBThree` | `0.870` | = `\resSrThreeOlmoQuantBThree` | see that macro |
+| `\resSrPaperOLMoTwoZeroFourTwoFiveOneBQuantBThree` | `0.877` | = `\resSrPaperOlmoQuantBThree` | see that macro |
+| `\resSrExtOLMoTwoZeroFourTwoFiveOneBQuantBThree` | `0.857` | = `\resSrExtOlmoQuantBThree` | see that macro |
+| `\resSrCnOLMoTwoZeroFourTwoFiveOneBQuantBThree` | `0.720` | = `\resSrCnOlmoQuantBThree` | see that macro |
 | `\resPplOLMoTwoZeroFourTwoFiveOneBPruneSTwentyFive` | `--` | = `\resPplOlmoPruneSTwentyFive` | see that macro |
 | `\resPplCFourOLMoTwoZeroFourTwoFiveOneBPruneSTwentyFive` | `--` | = `\resPplCFourOlmoPruneSTwentyFive` | see that macro |
 | `\resKlOLMoTwoZeroFourTwoFiveOneBPruneSTwentyFive` | `--` | = `\resKlOlmoPruneSTwentyFive` | see that macro |
@@ -5360,16 +5366,16 @@ Columns:
 | `\resSrPaperOLMoTwoZeroFourTwoFiveOneBSThirtyThreeBFourQP` | `--` | = `\resSrPaperOlmoSThirtyThreeBFourQP` | see that macro |
 | `\resSrExtOLMoTwoZeroFourTwoFiveOneBSThirtyThreeBFourQP` | `--` | = `\resSrExtOlmoSThirtyThreeBFourQP` | see that macro |
 | `\resSrCnOLMoTwoZeroFourTwoFiveOneBSThirtyThreeBFourQP` | `--` | = `\resSrCnOlmoSThirtyThreeBFourQP` | see that macro |
-| `\resPplOLMoTwoZeroFourTwoFiveOneBSFiftyBFourJoint` | `--` | = `\resPplOlmoSFiftyBFourJoint` | see that macro |
-| `\resPplCFourOLMoTwoZeroFourTwoFiveOneBSFiftyBFourJoint` | `--` | = `\resPplCFourOlmoSFiftyBFourJoint` | see that macro |
-| `\resKlOLMoTwoZeroFourTwoFiveOneBSFiftyBFourJoint` | `--` | = `\resKlOlmoSFiftyBFourJoint` | see that macro |
-| `\resKlCFourOLMoTwoZeroFourTwoFiveOneBSFiftyBFourJoint` | `--` | = `\resKlCFourOlmoSFiftyBFourJoint` | see that macro |
-| `\resTopOnePctOLMoTwoZeroFourTwoFiveOneBSFiftyBFourJoint` | `--` | = `\resTopOnePctOlmoSFiftyBFourJoint` | see that macro |
-| `\resTopOneCFourPctOLMoTwoZeroFourTwoFiveOneBSFiftyBFourJoint` | `--` | = `\resTopOneCFourPctOlmoSFiftyBFourJoint` | see that macro |
-| `\resBitsTcrOLMoTwoZeroFourTwoFiveOneBSFiftyBFourJoint` | `--` | = `\resBitsTcrOlmoSFiftyBFourJoint` | see that macro |
-| `\resBitsMaskOLMoTwoZeroFourTwoFiveOneBSFiftyBFourJoint` | `--` | = `\resBitsMaskOlmoSFiftyBFourJoint` | see that macro |
-| `\resBitsSymOLMoTwoZeroFourTwoFiveOneBSFiftyBFourJoint` | `--` | = `\resBitsSymOlmoSFiftyBFourJoint` | see that macro |
-| `\resFreeZerosPctOLMoTwoZeroFourTwoFiveOneBSFiftyBFourJoint` | `--` | = `\resFreeZerosPctOlmoSFiftyBFourJoint` | see that macro |
+| `\resPplOLMoTwoZeroFourTwoFiveOneBSFiftyBFourJoint` | `15.76` | = `\resPplOlmoSFiftyBFourJoint` | see that macro |
+| `\resPplCFourOLMoTwoZeroFourTwoFiveOneBSFiftyBFourJoint` | `21.94` | = `\resPplCFourOlmoSFiftyBFourJoint` | see that macro |
+| `\resKlOLMoTwoZeroFourTwoFiveOneBSFiftyBFourJoint` | `0.532` | = `\resKlOlmoSFiftyBFourJoint` | see that macro |
+| `\resKlCFourOLMoTwoZeroFourTwoFiveOneBSFiftyBFourJoint` | `0.400` | = `\resKlCFourOlmoSFiftyBFourJoint` | see that macro |
+| `\resTopOnePctOLMoTwoZeroFourTwoFiveOneBSFiftyBFourJoint` | `67.3` | = `\resTopOnePctOlmoSFiftyBFourJoint` | see that macro |
+| `\resTopOneCFourPctOLMoTwoZeroFourTwoFiveOneBSFiftyBFourJoint` | `68.4` | = `\resTopOneCFourPctOlmoSFiftyBFourJoint` | see that macro |
+| `\resBitsTcrOLMoTwoZeroFourTwoFiveOneBSFiftyBFourJoint` | `2.00` | = `\resBitsTcrOlmoSFiftyBFourJoint` | see that macro |
+| `\resBitsMaskOLMoTwoZeroFourTwoFiveOneBSFiftyBFourJoint` | `3.00` | = `\resBitsMaskOlmoSFiftyBFourJoint` | see that macro |
+| `\resBitsSymOLMoTwoZeroFourTwoFiveOneBSFiftyBFourJoint` | `2.61` | = `\resBitsSymOlmoSFiftyBFourJoint` | see that macro |
+| `\resFreeZerosPctOLMoTwoZeroFourTwoFiveOneBSFiftyBFourJoint` | `50.0` | = `\resFreeZerosPctOlmoSFiftyBFourJoint` | see that macro |
 | `\resFlipsPctOLMoTwoZeroFourTwoFiveOneBSFiftyBFourJoint` | `--` | = `\resFlipsPctOlmoSFiftyBFourJoint` | see that macro |
 | `\resFlipsCWPctOLMoTwoZeroFourTwoFiveOneBSFiftyBFourJoint` | `--` | = `\resFlipsCWPctOlmoSFiftyBFourJoint` | see that macro |
 | `\resFlipsWCPctOLMoTwoZeroFourTwoFiveOneBSFiftyBFourJoint` | `--` | = `\resFlipsWCPctOlmoSFiftyBFourJoint` | see that macro |
@@ -5377,16 +5383,16 @@ Columns:
 | `\resSrPaperOLMoTwoZeroFourTwoFiveOneBSFiftyBFourJoint` | `--` | = `\resSrPaperOlmoSFiftyBFourJoint` | see that macro |
 | `\resSrExtOLMoTwoZeroFourTwoFiveOneBSFiftyBFourJoint` | `--` | = `\resSrExtOlmoSFiftyBFourJoint` | see that macro |
 | `\resSrCnOLMoTwoZeroFourTwoFiveOneBSFiftyBFourJoint` | `--` | = `\resSrCnOlmoSFiftyBFourJoint` | see that macro |
-| `\resPplOLMoTwoZeroFourTwoFiveOneBSFiftyBFourPQ` | `--` | = `\resPplOlmoSFiftyBFourPQ` | see that macro |
-| `\resPplCFourOLMoTwoZeroFourTwoFiveOneBSFiftyBFourPQ` | `--` | = `\resPplCFourOlmoSFiftyBFourPQ` | see that macro |
-| `\resKlOLMoTwoZeroFourTwoFiveOneBSFiftyBFourPQ` | `--` | = `\resKlOlmoSFiftyBFourPQ` | see that macro |
-| `\resKlCFourOLMoTwoZeroFourTwoFiveOneBSFiftyBFourPQ` | `--` | = `\resKlCFourOlmoSFiftyBFourPQ` | see that macro |
-| `\resTopOnePctOLMoTwoZeroFourTwoFiveOneBSFiftyBFourPQ` | `--` | = `\resTopOnePctOlmoSFiftyBFourPQ` | see that macro |
-| `\resTopOneCFourPctOLMoTwoZeroFourTwoFiveOneBSFiftyBFourPQ` | `--` | = `\resTopOneCFourPctOlmoSFiftyBFourPQ` | see that macro |
-| `\resBitsTcrOLMoTwoZeroFourTwoFiveOneBSFiftyBFourPQ` | `--` | = `\resBitsTcrOlmoSFiftyBFourPQ` | see that macro |
-| `\resBitsMaskOLMoTwoZeroFourTwoFiveOneBSFiftyBFourPQ` | `--` | = `\resBitsMaskOlmoSFiftyBFourPQ` | see that macro |
-| `\resBitsSymOLMoTwoZeroFourTwoFiveOneBSFiftyBFourPQ` | `--` | = `\resBitsSymOlmoSFiftyBFourPQ` | see that macro |
-| `\resFreeZerosPctOLMoTwoZeroFourTwoFiveOneBSFiftyBFourPQ` | `--` | = `\resFreeZerosPctOlmoSFiftyBFourPQ` | see that macro |
+| `\resPplOLMoTwoZeroFourTwoFiveOneBSFiftyBFourPQ` | `15.69` | = `\resPplOlmoSFiftyBFourPQ` | see that macro |
+| `\resPplCFourOLMoTwoZeroFourTwoFiveOneBSFiftyBFourPQ` | `21.91` | = `\resPplCFourOlmoSFiftyBFourPQ` | see that macro |
+| `\resKlOLMoTwoZeroFourTwoFiveOneBSFiftyBFourPQ` | `0.525` | = `\resKlOlmoSFiftyBFourPQ` | see that macro |
+| `\resKlCFourOLMoTwoZeroFourTwoFiveOneBSFiftyBFourPQ` | `0.399` | = `\resKlCFourOlmoSFiftyBFourPQ` | see that macro |
+| `\resTopOnePctOLMoTwoZeroFourTwoFiveOneBSFiftyBFourPQ` | `67.4` | = `\resTopOnePctOlmoSFiftyBFourPQ` | see that macro |
+| `\resTopOneCFourPctOLMoTwoZeroFourTwoFiveOneBSFiftyBFourPQ` | `68.4` | = `\resTopOneCFourPctOlmoSFiftyBFourPQ` | see that macro |
+| `\resBitsTcrOLMoTwoZeroFourTwoFiveOneBSFiftyBFourPQ` | `2.00` | = `\resBitsTcrOlmoSFiftyBFourPQ` | see that macro |
+| `\resBitsMaskOLMoTwoZeroFourTwoFiveOneBSFiftyBFourPQ` | `3.00` | = `\resBitsMaskOlmoSFiftyBFourPQ` | see that macro |
+| `\resBitsSymOLMoTwoZeroFourTwoFiveOneBSFiftyBFourPQ` | `2.61` | = `\resBitsSymOlmoSFiftyBFourPQ` | see that macro |
+| `\resFreeZerosPctOLMoTwoZeroFourTwoFiveOneBSFiftyBFourPQ` | `50.0` | = `\resFreeZerosPctOlmoSFiftyBFourPQ` | see that macro |
 | `\resFlipsPctOLMoTwoZeroFourTwoFiveOneBSFiftyBFourPQ` | `--` | = `\resFlipsPctOlmoSFiftyBFourPQ` | see that macro |
 | `\resFlipsCWPctOLMoTwoZeroFourTwoFiveOneBSFiftyBFourPQ` | `--` | = `\resFlipsCWPctOlmoSFiftyBFourPQ` | see that macro |
 | `\resFlipsWCPctOLMoTwoZeroFourTwoFiveOneBSFiftyBFourPQ` | `--` | = `\resFlipsWCPctOlmoSFiftyBFourPQ` | see that macro |
@@ -6066,8 +6072,8 @@ Columns:
 | `\resNWeightsQwenTwoFiveOneFiveBB` | `1.31` | = `\resNWeightsQwenMidB` | see that macro |
 | `\resNWeightsQwenTwoFiveThreeBM` | `--` | = `\resNWeightsQwenLargeM` | see that macro |
 | `\resNWeightsQwenTwoFiveThreeBB` | `--` | = `\resNWeightsQwenLargeB` | see that macro |
-| `\resNWeightsOLMoTwoZeroFourTwoFiveOneBM` | `--` | = `\resNWeightsOlmoM` | see that macro |
-| `\resNWeightsOLMoTwoZeroFourTwoFiveOneBB` | `--` | = `\resNWeightsOlmoB` | see that macro |
+| `\resNWeightsOLMoTwoZeroFourTwoFiveOneBM` | `1074` | = `\resNWeightsOlmoM` | see that macro |
+| `\resNWeightsOLMoTwoZeroFourTwoFiveOneBB` | `1.07` | = `\resNWeightsOlmoB` | see that macro |
 | `\resESevenKimCorrectPplQwenTwoFiveOneFiveB` | `--` | = `\resESevenKimCorrectPplQwenMid` | see that macro |
 | `\resESevenKimCellsPplQwenTwoFiveOneFiveB` | `--` | = `\resESevenKimCellsPplQwenMid` | see that macro |
 | `\resESevenKimPredQPPplQwenTwoFiveOneFiveB` | `--` | = `\resESevenKimPredQPPplQwenMid` | see that macro |
@@ -6230,13 +6236,13 @@ Columns:
 | `\resQTwoQPWorstMetricsOLMoTwoZeroFourTwoFiveOneBSThirtyThreeBThree` | `0` | = `\resQTwoQPWorstMetricsOlmoSThirtyThreeBThree` | see that macro |
 | `\resQTwoMetricsOLMoTwoZeroFourTwoFiveOneBSFiftyBThree` | `0` | = `\resQTwoMetricsOlmoSFiftyBThree` | see that macro |
 | `\resQTwoQPWorstMetricsOLMoTwoZeroFourTwoFiveOneBSFiftyBThree` | `0` | = `\resQTwoQPWorstMetricsOlmoSFiftyBThree` | see that macro |
-| `\resEEightRhoQwenTwoFiveOneFiveB` | `\ensuremath{+1.00}` | = `\resEEightRhoQwenMid` | see that macro |
+| `\resEEightRhoQwenTwoFiveOneFiveB` | `\ensuremath{+0.90}` | = `\resEEightRhoQwenMid` | see that macro |
 | `\resEEightSameBestQwenTwoFiveOneFiveB` | `--` | = `\resEEightSameBestQwenMid` | see that macro |
 | `\resEEightCellsQwenTwoFiveOneFiveB` | `--` | = `\resEEightCellsQwenMid` | see that macro |
 | `\resEEightRhoQwenTwoFiveThreeB` | `--` | = `\resEEightRhoQwenLarge` | see that macro |
 | `\resEEightSameBestQwenTwoFiveThreeB` | `--` | = `\resEEightSameBestQwenLarge` | see that macro |
 | `\resEEightCellsQwenTwoFiveThreeB` | `--` | = `\resEEightCellsQwenLarge` | see that macro |
-| `\resEEightRhoOLMoTwoZeroFourTwoFiveOneB` | `--` | = `\resEEightRhoOlmo` | see that macro |
+| `\resEEightRhoOLMoTwoZeroFourTwoFiveOneB` | `\ensuremath{+0.80}` | = `\resEEightRhoOlmo` | see that macro |
 | `\resEEightSameBestOLMoTwoZeroFourTwoFiveOneB` | `--` | = `\resEEightSameBestOlmo` | see that macro |
 | `\resEEightCellsOLMoTwoZeroFourTwoFiveOneB` | `--` | = `\resEEightCellsOlmo` | see that macro |
 | `\resEEightJointSmallestQwenTwoFiveOneFiveBBFour` | `--` | = `\resEEightJointSmallestQwenMidBFour` | see that macro |

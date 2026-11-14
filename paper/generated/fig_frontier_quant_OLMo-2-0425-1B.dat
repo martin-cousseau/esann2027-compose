@@ -2,5 +2,7 @@
 # OLMo-2-0425-1B, seed 0, quantization only
 # bits = nominal bit-width b; bits_tcr = b(1-s) (TCr accounting); bits_mask = bits_tcr + 1-bit mask when s > 0;
 # ppl = WikiText-2 perplexity; kl = KL(dense || model) per token on WikiText-2 (nats); scale/zero overhead excluded
-# rows: none yet
+# rows: OLMo-2-0425-1B__quant__s0.0000__b4__seed0__float32; OLMo-2-0425-1B__quant__s0.0000__b3__seed0__float32
 bits bits_tcr bits_mask ppl kl
+4 4 4 10.1108 0.0881931
+3 3 3 14.0744 0.423177

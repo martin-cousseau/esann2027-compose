@@ -49,6 +49,8 @@ def run(paths=None, B=S.BOOT_B, figures=True, fetch=True, log=print):
     missing = Missing()
     store = Store(paths)
     log(f"[make_tables] {len(store.states)} usable states, {len(store.det)} DET lines, {len(store.failures)} failure records")
+    if store.excluded_models:
+        log(f"[make_tables] INTERIM: models left out ({len(store.excluded)} lines): {', '.join(store.excluded_models)}")
     boolq = boolq_chance.load_or_fetch(paths, allow_fetch=fetch)
     e1res = e1.analyze(store, boolq[0], missing, B=B)
     e1.write(e1res, paths)

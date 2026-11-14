@@ -296,3 +296,17 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     balance runs out first, only these last states are lost (every state is uploaded when it finishes) and the
     paper uses complete cells only. Known edge case: both runtimes would write a failure record to the same
     `failures__Qwen2.5-3B.jsonl` name (diagnostic only, never used by the analysis).
+48. **2026-11-14 16:30 UTC, an interim package for the team (you asked for one now).** The runs of Qwen2.5-1.5B,
+    Qwen2.5-3B and OLMo-2-1B are still going, so the interim package covers only the four complete models (the three
+    small ones and SmolLM2-1.7B with its full grid): `ESANN_EXCLUDE_MODELS` makes the analysis leave named models out
+    entirely (`scripts/analysis/common.py`; the macro `\resBuildExcludedModels` records it), the paper text names
+    four models, Table 2 gains the SmolLM2-1.7B row, and the text that names all seven models is kept for the final
+    package (private backup). Every sentence of the paper that turns macro values into words ("in every case",
+    "never the best", "all on the small models") now has a condition in `context/author_package/claims.txt`, checked
+    by `check_claims.py` in the package build, which fails if one does not hold. Two substantive changes come from
+    SmolLM2-1.7B: in its 33%+4 cell the rule recommends Q->P and the joint sweep, not Q->P, is worst by WikiText-2
+    perplexity, so the abstract's "every setting where a weaker-first rule recommends it" becomes a count and the
+    conclusion's "even where ... recommends it" becomes "never the best where ..."; and the nine-task accuracy reversal
+    of the small models is absent at 1.7B (Q->P is the worst order there on all eight metrics). To stay at 6 pages the
+    six single-method rows of Table 1 are packed into two. The repository's generated files always come from all
+    data (the interim macros are only in the package).
