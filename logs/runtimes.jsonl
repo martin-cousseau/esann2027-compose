@@ -23,3 +23,7 @@
 {"runtime": "esann-b5", "event": "created", "time": "2026-11-12T19:47:00+00:00", "spec": "L4 standard", "image": "release-colab-external-images_20261111-060450_RC00", "note": "DECISIONS #38 runs"}
 {"runtime": "esann-a7", "event": "created", "time": "2026-11-13T18:41:29+00:00", "spec": "L4 standard", "note": "DECISIONS #44: E6B benchmarks for Table 2, remaining E6/E5"}
 {"runtime": "esann-b6", "event": "created", "time": "2026-11-13T18:41:33+00:00", "spec": "L4 standard", "note": "DECISIONS #44: remaining E6/E5"}
+{"runtime": "esann-a7", "event": "reclaimed", "time": "2026-11-13T23:30:00+00:00", "note": "worker restart ended the watcher during a token refresh (#46)"}
+{"runtime": "esann-b6", "event": "reclaimed", "time": "2026-11-13T23:30:00+00:00", "note": "worker restart ended the watcher during a token refresh (#46)"}
+{"runtime": "esann-a8", "event": "created", "time": "2026-11-14T06:18:58+00:00", "spec": "L4 standard", "note": "#46 resume chain_a13"}
+{"runtime": "esann-b7", "event": "created", "time": "2026-11-14T06:19:03+00:00", "spec": "L4 standard", "note": "#46 resume chain_b11"}
