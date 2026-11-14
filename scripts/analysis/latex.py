@@ -1084,6 +1084,19 @@ def macros_order_all_models(M, store, q, e7res):
         rat = [(r["wt_ppl_worst_best_ratio"], r["model"], r["cell"]) for r in K if finite(r.get("wt_ppl_worst_best_ratio"))]
         M.add(sec, f"QTwoMaxRatio{g}", num(max(rat)[0], 2) if rat else "--", f"{g}: largest worst/best WikiText-2 ppl ratio", src)
         M.add(sec, f"QTwoMaxRatioWhere{g}", tex_escape(f"{max(rat)[1]} {max(rat)[2]}") if rat else "--", f"{g}: where it occurs", src)
+    sec = "Q3 over model groups: range of the order spread (grid cells 25/33/50%; -- until every model of the group has its grid)"
+    src3 = "reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl)"
+    q3 = [r for r in q["q3"] if r["metric"] == "wt_ppl"]
+    for g, sel in groups.items():
+        for b, bt in ((4, "BFour"), (3, "BThree")):
+            R = [r for r in q3 if sel(r["model"]) and int(r["bits"]) == b and r.get("grid_n_planned")]
+            ok = bool(R) and all(r["grid_complete"] for r in R)
+            M.add(sec, f"QThreeSpreadMin{g}{bt}Pct", num(min(r["grid_spread_min_pct"] for r in R), 1) if ok else "--",
+                  f"{g}: smallest order spread over the {b}-bit grid cells of its models (%)", src3)
+            M.add(sec, f"QThreeSpreadMax{g}{bt}Pct", num(max(r["grid_spread_max_pct"] for r in R), 1) if ok else "--",
+                  f"{g}: largest order spread over the {b}-bit grid cells of its models (%)", src3)
+            M.add(sec, f"QThreeSpreadModels{g}{bt}", _n(len(R)) if R else "--",
+                  f"{g}: models planned with {b}-bit grid cells (the range needs all of them complete)", src3)
     if e7res is None:
         return
     sec = "Weaker-first rule vs the three orders (cells where the rule, by WikiText-2 ppl, recommends Q->P; seed 0)"

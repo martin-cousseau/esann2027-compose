@@ -3335,6 +3335,29 @@ Columns:
 | `\resQTwoMaxRatioAllModels` | `1.77` | AllModels: largest worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resQTwoMaxRatioWhereAllModels` | `SmolLM2-135M 50\%+3` | AllModels: where it occurs | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 
+## Q3 over model groups: range of the order spread (grid cells 25/33/50%; -- until every model of the group has its grid)
+
+| Macro | Value | Meaning | Source |
+|---|---|---|---|
+| `\resQThreeSpreadMinCoreBFourPct` | `2.2` | Core: smallest order spread over the 4-bit grid cells of its models (%) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
+| `\resQThreeSpreadMaxCoreBFourPct` | `15.4` | Core: largest order spread over the 4-bit grid cells of its models (%) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
+| `\resQThreeSpreadModelsCoreBFour` | `3` | Core: models planned with 4-bit grid cells (the range needs all of them complete) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
+| `\resQThreeSpreadMinCoreBThreePct` | `1.8` | Core: smallest order spread over the 3-bit grid cells of its models (%) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
+| `\resQThreeSpreadMaxCoreBThreePct` | `77.3` | Core: largest order spread over the 3-bit grid cells of its models (%) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
+| `\resQThreeSpreadModelsCoreBThree` | `3` | Core: models planned with 3-bit grid cells (the range needs all of them complete) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
+| `\resQThreeSpreadMinLargerBFourPct` | `--` | Larger: smallest order spread over the 4-bit grid cells of its models (%) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
+| `\resQThreeSpreadMaxLargerBFourPct` | `--` | Larger: largest order spread over the 4-bit grid cells of its models (%) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
+| `\resQThreeSpreadModelsLargerBFour` | `4` | Larger: models planned with 4-bit grid cells (the range needs all of them complete) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
+| `\resQThreeSpreadMinLargerBThreePct` | `--` | Larger: smallest order spread over the 3-bit grid cells of its models (%) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
+| `\resQThreeSpreadMaxLargerBThreePct` | `--` | Larger: largest order spread over the 3-bit grid cells of its models (%) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
+| `\resQThreeSpreadModelsLargerBThree` | `4` | Larger: models planned with 3-bit grid cells (the range needs all of them complete) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
+| `\resQThreeSpreadMinAllModelsBFourPct` | `--` | AllModels: smallest order spread over the 4-bit grid cells of its models (%) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
+| `\resQThreeSpreadMaxAllModelsBFourPct` | `--` | AllModels: largest order spread over the 4-bit grid cells of its models (%) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
+| `\resQThreeSpreadModelsAllModelsBFour` | `7` | AllModels: models planned with 4-bit grid cells (the range needs all of them complete) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
+| `\resQThreeSpreadMinAllModelsBThreePct` | `--` | AllModels: smallest order spread over the 3-bit grid cells of its models (%) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
+| `\resQThreeSpreadMaxAllModelsBThreePct` | `--` | AllModels: largest order spread over the 3-bit grid cells of its models (%) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
+| `\resQThreeSpreadModelsAllModelsBThree` | `7` | AllModels: models planned with 3-bit grid cells (the range needs all of them complete) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
+
 ## Weaker-first rule vs the three orders (cells where the rule, by WikiText-2 ppl, recommends Q->P; seed 0)
 
 | Macro | Value | Meaning | Source |
