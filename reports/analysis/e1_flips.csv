@@ -1110,3 +1110,14 @@ SmolLM2-1.7B,SmolLM2-1.7B__p_then_q__s0.3333__b3__seed0__float32,sciq,1000,40,16
 SmolLM2-1.7B,SmolLM2-1.7B__p_then_q__s0.3333__b3__seed0__float32,lambada_openai,5153,744,294,0.2014360566660198
 SmolLM2-1.7B,SmolLM2-1.7B__p_then_q__s0.3333__b3__seed0__float32,pooled9,26618,2738,1106,0.14441355473739576
 SmolLM2-1.7B,SmolLM2-1.7B__p_then_q__s0.3333__b3__seed0__float32,pooled3,14256,1178,338,0.10634118967452301
+Qwen2.5-1.5B,Qwen2.5-1.5B__dense__s0.0000__b16__seed0__float32,arc_easy,2376,0,0,0.0
+Qwen2.5-1.5B,Qwen2.5-1.5B__dense__s0.0000__b16__seed0__float32,piqa,1838,0,0,0.0
+Qwen2.5-1.5B,Qwen2.5-1.5B__dense__s0.0000__b16__seed0__float32,hellaswag,10042,0,0,0.0
+Qwen2.5-1.5B,Qwen2.5-1.5B__dense__s0.0000__b16__seed0__float32,arc_challenge,1172,0,0,0.0
+Qwen2.5-1.5B,Qwen2.5-1.5B__dense__s0.0000__b16__seed0__float32,winogrande,1267,0,0,0.0
+Qwen2.5-1.5B,Qwen2.5-1.5B__dense__s0.0000__b16__seed0__float32,openbookqa,500,0,0,0.0
+Qwen2.5-1.5B,Qwen2.5-1.5B__dense__s0.0000__b16__seed0__float32,boolq,3270,0,0,0.0
+Qwen2.5-1.5B,Qwen2.5-1.5B__dense__s0.0000__b16__seed0__float32,sciq,1000,0,0,0.0
+Qwen2.5-1.5B,Qwen2.5-1.5B__dense__s0.0000__b16__seed0__float32,lambada_openai,5153,0,0,0.0
+Qwen2.5-1.5B,Qwen2.5-1.5B__dense__s0.0000__b16__seed0__float32,pooled9,26618,0,0,0.0
+Qwen2.5-1.5B,Qwen2.5-1.5B__dense__s0.0000__b16__seed0__float32,pooled3,14256,0,0,0.0

@@ -89,7 +89,13 @@ def e6_full(models=("HuggingFaceTB/SmolLM2-1.7B",)):
 
 E6_MODELS = ("HuggingFaceTB/SmolLM2-1.7B", "Qwen/Qwen2.5-1.5B", "Qwen/Qwen2.5-3B", "allenai/OLMo-2-0425-1B")
 E6_NO_KL = {"Qwen/Qwen2.5-3B"}        # a second fp32 copy for KL does not fit on the L4: perplexity only
-E6_GRID = {"HuggingFaceTB/SmolLM2-1.7B", "Qwen/Qwen2.5-1.5B", "allenai/OLMo-2-0425-1B"}  # the full E1 grid, not 8-bit
+E6_GRID = {"HuggingFaceTB/SmolLM2-1.7B", "Qwen/Qwen2.5-1.5B", "allenai/OLMo-2-0425-1B",  # the full E1 grid, not 8-bit
+           "Qwen/Qwen2.5-3B"}  # added 2026-11-14 (DECISIONS.md #47): its grid completion runs on the second runtime
+# Queues split between the two runtimes (DECISIONS.md #47): the first n units of a model's plan stay in its queue file
+# (already running on runtime A); the rest go to <family>__<model>__b.json, which runtime B runs into its own result
+# file, results/v2/<family>/<model>__b.jsonl, so that every result file keeps a single writer. The analysis reads every
+# .jsonl file of a family directory, so both halves are study states.
+SPLIT = {("E6", "Qwen/Qwen2.5-3B"): 11}
 
 
 E6_BENCH = {"HuggingFaceTB/SmolLM2-1.7B", "Qwen/Qwen2.5-1.5B", "allenai/OLMo-2-0425-1B"}
@@ -175,6 +181,8 @@ CHECKS = {"BATCH": batch, "E6B": e6b}  # re-runs of existing states; not part of
 
 def main(argv):
     from scripts.run_grid import state_id
+    only = {a.split("=", 1)[1] for a in argv if a.startswith("--only=")}  # e.g. --only=Qwen2.5-3B
+    argv = [a for a in argv if not a.startswith("--only=")]
     fams = list(FAMILIES) if argv == ["all"] else argv
     done = done_states()
     for fam in [f for f in fams if f in CHECKS]:  # re-checks run even though the state exists
@@ -187,11 +195,18 @@ def main(argv):
     os.makedirs(os.path.join(ROOT, "colab", "queues"), exist_ok=True)
     for fam in fams:
         for model, q in FAMILIES[fam]().items():
-            todo = [x for x in q if state_id(model, x, "float32") not in done]
-            path = os.path.join(ROOT, "colab", "queues", f"{fam}__{model.split('/')[-1]}.json")
-            with open(path, "w") as f:
-                json.dump(todo, f, indent=0)
-            print(f"{fam} {model}: {len(q)} units, {len(q) - len(todo)} already done -> {len(todo)} queued ({path})")
+            if only and model.split("/")[-1] not in only:
+                continue
+            n = SPLIT.get((fam, model), len(q))
+            for part, sub in (("", q[:n]), ("__b", q[n:])):
+                if part and not sub:
+                    continue
+                todo = [x for x in sub if state_id(model, x, "float32") not in done]
+                path = os.path.join(ROOT, "colab", "queues", f"{fam}__{model.split('/')[-1]}{part}.json")
+                with open(path, "w") as f:
+                    json.dump(todo, f, indent=0)
+                print(f"{fam} {model}{part}: {len(sub)} units, {len(sub) - len(todo)} already done -> {len(todo)} "
+                      f"queued ({path})")
 
 
 if __name__ == "__main__":

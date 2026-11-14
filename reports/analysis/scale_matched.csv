@@ -10,5 +10,5 @@ Billion,about 1.1-1.6B,25%+4,0.25,4,SmolLM2-1.7B Qwen2.5-1.5B OLMo-2-0425-1B,3,1
 Billion,about 1.1-1.6B,33%+4,0.3333,4,SmolLM2-1.7B Qwen2.5-1.5B OLMo-2-0425-1B,3,1,SmolLM2-1.7B,SmolLM2,1610612736,SmolLM2-1.7B:2.444,SmolLM2-1.7B:1.878,False,,,,,,,,,,,
 Billion,about 1.1-1.6B,50%+4,0.5,4,SmolLM2-1.7B Qwen2.5-1.5B OLMo-2-0425-1B,3,1,SmolLM2-1.7B,SmolLM2,1610612736,SmolLM2-1.7B:6.412,SmolLM2-1.7B:6.412,False,,,,,,,,,,,
 Billion,about 1.1-1.6B,25%+3,0.25,3,SmolLM2-1.7B Qwen2.5-1.5B OLMo-2-0425-1B,3,1,SmolLM2-1.7B,SmolLM2,1610612736,SmolLM2-1.7B:8.57,SmolLM2-1.7B:8.57,False,,,,,,,,,,,
-Billion,about 1.1-1.6B,33%+3,0.3333,3,SmolLM2-1.7B Qwen2.5-1.5B OLMo-2-0425-1B,3,0,,,,,,False,,,,,,,,,,,
-Billion,about 1.1-1.6B,50%+3,0.5,3,SmolLM2-1.7B Qwen2.5-1.5B OLMo-2-0425-1B,3,0,,,,,,False,,,,,,,,,,,
+Billion,about 1.1-1.6B,33%+3,0.3333,3,SmolLM2-1.7B Qwen2.5-1.5B OLMo-2-0425-1B,3,1,SmolLM2-1.7B,SmolLM2,1610612736,SmolLM2-1.7B:6.906,SmolLM2-1.7B:6.906,False,,,,,,,,,,,
+Billion,about 1.1-1.6B,50%+3,0.5,3,SmolLM2-1.7B Qwen2.5-1.5B OLMo-2-0425-1B,3,1,SmolLM2-1.7B,SmolLM2,1610612736,SmolLM2-1.7B:33.52,SmolLM2-1.7B:33.52,False,,,,,,,,,,,

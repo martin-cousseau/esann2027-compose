@@ -282,3 +282,17 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     restart either: the container's processes end with the worker. The safety net is therefore a scheduled hourly
     check-in into this session (trigger "ESANN GPU keepalive check-in", minute 26), which restarts the watcher and
     refreshes the tokens if the watcher is gone; it is deleted when the runs end.
+47. **2026-11-14 13:40 UTC, the Qwen2.5-3B grid completed on the second runtime (you asked for 3B; the budget
+    allows it).** At the measured rate (about 1.4 CU per L4-hour, #44), about 80 CU remain; the planned runs need
+    about 37 L4-hours more (runtime A: the Qwen2.5-1.5B benchmark re-runs, its E6 grid, the 3B base design, to about
+    11:30 UTC on 15 Nov; runtime B: OLMo-2-1B and the SmolLM2 seeds, to about 04:00). Runtime B then completes the
+    Qwen2.5-3B grid (pruning alone at 33%, the 33%+4 cell, the three 3-bit cells: 13 states, about 11 L4-hours,
+    about 16 CU), so that Qwen2.5 has the full grid at three sizes, as SmolLM2 does (0.5B, 1.5B, 3B against 135M,
+    360M, 1.7B): Q2 at 3 bits and the scale trend of Q3 are then tested within two families. The plan adds
+    Qwen2.5-3B to `E6_GRID`; `scripts/make_queues.py` splits its queue (`SPLIT`: the 11 base-design units stay in
+    `E6__Qwen2.5-3B.json`, the 13 others go to `E6__Qwen2.5-3B__b.json`), and runtime B writes its own file
+    `results/v2/E6/Qwen2.5-3B__b.jsonl` (one writer per result file; the analysis reads every `.jsonl` of a family
+    directory). `colab/chain_b12.sh` waits for `chain_b11.sh` to end, so nothing running is interrupted. If the
+    balance runs out first, only these last states are lost (every state is uploaded when it finishes) and the
+    paper uses complete cells only. Known edge case: both runtimes would write a failure record to the same
+    `failures__Qwen2.5-3B.jsonl` name (diagnostic only, never used by the analysis).

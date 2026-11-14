@@ -403,3 +403,7 @@ SmolLM2-1.7B,SmolLM2-1.7B__p_then_q__s0.3333__b3__seed0__float32,sr3_v2,0.926053
 SmolLM2-1.7B,SmolLM2-1.7B__p_then_q__s0.3333__b3__seed0__float32,sr3_paper,0.9310895387693316,0.9220860859828196,0.9403317547871614
 SmolLM2-1.7B,SmolLM2-1.7B__p_then_q__s0.3333__b3__seed0__float32,sr9_v2,0.9196266032163868,0.9103460486147221,0.9287559955898491
 SmolLM2-1.7B,SmolLM2-1.7B__p_then_q__s0.3333__b3__seed0__float32,sr9_cn,0.849022183743038,0.8321229604896607,0.8658522245411505
+Qwen2.5-1.5B,Qwen2.5-1.5B__dense__s0.0000__b16__seed0__float32,sr3_v2,1.0,1.0,1.0
+Qwen2.5-1.5B,Qwen2.5-1.5B__dense__s0.0000__b16__seed0__float32,sr3_paper,1.0,1.0,1.0
+Qwen2.5-1.5B,Qwen2.5-1.5B__dense__s0.0000__b16__seed0__float32,sr9_v2,1.0,1.0,1.0
+Qwen2.5-1.5B,Qwen2.5-1.5B__dense__s0.0000__b16__seed0__float32,sr9_cn,1.0,1.0,1.0
