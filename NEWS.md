@@ -9,13 +9,24 @@
   explanation of the Q->P penalty (refuted by E2), the 16-bit numbers (25.92, "twice"), the attribution of the joint
   sweep (OBC is prune-then-quantize), and the scope of Harma et al. and Kim et al. His main claim holds in fp32:
   quantize-first is the worst order in 16 of 18 cells, also by KL, C4 perplexity and 3-task accuracy (not over nine).
-- **GPU (#40):** started 12 Nov 19:47 UTC on two L4 runtimes, stopped at about 21:35 UTC when this session was paused
-  (the watcher keeps the runtimes alive); about 4 L4-hours used. Done: the batch-size check (all four states identical,
-  audit caveat closed), Qwen2.5-1.5B 4 of 23 states, Qwen2.5-0.5B seeds 5 of 20. The Colab connector fails to connect
-  in this session (503), so the queues wait; they resume from the last result line.
+- **GPU (14 Nov, #44-#47):** two L4 runtimes (esann-a8, esann-b7) since 06:18 UTC. Done: the batch-size check, the
+  Qwen2.5-0.5B seeds (40 states), the full SmolLM2-1.7B grid (24 states) with the nine tasks on its I_Sr states and its
+  weaker-first cell. Running: runtime A, Qwen2.5-1.5B (benchmark re-runs, then the grid), then the Qwen2.5-3B base
+  design; runtime B, OLMo-2-1B, the SmolLM2 seeds, then the rest of the Qwen2.5-3B grid (#47). Expected end: about
+  15:30 UTC on 15 Nov. An hourly check-in refreshes the runtime tokens if the watcher stops.
 - **Links:** PR https://github.com/martin-cousseau/esann2027-compose/pull/1 (draft) ; models
   https://huggingface.co/martincousseau/esann2027-compose-v2 ; results
   https://huggingface.co/datasets/martincousseau/esann2027-v2-results ; runs https://wandb.ai/martin-css/esann2027-compose-v2
+
+## 2026-11-14 13:30 UTC - SmolLM2-1.7B complete; Qwen2.5-3B to the full grid
+- SmolLM2-1.7B, full grid: quantize-first is the worst order by perplexity in 5 of 6 cells (not at 33%+4, where the
+  joint sweep is worst by 2.4%); its penalty at 50%+3 is 1.34 times the best perplexity. At 25%+3, quantize-first
+  equals 3-bit quantization alone (same WikiText-2 NLL sum): the 3-bit grid rounds 30% of the weights to zero, and
+  the 25% pruning then removes only zeros.
+- Table 2 at 1.7B: I_Sr for P->Q is -0.002 [-0.010, +0.005] at 25%+4 and +0.011 [-0.000, +0.023] at 33%+3. In the
+  weaker-first cell (50%+4), quantize-first is the worst order on all metrics, including accuracy over nine tasks:
+  the accuracy reversal of the small models does not appear at 1.7B.
+- Runtime B completes the Qwen2.5-3B grid after its own queue (13 states, its own result file; DECISIONS.md #47).
 
 ## 2026-11-13 13:45 UTC - author package v1; runs stopped; Colab connector down
 - **Package v1 delivered:** `revised/main.pdf` (6 pages), `diff/main_diff.pdf`, `NOTE.md` (change log C1-C38, every

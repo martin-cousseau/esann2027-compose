@@ -27,3 +27,4 @@
 {"runtime": "esann-b6", "event": "reclaimed", "time": "2026-11-13T23:30:00+00:00", "note": "worker restart ended the watcher during a token refresh (#46)"}
 {"runtime": "esann-a8", "event": "created", "time": "2026-11-14T06:18:58+00:00", "spec": "L4 standard", "note": "#46 resume chain_a13"}
 {"runtime": "esann-b7", "event": "created", "time": "2026-11-14T06:19:03+00:00", "spec": "L4 standard", "note": "#46 resume chain_b11"}
+{"runtime": "esann-b7", "event": "chain_queued", "time": "2026-11-14T13:29:00+00:00", "note": "#47 chain_b12.sh waits for chain_b11, then Qwen2.5-3B grid completion (13 states, own result file)"}
