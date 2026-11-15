@@ -1098,7 +1098,7 @@ def macros_scale_seeds(M, store, q):
     fams = {"FamSmol": "SmolLM2", "FamQwen": "Qwen2.5"}
     for ft, fl in fams.items():
         R = [r for r in q["scale"] if r["family"] == fl and float(r["sparsity"]) in GRID_SPARSITIES and r["n_models"] == 3]
-        peak0, cells, peak, grow = 0, 0, 0, 0
+        peak0, cells, peak, grow, shrink = 0, 0, 0, 0, 0
         for r in R:
             lo_m, mid, hi_m = str(r["models"]).split()
             s, b = float(r["sparsity"]), int(r["bits"])
@@ -1110,6 +1110,7 @@ def macros_scale_seeds(M, store, q):
                 lo, md, hi = (g[0] for g in got)
                 peak += min(md.values()) > max(max(lo.values()), max(hi.values()))
                 grow += min(md.values()) > max(lo.values())
+                shrink += max(hi.values()) < min(lo.values())
         M.add(sec, f"ScalePeakMid{ft}", _n(peak0) if R else "--",
               f"{fl}: grid cells with three sizes where the middle size has the largest order spread (seed 0)", srcs)
         M.add(sec, f"ScaleSeedCells{ft}", _n(cells) if R else "--",
@@ -1118,6 +1119,8 @@ def macros_scale_seeds(M, store, q):
               f"{fl}: of those, cells where the lowest spread of the middle size over its seeds is above the highest of each end", srcs)
         M.add(sec, f"ScaleSeedGrowMid{ft}", _n(grow) if cells else "--",
               f"{fl}: of those, cells where the lowest spread of the middle size over its seeds is above the highest of the smallest size", srcs)
+        M.add(sec, f"ScaleSeedEndsShrink{ft}", _n(shrink) if cells else "--",
+              f"{fl}: of those, cells where the highest spread of the largest size over its seeds is below the lowest of the smallest size", srcs)
 
 
 def macros_order_all_models(M, store, q, e7res):

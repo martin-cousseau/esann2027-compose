@@ -3894,10 +3894,12 @@ Columns:
 | `\resScaleSeedCellsFamSmol` | `6` | SmolLM2: grid cells with three sizes and every planned calibration seed in the three orders | reports/analysis/e6_scale_spread.csv (models by compressed weights) and results/v2 (per-seed spreads) |
 | `\resScaleSeedPeakMidFamSmol` | `0` | SmolLM2: of those, cells where the lowest spread of the middle size over its seeds is above the highest of each end | reports/analysis/e6_scale_spread.csv (models by compressed weights) and results/v2 (per-seed spreads) |
 | `\resScaleSeedGrowMidFamSmol` | `0` | SmolLM2: of those, cells where the lowest spread of the middle size over its seeds is above the highest of the smallest size | reports/analysis/e6_scale_spread.csv (models by compressed weights) and results/v2 (per-seed spreads) |
+| `\resScaleSeedEndsShrinkFamSmol` | `5` | SmolLM2: of those, cells where the highest spread of the largest size over its seeds is below the lowest of the smallest size | reports/analysis/e6_scale_spread.csv (models by compressed weights) and results/v2 (per-seed spreads) |
 | `\resScalePeakMidFamQwen` | `3` | Qwen2.5: grid cells with three sizes where the middle size has the largest order spread (seed 0) | reports/analysis/e6_scale_spread.csv (models by compressed weights) and results/v2 (per-seed spreads) |
 | `\resScaleSeedCellsFamQwen` | `0` | Qwen2.5: grid cells with three sizes and every planned calibration seed in the three orders | reports/analysis/e6_scale_spread.csv (models by compressed weights) and results/v2 (per-seed spreads) |
 | `\resScaleSeedPeakMidFamQwen` | `--` | Qwen2.5: of those, cells where the lowest spread of the middle size over its seeds is above the highest of each end | reports/analysis/e6_scale_spread.csv (models by compressed weights) and results/v2 (per-seed spreads) |
 | `\resScaleSeedGrowMidFamQwen` | `--` | Qwen2.5: of those, cells where the lowest spread of the middle size over its seeds is above the highest of the smallest size | reports/analysis/e6_scale_spread.csv (models by compressed weights) and results/v2 (per-seed spreads) |
+| `\resScaleSeedEndsShrinkFamQwen` | `--` | Qwen2.5: of those, cells where the highest spread of the largest size over its seeds is below the lowest of the smallest size | reports/analysis/e6_scale_spread.csv (models by compressed weights) and results/v2 (per-seed spreads) |
 
 ## E8 layer error vs KL (reports/analysis/e8_layer_error_vs_kl.json; scripts/analysis/e8.py)
 
