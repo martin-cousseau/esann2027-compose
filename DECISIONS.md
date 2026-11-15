@@ -371,3 +371,8 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     Qwen2.5-0.5B's in three of the four, so Qwen2.5-1.5B looks like a peak rather than a trend. No runtime is
     assigned; the hourly check-in is paused. The next step is yours: more compute units to finish, or the package
     with what exists.
+55. **2026-11-15 15:00 UTC, you will add compute units; the last 5 Qwen2.5-3B states then run on one runtime.**
+    `colab/chain_a16.sh` (runtime esann-a10) runs what is left of parts b and c (25%+3 joint and P->Q, 50%+3 in the
+    three orders) after the 8 finished lines of `Qwen2.5-3B__b.jsonl` and `Qwen2.5-3B__c.jsonl` are put on it: about
+    2.3 L4-hours, about 4 CU at the rate of #54, one start command for you to approve. The package is then rebuilt on
+    seven models.
