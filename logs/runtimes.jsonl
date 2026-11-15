@@ -38,3 +38,5 @@
 {"runtime": "esann-b8", "event": "created", "time": "2026-11-15T12:12:50+00:00", "spec": "L4 standard", "note": "#53 Qwen2.5-3B completion, chain_b13 (second use of the name)"}
 {"runtime": "esann-a9", "event": "gone", "time": "2026-11-15T14:48:00+00:00", "note": "#54 both runtimes ended together at about 14:45 while the keepalive ran (balance?)"}
 {"runtime": "esann-b8", "event": "gone", "time": "2026-11-15T14:48:00+00:00", "note": "#54 both runtimes ended together at about 14:45 while the keepalive ran (balance?)"}
+{"runtime": "esann-a10", "event": "created", "time": "2026-11-15T15:15:06+00:00", "spec": "L4 standard", "note": "#55 #56 chain_a16: last 5 Qwen2.5-3B states, then Qwen2.5-1.5B 4-bit seeds"}
+{"runtime": "esann-b9", "event": "created", "time": "2026-11-15T15:15:10+00:00", "spec": "L4 standard", "note": "#56 chain_b14: Qwen2.5-1.5B 3-bit seeds"}
