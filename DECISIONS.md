@@ -330,3 +330,14 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     marker file; the Hugging Face token, the existing result lines and the marker are put through the Jupyter contents
     API (no approval), after which the chain starts by itself. The hourly check-in is paused while an approval is
     pending (its arrival closed the pending requests) and resumes, with the new runtime names, once the chains run.
+51. **2026-11-15 07:20 UTC, GPU work stopped; the final package covers six complete models.** The two runtimes of #50
+    (esann-a9, esann-b8) were created at 05:30 without an approval prompt, but their start commands (`execute_code`)
+    wait for your approval; the worker restarted again before it came, the watcher ended with it, and both runtimes
+    were reclaimed by 07:18 with no work done (about 3 L4-hours billed). Three such losses in a row show that runtime
+    commands cannot be run while you are away, so no new runtime is started without you. Everything else is complete:
+    the full grids of SmolLM2-1.7B, Qwen2.5-1.5B and OLMo-2-1B with their Table 2 states, and the seeds of the three
+    small models. Qwen2.5-3B has 10 of its 24 states (dense, both quantizations alone, the 25%+4 and 50%+4 cells in
+    the three orders, 33% pruning alone) and lacks its pruning-alone states at 25% and 50%, so it is left out of the
+    final package's analysis (`ESANN_EXCLUDE_MODELS=Qwen2.5-3B`, #48) and named as running; its 14 remaining states
+    (about 6.5 GPU-hours) can be resumed with `chain_a15.sh` / `chain_b13.sh` once you can approve the two start
+    commands. The hourly check-in stays paused while no runtime exists.
