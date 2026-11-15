@@ -355,3 +355,11 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     quote checker now refines its search (long exact quotes could be missed). 33 conditions in `claims.txt` hold, the
     note's 32 quotes match the paper, 6 pages (float spacing tightened in the preamble, C39). Sent as
     `esann2027_author_package_v2_final_2026-11-15.zip` and backed up to the private dataset.
+53. **2026-11-15 12:15 UTC, the Qwen2.5-3B completion, with you online (you asked to finish it).** Two runtimes
+    (esann-a9, esann-b8, the names of #50 reused) were created at 12:13; their two start commands, which you approved,
+    clone the branch at 03d68fb, bootstrap (image 20261112, already admitted) and wait for a marker; the token, the 10
+    finished Qwen2.5-3B lines (to A, the writer of `Qwen2.5-3B.jsonl` and `Qwen2.5-3B__b.jsonl`) and the marker went
+    through the Jupyter contents API. Runtime A runs the last two base-design states and part b (5 states), runtime B
+    part c (7 states, its own file `Qwen2.5-3B__c.jsonl`), about 3.3 hours each. An hourly check-in
+    (`trig_011pgkHx51Rc6hCD2aQruy7q`) refreshes the tokens if the watcher stops; it does not create runtimes. When the
+    runs end, the package is rebuilt on seven models.
