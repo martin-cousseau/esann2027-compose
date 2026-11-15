@@ -96,7 +96,7 @@ E6_GRID = {"HuggingFaceTB/SmolLM2-1.7B", "Qwen/Qwen2.5-1.5B", "allenai/OLMo-2-04
 # the next ones go to <family>__<model>__b.json, __c.json, ..., each run into its own result file
 # results/v2/<family>/<model>__b.jsonl, __c.jsonl, ..., so that every result file keeps a single writer. The analysis
 # reads every .jsonl file of a family directory, so all parts are study states.
-SPLIT = {("E6", "Qwen/Qwen2.5-3B"): (11, 8)}  # 11 on A (base design), 8 on B, the last 5 on A again (#49)
+SPLIT = {("E6", "Qwen/Qwen2.5-3B"): (11, 6)}  # 11 base design; then 6 (part b) and 7 (part c), one runtime each (#50)
 
 
 E6_BENCH = {"HuggingFaceTB/SmolLM2-1.7B", "Qwen/Qwen2.5-1.5B", "allenai/OLMo-2-0425-1B"}
