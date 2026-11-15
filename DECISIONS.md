@@ -363,3 +363,11 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     part c (7 states, its own file `Qwen2.5-3B__c.jsonl`), about 3.3 hours each. An hourly check-in
     (`trig_011pgkHx51Rc6hCD2aQruy7q`) refreshes the tokens if the watcher stops; it does not create runtimes. When the
     runs end, the package is rebuilt on seven models.
+54. **2026-11-15 14:50 UTC, compute units exhausted; Qwen2.5-3B at 19 of 24 states.** Both runtimes of #53 ended
+    together at about 14:45 although the keepalive ran, and Colab now lists the L4 as not eligible (only CPU, T4 and
+    a small TPU): the balance is spent (`logs/budget.md`). The last 5 Qwen2.5-3B states are not run on a T4: the study
+    uses one GPU type. Qwen2.5-3B's four complete cells (25%, 33% and 50%+4, 33%+3) agree with the rest: Q->P worst in
+    all four, mask-first sub-additive in all eight cases, Q->P super-additive at 4 bits; its order spread is below
+    Qwen2.5-0.5B's in three of the four, so Qwen2.5-1.5B looks like a peak rather than a trend. No runtime is
+    assigned; the hourly check-in is paused. The next step is yours: more compute units to finish, or the package
+    with what exists.

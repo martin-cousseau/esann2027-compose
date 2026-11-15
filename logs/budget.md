@@ -89,3 +89,10 @@ L4-hour, below the planning rate. Plan for this round: about 53 L4-hours without
 readings (about 1.4 CU per L4-hour) that is about 82 CU, leaving about 33 CU; at Colab's list rate for an L4 (about
 1.7 CU per hour) about 100 CU, leaving about 15. Please check the real balance in Colab; the Qwen2.5-3B completion
 (14 states, about 6.5 L4-hours) needs about 9 to 11 CU. No runtime is assigned now (15 Nov, 07:20 UTC).
+
+**15 Nov, 14:45 UTC: the balance is exhausted (inferred).** The Qwen2.5-3B completion (#53) ran on two L4 runtimes from
+12:13; both ended together at about 14:45 while the keepalive was running, and from 14:50 Colab lists the L4 (and every
+other paid GPU) as not eligible for this account; only CPU, T4 and a small TPU remain, the free tier. Since your reading
+of 114.97 CU about 63.5 L4-hours were used (58.4 + 5.1), so the real rate was about 1.8 CU per L4-hour, not the 1.4
+measured between your first two readings. Qwen2.5-3B has 19 of its 24 states; the last 5 (25%+3 joint and P->Q, 50%+3
+in the three orders) need about 2.3 L4-hours, about 4 CU.

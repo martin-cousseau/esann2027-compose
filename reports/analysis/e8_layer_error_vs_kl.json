@@ -101,15 +101,15 @@
   {
    "scope": "all",
    "bits": 4,
-   "cells": 23,
-   "joint_smallest": 23,
+   "cells": 24,
+   "joint_smallest": 24,
    "not_joint": ""
   },
   {
    "scope": "all",
    "bits": 3,
-   "cells": 18,
-   "joint_smallest": 11,
+   "cells": 19,
+   "joint_smallest": 12,
    "not_joint": "SmolLM2-135M 25%+3 SmolLM2-360M 25%+3 Qwen2.5-0.5B 25%+3 Qwen2.5-0.5B 33%+3 SmolLM2-1.7B 25%+3 Qwen2.5-1.5B 25%+3 OLMo-2-0425-1B 25%+3"
   },
   {
@@ -199,15 +199,15 @@
   {
    "scope": "Qwen2.5-3B",
    "bits": 4,
-   "cells": 2,
-   "joint_smallest": 2,
+   "cells": 3,
+   "joint_smallest": 3,
    "not_joint": ""
   },
   {
    "scope": "Qwen2.5-3B",
    "bits": 3,
-   "cells": 0,
-   "joint_smallest": 0,
+   "cells": 1,
+   "joint_smallest": 1,
    "not_joint": ""
   },
   {
