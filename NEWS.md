@@ -1,19 +1,26 @@
 # NEWS (newest first)
 
 ## Read this first
-- **Now (15 Nov):** the final author package v2 is delivered (private zip, backed up to the private dataset): the first
-  author's paper revised on six models with full grids (SmolLM2-135M/-360M/-1.7B, Qwen2.5-0.5B/-1.5B, OLMo-2-1B), 6
-  pages, every number generated, every worded claim checked (`claims.txt`), independently audited (DECISIONS.md #52).
-- **Main results:** mask-first orders are sub-additive in all 72 cases; quantizing first is the worst order in 30 of 36
-  settings (up to 1.77x the best perplexity) and, by perplexity, never the best where the weaker-first rule recommends
-  it (11 cells); Table 2 at 1-2B is near independence at 25%+4. The scale trend of the order effect differs between
-  families (shrinks within SmolLM2, larger at Qwen2.5-1.5B than at 0.5B).
-- **GPU:** stopped (#51). Qwen2.5-3B has 10 of 24 states; the other 14 (about 6.5 L4-hours) can be resumed with
-  `colab/chain_a15.sh` / `colab/chain_b13.sh` once you can approve two runtime start commands. No runtime is assigned;
-  the hourly check-in is deleted. Compute units: see `logs/budget.md` (estimate; please check the balance in Colab).
+- **Now (15 Nov, 18:30 UTC):** Qwen2.5-3B is complete (24 of 24 states, perplexity only); the author package is
+  being rebuilt on seven models (v3, DECISIONS.md #57) and audited. Qwen2.5-1.5B's calibration seeds (40 states, #56)
+  run on both runtimes until about 01:00 UTC; they test whether its order-spread peak is a seed effect. The v3
+  package is delivered after that.
+- **What Qwen2.5-3B changes:** Q1 and Q2 hold as before (mask-first sub-additive in 84 of 84 cases; Q->P worst in 35
+  of 42 settings, never the best where the weaker-first rule recommends it, 14 cells). Q3 changes: the v2 reading
+  "the scale trend differs between families" came from Qwen2.5-1.5B, which is a peak; in both families the order
+  spread is smaller at the largest size than at the smallest in most cells, though not monotonically.
+- **GPU:** runtimes esann-a10 and esann-b9 (L4) run the seeds; the hourly check-in refreshes their tokens and does
+  not create runtimes. Compute units: `logs/budget.md`.
 - **Links:** PR https://github.com/martin-cousseau/esann2027-compose/pull/1 (draft) ; models
   https://huggingface.co/martincousseau/esann2027-compose-v2 ; results
   https://huggingface.co/datasets/martincousseau/esann2027-v2-results ; runs https://wandb.ai/martin-css/esann2027-compose-v2
+
+## 2026-11-15 18:30 UTC - Qwen2.5-3B complete, seven-model text (v3)
+- The last five Qwen2.5-3B states ran on one runtime with the compute units added at 15:00 (#55). The paper text,
+  claims and note are updated for seven models (#57); the Q3 sentence about Qwen2.5 is rewritten.
+- New analysis: small-model scope for the seed macros, and a seed check of the scale trend (`macros_scale_seeds`).
+  On SmolLM2 it already shows that SmolLM2-360M's apparent peak at seed 0 does not survive the seeds, while the
+  fall from 135M to 1.7B does in 5 of 6 cells.
 
 ## 2026-11-15 08:00 UTC - final package v2 (six models), audited
 - Final package sent: six complete models, Table 2 rows at 1-2B, seeds of the three small models. Qwen2.5-3B left out

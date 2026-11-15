@@ -383,3 +383,17 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     did for the small models: runtime A (`chain_a16.sh`) runs the 4-bit seeds after the Qwen2.5-3B states, runtime B
     (`chain_b14.sh`) the 3-bit seeds into its own file. About 17.5 L4-hours, about 32 CU at 1.8 CU per L4-hour; both
     runtimes should end about 10 hours after the start.
+57. **2026-11-15 18:30 UTC, Qwen2.5-3B complete; the paper is rewritten on seven models (v3).** Qwen2.5-3B's 24th
+    state finished at 17:52 (runtime A then started the Qwen2.5-1.5B 4-bit seeds). The build now leaves out no model.
+    What changes in words: the abstract and setup name seven models (135M-3B; Qwen2.5-3B has perplexity only, "the KL
+    divergence to the dense model (not on Qwen2.5-3B)", accuracy "for Table 2 (1-2B)"); Q1 counts four larger and
+    seven models; the weaker-first paragraph gives the perplexity and KL counts separately, because the rule's cells
+    on Qwen2.5-3B have no KL ("the worst in N of them and in M of the K with KL"); the seed sentence of Q2 uses new
+    small-model macros (`Seed...Core...`), so Qwen2.5-1.5B's seeds do not enter it. Q3 changes in substance: with
+    three Qwen2.5 sizes the v2 reading ("the trend differs between the two families", from 0.5B to 1.5B) is replaced
+    by "in both families it is smaller at the largest size than at the smallest (SmolLM2: 6 of 6 cells, Qwen2.5: 5 of
+    6), but monotonically in only 3 and 1: Qwen2.5-1.5B has the largest spread of its family in 5 of the 6 cells".
+    New macros (`macros_scale_seeds`) test that peak over calibration seeds once Qwen2.5-1.5B's seeds finish; the
+    sentence that reports it is added then. Claims (`claims.txt`, 33) and the note (header v3, §0, §2, §3.1-3.5, §6,
+    C1, C2, C18, C19, C25-C27, C32, C32b, C35, C37, C39, decisions) are updated; the build passes (6 pages, 32 quotes,
+    33 claims). An independent audit of v3 runs before delivery.
