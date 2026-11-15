@@ -77,5 +77,15 @@ L4-hour, below the planning rate. Plan for this round: about 53 L4-hours without
 |---|---|---|---|---|
 | esann-a6 | 2026-11-12 19:47 | reclaimed ~21:35 | ~1.8 | stopped when the session paused (#42) |
 | esann-b5 | 2026-11-12 19:47 | reclaimed ~21:35 | ~1.8 | stopped when the session paused (#42) |
-| esann-a7 | 2026-11-13 18:41 | | | E6B benchmarks, E6 Qwen2.5-1.5B, E5 SmolLM2 seeds |
-| esann-b6 | 2026-11-13 18:41 | | | E5 Qwen2.5-0.5B seeds, E6 SmolLM2-1.7B and OLMo-2-1B |
+| esann-a7 | 2026-11-13 18:41 | reclaimed ~23:30 | ~4.8 | stopped when the worker restarted (#46) |
+| esann-b6 | 2026-11-13 18:41 | reclaimed ~23:30 | ~4.8 | stopped when the worker restarted (#46) |
+| esann-a8 | 2026-11-14 06:18 | reclaimed ~05:10, 15 Nov | ~22.9 | E6B, Qwen2.5-1.5B grid, Qwen2.5-3B 9 states (#46, #50) |
+| esann-b7 | 2026-11-14 06:19 | reclaimed ~05:10, 15 Nov | ~22.9 | OLMo-2-1B grid, SmolLM2 seeds, Qwen2.5-3B 1 state (#46, #50) |
+| esann-a9 | 2026-11-15 05:30 | reclaimed by 07:18 | ~1.5 | no work: its start command waited for approval (#51) |
+| esann-b8 | 2026-11-15 05:30 | reclaimed by 07:18 | ~1.5 | no work: its start command waited for approval (#51) |
+
+**Account of this round (estimate; Colab does not report the balance through the connector).** Since your reading of
+114.97 CU (13 Nov, about 18:30 UTC): about 58 L4-hours (9.6 + 45.8 + 3.0). At the rate measured between your two
+readings (about 1.4 CU per L4-hour) that is about 82 CU, leaving about 33 CU; at Colab's list rate for an L4 (about
+1.7 CU per hour) about 100 CU, leaving about 15. Please check the real balance in Colab; the Qwen2.5-3B completion
+(14 states, about 6.5 L4-hours) needs about 9 to 11 CU. No runtime is assigned now (15 Nov, 07:20 UTC).
