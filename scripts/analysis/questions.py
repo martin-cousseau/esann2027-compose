@@ -574,10 +574,14 @@ def seed_overview(store, stability, pairs, best, e1_seeds):
     (4, 3, or 'both'). Cells count only when every seed has the three orders (complete); (cell, seed) pairs only
     in complete cells; the seed sd only for configurations with three seeds."""
     out = []
-    for m in [None] + seed_models(store):
+    core = [short(x) for x in MQ.CORE]
+
+    def in_scope(model, m):  # m: None (every multi-seed model), "core" (the three small models) or one model
+        return m is None or (m == "core" and model in core) or model == m
+    for m in [None, "core"] + seed_models(store):
         for b in (4, 3, None):
             def ok(r):
-                return (m is None or r["model"] == m) and (b is None or int(r["bits"]) == b)
+                return in_scope(r["model"], m) and (b is None or int(r["bits"]) == b)
             S_ = [r for r in stability if ok(r) and r["complete"]]
             runs = [r for r in best if ok(r) and r["cell_complete"]]
             row = {"model": m or "all", "bits": b or "both", "cells": len(S_), "best_stable": sum(r["stable"] for r in S_),
@@ -592,12 +596,12 @@ def seed_overview(store, stability, pairs, best, e1_seeds):
                 row[f"pair_{a}_{c}_sig"] = sum(finite(r.get("p_paired_t")) and r["p_paired_t"] < 0.05 for r in rr)
             for name, sel in (("single", ("prune", "quant")), ("combined", COMBINED), ("any", ("prune", "quant") + COMBINED)):
                 v = [100 * r["wt_ppl_sd"] / r["wt_ppl_mean"] for r in e1_seeds if r["order"] in sel and r["n"] >= 3
-                     and (m is None or r["model"] == m) and (b is None or int(r["bits"]) == b)
+                     and in_scope(r["model"], m) and (b is None or int(r["bits"]) == b)
                      and finite(r.get("wt_ppl_sd")) and finite(r.get("wt_ppl_mean"))]
                 row[f"sd_max_{name}_pct"] = max(v) if v else None
-            states = [r for r in store.states.values() if int(r.get("seed", 0)) > 0 and (m is None or short(r["model"]) == m)
+            states = [r for r in store.states.values() if int(r.get("seed", 0)) > 0 and in_scope(short(r["model"]), m)
                       and (b is None or int(r["bits"]) == b)]
-            planned = [v for v in store.plan.values() if v["seed"] > 0 and (m is None or v["short"] == m)
+            planned = [v for v in store.plan.values() if v["seed"] > 0 and in_scope(v["short"], m)
                        and (b is None or v["bits"] == b)]
             row["states"], row["states_planned"] = len(states), len(planned)
             out.append(row)

@@ -814,10 +814,11 @@ def macros_e5(M, store, q):
         M.add(sec, f"SeedPair{tag}Sig", _n(leg.get(f"pair_{a}_{c}_sig")) if n else "--",
               f"{SEED_LEGACY_MODEL}: 4-bit cells where the paired t-test over seeds (log ppl) gives p < 0.05, {ORDER_TXT[a]} vs {ORDER_TXT[c]}", src)
         M.add(sec, f"SeedPair{tag}Cells", _n(n) if n else "--", f"{SEED_LEGACY_MODEL}: 4-bit cells with every seed for both orders", src)
-    sec = "E5 calibration seeds per model and bit-width (reports/analysis/seed_overview.csv; scope All = every E5 model)"
+    sec = ("E5 calibration seeds per model and bit-width (reports/analysis/seed_overview.csv; scope All = every E5 model,"
+           " Core = the three small models)")
     for row in q.get("seed_overview", []):
         m = row["model"]
-        scope, who = ("All", "every E5 model") if m == "all" else (model_tag(m), m)
+        scope, who = {"all": ("All", "every E5 model"), "core": ("Core", "the three small models")}.get(m, (model_tag(m), m))
         bt, what = [(t, w) for b, t, w in SEED_BITS_TAG if b == row["bits"]][0]
         sfx, src = scope + bt, "reports/analysis/seed_overview.csv (complete cells: every seed has the three orders)"
         cells, runs = row["cells"], row["runs"]
@@ -1058,6 +1059,67 @@ def macros_batch(M, store, bres):
           "cells whose ranking by flips changes when the re-run items replace both the dense reference and the re-run states", src)
 
 
+def macros_scale_seeds(M, store, q):
+    """Q3 seed check of the scale trend (DECISIONS.md #56): the order spread (WikiText-2 ppl, 100 (max - min) / min over
+    the three orders) per calibration seed, and, per family with three sizes and grid cell, whether the middle size has
+    the largest spread. Seed 0 only (ScalePeakMid...), and over seeds (ScaleSeed...): the middle size counts as the peak
+    when its lowest spread over seeds is above the highest spread over seeds of each end (a model without calibration
+    seeds counts with seed 0). A cell counts in ScaleSeedCells once every planned seed of the three sizes has the three
+    orders; -- until then."""
+    from .common import GRID_SPARSITIES
+    from .questions import model_seeds
+    sec = "Q3 seed check of the scale trend: order spread per calibration seed (WikiText-2 ppl, grid cells)"
+    src = "results/v2 (wikitext2.ppl of the three orders per seed; scripts/analysis/latex.py macros_scale_seeds)"
+
+    def spread(m, s, b, sd):
+        v = [((store.get(m, o, s, b, sd) or {}).get("wikitext2") or {}).get("ppl") for o in PAPER_ORDERS]
+        return 100 * (max(v) - min(v)) / min(v) if all(finite(x) for x in v) else None
+
+    def by_seed(m, s, b):
+        seeds = model_seeds(store, m)
+        v = {sd: spread(m, s, b, sd) for sd in seeds}
+        return {sd: x for sd, x in v.items() if x is not None}, len(seeds)
+
+    for m in store.models():
+        if len(model_seeds(store, m)) < 2:
+            continue
+        for s in GRID_SPARSITIES:
+            for b in (4, 3):
+                v, n = by_seed(m, s, b)
+                ct, lab = model_tag(m) + cell_tag(s, b), f"{m} {cell_label(s, b)}"
+                ok = len(v) == n
+                M.add(sec, f"ScaleSeedSpreadMin{ct}Pct", num(min(v.values()), 1) if ok else "--",
+                      f"{lab}: smallest order spread over its {n} calibration seeds (%)", src)
+                M.add(sec, f"ScaleSeedSpreadMax{ct}Pct", num(max(v.values()), 1) if ok else "--",
+                      f"{lab}: largest order spread over its {n} calibration seeds (%)", src)
+                M.add(sec, f"ScaleSeedSpreadSeeds{ct}", _n(len(v)), f"{lab}: seeds with the three orders (of {n})", src)
+    sec = "Q3 seed check of the scale trend: per family with three sizes, cells where the middle size has the largest spread"
+    srcs = "reports/analysis/e6_scale_spread.csv (models by compressed weights) and results/v2 (per-seed spreads)"
+    fams = {"FamSmol": "SmolLM2", "FamQwen": "Qwen2.5"}
+    for ft, fl in fams.items():
+        R = [r for r in q["scale"] if r["family"] == fl and float(r["sparsity"]) in GRID_SPARSITIES and r["n_models"] == 3]
+        peak0, cells, peak, grow = 0, 0, 0, 0
+        for r in R:
+            lo_m, mid, hi_m = str(r["models"]).split()
+            s, b = float(r["sparsity"]), int(r["bits"])
+            v0 = [spread(x, s, b, 0) for x in (lo_m, mid, hi_m)]
+            peak0 += all(x is not None for x in v0) and v0[1] > max(v0[0], v0[2])
+            got = [by_seed(x, s, b) for x in (lo_m, mid, hi_m)]
+            if all(len(v) == n for v, n in got):
+                cells += 1
+                lo, md, hi = (g[0] for g in got)
+                peak += min(md.values()) > max(max(lo.values()), max(hi.values()))
+                grow += min(md.values()) > max(lo.values())
+        M.add(sec, f"ScalePeakMid{ft}", _n(peak0) if R else "--",
+              f"{fl}: grid cells with three sizes where the middle size has the largest order spread (seed 0)", srcs)
+        M.add(sec, f"ScaleSeedCells{ft}", _n(cells) if R else "--",
+              f"{fl}: grid cells with three sizes and every planned calibration seed in the three orders", srcs)
+        M.add(sec, f"ScaleSeedPeakMid{ft}", _n(peak) if cells else "--",
+              f"{fl}: of those, cells where the lowest spread of the middle size over its seeds is above the highest of each end", srcs)
+        M.add(sec, f"ScaleSeedGrowMid{ft}", _n(grow) if cells else "--",
+              f"{fl}: of those, cells where the lowest spread of the middle size over its seeds is above the highest of the smallest size", srcs)
+
+
 def macros_order_all_models(M, store, q, e7res):
     """Q2 and the weaker-first test over every model (DECISIONS.md #47): the order counts of the three core models,
     of the larger models (E6) and of both together, and, in the cells where Kim et al.'s rule (by WikiText-2 ppl)
@@ -1239,6 +1301,7 @@ def build_macros(store, e1, q, det, fr, e2res, boolq, missing, repro=(), e7res=N
         macros_e7(M, store, e7res)
     macros_order_all_models(M, store, q, e7res)
     macros_isr_groups(M, store, e1)
+    macros_scale_seeds(M, store, q)
     if e8res is not None:
         macros_e8(M, store, e8res)
     if isr is not None:
@@ -1322,7 +1385,7 @@ Qwen2.5 = `Qwen`, OLMo-2 = `Olmo`. Configurations: `Dense`, `QuantBFour` (4-bit 
 (50% pruning only), `SFiftyBFourJoint` (50% + 4-bit, joint sweep); cells `STwentyFiveBFour` (25% + 4-bit), ...;
 orders `Joint`, `PQ` (P->Q), `QP` (Q->P), arms `QPRefit`, `QPPmask`, `QPPmaskRefit`, `PQStale`. Bit-width tags:
 `BFour`, `BThree` (and `Both` for the E5 macros: both bit-widths pooled).
-E5 seed macros: `\\resSeed<quantity><scope><bits>[Pct]` with scope `All` (every E5 model) or a model tag, and bits
+E5 seed macros: `\\resSeed<quantity><scope><bits>[Pct]` with scope `All` (every E5 model), `Core` (the three small models) or a model tag, and bits
 `BFour`, `BThree` or `Both`; the unsuffixed names that paper/main.tex quotes (`\\resSeedBestStable`,
 `\\resSeedPairJointPQAllSeeds`, `\\resSeedSdMaxCombinedPct`, ...) stay SmolLM2-360M, 4-bit cells.
 Suffix `Pct`: the value is a percentage (the macro holds the number only). Signed values are wrapped in

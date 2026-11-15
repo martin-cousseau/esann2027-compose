@@ -54,24 +54,6 @@
    "rho_p": 0.208,
    "rho_n": 6
   },
-  "wt_ppl|SmolLM2-1.7B": {
-   "cells": 6,
-   "decided": 6,
-   "correct": 3,
-   "predicted_qp": 3,
-   "predicted_qp_correct": 0,
-   "predicted_pq": 3,
-   "predicted_pq_correct": 3,
-   "observed_pq": 6,
-   "observed_qp": 0,
-   "ties": 0,
-   "cer_beyond_curve": 2,
-   "prediction_disagrees_direct": 0,
-   "smallest_abs_advantage": 0.014629086343963902,
-   "rho": 0.7999999999999999,
-   "rho_p": 0.2000000000000001,
-   "rho_n": 4
-  },
   "wt_ppl|Qwen2.5-1.5B": {
    "cells": 6,
    "decided": 6,
@@ -89,6 +71,24 @@
    "rho": -0.5428571428571429,
    "rho_p": 0.26570262390670546,
    "rho_n": 6
+  },
+  "wt_ppl|SmolLM2-1.7B": {
+   "cells": 6,
+   "decided": 6,
+   "correct": 3,
+   "predicted_qp": 3,
+   "predicted_qp_correct": 0,
+   "predicted_pq": 3,
+   "predicted_pq_correct": 3,
+   "observed_pq": 6,
+   "observed_qp": 0,
+   "ties": 0,
+   "cer_beyond_curve": 2,
+   "prediction_disagrees_direct": 0,
+   "smallest_abs_advantage": 0.014629086343963902,
+   "rho": 0.7999999999999999,
+   "rho_p": 0.2000000000000001,
+   "rho_n": 4
   },
   "wt_ppl|Qwen2.5-3B": {
    "cells": 4,
@@ -195,24 +195,6 @@
    "rho_p": 0.04156268221574335,
    "rho_n": 6
   },
-  "c4_ppl|SmolLM2-1.7B": {
-   "cells": 6,
-   "decided": 6,
-   "correct": 2,
-   "predicted_qp": 3,
-   "predicted_qp_correct": 0,
-   "predicted_pq": 3,
-   "predicted_pq_correct": 2,
-   "observed_pq": 5,
-   "observed_qp": 1,
-   "ties": 0,
-   "cer_beyond_curve": 2,
-   "prediction_disagrees_direct": 0,
-   "smallest_abs_advantage": 0.0058627948565313955,
-   "rho": -0.19999999999999998,
-   "rho_p": 0.8,
-   "rho_n": 4
-  },
   "c4_ppl|Qwen2.5-1.5B": {
    "cells": 6,
    "decided": 6,
@@ -230,6 +212,24 @@
    "rho": -0.2571428571428572,
    "rho_p": 0.6227871720116619,
    "rho_n": 6
+  },
+  "c4_ppl|SmolLM2-1.7B": {
+   "cells": 6,
+   "decided": 6,
+   "correct": 2,
+   "predicted_qp": 3,
+   "predicted_qp_correct": 0,
+   "predicted_pq": 3,
+   "predicted_pq_correct": 2,
+   "observed_pq": 5,
+   "observed_qp": 1,
+   "ties": 0,
+   "cer_beyond_curve": 2,
+   "prediction_disagrees_direct": 0,
+   "smallest_abs_advantage": 0.0058627948565313955,
+   "rho": -0.19999999999999998,
+   "rho_p": 0.8,
+   "rho_n": 4
   },
   "c4_ppl|Qwen2.5-3B": {
    "cells": 4,
@@ -336,24 +336,6 @@
    "rho_p": 0.6227871720116619,
    "rho_n": 6
   },
-  "wt_kl|SmolLM2-1.7B": {
-   "cells": 6,
-   "decided": 6,
-   "correct": 3,
-   "predicted_qp": 3,
-   "predicted_qp_correct": 0,
-   "predicted_pq": 3,
-   "predicted_pq_correct": 3,
-   "observed_pq": 6,
-   "observed_qp": 0,
-   "ties": 0,
-   "cer_beyond_curve": 2,
-   "prediction_disagrees_direct": 0,
-   "smallest_abs_advantage": 0.07530195423928748,
-   "rho": 0.7999999999999999,
-   "rho_p": 0.2000000000000001,
-   "rho_n": 4
-  },
   "wt_kl|Qwen2.5-1.5B": {
    "cells": 6,
    "decided": 6,
@@ -371,6 +353,24 @@
    "rho": -0.8857142857142858,
    "rho_p": 0.01884548104956266,
    "rho_n": 6
+  },
+  "wt_kl|SmolLM2-1.7B": {
+   "cells": 6,
+   "decided": 6,
+   "correct": 3,
+   "predicted_qp": 3,
+   "predicted_qp_correct": 0,
+   "predicted_pq": 3,
+   "predicted_pq_correct": 3,
+   "observed_pq": 6,
+   "observed_qp": 0,
+   "ties": 0,
+   "cer_beyond_curve": 2,
+   "prediction_disagrees_direct": 0,
+   "smallest_abs_advantage": 0.07530195423928748,
+   "rho": 0.7999999999999999,
+   "rho_p": 0.2000000000000001,
+   "rho_n": 4
   },
   "wt_kl|Qwen2.5-3B": {
    "cells": 0,
@@ -483,26 +483,6 @@
    "rho_p": 0.4,
    "rho_n": 4
   },
-  "sr9_v2|SmolLM2-1.7B": {
-   "cells": 1,
-   "decided": 1,
-   "correct": 0,
-   "predicted_qp": 1,
-   "predicted_qp_correct": 0,
-   "predicted_pq": 0,
-   "predicted_pq_correct": 0,
-   "observed_pq": 1,
-   "observed_qp": 0,
-   "ties": 0,
-   "cer_beyond_curve": 0,
-   "prediction_disagrees_direct": 0,
-   "smallest_abs_advantage": 0.011474297208166506,
-   "significant": 1,
-   "significant_correct": 0,
-   "rho": null,
-   "rho_p": null,
-   "rho_n": 1
-  },
   "sr9_v2|Qwen2.5-1.5B": {
    "cells": 0,
    "decided": 0,
@@ -522,6 +502,26 @@
    "rho": null,
    "rho_p": null,
    "rho_n": 0
+  },
+  "sr9_v2|SmolLM2-1.7B": {
+   "cells": 1,
+   "decided": 1,
+   "correct": 0,
+   "predicted_qp": 1,
+   "predicted_qp_correct": 0,
+   "predicted_pq": 0,
+   "predicted_pq_correct": 0,
+   "observed_pq": 1,
+   "observed_qp": 0,
+   "ties": 0,
+   "cer_beyond_curve": 0,
+   "prediction_disagrees_direct": 0,
+   "smallest_abs_advantage": 0.011474297208166506,
+   "significant": 1,
+   "significant_correct": 0,
+   "rho": null,
+   "rho_p": null,
+   "rho_n": 1
   },
   "sr9_v2|Qwen2.5-3B": {
    "cells": 0,
@@ -640,26 +640,6 @@
    "rho_p": 0.6,
    "rho_n": 4
   },
-  "sr3_paper|SmolLM2-1.7B": {
-   "cells": 1,
-   "decided": 1,
-   "correct": 0,
-   "predicted_qp": 1,
-   "predicted_qp_correct": 0,
-   "predicted_pq": 0,
-   "predicted_pq_correct": 0,
-   "observed_pq": 1,
-   "observed_qp": 0,
-   "ties": 0,
-   "cer_beyond_curve": 1,
-   "prediction_disagrees_direct": 0,
-   "smallest_abs_advantage": 0.013182348307201108,
-   "significant": 1,
-   "significant_correct": 0,
-   "rho": null,
-   "rho_p": null,
-   "rho_n": 0
-  },
   "sr3_paper|Qwen2.5-1.5B": {
    "cells": 0,
    "decided": 0,
@@ -675,6 +655,26 @@
    "prediction_disagrees_direct": 0,
    "smallest_abs_advantage": null,
    "significant": 0,
+   "significant_correct": 0,
+   "rho": null,
+   "rho_p": null,
+   "rho_n": 0
+  },
+  "sr3_paper|SmolLM2-1.7B": {
+   "cells": 1,
+   "decided": 1,
+   "correct": 0,
+   "predicted_qp": 1,
+   "predicted_qp_correct": 0,
+   "predicted_pq": 0,
+   "predicted_pq_correct": 0,
+   "observed_pq": 1,
+   "observed_qp": 0,
+   "ties": 0,
+   "cer_beyond_curve": 1,
+   "prediction_disagrees_direct": 0,
+   "smallest_abs_advantage": 0.013182348307201108,
+   "significant": 1,
    "significant_correct": 0,
    "rho": null,
    "rho_p": null,
@@ -757,17 +757,17 @@
    "max_gap_pct": 15.605069590345199,
    "min_gap_pct": -0.3703348828231756
   },
-  "wt_ppl|SmolLM2-1.7B": {
-   "cells": 6,
-   "pq_better": 6,
-   "max_gap_pct": 28.742413313318327,
-   "min_gap_pct": 1.4736615137074471
-  },
   "wt_ppl|Qwen2.5-1.5B": {
    "cells": 6,
    "pq_better": 6,
    "max_gap_pct": 35.99454888180045,
    "min_gap_pct": 1.982239354580484
+  },
+  "wt_ppl|SmolLM2-1.7B": {
+   "cells": 6,
+   "pq_better": 6,
+   "max_gap_pct": 28.742413313318327,
+   "min_gap_pct": 1.4736615137074471
   },
   "wt_ppl|Qwen2.5-3B": {
    "cells": 4,
@@ -805,17 +805,17 @@
    "max_gap_pct": 15.924655037132073,
    "min_gap_pct": -1.2234968613418218
   },
-  "c4_ppl|SmolLM2-1.7B": {
-   "cells": 6,
-   "pq_better": 5,
-   "max_gap_pct": 23.933971126227437,
-   "min_gap_pct": -0.5845642211949387
-  },
   "c4_ppl|Qwen2.5-1.5B": {
    "cells": 6,
    "pq_better": 6,
    "max_gap_pct": 35.96509348574175,
    "min_gap_pct": 1.1730234039504461
+  },
+  "c4_ppl|SmolLM2-1.7B": {
+   "cells": 6,
+   "pq_better": 5,
+   "max_gap_pct": 23.933971126227437,
+   "min_gap_pct": -0.5845642211949387
   },
   "c4_ppl|Qwen2.5-3B": {
    "cells": 4,
@@ -918,33 +918,6 @@
    "max_excess_multiplicative_pct": 2.8149894554838406,
    "min_excess_multiplicative_pct": -4.66761329987383
   },
-  "wt_ppl|joint|SmolLM2-1.7B": {
-   "n": 6,
-   "exceeds_additive": 2,
-   "exceeds_multiplicative": 1,
-   "max_excess_additive_pct": 2.6621646577060787,
-   "min_excess_additive_pct": -13.872716388603735,
-   "max_excess_multiplicative_pct": 1.939364355778972,
-   "min_excess_multiplicative_pct": -18.232060950765383
-  },
-  "wt_ppl|p_then_q|SmolLM2-1.7B": {
-   "n": 6,
-   "exceeds_additive": 2,
-   "exceeds_multiplicative": 0,
-   "max_excess_additive_pct": 0.21283275109196254,
-   "min_excess_additive_pct": -11.64185472417113,
-   "max_excess_multiplicative_pct": -0.49272285462672594,
-   "min_excess_multiplicative_pct": -15.198541824758504
-  },
-  "wt_ppl|q_then_p|SmolLM2-1.7B": {
-   "n": 6,
-   "exceeds_additive": 4,
-   "exceeds_multiplicative": 4,
-   "max_excess_additive_pct": 28.51582836343276,
-   "min_excess_additive_pct": -7.924662346729661,
-   "max_excess_multiplicative_pct": 9.175443779690173,
-   "min_excess_multiplicative_pct": -11.480576703437661
-  },
   "wt_ppl|joint|Qwen2.5-1.5B": {
    "n": 6,
    "exceeds_additive": 3,
@@ -972,8 +945,35 @@
    "max_excess_multiplicative_pct": 26.8484607216805,
    "min_excess_multiplicative_pct": -4.9851961735064565
   },
+  "wt_ppl|joint|SmolLM2-1.7B": {
+   "n": 6,
+   "exceeds_additive": 2,
+   "exceeds_multiplicative": 1,
+   "max_excess_additive_pct": 2.6621646577060787,
+   "min_excess_additive_pct": -13.872716388603735,
+   "max_excess_multiplicative_pct": 1.939364355778972,
+   "min_excess_multiplicative_pct": -18.232060950765383
+  },
+  "wt_ppl|p_then_q|SmolLM2-1.7B": {
+   "n": 6,
+   "exceeds_additive": 2,
+   "exceeds_multiplicative": 0,
+   "max_excess_additive_pct": 0.21283275109196254,
+   "min_excess_additive_pct": -11.64185472417113,
+   "max_excess_multiplicative_pct": -0.49272285462672594,
+   "min_excess_multiplicative_pct": -15.198541824758504
+  },
+  "wt_ppl|q_then_p|SmolLM2-1.7B": {
+   "n": 6,
+   "exceeds_additive": 4,
+   "exceeds_multiplicative": 4,
+   "max_excess_additive_pct": 28.51582836343276,
+   "min_excess_additive_pct": -7.924662346729661,
+   "max_excess_multiplicative_pct": 9.175443779690173,
+   "min_excess_multiplicative_pct": -11.480576703437661
+  },
   "wt_ppl|joint|Qwen2.5-3B": {
-   "n": 4,
+   "n": 5,
    "exceeds_additive": 0,
    "exceeds_multiplicative": 0,
    "max_excess_additive_pct": -0.6289813256849297,
@@ -1027,7 +1027,7 @@
    "min_excess_multiplicative_pct": -3.898745257757863
   },
   "wt_ppl|joint|all": {
-   "n": 40,
+   "n": 41,
    "exceeds_additive": 16,
    "exceeds_multiplicative": 5,
    "max_excess_additive_pct": 32.40826181241434,
@@ -1134,33 +1134,6 @@
    "max_excess_multiplicative_pct": 9.160285975439608,
    "min_excess_multiplicative_pct": -3.671285337980823
   },
-  "c4_ppl|joint|SmolLM2-1.7B": {
-   "n": 6,
-   "exceeds_additive": 2,
-   "exceeds_multiplicative": 0,
-   "max_excess_additive_pct": 4.693736458510456,
-   "min_excess_additive_pct": -4.640023044355246,
-   "max_excess_multiplicative_pct": -0.6015658915708544,
-   "min_excess_multiplicative_pct": -6.279887200312406
-  },
-  "c4_ppl|p_then_q|SmolLM2-1.7B": {
-   "n": 6,
-   "exceeds_additive": 3,
-   "exceeds_multiplicative": 2,
-   "max_excess_additive_pct": 8.030731078008335,
-   "min_excess_additive_pct": -3.0780783586932925,
-   "max_excess_multiplicative_pct": 0.289005935267328,
-   "min_excess_multiplicative_pct": -4.744802599828491
-  },
-  "c4_ppl|q_then_p|SmolLM2-1.7B": {
-   "n": 6,
-   "exceeds_additive": 5,
-   "exceeds_multiplicative": 4,
-   "max_excess_additive_pct": 33.88677506167128,
-   "min_excess_additive_pct": -2.5779005471484484,
-   "max_excess_multiplicative_pct": 24.292147658594708,
-   "min_excess_multiplicative_pct": -3.332235733772526
-  },
   "c4_ppl|joint|Qwen2.5-1.5B": {
    "n": 6,
    "exceeds_additive": 3,
@@ -1188,8 +1161,35 @@
    "max_excess_multiplicative_pct": 37.00741428312446,
    "min_excess_multiplicative_pct": -2.170958154874869
   },
+  "c4_ppl|joint|SmolLM2-1.7B": {
+   "n": 6,
+   "exceeds_additive": 2,
+   "exceeds_multiplicative": 0,
+   "max_excess_additive_pct": 4.693736458510456,
+   "min_excess_additive_pct": -4.640023044355246,
+   "max_excess_multiplicative_pct": -0.6015658915708544,
+   "min_excess_multiplicative_pct": -6.279887200312406
+  },
+  "c4_ppl|p_then_q|SmolLM2-1.7B": {
+   "n": 6,
+   "exceeds_additive": 3,
+   "exceeds_multiplicative": 2,
+   "max_excess_additive_pct": 8.030731078008335,
+   "min_excess_additive_pct": -3.0780783586932925,
+   "max_excess_multiplicative_pct": 0.289005935267328,
+   "min_excess_multiplicative_pct": -4.744802599828491
+  },
+  "c4_ppl|q_then_p|SmolLM2-1.7B": {
+   "n": 6,
+   "exceeds_additive": 5,
+   "exceeds_multiplicative": 4,
+   "max_excess_additive_pct": 33.88677506167128,
+   "min_excess_additive_pct": -2.5779005471484484,
+   "max_excess_multiplicative_pct": 24.292147658594708,
+   "min_excess_multiplicative_pct": -3.332235733772526
+  },
   "c4_ppl|joint|Qwen2.5-3B": {
-   "n": 4,
+   "n": 5,
    "exceeds_additive": 0,
    "exceeds_multiplicative": 0,
    "max_excess_additive_pct": -0.30726042733122405,
@@ -1243,7 +1243,7 @@
    "min_excess_multiplicative_pct": -2.5836029744198963
   },
   "c4_ppl|joint|all": {
-   "n": 40,
+   "n": 41,
    "exceeds_additive": 15,
    "exceeds_multiplicative": 7,
    "max_excess_additive_pct": 41.121652027956365,
@@ -1278,8 +1278,8 @@
   "SmolLM2-135M",
   "SmolLM2-360M",
   "Qwen2.5-0.5B",
-  "SmolLM2-1.7B",
   "Qwen2.5-1.5B",
+  "SmolLM2-1.7B",
   "Qwen2.5-3B",
   "OLMo-2-0425-1B"
  ]

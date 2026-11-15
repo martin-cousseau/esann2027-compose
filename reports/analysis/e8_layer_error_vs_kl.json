@@ -49,22 +49,6 @@
    "cells_same_ranking": 5
   },
   {
-   "model": "SmolLM2-1.7B",
-   "n_states": 23,
-   "rho_wt_kl": 0.9357390014829461,
-   "p_wt_kl": 5.717435930024022e-11,
-   "n_wt_kl": 23,
-   "rho_c4_kl": 0.9911023232822541,
-   "p_c4_kl": 7.032194206590216e-20,
-   "n_c4_kl": 23,
-   "rho_wt_kl_combined": 0.9422084623323013,
-   "p_wt_kl_combined": 5.214680253289582e-09,
-   "n_combined": 18,
-   "cells": 6,
-   "cells_same_best": 3,
-   "cells_same_ranking": 3
-  },
-  {
    "model": "Qwen2.5-1.5B",
    "n_states": 23,
    "rho_wt_kl": 0.9367276322293623,
@@ -79,6 +63,22 @@
    "cells": 6,
    "cells_same_best": 1,
    "cells_same_ranking": 1
+  },
+  {
+   "model": "SmolLM2-1.7B",
+   "n_states": 23,
+   "rho_wt_kl": 0.9357390014829461,
+   "p_wt_kl": 5.717435930024022e-11,
+   "n_wt_kl": 23,
+   "rho_c4_kl": 0.9911023232822541,
+   "p_c4_kl": 7.032194206590216e-20,
+   "n_c4_kl": 23,
+   "rho_wt_kl_combined": 0.9422084623323013,
+   "p_wt_kl_combined": 5.214680253289582e-09,
+   "n_combined": 18,
+   "cells": 6,
+   "cells_same_best": 3,
+   "cells_same_ranking": 3
   },
   {
    "model": "OLMo-2-0425-1B",
@@ -110,7 +110,7 @@
    "bits": 3,
    "cells": 19,
    "joint_smallest": 12,
-   "not_joint": "SmolLM2-135M 25%+3 SmolLM2-360M 25%+3 Qwen2.5-0.5B 25%+3 Qwen2.5-0.5B 33%+3 SmolLM2-1.7B 25%+3 Qwen2.5-1.5B 25%+3 OLMo-2-0425-1B 25%+3"
+   "not_joint": "SmolLM2-135M 25%+3 SmolLM2-360M 25%+3 Qwen2.5-0.5B 25%+3 Qwen2.5-0.5B 33%+3 Qwen2.5-1.5B 25%+3 SmolLM2-1.7B 25%+3 OLMo-2-0425-1B 25%+3"
   },
   {
    "scope": "core",
@@ -169,20 +169,6 @@
    "not_joint": "Qwen2.5-0.5B 25%+3 Qwen2.5-0.5B 33%+3"
   },
   {
-   "scope": "SmolLM2-1.7B",
-   "bits": 4,
-   "cells": 3,
-   "joint_smallest": 3,
-   "not_joint": ""
-  },
-  {
-   "scope": "SmolLM2-1.7B",
-   "bits": 3,
-   "cells": 3,
-   "joint_smallest": 2,
-   "not_joint": "SmolLM2-1.7B 25%+3"
-  },
-  {
    "scope": "Qwen2.5-1.5B",
    "bits": 4,
    "cells": 3,
@@ -195,6 +181,20 @@
    "cells": 3,
    "joint_smallest": 2,
    "not_joint": "Qwen2.5-1.5B 25%+3"
+  },
+  {
+   "scope": "SmolLM2-1.7B",
+   "bits": 4,
+   "cells": 3,
+   "joint_smallest": 3,
+   "not_joint": ""
+  },
+  {
+   "scope": "SmolLM2-1.7B",
+   "bits": 3,
+   "cells": 3,
+   "joint_smallest": 2,
+   "not_joint": "SmolLM2-1.7B 25%+3"
   },
   {
    "scope": "Qwen2.5-3B",
