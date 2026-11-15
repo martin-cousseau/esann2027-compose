@@ -61,10 +61,11 @@ def e5_full(bits=(4,)):
     return out
 
 
-def e5(models=("HuggingFaceTB/SmolLM2-360M", "Qwen/Qwen2.5-0.5B", "HuggingFaceTB/SmolLM2-135M")):
+def e5(models=("HuggingFaceTB/SmolLM2-360M", "Qwen/Qwen2.5-0.5B", "HuggingFaceTB/SmolLM2-135M", "Qwen/Qwen2.5-1.5B")):
     """E5 as run (DECISIONS.md #29, #38, #40): calibration seeds 1 and 2, the quantization-only state and every cell in
     the three orders; perplexity, C4 and KL only. 4-bit cells first (SmolLM2-360M on 2026-11-11, Qwen2.5-0.5B on
-    2026-11-12), then the 3-bit cells (2026-11-13), then SmolLM2-135M at both bit-widths."""
+    2026-11-12), then the 3-bit cells (2026-11-13), then SmolLM2-135M at both bit-widths; Qwen2.5-1.5B added on
+    2026-11-15 (DECISIONS.md #56) to test whether its order-spread peak (Q3) survives other calibration seeds."""
     out = {}
     for m in models:
         q = []
@@ -96,7 +97,7 @@ E6_GRID = {"HuggingFaceTB/SmolLM2-1.7B", "Qwen/Qwen2.5-1.5B", "allenai/OLMo-2-04
 # the next ones go to <family>__<model>__b.json, __c.json, ..., each run into its own result file
 # results/v2/<family>/<model>__b.jsonl, __c.jsonl, ..., so that every result file keeps a single writer. The analysis
 # reads every .jsonl file of a family directory, so all parts are study states.
-SPLIT = {("E6", "Qwen/Qwen2.5-3B"): (11, 6)}  # 11 base design; then 6 (part b) and 7 (part c), one runtime each (#50)
+SPLIT = {("E6", "Qwen/Qwen2.5-3B"): (11, 6), ("E5", "Qwen/Qwen2.5-1.5B"): (20,)}  # 11 base design; then 6 (part b) and 7 (part c), one runtime each (#50)
 
 
 E6_BENCH = {"HuggingFaceTB/SmolLM2-1.7B", "Qwen/Qwen2.5-1.5B", "allenai/OLMo-2-0425-1B"}

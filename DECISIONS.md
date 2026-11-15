@@ -376,3 +376,10 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     three orders) after the 8 finished lines of `Qwen2.5-3B__b.jsonl` and `Qwen2.5-3B__c.jsonl` are put on it: about
     2.3 L4-hours, about 4 CU at the rate of #54, one start command for you to approve. The package is then rebuilt on
     seven models.
+56. **2026-11-15 15:20 UTC, you added 100 CU for this work; calibration seeds for Qwen2.5-1.5B.** Besides the last 5
+    Qwen2.5-3B states (#55), the new budget buys the check the audit asked for: every model above 0.5B has one
+    calibration seed, and Q3's scale statement leans on Qwen2.5-1.5B, whose order spread peaks (13.9% at 50%+4). Seeds
+    1 and 2 for every combined cell and quantization alone at 4 and 3 bits (40 states, perplexity, C4 and KL), as E5
+    did for the small models: runtime A (`chain_a16.sh`) runs the 4-bit seeds after the Qwen2.5-3B states, runtime B
+    (`chain_b14.sh`) the 3-bit seeds into its own file. About 17.5 L4-hours, about 32 CU at 1.8 CU per L4-hour; both
+    runtimes should end about 10 hours after the start.
