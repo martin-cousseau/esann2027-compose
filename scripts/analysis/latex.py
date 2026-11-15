@@ -1099,6 +1099,10 @@ def macros_order_all_models(M, store, q, e7res):
         M.add(sec, f"QOneSuperQPBFour{g}", _n(sum(r["ratio_mean_pct"] > 0 for r in qp4)) if R else "--",
               f"{g}: of those, super-additive (mean I_E > 0)", src1)
         M.add(sec, f"QOneModels{g}", _n(len({r['model'] for r in R})) if R else "--", f"{g}: models with layer diagnostics", src1)
+        q53 = [r for r in R if r["order"] == "q_then_p" and int(r["bits"]) == 3 and skey(r["sparsity"]) == skey(0.5)]
+        M.add(sec, f"QOneQPSFiftyBThreeTotal{g}", _n(len(q53)) if R else "--", f"{g}: models with Q->P at 50%+3", src1)
+        M.add(sec, f"QOneSubQPSFiftyBThree{g}", _n(sum(r["ratio_mean_pct"] < 0 for r in q53)) if R else "--",
+              f"{g}: of those, sub-additive with separate Hessians (mean I_E < 0)", src1)
     sec = "Scale within a family: grid cells (25/33/50%, 4 and 3 bits) where the order spread / Q->P penalty falls with size"
     srcs = "reports/analysis/e6_scale_spread.csv (models of the family with the cell in the three orders, by compressed weights)"
     fams = {"FamSmol": ("SmolLM2",), "FamQwen": ("Qwen2.5",), "FamBoth": ("SmolLM2", "Qwen2.5")}
@@ -1179,6 +1183,15 @@ def macros_order_all_models(M, store, q, e7res):
                   f"{g}: cells where the rule recommends Q->P and the three orders are ranked by {key}", src)
             M.add(sec, f"ESevenKimPredQPWorst{tag}{g}", _n(worst) if P_ else "--", f"{g}: of those, Q->P strictly worst ({key})", src)
             M.add(sec, f"ESevenKimPredQPBest{tag}{g}", _n(best) if P_ else "--", f"{g}: of those, Q->P best of the three ({key})", src)
+        # nine-task accuracy: cells where the rule, by sr9_v2, recommends Q->P, and how often Q->P is the best of three
+        predS = [r for r in e7res["kim"] if r["metric"] == "sr9_v2" and r["in_counts"] and r["seed"] == 0
+                 and r["prediction"] == "q_then_p" and sel(r["model"])]
+        S_ = [by_cell.get((r["model"], r["cell"])) for r in predS]
+        S_ = [x for x in S_ if x and x.get("sr9_v2_ranking")]
+        M.add(sec, f"ESevenKimPredQPCellsSrExt{g}", _n(len(S_)) if predS else "--",
+              f"{g}: cells where the rule (by nine-task accuracy, sr9_v2) recommends Q->P and the three orders are ranked", src)
+        M.add(sec, f"ESevenKimPredQPBestSrExt{g}", _n(sum(x["sr9_v2_best"] == "q_then_p" for x in S_)) if predS else "--",
+              f"{g}: of those, Q->P best of the three by nine-task accuracy", src)
 
 
 def macros_isr_groups(M, store, e1):

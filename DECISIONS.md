@@ -341,3 +341,17 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     final package's analysis (`ESANN_EXCLUDE_MODELS=Qwen2.5-3B`, #48) and named as running; its 14 remaining states
     (about 6.5 GPU-hours) can be resumed with `chain_a15.sh` / `chain_b13.sh` once you can approve the two start
     commands. The hourly check-in stays paused while no runtime exists.
+52. **2026-11-15 08:00 UTC, the final package (v2, six models), audited.** The paper covers the six models with full
+    grids; Qwen2.5-3B (incomplete) is left out of the build (`ESANN_EXCLUDE_MODELS=Qwen2.5-3B`; the repository's
+    generated files come from all data). Q3 changed with the data: the order spread shrinks with size within SmolLM2
+    (smaller at 1.7B than at 135M in every cell, not monotonically) but, with two sizes, is larger at Qwen2.5-1.5B than
+    at 0.5B in most cells, so the paper says the scale trend "differs between the two families" and the note
+    withdraws v1.1's verdict that "family more than scale" is contradicted (partly supported instead). An independent
+    audit (subagent, read-only) found one false statement, now fixed: the abstract extended the one-shared-Hessian
+    result to all 72 mask-first cases, but E2 covers the 36 of the small models. Also fixed: "never the best" is
+    scoped to perplexity and KL (by nine-task accuracy Q->P is the best order in 3 of the 5 benchmarked weaker-first
+    cells, all on the small models); the separate-Hessian sub-additivity of Q->P at 50%+3 is stated; "never quantize
+    first" becomes "avoid quantizing first" (OLMo-2-1B 25%+3); stale statuses and hand-typed numbers in the note; the
+    quote checker now refines its search (long exact quotes could be missed). 33 conditions in `claims.txt` hold, the
+    note's 32 quotes match the paper, 6 pages (float spacing tightened in the preamble, C39). Sent as
+    `esann2027_author_package_v2_final_2026-11-15.zip` and backed up to the private dataset.

@@ -1,22 +1,26 @@
 # NEWS (newest first)
 
 ## Read this first
-- **Now (13 Nov):** the first author's new draft (12 Nov; the order effect as the main contribution) is revised in
-  place, not replaced: his structure and framing, every number from the fp32 macros, a tracked-changes PDF against his
-  draft and a note with the evidence for each change. Private package in `context/author_package/` (gitignored; backed
-  up to the private Hugging Face dataset), delivered to you as v1 (DECISIONS.md #41).
-- **What changes in his paper:** "family more than scale" (contradicted within SmolLM2 at 1.7B), the stale-grid
-  explanation of the Q->P penalty (refuted by E2), the 16-bit numbers (25.92, "twice"), the attribution of the joint
-  sweep (OBC is prune-then-quantize), and the scope of Harma et al. and Kim et al. His main claim holds in fp32:
-  quantize-first is the worst order in 16 of 18 cells, also by KL, C4 perplexity and 3-task accuracy (not over nine).
-- **GPU (14 Nov, #44-#47):** two L4 runtimes (esann-a8, esann-b7) since 06:18 UTC. Done: the batch-size check, the
-  Qwen2.5-0.5B seeds (40 states), the full SmolLM2-1.7B grid (24 states) with the nine tasks on its I_Sr states and its
-  weaker-first cell. Running: runtime A, Qwen2.5-1.5B (benchmark re-runs, then the grid), then the Qwen2.5-3B base
-  design; runtime B, OLMo-2-1B, the SmolLM2 seeds, then the rest of the Qwen2.5-3B grid (#47). Expected end: about
-  15:30 UTC on 15 Nov. An hourly check-in refreshes the runtime tokens if the watcher stops.
+- **Now (15 Nov):** the final author package v2 is delivered (private zip, backed up to the private dataset): the first
+  author's paper revised on six models with full grids (SmolLM2-135M/-360M/-1.7B, Qwen2.5-0.5B/-1.5B, OLMo-2-1B), 6
+  pages, every number generated, every worded claim checked (`claims.txt`), independently audited (DECISIONS.md #52).
+- **Main results:** mask-first orders are sub-additive in all 72 cases; quantizing first is the worst order in 30 of 36
+  settings (up to 1.77x the best perplexity) and, by perplexity, never the best where the weaker-first rule recommends
+  it (11 cells); Table 2 at 1-2B is near independence at 25%+4. The scale trend of the order effect differs between
+  families (shrinks within SmolLM2, larger at Qwen2.5-1.5B than at 0.5B).
+- **GPU:** stopped (#51). Qwen2.5-3B has 10 of 24 states; the other 14 (about 6.5 L4-hours) can be resumed with
+  `colab/chain_a15.sh` / `colab/chain_b13.sh` once you can approve two runtime start commands. No runtime is assigned;
+  the hourly check-in is deleted. Compute units: see `logs/budget.md` (estimate; please check the balance in Colab).
 - **Links:** PR https://github.com/martin-cousseau/esann2027-compose/pull/1 (draft) ; models
   https://huggingface.co/martincousseau/esann2027-compose-v2 ; results
   https://huggingface.co/datasets/martincousseau/esann2027-v2-results ; runs https://wandb.ai/martin-css/esann2027-compose-v2
+
+## 2026-11-15 08:00 UTC - final package v2 (six models), audited
+- Final package sent: six complete models, Table 2 rows at 1-2B, seeds of the three small models. Qwen2.5-3B left out
+  (incomplete). An independent audit found one false statement (the shared-Hessian scope in the abstract) and several
+  overstatements; all fixed (DECISIONS.md #52).
+- The runtimes were reclaimed twice on 15 Nov while a runtime command waited for approval during worker restarts
+  (#50, #51); GPU work stopped.
 
 ## 2026-11-14 16:35 UTC - interim package v2 sent
 - At your request, an interim package for the team (private; sent as a zip and backed up to the private dataset):

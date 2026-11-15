@@ -3358,16 +3358,22 @@ Columns:
 | `\resQOneQPBFourTotalCore` | `9` | Core: Q->P 4-bit combinations | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
 | `\resQOneSuperQPBFourCore` | `9` | Core: of those, super-additive (mean I_E > 0) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
 | `\resQOneModelsCore` | `3` | Core: models with layer diagnostics | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
+| `\resQOneQPSFiftyBThreeTotalCore` | `3` | Core: models with Q->P at 50%+3 | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
+| `\resQOneSubQPSFiftyBThreeCore` | `3` | Core: of those, sub-additive with separate Hessians (mean I_E < 0) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
 | `\resQOneMaskFirstTotalLarger` | `36` | Larger: joint and P->Q combinations with E_P, E_Q, E_PQ | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
 | `\resQOneMaskFirstSubLarger` | `36` | Larger: of those, sub-additive (mean I_E < 0) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
 | `\resQOneQPBFourTotalLarger` | `9` | Larger: Q->P 4-bit combinations | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
 | `\resQOneSuperQPBFourLarger` | `9` | Larger: of those, super-additive (mean I_E > 0) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
 | `\resQOneModelsLarger` | `3` | Larger: models with layer diagnostics | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
+| `\resQOneQPSFiftyBThreeTotalLarger` | `3` | Larger: models with Q->P at 50%+3 | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
+| `\resQOneSubQPSFiftyBThreeLarger` | `2` | Larger: of those, sub-additive with separate Hessians (mean I_E < 0) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
 | `\resQOneMaskFirstTotalAllModels` | `72` | AllModels: joint and P->Q combinations with E_P, E_Q, E_PQ | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
 | `\resQOneMaskFirstSubAllModels` | `72` | AllModels: of those, sub-additive (mean I_E < 0) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
 | `\resQOneQPBFourTotalAllModels` | `18` | AllModels: Q->P 4-bit combinations | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
 | `\resQOneSuperQPBFourAllModels` | `18` | AllModels: of those, super-additive (mean I_E > 0) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
 | `\resQOneModelsAllModels` | `6` | AllModels: models with layer diagnostics | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
+| `\resQOneQPSFiftyBThreeTotalAllModels` | `6` | AllModels: models with Q->P at 50%+3 | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
+| `\resQOneSubQPSFiftyBThreeAllModels` | `5` | AllModels: of those, sub-additive with separate Hessians (mean I_E < 0) | reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1) |
 
 ## Scale within a family: grid cells (25/33/50%, 4 and 3 bits) where the order spread / Q->P penalty falls with size
 
@@ -3558,18 +3564,24 @@ Columns:
 | `\resESevenKimPredQPCellsKlCore` | `4` | Core: cells where the rule recommends Q->P and the three orders are ranked by wt_kl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPWorstKlCore` | `4` | Core: of those, Q->P strictly worst (wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPBestKlCore` | `0` | Core: of those, Q->P best of the three (wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resESevenKimPredQPCellsSrExtCore` | `4` | Core: cells where the rule (by nine-task accuracy, sr9_v2) recommends Q->P and the three orders are ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resESevenKimPredQPBestSrExtCore` | `3` | Core: of those, Q->P best of the three by nine-task accuracy | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPCellsPplLarger` | `7` | Larger: cells where the rule recommends Q->P and the three orders are ranked by wt_ppl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPWorstPplLarger` | `6` | Larger: of those, Q->P strictly worst (wt_ppl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPBestPplLarger` | `0` | Larger: of those, Q->P best of the three (wt_ppl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPCellsKlLarger` | `7` | Larger: cells where the rule recommends Q->P and the three orders are ranked by wt_kl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPWorstKlLarger` | `6` | Larger: of those, Q->P strictly worst (wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPBestKlLarger` | `0` | Larger: of those, Q->P best of the three (wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resESevenKimPredQPCellsSrExtLarger` | `1` | Larger: cells where the rule (by nine-task accuracy, sr9_v2) recommends Q->P and the three orders are ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resESevenKimPredQPBestSrExtLarger` | `0` | Larger: of those, Q->P best of the three by nine-task accuracy | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPCellsPplAllModels` | `11` | AllModels: cells where the rule recommends Q->P and the three orders are ranked by wt_ppl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPWorstPplAllModels` | `10` | AllModels: of those, Q->P strictly worst (wt_ppl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPBestPplAllModels` | `0` | AllModels: of those, Q->P best of the three (wt_ppl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPCellsKlAllModels` | `11` | AllModels: cells where the rule recommends Q->P and the three orders are ranked by wt_kl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPWorstKlAllModels` | `10` | AllModels: of those, Q->P strictly worst (wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPBestKlAllModels` | `0` | AllModels: of those, Q->P best of the three (wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resESevenKimPredQPCellsSrExtAllModels` | `5` | AllModels: cells where the rule (by nine-task accuracy, sr9_v2) recommends Q->P and the three orders are ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resESevenKimPredQPBestSrExtAllModels` | `3` | AllModels: of those, Q->P best of the three by nine-task accuracy | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 
 ## I_Sr of Table 2 over model groups (P->Q, Sr set sr3_paper, seed 0)
 
