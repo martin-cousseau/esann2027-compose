@@ -310,3 +310,10 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     of the small models is absent at 1.7B (Q->P is the worst order there on all eight metrics). To stay at 6 pages the
     six single-method rows of Table 1 are packed into two. The repository's generated files always come from all
     data (the interim macros are only in the package).
+49. **2026-11-15 02:25 UTC, the Qwen2.5-3B states rebalanced between the runtimes.** A Qwen2.5-3B state takes about 28
+    minutes on the L4, not the 50 assumed in #47, so runtime A would finish its 11 base-design states at about 05:45
+    UTC and then stand idle (still billed) while runtime B ran the other 13 alone until about 10:15. The 13 are split:
+    B keeps 8 (`E6__Qwen2.5-3B__b.json`, replaced on B before its step starts; the running script is not touched) and A
+    runs the last 5 after its own chain (`chain_a14.sh`, its own result file `results/v2/E6/Qwen2.5-3B__c.jsonl`, one
+    writer per file). `SPLIT` in `scripts/make_queues.py` now takes part sizes. Same GPU time; both runtimes should end
+    at about 08:00 UTC, and no runtime idles while billed.

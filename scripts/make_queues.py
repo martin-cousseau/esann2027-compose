@@ -91,11 +91,12 @@ E6_MODELS = ("HuggingFaceTB/SmolLM2-1.7B", "Qwen/Qwen2.5-1.5B", "Qwen/Qwen2.5-3B
 E6_NO_KL = {"Qwen/Qwen2.5-3B"}        # a second fp32 copy for KL does not fit on the L4: perplexity only
 E6_GRID = {"HuggingFaceTB/SmolLM2-1.7B", "Qwen/Qwen2.5-1.5B", "allenai/OLMo-2-0425-1B",  # the full E1 grid, not 8-bit
            "Qwen/Qwen2.5-3B"}  # added 2026-11-14 (DECISIONS.md #47): its grid completion runs on the second runtime
-# Queues split between the two runtimes (DECISIONS.md #47): the first n units of a model's plan stay in its queue file
-# (already running on runtime A); the rest go to <family>__<model>__b.json, which runtime B runs into its own result
-# file, results/v2/<family>/<model>__b.jsonl, so that every result file keeps a single writer. The analysis reads every
-# .jsonl file of a family directory, so both halves are study states.
-SPLIT = {("E6", "Qwen/Qwen2.5-3B"): 11}
+# Queues split between the two runtimes (DECISIONS.md #47, #49): the plan of a model is cut into consecutive parts
+# of the given sizes (the rest is the last part). The first stays in its queue file (already running on runtime A);
+# the next ones go to <family>__<model>__b.json, __c.json, ..., each run into its own result file
+# results/v2/<family>/<model>__b.jsonl, __c.jsonl, ..., so that every result file keeps a single writer. The analysis
+# reads every .jsonl file of a family directory, so all parts are study states.
+SPLIT = {("E6", "Qwen/Qwen2.5-3B"): (11, 8)}  # 11 on A (base design), 8 on B, the last 5 on A again (#49)
 
 
 E6_BENCH = {"HuggingFaceTB/SmolLM2-1.7B", "Qwen/Qwen2.5-1.5B", "allenai/OLMo-2-0425-1B"}
@@ -197,8 +198,14 @@ def main(argv):
         for model, q in FAMILIES[fam]().items():
             if only and model.split("/")[-1] not in only:
                 continue
-            n = SPLIT.get((fam, model), len(q))
-            for part, sub in (("", q[:n]), ("__b", q[n:])):
+            sizes = SPLIT.get((fam, model), (len(q),))
+            sizes = (sizes,) if isinstance(sizes, int) else tuple(sizes)
+            cuts = [0]
+            for k in sizes:
+                cuts.append(cuts[-1] + k)
+            cuts.append(len(q))
+            parts = [("" if i == 0 else "__" + "bcdefg"[i - 1], q[cuts[i]:cuts[i + 1]]) for i in range(len(cuts) - 1)]
+            for part, sub in parts:
                 if part and not sub:
                     continue
                 todo = [x for x in sub if state_id(model, x, "float32") not in done]
