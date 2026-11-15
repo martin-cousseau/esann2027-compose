@@ -264,7 +264,7 @@ def pending():
                 for u in units}
         n = len(sids & done[fam])
         what = sorted({f"{int(u['bits'])}-bit" for u in units if u["order"] not in ("dense", "prune")})
-        body.append([fam, model, ", ".join(what) or "dense", f"{n} of {len(sids)}", "done" if n == len(sids) else "incomplete (not running)"])
+        body.append([fam, model, ", ".join(what) or "dense", f"{n} of {len(sids)}", "done" if n == len(sids) else "incomplete"])
     return table(["family", "model", "bit-widths", "states with a result", "status"], body)
 
 

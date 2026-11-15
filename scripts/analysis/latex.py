@@ -1098,19 +1098,21 @@ def macros_scale_seeds(M, store, q):
     fams = {"FamSmol": "SmolLM2", "FamQwen": "Qwen2.5"}
     for ft, fl in fams.items():
         R = [r for r in q["scale"] if r["family"] == fl and float(r["sparsity"]) in GRID_SPARSITIES and r["n_models"] == 3]
-        peak0, cells, peak, grow, shrink = 0, 0, 0, 0, 0
+        peak0, cells, peak, grow, shrink, ends = 0, 0, 0, 0, 0, 0
         for r in R:
             lo_m, mid, hi_m = str(r["models"]).split()
             s, b = float(r["sparsity"]), int(r["bits"])
             v0 = [spread(x, s, b, 0) for x in (lo_m, mid, hi_m)]
             peak0 += all(x is not None for x in v0) and v0[1] > max(v0[0], v0[2])
             got = [by_seed(x, s, b) for x in (lo_m, mid, hi_m)]
+            lo, md, hi = (g[0] for g in got)
+            if len(got[0][0]) == got[0][1] and len(got[2][0]) == got[2][1]:
+                ends += 1
+                shrink += max(hi.values()) < min(lo.values())
             if all(len(v) == n for v, n in got):
                 cells += 1
-                lo, md, hi = (g[0] for g in got)
                 peak += min(md.values()) > max(max(lo.values()), max(hi.values()))
                 grow += min(md.values()) > max(lo.values())
-                shrink += max(hi.values()) < min(lo.values())
         M.add(sec, f"ScalePeakMid{ft}", _n(peak0) if R else "--",
               f"{fl}: grid cells with three sizes where the middle size has the largest order spread (seed 0)", srcs)
         M.add(sec, f"ScaleSeedCells{ft}", _n(cells) if R else "--",
@@ -1119,7 +1121,9 @@ def macros_scale_seeds(M, store, q):
               f"{fl}: of those, cells where the lowest spread of the middle size over its seeds is above the highest of each end", srcs)
         M.add(sec, f"ScaleSeedGrowMid{ft}", _n(grow) if cells else "--",
               f"{fl}: of those, cells where the lowest spread of the middle size over its seeds is above the highest of the smallest size", srcs)
-        M.add(sec, f"ScaleSeedEndsShrink{ft}", _n(shrink) if cells else "--",
+        M.add(sec, f"ScaleSeedEndsCells{ft}", _n(ends) if R else "--",
+              f"{fl}: grid cells with three sizes and every planned seed of the smallest and the largest size", srcs)
+        M.add(sec, f"ScaleSeedEndsShrink{ft}", _n(shrink) if ends else "--",
               f"{fl}: of those, cells where the highest spread of the largest size over its seeds is below the lowest of the smallest size", srcs)
 
 
@@ -1149,6 +1153,10 @@ def macros_order_all_models(M, store, q, e7res):
         rat = [(r["wt_ppl_worst_best_ratio"], r["model"], r["cell"]) for r in K if finite(r.get("wt_ppl_worst_best_ratio"))]
         M.add(sec, f"QTwoMaxRatio{g}", num(max(rat)[0], 2) if rat else "--", f"{g}: largest worst/best WikiText-2 ppl ratio", src)
         M.add(sec, f"QTwoMaxRatioWhere{g}", tex_escape(f"{max(rat)[1]} {max(rat)[2]}") if rat else "--", f"{g}: where it occurs", src)
+        ratq = [r["wt_ppl_worst_best_ratio"] for r in K if finite(r.get("wt_ppl_worst_best_ratio"))
+                and r["wt_ppl_worst"] == "q_then_p" and not r["wt_ppl_tie_at_worst"]]
+        M.add(sec, f"QTwoMaxRatioQP{g}", num(max(ratq), 2) if ratq else "--",
+              f"{g}: largest worst/best WikiText-2 ppl ratio among the cells where Q->P is strictly worst (= Q->P / best)", src)
     sec = "Q1 over model groups: layer-level interaction sign (seed 0, grid cells 25/33/50%, ratio of mean layer errors)"
     src1 = "reports/analysis/q1_layer_interaction.csv (scripts/analysis/questions.py q1)"
     q1 = [r for r in q["q1"] if r["seed"] == 0 and r["order"] in PAPER_ORDERS and r["ratio_mean_pct"] is not None
@@ -1164,6 +1172,11 @@ def macros_order_all_models(M, store, q, e7res):
         M.add(sec, f"QOneSuperQPBFour{g}", _n(sum(r["ratio_mean_pct"] > 0 for r in qp4)) if R else "--",
               f"{g}: of those, super-additive (mean I_E > 0)", src1)
         M.add(sec, f"QOneModels{g}", _n(len({r['model'] for r in R})) if R else "--", f"{g}: models with layer diagnostics", src1)
+        for sp, stag in ((0.25, "STwentyFive"), (1 / 3, "SThirtyThree")):
+            q3c = [r for r in R if r["order"] == "q_then_p" and int(r["bits"]) == 3 and skey(r["sparsity"]) == skey(sp)]
+            M.add(sec, f"QOneQP{stag}BThreeTotal{g}", _n(len(q3c)) if R else "--", f"{g}: models with Q->P at {cell_label(sp, 3)}", src1)
+            M.add(sec, f"QOneSubQP{stag}BThree{g}", _n(sum(r["ratio_mean_pct"] < 0 for r in q3c)) if R else "--",
+                  f"{g}: of those, sub-additive (mean I_E < 0)", src1)
         q53 = [r for r in R if r["order"] == "q_then_p" and int(r["bits"]) == 3 and skey(r["sparsity"]) == skey(0.5)]
         M.add(sec, f"QOneQPSFiftyBThreeTotal{g}", _n(len(q53)) if R else "--", f"{g}: models with Q->P at 50%+3", src1)
         M.add(sec, f"QOneSubQPSFiftyBThree{g}", _n(sum(r["ratio_mean_pct"] < 0 for r in q53)) if R else "--",
