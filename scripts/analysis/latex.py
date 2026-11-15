@@ -1103,18 +1103,24 @@ def macros_order_all_models(M, store, q, e7res):
     srcs = "reports/analysis/e6_scale_spread.csv (models of the family with the cell in the three orders, by compressed weights)"
     fams = {"FamSmol": ("SmolLM2",), "FamQwen": ("Qwen2.5",), "FamBoth": ("SmolLM2", "Qwen2.5")}
     for ft, fl in fams.items():
-        R = [r for r in q["scale"] if r["family"] in fl and skey(r["sparsity"]) in GRID_SPARSITIES and r["n_models"] >= 3]
         def first_last(r, col):
             v = [float(x) for x in str(r[col]).split()]
             return v[0], v[-1]
-        M.add(sec, f"ScaleCellsThree{ft}", _n(len(R)), f"{'/'.join(fl)}: grid cells with three sizes in the three orders", srcs)
-        for col, key, tag in (("spread_pct", "spread", "Spread"), ("qp_penalty_pct", "qp_penalty", "Penalty")):
-            ends = sum(first_last(r, col)[1] < first_last(r, col)[0] for r in R)
-            mono = sum(bool(r.get(f"{key}_shrinks_monotonically")) for r in R)
-            M.add(sec, f"Scale{tag}EndsShrink{ft}", _n(ends) if R else "--",
-                  f"{'/'.join(fl)}: of those, cells where the largest model has a smaller {key} than the smallest", srcs)
-            M.add(sec, f"Scale{tag}MonoShrink{ft}", _n(mono) if R else "--",
-                  f"{'/'.join(fl)}: of those, cells where the {key} falls with every larger model", srcs)
+        for nmin, ntag in ((3, "Three"), (2, "TwoPlus")):
+            R = [r for r in q["scale"] if r["family"] in fl and skey(r["sparsity"]) in GRID_SPARSITIES and r["n_models"] >= nmin]
+            what = "three sizes" if nmin == 3 else "at least two sizes"
+            M.add(sec, f"ScaleCells{ntag}{ft}", _n(len(R)), f"{'/'.join(fl)}: grid cells with {what} in the three orders", srcs)
+            for col, key, tag in (("spread_pct", "spread", "Spread"), ("qp_penalty_pct", "qp_penalty", "Penalty")):
+                ends = sum(first_last(r, col)[1] < first_last(r, col)[0] for r in R)
+                mono = sum(bool(r.get(f"{key}_shrinks_monotonically")) for r in R)
+                sfx = "" if nmin == 3 else "TwoPlus"
+                M.add(sec, f"Scale{tag}EndsShrink{sfx}{ft}", _n(ends) if R else "--",
+                      f"{'/'.join(fl)}: of the cells with {what}, those where the largest model has a smaller {key} than the smallest", srcs)
+                M.add(sec, f"Scale{tag}MonoShrink{sfx}{ft}", _n(mono) if R else "--",
+                      f"{'/'.join(fl)}: of the cells with {what}, those where the {key} falls with every larger model", srcs)
+                grow = sum(first_last(r, col)[1] > first_last(r, col)[0] for r in R)
+                M.add(sec, f"Scale{tag}EndsGrow{sfx}{ft}", _n(grow) if R else "--",
+                      f"{'/'.join(fl)}: of the cells with {what}, those where the largest model has a larger {key} than the smallest", srcs)
     sec = "Free zeros over model groups: 3-bit quantization alone and Q->P at 25%+3 (seed 0)"
     srcz = "results/v2 (storage.zero_frac_actual; wikitext2.nll_sum)"
     for g, sel in groups.items():
@@ -1147,7 +1153,8 @@ def macros_order_all_models(M, store, q, e7res):
     q3 = [r for r in q["q3"] if r["metric"] == "wt_ppl"]
     for g, sel in groups.items():
         for b, bt in ((4, "BFour"), (3, "BThree")):
-            R = [r for r in q3 if sel(r["model"]) and int(r["bits"]) == b and r.get("grid_n_planned")]
+            R = [r for r in q3 if sel(r["model"]) and int(r["bits"]) == b and r.get("grid_n_planned")
+                 and r["model"] not in store.excluded_models]
             ok = bool(R) and all(r["grid_complete"] for r in R)
             M.add(sec, f"QThreeSpreadMin{g}{bt}Pct", num(min(r["grid_spread_min_pct"] for r in R), 1) if ok else "--",
                   f"{g}: smallest order spread over the {b}-bit grid cells of its models (%)", src3)
