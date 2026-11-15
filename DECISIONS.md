@@ -397,3 +397,17 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     sentence that reports it is added then. Claims (`claims.txt`, 33) and the note (header v3, §0, §2, §3.1-3.5, §6,
     C1, C2, C18, C19, C25-C27, C32, C32b, C35, C37, C39, decisions) are updated; the build passes (6 pages, 32 quotes,
     33 claims). An independent audit of v3 runs before delivery.
+58. **2026-11-15 22:40 UTC, runtimes lost during a pause of this session; restart with the runs for V4.** This
+    session was paused by its usage limit from about 20:20 to 22:20; the runtimes' access tokens (valid to 20:55) were
+    not renewed, the keepalive stopped and Colab reclaimed esann-a10 and esann-b9 at about 21:45-22:00. Nothing
+    finished was lost: 27 of the 40 Qwen2.5-1.5B seed states were on the Hub (seed 1 complete at both bit-widths, seed
+    2 at 25% and 33%+3-bit). You asked for a full review and a V4, with runs that add value (80 CU available). The
+    review found that the existing same-Hessian ablation (E2) already answers the paper's "why is open": with the
+    same mask and the same grid, starting the second sweep from quantized weights costs 5-18% more layer error than
+    starting from pruned weights in all 18 cells of the three small models, while the grid moves it by under 0.4%
+    (arms `q_then_p_pmask` and `p_then_q_stale`). The new runs serve that result: (a) E2 on the four larger models
+    (every fourth block; every second on OLMo-2-1B), so that the shared-Hessian statements are not small-model only;
+    (b) E9, a control with compensation switched off, which is the setting of the paper's own decomposition (to be
+    written, runs through `colab/next_loop.sh`); (c) the 13 seed states still missing. Layer-level result files are
+    now copied to the Hub every 10 minutes (`scripts/hub_sync.py`), so a lost runtime loses one layer at most.
+    Runtimes esann-a11 (`chain_a17.sh`) and esann-b10 (`chain_b15.sh`); about 15 L4-hours, about 27 CU.
