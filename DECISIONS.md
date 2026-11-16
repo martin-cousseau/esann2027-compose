@@ -467,3 +467,8 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     penalty"; the abstract says the decomposition "identifies a mechanism"; Q3's 33%+3-bit sentence follows the
     intervals; Table 2's caption keeps the re-quantization caveat. New macros ESevenKimPredQPMinSparsityPct and
     ETwoSplitOrderLargestGapPos; 36 claims hold; 6 pages. The supplement README lists the extra states.
+64. **2026-11-16 17:05 UTC, you asked to launch the missing seed states.** The 13 Qwen2.5-1.5B seed-2 states dropped in
+    #61 run on two L4 runtimes: esann-a14 (`chain_a20.sh`) the 3 at 3 bits and 4 at 4 bits, esann-b13 (`chain_b19.sh`)
+    the other 6 at 4 bits (queue files `__c` and `__d` re-split 4 + 6; none of their states had run). About 22 minutes
+    per state, about 2.6 hours of wall time, about 5 L4-hours, about 9 CU. When they finish, Q3's sentence on
+    Qwen2.5-1.5B ("one calibration seed") is replaced by the seed check (macros ScaleSeed...FamQwen), and V4 is rebuilt.
