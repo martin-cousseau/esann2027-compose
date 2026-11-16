@@ -449,3 +449,12 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     (Qwen2.5-3B complete: E2 now covers the seven models) but its E9 run on Qwen2.5-3B stopped on a GPU out-of-memory
     error at block 0's down_proj (6 layers kept): the model stayed on the GPU next to the 63 Hessians and the float64
     copies. run_e9.py now moves the model to the CPU once the Hessians are collected; `chain_b18.sh` resumes the run.
+62. **2026-11-16 16:45 UTC, V4 final.** E2 and E9 complete on the seven models; no runtime is assigned (esann-a13 and
+    esann-b12 deleted), the hourly check-in is paused. V4 (private package `context/author_package_v4/`, built by
+    `build_v4.sh`): with the E9 sentence in Section 3 (no compensation: cross terms at most 0.13% of E_P+E_Q, absorption
+    makes mask-first sub-additive in 42 of 42 settings, at 3 bits 58-97% of the pruned weights are rounding zeros
+    against 29-33% of all weights); the mechanism paragraph says the update-order part is zero without compensation,
+    where the mask alone makes Q->P worse at 4 bits (+5.6 to +18.6%); the verified Nema et al. preprint is cited
+    (Panferov et al. is verified but not cited: its factorization concerns training); Kim et al.'s hypothesis is
+    named with the layer-independence assumption our pipeline violates. 33 claims hold; 6 pages. The supplement
+    (`paper/supplement/`) is generated from the analysis tables and uploaded to the results dataset.

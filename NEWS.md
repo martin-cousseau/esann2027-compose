@@ -1,19 +1,25 @@
 # NEWS (newest first)
 
 ## Read this first
-- **Now (15 Nov, 18:30 UTC):** Qwen2.5-3B is complete (24 of 24 states, perplexity only); the author package is
-  being rebuilt on seven models (v3, DECISIONS.md #57) and audited. Qwen2.5-1.5B's calibration seeds (40 states, #56)
-  run on both runtimes until about 01:00 UTC; they test whether its order-spread peak is a seed effect. The v3
-  package is delivered after that.
-- **What Qwen2.5-3B changes:** Q1 and Q2 hold as before (mask-first sub-additive in 84 of 84 cases; Q->P worst in 35
-  of 42 settings, never the best where the weaker-first rule recommends it, 14 cells). Q3 changes: the v2 reading
-  "the scale trend differs between families" came from Qwen2.5-1.5B, which is a peak; in both families the order
-  spread is smaller at the largest size than at the smallest in most cells, though not monotonically.
-- **GPU:** runtimes esann-a10 and esann-b9 (L4) run the seeds; the hourly check-in refreshes their tokens and does
-  not create runtimes. Compute units: `logs/budget.md`.
+- **Now (16 Nov, 16:45 UTC):** V4, the final revision for the first author, is built (private package): 6 pages, every
+  number generated, 33 worded claims checked against the data, the team's review inputs sorted one by one
+  (`REVIEW_V4.md` in the package). An independent audit of V4 is the last step before delivery.
+- **What V4 adds:** the introduction positions the paper against Harma, Kim, Bouriel, a 2026 preprint (Nema et al.),
+  JSQ and OBR; the penalty of quantizing first is traced to the order of the compensated updates (same-Hessian
+  ablation, all seven models: +4.5 to +18.1% layer error with the same mask and grid, the grid at most 0.5%); the
+  paper's decomposition is checked without compensation (new experiment E9, all seven models: cross terms at most
+  0.13% of E_P+E_Q, mask-first sub-additive in 42 of 42 settings); a generated supplement with every state's
+  results (`paper/supplement/`, also on the results dataset).
+- **GPU:** no runtime is assigned; the hourly check-in is paused. The 13 missing Qwen2.5-1.5B seed states were not
+  run (DECISIONS.md #61). Compute units: `logs/budget.md` (about 66 of the 80 left, estimate).
 - **Links:** PR https://github.com/martin-cousseau/esann2027-compose/pull/1 (draft) ; models
-  https://huggingface.co/martincousseau/esann2027-compose-v2 ; results
+  https://huggingface.co/martincousseau/esann2027-compose-v2 ; results and supplement
   https://huggingface.co/datasets/martincousseau/esann2027-v2-results ; runs https://wandb.ai/martin-css/esann2027-compose-v2
+
+## 2026-11-16 16:45 UTC - V4 final runs and package
+- E2 (one shared Hessian) and E9 (no compensation) now cover all seven models; the runtimes were lost three times
+  while this session was paused by its usage limit (DECISIONS.md #58-#61), nothing finished was lost.
+- New: `scripts/run_e9.py`, `scripts/analysis/e9.py`, `scripts/make_supplement.py`, `scripts/hub_sync.py`, tests.
 
 ## 2026-11-15 18:30 UTC - Qwen2.5-3B complete, seven-model text (v3)
 - The last five Qwen2.5-3B states ran on one runtime with the compute units added at 15:00 (#55). The paper text,
