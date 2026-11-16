@@ -458,7 +458,7 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     (Panferov et al. is verified but not cited: its factorization concerns training); Kim et al.'s hypothesis is
     named with the layer-independence assumption our pipeline violates. 33 claims hold; 6 pages. The supplement
     (`paper/supplement/`) is generated from the analysis tables and uploaded to the results dataset.
-63. **2026-11-16 17:30 UTC, independent audit of V4 and its fixes.** One blocker and four major points, all fixed
+63. **2026-11-16 16:45 UTC, independent audit of V4 and its fixes.** One blocker and four major points, all fixed
     (`context/author_package_v4/audit_v4.md`): the weaker-first paragraph no longer puts the difference with Kim et
     al. on compensation (they test compensated methods too) but on the measured fact that all 14 settings where the
     heuristic recommends Q->P lie at 33% or 50% sparsity, beyond their 30%; the split of the penalty is stated as
@@ -467,7 +467,7 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     penalty"; the abstract says the decomposition "identifies a mechanism"; Q3's 33%+3-bit sentence follows the
     intervals; Table 2's caption keeps the re-quantization caveat. New macros ESevenKimPredQPMinSparsityPct and
     ETwoSplitOrderLargestGapPos; 36 claims hold; 6 pages. The supplement README lists the extra states.
-64. **2026-11-16 17:05 UTC, you asked to launch the missing seed states.** The 13 Qwen2.5-1.5B seed-2 states dropped in
+64. **2026-11-16 17:00 UTC, you asked to launch the missing seed states.** The 13 Qwen2.5-1.5B seed-2 states dropped in
     #61 run on two L4 runtimes: esann-a14 (`chain_a20.sh`) the 3 at 3 bits and 4 at 4 bits, esann-b13 (`chain_b19.sh`)
     the other 6 at 4 bits (queue files `__c` and `__d` re-split 4 + 6; none of their states had run). About 22 minutes
     per state, about 2.6 hours of wall time, about 5 L4-hours, about 9 CU. When they finish, Q3's sentence on
