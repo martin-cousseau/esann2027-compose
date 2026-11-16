@@ -691,7 +691,8 @@ def macros_requests(M, store, e1, q, fr, e2res, repro):
         f"R7: models where Q->P 25%+3 is identical to 3-bit (ppl and every rel_err) ({names([r for r in av if r.get('identical')])})", src)
     add("IdentityQPThreeModels", _n(len(av)) if av else "--", f"R8: models where both states exist ({names(av)})", src)
     # R9-R18, R21-R24: E2 aggregates
-    C = [c for c in e2res["cells"] if c.get("n_layers")]
+    core_e2 = {g[0] for g in PAPER_GRID}   # these aggregates are over the three small models (E2 of the larger ones: macros_e2_groups)
+    C = [c for c in e2res["cells"] if c.get("n_layers") and c["model"] in core_e2]
     miss = sum(c.get("n_missing") or 0 for c in e2res["coverage"])
     src = f"reports/analysis/e2_cells.csv ({len(C)} model-cells; planned E2 layer lines still missing: {miss})"
     mf = [(c, o) for c in C for o in ("joint", "p_then_q") if finite(c.get(f"ratio_{o}_pct"))]
@@ -1009,6 +1010,11 @@ def macros_isr(M, store, isr):
         for sfx, key, what in (("", "isr", "I_Sr = Sr_PQ - Sr_P Sr_Q"), ("Lo", "lo", "its 95% interval, lower end"),
                                ("Hi", "hi", "its 95% interval, upper end")):
             M.add(sec, name + sfx, signed(r[key], 3), f"{lab}: {what}", src)
+        hw = (r["hi"] - r["lo"]) / 2 if finite(r.get("hi")) and finite(r.get("lo")) else None
+        M.add(sec, name + "Pm", num(hw, 3) if hw is not None else "--", f"{lab}: half-width of its 95% interval, (hi - lo) / 2", src)
+        asym = abs((r["hi"] - r["isr"]) - (r["isr"] - r["lo"])) if hw is not None and finite(r.get("isr")) else None
+        M.add(sec, name + "Asym", num(asym, 3) if asym is not None else "--",
+              f"{lab}: asymmetry of the interval, |(hi - I_Sr) - (I_Sr - lo)|", src)
     sec = "I_Sr of the IJCNN 2025 7-8B models (published scores, analysis/reproduce_paper.py PUB)"
     for r in isr["ijcnn"]:
         M.add(sec, f"IjcnnISr{r['tag']}{r['cell_tag']}{r['set_tag']}", signed(r["isr"], 3),
@@ -1057,6 +1063,83 @@ def macros_batch(M, store, bres):
           "the same with the re-run items also used for the re-run compressed states (points)", src)
     M.add(sec, "BatchFlipsRankingChangesBoth", _n(sm["ranking_changes_both"]) if sm["ranking_cells"] else "--",
           "cells whose ranking by flips changes when the re-run items replace both the dense reference and the re-run states", src)
+
+
+# linear layers planned per model in E2: every second block for the small models (colab/chain_c.sh) and OLMo-2-1B,
+# every fourth for the other larger models (colab/chain_a17.sh, chain_b15.sh); 7 linear layers per block
+E2_PLANNED_LAYERS = {"SmolLM2-135M": 105, "SmolLM2-360M": 112, "Qwen2.5-0.5B": 84, "SmolLM2-1.7B": 42, "Qwen2.5-1.5B": 49,
+                     "OLMo-2-0425-1B": 56, "Qwen2.5-3B": 63}
+
+
+def macros_e2_groups(M, store, e2res):
+    """E2 (one shared dense Hessian per layer) over model groups, and the split of the layer-error gap between Q->P
+    and P->Q into three parts, each obtained by swapping one ingredient (arms of review_code/ablation/arms.py):
+      mask  = E(q_then_p) - E(q_then_p_pmask)        Q->P's own mask (chosen on rounded weights) vs the pruning-only mask
+      order = E(q_then_p_pmask) - E(p_then_q_stale)  same mask, same grid: second sweep started from W_Q vs from W_P
+      grid  = E(p_then_q_stale) - E(p_then_q)        grid fitted before pruning vs on the kept weights
+    mask + order + grid = E(q_then_p) - E(p_then_q). Errors are sums over the layers of a (model, cell); every part is
+    given in % of the summed P->Q error."""
+    core = {g[0] for g in PAPER_GRID}
+    groups = {"Core": lambda m: m in core, "Larger": lambda m: m not in core, "AllModels": lambda m: True}
+    sec = "E2 over model groups: same-Hessian sub-additivity and the split of the Q->P gap (mask / update order / grid)"
+    src = "reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups)"
+    need = ("p_then_q", "q_then_p", "q_then_p_pmask", "p_then_q_stale")
+    done = {m: max((c.get("n_layers") or 0) for c in e2res["cells"] if c["model"] == m) for m in {c["model"] for c in e2res["cells"]}}
+    partial = sorted(m for m, n in done.items() if 0 < n < E2_PLANNED_LAYERS.get(m, 0))
+    M.add(sec, "ETwoIncompleteModels", tex_escape(", ".join(partial)) if partial else "none",
+          "models whose E2 run stopped before its planned layers (left out of the group macros)", src)
+    rows = []
+    for c in e2res["cells"]:
+        if not c.get("n_layers") or c["model"] in partial:
+            continue
+        add_ = c["E_P_sum"] + c["E_Q_sum"]
+        E = {a: add_ * (1 + c[f"ratio_{a}_pct"] / 100) for a in need + ("joint",) if finite(c.get(f"ratio_{a}_pct"))}
+        r = {"model": c["model"], "cell": c["cell"], "sparsity": c["sparsity"], "bits": int(c["bits"]), "E": E,
+             "n_layers": c["n_layers"], "blocks": c.get("blocks", "")}
+        if all(a in E for a in need):
+            pq = E["p_then_q"]
+            r.update(mask=100 * (E["q_then_p"] - E["q_then_p_pmask"]) / pq, order=100 * (E["q_then_p_pmask"] - E["p_then_q_stale"]) / pq,
+                     grid=100 * (E["p_then_q_stale"] - E["p_then_q"]) / pq, gap=100 * (E["q_then_p"] - E["p_then_q"]) / pq)
+        r["sub"] = {o: c[f"ratio_{o}_pct"] < 0 for o in ("joint", "p_then_q") if finite(c.get(f"ratio_{o}_pct"))}
+        rows.append(r)
+    for m in sorted({r["model"] for r in rows}, key=lambda x: store.models().index(x) if x in store.models() else 99):
+        R = [r for r in rows if r["model"] == m]
+        M.add(sec, f"ETwoLayers{model_tag(m)}", _n(max(r["n_layers"] for r in R)), f"{m}: linear layers with E2 lines", src)
+        M.add(sec, f"ETwoBlocks{model_tag(m)}", _n(max(len(str(r["blocks"]).split()) for r in R)), f"{m}: decoder blocks with E2 lines", src)
+        for r in R:
+            if "order" in r:
+                ct = model_tag(m) + cell_tag(r["sparsity"], r["bits"])
+                for k, what in (("gap", "100 (E_QP - E_PQ) / E_PQ"), ("mask", "part due to the mask"), ("order", "part due to the update order (same mask and grid)"),
+                                ("grid", "part due to the grid")):
+                    M.add(sec, f"ETwoSplit{k.capitalize()}{ct}Pct", signed(r[k], 1), f"{m} {r['cell']}: {what} (% of E_PQ)", src)
+    for g, sel in groups.items():
+        R = [r for r in rows if sel(r["model"])]
+        mf = [v for r in R for v in r["sub"].values()]
+        M.add(sec, f"ETwoModels{g}", _n(len({r['model'] for r in R})), f"{g}: models with E2 lines", src)
+        M.add(sec, f"ETwoMaskFirstTotal{g}", _n(len(mf)) if R else "--", f"{g}: (model, cell, joint or P->Q) with one shared Hessian", src)
+        M.add(sec, f"ETwoMaskFirstSub{g}", _n(sum(mf)) if R else "--", f"{g}: of those, sub-additive in aggregate (summed I_E < 0)", src)
+        S_ = [r for r in R if "order" in r]
+        M.add(sec, f"ETwoSplitCells{g}", _n(len(S_)) if R else "--", f"{g}: (model, cell) with the four arms of the split", src)
+        for bt, selb, lab in (("", lambda r: True, "all cells"), ("BFour", lambda r: r["bits"] == 4, "4-bit cells"), ("BThree", lambda r: r["bits"] == 3, "3-bit cells")):
+            B = [r for r in S_ if selb(r)]
+            for k in ("gap", "mask", "order", "grid"):
+                v = [r[k] for r in B]
+                K = k.capitalize()
+                M.add(sec, f"ETwoSplit{K}Min{g}{bt}Pct", signed(min(v), 1) if v else "--", f"{g}, {lab}: smallest {k} part (% of E_PQ)", src)
+                M.add(sec, f"ETwoSplit{K}Max{g}{bt}Pct", signed(max(v), 1) if v else "--", f"{g}, {lab}: largest {k} part (% of E_PQ)", src)
+            M.add(sec, f"ETwoSplitOrderPos{g}{bt}", _n(sum(r["order"] > 0 for r in B)) if B else "--",
+                  f"{g}, {lab}: cells where the update-order part is positive", src)
+            M.add(sec, f"ETwoSplitOrderAboveMask{g}{bt}", _n(sum(r["order"] > r["mask"] for r in B)) if B else "--",
+                  f"{g}, {lab}: cells where the update-order part is larger than the mask part", src)
+            M.add(sec, f"ETwoSplitGapPos{g}{bt}", _n(sum(r["gap"] > 0 for r in B)) if B else "--",
+                  f"{g}, {lab}: cells where Q->P has the larger layer error (gap > 0)", src)
+            M.add(sec, f"ETwoSplitCells{g}{bt}", _n(len(B)) if B else "--", f"{g}, {lab}: cells with the split", src) if bt else None
+            v = [abs(r["grid"]) for r in B]
+            M.add(sec, f"ETwoSplitGridMaxAbs{g}{bt}Pct", num(max(v), 1) if v else "--", f"{g}, {lab}: largest |grid part| (% of E_PQ)", src)
+        free = [r for r in S_ if r["bits"] == 3 and r["sparsity"] < 0.4]
+        M.add(sec, f"ETwoSplitMaskNegFreeZeros{g}", _n(sum(r["mask"] < 0 for r in free)) if free else "--",
+              f"{g}: 25% and 33%+3-bit cells where the mask part is negative (Q->P's mask, which takes the zeros of rounding, is the better one)", src)
+        M.add(sec, f"ETwoSplitFreeZerosCells{g}", _n(len(free)) if free else "--", f"{g}: 25% and 33%+3-bit cells with the split", src)
 
 
 def macros_scale_seeds(M, store, q):
@@ -1300,6 +1383,13 @@ def macros_isr_groups(M, store, e1):
             M.add(sec, f"ISrPaperHiMax{g}{ct}PQ", signed(max(x[3] for x in V), 3) if V else "--", f"{lab}: highest interval end", src)
             M.add(sec, f"ISrPaperZeroIn{g}{ct}PQ", _n(sum(x[2] <= 0 <= x[3] for x in V)) if V else "--",
                   f"{lab}: models whose 95% interval contains 0", src)
+            M.add(sec, f"ISrPaperPmMax{g}{ct}PQ", num(max((x[3] - x[2]) / 2 for x in V), 3) if V else "--",
+                  f"{lab}: largest half-width of the 95% intervals", src)
+            M.add(sec, f"ISrPaperAsymMax{g}{ct}PQ", num(max(abs((x[3] - x[1]) - (x[1] - x[2])) for x in V), 3) if V else "--",
+                  f"{lab}: largest asymmetry |(hi - I_Sr) - (I_Sr - lo)| of the 95% intervals", src)
+        for m, v, lo, hi in vals:   # Table 2 printed as "value +- half-width"
+            M.add(sec, f"ISrPaperPm{model_tag(m)}{ct}PQ", num((hi - lo) / 2, 3),
+                  f"{m}, P->Q {cell_label(s, b)}: half-width (hi - lo) / 2 of the 95% interval of I_Sr", src)
 
 
 def build_macros(store, e1, q, det, fr, e2res, boolq, missing, repro=(), e7res=None, e8res=None, isr=None, batch=None):
@@ -1318,6 +1408,8 @@ def build_macros(store, e1, q, det, fr, e2res, boolq, missing, repro=(), e7res=N
     macros_order_all_models(M, store, q, e7res)
     macros_isr_groups(M, store, e1)
     macros_scale_seeds(M, store, q)
+    if e2res is not None:
+        macros_e2_groups(M, store, e2res)
     if e8res is not None:
         macros_e8(M, store, e8res)
     if isr is not None:

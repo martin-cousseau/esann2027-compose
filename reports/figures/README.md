@@ -10,7 +10,7 @@ Each figure exists as PNG and PDF. One line per figure:
 - `frontier_Qwen2.5-3B.png, frontier_Qwen2.5-3B.pdf`: Qwen2.5-3B: WikiText-2 perplexity against bits per weight, TCr accounting (left) and with the 1-bit mask counted (right); quantization only, best order per sparse cell, other orders in gray (8 points; data: paper/generated/fig_frontier_*_Qwen2.5-3B.dat, reports/analysis/frontier_points.csv).
 - `frontier_OLMo-2-0425-1B.png, frontier_OLMo-2-0425-1B.pdf`: OLMo-2-0425-1B: WikiText-2 perplexity against bits per weight, TCr accounting (left) and with the 1-bit mask counted (right); quantization only, best order per sparse cell, other orders in gray (8 points; data: paper/generated/fig_frontier_*_OLMo-2-0425-1B.dat, reports/analysis/frontier_points.csv).
 - `orders_per_cell.png, orders_per_cell.pdf`: Order comparison per cell (seed 0): WikiText-2 perplexity, KL to the dense model and pooled flips of each order relative to the best order of the cell (318 points; data: reports/analysis/q2_order_ranking.csv).
-- `e2_interaction_vs_hcorr.png, e2_interaction_vs_hcorr.pdf`: E2, same Hessian per layer: each layer's P->Q interaction I_E/(E_P+E_Q) against the off-diagonal correlation index of its Hessian, by cell; Spearman rank correlation in the legend (1806 points; data: reports/analysis/e2_layers.csv, e2_spearman.csv).
+- `e2_interaction_vs_hcorr.png, e2_interaction_vs_hcorr.pdf`: E2, same Hessian per layer: each layer's P->Q interaction I_E/(E_P+E_Q) against the off-diagonal correlation index of its Hessian, by cell; Spearman rank correlation in the legend (2508 points; data: reports/analysis/e2_layers.csv, e2_spearman.csv).
 
 Paper figures (ESANN print style, 12.2 cm wide; the PDF is in paper/generated/, the PNG here is its preview):
 

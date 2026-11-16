@@ -40,3 +40,9 @@
 {"runtime": "esann-b8", "event": "gone", "time": "2026-11-15T14:48:00+00:00", "note": "#54 both runtimes ended together at about 14:45 while the keepalive ran (balance?)"}
 {"runtime": "esann-a10", "event": "created", "time": "2026-11-15T15:15:06+00:00", "spec": "L4 standard", "note": "#55 #56 chain_a16: last 5 Qwen2.5-3B states, then Qwen2.5-1.5B 4-bit seeds"}
 {"runtime": "esann-b9", "event": "created", "time": "2026-11-15T15:15:10+00:00", "spec": "L4 standard", "note": "#56 chain_b14: Qwen2.5-1.5B 3-bit seeds"}
+{"runtime": "esann-a10", "event": "gone", "time": "2026-11-15T21:50:00+00:00", "note": "#58 reclaimed about 21:45-22:00: session paused by its usage limit 20:20-22:20, tokens not renewed after 20:55"}
+{"runtime": "esann-b9", "event": "gone", "time": "2026-11-15T21:50:00+00:00", "note": "#58 reclaimed about 21:45-22:00: session paused by its usage limit 20:20-22:20, tokens not renewed after 20:55"}
+{"runtime": "esann-a11", "event": "created", "time": "2026-11-15T22:23:51+00:00", "spec": "L4 standard", "note": "#58 chain_a17: E2 on SmolLM2-1.7B and OLMo-2-1B, 3 seed states, then next_loop"}
+{"runtime": "esann-b10", "event": "created", "time": "2026-11-15T22:23:55+00:00", "spec": "L4 standard", "note": "#58 chain_b15: E2 on Qwen2.5-1.5B and Qwen2.5-3B, then next_loop"}
+{"runtime": "esann-a11", "event": "gone", "time": "2026-11-16T00:25:00+00:00", "note": "#59 reclaimed about an hour after its token expired (23:23): session paused by its usage limit 22:45-03:20; E2 SmolLM2-1.7B complete (42 layers), OLMo-2-1B 17 of 56"}
+{"runtime": "esann-b10", "event": "gone", "time": "2026-11-16T00:25:00+00:00", "note": "#59 reclaimed about an hour after its token expired (23:23): session paused by its usage limit 22:45-03:20; E2 Qwen2.5-1.5B complete (49 layers), Qwen2.5-3B 9 of 63"}

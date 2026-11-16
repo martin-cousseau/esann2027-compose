@@ -411,3 +411,18 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     written, runs through `colab/next_loop.sh`); (c) the 13 seed states still missing. Layer-level result files are
     now copied to the Hub every 10 minutes (`scripts/hub_sync.py`), so a lost runtime loses one layer at most.
     Runtimes esann-a11 (`chain_a17.sh`) and esann-b10 (`chain_b15.sh`); about 15 L4-hours, about 27 CU.
+59. **2026-11-16 03:50 UTC, V4 proposal; runtimes lost a second time.** The session's usage limit paused it again
+    from about 22:45 to 03:20; esann-a11 and esann-b10 were reclaimed about an hour after their tokens expired.
+    Before that they finished the same-Hessian ablation (E2) on SmolLM2-1.7B (every fourth block, 42 layers) and
+    Qwen2.5-1.5B (49 layers); OLMo-2-1B (17 of 56) and Qwen2.5-3B (9 of 63) are partial and left out of every group
+    macro (`ETwoIncompleteModels`). No runtime is assigned; none is created without you. V4 (private package,
+    `context/author_package_v4/`): the introduction positions the paper against Harma, Kim, Bouriel, JSQ and OBR as
+    the co-authors asked; Section 3 limits the scope of the decomposition; the results are rewritten with one number
+    per claim; Table 2 gives "value +- half-width" (the intervals are symmetric to the third decimal); and the
+    quantize-first penalty is split, with one shared Hessian on five models, into a mask part (-18.0 to +11.0% of
+    the P->Q error), a grid part (at most 0.4%) and an update-order part (same mask, same grid, second sweep started
+    from quantized instead of pruned weights: +4.5 to +18.1%, positive in 30 of 30 cases). The paper therefore says
+    the penalty lies "mainly in the order of the compensated updates, not in the grid" instead of "why is open". New
+    macros: `macros_e2_groups` (group scopes, the split), `ISrPaperPm*`. 30 claims (`claims_v4.txt`) hold; 6 pages.
+    Not done, stopped by the usage limit: the check of the two references the co-authors proposed (not added: rule
+    2), the independent re-audit, the control without compensation (E9: specified, code not written), the supplement.
