@@ -1,4 +1,5 @@
 #!/bin/bash
+# NOT USED: Colab allows two runtimes (2026-11-16); its work runs in chain_a18.sh and chain_b16.sh.
 # Runtime C (esann-c2), 2026-11-16, DECISIONS.md #60: the 3 Qwen2.5-1.5B seed-2 states still missing at 3 bits (resumed
 # from the Hub copy of Qwen2.5-1.5B__b.jsonl), then 5 of the 10 missing at 4 bits into Qwen2.5-1.5B__c.jsonl.
 cd /content/work

@@ -436,4 +436,4 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     E2. Runtime esann-a12, `chain_a18.sh`. (b) The rest of E2 on OLMo-2-1B and Qwen2.5-3B, resumed from the Hub, then
     5 Qwen2.5-1.5B seed states (esann-b11, `chain_b16.sh`). (c) The other 8 seed states (esann-c2, `chain_c2.sh`).
     The 10 missing 4-bit seed states are split into two new queue files (`E5__Qwen2.5-1.5B__c.json`, `__d.json`), each
-    with its own result file. About 9 L4-hours in all, about 16 of the 80 CU.
+    with its own result file. About 9 L4-hours in all, about 16 of the 80 CU. Colab refused a third runtime (two at a time), so the seed states run after E9 on esann-a12 (5) and after E2 on esann-b11 (8); chain_c2.sh is not used.
