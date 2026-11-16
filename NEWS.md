@@ -1,16 +1,17 @@
 # NEWS (newest first)
 
 ## Read this first
-- **Now (16 Nov, 16:45 UTC):** V4, the final revision for the first author, is built (private package): 6 pages, every
-  number generated, 33 worded claims checked against the data, the team's review inputs sorted one by one
-  (`REVIEW_V4.md` in the package). An independent audit of V4 is the last step before delivery.
+- **Now (16 Nov, 17:40 UTC):** V4, the final revision for the first author, is delivered (private package, backed up
+  to the private dataset): 6 pages, every number generated, 36 worded claims checked against the data, independently
+  audited (one blocker and four major points, all fixed: DECISIONS.md #63), the team's review inputs sorted one by one
+  (`REVIEW_V4.md` in the package).
 - **What V4 adds:** the introduction positions the paper against Harma, Kim, Bouriel, a 2026 preprint (Nema et al.),
   JSQ and OBR; the penalty of quantizing first is traced to the order of the compensated updates (same-Hessian
   ablation, all seven models: +4.5 to +18.1% layer error with the same mask and grid, the grid at most 0.5%); the
   paper's decomposition is checked without compensation (new experiment E9, all seven models: cross terms at most
   0.13% of E_P+E_Q, mask-first sub-additive in 42 of 42 settings); a generated supplement with every state's
   results (`paper/supplement/`, also on the results dataset).
-- **GPU:** no runtime is assigned; the hourly check-in is paused. The 13 missing Qwen2.5-1.5B seed states were not
+- **GPU:** no runtime is assigned; the hourly check-in is deleted. The 13 missing Qwen2.5-1.5B seed states were not
   run (DECISIONS.md #61). Compute units: `logs/budget.md` (about 66 of the 80 left, estimate).
 - **Links:** PR https://github.com/martin-cousseau/esann2027-compose/pull/1 (draft) ; models
   https://huggingface.co/martincousseau/esann2027-compose-v2 ; results and supplement
