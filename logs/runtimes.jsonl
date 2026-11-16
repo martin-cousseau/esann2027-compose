@@ -54,3 +54,4 @@
 {"runtime": "esann-a13", "event": "created", "time": "2026-11-16T14:13:48+00:00", "spec": "L4 standard", "note": "#61 chain_a19: E9 on SmolLM2-1.7B, Qwen2.5-1.5B, OLMo-2-1B"}
 {"runtime": "esann-b12", "event": "created", "time": "2026-11-16T14:13:52+00:00", "spec": "L4 standard", "note": "#61 chain_b17: rest of E2 on Qwen2.5-3B, then E9 on Qwen2.5-3B"}
 {"runtime": "esann-a13", "event": "deleted", "time": "2026-11-16T15:41:32+00:00", "note": "#61 chain_a19 done: E9 on SmolLM2-1.7B, Qwen2.5-1.5B, OLMo-2-1B"}
+{"runtime": "esann-b12", "event": "deleted", "time": "2026-11-16T16:26:22+00:00", "note": "#61 chain_b18 done: E9 on Qwen2.5-3B complete (63 layers); no runtime is assigned now"}
