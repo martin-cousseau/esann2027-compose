@@ -445,3 +445,7 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     esann-b12) and the rest of E2 on Qwen2.5-3B (esann-b12, `chain_b17.sh`); results go to the Hub every 5 minutes.
     The 13 missing Qwen2.5-1.5B seed states (about 5 GPU-hours) are not run: V4's Q3 already states that the 1.5B
     peak rests on one calibration seed. About 2.5 L4-hours, about 5 CU.
+    15:45 UTC: chain_a19 done (E9 on SmolLM2-1.7B, Qwen2.5-1.5B, OLMo-2-1B; esann-a13 deleted); chain_b17 done for E2
+    (Qwen2.5-3B complete: E2 now covers the seven models) but its E9 run on Qwen2.5-3B stopped on a GPU out-of-memory
+    error at block 0's down_proj (6 layers kept): the model stayed on the GPU next to the 63 Hessians and the float64
+    copies. run_e9.py now moves the model to the CPU once the Hessians are collected; `chain_b18.sh` resumes the run.

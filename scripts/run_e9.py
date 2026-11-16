@@ -159,6 +159,9 @@ def main():
     t0 = time.time()
     Hs = ASH.dense_hessians(core, model, calib, dev, blocks)
     print(f"dense Hessians for {len(Hs)} layers in {time.time() - t0:.0f}s", flush=True)
+    model.to("cpu")   # the weights are moved one layer at a time: frees the GPU for the float64 traces (Qwen2.5-3B OOM)
+    if dev == "cuda":
+        torch.cuda.empty_cache()
     layers = core.get_layers(model)
     for li in blocks:
         for name, m in layers[li].named_modules():
@@ -166,7 +169,7 @@ def main():
                 continue
             t1 = time.time()
             H = Hs[(li, name)]
-            res = layer_e9(core, m.weight.data.float(), H, cells)
+            res = layer_e9(core, m.weight.data.float().to(H.device), H, cells)
             row = dict(model=a.model, block=li, name=name, shape=list(m.weight.shape), seconds=round(time.time() - t1, 1),
                        **res, **run_e2.corr_index(H), meta=meta)
             P.append_jsonl(out, row)
