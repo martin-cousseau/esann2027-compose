@@ -96,3 +96,20 @@ other paid GPU) as not eligible for this account; only CPU, T4 and a small TPU r
 of 114.97 CU about 63.5 L4-hours were used (58.4 + 5.1), so the real rate was about 1.8 CU per L4-hour, not the 1.4
 measured between your first two readings. Qwen2.5-3B has 19 of its 24 states; the last 5 (25%+3 joint and P->Q, 50%+3
 in the three orders) need about 2.3 L4-hours, about 4 CU.
+
+## Round of 15-16 November (after you added 100 CU, then V4 with "80 CU available")
+
+Estimate at about 1.8 CU per L4-hour (the rate measured on 15 Nov); Colab does not report the balance to this session.
+
+| Runtimes | Work | L4-hours (approx.) |
+|---|---|---|
+| esann-a10, esann-b9 (15 Nov, 15:15 to about 21:50) | last 5 Qwen2.5-3B states; 27 of 40 Qwen2.5-1.5B seed states | 13.2 |
+| esann-a11, esann-b10 (15 Nov, 22:23 to about 00:25) | E2 on SmolLM2-1.7B and Qwen2.5-1.5B; part of OLMo-2-1B and Qwen2.5-3B | 4.0 |
+| esann-a12, esann-b11 (16 Nov, 09:17 to about 11:20) | E9 on the three small models; E2 on OLMo-2-1B | 4.1 |
+| esann-a13 (16 Nov, 14:13 to 15:45) | E9 on SmolLM2-1.7B, Qwen2.5-1.5B, OLMo-2-1B | 1.5 |
+| esann-b12 (16 Nov, 14:13 to about 16:30) | E2 on Qwen2.5-3B; E9 on Qwen2.5-3B | 2.3 |
+
+About 25 L4-hours, about 45 CU of the 100 added on 15 Nov; since your reading of 80 CU available (16 Nov, morning),
+about 8 L4-hours, about 14 CU, leaving about 66 CU. The runtimes reclaimed during the pauses of this session
+(esann-a10/b9, a11/b10, a12/b11) were billed until Colab reclaimed them, about an hour after their tokens expired;
+that is included above. Please check the real balance in Colab.
