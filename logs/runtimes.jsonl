@@ -51,3 +51,5 @@
 {"runtime": "esann-c2", "event": "refused", "time": "2026-11-16T09:17:40+00:00", "note": "#60 create_runtime: precondition check failed (two runtimes at a time); chain_c2 not used"}
 {"runtime": "esann-a12", "event": "gone", "time": "2026-11-16T11:20:00+00:00", "note": "#61 reclaimed after its token expired (10:17): session paused by its usage limit 09:40-14:10; E9 done on the three small models"}
 {"runtime": "esann-b11", "event": "gone", "time": "2026-11-16T11:20:00+00:00", "note": "#61 reclaimed after its token expired (10:17): session paused by its usage limit 09:40-14:10; E2 OLMo-2-1B complete, Qwen2.5-3B not reached"}
+{"runtime": "esann-a13", "event": "created", "time": "2026-11-16T14:13:48+00:00", "spec": "L4 standard", "note": "#61 chain_a19: E9 on SmolLM2-1.7B, Qwen2.5-1.5B, OLMo-2-1B"}
+{"runtime": "esann-b12", "event": "created", "time": "2026-11-16T14:13:52+00:00", "spec": "L4 standard", "note": "#61 chain_b17: rest of E2 on Qwen2.5-3B, then E9 on Qwen2.5-3B"}
