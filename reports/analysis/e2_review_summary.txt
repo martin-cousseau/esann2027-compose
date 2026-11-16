@@ -243,85 +243,85 @@
       stale grid imposed on P->Q changes its error by +0.0%
     Q->P mask used for pruning alone: median error ratio 1.53x SparseGPT's mask; median overlap (Jaccard) 0.73
 
-=== Qwen/Qwen2.5-3B: 9 linear layers from blocks [0, 4]
-  25% + 4-bit  (E_P sum 0.008973, E_Q sum 0.02075)
-    joint                  I_E/(E_P+E_Q)   -11.2%   sub-additive layers 9/9
-    p_then_q               I_E/(E_P+E_Q)    -1.3%   sub-additive layers 6/9
-    q_then_p               I_E/(E_P+E_Q)   +13.7%   sub-additive layers 1/9
-    q_then_p_refit         I_E/(E_P+E_Q)   +16.5%   sub-additive layers 0/9
-    q_then_p_pmask         I_E/(E_P+E_Q)   +23.8%   sub-additive layers 0/9
-    q_then_p_pmask_refit   I_E/(E_P+E_Q)   +26.8%   sub-additive layers 0/9
-    p_then_q_stale         I_E/(E_P+E_Q)    -0.7%   sub-additive layers 6/9
-    Q->P penalty over P->Q (sum of layer errors): +0.004463 (+15.2% of P->Q)
-      share of the penalty removed by q_then_p_refit          -18.7%
-      share of the penalty removed by q_then_p_pmask          -67.4%
-      share of the penalty removed by q_then_p_pmask_refit    -87.7%
-      stale grid imposed on P->Q changes its error by +0.7%
-    Q->P mask used for pruning alone: median error ratio 1.86x SparseGPT's mask; median overlap (Jaccard) 0.69
-  33% + 4-bit  (E_P sum 0.02289, E_Q sum 0.02075)
-    joint                  I_E/(E_P+E_Q)    -9.8%   sub-additive layers 9/9
-    p_then_q               I_E/(E_P+E_Q)    -1.5%   sub-additive layers 6/9
-    q_then_p               I_E/(E_P+E_Q)   +17.5%   sub-additive layers 0/9
-    q_then_p_refit         I_E/(E_P+E_Q)   +19.1%   sub-additive layers 0/9
-    q_then_p_pmask         I_E/(E_P+E_Q)   +22.8%   sub-additive layers 0/9
-    q_then_p_pmask_refit   I_E/(E_P+E_Q)   +24.5%   sub-additive layers 0/9
-    p_then_q_stale         I_E/(E_P+E_Q)    -0.8%   sub-additive layers 6/9
-    Q->P penalty over P->Q (sum of layer errors): +0.008296 (+19.3% of P->Q)
-      share of the penalty removed by q_then_p_refit           -8.4%
-      share of the penalty removed by q_then_p_pmask          -27.8%
-      share of the penalty removed by q_then_p_pmask_refit    -36.7%
-      stale grid imposed on P->Q changes its error by +0.7%
-    Q->P mask used for pruning alone: median error ratio 1.44x SparseGPT's mask; median overlap (Jaccard) 0.76
-  50% + 4-bit  (E_P sum 0.09222, E_Q sum 0.02075)
-    joint                  I_E/(E_P+E_Q)    -5.3%   sub-additive layers 9/9
-    p_then_q               I_E/(E_P+E_Q)    -1.2%   sub-additive layers 6/9
-    q_then_p               I_E/(E_P+E_Q)   +10.9%   sub-additive layers 0/9
-    q_then_p_refit         I_E/(E_P+E_Q)   +10.0%   sub-additive layers 0/9
-    q_then_p_pmask         I_E/(E_P+E_Q)   +12.7%   sub-additive layers 0/9
-    q_then_p_pmask_refit   I_E/(E_P+E_Q)   +11.5%   sub-additive layers 0/9
-    p_then_q_stale         I_E/(E_P+E_Q)    +0.8%   sub-additive layers 5/9
-    Q->P penalty over P->Q (sum of layer errors): +0.01362 (+12.2% of P->Q)
-      share of the penalty removed by q_then_p_refit           +7.0%
-      share of the penalty removed by q_then_p_pmask          -15.1%
-      share of the penalty removed by q_then_p_pmask_refit     -5.5%
-      stale grid imposed on P->Q changes its error by +2.0%
-    Q->P mask used for pruning alone: median error ratio 1.15x SparseGPT's mask; median overlap (Jaccard) 0.85
-  25% + 3-bit  (E_P sum 0.008973, E_Q sum 0.09864)
-    joint                  I_E/(E_P+E_Q)    -7.1%   sub-additive layers 9/9
-    p_then_q               I_E/(E_P+E_Q)    +3.2%   sub-additive layers 3/9
-    q_then_p               I_E/(E_P+E_Q)    -8.3%   sub-additive layers 9/9
-    q_then_p_refit         I_E/(E_P+E_Q)    -4.6%   sub-additive layers 7/9
-    q_then_p_pmask         I_E/(E_P+E_Q)   +18.2%   sub-additive layers 0/9
-    q_then_p_pmask_refit   I_E/(E_P+E_Q)   +24.1%   sub-additive layers 0/9
-    p_then_q_stale         I_E/(E_P+E_Q)    +3.4%   sub-additive layers 3/9
-    Q->P penalty over P->Q (sum of layer errors): -0.01242 (-11.2% of P->Q)
+=== Qwen/Qwen2.5-3B: 63 linear layers from blocks [0, 4, 8, 12, 16, 20, 24, 28, 32]
+  25% + 4-bit  (E_P sum 0.1152, E_Q sum 0.2716)
+    joint                  I_E/(E_P+E_Q)   -11.2%   sub-additive layers 63/63
+    p_then_q               I_E/(E_P+E_Q)    -5.6%   sub-additive layers 50/63
+    q_then_p               I_E/(E_P+E_Q)    +8.0%   sub-additive layers 12/63
+    q_then_p_refit         I_E/(E_P+E_Q)    +9.9%   sub-additive layers 5/63
+    q_then_p_pmask         I_E/(E_P+E_Q)    +9.1%   sub-additive layers 0/63
+    q_then_p_pmask_refit   I_E/(E_P+E_Q)   +11.2%   sub-additive layers 0/63
+    p_then_q_stale         I_E/(E_P+E_Q)    -5.4%   sub-additive layers 50/63
+    Q->P penalty over P->Q (sum of layer errors): +0.05249 (+14.4% of P->Q)
+      share of the penalty removed by q_then_p_refit          -14.1%
+      share of the penalty removed by q_then_p_pmask           -7.7%
+      share of the penalty removed by q_then_p_pmask_refit    -23.3%
       stale grid imposed on P->Q changes its error by +0.2%
-    Q->P mask used for pruning alone: median error ratio 4.03x SparseGPT's mask; median overlap (Jaccard) 0.53
-  33% + 3-bit  (E_P sum 0.02289, E_Q sum 0.09864)
-    joint                  I_E/(E_P+E_Q)   -13.2%   sub-additive layers 9/9
-    p_then_q               I_E/(E_P+E_Q)    +0.9%   sub-additive layers 5/9
-    q_then_p               I_E/(E_P+E_Q)   -11.6%   sub-additive layers 9/9
-    q_then_p_refit         I_E/(E_P+E_Q)    -7.4%   sub-additive layers 6/9
-    q_then_p_pmask         I_E/(E_P+E_Q)   +21.6%   sub-additive layers 0/9
-    q_then_p_pmask_refit   I_E/(E_P+E_Q)   +27.9%   sub-additive layers 0/9
-    p_then_q_stale         I_E/(E_P+E_Q)    +0.8%   sub-additive layers 6/9
-    Q->P penalty over P->Q (sum of layer errors): -0.01518 (-12.4% of P->Q)
+    Q->P mask used for pruning alone: median error ratio 1.65x SparseGPT's mask; median overlap (Jaccard) 0.68
+  33% + 4-bit  (E_P sum 0.2837, E_Q sum 0.2716)
+    joint                  I_E/(E_P+E_Q)    -9.9%   sub-additive layers 63/63
+    p_then_q               I_E/(E_P+E_Q)    -5.1%   sub-additive layers 52/63
+    q_then_p               I_E/(E_P+E_Q)   +10.7%   sub-additive layers 6/63
+    q_then_p_refit         I_E/(E_P+E_Q)   +12.2%   sub-additive layers 2/63
+    q_then_p_pmask         I_E/(E_P+E_Q)    +9.9%   sub-additive layers 0/63
+    q_then_p_pmask_refit   I_E/(E_P+E_Q)   +11.4%   sub-additive layers 0/63
+    p_then_q_stale         I_E/(E_P+E_Q)    -4.9%   sub-additive layers 52/63
+    Q->P penalty over P->Q (sum of layer errors): +0.08763 (+16.6% of P->Q)
+      share of the penalty removed by q_then_p_refit           -9.5%
+      share of the penalty removed by q_then_p_pmask           +5.0%
+      share of the penalty removed by q_then_p_pmask_refit     -4.8%
+      stale grid imposed on P->Q changes its error by +0.2%
+    Q->P mask used for pruning alone: median error ratio 1.35x SparseGPT's mask; median overlap (Jaccard) 0.76
+  50% + 4-bit  (E_P sum 1.067, E_Q sum 0.2716)
+    joint                  I_E/(E_P+E_Q)    -6.2%   sub-additive layers 63/63
+    p_then_q               I_E/(E_P+E_Q)    -3.7%   sub-additive layers 55/63
+    q_then_p               I_E/(E_P+E_Q)    +6.5%   sub-additive layers 4/63
+    q_then_p_refit         I_E/(E_P+E_Q)    +6.8%   sub-additive layers 3/63
+    q_then_p_pmask         I_E/(E_P+E_Q)    +5.4%   sub-additive layers 0/63
+    q_then_p_pmask_refit   I_E/(E_P+E_Q)    +5.6%   sub-additive layers 0/63
+    p_then_q_stale         I_E/(E_P+E_Q)    -3.2%   sub-additive layers 51/63
+    Q->P penalty over P->Q (sum of layer errors): +0.1357 (+10.5% of P->Q)
+      share of the penalty removed by q_then_p_refit           -3.1%
+      share of the penalty removed by q_then_p_pmask          +10.7%
+      share of the penalty removed by q_then_p_pmask_refit     +8.5%
+      stale grid imposed on P->Q changes its error by +0.5%
+    Q->P mask used for pruning alone: median error ratio 1.12x SparseGPT's mask; median overlap (Jaccard) 0.86
+  25% + 3-bit  (E_P sum 0.1152, E_Q sum 1.237)
+    joint                  I_E/(E_P+E_Q)    -7.7%   sub-additive layers 63/63
+    p_then_q               I_E/(E_P+E_Q)    -2.8%   sub-additive layers 45/63
+    q_then_p               I_E/(E_P+E_Q)    -8.5%   sub-additive layers 63/63
+    q_then_p_refit         I_E/(E_P+E_Q)    -6.6%   sub-additive layers 56/63
+    q_then_p_pmask         I_E/(E_P+E_Q)    +3.7%   sub-additive layers 18/63
+    q_then_p_pmask_refit   I_E/(E_P+E_Q)    +7.0%   sub-additive layers 7/63
+    p_then_q_stale         I_E/(E_P+E_Q)    -2.5%   sub-additive layers 42/63
+    Q->P penalty over P->Q (sum of layer errors): -0.07687 (-5.9% of P->Q)
+      stale grid imposed on P->Q changes its error by +0.3%
+    Q->P mask used for pruning alone: median error ratio 3.40x SparseGPT's mask; median overlap (Jaccard) 0.55
+  33% + 3-bit  (E_P sum 0.2837, E_Q sum 1.237)
+    joint                  I_E/(E_P+E_Q)   -14.2%   sub-additive layers 63/63
+    p_then_q               I_E/(E_P+E_Q)    -7.0%   sub-additive layers 50/63
+    q_then_p               I_E/(E_P+E_Q)   -12.3%   sub-additive layers 63/63
+    q_then_p_refit         I_E/(E_P+E_Q)   -10.1%   sub-additive layers 57/63
+    q_then_p_pmask         I_E/(E_P+E_Q)    +3.3%   sub-additive layers 22/63
+    q_then_p_pmask_refit   I_E/(E_P+E_Q)    +7.1%   sub-additive layers 11/63
+    p_then_q_stale         I_E/(E_P+E_Q)    -6.8%   sub-additive layers 49/63
+    Q->P penalty over P->Q (sum of layer errors): -0.08047 (-5.7% of P->Q)
+      stale grid imposed on P->Q changes its error by +0.3%
+    Q->P mask used for pruning alone: median error ratio 1.94x SparseGPT's mask; median overlap (Jaccard) 0.71
+  50% + 3-bit  (E_P sum 1.067, E_Q sum 1.237)
+    joint                  I_E/(E_P+E_Q)   -17.0%   sub-additive layers 63/63
+    p_then_q               I_E/(E_P+E_Q)   -10.2%   sub-additive layers 54/63
+    q_then_p               I_E/(E_P+E_Q)    +5.6%   sub-additive layers 13/63
+    q_then_p_refit         I_E/(E_P+E_Q)    +8.6%   sub-additive layers 8/63
+    q_then_p_pmask         I_E/(E_P+E_Q)    +2.9%   sub-additive layers 18/63
+    q_then_p_pmask_refit   I_E/(E_P+E_Q)    +6.0%   sub-additive layers 11/63
+    p_then_q_stale         I_E/(E_P+E_Q)   -10.3%   sub-additive layers 54/63
+    Q->P penalty over P->Q (sum of layer errors): +0.3656 (+17.7% of P->Q)
+      share of the penalty removed by q_then_p_refit          -18.5%
+      share of the penalty removed by q_then_p_pmask          +17.4%
+      share of the penalty removed by q_then_p_pmask_refit     -2.4%
       stale grid imposed on P->Q changes its error by -0.1%
-    Q->P mask used for pruning alone: median error ratio 2.47x SparseGPT's mask; median overlap (Jaccard) 0.65
-  50% + 3-bit  (E_P sum 0.09222, E_Q sum 0.09864)
-    joint                  I_E/(E_P+E_Q)   -15.1%   sub-additive layers 9/9
-    p_then_q               I_E/(E_P+E_Q)    -3.0%   sub-additive layers 6/9
-    q_then_p               I_E/(E_P+E_Q)   +12.1%   sub-additive layers 0/9
-    q_then_p_refit         I_E/(E_P+E_Q)   +16.1%   sub-additive layers 0/9
-    q_then_p_pmask         I_E/(E_P+E_Q)   +19.1%   sub-additive layers 0/9
-    q_then_p_pmask_refit   I_E/(E_P+E_Q)   +23.9%   sub-additive layers 0/9
-    p_then_q_stale         I_E/(E_P+E_Q)    -3.6%   sub-additive layers 6/9
-    Q->P penalty over P->Q (sum of layer errors): +0.02886 (+15.6% of P->Q)
-      share of the penalty removed by q_then_p_refit          -26.9%
-      share of the penalty removed by q_then_p_pmask          -46.5%
-      share of the penalty removed by q_then_p_pmask_refit    -77.9%
-      stale grid imposed on P->Q changes its error by -0.6%
-    Q->P mask used for pruning alone: median error ratio 1.67x SparseGPT's mask; median overlap (Jaccard) 0.74
+    Q->P mask used for pruning alone: median error ratio 1.53x SparseGPT's mask; median overlap (Jaccard) 0.72
 
 === HuggingFaceTB/SmolLM2-1.7B: 42 linear layers from blocks [0, 4, 8, 12, 16, 20]
   25% + 4-bit  (E_P sum 0.09775, E_Q sum 0.1674)

@@ -2284,186 +2284,186 @@ Columns:
 | `\resETwoJaccardQwenMidSFiftyBThree` | `0.73` | Qwen2.5-1.5B 50%+3: median Jaccard overlap of the masks | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoRhoQwenMidSFiftyBThree` | `\ensuremath{+0.62}` | Qwen2.5-1.5B 50%+3: Spearman rho, P->Q layer ratio vs h_corr_index | reports/analysis/e2_spearman.csv |
 | `\resETwoRhoPQwenMidSFiftyBThree` | `\ensuremath{2.04\times 10^{-6}}` | Qwen2.5-1.5B 50%+3: p-value of that rho | reports/analysis/e2_spearman.csv |
-| `\resETwoLayersQwenLargeSTwentyFiveBFour` | `9` | Qwen2.5-3B 25%+4: layers in E2 | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoLayersQwenLargeSTwentyFiveBFour` | `63` | Qwen2.5-3B 25%+4: layers in E2 | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoRatioJointQwenLargeSTwentyFiveBFourPct` | `\ensuremath{-11.2}` | Qwen2.5-3B 25%+4: joint I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoSubJointQwenLargeSTwentyFiveBFourPct` | `100` | Qwen2.5-3B 25%+4: joint sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioPQQwenLargeSTwentyFiveBFourPct` | `\ensuremath{-1.3}` | Qwen2.5-3B 25%+4: P->Q I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoSubPQQwenLargeSTwentyFiveBFourPct` | `67` | Qwen2.5-3B 25%+4: P->Q sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioQPQwenLargeSTwentyFiveBFourPct` | `\ensuremath{+13.7}` | Qwen2.5-3B 25%+4: Q->P I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoSubQPQwenLargeSTwentyFiveBFourPct` | `11` | Qwen2.5-3B 25%+4: Q->P sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioQPRefitQwenLargeSTwentyFiveBFourPct` | `\ensuremath{+16.5}` | Qwen2.5-3B 25%+4: Q->P refit I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoSubQPRefitQwenLargeSTwentyFiveBFourPct` | `0` | Qwen2.5-3B 25%+4: Q->P refit sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioQPPmaskQwenLargeSTwentyFiveBFourPct` | `\ensuremath{+23.8}` | Qwen2.5-3B 25%+4: Q->P P-mask I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioPQQwenLargeSTwentyFiveBFourPct` | `\ensuremath{-5.6}` | Qwen2.5-3B 25%+4: P->Q I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoSubPQQwenLargeSTwentyFiveBFourPct` | `79` | Qwen2.5-3B 25%+4: P->Q sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioQPQwenLargeSTwentyFiveBFourPct` | `\ensuremath{+8.0}` | Qwen2.5-3B 25%+4: Q->P I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoSubQPQwenLargeSTwentyFiveBFourPct` | `19` | Qwen2.5-3B 25%+4: Q->P sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioQPRefitQwenLargeSTwentyFiveBFourPct` | `\ensuremath{+9.9}` | Qwen2.5-3B 25%+4: Q->P refit I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoSubQPRefitQwenLargeSTwentyFiveBFourPct` | `8` | Qwen2.5-3B 25%+4: Q->P refit sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioQPPmaskQwenLargeSTwentyFiveBFourPct` | `\ensuremath{+9.1}` | Qwen2.5-3B 25%+4: Q->P P-mask I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoSubQPPmaskQwenLargeSTwentyFiveBFourPct` | `0` | Qwen2.5-3B 25%+4: Q->P P-mask sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioQPPmaskRefitQwenLargeSTwentyFiveBFourPct` | `\ensuremath{+26.8}` | Qwen2.5-3B 25%+4: Q->P P-mask refit I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioQPPmaskRefitQwenLargeSTwentyFiveBFourPct` | `\ensuremath{+11.2}` | Qwen2.5-3B 25%+4: Q->P P-mask refit I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoSubQPPmaskRefitQwenLargeSTwentyFiveBFourPct` | `0` | Qwen2.5-3B 25%+4: Q->P P-mask refit sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioPQStaleQwenLargeSTwentyFiveBFourPct` | `\ensuremath{-0.7}` | Qwen2.5-3B 25%+4: P->Q stale grid I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoSubPQStaleQwenLargeSTwentyFiveBFourPct` | `67` | Qwen2.5-3B 25%+4: P->Q stale grid sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioPQStaleQwenLargeSTwentyFiveBFourPct` | `\ensuremath{-5.4}` | Qwen2.5-3B 25%+4: P->Q stale grid I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoSubPQStaleQwenLargeSTwentyFiveBFourPct` | `79` | Qwen2.5-3B 25%+4: P->Q stale grid sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoBlockZeroJointQwenLargeSTwentyFiveBFourPct` | `\ensuremath{-11.7}` | Qwen2.5-3B 25%+4: joint ratio, block 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoDeeperJointQwenLargeSTwentyFiveBFourPct` | `\ensuremath{-8.5}` | Qwen2.5-3B 25%+4: joint ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoDeeperJointQwenLargeSTwentyFiveBFourPct` | `\ensuremath{-11.2}` | Qwen2.5-3B 25%+4: joint ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoBlockZeroPQQwenLargeSTwentyFiveBFourPct` | `\ensuremath{-1.1}` | Qwen2.5-3B 25%+4: P->Q ratio, block 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoDeeperPQQwenLargeSTwentyFiveBFourPct` | `\ensuremath{-2.4}` | Qwen2.5-3B 25%+4: P->Q ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoDeeperPQQwenLargeSTwentyFiveBFourPct` | `\ensuremath{-5.9}` | Qwen2.5-3B 25%+4: P->Q ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoBlockZeroQPQwenLargeSTwentyFiveBFourPct` | `\ensuremath{+16.2}` | Qwen2.5-3B 25%+4: Q->P ratio, block 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoDeeperQPQwenLargeSTwentyFiveBFourPct` | `\ensuremath{+1.0}` | Qwen2.5-3B 25%+4: Q->P ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoPenaltyQwenLargeSTwentyFiveBFourPct` | `\ensuremath{+15.2}` | Qwen2.5-3B 25%+4: Q->P penalty, % of P->Q summed error | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRemovedRefitQwenLargeSTwentyFiveBFourPct` | `\ensuremath{-19}` | Qwen2.5-3B 25%+4: share of the Q->P penalty removed by Q->P refit (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRemovedPmaskQwenLargeSTwentyFiveBFourPct` | `\ensuremath{-67}` | Qwen2.5-3B 25%+4: share of the Q->P penalty removed by Q->P P-mask (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRemovedBothQwenLargeSTwentyFiveBFourPct` | `\ensuremath{-88}` | Qwen2.5-3B 25%+4: share of the Q->P penalty removed by Q->P P-mask refit (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoStaleQwenLargeSTwentyFiveBFourPct` | `\ensuremath{+0.7}` | Qwen2.5-3B 25%+4: stale grid imposed on P->Q (% of its error) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoMaskQualityQwenLargeSTwentyFiveBFour` | `1.86` | Qwen2.5-3B 25%+4: median pruning-only error ratio, Q->P mask / SparseGPT mask | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoJaccardQwenLargeSTwentyFiveBFour` | `0.69` | Qwen2.5-3B 25%+4: median Jaccard overlap of the masks | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRhoQwenLargeSTwentyFiveBFour` | `\ensuremath{-0.46}` | Qwen2.5-3B 25%+4: Spearman rho, P->Q layer ratio vs h_corr_index | reports/analysis/e2_spearman.csv |
-| `\resETwoRhoPQwenLargeSTwentyFiveBFour` | `0.211` | Qwen2.5-3B 25%+4: p-value of that rho | reports/analysis/e2_spearman.csv |
-| `\resETwoLayersQwenLargeSThirtyThreeBFour` | `9` | Qwen2.5-3B 33%+4: layers in E2 | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioJointQwenLargeSThirtyThreeBFourPct` | `\ensuremath{-9.8}` | Qwen2.5-3B 33%+4: joint I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoDeeperQPQwenLargeSTwentyFiveBFourPct` | `\ensuremath{+7.5}` | Qwen2.5-3B 25%+4: Q->P ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoPenaltyQwenLargeSTwentyFiveBFourPct` | `\ensuremath{+14.4}` | Qwen2.5-3B 25%+4: Q->P penalty, % of P->Q summed error | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRemovedRefitQwenLargeSTwentyFiveBFourPct` | `\ensuremath{-14}` | Qwen2.5-3B 25%+4: share of the Q->P penalty removed by Q->P refit (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRemovedPmaskQwenLargeSTwentyFiveBFourPct` | `\ensuremath{-8}` | Qwen2.5-3B 25%+4: share of the Q->P penalty removed by Q->P P-mask (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRemovedBothQwenLargeSTwentyFiveBFourPct` | `\ensuremath{-23}` | Qwen2.5-3B 25%+4: share of the Q->P penalty removed by Q->P P-mask refit (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoStaleQwenLargeSTwentyFiveBFourPct` | `\ensuremath{+0.2}` | Qwen2.5-3B 25%+4: stale grid imposed on P->Q (% of its error) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoMaskQualityQwenLargeSTwentyFiveBFour` | `1.65` | Qwen2.5-3B 25%+4: median pruning-only error ratio, Q->P mask / SparseGPT mask | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoJaccardQwenLargeSTwentyFiveBFour` | `0.68` | Qwen2.5-3B 25%+4: median Jaccard overlap of the masks | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRhoQwenLargeSTwentyFiveBFour` | `\ensuremath{+0.48}` | Qwen2.5-3B 25%+4: Spearman rho, P->Q layer ratio vs h_corr_index | reports/analysis/e2_spearman.csv |
+| `\resETwoRhoPQwenLargeSTwentyFiveBFour` | `\ensuremath{6.94\times 10^{-5}}` | Qwen2.5-3B 25%+4: p-value of that rho | reports/analysis/e2_spearman.csv |
+| `\resETwoLayersQwenLargeSThirtyThreeBFour` | `63` | Qwen2.5-3B 33%+4: layers in E2 | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioJointQwenLargeSThirtyThreeBFourPct` | `\ensuremath{-9.9}` | Qwen2.5-3B 33%+4: joint I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoSubJointQwenLargeSThirtyThreeBFourPct` | `100` | Qwen2.5-3B 33%+4: joint sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioPQQwenLargeSThirtyThreeBFourPct` | `\ensuremath{-1.5}` | Qwen2.5-3B 33%+4: P->Q I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoSubPQQwenLargeSThirtyThreeBFourPct` | `67` | Qwen2.5-3B 33%+4: P->Q sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioQPQwenLargeSThirtyThreeBFourPct` | `\ensuremath{+17.5}` | Qwen2.5-3B 33%+4: Q->P I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoSubQPQwenLargeSThirtyThreeBFourPct` | `0` | Qwen2.5-3B 33%+4: Q->P sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioQPRefitQwenLargeSThirtyThreeBFourPct` | `\ensuremath{+19.1}` | Qwen2.5-3B 33%+4: Q->P refit I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoSubQPRefitQwenLargeSThirtyThreeBFourPct` | `0` | Qwen2.5-3B 33%+4: Q->P refit sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioQPPmaskQwenLargeSThirtyThreeBFourPct` | `\ensuremath{+22.8}` | Qwen2.5-3B 33%+4: Q->P P-mask I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioPQQwenLargeSThirtyThreeBFourPct` | `\ensuremath{-5.1}` | Qwen2.5-3B 33%+4: P->Q I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoSubPQQwenLargeSThirtyThreeBFourPct` | `83` | Qwen2.5-3B 33%+4: P->Q sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioQPQwenLargeSThirtyThreeBFourPct` | `\ensuremath{+10.7}` | Qwen2.5-3B 33%+4: Q->P I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoSubQPQwenLargeSThirtyThreeBFourPct` | `10` | Qwen2.5-3B 33%+4: Q->P sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioQPRefitQwenLargeSThirtyThreeBFourPct` | `\ensuremath{+12.2}` | Qwen2.5-3B 33%+4: Q->P refit I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoSubQPRefitQwenLargeSThirtyThreeBFourPct` | `3` | Qwen2.5-3B 33%+4: Q->P refit sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioQPPmaskQwenLargeSThirtyThreeBFourPct` | `\ensuremath{+9.9}` | Qwen2.5-3B 33%+4: Q->P P-mask I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoSubQPPmaskQwenLargeSThirtyThreeBFourPct` | `0` | Qwen2.5-3B 33%+4: Q->P P-mask sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioQPPmaskRefitQwenLargeSThirtyThreeBFourPct` | `\ensuremath{+24.5}` | Qwen2.5-3B 33%+4: Q->P P-mask refit I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioQPPmaskRefitQwenLargeSThirtyThreeBFourPct` | `\ensuremath{+11.4}` | Qwen2.5-3B 33%+4: Q->P P-mask refit I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoSubQPPmaskRefitQwenLargeSThirtyThreeBFourPct` | `0` | Qwen2.5-3B 33%+4: Q->P P-mask refit sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioPQStaleQwenLargeSThirtyThreeBFourPct` | `\ensuremath{-0.8}` | Qwen2.5-3B 33%+4: P->Q stale grid I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoSubPQStaleQwenLargeSThirtyThreeBFourPct` | `67` | Qwen2.5-3B 33%+4: P->Q stale grid sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioPQStaleQwenLargeSThirtyThreeBFourPct` | `\ensuremath{-4.9}` | Qwen2.5-3B 33%+4: P->Q stale grid I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoSubPQStaleQwenLargeSThirtyThreeBFourPct` | `83` | Qwen2.5-3B 33%+4: P->Q stale grid sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoBlockZeroJointQwenLargeSThirtyThreeBFourPct` | `\ensuremath{-10.0}` | Qwen2.5-3B 33%+4: joint ratio, block 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoDeeperJointQwenLargeSThirtyThreeBFourPct` | `\ensuremath{-9.1}` | Qwen2.5-3B 33%+4: joint ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoDeeperJointQwenLargeSThirtyThreeBFourPct` | `\ensuremath{-9.9}` | Qwen2.5-3B 33%+4: joint ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoBlockZeroPQQwenLargeSThirtyThreeBFourPct` | `\ensuremath{-1.2}` | Qwen2.5-3B 33%+4: P->Q ratio, block 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoDeeperPQQwenLargeSThirtyThreeBFourPct` | `\ensuremath{-3.0}` | Qwen2.5-3B 33%+4: P->Q ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoDeeperPQQwenLargeSThirtyThreeBFourPct` | `\ensuremath{-5.4}` | Qwen2.5-3B 33%+4: P->Q ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoBlockZeroQPQwenLargeSThirtyThreeBFourPct` | `\ensuremath{+19.0}` | Qwen2.5-3B 33%+4: Q->P ratio, block 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoDeeperQPQwenLargeSThirtyThreeBFourPct` | `\ensuremath{+9.1}` | Qwen2.5-3B 33%+4: Q->P ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoPenaltyQwenLargeSThirtyThreeBFourPct` | `\ensuremath{+19.3}` | Qwen2.5-3B 33%+4: Q->P penalty, % of P->Q summed error | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRemovedRefitQwenLargeSThirtyThreeBFourPct` | `\ensuremath{-8}` | Qwen2.5-3B 33%+4: share of the Q->P penalty removed by Q->P refit (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRemovedPmaskQwenLargeSThirtyThreeBFourPct` | `\ensuremath{-28}` | Qwen2.5-3B 33%+4: share of the Q->P penalty removed by Q->P P-mask (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRemovedBothQwenLargeSThirtyThreeBFourPct` | `\ensuremath{-37}` | Qwen2.5-3B 33%+4: share of the Q->P penalty removed by Q->P P-mask refit (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoStaleQwenLargeSThirtyThreeBFourPct` | `\ensuremath{+0.7}` | Qwen2.5-3B 33%+4: stale grid imposed on P->Q (% of its error) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoMaskQualityQwenLargeSThirtyThreeBFour` | `1.44` | Qwen2.5-3B 33%+4: median pruning-only error ratio, Q->P mask / SparseGPT mask | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoDeeperQPQwenLargeSThirtyThreeBFourPct` | `\ensuremath{+10.1}` | Qwen2.5-3B 33%+4: Q->P ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoPenaltyQwenLargeSThirtyThreeBFourPct` | `\ensuremath{+16.6}` | Qwen2.5-3B 33%+4: Q->P penalty, % of P->Q summed error | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRemovedRefitQwenLargeSThirtyThreeBFourPct` | `\ensuremath{-9}` | Qwen2.5-3B 33%+4: share of the Q->P penalty removed by Q->P refit (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRemovedPmaskQwenLargeSThirtyThreeBFourPct` | `\ensuremath{+5}` | Qwen2.5-3B 33%+4: share of the Q->P penalty removed by Q->P P-mask (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRemovedBothQwenLargeSThirtyThreeBFourPct` | `\ensuremath{-5}` | Qwen2.5-3B 33%+4: share of the Q->P penalty removed by Q->P P-mask refit (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoStaleQwenLargeSThirtyThreeBFourPct` | `\ensuremath{+0.2}` | Qwen2.5-3B 33%+4: stale grid imposed on P->Q (% of its error) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoMaskQualityQwenLargeSThirtyThreeBFour` | `1.35` | Qwen2.5-3B 33%+4: median pruning-only error ratio, Q->P mask / SparseGPT mask | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoJaccardQwenLargeSThirtyThreeBFour` | `0.76` | Qwen2.5-3B 33%+4: median Jaccard overlap of the masks | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRhoQwenLargeSThirtyThreeBFour` | `\ensuremath{-0.46}` | Qwen2.5-3B 33%+4: Spearman rho, P->Q layer ratio vs h_corr_index | reports/analysis/e2_spearman.csv |
-| `\resETwoRhoPQwenLargeSThirtyThreeBFour` | `0.211` | Qwen2.5-3B 33%+4: p-value of that rho | reports/analysis/e2_spearman.csv |
-| `\resETwoLayersQwenLargeSFiftyBFour` | `9` | Qwen2.5-3B 50%+4: layers in E2 | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioJointQwenLargeSFiftyBFourPct` | `\ensuremath{-5.3}` | Qwen2.5-3B 50%+4: joint I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRhoQwenLargeSThirtyThreeBFour` | `\ensuremath{+0.54}` | Qwen2.5-3B 33%+4: Spearman rho, P->Q layer ratio vs h_corr_index | reports/analysis/e2_spearman.csv |
+| `\resETwoRhoPQwenLargeSThirtyThreeBFour` | `\ensuremath{4.93\times 10^{-6}}` | Qwen2.5-3B 33%+4: p-value of that rho | reports/analysis/e2_spearman.csv |
+| `\resETwoLayersQwenLargeSFiftyBFour` | `63` | Qwen2.5-3B 50%+4: layers in E2 | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioJointQwenLargeSFiftyBFourPct` | `\ensuremath{-6.2}` | Qwen2.5-3B 50%+4: joint I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoSubJointQwenLargeSFiftyBFourPct` | `100` | Qwen2.5-3B 50%+4: joint sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioPQQwenLargeSFiftyBFourPct` | `\ensuremath{-1.2}` | Qwen2.5-3B 50%+4: P->Q I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoSubPQQwenLargeSFiftyBFourPct` | `67` | Qwen2.5-3B 50%+4: P->Q sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioQPQwenLargeSFiftyBFourPct` | `\ensuremath{+10.9}` | Qwen2.5-3B 50%+4: Q->P I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoSubQPQwenLargeSFiftyBFourPct` | `0` | Qwen2.5-3B 50%+4: Q->P sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioQPRefitQwenLargeSFiftyBFourPct` | `\ensuremath{+10.0}` | Qwen2.5-3B 50%+4: Q->P refit I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoSubQPRefitQwenLargeSFiftyBFourPct` | `0` | Qwen2.5-3B 50%+4: Q->P refit sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioQPPmaskQwenLargeSFiftyBFourPct` | `\ensuremath{+12.7}` | Qwen2.5-3B 50%+4: Q->P P-mask I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioPQQwenLargeSFiftyBFourPct` | `\ensuremath{-3.7}` | Qwen2.5-3B 50%+4: P->Q I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoSubPQQwenLargeSFiftyBFourPct` | `87` | Qwen2.5-3B 50%+4: P->Q sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioQPQwenLargeSFiftyBFourPct` | `\ensuremath{+6.5}` | Qwen2.5-3B 50%+4: Q->P I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoSubQPQwenLargeSFiftyBFourPct` | `6` | Qwen2.5-3B 50%+4: Q->P sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioQPRefitQwenLargeSFiftyBFourPct` | `\ensuremath{+6.8}` | Qwen2.5-3B 50%+4: Q->P refit I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoSubQPRefitQwenLargeSFiftyBFourPct` | `5` | Qwen2.5-3B 50%+4: Q->P refit sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioQPPmaskQwenLargeSFiftyBFourPct` | `\ensuremath{+5.4}` | Qwen2.5-3B 50%+4: Q->P P-mask I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoSubQPPmaskQwenLargeSFiftyBFourPct` | `0` | Qwen2.5-3B 50%+4: Q->P P-mask sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioQPPmaskRefitQwenLargeSFiftyBFourPct` | `\ensuremath{+11.5}` | Qwen2.5-3B 50%+4: Q->P P-mask refit I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioQPPmaskRefitQwenLargeSFiftyBFourPct` | `\ensuremath{+5.6}` | Qwen2.5-3B 50%+4: Q->P P-mask refit I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoSubQPPmaskRefitQwenLargeSFiftyBFourPct` | `0` | Qwen2.5-3B 50%+4: Q->P P-mask refit sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioPQStaleQwenLargeSFiftyBFourPct` | `\ensuremath{+0.8}` | Qwen2.5-3B 50%+4: P->Q stale grid I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoSubPQStaleQwenLargeSFiftyBFourPct` | `56` | Qwen2.5-3B 50%+4: P->Q stale grid sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioPQStaleQwenLargeSFiftyBFourPct` | `\ensuremath{-3.2}` | Qwen2.5-3B 50%+4: P->Q stale grid I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoSubPQStaleQwenLargeSFiftyBFourPct` | `81` | Qwen2.5-3B 50%+4: P->Q stale grid sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoBlockZeroJointQwenLargeSFiftyBFourPct` | `\ensuremath{-5.2}` | Qwen2.5-3B 50%+4: joint ratio, block 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoDeeperJointQwenLargeSFiftyBFourPct` | `\ensuremath{-6.5}` | Qwen2.5-3B 50%+4: joint ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoDeeperJointQwenLargeSFiftyBFourPct` | `\ensuremath{-6.3}` | Qwen2.5-3B 50%+4: joint ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoBlockZeroPQQwenLargeSFiftyBFourPct` | `\ensuremath{-1.0}` | Qwen2.5-3B 50%+4: P->Q ratio, block 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoDeeperPQQwenLargeSFiftyBFourPct` | `\ensuremath{-2.5}` | Qwen2.5-3B 50%+4: P->Q ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoDeeperPQQwenLargeSFiftyBFourPct` | `\ensuremath{-3.9}` | Qwen2.5-3B 50%+4: P->Q ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoBlockZeroQPQwenLargeSFiftyBFourPct` | `\ensuremath{+10.9}` | Qwen2.5-3B 50%+4: Q->P ratio, block 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoDeeperQPQwenLargeSFiftyBFourPct` | `\ensuremath{+10.3}` | Qwen2.5-3B 50%+4: Q->P ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoPenaltyQwenLargeSFiftyBFourPct` | `\ensuremath{+12.2}` | Qwen2.5-3B 50%+4: Q->P penalty, % of P->Q summed error | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRemovedRefitQwenLargeSFiftyBFourPct` | `\ensuremath{+7}` | Qwen2.5-3B 50%+4: share of the Q->P penalty removed by Q->P refit (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRemovedPmaskQwenLargeSFiftyBFourPct` | `\ensuremath{-15}` | Qwen2.5-3B 50%+4: share of the Q->P penalty removed by Q->P P-mask (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRemovedBothQwenLargeSFiftyBFourPct` | `\ensuremath{-5}` | Qwen2.5-3B 50%+4: share of the Q->P penalty removed by Q->P P-mask refit (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoStaleQwenLargeSFiftyBFourPct` | `\ensuremath{+2.0}` | Qwen2.5-3B 50%+4: stale grid imposed on P->Q (% of its error) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoMaskQualityQwenLargeSFiftyBFour` | `1.15` | Qwen2.5-3B 50%+4: median pruning-only error ratio, Q->P mask / SparseGPT mask | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoJaccardQwenLargeSFiftyBFour` | `0.85` | Qwen2.5-3B 50%+4: median Jaccard overlap of the masks | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRhoQwenLargeSFiftyBFour` | `\ensuremath{-0.46}` | Qwen2.5-3B 50%+4: Spearman rho, P->Q layer ratio vs h_corr_index | reports/analysis/e2_spearman.csv |
-| `\resETwoRhoPQwenLargeSFiftyBFour` | `0.211` | Qwen2.5-3B 50%+4: p-value of that rho | reports/analysis/e2_spearman.csv |
-| `\resETwoLayersQwenLargeSTwentyFiveBThree` | `9` | Qwen2.5-3B 25%+3: layers in E2 | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioJointQwenLargeSTwentyFiveBThreePct` | `\ensuremath{-7.1}` | Qwen2.5-3B 25%+3: joint I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoDeeperQPQwenLargeSFiftyBFourPct` | `\ensuremath{+6.1}` | Qwen2.5-3B 50%+4: Q->P ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoPenaltyQwenLargeSFiftyBFourPct` | `\ensuremath{+10.5}` | Qwen2.5-3B 50%+4: Q->P penalty, % of P->Q summed error | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRemovedRefitQwenLargeSFiftyBFourPct` | `\ensuremath{-3}` | Qwen2.5-3B 50%+4: share of the Q->P penalty removed by Q->P refit (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRemovedPmaskQwenLargeSFiftyBFourPct` | `\ensuremath{+11}` | Qwen2.5-3B 50%+4: share of the Q->P penalty removed by Q->P P-mask (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRemovedBothQwenLargeSFiftyBFourPct` | `\ensuremath{+9}` | Qwen2.5-3B 50%+4: share of the Q->P penalty removed by Q->P P-mask refit (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoStaleQwenLargeSFiftyBFourPct` | `\ensuremath{+0.5}` | Qwen2.5-3B 50%+4: stale grid imposed on P->Q (% of its error) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoMaskQualityQwenLargeSFiftyBFour` | `1.12` | Qwen2.5-3B 50%+4: median pruning-only error ratio, Q->P mask / SparseGPT mask | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoJaccardQwenLargeSFiftyBFour` | `0.86` | Qwen2.5-3B 50%+4: median Jaccard overlap of the masks | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRhoQwenLargeSFiftyBFour` | `\ensuremath{+0.59}` | Qwen2.5-3B 50%+4: Spearman rho, P->Q layer ratio vs h_corr_index | reports/analysis/e2_spearman.csv |
+| `\resETwoRhoPQwenLargeSFiftyBFour` | `\ensuremath{4.77\times 10^{-7}}` | Qwen2.5-3B 50%+4: p-value of that rho | reports/analysis/e2_spearman.csv |
+| `\resETwoLayersQwenLargeSTwentyFiveBThree` | `63` | Qwen2.5-3B 25%+3: layers in E2 | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioJointQwenLargeSTwentyFiveBThreePct` | `\ensuremath{-7.7}` | Qwen2.5-3B 25%+3: joint I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoSubJointQwenLargeSTwentyFiveBThreePct` | `100` | Qwen2.5-3B 25%+3: joint sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioPQQwenLargeSTwentyFiveBThreePct` | `\ensuremath{+3.2}` | Qwen2.5-3B 25%+3: P->Q I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoSubPQQwenLargeSTwentyFiveBThreePct` | `33` | Qwen2.5-3B 25%+3: P->Q sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioQPQwenLargeSTwentyFiveBThreePct` | `\ensuremath{-8.3}` | Qwen2.5-3B 25%+3: Q->P I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioPQQwenLargeSTwentyFiveBThreePct` | `\ensuremath{-2.8}` | Qwen2.5-3B 25%+3: P->Q I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoSubPQQwenLargeSTwentyFiveBThreePct` | `71` | Qwen2.5-3B 25%+3: P->Q sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioQPQwenLargeSTwentyFiveBThreePct` | `\ensuremath{-8.5}` | Qwen2.5-3B 25%+3: Q->P I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoSubQPQwenLargeSTwentyFiveBThreePct` | `100` | Qwen2.5-3B 25%+3: Q->P sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioQPRefitQwenLargeSTwentyFiveBThreePct` | `\ensuremath{-4.6}` | Qwen2.5-3B 25%+3: Q->P refit I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoSubQPRefitQwenLargeSTwentyFiveBThreePct` | `78` | Qwen2.5-3B 25%+3: Q->P refit sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioQPPmaskQwenLargeSTwentyFiveBThreePct` | `\ensuremath{+18.2}` | Qwen2.5-3B 25%+3: Q->P P-mask I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoSubQPPmaskQwenLargeSTwentyFiveBThreePct` | `0` | Qwen2.5-3B 25%+3: Q->P P-mask sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioQPPmaskRefitQwenLargeSTwentyFiveBThreePct` | `\ensuremath{+24.1}` | Qwen2.5-3B 25%+3: Q->P P-mask refit I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoSubQPPmaskRefitQwenLargeSTwentyFiveBThreePct` | `0` | Qwen2.5-3B 25%+3: Q->P P-mask refit sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioPQStaleQwenLargeSTwentyFiveBThreePct` | `\ensuremath{+3.4}` | Qwen2.5-3B 25%+3: P->Q stale grid I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoSubPQStaleQwenLargeSTwentyFiveBThreePct` | `33` | Qwen2.5-3B 25%+3: P->Q stale grid sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioQPRefitQwenLargeSTwentyFiveBThreePct` | `\ensuremath{-6.6}` | Qwen2.5-3B 25%+3: Q->P refit I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoSubQPRefitQwenLargeSTwentyFiveBThreePct` | `89` | Qwen2.5-3B 25%+3: Q->P refit sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioQPPmaskQwenLargeSTwentyFiveBThreePct` | `\ensuremath{+3.7}` | Qwen2.5-3B 25%+3: Q->P P-mask I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoSubQPPmaskQwenLargeSTwentyFiveBThreePct` | `29` | Qwen2.5-3B 25%+3: Q->P P-mask sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioQPPmaskRefitQwenLargeSTwentyFiveBThreePct` | `\ensuremath{+7.0}` | Qwen2.5-3B 25%+3: Q->P P-mask refit I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoSubQPPmaskRefitQwenLargeSTwentyFiveBThreePct` | `11` | Qwen2.5-3B 25%+3: Q->P P-mask refit sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioPQStaleQwenLargeSTwentyFiveBThreePct` | `\ensuremath{-2.5}` | Qwen2.5-3B 25%+3: P->Q stale grid I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoSubPQStaleQwenLargeSTwentyFiveBThreePct` | `67` | Qwen2.5-3B 25%+3: P->Q stale grid sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoBlockZeroJointQwenLargeSTwentyFiveBThreePct` | `\ensuremath{-7.6}` | Qwen2.5-3B 25%+3: joint ratio, block 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoDeeperJointQwenLargeSTwentyFiveBThreePct` | `\ensuremath{-4.6}` | Qwen2.5-3B 25%+3: joint ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoDeeperJointQwenLargeSTwentyFiveBThreePct` | `\ensuremath{-7.7}` | Qwen2.5-3B 25%+3: joint ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoBlockZeroPQQwenLargeSTwentyFiveBThreePct` | `\ensuremath{+3.8}` | Qwen2.5-3B 25%+3: P->Q ratio, block 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoDeeperPQQwenLargeSTwentyFiveBThreePct` | `\ensuremath{+0.7}` | Qwen2.5-3B 25%+3: P->Q ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoDeeperPQQwenLargeSTwentyFiveBThreePct` | `\ensuremath{-3.3}` | Qwen2.5-3B 25%+3: P->Q ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoBlockZeroQPQwenLargeSTwentyFiveBThreePct` | `\ensuremath{-8.9}` | Qwen2.5-3B 25%+3: Q->P ratio, block 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoDeeperQPQwenLargeSTwentyFiveBThreePct` | `\ensuremath{-5.7}` | Qwen2.5-3B 25%+3: Q->P ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoPenaltyQwenLargeSTwentyFiveBThreePct` | `\ensuremath{-11.2}` | Qwen2.5-3B 25%+3: Q->P penalty, % of P->Q summed error | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoDeeperQPQwenLargeSTwentyFiveBThreePct` | `\ensuremath{-8.5}` | Qwen2.5-3B 25%+3: Q->P ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoPenaltyQwenLargeSTwentyFiveBThreePct` | `\ensuremath{-5.9}` | Qwen2.5-3B 25%+3: Q->P penalty, % of P->Q summed error | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoRemovedRefitQwenLargeSTwentyFiveBThreePct` | `--` | Qwen2.5-3B 25%+3: share of the Q->P penalty removed by Q->P refit (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoRemovedPmaskQwenLargeSTwentyFiveBThreePct` | `--` | Qwen2.5-3B 25%+3: share of the Q->P penalty removed by Q->P P-mask (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoRemovedBothQwenLargeSTwentyFiveBThreePct` | `--` | Qwen2.5-3B 25%+3: share of the Q->P penalty removed by Q->P P-mask refit (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoStaleQwenLargeSTwentyFiveBThreePct` | `\ensuremath{+0.2}` | Qwen2.5-3B 25%+3: stale grid imposed on P->Q (% of its error) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoMaskQualityQwenLargeSTwentyFiveBThree` | `4.03` | Qwen2.5-3B 25%+3: median pruning-only error ratio, Q->P mask / SparseGPT mask | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoJaccardQwenLargeSTwentyFiveBThree` | `0.53` | Qwen2.5-3B 25%+3: median Jaccard overlap of the masks | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRhoQwenLargeSTwentyFiveBThree` | `\ensuremath{-0.46}` | Qwen2.5-3B 25%+3: Spearman rho, P->Q layer ratio vs h_corr_index | reports/analysis/e2_spearman.csv |
-| `\resETwoRhoPQwenLargeSTwentyFiveBThree` | `0.211` | Qwen2.5-3B 25%+3: p-value of that rho | reports/analysis/e2_spearman.csv |
-| `\resETwoLayersQwenLargeSThirtyThreeBThree` | `9` | Qwen2.5-3B 33%+3: layers in E2 | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioJointQwenLargeSThirtyThreeBThreePct` | `\ensuremath{-13.2}` | Qwen2.5-3B 33%+3: joint I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoStaleQwenLargeSTwentyFiveBThreePct` | `\ensuremath{+0.3}` | Qwen2.5-3B 25%+3: stale grid imposed on P->Q (% of its error) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoMaskQualityQwenLargeSTwentyFiveBThree` | `3.40` | Qwen2.5-3B 25%+3: median pruning-only error ratio, Q->P mask / SparseGPT mask | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoJaccardQwenLargeSTwentyFiveBThree` | `0.55` | Qwen2.5-3B 25%+3: median Jaccard overlap of the masks | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRhoQwenLargeSTwentyFiveBThree` | `\ensuremath{+0.42}` | Qwen2.5-3B 25%+3: Spearman rho, P->Q layer ratio vs h_corr_index | reports/analysis/e2_spearman.csv |
+| `\resETwoRhoPQwenLargeSTwentyFiveBThree` | `\ensuremath{5.62\times 10^{-4}}` | Qwen2.5-3B 25%+3: p-value of that rho | reports/analysis/e2_spearman.csv |
+| `\resETwoLayersQwenLargeSThirtyThreeBThree` | `63` | Qwen2.5-3B 33%+3: layers in E2 | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioJointQwenLargeSThirtyThreeBThreePct` | `\ensuremath{-14.2}` | Qwen2.5-3B 33%+3: joint I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoSubJointQwenLargeSThirtyThreeBThreePct` | `100` | Qwen2.5-3B 33%+3: joint sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioPQQwenLargeSThirtyThreeBThreePct` | `\ensuremath{+0.9}` | Qwen2.5-3B 33%+3: P->Q I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoSubPQQwenLargeSThirtyThreeBThreePct` | `56` | Qwen2.5-3B 33%+3: P->Q sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioQPQwenLargeSThirtyThreeBThreePct` | `\ensuremath{-11.6}` | Qwen2.5-3B 33%+3: Q->P I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioPQQwenLargeSThirtyThreeBThreePct` | `\ensuremath{-7.0}` | Qwen2.5-3B 33%+3: P->Q I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoSubPQQwenLargeSThirtyThreeBThreePct` | `79` | Qwen2.5-3B 33%+3: P->Q sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioQPQwenLargeSThirtyThreeBThreePct` | `\ensuremath{-12.3}` | Qwen2.5-3B 33%+3: Q->P I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoSubQPQwenLargeSThirtyThreeBThreePct` | `100` | Qwen2.5-3B 33%+3: Q->P sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioQPRefitQwenLargeSThirtyThreeBThreePct` | `\ensuremath{-7.4}` | Qwen2.5-3B 33%+3: Q->P refit I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoSubQPRefitQwenLargeSThirtyThreeBThreePct` | `67` | Qwen2.5-3B 33%+3: Q->P refit sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioQPPmaskQwenLargeSThirtyThreeBThreePct` | `\ensuremath{+21.6}` | Qwen2.5-3B 33%+3: Q->P P-mask I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoSubQPPmaskQwenLargeSThirtyThreeBThreePct` | `0` | Qwen2.5-3B 33%+3: Q->P P-mask sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioQPPmaskRefitQwenLargeSThirtyThreeBThreePct` | `\ensuremath{+27.9}` | Qwen2.5-3B 33%+3: Q->P P-mask refit I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoSubQPPmaskRefitQwenLargeSThirtyThreeBThreePct` | `0` | Qwen2.5-3B 33%+3: Q->P P-mask refit sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioPQStaleQwenLargeSThirtyThreeBThreePct` | `\ensuremath{+0.8}` | Qwen2.5-3B 33%+3: P->Q stale grid I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoSubPQStaleQwenLargeSThirtyThreeBThreePct` | `67` | Qwen2.5-3B 33%+3: P->Q stale grid sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioQPRefitQwenLargeSThirtyThreeBThreePct` | `\ensuremath{-10.1}` | Qwen2.5-3B 33%+3: Q->P refit I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoSubQPRefitQwenLargeSThirtyThreeBThreePct` | `90` | Qwen2.5-3B 33%+3: Q->P refit sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioQPPmaskQwenLargeSThirtyThreeBThreePct` | `\ensuremath{+3.3}` | Qwen2.5-3B 33%+3: Q->P P-mask I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoSubQPPmaskQwenLargeSThirtyThreeBThreePct` | `35` | Qwen2.5-3B 33%+3: Q->P P-mask sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioQPPmaskRefitQwenLargeSThirtyThreeBThreePct` | `\ensuremath{+7.1}` | Qwen2.5-3B 33%+3: Q->P P-mask refit I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoSubQPPmaskRefitQwenLargeSThirtyThreeBThreePct` | `17` | Qwen2.5-3B 33%+3: Q->P P-mask refit sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioPQStaleQwenLargeSThirtyThreeBThreePct` | `\ensuremath{-6.8}` | Qwen2.5-3B 33%+3: P->Q stale grid I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoSubPQStaleQwenLargeSThirtyThreeBThreePct` | `78` | Qwen2.5-3B 33%+3: P->Q stale grid sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoBlockZeroJointQwenLargeSThirtyThreeBThreePct` | `\ensuremath{-14.0}` | Qwen2.5-3B 33%+3: joint ratio, block 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoDeeperJointQwenLargeSThirtyThreeBThreePct` | `\ensuremath{-9.1}` | Qwen2.5-3B 33%+3: joint ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoDeeperJointQwenLargeSThirtyThreeBThreePct` | `\ensuremath{-14.2}` | Qwen2.5-3B 33%+3: joint ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoBlockZeroPQQwenLargeSThirtyThreeBThreePct` | `\ensuremath{+1.3}` | Qwen2.5-3B 33%+3: P->Q ratio, block 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoDeeperPQQwenLargeSThirtyThreeBThreePct` | `\ensuremath{-0.8}` | Qwen2.5-3B 33%+3: P->Q ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoDeeperPQQwenLargeSThirtyThreeBThreePct` | `\ensuremath{-7.6}` | Qwen2.5-3B 33%+3: P->Q ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoBlockZeroQPQwenLargeSThirtyThreeBThreePct` | `\ensuremath{-11.5}` | Qwen2.5-3B 33%+3: Q->P ratio, block 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoDeeperQPQwenLargeSThirtyThreeBThreePct` | `\ensuremath{-12.0}` | Qwen2.5-3B 33%+3: Q->P ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoPenaltyQwenLargeSThirtyThreeBThreePct` | `\ensuremath{-12.4}` | Qwen2.5-3B 33%+3: Q->P penalty, % of P->Q summed error | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoDeeperQPQwenLargeSThirtyThreeBThreePct` | `\ensuremath{-12.4}` | Qwen2.5-3B 33%+3: Q->P ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoPenaltyQwenLargeSThirtyThreeBThreePct` | `\ensuremath{-5.7}` | Qwen2.5-3B 33%+3: Q->P penalty, % of P->Q summed error | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoRemovedRefitQwenLargeSThirtyThreeBThreePct` | `--` | Qwen2.5-3B 33%+3: share of the Q->P penalty removed by Q->P refit (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoRemovedPmaskQwenLargeSThirtyThreeBThreePct` | `--` | Qwen2.5-3B 33%+3: share of the Q->P penalty removed by Q->P P-mask (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoRemovedBothQwenLargeSThirtyThreeBThreePct` | `--` | Qwen2.5-3B 33%+3: share of the Q->P penalty removed by Q->P P-mask refit (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoStaleQwenLargeSThirtyThreeBThreePct` | `\ensuremath{-0.1}` | Qwen2.5-3B 33%+3: stale grid imposed on P->Q (% of its error) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoMaskQualityQwenLargeSThirtyThreeBThree` | `2.47` | Qwen2.5-3B 33%+3: median pruning-only error ratio, Q->P mask / SparseGPT mask | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoJaccardQwenLargeSThirtyThreeBThree` | `0.65` | Qwen2.5-3B 33%+3: median Jaccard overlap of the masks | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRhoQwenLargeSThirtyThreeBThree` | `\ensuremath{-0.44}` | Qwen2.5-3B 33%+3: Spearman rho, P->Q layer ratio vs h_corr_index | reports/analysis/e2_spearman.csv |
-| `\resETwoRhoPQwenLargeSThirtyThreeBThree` | `0.241` | Qwen2.5-3B 33%+3: p-value of that rho | reports/analysis/e2_spearman.csv |
-| `\resETwoLayersQwenLargeSFiftyBThree` | `9` | Qwen2.5-3B 50%+3: layers in E2 | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioJointQwenLargeSFiftyBThreePct` | `\ensuremath{-15.1}` | Qwen2.5-3B 50%+3: joint I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoStaleQwenLargeSThirtyThreeBThreePct` | `\ensuremath{+0.3}` | Qwen2.5-3B 33%+3: stale grid imposed on P->Q (% of its error) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoMaskQualityQwenLargeSThirtyThreeBThree` | `1.94` | Qwen2.5-3B 33%+3: median pruning-only error ratio, Q->P mask / SparseGPT mask | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoJaccardQwenLargeSThirtyThreeBThree` | `0.71` | Qwen2.5-3B 33%+3: median Jaccard overlap of the masks | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRhoQwenLargeSThirtyThreeBThree` | `\ensuremath{+0.46}` | Qwen2.5-3B 33%+3: Spearman rho, P->Q layer ratio vs h_corr_index | reports/analysis/e2_spearman.csv |
+| `\resETwoRhoPQwenLargeSThirtyThreeBThree` | `\ensuremath{1.40\times 10^{-4}}` | Qwen2.5-3B 33%+3: p-value of that rho | reports/analysis/e2_spearman.csv |
+| `\resETwoLayersQwenLargeSFiftyBThree` | `63` | Qwen2.5-3B 50%+3: layers in E2 | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioJointQwenLargeSFiftyBThreePct` | `\ensuremath{-17.0}` | Qwen2.5-3B 50%+3: joint I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoSubJointQwenLargeSFiftyBThreePct` | `100` | Qwen2.5-3B 50%+3: joint sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioPQQwenLargeSFiftyBThreePct` | `\ensuremath{-3.0}` | Qwen2.5-3B 50%+3: P->Q I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoSubPQQwenLargeSFiftyBThreePct` | `67` | Qwen2.5-3B 50%+3: P->Q sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioQPQwenLargeSFiftyBThreePct` | `\ensuremath{+12.1}` | Qwen2.5-3B 50%+3: Q->P I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoSubQPQwenLargeSFiftyBThreePct` | `0` | Qwen2.5-3B 50%+3: Q->P sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioQPRefitQwenLargeSFiftyBThreePct` | `\ensuremath{+16.1}` | Qwen2.5-3B 50%+3: Q->P refit I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoSubQPRefitQwenLargeSFiftyBThreePct` | `0` | Qwen2.5-3B 50%+3: Q->P refit sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioQPPmaskQwenLargeSFiftyBThreePct` | `\ensuremath{+19.1}` | Qwen2.5-3B 50%+3: Q->P P-mask I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoSubQPPmaskQwenLargeSFiftyBThreePct` | `0` | Qwen2.5-3B 50%+3: Q->P P-mask sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioQPPmaskRefitQwenLargeSFiftyBThreePct` | `\ensuremath{+23.9}` | Qwen2.5-3B 50%+3: Q->P P-mask refit I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoSubQPPmaskRefitQwenLargeSFiftyBThreePct` | `0` | Qwen2.5-3B 50%+3: Q->P P-mask refit sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRatioPQStaleQwenLargeSFiftyBThreePct` | `\ensuremath{-3.6}` | Qwen2.5-3B 50%+3: P->Q stale grid I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoSubPQStaleQwenLargeSFiftyBThreePct` | `67` | Qwen2.5-3B 50%+3: P->Q stale grid sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioPQQwenLargeSFiftyBThreePct` | `\ensuremath{-10.2}` | Qwen2.5-3B 50%+3: P->Q I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoSubPQQwenLargeSFiftyBThreePct` | `86` | Qwen2.5-3B 50%+3: P->Q sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioQPQwenLargeSFiftyBThreePct` | `\ensuremath{+5.6}` | Qwen2.5-3B 50%+3: Q->P I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoSubQPQwenLargeSFiftyBThreePct` | `21` | Qwen2.5-3B 50%+3: Q->P sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioQPRefitQwenLargeSFiftyBThreePct` | `\ensuremath{+8.6}` | Qwen2.5-3B 50%+3: Q->P refit I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoSubQPRefitQwenLargeSFiftyBThreePct` | `13` | Qwen2.5-3B 50%+3: Q->P refit sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioQPPmaskQwenLargeSFiftyBThreePct` | `\ensuremath{+2.9}` | Qwen2.5-3B 50%+3: Q->P P-mask I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoSubQPPmaskQwenLargeSFiftyBThreePct` | `29` | Qwen2.5-3B 50%+3: Q->P P-mask sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioQPPmaskRefitQwenLargeSFiftyBThreePct` | `\ensuremath{+6.0}` | Qwen2.5-3B 50%+3: Q->P P-mask refit I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoSubQPPmaskRefitQwenLargeSFiftyBThreePct` | `17` | Qwen2.5-3B 50%+3: Q->P P-mask refit sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRatioPQStaleQwenLargeSFiftyBThreePct` | `\ensuremath{-10.3}` | Qwen2.5-3B 50%+3: P->Q stale grid I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoSubPQStaleQwenLargeSFiftyBThreePct` | `86` | Qwen2.5-3B 50%+3: P->Q stale grid sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoBlockZeroJointQwenLargeSFiftyBThreePct` | `\ensuremath{-15.3}` | Qwen2.5-3B 50%+3: joint ratio, block 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoDeeperJointQwenLargeSFiftyBThreePct` | `\ensuremath{-13.4}` | Qwen2.5-3B 50%+3: joint ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoDeeperJointQwenLargeSFiftyBThreePct` | `\ensuremath{-17.1}` | Qwen2.5-3B 50%+3: joint ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoBlockZeroPQQwenLargeSFiftyBThreePct` | `\ensuremath{-2.9}` | Qwen2.5-3B 50%+3: P->Q ratio, block 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoDeeperPQQwenLargeSFiftyBThreePct` | `\ensuremath{-3.9}` | Qwen2.5-3B 50%+3: P->Q ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoDeeperPQQwenLargeSFiftyBThreePct` | `\ensuremath{-10.8}` | Qwen2.5-3B 50%+3: P->Q ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoBlockZeroQPQwenLargeSFiftyBThreePct` | `\ensuremath{+14.1}` | Qwen2.5-3B 50%+3: Q->P ratio, block 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoDeeperQPQwenLargeSFiftyBThreePct` | `\ensuremath{+0.6}` | Qwen2.5-3B 50%+3: Q->P ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoPenaltyQwenLargeSFiftyBThreePct` | `\ensuremath{+15.6}` | Qwen2.5-3B 50%+3: Q->P penalty, % of P->Q summed error | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRemovedRefitQwenLargeSFiftyBThreePct` | `\ensuremath{-27}` | Qwen2.5-3B 50%+3: share of the Q->P penalty removed by Q->P refit (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRemovedPmaskQwenLargeSFiftyBThreePct` | `\ensuremath{-46}` | Qwen2.5-3B 50%+3: share of the Q->P penalty removed by Q->P P-mask (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRemovedBothQwenLargeSFiftyBThreePct` | `\ensuremath{-78}` | Qwen2.5-3B 50%+3: share of the Q->P penalty removed by Q->P P-mask refit (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoStaleQwenLargeSFiftyBThreePct` | `\ensuremath{-0.6}` | Qwen2.5-3B 50%+3: stale grid imposed on P->Q (% of its error) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoMaskQualityQwenLargeSFiftyBThree` | `1.67` | Qwen2.5-3B 50%+3: median pruning-only error ratio, Q->P mask / SparseGPT mask | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoJaccardQwenLargeSFiftyBThree` | `0.74` | Qwen2.5-3B 50%+3: median Jaccard overlap of the masks | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
-| `\resETwoRhoQwenLargeSFiftyBThree` | `\ensuremath{-0.46}` | Qwen2.5-3B 50%+3: Spearman rho, P->Q layer ratio vs h_corr_index | reports/analysis/e2_spearman.csv |
-| `\resETwoRhoPQwenLargeSFiftyBThree` | `0.211` | Qwen2.5-3B 50%+3: p-value of that rho | reports/analysis/e2_spearman.csv |
+| `\resETwoDeeperQPQwenLargeSFiftyBThreePct` | `\ensuremath{+5.0}` | Qwen2.5-3B 50%+3: Q->P ratio, blocks > 0 (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoPenaltyQwenLargeSFiftyBThreePct` | `\ensuremath{+17.7}` | Qwen2.5-3B 50%+3: Q->P penalty, % of P->Q summed error | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRemovedRefitQwenLargeSFiftyBThreePct` | `\ensuremath{-19}` | Qwen2.5-3B 50%+3: share of the Q->P penalty removed by Q->P refit (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRemovedPmaskQwenLargeSFiftyBThreePct` | `\ensuremath{+17}` | Qwen2.5-3B 50%+3: share of the Q->P penalty removed by Q->P P-mask (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRemovedBothQwenLargeSFiftyBThreePct` | `\ensuremath{-2}` | Qwen2.5-3B 50%+3: share of the Q->P penalty removed by Q->P P-mask refit (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoStaleQwenLargeSFiftyBThreePct` | `\ensuremath{-0.1}` | Qwen2.5-3B 50%+3: stale grid imposed on P->Q (% of its error) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoMaskQualityQwenLargeSFiftyBThree` | `1.53` | Qwen2.5-3B 50%+3: median pruning-only error ratio, Q->P mask / SparseGPT mask | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoJaccardQwenLargeSFiftyBThree` | `0.72` | Qwen2.5-3B 50%+3: median Jaccard overlap of the masks | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
+| `\resETwoRhoQwenLargeSFiftyBThree` | `\ensuremath{+0.53}` | Qwen2.5-3B 50%+3: Spearman rho, P->Q layer ratio vs h_corr_index | reports/analysis/e2_spearman.csv |
+| `\resETwoRhoPQwenLargeSFiftyBThree` | `\ensuremath{6.47\times 10^{-6}}` | Qwen2.5-3B 50%+3: p-value of that rho | reports/analysis/e2_spearman.csv |
 | `\resETwoLayersSmolLargeSTwentyFiveBFour` | `42` | SmolLM2-1.7B 25%+4: layers in E2 | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoRatioJointSmolLargeSTwentyFiveBFourPct` | `\ensuremath{-12.7}` | SmolLM2-1.7B 25%+4: joint I_E/(E_P+E_Q), sums over layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
 | `\resETwoSubJointSmolLargeSTwentyFiveBFourPct` | `100` | SmolLM2-1.7B 25%+4: joint sub-additive layers (%) | reports/analysis/e2_cells.csv (scripts/analysis/e2.py, formulas of ablation_same_hessian.summarize) |
@@ -2710,9 +2710,9 @@ Columns:
 | `\resETwoSubJointMaxPct` | `100` | R12: largest share of sub-additive layers, joint (%) | reports/analysis/e2_cells.csv (18 model-cells; planned E2 layer lines still missing: 0) |
 | `\resETwoSubPQMinPct` | `60` | R13: smallest share of sub-additive layers, P->Q, over cells (%) | reports/analysis/e2_cells.csv (18 model-cells; planned E2 layer lines still missing: 0) |
 | `\resETwoSubPQMaxPct` | `92` | R14: largest share of sub-additive layers, P->Q (%) | reports/analysis/e2_cells.csv (18 model-cells; planned E2 layer lines still missing: 0) |
-| `\resETwoRhoMin` | `\ensuremath{-0.46}` | R15: smallest Spearman rho, P->Q layer ratio vs h_corr_index | reports/analysis/e2_spearman.csv (arm p_then_q, 42 model-cells) |
+| `\resETwoRhoMin` | `\ensuremath{+0.29}` | R15: smallest Spearman rho, P->Q layer ratio vs h_corr_index | reports/analysis/e2_spearman.csv (arm p_then_q, 42 model-cells) |
 | `\resETwoRhoMax` | `\ensuremath{+0.72}` | R16: largest of those rhos | reports/analysis/e2_spearman.csv (arm p_then_q, 42 model-cells) |
-| `\resETwoRhoPMax` | `0.241` | R17: largest p-value of those rhos | reports/analysis/e2_spearman.csv (arm p_then_q, 42 model-cells) |
+| `\resETwoRhoPMax` | `0.029` | R17: largest p-value of those rhos | reports/analysis/e2_spearman.csv (arm p_then_q, 42 model-cells) |
 | `\resETwoBlockZeroSuperPQSmolSmall` | `1` | R18: SmolLM2-135M, cells (of 6) where the P->Q ratio of block 0 is > 0 | reports/analysis/e2_cells.csv (18 model-cells; planned E2 layer lines still missing: 0) |
 | `\resETwoBlockZeroSuperPQSmolMedium` | `6` | R18: SmolLM2-360M, cells (of 6) where the P->Q ratio of block 0 is > 0 | reports/analysis/e2_cells.csv (18 model-cells; planned E2 layer lines still missing: 0) |
 | `\resETwoBlockZeroSuperPQQwen` | `0` | R18: Qwen2.5-0.5B, cells (of 6) where the P->Q ratio of block 0 is > 0 | reports/analysis/e2_cells.csv (18 model-cells; planned E2 layer lines still missing: 0) |
@@ -4670,7 +4670,7 @@ Columns:
 
 | Macro | Value | Meaning | Source |
 |---|---|---|---|
-| `\resETwoIncompleteModels` | `Qwen2.5-3B` | models whose E2 run stopped before its planned layers (left out of the group macros) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoIncompleteModels` | `none` | models whose E2 run stopped before its planned layers (left out of the group macros) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoLayersSmolSmall` | `105` | SmolLM2-135M: linear layers with E2 lines | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoBlocksSmolSmall` | `15` | SmolLM2-135M: decoder blocks with E2 lines | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGapSmolSmallSTwentyFiveBFourPct` | `\ensuremath{+13.7}` | SmolLM2-135M 25%+4: 100 (E_QP - E_PQ) / E_PQ (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
@@ -4801,6 +4801,32 @@ Columns:
 | `\resETwoSplitMaskSmolLargeSFiftyBThreePct` | `\ensuremath{+11.0}` | SmolLM2-1.7B 50%+3: part due to the mask (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitOrderSmolLargeSFiftyBThreePct` | `\ensuremath{+14.0}` | SmolLM2-1.7B 50%+3: part due to the update order (same mask and grid) (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGridSmolLargeSFiftyBThreePct` | `\ensuremath{-0.1}` | SmolLM2-1.7B 50%+3: part due to the grid (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoLayersQwenLarge` | `63` | Qwen2.5-3B: linear layers with E2 lines | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoBlocksQwenLarge` | `9` | Qwen2.5-3B: decoder blocks with E2 lines | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitGapQwenLargeSTwentyFiveBFourPct` | `\ensuremath{+14.4}` | Qwen2.5-3B 25%+4: 100 (E_QP - E_PQ) / E_PQ (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitMaskQwenLargeSTwentyFiveBFourPct` | `\ensuremath{-1.1}` | Qwen2.5-3B 25%+4: part due to the mask (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitOrderQwenLargeSTwentyFiveBFourPct` | `\ensuremath{+15.3}` | Qwen2.5-3B 25%+4: part due to the update order (same mask and grid) (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitGridQwenLargeSTwentyFiveBFourPct` | `\ensuremath{+0.2}` | Qwen2.5-3B 25%+4: part due to the grid (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitGapQwenLargeSThirtyThreeBFourPct` | `\ensuremath{+16.6}` | Qwen2.5-3B 33%+4: 100 (E_QP - E_PQ) / E_PQ (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitMaskQwenLargeSThirtyThreeBFourPct` | `\ensuremath{+0.8}` | Qwen2.5-3B 33%+4: part due to the mask (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitOrderQwenLargeSThirtyThreeBFourPct` | `\ensuremath{+15.6}` | Qwen2.5-3B 33%+4: part due to the update order (same mask and grid) (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitGridQwenLargeSThirtyThreeBFourPct` | `\ensuremath{+0.2}` | Qwen2.5-3B 33%+4: part due to the grid (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitGapQwenLargeSFiftyBFourPct` | `\ensuremath{+10.5}` | Qwen2.5-3B 50%+4: 100 (E_QP - E_PQ) / E_PQ (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitMaskQwenLargeSFiftyBFourPct` | `\ensuremath{+1.1}` | Qwen2.5-3B 50%+4: part due to the mask (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitOrderQwenLargeSFiftyBFourPct` | `\ensuremath{+8.9}` | Qwen2.5-3B 50%+4: part due to the update order (same mask and grid) (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitGridQwenLargeSFiftyBFourPct` | `\ensuremath{+0.5}` | Qwen2.5-3B 50%+4: part due to the grid (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitGapQwenLargeSTwentyFiveBThreePct` | `\ensuremath{-5.9}` | Qwen2.5-3B 25%+3: 100 (E_QP - E_PQ) / E_PQ (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitMaskQwenLargeSTwentyFiveBThreePct` | `\ensuremath{-12.6}` | Qwen2.5-3B 25%+3: part due to the mask (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitOrderQwenLargeSTwentyFiveBThreePct` | `\ensuremath{+6.4}` | Qwen2.5-3B 25%+3: part due to the update order (same mask and grid) (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitGridQwenLargeSTwentyFiveBThreePct` | `\ensuremath{+0.3}` | Qwen2.5-3B 25%+3: part due to the grid (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitGapQwenLargeSThirtyThreeBThreePct` | `\ensuremath{-5.7}` | Qwen2.5-3B 33%+3: 100 (E_QP - E_PQ) / E_PQ (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitMaskQwenLargeSThirtyThreeBThreePct` | `\ensuremath{-16.8}` | Qwen2.5-3B 33%+3: part due to the mask (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitOrderQwenLargeSThirtyThreeBThreePct` | `\ensuremath{+10.9}` | Qwen2.5-3B 33%+3: part due to the update order (same mask and grid) (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitGridQwenLargeSThirtyThreeBThreePct` | `\ensuremath{+0.3}` | Qwen2.5-3B 33%+3: part due to the grid (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitGapQwenLargeSFiftyBThreePct` | `\ensuremath{+17.7}` | Qwen2.5-3B 50%+3: 100 (E_QP - E_PQ) / E_PQ (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitMaskQwenLargeSFiftyBThreePct` | `\ensuremath{+3.1}` | Qwen2.5-3B 50%+3: part due to the mask (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitOrderQwenLargeSFiftyBThreePct` | `\ensuremath{+14.7}` | Qwen2.5-3B 50%+3: part due to the update order (same mask and grid) (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitGridQwenLargeSFiftyBThreePct` | `\ensuremath{-0.1}` | Qwen2.5-3B 50%+3: part due to the grid (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoLayersOlmo` | `56` | OLMo-2-0425-1B: linear layers with E2 lines | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoBlocksOlmo` | `8` | OLMo-2-0425-1B: decoder blocks with E2 lines | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGapOlmoSTwentyFiveBFourPct` | `\ensuremath{+25.5}` | OLMo-2-0425-1B 25%+4: 100 (E_QP - E_PQ) / E_PQ (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
@@ -4871,10 +4897,10 @@ Columns:
 | `\resETwoSplitGridMaxAbsCoreBThreePct` | `0.3` | Core, 3-bit cells: largest |grid part| (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitMaskNegFreeZerosCore` | `6` | Core: 25% and 33%+3-bit cells where the mask part is negative (Q->P's mask, which takes the zeros of rounding, is the better one) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitFreeZerosCellsCore` | `6` | Core: 25% and 33%+3-bit cells with the split | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoModelsLarger` | `3` | Larger: models with E2 lines | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoMaskFirstTotalLarger` | `36` | Larger: (model, cell, joint or P->Q) with one shared Hessian | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoMaskFirstSubLarger` | `36` | Larger: of those, sub-additive in aggregate (summed I_E < 0) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitCellsLarger` | `18` | Larger: (model, cell) with the four arms of the split | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoModelsLarger` | `4` | Larger: models with E2 lines | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoMaskFirstTotalLarger` | `48` | Larger: (model, cell, joint or P->Q) with one shared Hessian | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoMaskFirstSubLarger` | `48` | Larger: of those, sub-additive in aggregate (summed I_E < 0) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitCellsLarger` | `24` | Larger: (model, cell) with the four arms of the split | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGapMinLargerPct` | `\ensuremath{-6.9}` | Larger, all cells: smallest gap part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGapMaxLargerPct` | `\ensuremath{+29.8}` | Larger, all cells: largest gap part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitMaskMinLargerPct` | `\ensuremath{-18.0}` | Larger, all cells: smallest mask part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
@@ -4882,11 +4908,11 @@ Columns:
 | `\resETwoSplitOrderMinLargerPct` | `\ensuremath{+5.0}` | Larger, all cells: smallest order part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitOrderMaxLargerPct` | `\ensuremath{+16.4}` | Larger, all cells: largest order part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGridMinLargerPct` | `\ensuremath{-0.1}` | Larger, all cells: smallest grid part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitGridMaxLargerPct` | `\ensuremath{+0.4}` | Larger, all cells: largest grid part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitOrderPosLarger` | `18` | Larger, all cells: cells where the update-order part is positive | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitOrderAboveMaskLarger` | `17` | Larger, all cells: cells where the update-order part is larger than the mask part | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitGapPosLarger` | `14` | Larger, all cells: cells where Q->P has the larger layer error (gap > 0) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitGridMaxAbsLargerPct` | `0.4` | Larger, all cells: largest |grid part| (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitGridMaxLargerPct` | `\ensuremath{+0.5}` | Larger, all cells: largest grid part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitOrderPosLarger` | `24` | Larger, all cells: cells where the update-order part is positive | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitOrderAboveMaskLarger` | `23` | Larger, all cells: cells where the update-order part is larger than the mask part | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitGapPosLarger` | `18` | Larger, all cells: cells where Q->P has the larger layer error (gap > 0) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitGridMaxAbsLargerPct` | `0.5` | Larger, all cells: largest |grid part| (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGapMinLargerBFourPct` | `\ensuremath{+9.9}` | Larger, 4-bit cells: smallest gap part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGapMaxLargerBFourPct` | `\ensuremath{+25.5}` | Larger, 4-bit cells: largest gap part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitMaskMinLargerBFourPct` | `\ensuremath{-2.9}` | Larger, 4-bit cells: smallest mask part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
@@ -4894,31 +4920,31 @@ Columns:
 | `\resETwoSplitOrderMinLargerBFourPct` | `\ensuremath{+7.3}` | Larger, 4-bit cells: smallest order part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitOrderMaxLargerBFourPct` | `\ensuremath{+16.4}` | Larger, 4-bit cells: largest order part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGridMinLargerBFourPct` | `\ensuremath{+0.2}` | Larger, 4-bit cells: smallest grid part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitGridMaxLargerBFourPct` | `\ensuremath{+0.4}` | Larger, 4-bit cells: largest grid part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitOrderPosLargerBFour` | `9` | Larger, 4-bit cells: cells where the update-order part is positive | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitOrderAboveMaskLargerBFour` | `9` | Larger, 4-bit cells: cells where the update-order part is larger than the mask part | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitGapPosLargerBFour` | `9` | Larger, 4-bit cells: cells where Q->P has the larger layer error (gap > 0) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitCellsLargerBFour` | `9` | Larger, 4-bit cells: cells with the split | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitGridMaxAbsLargerBFourPct` | `0.4` | Larger, 4-bit cells: largest |grid part| (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitGridMaxLargerBFourPct` | `\ensuremath{+0.5}` | Larger, 4-bit cells: largest grid part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitOrderPosLargerBFour` | `12` | Larger, 4-bit cells: cells where the update-order part is positive | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitOrderAboveMaskLargerBFour` | `12` | Larger, 4-bit cells: cells where the update-order part is larger than the mask part | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitGapPosLargerBFour` | `12` | Larger, 4-bit cells: cells where Q->P has the larger layer error (gap > 0) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitCellsLargerBFour` | `12` | Larger, 4-bit cells: cells with the split | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitGridMaxAbsLargerBFourPct` | `0.5` | Larger, 4-bit cells: largest |grid part| (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGapMinLargerBThreePct` | `\ensuremath{-6.9}` | Larger, 3-bit cells: smallest gap part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGapMaxLargerBThreePct` | `\ensuremath{+29.8}` | Larger, 3-bit cells: largest gap part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitMaskMinLargerBThreePct` | `\ensuremath{-18.0}` | Larger, 3-bit cells: smallest mask part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitMaskMaxLargerBThreePct` | `\ensuremath{+16.0}` | Larger, 3-bit cells: largest mask part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitOrderMinLargerBThreePct` | `\ensuremath{+5.0}` | Larger, 3-bit cells: smallest order part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitOrderMaxLargerBThreePct` | `\ensuremath{+14.5}` | Larger, 3-bit cells: largest order part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitOrderMaxLargerBThreePct` | `\ensuremath{+14.7}` | Larger, 3-bit cells: largest order part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGridMinLargerBThreePct` | `\ensuremath{-0.1}` | Larger, 3-bit cells: smallest grid part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGridMaxLargerBThreePct` | `\ensuremath{+0.4}` | Larger, 3-bit cells: largest grid part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitOrderPosLargerBThree` | `9` | Larger, 3-bit cells: cells where the update-order part is positive | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitOrderAboveMaskLargerBThree` | `8` | Larger, 3-bit cells: cells where the update-order part is larger than the mask part | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitGapPosLargerBThree` | `5` | Larger, 3-bit cells: cells where Q->P has the larger layer error (gap > 0) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitCellsLargerBThree` | `9` | Larger, 3-bit cells: cells with the split | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitOrderPosLargerBThree` | `12` | Larger, 3-bit cells: cells where the update-order part is positive | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitOrderAboveMaskLargerBThree` | `11` | Larger, 3-bit cells: cells where the update-order part is larger than the mask part | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitGapPosLargerBThree` | `6` | Larger, 3-bit cells: cells where Q->P has the larger layer error (gap > 0) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitCellsLargerBThree` | `12` | Larger, 3-bit cells: cells with the split | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGridMaxAbsLargerBThreePct` | `0.4` | Larger, 3-bit cells: largest |grid part| (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitMaskNegFreeZerosLarger` | `6` | Larger: 25% and 33%+3-bit cells where the mask part is negative (Q->P's mask, which takes the zeros of rounding, is the better one) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitFreeZerosCellsLarger` | `6` | Larger: 25% and 33%+3-bit cells with the split | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoModelsAllModels` | `6` | AllModels: models with E2 lines | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoMaskFirstTotalAllModels` | `72` | AllModels: (model, cell, joint or P->Q) with one shared Hessian | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoMaskFirstSubAllModels` | `72` | AllModels: of those, sub-additive in aggregate (summed I_E < 0) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitCellsAllModels` | `36` | AllModels: (model, cell) with the four arms of the split | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitMaskNegFreeZerosLarger` | `8` | Larger: 25% and 33%+3-bit cells where the mask part is negative (Q->P's mask, which takes the zeros of rounding, is the better one) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitFreeZerosCellsLarger` | `8` | Larger: 25% and 33%+3-bit cells with the split | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoModelsAllModels` | `7` | AllModels: models with E2 lines | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoMaskFirstTotalAllModels` | `84` | AllModels: (model, cell, joint or P->Q) with one shared Hessian | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoMaskFirstSubAllModels` | `84` | AllModels: of those, sub-additive in aggregate (summed I_E < 0) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitCellsAllModels` | `42` | AllModels: (model, cell) with the four arms of the split | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGapMinAllModelsPct` | `\ensuremath{-7.9}` | AllModels, all cells: smallest gap part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGapMaxAllModelsPct` | `\ensuremath{+29.8}` | AllModels, all cells: largest gap part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitMaskMinAllModelsPct` | `\ensuremath{-18.0}` | AllModels, all cells: smallest mask part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
@@ -4926,11 +4952,11 @@ Columns:
 | `\resETwoSplitOrderMinAllModelsPct` | `\ensuremath{+4.5}` | AllModels, all cells: smallest order part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitOrderMaxAllModelsPct` | `\ensuremath{+18.1}` | AllModels, all cells: largest order part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGridMinAllModelsPct` | `\ensuremath{-0.1}` | AllModels, all cells: smallest grid part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitGridMaxAllModelsPct` | `\ensuremath{+0.4}` | AllModels, all cells: largest grid part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitOrderPosAllModels` | `36` | AllModels, all cells: cells where the update-order part is positive | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitOrderAboveMaskAllModels` | `35` | AllModels, all cells: cells where the update-order part is larger than the mask part | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitGapPosAllModels` | `26` | AllModels, all cells: cells where Q->P has the larger layer error (gap > 0) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitGridMaxAbsAllModelsPct` | `0.4` | AllModels, all cells: largest |grid part| (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitGridMaxAllModelsPct` | `\ensuremath{+0.5}` | AllModels, all cells: largest grid part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitOrderPosAllModels` | `42` | AllModels, all cells: cells where the update-order part is positive | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitOrderAboveMaskAllModels` | `41` | AllModels, all cells: cells where the update-order part is larger than the mask part | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitGapPosAllModels` | `30` | AllModels, all cells: cells where Q->P has the larger layer error (gap > 0) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitGridMaxAbsAllModelsPct` | `0.5` | AllModels, all cells: largest |grid part| (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGapMinAllModelsBFourPct` | `\ensuremath{+8.7}` | AllModels, 4-bit cells: smallest gap part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGapMaxAllModelsBFourPct` | `\ensuremath{+25.5}` | AllModels, 4-bit cells: largest gap part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitMaskMinAllModelsBFourPct` | `\ensuremath{-4.7}` | AllModels, 4-bit cells: smallest mask part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
@@ -4938,12 +4964,12 @@ Columns:
 | `\resETwoSplitOrderMinAllModelsBFourPct` | `\ensuremath{+7.3}` | AllModels, 4-bit cells: smallest order part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitOrderMaxAllModelsBFourPct` | `\ensuremath{+18.1}` | AllModels, 4-bit cells: largest order part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGridMinAllModelsBFourPct` | `\ensuremath{+0.2}` | AllModels, 4-bit cells: smallest grid part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitGridMaxAllModelsBFourPct` | `\ensuremath{+0.4}` | AllModels, 4-bit cells: largest grid part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitOrderPosAllModelsBFour` | `18` | AllModels, 4-bit cells: cells where the update-order part is positive | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitOrderAboveMaskAllModelsBFour` | `18` | AllModels, 4-bit cells: cells where the update-order part is larger than the mask part | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitGapPosAllModelsBFour` | `18` | AllModels, 4-bit cells: cells where Q->P has the larger layer error (gap > 0) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitCellsAllModelsBFour` | `18` | AllModels, 4-bit cells: cells with the split | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitGridMaxAbsAllModelsBFourPct` | `0.4` | AllModels, 4-bit cells: largest |grid part| (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitGridMaxAllModelsBFourPct` | `\ensuremath{+0.5}` | AllModels, 4-bit cells: largest grid part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitOrderPosAllModelsBFour` | `21` | AllModels, 4-bit cells: cells where the update-order part is positive | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitOrderAboveMaskAllModelsBFour` | `21` | AllModels, 4-bit cells: cells where the update-order part is larger than the mask part | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitGapPosAllModelsBFour` | `21` | AllModels, 4-bit cells: cells where Q->P has the larger layer error (gap > 0) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitCellsAllModelsBFour` | `21` | AllModels, 4-bit cells: cells with the split | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitGridMaxAbsAllModelsBFourPct` | `0.5` | AllModels, 4-bit cells: largest |grid part| (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGapMinAllModelsBThreePct` | `\ensuremath{-7.9}` | AllModels, 3-bit cells: smallest gap part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGapMaxAllModelsBThreePct` | `\ensuremath{+29.8}` | AllModels, 3-bit cells: largest gap part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitMaskMinAllModelsBThreePct` | `\ensuremath{-18.0}` | AllModels, 3-bit cells: smallest mask part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
@@ -4952,19 +4978,19 @@ Columns:
 | `\resETwoSplitOrderMaxAllModelsBThreePct` | `\ensuremath{+15.3}` | AllModels, 3-bit cells: largest order part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGridMinAllModelsBThreePct` | `\ensuremath{-0.1}` | AllModels, 3-bit cells: smallest grid part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGridMaxAllModelsBThreePct` | `\ensuremath{+0.4}` | AllModels, 3-bit cells: largest grid part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitOrderPosAllModelsBThree` | `18` | AllModels, 3-bit cells: cells where the update-order part is positive | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitOrderAboveMaskAllModelsBThree` | `17` | AllModels, 3-bit cells: cells where the update-order part is larger than the mask part | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitGapPosAllModelsBThree` | `8` | AllModels, 3-bit cells: cells where Q->P has the larger layer error (gap > 0) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitCellsAllModelsBThree` | `18` | AllModels, 3-bit cells: cells with the split | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitOrderPosAllModelsBThree` | `21` | AllModels, 3-bit cells: cells where the update-order part is positive | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitOrderAboveMaskAllModelsBThree` | `20` | AllModels, 3-bit cells: cells where the update-order part is larger than the mask part | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitGapPosAllModelsBThree` | `9` | AllModels, 3-bit cells: cells where Q->P has the larger layer error (gap > 0) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitCellsAllModelsBThree` | `21` | AllModels, 3-bit cells: cells with the split | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGridMaxAbsAllModelsBThreePct` | `0.4` | AllModels, 3-bit cells: largest |grid part| (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitMaskNegFreeZerosAllModels` | `12` | AllModels: 25% and 33%+3-bit cells where the mask part is negative (Q->P's mask, which takes the zeros of rounding, is the better one) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
-| `\resETwoSplitFreeZerosCellsAllModels` | `12` | AllModels: 25% and 33%+3-bit cells with the split | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitMaskNegFreeZerosAllModels` | `14` | AllModels: 25% and 33%+3-bit cells where the mask part is negative (Q->P's mask, which takes the zeros of rounding, is the better one) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitFreeZerosCellsAllModels` | `14` | AllModels: 25% and 33%+3-bit cells with the split | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 
 ## E9: the layer level without error compensation (diag(H) in the sweeps, errors under the full H)
 
 | Macro | Value | Meaning | Source |
 |---|---|---|---|
-| `\resENineIncompleteModels` | `none` | models whose E9 run is not complete (left out) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineIncompleteModels` | `OLMo-2-0425-1B` | models whose E9 run is not complete (left out) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
 | `\resENineModelsCore` | `3` | Core: models with a complete E9 run | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
 | `\resENineCellsCore` | `18` | Core: (model, cell) pairs | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
 | `\resENineSubPQCore` | `18` | Core: cells where uncompensated p_then_q is sub-additive (summed I_E < 0) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
@@ -5026,127 +5052,127 @@ Columns:
 | `\resENineCompRatioPMaxCore` | `0.76` | Core: largest compensated / uncompensated E_P | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
 | `\resENineCompRatioQMinCore` | `0.43` | Core: smallest compensated / uncompensated E_Q | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
 | `\resENineCompRatioQMaxCore` | `0.52` | Core: largest compensated / uncompensated E_Q | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineModelsLarger` | `0` | Larger: models with a complete E9 run | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineCellsLarger` | `--` | Larger: (model, cell) pairs | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineSubPQLarger` | `--` | Larger: cells where uncompensated p_then_q is sub-additive (summed I_E < 0) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineRatioPQMinLargerPct` | `--` | Larger: smallest I_E of uncompensated p_then_q (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineRatioPQMaxLargerPct` | `--` | Larger: largest I_E of uncompensated p_then_q (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineSubPQStaleLarger` | `--` | Larger: cells where uncompensated p_then_q_stale is sub-additive (summed I_E < 0) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineRatioPQStaleMinLargerPct` | `--` | Larger: smallest I_E of uncompensated p_then_q_stale (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineRatioPQStaleMaxLargerPct` | `--` | Larger: largest I_E of uncompensated p_then_q_stale (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineSubQPLarger` | `--` | Larger: cells where uncompensated q_then_p is sub-additive (summed I_E < 0) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineRatioQPMinLargerPct` | `--` | Larger: smallest I_E of uncompensated q_then_p (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineRatioQPMaxLargerPct` | `--` | Larger: largest I_E of uncompensated q_then_p (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineAbsorbMinLargerPct` | `--` | Larger: smallest absorption term (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineAbsorbMaxLargerPct` | `--` | Larger: largest absorption term (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineCrossMinLargerPct` | `--` | Larger: smallest cross term (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineCrossMaxLargerPct` | `--` | Larger: largest cross term (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineCrossPosLarger` | `--` | Larger: cells where the cross terms add error | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineAbsorbDominatesLarger` | `--` | Larger: cells where |absorption| exceeds |cross terms| | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineResidMaxLarger` | `--` | Larger: largest |residual of the decomposition identity| / (E_P+E_Q) over layers | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineSplitGapMinLargerPct` | `--` | Larger: smallest gap part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineSplitGapMaxLargerPct` | `--` | Larger: largest gap part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineSplitMaskMinLargerPct` | `--` | Larger: smallest mask part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineSplitMaskMaxLargerPct` | `--` | Larger: largest mask part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineSplitGridMinLargerPct` | `--` | Larger: smallest grid part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineSplitGridMaxLargerPct` | `--` | Larger: largest grid part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineGapPosLarger` | `--` | Larger: cells where uncompensated Q->P has the larger error | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineOverlapNoCompMinLargerPct` | `--` | Larger: smallest overlap_mask_zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineOverlapNoCompMaxLargerPct` | `--` | Larger: largest overlap_mask_zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineZerosNoCompMinLargerPct` | `--` | Larger: smallest zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineZerosNoCompMaxLargerPct` | `--` | Larger: largest zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineOverlapCompMinLargerPct` | `--` | Larger: smallest overlap_mask_zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineOverlapCompMaxLargerPct` | `--` | Larger: largest overlap_mask_zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineZerosCompMinLargerPct` | `--` | Larger: smallest zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineZerosCompMaxLargerPct` | `--` | Larger: largest zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineOverlapNoCompMinLargerBFourPct` | `--` | Larger, 4-bit cells: smallest overlap_mask_zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineOverlapNoCompMaxLargerBFourPct` | `--` | Larger, 4-bit cells: largest overlap_mask_zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineZerosNoCompMinLargerBFourPct` | `--` | Larger, 4-bit cells: smallest zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineZerosNoCompMaxLargerBFourPct` | `--` | Larger, 4-bit cells: largest zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineOverlapCompMinLargerBFourPct` | `--` | Larger, 4-bit cells: smallest overlap_mask_zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineOverlapCompMaxLargerBFourPct` | `--` | Larger, 4-bit cells: largest overlap_mask_zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineZerosCompMinLargerBFourPct` | `--` | Larger, 4-bit cells: smallest zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineZerosCompMaxLargerBFourPct` | `--` | Larger, 4-bit cells: largest zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineSplitMaskMinLargerBFourPct` | `--` | Larger, 4-bit cells: smallest mask part without compensation | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineSplitMaskMaxLargerBFourPct` | `--` | Larger, 4-bit cells: largest mask part without compensation | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineOverlapNoCompMinLargerBThreePct` | `--` | Larger, 3-bit cells: smallest overlap_mask_zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineOverlapNoCompMaxLargerBThreePct` | `--` | Larger, 3-bit cells: largest overlap_mask_zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineZerosNoCompMinLargerBThreePct` | `--` | Larger, 3-bit cells: smallest zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineZerosNoCompMaxLargerBThreePct` | `--` | Larger, 3-bit cells: largest zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineOverlapCompMinLargerBThreePct` | `--` | Larger, 3-bit cells: smallest overlap_mask_zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineOverlapCompMaxLargerBThreePct` | `--` | Larger, 3-bit cells: largest overlap_mask_zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineZerosCompMinLargerBThreePct` | `--` | Larger, 3-bit cells: smallest zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineZerosCompMaxLargerBThreePct` | `--` | Larger, 3-bit cells: largest zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineSplitMaskMinLargerBThreePct` | `--` | Larger, 3-bit cells: smallest mask part without compensation | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineSplitMaskMaxLargerBThreePct` | `--` | Larger, 3-bit cells: largest mask part without compensation | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineCrossMaxAbsLargerPct` | `--` | Larger: largest |cross terms| over cells (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineCrossShareMaxLargerPct` | `--` | Larger: largest |cross terms| / |absorption| over cells (%) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineSplitMaskMinNoTwentyFiveBThreeLargerPct` | `--` | Larger: smallest mask part without compensation, cells other than 25%+3 | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineSplitMaskPosLarger` | `--` | Larger: cells where Q->P's uncompensated mask is the worse one | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineCompRatioPMinLarger` | `--` | Larger: smallest compensated / uncompensated E_P | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineCompRatioPMaxLarger` | `--` | Larger: largest compensated / uncompensated E_P | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineCompRatioQMinLarger` | `--` | Larger: smallest compensated / uncompensated E_Q | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineCompRatioQMaxLarger` | `--` | Larger: largest compensated / uncompensated E_Q | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineModelsAllModels` | `3` | AllModels: models with a complete E9 run | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineCellsAllModels` | `18` | AllModels: (model, cell) pairs | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineSubPQAllModels` | `18` | AllModels: cells where uncompensated p_then_q is sub-additive (summed I_E < 0) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineModelsLarger` | `2` | Larger: models with a complete E9 run | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCellsLarger` | `12` | Larger: (model, cell) pairs | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSubPQLarger` | `12` | Larger: cells where uncompensated p_then_q is sub-additive (summed I_E < 0) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineRatioPQMinLargerPct` | `\ensuremath{-16.7}` | Larger: smallest I_E of uncompensated p_then_q (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineRatioPQMaxLargerPct` | `\ensuremath{-6.1}` | Larger: largest I_E of uncompensated p_then_q (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSubPQStaleLarger` | `12` | Larger: cells where uncompensated p_then_q_stale is sub-additive (summed I_E < 0) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineRatioPQStaleMinLargerPct` | `\ensuremath{-16.7}` | Larger: smallest I_E of uncompensated p_then_q_stale (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineRatioPQStaleMaxLargerPct` | `\ensuremath{-6.1}` | Larger: largest I_E of uncompensated p_then_q_stale (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSubQPLarger` | `9` | Larger: cells where uncompensated q_then_p is sub-additive (summed I_E < 0) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineRatioQPMinLargerPct` | `\ensuremath{-11.8}` | Larger: smallest I_E of uncompensated q_then_p (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineRatioQPMaxLargerPct` | `\ensuremath{+2.7}` | Larger: largest I_E of uncompensated q_then_p (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineAbsorbMinLargerPct` | `\ensuremath{-16.7}` | Larger: smallest absorption term (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineAbsorbMaxLargerPct` | `\ensuremath{-6.1}` | Larger: largest absorption term (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCrossMinLargerPct` | `\ensuremath{-0.1}` | Larger: smallest cross term (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCrossMaxLargerPct` | `\ensuremath{+0.0}` | Larger: largest cross term (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCrossPosLarger` | `5` | Larger: cells where the cross terms add error | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineAbsorbDominatesLarger` | `12` | Larger: cells where |absorption| exceeds |cross terms| | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineResidMaxLarger` | `\ensuremath{4.93\times 10^{-16}}` | Larger: largest |residual of the decomposition identity| / (E_P+E_Q) over layers | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitGapMinLargerPct` | `\ensuremath{-0.4}` | Larger: smallest gap part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitGapMaxLargerPct` | `\ensuremath{+22.5}` | Larger: largest gap part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitMaskMinLargerPct` | `\ensuremath{-0.4}` | Larger: smallest mask part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitMaskMaxLargerPct` | `\ensuremath{+22.5}` | Larger: largest mask part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitGridMinLargerPct` | `\ensuremath{-0.0}` | Larger: smallest grid part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitGridMaxLargerPct` | `\ensuremath{+0.0}` | Larger: largest grid part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineGapPosLarger` | `10` | Larger: cells where uncompensated Q->P has the larger error | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineOverlapNoCompMinLargerPct` | `28` | Larger: smallest overlap_mask_zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineOverlapNoCompMaxLargerPct` | `97` | Larger: largest overlap_mask_zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineZerosNoCompMinLargerPct` | `14` | Larger: smallest zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineZerosNoCompMaxLargerPct` | `31` | Larger: largest zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineOverlapCompMinLargerPct` | `28` | Larger: smallest overlap_mask_zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineOverlapCompMaxLargerPct` | `91` | Larger: largest overlap_mask_zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineZerosCompMinLargerPct` | `14` | Larger: smallest zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineZerosCompMaxLargerPct` | `31` | Larger: largest zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineOverlapNoCompMinLargerBFourPct` | `28` | Larger, 4-bit cells: smallest overlap_mask_zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineOverlapNoCompMaxLargerBFourPct` | `58` | Larger, 4-bit cells: largest overlap_mask_zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineZerosNoCompMinLargerBFourPct` | `14` | Larger, 4-bit cells: smallest zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineZerosNoCompMaxLargerBFourPct` | `15` | Larger, 4-bit cells: largest zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineOverlapCompMinLargerBFourPct` | `28` | Larger, 4-bit cells: smallest overlap_mask_zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineOverlapCompMaxLargerBFourPct` | `57` | Larger, 4-bit cells: largest overlap_mask_zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineZerosCompMinLargerBFourPct` | `14` | Larger, 4-bit cells: smallest zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineZerosCompMaxLargerBFourPct` | `15` | Larger, 4-bit cells: largest zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitMaskMinLargerBFourPct` | `\ensuremath{+5.6}` | Larger, 4-bit cells: smallest mask part without compensation | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitMaskMaxLargerBFourPct` | `\ensuremath{+13.0}` | Larger, 4-bit cells: largest mask part without compensation | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineOverlapNoCompMinLargerBThreePct` | `59` | Larger, 3-bit cells: smallest overlap_mask_zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineOverlapNoCompMaxLargerBThreePct` | `97` | Larger, 3-bit cells: largest overlap_mask_zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineZerosNoCompMinLargerBThreePct` | `30` | Larger, 3-bit cells: smallest zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineZerosNoCompMaxLargerBThreePct` | `31` | Larger, 3-bit cells: largest zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineOverlapCompMinLargerBThreePct` | `58` | Larger, 3-bit cells: smallest overlap_mask_zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineOverlapCompMaxLargerBThreePct` | `91` | Larger, 3-bit cells: largest overlap_mask_zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineZerosCompMinLargerBThreePct` | `30` | Larger, 3-bit cells: smallest zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineZerosCompMaxLargerBThreePct` | `31` | Larger, 3-bit cells: largest zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitMaskMinLargerBThreePct` | `\ensuremath{-0.4}` | Larger, 3-bit cells: smallest mask part without compensation | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitMaskMaxLargerBThreePct` | `\ensuremath{+22.5}` | Larger, 3-bit cells: largest mask part without compensation | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCrossMaxAbsLargerPct` | `0.09` | Larger: largest |cross terms| over cells (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCrossShareMaxLargerPct` | `0.5` | Larger: largest |cross terms| / |absorption| over cells (%) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitMaskMinNoTwentyFiveBThreeLargerPct` | `\ensuremath{+0.3}` | Larger: smallest mask part without compensation, cells other than 25%+3 | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitMaskPosLarger` | `10` | Larger: cells where Q->P's uncompensated mask is the worse one | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCompRatioPMinLarger` | `0.64` | Larger: smallest compensated / uncompensated E_P | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCompRatioPMaxLarger` | `0.71` | Larger: largest compensated / uncompensated E_P | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCompRatioQMinLarger` | `0.40` | Larger: smallest compensated / uncompensated E_Q | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCompRatioQMaxLarger` | `0.49` | Larger: largest compensated / uncompensated E_Q | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineModelsAllModels` | `5` | AllModels: models with a complete E9 run | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCellsAllModels` | `30` | AllModels: (model, cell) pairs | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSubPQAllModels` | `30` | AllModels: cells where uncompensated p_then_q is sub-additive (summed I_E < 0) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
 | `\resENineRatioPQMinAllModelsPct` | `\ensuremath{-16.9}` | AllModels: smallest I_E of uncompensated p_then_q (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
 | `\resENineRatioPQMaxAllModelsPct` | `\ensuremath{-4.9}` | AllModels: largest I_E of uncompensated p_then_q (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineSubPQStaleAllModels` | `18` | AllModels: cells where uncompensated p_then_q_stale is sub-additive (summed I_E < 0) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSubPQStaleAllModels` | `30` | AllModels: cells where uncompensated p_then_q_stale is sub-additive (summed I_E < 0) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
 | `\resENineRatioPQStaleMinAllModelsPct` | `\ensuremath{-16.9}` | AllModels: smallest I_E of uncompensated p_then_q_stale (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
 | `\resENineRatioPQStaleMaxAllModelsPct` | `\ensuremath{-4.9}` | AllModels: largest I_E of uncompensated p_then_q_stale (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineSubQPAllModels` | `16` | AllModels: cells where uncompensated q_then_p is sub-additive (summed I_E < 0) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineRatioQPMinAllModelsPct` | `\ensuremath{-11.2}` | AllModels: smallest I_E of uncompensated q_then_p (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineRatioQPMaxAllModelsPct` | `\ensuremath{+0.4}` | AllModels: largest I_E of uncompensated q_then_p (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSubQPAllModels` | `25` | AllModels: cells where uncompensated q_then_p is sub-additive (summed I_E < 0) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineRatioQPMinAllModelsPct` | `\ensuremath{-11.8}` | AllModels: smallest I_E of uncompensated q_then_p (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineRatioQPMaxAllModelsPct` | `\ensuremath{+2.7}` | AllModels: largest I_E of uncompensated q_then_p (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
 | `\resENineAbsorbMinAllModelsPct` | `\ensuremath{-16.9}` | AllModels: smallest absorption term (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
 | `\resENineAbsorbMaxAllModelsPct` | `\ensuremath{-4.9}` | AllModels: largest absorption term (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
 | `\resENineCrossMinAllModelsPct` | `\ensuremath{-0.1}` | AllModels: smallest cross term (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
 | `\resENineCrossMaxAllModelsPct` | `\ensuremath{+0.1}` | AllModels: largest cross term (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineCrossPosAllModels` | `7` | AllModels: cells where the cross terms add error | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineAbsorbDominatesAllModels` | `18` | AllModels: cells where |absorption| exceeds |cross terms| | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineResidMaxAllModels` | `\ensuremath{4.28\times 10^{-16}}` | AllModels: largest |residual of the decomposition identity| / (E_P+E_Q) over layers | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCrossPosAllModels` | `12` | AllModels: cells where the cross terms add error | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineAbsorbDominatesAllModels` | `30` | AllModels: cells where |absorption| exceeds |cross terms| | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineResidMaxAllModels` | `\ensuremath{4.93\times 10^{-16}}` | AllModels: largest |residual of the decomposition identity| / (E_P+E_Q) over layers | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
 | `\resENineSplitGapMinAllModelsPct` | `\ensuremath{-1.0}` | AllModels: smallest gap part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineSplitGapMaxAllModelsPct` | `\ensuremath{+18.3}` | AllModels: largest gap part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitGapMaxAllModelsPct` | `\ensuremath{+22.5}` | AllModels: largest gap part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
 | `\resENineSplitMaskMinAllModelsPct` | `\ensuremath{-1.0}` | AllModels: smallest mask part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineSplitMaskMaxAllModelsPct` | `\ensuremath{+18.3}` | AllModels: largest mask part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitMaskMaxAllModelsPct` | `\ensuremath{+22.5}` | AllModels: largest mask part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
 | `\resENineSplitGridMinAllModelsPct` | `\ensuremath{-0.0}` | AllModels: smallest grid part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
 | `\resENineSplitGridMaxAllModelsPct` | `\ensuremath{+0.0}` | AllModels: largest grid part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineGapPosAllModels` | `14` | AllModels: cells where uncompensated Q->P has the larger error | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineOverlapNoCompMinAllModelsPct` | `30` | AllModels: smallest overlap_mask_zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineOverlapNoCompMaxAllModelsPct` | `96` | AllModels: largest overlap_mask_zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineZerosNoCompMinAllModelsPct` | `15` | AllModels: smallest zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineGapPosAllModels` | `24` | AllModels: cells where uncompensated Q->P has the larger error | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineOverlapNoCompMinAllModelsPct` | `28` | AllModels: smallest overlap_mask_zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineOverlapNoCompMaxAllModelsPct` | `97` | AllModels: largest overlap_mask_zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineZerosNoCompMinAllModelsPct` | `14` | AllModels: smallest zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
 | `\resENineZerosNoCompMaxAllModelsPct` | `32` | AllModels: largest zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineOverlapCompMinAllModelsPct` | `30` | AllModels: smallest overlap_mask_zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineOverlapCompMaxAllModelsPct` | `90` | AllModels: largest overlap_mask_zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineZerosCompMinAllModelsPct` | `15` | AllModels: smallest zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineOverlapCompMinAllModelsPct` | `28` | AllModels: smallest overlap_mask_zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineOverlapCompMaxAllModelsPct` | `91` | AllModels: largest overlap_mask_zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineZerosCompMinAllModelsPct` | `14` | AllModels: smallest zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
 | `\resENineZerosCompMaxAllModelsPct` | `32` | AllModels: largest zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineOverlapNoCompMinAllModelsBFourPct` | `30` | AllModels, 4-bit cells: smallest overlap_mask_zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineOverlapNoCompMinAllModelsBFourPct` | `28` | AllModels, 4-bit cells: smallest overlap_mask_zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
 | `\resENineOverlapNoCompMaxAllModelsBFourPct` | `60` | AllModels, 4-bit cells: largest overlap_mask_zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineZerosNoCompMinAllModelsBFourPct` | `15` | AllModels, 4-bit cells: smallest zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineZerosNoCompMinAllModelsBFourPct` | `14` | AllModels, 4-bit cells: smallest zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
 | `\resENineZerosNoCompMaxAllModelsBFourPct` | `16` | AllModels, 4-bit cells: largest zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineOverlapCompMinAllModelsBFourPct` | `30` | AllModels, 4-bit cells: smallest overlap_mask_zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineOverlapCompMinAllModelsBFourPct` | `28` | AllModels, 4-bit cells: smallest overlap_mask_zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
 | `\resENineOverlapCompMaxAllModelsBFourPct` | `59` | AllModels, 4-bit cells: largest overlap_mask_zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineZerosCompMinAllModelsBFourPct` | `15` | AllModels, 4-bit cells: smallest zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineZerosCompMinAllModelsBFourPct` | `14` | AllModels, 4-bit cells: smallest zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
 | `\resENineZerosCompMaxAllModelsBFourPct` | `16` | AllModels, 4-bit cells: largest zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineSplitMaskMinAllModelsBFourPct` | `\ensuremath{+5.7}` | AllModels, 4-bit cells: smallest mask part without compensation | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineSplitMaskMaxAllModelsBFourPct` | `\ensuremath{+10.4}` | AllModels, 4-bit cells: largest mask part without compensation | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineOverlapNoCompMinAllModelsBThreePct` | `60` | AllModels, 3-bit cells: smallest overlap_mask_zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineOverlapNoCompMaxAllModelsBThreePct` | `96` | AllModels, 3-bit cells: largest overlap_mask_zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineZerosNoCompMinAllModelsBThreePct` | `31` | AllModels, 3-bit cells: smallest zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitMaskMinAllModelsBFourPct` | `\ensuremath{+5.6}` | AllModels, 4-bit cells: smallest mask part without compensation | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitMaskMaxAllModelsBFourPct` | `\ensuremath{+13.0}` | AllModels, 4-bit cells: largest mask part without compensation | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineOverlapNoCompMinAllModelsBThreePct` | `59` | AllModels, 3-bit cells: smallest overlap_mask_zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineOverlapNoCompMaxAllModelsBThreePct` | `97` | AllModels, 3-bit cells: largest overlap_mask_zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineZerosNoCompMinAllModelsBThreePct` | `30` | AllModels, 3-bit cells: smallest zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
 | `\resENineZerosNoCompMaxAllModelsBThreePct` | `32` | AllModels, 3-bit cells: largest zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineOverlapCompMinAllModelsBThreePct` | `59` | AllModels, 3-bit cells: smallest overlap_mask_zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineOverlapCompMaxAllModelsBThreePct` | `90` | AllModels, 3-bit cells: largest overlap_mask_zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineZerosCompMinAllModelsBThreePct` | `31` | AllModels, 3-bit cells: smallest zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineOverlapCompMinAllModelsBThreePct` | `58` | AllModels, 3-bit cells: smallest overlap_mask_zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineOverlapCompMaxAllModelsBThreePct` | `91` | AllModels, 3-bit cells: largest overlap_mask_zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineZerosCompMinAllModelsBThreePct` | `30` | AllModels, 3-bit cells: smallest zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
 | `\resENineZerosCompMaxAllModelsBThreePct` | `32` | AllModels, 3-bit cells: largest zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
 | `\resENineSplitMaskMinAllModelsBThreePct` | `\ensuremath{-1.0}` | AllModels, 3-bit cells: smallest mask part without compensation | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineSplitMaskMaxAllModelsBThreePct` | `\ensuremath{+18.3}` | AllModels, 3-bit cells: largest mask part without compensation | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitMaskMaxAllModelsBThreePct` | `\ensuremath{+22.5}` | AllModels, 3-bit cells: largest mask part without compensation | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
 | `\resENineCrossMaxAbsAllModelsPct` | `0.13` | AllModels: largest |cross terms| over cells (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
 | `\resENineCrossShareMaxAllModelsPct` | `1.1` | AllModels: largest |cross terms| / |absorption| over cells (%) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
 | `\resENineSplitMaskMinNoTwentyFiveBThreeAllModelsPct` | `\ensuremath{-1.0}` | AllModels: smallest mask part without compensation, cells other than 25%+3 | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineSplitMaskPosAllModels` | `14` | AllModels: cells where Q->P's uncompensated mask is the worse one | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitMaskPosAllModels` | `24` | AllModels: cells where Q->P's uncompensated mask is the worse one | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
 | `\resENineCompRatioPMinAllModels` | `0.64` | AllModels: smallest compensated / uncompensated E_P | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
 | `\resENineCompRatioPMaxAllModels` | `0.76` | AllModels: largest compensated / uncompensated E_P | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
-| `\resENineCompRatioQMinAllModels` | `0.43` | AllModels: smallest compensated / uncompensated E_Q | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCompRatioQMinAllModels` | `0.40` | AllModels: smallest compensated / uncompensated E_Q | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
 | `\resENineCompRatioQMaxAllModels` | `0.52` | AllModels: largest compensated / uncompensated E_Q | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
 
 ## E8 layer error vs KL (reports/analysis/e8_layer_error_vs_kl.json; scripts/analysis/e8.py)
@@ -7938,186 +7964,186 @@ Columns:
 | `\resETwoJaccardQwenTwoFiveOneFiveBSFiftyBThree` | `0.73` | = `\resETwoJaccardQwenMidSFiftyBThree` | see that macro |
 | `\resETwoRhoQwenTwoFiveOneFiveBSFiftyBThree` | `\ensuremath{+0.62}` | = `\resETwoRhoQwenMidSFiftyBThree` | see that macro |
 | `\resETwoRhoPQwenTwoFiveOneFiveBSFiftyBThree` | `\ensuremath{2.04\times 10^{-6}}` | = `\resETwoRhoPQwenMidSFiftyBThree` | see that macro |
-| `\resETwoLayersQwenTwoFiveThreeBSTwentyFiveBFour` | `9` | = `\resETwoLayersQwenLargeSTwentyFiveBFour` | see that macro |
+| `\resETwoLayersQwenTwoFiveThreeBSTwentyFiveBFour` | `63` | = `\resETwoLayersQwenLargeSTwentyFiveBFour` | see that macro |
 | `\resETwoRatioJointQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{-11.2}` | = `\resETwoRatioJointQwenLargeSTwentyFiveBFourPct` | see that macro |
 | `\resETwoSubJointQwenTwoFiveThreeBSTwentyFiveBFourPct` | `100` | = `\resETwoSubJointQwenLargeSTwentyFiveBFourPct` | see that macro |
-| `\resETwoRatioPQQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{-1.3}` | = `\resETwoRatioPQQwenLargeSTwentyFiveBFourPct` | see that macro |
-| `\resETwoSubPQQwenTwoFiveThreeBSTwentyFiveBFourPct` | `67` | = `\resETwoSubPQQwenLargeSTwentyFiveBFourPct` | see that macro |
-| `\resETwoRatioQPQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{+13.7}` | = `\resETwoRatioQPQwenLargeSTwentyFiveBFourPct` | see that macro |
-| `\resETwoSubQPQwenTwoFiveThreeBSTwentyFiveBFourPct` | `11` | = `\resETwoSubQPQwenLargeSTwentyFiveBFourPct` | see that macro |
-| `\resETwoRatioQPRefitQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{+16.5}` | = `\resETwoRatioQPRefitQwenLargeSTwentyFiveBFourPct` | see that macro |
-| `\resETwoSubQPRefitQwenTwoFiveThreeBSTwentyFiveBFourPct` | `0` | = `\resETwoSubQPRefitQwenLargeSTwentyFiveBFourPct` | see that macro |
-| `\resETwoRatioQPPmaskQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{+23.8}` | = `\resETwoRatioQPPmaskQwenLargeSTwentyFiveBFourPct` | see that macro |
+| `\resETwoRatioPQQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{-5.6}` | = `\resETwoRatioPQQwenLargeSTwentyFiveBFourPct` | see that macro |
+| `\resETwoSubPQQwenTwoFiveThreeBSTwentyFiveBFourPct` | `79` | = `\resETwoSubPQQwenLargeSTwentyFiveBFourPct` | see that macro |
+| `\resETwoRatioQPQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{+8.0}` | = `\resETwoRatioQPQwenLargeSTwentyFiveBFourPct` | see that macro |
+| `\resETwoSubQPQwenTwoFiveThreeBSTwentyFiveBFourPct` | `19` | = `\resETwoSubQPQwenLargeSTwentyFiveBFourPct` | see that macro |
+| `\resETwoRatioQPRefitQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{+9.9}` | = `\resETwoRatioQPRefitQwenLargeSTwentyFiveBFourPct` | see that macro |
+| `\resETwoSubQPRefitQwenTwoFiveThreeBSTwentyFiveBFourPct` | `8` | = `\resETwoSubQPRefitQwenLargeSTwentyFiveBFourPct` | see that macro |
+| `\resETwoRatioQPPmaskQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{+9.1}` | = `\resETwoRatioQPPmaskQwenLargeSTwentyFiveBFourPct` | see that macro |
 | `\resETwoSubQPPmaskQwenTwoFiveThreeBSTwentyFiveBFourPct` | `0` | = `\resETwoSubQPPmaskQwenLargeSTwentyFiveBFourPct` | see that macro |
-| `\resETwoRatioQPPmaskRefitQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{+26.8}` | = `\resETwoRatioQPPmaskRefitQwenLargeSTwentyFiveBFourPct` | see that macro |
+| `\resETwoRatioQPPmaskRefitQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{+11.2}` | = `\resETwoRatioQPPmaskRefitQwenLargeSTwentyFiveBFourPct` | see that macro |
 | `\resETwoSubQPPmaskRefitQwenTwoFiveThreeBSTwentyFiveBFourPct` | `0` | = `\resETwoSubQPPmaskRefitQwenLargeSTwentyFiveBFourPct` | see that macro |
-| `\resETwoRatioPQStaleQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{-0.7}` | = `\resETwoRatioPQStaleQwenLargeSTwentyFiveBFourPct` | see that macro |
-| `\resETwoSubPQStaleQwenTwoFiveThreeBSTwentyFiveBFourPct` | `67` | = `\resETwoSubPQStaleQwenLargeSTwentyFiveBFourPct` | see that macro |
+| `\resETwoRatioPQStaleQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{-5.4}` | = `\resETwoRatioPQStaleQwenLargeSTwentyFiveBFourPct` | see that macro |
+| `\resETwoSubPQStaleQwenTwoFiveThreeBSTwentyFiveBFourPct` | `79` | = `\resETwoSubPQStaleQwenLargeSTwentyFiveBFourPct` | see that macro |
 | `\resETwoBlockZeroJointQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{-11.7}` | = `\resETwoBlockZeroJointQwenLargeSTwentyFiveBFourPct` | see that macro |
-| `\resETwoDeeperJointQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{-8.5}` | = `\resETwoDeeperJointQwenLargeSTwentyFiveBFourPct` | see that macro |
+| `\resETwoDeeperJointQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{-11.2}` | = `\resETwoDeeperJointQwenLargeSTwentyFiveBFourPct` | see that macro |
 | `\resETwoBlockZeroPQQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{-1.1}` | = `\resETwoBlockZeroPQQwenLargeSTwentyFiveBFourPct` | see that macro |
-| `\resETwoDeeperPQQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{-2.4}` | = `\resETwoDeeperPQQwenLargeSTwentyFiveBFourPct` | see that macro |
+| `\resETwoDeeperPQQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{-5.9}` | = `\resETwoDeeperPQQwenLargeSTwentyFiveBFourPct` | see that macro |
 | `\resETwoBlockZeroQPQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{+16.2}` | = `\resETwoBlockZeroQPQwenLargeSTwentyFiveBFourPct` | see that macro |
-| `\resETwoDeeperQPQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{+1.0}` | = `\resETwoDeeperQPQwenLargeSTwentyFiveBFourPct` | see that macro |
-| `\resETwoPenaltyQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{+15.2}` | = `\resETwoPenaltyQwenLargeSTwentyFiveBFourPct` | see that macro |
-| `\resETwoRemovedRefitQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{-19}` | = `\resETwoRemovedRefitQwenLargeSTwentyFiveBFourPct` | see that macro |
-| `\resETwoRemovedPmaskQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{-67}` | = `\resETwoRemovedPmaskQwenLargeSTwentyFiveBFourPct` | see that macro |
-| `\resETwoRemovedBothQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{-88}` | = `\resETwoRemovedBothQwenLargeSTwentyFiveBFourPct` | see that macro |
-| `\resETwoStaleQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{+0.7}` | = `\resETwoStaleQwenLargeSTwentyFiveBFourPct` | see that macro |
-| `\resETwoMaskQualityQwenTwoFiveThreeBSTwentyFiveBFour` | `1.86` | = `\resETwoMaskQualityQwenLargeSTwentyFiveBFour` | see that macro |
-| `\resETwoJaccardQwenTwoFiveThreeBSTwentyFiveBFour` | `0.69` | = `\resETwoJaccardQwenLargeSTwentyFiveBFour` | see that macro |
-| `\resETwoRhoQwenTwoFiveThreeBSTwentyFiveBFour` | `\ensuremath{-0.46}` | = `\resETwoRhoQwenLargeSTwentyFiveBFour` | see that macro |
-| `\resETwoRhoPQwenTwoFiveThreeBSTwentyFiveBFour` | `0.211` | = `\resETwoRhoPQwenLargeSTwentyFiveBFour` | see that macro |
-| `\resETwoLayersQwenTwoFiveThreeBSThirtyThreeBFour` | `9` | = `\resETwoLayersQwenLargeSThirtyThreeBFour` | see that macro |
-| `\resETwoRatioJointQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{-9.8}` | = `\resETwoRatioJointQwenLargeSThirtyThreeBFourPct` | see that macro |
+| `\resETwoDeeperQPQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{+7.5}` | = `\resETwoDeeperQPQwenLargeSTwentyFiveBFourPct` | see that macro |
+| `\resETwoPenaltyQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{+14.4}` | = `\resETwoPenaltyQwenLargeSTwentyFiveBFourPct` | see that macro |
+| `\resETwoRemovedRefitQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{-14}` | = `\resETwoRemovedRefitQwenLargeSTwentyFiveBFourPct` | see that macro |
+| `\resETwoRemovedPmaskQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{-8}` | = `\resETwoRemovedPmaskQwenLargeSTwentyFiveBFourPct` | see that macro |
+| `\resETwoRemovedBothQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{-23}` | = `\resETwoRemovedBothQwenLargeSTwentyFiveBFourPct` | see that macro |
+| `\resETwoStaleQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{+0.2}` | = `\resETwoStaleQwenLargeSTwentyFiveBFourPct` | see that macro |
+| `\resETwoMaskQualityQwenTwoFiveThreeBSTwentyFiveBFour` | `1.65` | = `\resETwoMaskQualityQwenLargeSTwentyFiveBFour` | see that macro |
+| `\resETwoJaccardQwenTwoFiveThreeBSTwentyFiveBFour` | `0.68` | = `\resETwoJaccardQwenLargeSTwentyFiveBFour` | see that macro |
+| `\resETwoRhoQwenTwoFiveThreeBSTwentyFiveBFour` | `\ensuremath{+0.48}` | = `\resETwoRhoQwenLargeSTwentyFiveBFour` | see that macro |
+| `\resETwoRhoPQwenTwoFiveThreeBSTwentyFiveBFour` | `\ensuremath{6.94\times 10^{-5}}` | = `\resETwoRhoPQwenLargeSTwentyFiveBFour` | see that macro |
+| `\resETwoLayersQwenTwoFiveThreeBSThirtyThreeBFour` | `63` | = `\resETwoLayersQwenLargeSThirtyThreeBFour` | see that macro |
+| `\resETwoRatioJointQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{-9.9}` | = `\resETwoRatioJointQwenLargeSThirtyThreeBFourPct` | see that macro |
 | `\resETwoSubJointQwenTwoFiveThreeBSThirtyThreeBFourPct` | `100` | = `\resETwoSubJointQwenLargeSThirtyThreeBFourPct` | see that macro |
-| `\resETwoRatioPQQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{-1.5}` | = `\resETwoRatioPQQwenLargeSThirtyThreeBFourPct` | see that macro |
-| `\resETwoSubPQQwenTwoFiveThreeBSThirtyThreeBFourPct` | `67` | = `\resETwoSubPQQwenLargeSThirtyThreeBFourPct` | see that macro |
-| `\resETwoRatioQPQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{+17.5}` | = `\resETwoRatioQPQwenLargeSThirtyThreeBFourPct` | see that macro |
-| `\resETwoSubQPQwenTwoFiveThreeBSThirtyThreeBFourPct` | `0` | = `\resETwoSubQPQwenLargeSThirtyThreeBFourPct` | see that macro |
-| `\resETwoRatioQPRefitQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{+19.1}` | = `\resETwoRatioQPRefitQwenLargeSThirtyThreeBFourPct` | see that macro |
-| `\resETwoSubQPRefitQwenTwoFiveThreeBSThirtyThreeBFourPct` | `0` | = `\resETwoSubQPRefitQwenLargeSThirtyThreeBFourPct` | see that macro |
-| `\resETwoRatioQPPmaskQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{+22.8}` | = `\resETwoRatioQPPmaskQwenLargeSThirtyThreeBFourPct` | see that macro |
+| `\resETwoRatioPQQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{-5.1}` | = `\resETwoRatioPQQwenLargeSThirtyThreeBFourPct` | see that macro |
+| `\resETwoSubPQQwenTwoFiveThreeBSThirtyThreeBFourPct` | `83` | = `\resETwoSubPQQwenLargeSThirtyThreeBFourPct` | see that macro |
+| `\resETwoRatioQPQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{+10.7}` | = `\resETwoRatioQPQwenLargeSThirtyThreeBFourPct` | see that macro |
+| `\resETwoSubQPQwenTwoFiveThreeBSThirtyThreeBFourPct` | `10` | = `\resETwoSubQPQwenLargeSThirtyThreeBFourPct` | see that macro |
+| `\resETwoRatioQPRefitQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{+12.2}` | = `\resETwoRatioQPRefitQwenLargeSThirtyThreeBFourPct` | see that macro |
+| `\resETwoSubQPRefitQwenTwoFiveThreeBSThirtyThreeBFourPct` | `3` | = `\resETwoSubQPRefitQwenLargeSThirtyThreeBFourPct` | see that macro |
+| `\resETwoRatioQPPmaskQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{+9.9}` | = `\resETwoRatioQPPmaskQwenLargeSThirtyThreeBFourPct` | see that macro |
 | `\resETwoSubQPPmaskQwenTwoFiveThreeBSThirtyThreeBFourPct` | `0` | = `\resETwoSubQPPmaskQwenLargeSThirtyThreeBFourPct` | see that macro |
-| `\resETwoRatioQPPmaskRefitQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{+24.5}` | = `\resETwoRatioQPPmaskRefitQwenLargeSThirtyThreeBFourPct` | see that macro |
+| `\resETwoRatioQPPmaskRefitQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{+11.4}` | = `\resETwoRatioQPPmaskRefitQwenLargeSThirtyThreeBFourPct` | see that macro |
 | `\resETwoSubQPPmaskRefitQwenTwoFiveThreeBSThirtyThreeBFourPct` | `0` | = `\resETwoSubQPPmaskRefitQwenLargeSThirtyThreeBFourPct` | see that macro |
-| `\resETwoRatioPQStaleQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{-0.8}` | = `\resETwoRatioPQStaleQwenLargeSThirtyThreeBFourPct` | see that macro |
-| `\resETwoSubPQStaleQwenTwoFiveThreeBSThirtyThreeBFourPct` | `67` | = `\resETwoSubPQStaleQwenLargeSThirtyThreeBFourPct` | see that macro |
+| `\resETwoRatioPQStaleQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{-4.9}` | = `\resETwoRatioPQStaleQwenLargeSThirtyThreeBFourPct` | see that macro |
+| `\resETwoSubPQStaleQwenTwoFiveThreeBSThirtyThreeBFourPct` | `83` | = `\resETwoSubPQStaleQwenLargeSThirtyThreeBFourPct` | see that macro |
 | `\resETwoBlockZeroJointQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{-10.0}` | = `\resETwoBlockZeroJointQwenLargeSThirtyThreeBFourPct` | see that macro |
-| `\resETwoDeeperJointQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{-9.1}` | = `\resETwoDeeperJointQwenLargeSThirtyThreeBFourPct` | see that macro |
+| `\resETwoDeeperJointQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{-9.9}` | = `\resETwoDeeperJointQwenLargeSThirtyThreeBFourPct` | see that macro |
 | `\resETwoBlockZeroPQQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{-1.2}` | = `\resETwoBlockZeroPQQwenLargeSThirtyThreeBFourPct` | see that macro |
-| `\resETwoDeeperPQQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{-3.0}` | = `\resETwoDeeperPQQwenLargeSThirtyThreeBFourPct` | see that macro |
+| `\resETwoDeeperPQQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{-5.4}` | = `\resETwoDeeperPQQwenLargeSThirtyThreeBFourPct` | see that macro |
 | `\resETwoBlockZeroQPQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{+19.0}` | = `\resETwoBlockZeroQPQwenLargeSThirtyThreeBFourPct` | see that macro |
-| `\resETwoDeeperQPQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{+9.1}` | = `\resETwoDeeperQPQwenLargeSThirtyThreeBFourPct` | see that macro |
-| `\resETwoPenaltyQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{+19.3}` | = `\resETwoPenaltyQwenLargeSThirtyThreeBFourPct` | see that macro |
-| `\resETwoRemovedRefitQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{-8}` | = `\resETwoRemovedRefitQwenLargeSThirtyThreeBFourPct` | see that macro |
-| `\resETwoRemovedPmaskQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{-28}` | = `\resETwoRemovedPmaskQwenLargeSThirtyThreeBFourPct` | see that macro |
-| `\resETwoRemovedBothQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{-37}` | = `\resETwoRemovedBothQwenLargeSThirtyThreeBFourPct` | see that macro |
-| `\resETwoStaleQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{+0.7}` | = `\resETwoStaleQwenLargeSThirtyThreeBFourPct` | see that macro |
-| `\resETwoMaskQualityQwenTwoFiveThreeBSThirtyThreeBFour` | `1.44` | = `\resETwoMaskQualityQwenLargeSThirtyThreeBFour` | see that macro |
+| `\resETwoDeeperQPQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{+10.1}` | = `\resETwoDeeperQPQwenLargeSThirtyThreeBFourPct` | see that macro |
+| `\resETwoPenaltyQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{+16.6}` | = `\resETwoPenaltyQwenLargeSThirtyThreeBFourPct` | see that macro |
+| `\resETwoRemovedRefitQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{-9}` | = `\resETwoRemovedRefitQwenLargeSThirtyThreeBFourPct` | see that macro |
+| `\resETwoRemovedPmaskQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{+5}` | = `\resETwoRemovedPmaskQwenLargeSThirtyThreeBFourPct` | see that macro |
+| `\resETwoRemovedBothQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{-5}` | = `\resETwoRemovedBothQwenLargeSThirtyThreeBFourPct` | see that macro |
+| `\resETwoStaleQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{+0.2}` | = `\resETwoStaleQwenLargeSThirtyThreeBFourPct` | see that macro |
+| `\resETwoMaskQualityQwenTwoFiveThreeBSThirtyThreeBFour` | `1.35` | = `\resETwoMaskQualityQwenLargeSThirtyThreeBFour` | see that macro |
 | `\resETwoJaccardQwenTwoFiveThreeBSThirtyThreeBFour` | `0.76` | = `\resETwoJaccardQwenLargeSThirtyThreeBFour` | see that macro |
-| `\resETwoRhoQwenTwoFiveThreeBSThirtyThreeBFour` | `\ensuremath{-0.46}` | = `\resETwoRhoQwenLargeSThirtyThreeBFour` | see that macro |
-| `\resETwoRhoPQwenTwoFiveThreeBSThirtyThreeBFour` | `0.211` | = `\resETwoRhoPQwenLargeSThirtyThreeBFour` | see that macro |
-| `\resETwoLayersQwenTwoFiveThreeBSFiftyBFour` | `9` | = `\resETwoLayersQwenLargeSFiftyBFour` | see that macro |
-| `\resETwoRatioJointQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{-5.3}` | = `\resETwoRatioJointQwenLargeSFiftyBFourPct` | see that macro |
+| `\resETwoRhoQwenTwoFiveThreeBSThirtyThreeBFour` | `\ensuremath{+0.54}` | = `\resETwoRhoQwenLargeSThirtyThreeBFour` | see that macro |
+| `\resETwoRhoPQwenTwoFiveThreeBSThirtyThreeBFour` | `\ensuremath{4.93\times 10^{-6}}` | = `\resETwoRhoPQwenLargeSThirtyThreeBFour` | see that macro |
+| `\resETwoLayersQwenTwoFiveThreeBSFiftyBFour` | `63` | = `\resETwoLayersQwenLargeSFiftyBFour` | see that macro |
+| `\resETwoRatioJointQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{-6.2}` | = `\resETwoRatioJointQwenLargeSFiftyBFourPct` | see that macro |
 | `\resETwoSubJointQwenTwoFiveThreeBSFiftyBFourPct` | `100` | = `\resETwoSubJointQwenLargeSFiftyBFourPct` | see that macro |
-| `\resETwoRatioPQQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{-1.2}` | = `\resETwoRatioPQQwenLargeSFiftyBFourPct` | see that macro |
-| `\resETwoSubPQQwenTwoFiveThreeBSFiftyBFourPct` | `67` | = `\resETwoSubPQQwenLargeSFiftyBFourPct` | see that macro |
-| `\resETwoRatioQPQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{+10.9}` | = `\resETwoRatioQPQwenLargeSFiftyBFourPct` | see that macro |
-| `\resETwoSubQPQwenTwoFiveThreeBSFiftyBFourPct` | `0` | = `\resETwoSubQPQwenLargeSFiftyBFourPct` | see that macro |
-| `\resETwoRatioQPRefitQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{+10.0}` | = `\resETwoRatioQPRefitQwenLargeSFiftyBFourPct` | see that macro |
-| `\resETwoSubQPRefitQwenTwoFiveThreeBSFiftyBFourPct` | `0` | = `\resETwoSubQPRefitQwenLargeSFiftyBFourPct` | see that macro |
-| `\resETwoRatioQPPmaskQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{+12.7}` | = `\resETwoRatioQPPmaskQwenLargeSFiftyBFourPct` | see that macro |
+| `\resETwoRatioPQQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{-3.7}` | = `\resETwoRatioPQQwenLargeSFiftyBFourPct` | see that macro |
+| `\resETwoSubPQQwenTwoFiveThreeBSFiftyBFourPct` | `87` | = `\resETwoSubPQQwenLargeSFiftyBFourPct` | see that macro |
+| `\resETwoRatioQPQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{+6.5}` | = `\resETwoRatioQPQwenLargeSFiftyBFourPct` | see that macro |
+| `\resETwoSubQPQwenTwoFiveThreeBSFiftyBFourPct` | `6` | = `\resETwoSubQPQwenLargeSFiftyBFourPct` | see that macro |
+| `\resETwoRatioQPRefitQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{+6.8}` | = `\resETwoRatioQPRefitQwenLargeSFiftyBFourPct` | see that macro |
+| `\resETwoSubQPRefitQwenTwoFiveThreeBSFiftyBFourPct` | `5` | = `\resETwoSubQPRefitQwenLargeSFiftyBFourPct` | see that macro |
+| `\resETwoRatioQPPmaskQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{+5.4}` | = `\resETwoRatioQPPmaskQwenLargeSFiftyBFourPct` | see that macro |
 | `\resETwoSubQPPmaskQwenTwoFiveThreeBSFiftyBFourPct` | `0` | = `\resETwoSubQPPmaskQwenLargeSFiftyBFourPct` | see that macro |
-| `\resETwoRatioQPPmaskRefitQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{+11.5}` | = `\resETwoRatioQPPmaskRefitQwenLargeSFiftyBFourPct` | see that macro |
+| `\resETwoRatioQPPmaskRefitQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{+5.6}` | = `\resETwoRatioQPPmaskRefitQwenLargeSFiftyBFourPct` | see that macro |
 | `\resETwoSubQPPmaskRefitQwenTwoFiveThreeBSFiftyBFourPct` | `0` | = `\resETwoSubQPPmaskRefitQwenLargeSFiftyBFourPct` | see that macro |
-| `\resETwoRatioPQStaleQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{+0.8}` | = `\resETwoRatioPQStaleQwenLargeSFiftyBFourPct` | see that macro |
-| `\resETwoSubPQStaleQwenTwoFiveThreeBSFiftyBFourPct` | `56` | = `\resETwoSubPQStaleQwenLargeSFiftyBFourPct` | see that macro |
+| `\resETwoRatioPQStaleQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{-3.2}` | = `\resETwoRatioPQStaleQwenLargeSFiftyBFourPct` | see that macro |
+| `\resETwoSubPQStaleQwenTwoFiveThreeBSFiftyBFourPct` | `81` | = `\resETwoSubPQStaleQwenLargeSFiftyBFourPct` | see that macro |
 | `\resETwoBlockZeroJointQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{-5.2}` | = `\resETwoBlockZeroJointQwenLargeSFiftyBFourPct` | see that macro |
-| `\resETwoDeeperJointQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{-6.5}` | = `\resETwoDeeperJointQwenLargeSFiftyBFourPct` | see that macro |
+| `\resETwoDeeperJointQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{-6.3}` | = `\resETwoDeeperJointQwenLargeSFiftyBFourPct` | see that macro |
 | `\resETwoBlockZeroPQQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{-1.0}` | = `\resETwoBlockZeroPQQwenLargeSFiftyBFourPct` | see that macro |
-| `\resETwoDeeperPQQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{-2.5}` | = `\resETwoDeeperPQQwenLargeSFiftyBFourPct` | see that macro |
+| `\resETwoDeeperPQQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{-3.9}` | = `\resETwoDeeperPQQwenLargeSFiftyBFourPct` | see that macro |
 | `\resETwoBlockZeroQPQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{+10.9}` | = `\resETwoBlockZeroQPQwenLargeSFiftyBFourPct` | see that macro |
-| `\resETwoDeeperQPQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{+10.3}` | = `\resETwoDeeperQPQwenLargeSFiftyBFourPct` | see that macro |
-| `\resETwoPenaltyQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{+12.2}` | = `\resETwoPenaltyQwenLargeSFiftyBFourPct` | see that macro |
-| `\resETwoRemovedRefitQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{+7}` | = `\resETwoRemovedRefitQwenLargeSFiftyBFourPct` | see that macro |
-| `\resETwoRemovedPmaskQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{-15}` | = `\resETwoRemovedPmaskQwenLargeSFiftyBFourPct` | see that macro |
-| `\resETwoRemovedBothQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{-5}` | = `\resETwoRemovedBothQwenLargeSFiftyBFourPct` | see that macro |
-| `\resETwoStaleQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{+2.0}` | = `\resETwoStaleQwenLargeSFiftyBFourPct` | see that macro |
-| `\resETwoMaskQualityQwenTwoFiveThreeBSFiftyBFour` | `1.15` | = `\resETwoMaskQualityQwenLargeSFiftyBFour` | see that macro |
-| `\resETwoJaccardQwenTwoFiveThreeBSFiftyBFour` | `0.85` | = `\resETwoJaccardQwenLargeSFiftyBFour` | see that macro |
-| `\resETwoRhoQwenTwoFiveThreeBSFiftyBFour` | `\ensuremath{-0.46}` | = `\resETwoRhoQwenLargeSFiftyBFour` | see that macro |
-| `\resETwoRhoPQwenTwoFiveThreeBSFiftyBFour` | `0.211` | = `\resETwoRhoPQwenLargeSFiftyBFour` | see that macro |
-| `\resETwoLayersQwenTwoFiveThreeBSTwentyFiveBThree` | `9` | = `\resETwoLayersQwenLargeSTwentyFiveBThree` | see that macro |
-| `\resETwoRatioJointQwenTwoFiveThreeBSTwentyFiveBThreePct` | `\ensuremath{-7.1}` | = `\resETwoRatioJointQwenLargeSTwentyFiveBThreePct` | see that macro |
+| `\resETwoDeeperQPQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{+6.1}` | = `\resETwoDeeperQPQwenLargeSFiftyBFourPct` | see that macro |
+| `\resETwoPenaltyQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{+10.5}` | = `\resETwoPenaltyQwenLargeSFiftyBFourPct` | see that macro |
+| `\resETwoRemovedRefitQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{-3}` | = `\resETwoRemovedRefitQwenLargeSFiftyBFourPct` | see that macro |
+| `\resETwoRemovedPmaskQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{+11}` | = `\resETwoRemovedPmaskQwenLargeSFiftyBFourPct` | see that macro |
+| `\resETwoRemovedBothQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{+9}` | = `\resETwoRemovedBothQwenLargeSFiftyBFourPct` | see that macro |
+| `\resETwoStaleQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{+0.5}` | = `\resETwoStaleQwenLargeSFiftyBFourPct` | see that macro |
+| `\resETwoMaskQualityQwenTwoFiveThreeBSFiftyBFour` | `1.12` | = `\resETwoMaskQualityQwenLargeSFiftyBFour` | see that macro |
+| `\resETwoJaccardQwenTwoFiveThreeBSFiftyBFour` | `0.86` | = `\resETwoJaccardQwenLargeSFiftyBFour` | see that macro |
+| `\resETwoRhoQwenTwoFiveThreeBSFiftyBFour` | `\ensuremath{+0.59}` | = `\resETwoRhoQwenLargeSFiftyBFour` | see that macro |
+| `\resETwoRhoPQwenTwoFiveThreeBSFiftyBFour` | `\ensuremath{4.77\times 10^{-7}}` | = `\resETwoRhoPQwenLargeSFiftyBFour` | see that macro |
+| `\resETwoLayersQwenTwoFiveThreeBSTwentyFiveBThree` | `63` | = `\resETwoLayersQwenLargeSTwentyFiveBThree` | see that macro |
+| `\resETwoRatioJointQwenTwoFiveThreeBSTwentyFiveBThreePct` | `\ensuremath{-7.7}` | = `\resETwoRatioJointQwenLargeSTwentyFiveBThreePct` | see that macro |
 | `\resETwoSubJointQwenTwoFiveThreeBSTwentyFiveBThreePct` | `100` | = `\resETwoSubJointQwenLargeSTwentyFiveBThreePct` | see that macro |
-| `\resETwoRatioPQQwenTwoFiveThreeBSTwentyFiveBThreePct` | `\ensuremath{+3.2}` | = `\resETwoRatioPQQwenLargeSTwentyFiveBThreePct` | see that macro |
-| `\resETwoSubPQQwenTwoFiveThreeBSTwentyFiveBThreePct` | `33` | = `\resETwoSubPQQwenLargeSTwentyFiveBThreePct` | see that macro |
-| `\resETwoRatioQPQwenTwoFiveThreeBSTwentyFiveBThreePct` | `\ensuremath{-8.3}` | = `\resETwoRatioQPQwenLargeSTwentyFiveBThreePct` | see that macro |
+| `\resETwoRatioPQQwenTwoFiveThreeBSTwentyFiveBThreePct` | `\ensuremath{-2.8}` | = `\resETwoRatioPQQwenLargeSTwentyFiveBThreePct` | see that macro |
+| `\resETwoSubPQQwenTwoFiveThreeBSTwentyFiveBThreePct` | `71` | = `\resETwoSubPQQwenLargeSTwentyFiveBThreePct` | see that macro |
+| `\resETwoRatioQPQwenTwoFiveThreeBSTwentyFiveBThreePct` | `\ensuremath{-8.5}` | = `\resETwoRatioQPQwenLargeSTwentyFiveBThreePct` | see that macro |
 | `\resETwoSubQPQwenTwoFiveThreeBSTwentyFiveBThreePct` | `100` | = `\resETwoSubQPQwenLargeSTwentyFiveBThreePct` | see that macro |
-| `\resETwoRatioQPRefitQwenTwoFiveThreeBSTwentyFiveBThreePct` | `\ensuremath{-4.6}` | = `\resETwoRatioQPRefitQwenLargeSTwentyFiveBThreePct` | see that macro |
-| `\resETwoSubQPRefitQwenTwoFiveThreeBSTwentyFiveBThreePct` | `78` | = `\resETwoSubQPRefitQwenLargeSTwentyFiveBThreePct` | see that macro |
-| `\resETwoRatioQPPmaskQwenTwoFiveThreeBSTwentyFiveBThreePct` | `\ensuremath{+18.2}` | = `\resETwoRatioQPPmaskQwenLargeSTwentyFiveBThreePct` | see that macro |
-| `\resETwoSubQPPmaskQwenTwoFiveThreeBSTwentyFiveBThreePct` | `0` | = `\resETwoSubQPPmaskQwenLargeSTwentyFiveBThreePct` | see that macro |
-| `\resETwoRatioQPPmaskRefitQwenTwoFiveThreeBSTwentyFiveBThreePct` | `\ensuremath{+24.1}` | = `\resETwoRatioQPPmaskRefitQwenLargeSTwentyFiveBThreePct` | see that macro |
-| `\resETwoSubQPPmaskRefitQwenTwoFiveThreeBSTwentyFiveBThreePct` | `0` | = `\resETwoSubQPPmaskRefitQwenLargeSTwentyFiveBThreePct` | see that macro |
-| `\resETwoRatioPQStaleQwenTwoFiveThreeBSTwentyFiveBThreePct` | `\ensuremath{+3.4}` | = `\resETwoRatioPQStaleQwenLargeSTwentyFiveBThreePct` | see that macro |
-| `\resETwoSubPQStaleQwenTwoFiveThreeBSTwentyFiveBThreePct` | `33` | = `\resETwoSubPQStaleQwenLargeSTwentyFiveBThreePct` | see that macro |
+| `\resETwoRatioQPRefitQwenTwoFiveThreeBSTwentyFiveBThreePct` | `\ensuremath{-6.6}` | = `\resETwoRatioQPRefitQwenLargeSTwentyFiveBThreePct` | see that macro |
+| `\resETwoSubQPRefitQwenTwoFiveThreeBSTwentyFiveBThreePct` | `89` | = `\resETwoSubQPRefitQwenLargeSTwentyFiveBThreePct` | see that macro |
+| `\resETwoRatioQPPmaskQwenTwoFiveThreeBSTwentyFiveBThreePct` | `\ensuremath{+3.7}` | = `\resETwoRatioQPPmaskQwenLargeSTwentyFiveBThreePct` | see that macro |
+| `\resETwoSubQPPmaskQwenTwoFiveThreeBSTwentyFiveBThreePct` | `29` | = `\resETwoSubQPPmaskQwenLargeSTwentyFiveBThreePct` | see that macro |
+| `\resETwoRatioQPPmaskRefitQwenTwoFiveThreeBSTwentyFiveBThreePct` | `\ensuremath{+7.0}` | = `\resETwoRatioQPPmaskRefitQwenLargeSTwentyFiveBThreePct` | see that macro |
+| `\resETwoSubQPPmaskRefitQwenTwoFiveThreeBSTwentyFiveBThreePct` | `11` | = `\resETwoSubQPPmaskRefitQwenLargeSTwentyFiveBThreePct` | see that macro |
+| `\resETwoRatioPQStaleQwenTwoFiveThreeBSTwentyFiveBThreePct` | `\ensuremath{-2.5}` | = `\resETwoRatioPQStaleQwenLargeSTwentyFiveBThreePct` | see that macro |
+| `\resETwoSubPQStaleQwenTwoFiveThreeBSTwentyFiveBThreePct` | `67` | = `\resETwoSubPQStaleQwenLargeSTwentyFiveBThreePct` | see that macro |
 | `\resETwoBlockZeroJointQwenTwoFiveThreeBSTwentyFiveBThreePct` | `\ensuremath{-7.6}` | = `\resETwoBlockZeroJointQwenLargeSTwentyFiveBThreePct` | see that macro |
-| `\resETwoDeeperJointQwenTwoFiveThreeBSTwentyFiveBThreePct` | `\ensuremath{-4.6}` | = `\resETwoDeeperJointQwenLargeSTwentyFiveBThreePct` | see that macro |
+| `\resETwoDeeperJointQwenTwoFiveThreeBSTwentyFiveBThreePct` | `\ensuremath{-7.7}` | = `\resETwoDeeperJointQwenLargeSTwentyFiveBThreePct` | see that macro |
 | `\resETwoBlockZeroPQQwenTwoFiveThreeBSTwentyFiveBThreePct` | `\ensuremath{+3.8}` | = `\resETwoBlockZeroPQQwenLargeSTwentyFiveBThreePct` | see that macro |
-| `\resETwoDeeperPQQwenTwoFiveThreeBSTwentyFiveBThreePct` | `\ensuremath{+0.7}` | = `\resETwoDeeperPQQwenLargeSTwentyFiveBThreePct` | see that macro |
+| `\resETwoDeeperPQQwenTwoFiveThreeBSTwentyFiveBThreePct` | `\ensuremath{-3.3}` | = `\resETwoDeeperPQQwenLargeSTwentyFiveBThreePct` | see that macro |
 | `\resETwoBlockZeroQPQwenTwoFiveThreeBSTwentyFiveBThreePct` | `\ensuremath{-8.9}` | = `\resETwoBlockZeroQPQwenLargeSTwentyFiveBThreePct` | see that macro |
-| `\resETwoDeeperQPQwenTwoFiveThreeBSTwentyFiveBThreePct` | `\ensuremath{-5.7}` | = `\resETwoDeeperQPQwenLargeSTwentyFiveBThreePct` | see that macro |
-| `\resETwoPenaltyQwenTwoFiveThreeBSTwentyFiveBThreePct` | `\ensuremath{-11.2}` | = `\resETwoPenaltyQwenLargeSTwentyFiveBThreePct` | see that macro |
+| `\resETwoDeeperQPQwenTwoFiveThreeBSTwentyFiveBThreePct` | `\ensuremath{-8.5}` | = `\resETwoDeeperQPQwenLargeSTwentyFiveBThreePct` | see that macro |
+| `\resETwoPenaltyQwenTwoFiveThreeBSTwentyFiveBThreePct` | `\ensuremath{-5.9}` | = `\resETwoPenaltyQwenLargeSTwentyFiveBThreePct` | see that macro |
 | `\resETwoRemovedRefitQwenTwoFiveThreeBSTwentyFiveBThreePct` | `--` | = `\resETwoRemovedRefitQwenLargeSTwentyFiveBThreePct` | see that macro |
 | `\resETwoRemovedPmaskQwenTwoFiveThreeBSTwentyFiveBThreePct` | `--` | = `\resETwoRemovedPmaskQwenLargeSTwentyFiveBThreePct` | see that macro |
 | `\resETwoRemovedBothQwenTwoFiveThreeBSTwentyFiveBThreePct` | `--` | = `\resETwoRemovedBothQwenLargeSTwentyFiveBThreePct` | see that macro |
-| `\resETwoStaleQwenTwoFiveThreeBSTwentyFiveBThreePct` | `\ensuremath{+0.2}` | = `\resETwoStaleQwenLargeSTwentyFiveBThreePct` | see that macro |
-| `\resETwoMaskQualityQwenTwoFiveThreeBSTwentyFiveBThree` | `4.03` | = `\resETwoMaskQualityQwenLargeSTwentyFiveBThree` | see that macro |
-| `\resETwoJaccardQwenTwoFiveThreeBSTwentyFiveBThree` | `0.53` | = `\resETwoJaccardQwenLargeSTwentyFiveBThree` | see that macro |
-| `\resETwoRhoQwenTwoFiveThreeBSTwentyFiveBThree` | `\ensuremath{-0.46}` | = `\resETwoRhoQwenLargeSTwentyFiveBThree` | see that macro |
-| `\resETwoRhoPQwenTwoFiveThreeBSTwentyFiveBThree` | `0.211` | = `\resETwoRhoPQwenLargeSTwentyFiveBThree` | see that macro |
-| `\resETwoLayersQwenTwoFiveThreeBSThirtyThreeBThree` | `9` | = `\resETwoLayersQwenLargeSThirtyThreeBThree` | see that macro |
-| `\resETwoRatioJointQwenTwoFiveThreeBSThirtyThreeBThreePct` | `\ensuremath{-13.2}` | = `\resETwoRatioJointQwenLargeSThirtyThreeBThreePct` | see that macro |
+| `\resETwoStaleQwenTwoFiveThreeBSTwentyFiveBThreePct` | `\ensuremath{+0.3}` | = `\resETwoStaleQwenLargeSTwentyFiveBThreePct` | see that macro |
+| `\resETwoMaskQualityQwenTwoFiveThreeBSTwentyFiveBThree` | `3.40` | = `\resETwoMaskQualityQwenLargeSTwentyFiveBThree` | see that macro |
+| `\resETwoJaccardQwenTwoFiveThreeBSTwentyFiveBThree` | `0.55` | = `\resETwoJaccardQwenLargeSTwentyFiveBThree` | see that macro |
+| `\resETwoRhoQwenTwoFiveThreeBSTwentyFiveBThree` | `\ensuremath{+0.42}` | = `\resETwoRhoQwenLargeSTwentyFiveBThree` | see that macro |
+| `\resETwoRhoPQwenTwoFiveThreeBSTwentyFiveBThree` | `\ensuremath{5.62\times 10^{-4}}` | = `\resETwoRhoPQwenLargeSTwentyFiveBThree` | see that macro |
+| `\resETwoLayersQwenTwoFiveThreeBSThirtyThreeBThree` | `63` | = `\resETwoLayersQwenLargeSThirtyThreeBThree` | see that macro |
+| `\resETwoRatioJointQwenTwoFiveThreeBSThirtyThreeBThreePct` | `\ensuremath{-14.2}` | = `\resETwoRatioJointQwenLargeSThirtyThreeBThreePct` | see that macro |
 | `\resETwoSubJointQwenTwoFiveThreeBSThirtyThreeBThreePct` | `100` | = `\resETwoSubJointQwenLargeSThirtyThreeBThreePct` | see that macro |
-| `\resETwoRatioPQQwenTwoFiveThreeBSThirtyThreeBThreePct` | `\ensuremath{+0.9}` | = `\resETwoRatioPQQwenLargeSThirtyThreeBThreePct` | see that macro |
-| `\resETwoSubPQQwenTwoFiveThreeBSThirtyThreeBThreePct` | `56` | = `\resETwoSubPQQwenLargeSThirtyThreeBThreePct` | see that macro |
-| `\resETwoRatioQPQwenTwoFiveThreeBSThirtyThreeBThreePct` | `\ensuremath{-11.6}` | = `\resETwoRatioQPQwenLargeSThirtyThreeBThreePct` | see that macro |
+| `\resETwoRatioPQQwenTwoFiveThreeBSThirtyThreeBThreePct` | `\ensuremath{-7.0}` | = `\resETwoRatioPQQwenLargeSThirtyThreeBThreePct` | see that macro |
+| `\resETwoSubPQQwenTwoFiveThreeBSThirtyThreeBThreePct` | `79` | = `\resETwoSubPQQwenLargeSThirtyThreeBThreePct` | see that macro |
+| `\resETwoRatioQPQwenTwoFiveThreeBSThirtyThreeBThreePct` | `\ensuremath{-12.3}` | = `\resETwoRatioQPQwenLargeSThirtyThreeBThreePct` | see that macro |
 | `\resETwoSubQPQwenTwoFiveThreeBSThirtyThreeBThreePct` | `100` | = `\resETwoSubQPQwenLargeSThirtyThreeBThreePct` | see that macro |
-| `\resETwoRatioQPRefitQwenTwoFiveThreeBSThirtyThreeBThreePct` | `\ensuremath{-7.4}` | = `\resETwoRatioQPRefitQwenLargeSThirtyThreeBThreePct` | see that macro |
-| `\resETwoSubQPRefitQwenTwoFiveThreeBSThirtyThreeBThreePct` | `67` | = `\resETwoSubQPRefitQwenLargeSThirtyThreeBThreePct` | see that macro |
-| `\resETwoRatioQPPmaskQwenTwoFiveThreeBSThirtyThreeBThreePct` | `\ensuremath{+21.6}` | = `\resETwoRatioQPPmaskQwenLargeSThirtyThreeBThreePct` | see that macro |
-| `\resETwoSubQPPmaskQwenTwoFiveThreeBSThirtyThreeBThreePct` | `0` | = `\resETwoSubQPPmaskQwenLargeSThirtyThreeBThreePct` | see that macro |
-| `\resETwoRatioQPPmaskRefitQwenTwoFiveThreeBSThirtyThreeBThreePct` | `\ensuremath{+27.9}` | = `\resETwoRatioQPPmaskRefitQwenLargeSThirtyThreeBThreePct` | see that macro |
-| `\resETwoSubQPPmaskRefitQwenTwoFiveThreeBSThirtyThreeBThreePct` | `0` | = `\resETwoSubQPPmaskRefitQwenLargeSThirtyThreeBThreePct` | see that macro |
-| `\resETwoRatioPQStaleQwenTwoFiveThreeBSThirtyThreeBThreePct` | `\ensuremath{+0.8}` | = `\resETwoRatioPQStaleQwenLargeSThirtyThreeBThreePct` | see that macro |
-| `\resETwoSubPQStaleQwenTwoFiveThreeBSThirtyThreeBThreePct` | `67` | = `\resETwoSubPQStaleQwenLargeSThirtyThreeBThreePct` | see that macro |
+| `\resETwoRatioQPRefitQwenTwoFiveThreeBSThirtyThreeBThreePct` | `\ensuremath{-10.1}` | = `\resETwoRatioQPRefitQwenLargeSThirtyThreeBThreePct` | see that macro |
+| `\resETwoSubQPRefitQwenTwoFiveThreeBSThirtyThreeBThreePct` | `90` | = `\resETwoSubQPRefitQwenLargeSThirtyThreeBThreePct` | see that macro |
+| `\resETwoRatioQPPmaskQwenTwoFiveThreeBSThirtyThreeBThreePct` | `\ensuremath{+3.3}` | = `\resETwoRatioQPPmaskQwenLargeSThirtyThreeBThreePct` | see that macro |
+| `\resETwoSubQPPmaskQwenTwoFiveThreeBSThirtyThreeBThreePct` | `35` | = `\resETwoSubQPPmaskQwenLargeSThirtyThreeBThreePct` | see that macro |
+| `\resETwoRatioQPPmaskRefitQwenTwoFiveThreeBSThirtyThreeBThreePct` | `\ensuremath{+7.1}` | = `\resETwoRatioQPPmaskRefitQwenLargeSThirtyThreeBThreePct` | see that macro |
+| `\resETwoSubQPPmaskRefitQwenTwoFiveThreeBSThirtyThreeBThreePct` | `17` | = `\resETwoSubQPPmaskRefitQwenLargeSThirtyThreeBThreePct` | see that macro |
+| `\resETwoRatioPQStaleQwenTwoFiveThreeBSThirtyThreeBThreePct` | `\ensuremath{-6.8}` | = `\resETwoRatioPQStaleQwenLargeSThirtyThreeBThreePct` | see that macro |
+| `\resETwoSubPQStaleQwenTwoFiveThreeBSThirtyThreeBThreePct` | `78` | = `\resETwoSubPQStaleQwenLargeSThirtyThreeBThreePct` | see that macro |
 | `\resETwoBlockZeroJointQwenTwoFiveThreeBSThirtyThreeBThreePct` | `\ensuremath{-14.0}` | = `\resETwoBlockZeroJointQwenLargeSThirtyThreeBThreePct` | see that macro |
-| `\resETwoDeeperJointQwenTwoFiveThreeBSThirtyThreeBThreePct` | `\ensuremath{-9.1}` | = `\resETwoDeeperJointQwenLargeSThirtyThreeBThreePct` | see that macro |
+| `\resETwoDeeperJointQwenTwoFiveThreeBSThirtyThreeBThreePct` | `\ensuremath{-14.2}` | = `\resETwoDeeperJointQwenLargeSThirtyThreeBThreePct` | see that macro |
 | `\resETwoBlockZeroPQQwenTwoFiveThreeBSThirtyThreeBThreePct` | `\ensuremath{+1.3}` | = `\resETwoBlockZeroPQQwenLargeSThirtyThreeBThreePct` | see that macro |
-| `\resETwoDeeperPQQwenTwoFiveThreeBSThirtyThreeBThreePct` | `\ensuremath{-0.8}` | = `\resETwoDeeperPQQwenLargeSThirtyThreeBThreePct` | see that macro |
+| `\resETwoDeeperPQQwenTwoFiveThreeBSThirtyThreeBThreePct` | `\ensuremath{-7.6}` | = `\resETwoDeeperPQQwenLargeSThirtyThreeBThreePct` | see that macro |
 | `\resETwoBlockZeroQPQwenTwoFiveThreeBSThirtyThreeBThreePct` | `\ensuremath{-11.5}` | = `\resETwoBlockZeroQPQwenLargeSThirtyThreeBThreePct` | see that macro |
-| `\resETwoDeeperQPQwenTwoFiveThreeBSThirtyThreeBThreePct` | `\ensuremath{-12.0}` | = `\resETwoDeeperQPQwenLargeSThirtyThreeBThreePct` | see that macro |
-| `\resETwoPenaltyQwenTwoFiveThreeBSThirtyThreeBThreePct` | `\ensuremath{-12.4}` | = `\resETwoPenaltyQwenLargeSThirtyThreeBThreePct` | see that macro |
+| `\resETwoDeeperQPQwenTwoFiveThreeBSThirtyThreeBThreePct` | `\ensuremath{-12.4}` | = `\resETwoDeeperQPQwenLargeSThirtyThreeBThreePct` | see that macro |
+| `\resETwoPenaltyQwenTwoFiveThreeBSThirtyThreeBThreePct` | `\ensuremath{-5.7}` | = `\resETwoPenaltyQwenLargeSThirtyThreeBThreePct` | see that macro |
 | `\resETwoRemovedRefitQwenTwoFiveThreeBSThirtyThreeBThreePct` | `--` | = `\resETwoRemovedRefitQwenLargeSThirtyThreeBThreePct` | see that macro |
 | `\resETwoRemovedPmaskQwenTwoFiveThreeBSThirtyThreeBThreePct` | `--` | = `\resETwoRemovedPmaskQwenLargeSThirtyThreeBThreePct` | see that macro |
 | `\resETwoRemovedBothQwenTwoFiveThreeBSThirtyThreeBThreePct` | `--` | = `\resETwoRemovedBothQwenLargeSThirtyThreeBThreePct` | see that macro |
-| `\resETwoStaleQwenTwoFiveThreeBSThirtyThreeBThreePct` | `\ensuremath{-0.1}` | = `\resETwoStaleQwenLargeSThirtyThreeBThreePct` | see that macro |
-| `\resETwoMaskQualityQwenTwoFiveThreeBSThirtyThreeBThree` | `2.47` | = `\resETwoMaskQualityQwenLargeSThirtyThreeBThree` | see that macro |
-| `\resETwoJaccardQwenTwoFiveThreeBSThirtyThreeBThree` | `0.65` | = `\resETwoJaccardQwenLargeSThirtyThreeBThree` | see that macro |
-| `\resETwoRhoQwenTwoFiveThreeBSThirtyThreeBThree` | `\ensuremath{-0.44}` | = `\resETwoRhoQwenLargeSThirtyThreeBThree` | see that macro |
-| `\resETwoRhoPQwenTwoFiveThreeBSThirtyThreeBThree` | `0.241` | = `\resETwoRhoPQwenLargeSThirtyThreeBThree` | see that macro |
-| `\resETwoLayersQwenTwoFiveThreeBSFiftyBThree` | `9` | = `\resETwoLayersQwenLargeSFiftyBThree` | see that macro |
-| `\resETwoRatioJointQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{-15.1}` | = `\resETwoRatioJointQwenLargeSFiftyBThreePct` | see that macro |
+| `\resETwoStaleQwenTwoFiveThreeBSThirtyThreeBThreePct` | `\ensuremath{+0.3}` | = `\resETwoStaleQwenLargeSThirtyThreeBThreePct` | see that macro |
+| `\resETwoMaskQualityQwenTwoFiveThreeBSThirtyThreeBThree` | `1.94` | = `\resETwoMaskQualityQwenLargeSThirtyThreeBThree` | see that macro |
+| `\resETwoJaccardQwenTwoFiveThreeBSThirtyThreeBThree` | `0.71` | = `\resETwoJaccardQwenLargeSThirtyThreeBThree` | see that macro |
+| `\resETwoRhoQwenTwoFiveThreeBSThirtyThreeBThree` | `\ensuremath{+0.46}` | = `\resETwoRhoQwenLargeSThirtyThreeBThree` | see that macro |
+| `\resETwoRhoPQwenTwoFiveThreeBSThirtyThreeBThree` | `\ensuremath{1.40\times 10^{-4}}` | = `\resETwoRhoPQwenLargeSThirtyThreeBThree` | see that macro |
+| `\resETwoLayersQwenTwoFiveThreeBSFiftyBThree` | `63` | = `\resETwoLayersQwenLargeSFiftyBThree` | see that macro |
+| `\resETwoRatioJointQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{-17.0}` | = `\resETwoRatioJointQwenLargeSFiftyBThreePct` | see that macro |
 | `\resETwoSubJointQwenTwoFiveThreeBSFiftyBThreePct` | `100` | = `\resETwoSubJointQwenLargeSFiftyBThreePct` | see that macro |
-| `\resETwoRatioPQQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{-3.0}` | = `\resETwoRatioPQQwenLargeSFiftyBThreePct` | see that macro |
-| `\resETwoSubPQQwenTwoFiveThreeBSFiftyBThreePct` | `67` | = `\resETwoSubPQQwenLargeSFiftyBThreePct` | see that macro |
-| `\resETwoRatioQPQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{+12.1}` | = `\resETwoRatioQPQwenLargeSFiftyBThreePct` | see that macro |
-| `\resETwoSubQPQwenTwoFiveThreeBSFiftyBThreePct` | `0` | = `\resETwoSubQPQwenLargeSFiftyBThreePct` | see that macro |
-| `\resETwoRatioQPRefitQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{+16.1}` | = `\resETwoRatioQPRefitQwenLargeSFiftyBThreePct` | see that macro |
-| `\resETwoSubQPRefitQwenTwoFiveThreeBSFiftyBThreePct` | `0` | = `\resETwoSubQPRefitQwenLargeSFiftyBThreePct` | see that macro |
-| `\resETwoRatioQPPmaskQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{+19.1}` | = `\resETwoRatioQPPmaskQwenLargeSFiftyBThreePct` | see that macro |
-| `\resETwoSubQPPmaskQwenTwoFiveThreeBSFiftyBThreePct` | `0` | = `\resETwoSubQPPmaskQwenLargeSFiftyBThreePct` | see that macro |
-| `\resETwoRatioQPPmaskRefitQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{+23.9}` | = `\resETwoRatioQPPmaskRefitQwenLargeSFiftyBThreePct` | see that macro |
-| `\resETwoSubQPPmaskRefitQwenTwoFiveThreeBSFiftyBThreePct` | `0` | = `\resETwoSubQPPmaskRefitQwenLargeSFiftyBThreePct` | see that macro |
-| `\resETwoRatioPQStaleQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{-3.6}` | = `\resETwoRatioPQStaleQwenLargeSFiftyBThreePct` | see that macro |
-| `\resETwoSubPQStaleQwenTwoFiveThreeBSFiftyBThreePct` | `67` | = `\resETwoSubPQStaleQwenLargeSFiftyBThreePct` | see that macro |
+| `\resETwoRatioPQQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{-10.2}` | = `\resETwoRatioPQQwenLargeSFiftyBThreePct` | see that macro |
+| `\resETwoSubPQQwenTwoFiveThreeBSFiftyBThreePct` | `86` | = `\resETwoSubPQQwenLargeSFiftyBThreePct` | see that macro |
+| `\resETwoRatioQPQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{+5.6}` | = `\resETwoRatioQPQwenLargeSFiftyBThreePct` | see that macro |
+| `\resETwoSubQPQwenTwoFiveThreeBSFiftyBThreePct` | `21` | = `\resETwoSubQPQwenLargeSFiftyBThreePct` | see that macro |
+| `\resETwoRatioQPRefitQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{+8.6}` | = `\resETwoRatioQPRefitQwenLargeSFiftyBThreePct` | see that macro |
+| `\resETwoSubQPRefitQwenTwoFiveThreeBSFiftyBThreePct` | `13` | = `\resETwoSubQPRefitQwenLargeSFiftyBThreePct` | see that macro |
+| `\resETwoRatioQPPmaskQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{+2.9}` | = `\resETwoRatioQPPmaskQwenLargeSFiftyBThreePct` | see that macro |
+| `\resETwoSubQPPmaskQwenTwoFiveThreeBSFiftyBThreePct` | `29` | = `\resETwoSubQPPmaskQwenLargeSFiftyBThreePct` | see that macro |
+| `\resETwoRatioQPPmaskRefitQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{+6.0}` | = `\resETwoRatioQPPmaskRefitQwenLargeSFiftyBThreePct` | see that macro |
+| `\resETwoSubQPPmaskRefitQwenTwoFiveThreeBSFiftyBThreePct` | `17` | = `\resETwoSubQPPmaskRefitQwenLargeSFiftyBThreePct` | see that macro |
+| `\resETwoRatioPQStaleQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{-10.3}` | = `\resETwoRatioPQStaleQwenLargeSFiftyBThreePct` | see that macro |
+| `\resETwoSubPQStaleQwenTwoFiveThreeBSFiftyBThreePct` | `86` | = `\resETwoSubPQStaleQwenLargeSFiftyBThreePct` | see that macro |
 | `\resETwoBlockZeroJointQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{-15.3}` | = `\resETwoBlockZeroJointQwenLargeSFiftyBThreePct` | see that macro |
-| `\resETwoDeeperJointQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{-13.4}` | = `\resETwoDeeperJointQwenLargeSFiftyBThreePct` | see that macro |
+| `\resETwoDeeperJointQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{-17.1}` | = `\resETwoDeeperJointQwenLargeSFiftyBThreePct` | see that macro |
 | `\resETwoBlockZeroPQQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{-2.9}` | = `\resETwoBlockZeroPQQwenLargeSFiftyBThreePct` | see that macro |
-| `\resETwoDeeperPQQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{-3.9}` | = `\resETwoDeeperPQQwenLargeSFiftyBThreePct` | see that macro |
+| `\resETwoDeeperPQQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{-10.8}` | = `\resETwoDeeperPQQwenLargeSFiftyBThreePct` | see that macro |
 | `\resETwoBlockZeroQPQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{+14.1}` | = `\resETwoBlockZeroQPQwenLargeSFiftyBThreePct` | see that macro |
-| `\resETwoDeeperQPQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{+0.6}` | = `\resETwoDeeperQPQwenLargeSFiftyBThreePct` | see that macro |
-| `\resETwoPenaltyQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{+15.6}` | = `\resETwoPenaltyQwenLargeSFiftyBThreePct` | see that macro |
-| `\resETwoRemovedRefitQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{-27}` | = `\resETwoRemovedRefitQwenLargeSFiftyBThreePct` | see that macro |
-| `\resETwoRemovedPmaskQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{-46}` | = `\resETwoRemovedPmaskQwenLargeSFiftyBThreePct` | see that macro |
-| `\resETwoRemovedBothQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{-78}` | = `\resETwoRemovedBothQwenLargeSFiftyBThreePct` | see that macro |
-| `\resETwoStaleQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{-0.6}` | = `\resETwoStaleQwenLargeSFiftyBThreePct` | see that macro |
-| `\resETwoMaskQualityQwenTwoFiveThreeBSFiftyBThree` | `1.67` | = `\resETwoMaskQualityQwenLargeSFiftyBThree` | see that macro |
-| `\resETwoJaccardQwenTwoFiveThreeBSFiftyBThree` | `0.74` | = `\resETwoJaccardQwenLargeSFiftyBThree` | see that macro |
-| `\resETwoRhoQwenTwoFiveThreeBSFiftyBThree` | `\ensuremath{-0.46}` | = `\resETwoRhoQwenLargeSFiftyBThree` | see that macro |
-| `\resETwoRhoPQwenTwoFiveThreeBSFiftyBThree` | `0.211` | = `\resETwoRhoPQwenLargeSFiftyBThree` | see that macro |
+| `\resETwoDeeperQPQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{+5.0}` | = `\resETwoDeeperQPQwenLargeSFiftyBThreePct` | see that macro |
+| `\resETwoPenaltyQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{+17.7}` | = `\resETwoPenaltyQwenLargeSFiftyBThreePct` | see that macro |
+| `\resETwoRemovedRefitQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{-19}` | = `\resETwoRemovedRefitQwenLargeSFiftyBThreePct` | see that macro |
+| `\resETwoRemovedPmaskQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{+17}` | = `\resETwoRemovedPmaskQwenLargeSFiftyBThreePct` | see that macro |
+| `\resETwoRemovedBothQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{-2}` | = `\resETwoRemovedBothQwenLargeSFiftyBThreePct` | see that macro |
+| `\resETwoStaleQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{-0.1}` | = `\resETwoStaleQwenLargeSFiftyBThreePct` | see that macro |
+| `\resETwoMaskQualityQwenTwoFiveThreeBSFiftyBThree` | `1.53` | = `\resETwoMaskQualityQwenLargeSFiftyBThree` | see that macro |
+| `\resETwoJaccardQwenTwoFiveThreeBSFiftyBThree` | `0.72` | = `\resETwoJaccardQwenLargeSFiftyBThree` | see that macro |
+| `\resETwoRhoQwenTwoFiveThreeBSFiftyBThree` | `\ensuremath{+0.53}` | = `\resETwoRhoQwenLargeSFiftyBThree` | see that macro |
+| `\resETwoRhoPQwenTwoFiveThreeBSFiftyBThree` | `\ensuremath{6.47\times 10^{-6}}` | = `\resETwoRhoPQwenLargeSFiftyBThree` | see that macro |
 | `\resFrontierThreeGainQwenTwoFiveOneFiveBPct` | `\ensuremath{+18.3}` | = `\resFrontierThreeGainQwenMidPct` | see that macro |
 | `\resFrontierFourGainQwenTwoFiveOneFiveBPct` | `\ensuremath{-1.1}` | = `\resFrontierFourGainQwenMidPct` | see that macro |
 | `\resFrontierThreeBThreeGainQwenTwoFiveOneFiveBPct` | `\ensuremath{+1.2}` | = `\resFrontierThreeBThreeGainQwenMidPct` | see that macro |
@@ -8628,6 +8654,32 @@ Columns:
 | `\resETwoSplitMaskQwenTwoFiveOneFiveBSFiftyBThreePct` | `\ensuremath{+1.2}` | = `\resETwoSplitMaskQwenMidSFiftyBThreePct` | see that macro |
 | `\resETwoSplitOrderQwenTwoFiveOneFiveBSFiftyBThreePct` | `\ensuremath{+14.5}` | = `\resETwoSplitOrderQwenMidSFiftyBThreePct` | see that macro |
 | `\resETwoSplitGridQwenTwoFiveOneFiveBSFiftyBThreePct` | `\ensuremath{+0.0}` | = `\resETwoSplitGridQwenMidSFiftyBThreePct` | see that macro |
+| `\resETwoLayersQwenTwoFiveThreeB` | `63` | = `\resETwoLayersQwenLarge` | see that macro |
+| `\resETwoBlocksQwenTwoFiveThreeB` | `9` | = `\resETwoBlocksQwenLarge` | see that macro |
+| `\resETwoSplitGapQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{+14.4}` | = `\resETwoSplitGapQwenLargeSTwentyFiveBFourPct` | see that macro |
+| `\resETwoSplitMaskQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{-1.1}` | = `\resETwoSplitMaskQwenLargeSTwentyFiveBFourPct` | see that macro |
+| `\resETwoSplitOrderQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{+15.3}` | = `\resETwoSplitOrderQwenLargeSTwentyFiveBFourPct` | see that macro |
+| `\resETwoSplitGridQwenTwoFiveThreeBSTwentyFiveBFourPct` | `\ensuremath{+0.2}` | = `\resETwoSplitGridQwenLargeSTwentyFiveBFourPct` | see that macro |
+| `\resETwoSplitGapQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{+16.6}` | = `\resETwoSplitGapQwenLargeSThirtyThreeBFourPct` | see that macro |
+| `\resETwoSplitMaskQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{+0.8}` | = `\resETwoSplitMaskQwenLargeSThirtyThreeBFourPct` | see that macro |
+| `\resETwoSplitOrderQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{+15.6}` | = `\resETwoSplitOrderQwenLargeSThirtyThreeBFourPct` | see that macro |
+| `\resETwoSplitGridQwenTwoFiveThreeBSThirtyThreeBFourPct` | `\ensuremath{+0.2}` | = `\resETwoSplitGridQwenLargeSThirtyThreeBFourPct` | see that macro |
+| `\resETwoSplitGapQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{+10.5}` | = `\resETwoSplitGapQwenLargeSFiftyBFourPct` | see that macro |
+| `\resETwoSplitMaskQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{+1.1}` | = `\resETwoSplitMaskQwenLargeSFiftyBFourPct` | see that macro |
+| `\resETwoSplitOrderQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{+8.9}` | = `\resETwoSplitOrderQwenLargeSFiftyBFourPct` | see that macro |
+| `\resETwoSplitGridQwenTwoFiveThreeBSFiftyBFourPct` | `\ensuremath{+0.5}` | = `\resETwoSplitGridQwenLargeSFiftyBFourPct` | see that macro |
+| `\resETwoSplitGapQwenTwoFiveThreeBSTwentyFiveBThreePct` | `\ensuremath{-5.9}` | = `\resETwoSplitGapQwenLargeSTwentyFiveBThreePct` | see that macro |
+| `\resETwoSplitMaskQwenTwoFiveThreeBSTwentyFiveBThreePct` | `\ensuremath{-12.6}` | = `\resETwoSplitMaskQwenLargeSTwentyFiveBThreePct` | see that macro |
+| `\resETwoSplitOrderQwenTwoFiveThreeBSTwentyFiveBThreePct` | `\ensuremath{+6.4}` | = `\resETwoSplitOrderQwenLargeSTwentyFiveBThreePct` | see that macro |
+| `\resETwoSplitGridQwenTwoFiveThreeBSTwentyFiveBThreePct` | `\ensuremath{+0.3}` | = `\resETwoSplitGridQwenLargeSTwentyFiveBThreePct` | see that macro |
+| `\resETwoSplitGapQwenTwoFiveThreeBSThirtyThreeBThreePct` | `\ensuremath{-5.7}` | = `\resETwoSplitGapQwenLargeSThirtyThreeBThreePct` | see that macro |
+| `\resETwoSplitMaskQwenTwoFiveThreeBSThirtyThreeBThreePct` | `\ensuremath{-16.8}` | = `\resETwoSplitMaskQwenLargeSThirtyThreeBThreePct` | see that macro |
+| `\resETwoSplitOrderQwenTwoFiveThreeBSThirtyThreeBThreePct` | `\ensuremath{+10.9}` | = `\resETwoSplitOrderQwenLargeSThirtyThreeBThreePct` | see that macro |
+| `\resETwoSplitGridQwenTwoFiveThreeBSThirtyThreeBThreePct` | `\ensuremath{+0.3}` | = `\resETwoSplitGridQwenLargeSThirtyThreeBThreePct` | see that macro |
+| `\resETwoSplitGapQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{+17.7}` | = `\resETwoSplitGapQwenLargeSFiftyBThreePct` | see that macro |
+| `\resETwoSplitMaskQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{+3.1}` | = `\resETwoSplitMaskQwenLargeSFiftyBThreePct` | see that macro |
+| `\resETwoSplitOrderQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{+14.7}` | = `\resETwoSplitOrderQwenLargeSFiftyBThreePct` | see that macro |
+| `\resETwoSplitGridQwenTwoFiveThreeBSFiftyBThreePct` | `\ensuremath{-0.1}` | = `\resETwoSplitGridQwenLargeSFiftyBThreePct` | see that macro |
 | `\resETwoLayersOLMoTwoZeroFourTwoFiveOneB` | `56` | = `\resETwoLayersOlmo` | see that macro |
 | `\resETwoBlocksOLMoTwoZeroFourTwoFiveOneB` | `8` | = `\resETwoBlocksOlmo` | see that macro |
 | `\resETwoSplitGapOLMoTwoZeroFourTwoFiveOneBSTwentyFiveBFourPct` | `\ensuremath{+25.5}` | = `\resETwoSplitGapOlmoSTwentyFiveBFourPct` | see that macro |
