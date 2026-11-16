@@ -1,7 +1,10 @@
 # NEWS (newest first)
 
 ## Read this first
-- **Now (16 Nov, 17:40 UTC):** V4, the final revision for the first author, is delivered (private package, backed up
+- **Now (16 Nov, 17:15 UTC):** the 13 missing Qwen2.5-1.5B calibration-seed states are running on two L4 runtimes
+  (esann-a14, esann-b13; DECISIONS.md #64), about 2.5 hours. Then Q3's "(one calibration seed)" is replaced by the
+  seed check (text and claim ready) and V4 is rebuilt and redelivered with a diff against the V4 sent.
+- **16 Nov, 16:45 UTC:** V4, the final revision for the first author, is delivered (private package, backed up
   to the private dataset): 6 pages, every number generated, 36 worded claims checked against the data, independently
   audited (one blocker and four major points, all fixed: DECISIONS.md #63), the team's review inputs sorted one by one
   (`REVIEW_V4.md` in the package).
@@ -11,8 +14,8 @@
   paper's decomposition is checked without compensation (new experiment E9, all seven models: cross terms at most
   0.13% of E_P+E_Q, mask-first sub-additive in 42 of 42 settings); a generated supplement with every state's
   results (`paper/supplement/`, also on the results dataset).
-- **GPU:** no runtime is assigned; the hourly check-in is deleted. The 13 missing Qwen2.5-1.5B seed states were not
-  run (DECISIONS.md #61). Compute units: `logs/budget.md` (about 66 of the 80 left, estimate).
+- **GPU:** esann-a14 and esann-b13 (L4) run the seed states; an hourly check-in renews their access. Compute units:
+  `logs/budget.md` (about 66 of the 80 left before this run, estimate; this run about 9 CU).
 - **Links:** PR https://github.com/martin-cousseau/esann2027-compose/pull/1 (draft) ; models
   https://huggingface.co/martincousseau/esann2027-compose-v2 ; results and supplement
   https://huggingface.co/datasets/martincousseau/esann2027-v2-results ; runs https://wandb.ai/martin-css/esann2027-compose-v2
