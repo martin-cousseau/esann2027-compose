@@ -57,3 +57,4 @@
 {"runtime": "esann-b12", "event": "deleted", "time": "2026-11-16T16:26:22+00:00", "note": "#61 chain_b18 done: E9 on Qwen2.5-3B complete (63 layers); no runtime is assigned now"}
 {"runtime": "esann-a14", "event": "created", "time": "2026-11-16T17:00:00+00:00", "spec": "L4 standard", "time_from": "first token expiry minus 1 h", "note": "#64 chain_a20: 3 Qwen2.5-1.5B seed-2 states at 3 bits (__b), then 4 at 4 bits (__c)"}
 {"runtime": "esann-b13", "event": "created", "time": "2026-11-16T17:00:04+00:00", "spec": "L4 standard", "time_from": "first token expiry minus 1 h", "note": "#64 chain_b19: 6 Qwen2.5-1.5B seed-2 states at 4 bits (__d)"}
+{"runtime": "esann-b13", "event": "deleted", "time": "2026-11-16T19:46:38+00:00", "note": "#64 chain_b19 done: 6 Qwen2.5-1.5B seed-2 states at 4 bits (0 failures; Hub copy checked)"}
