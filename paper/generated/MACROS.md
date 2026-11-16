@@ -851,26 +851,26 @@ Columns:
 | `\resPplSdQwenMidSFiftyBThreePQ` | `0.51` | Qwen2.5-1.5B 50%+3 P->Q: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
 | `\resPplMeanQwenMidSFiftyBThreeQP` | `30.08` | Qwen2.5-1.5B 50%+3 Q->P: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
 | `\resPplSdQwenMidSFiftyBThreeQP` | `3.18` | Qwen2.5-1.5B 50%+3 Q->P: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
-| `\resPplMeanQwenMidQuantBFour` | `11.09` | Qwen2.5-1.5B quant quant only: mean WikiText-2 ppl over 2 seeds | reports/analysis/e1_seeds.csv (seeds 0 1) |
-| `\resPplSdQwenMidQuantBFour` | `0.10` | Qwen2.5-1.5B quant quant only: sample sd of WikiText-2 ppl over 2 seeds | reports/analysis/e1_seeds.csv (seeds 0 1) |
-| `\resPplMeanQwenMidSTwentyFiveBFourJoint` | `11.29` | Qwen2.5-1.5B 25%+4 joint: mean WikiText-2 ppl over 2 seeds | reports/analysis/e1_seeds.csv (seeds 0 1) |
-| `\resPplSdQwenMidSTwentyFiveBFourJoint` | `0.01` | Qwen2.5-1.5B 25%+4 joint: sample sd of WikiText-2 ppl over 2 seeds | reports/analysis/e1_seeds.csv (seeds 0 1) |
-| `\resPplMeanQwenMidSTwentyFiveBFourPQ` | `11.24` | Qwen2.5-1.5B 25%+4 P->Q: mean WikiText-2 ppl over 2 seeds | reports/analysis/e1_seeds.csv (seeds 0 1) |
-| `\resPplSdQwenMidSTwentyFiveBFourPQ` | `0.09` | Qwen2.5-1.5B 25%+4 P->Q: sample sd of WikiText-2 ppl over 2 seeds | reports/analysis/e1_seeds.csv (seeds 0 1) |
-| `\resPplMeanQwenMidSTwentyFiveBFourQP` | `11.41` | Qwen2.5-1.5B 25%+4 Q->P: mean WikiText-2 ppl over 2 seeds | reports/analysis/e1_seeds.csv (seeds 0 1) |
-| `\resPplSdQwenMidSTwentyFiveBFourQP` | `0.17` | Qwen2.5-1.5B 25%+4 Q->P: sample sd of WikiText-2 ppl over 2 seeds | reports/analysis/e1_seeds.csv (seeds 0 1) |
+| `\resPplMeanQwenMidQuantBFour` | `11.05` | Qwen2.5-1.5B quant quant only: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdQwenMidQuantBFour` | `0.10` | Qwen2.5-1.5B quant quant only: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplMeanQwenMidSTwentyFiveBFourJoint` | `11.30` | Qwen2.5-1.5B 25%+4 joint: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdQwenMidSTwentyFiveBFourJoint` | `0.03` | Qwen2.5-1.5B 25%+4 joint: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplMeanQwenMidSTwentyFiveBFourPQ` | `11.30` | Qwen2.5-1.5B 25%+4 P->Q: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdQwenMidSTwentyFiveBFourPQ` | `0.12` | Qwen2.5-1.5B 25%+4 P->Q: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplMeanQwenMidSTwentyFiveBFourQP` | `11.41` | Qwen2.5-1.5B 25%+4 Q->P: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdQwenMidSTwentyFiveBFourQP` | `0.12` | Qwen2.5-1.5B 25%+4 Q->P: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
 | `\resPplMeanQwenMidSThirtyThreeBFourJoint` | `11.70` | Qwen2.5-1.5B 33%+4 joint: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
 | `\resPplSdQwenMidSThirtyThreeBFourJoint` | `0.13` | Qwen2.5-1.5B 33%+4 joint: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
 | `\resPplMeanQwenMidSThirtyThreeBFourPQ` | `11.63` | Qwen2.5-1.5B 33%+4 P->Q: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
 | `\resPplSdQwenMidSThirtyThreeBFourPQ` | `0.25` | Qwen2.5-1.5B 33%+4 P->Q: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
 | `\resPplMeanQwenMidSThirtyThreeBFourQP` | `11.96` | Qwen2.5-1.5B 33%+4 Q->P: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
 | `\resPplSdQwenMidSThirtyThreeBFourQP` | `0.21` | Qwen2.5-1.5B 33%+4 Q->P: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
-| `\resPplMeanQwenMidSFiftyBFourJoint` | `15.29` | Qwen2.5-1.5B 50%+4 joint: mean WikiText-2 ppl over 2 seeds | reports/analysis/e1_seeds.csv (seeds 0 1) |
-| `\resPplSdQwenMidSFiftyBFourJoint` | `0.27` | Qwen2.5-1.5B 50%+4 joint: sample sd of WikiText-2 ppl over 2 seeds | reports/analysis/e1_seeds.csv (seeds 0 1) |
-| `\resPplMeanQwenMidSFiftyBFourPQ` | `14.20` | Qwen2.5-1.5B 50%+4 P->Q: mean WikiText-2 ppl over 2 seeds | reports/analysis/e1_seeds.csv (seeds 0 1) |
-| `\resPplSdQwenMidSFiftyBFourPQ` | `0.22` | Qwen2.5-1.5B 50%+4 P->Q: sample sd of WikiText-2 ppl over 2 seeds | reports/analysis/e1_seeds.csv (seeds 0 1) |
-| `\resPplMeanQwenMidSFiftyBFourQP` | `15.68` | Qwen2.5-1.5B 50%+4 Q->P: mean WikiText-2 ppl over 2 seeds | reports/analysis/e1_seeds.csv (seeds 0 1) |
-| `\resPplSdQwenMidSFiftyBFourQP` | `0.94` | Qwen2.5-1.5B 50%+4 Q->P: sample sd of WikiText-2 ppl over 2 seeds | reports/analysis/e1_seeds.csv (seeds 0 1) |
+| `\resPplMeanQwenMidSFiftyBFourJoint` | `15.37` | Qwen2.5-1.5B 50%+4 joint: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdQwenMidSFiftyBFourJoint` | `0.24` | Qwen2.5-1.5B 50%+4 joint: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplMeanQwenMidSFiftyBFourPQ` | `14.36` | Qwen2.5-1.5B 50%+4 P->Q: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdQwenMidSFiftyBFourPQ` | `0.32` | Qwen2.5-1.5B 50%+4 P->Q: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplMeanQwenMidSFiftyBFourQP` | `15.73` | Qwen2.5-1.5B 50%+4 Q->P: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
+| `\resPplSdQwenMidSFiftyBFourQP` | `0.67` | Qwen2.5-1.5B 50%+4 Q->P: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
 | `\resPplMeanSmolSmallQuantBThree` | `63.06` | SmolLM2-135M quant quant only: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
 | `\resPplSdSmolSmallQuantBThree` | `5.82` | SmolLM2-135M quant quant only: sample sd of WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
 | `\resPplMeanSmolSmallSTwentyFiveBThreeJoint` | `65.36` | SmolLM2-135M 25%+3 joint: mean WikiText-2 ppl over 3 seeds | reports/analysis/e1_seeds.csv (seeds 0 1 2) |
@@ -2661,7 +2661,7 @@ Columns:
 | `\resNItemsSciq` | `1000` | sciq: items evaluated per state | results/v2/items/*.json.gz |
 | `\resNItemsLambada` | `5153` | lambada_openai: items evaluated per state | results/v2/items/*.json.gz |
 | `\resBootB` | `10000` | bootstrap resamples (items within each task) | scripts/analysis/stats.py, make_tables.py --boot |
-| `\resNStates` | `379` | usable v2 model states (status ok) | results/v2/*/*.jsonl |
+| `\resNStates` | `386` | usable v2 model states (status ok) | results/v2/*/*.jsonl |
 | `\resNStatesPlanned` | `386` | model states in the study plan | scripts/make_queues.py |
 
 ## Requested by paper/main.tex (reports/latex_macro_requests.md, R1-R31)
@@ -3087,9 +3087,9 @@ Columns:
 
 | Macro | Value | Meaning | Source |
 |---|---|---|---|
-| `\resSeedJointBest` | `23` | (model, 4-bit cell, seed) with all three orders where joint has the lowest WikiText-2 ppl (every multi-seed model; seed-0-only cells included) | reports/analysis/seed_best_order.csv (4-bit rows, every multi-seed model) |
-| `\resSeedJointBeatsPQ` | `23` | (model, 4-bit cell, seed) where joint has a lower WikiText-2 ppl than P->Q (as SeedJointBest) | reports/analysis/seed_best_order.csv (4-bit rows, every multi-seed model) |
-| `\resSeedCellSeeds` | `37` | (model, 4-bit cell, seed) with all three orders (as SeedJointBest) | reports/analysis/seed_best_order.csv (4-bit rows, every multi-seed model) |
+| `\resSeedJointBest` | `24` | (model, 4-bit cell, seed) with all three orders where joint has the lowest WikiText-2 ppl (every multi-seed model; seed-0-only cells included) | reports/analysis/seed_best_order.csv (4-bit rows, every multi-seed model) |
+| `\resSeedJointBeatsPQ` | `24` | (model, 4-bit cell, seed) where joint has a lower WikiText-2 ppl than P->Q (as SeedJointBest) | reports/analysis/seed_best_order.csv (4-bit rows, every multi-seed model) |
+| `\resSeedCellSeeds` | `39` | (model, 4-bit cell, seed) with all three orders (as SeedJointBest) | reports/analysis/seed_best_order.csv (4-bit rows, every multi-seed model) |
 | `\resSeedPairJointPQAllSeeds` | `3` | SmolLM2-360M: 4-bit cells where joint has the lower ppl in every seed | reports/analysis/seed_order_pairs.csv (SmolLM2-360M, 4-bit, joint vs P->Q, complete cells; = SeedPairJointPQ...SmolMediumBFour) |
 | `\resSeedPairJointPQSig` | `3` | SmolLM2-360M: 4-bit cells where the paired t-test over seeds (log ppl) gives p < 0.05, joint vs P->Q | reports/analysis/seed_order_pairs.csv (SmolLM2-360M, 4-bit, joint vs P->Q, complete cells; = SeedPairJointPQ...SmolMediumBFour) |
 | `\resSeedPairJointPQCells` | `3` | SmolLM2-360M: 4-bit cells with every seed for both orders | reports/analysis/seed_order_pairs.csv (SmolLM2-360M, 4-bit, joint vs P->Q, complete cells; = SeedPairJointPQ...SmolMediumBFour) |
@@ -3104,27 +3104,27 @@ Columns:
 
 | Macro | Value | Meaning | Source |
 |---|---|---|---|
-| `\resSeedBestCellsAllBFour` | `10` | every E5 model, 4-bit cells: cells with every seed and order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedBestStableAllBFour` | `7` | every E5 model, 4-bit cells: cells whose best order by WikiText-2 ppl is the same in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedBestCellsAllBFour` | `12` | every E5 model, 4-bit cells: cells with every seed and order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedBestStableAllBFour` | `8` | every E5 model, 4-bit cells: cells whose best order by WikiText-2 ppl is the same in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedQPWorstAllSeedsAllBFour` | `9` | every E5 model, 4-bit cells: cells where Q->P has strictly the highest WikiText-2 ppl in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsAllBFour` | `30` | every E5 model, 4-bit cells: (cell, seed) pairs of those cells | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsQPWorstAllBFour` | `29` | every E5 model, 4-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsQPWorstAllBFourPct` | `97` | every E5 model, 4-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsJointBestAllBFour` | `19` | every E5 model, 4-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsJointBeatsPQAllBFour` | `19` | every E5 model, 4-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsAllBFour` | `36` | every E5 model, 4-bit cells: (cell, seed) pairs of those cells | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPWorstAllBFour` | `32` | every E5 model, 4-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPWorstAllBFourPct` | `89` | every E5 model, 4-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsJointBestAllBFour` | `21` | every E5 model, 4-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsJointBeatsPQAllBFour` | `21` | every E5 model, 4-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQAllSeedsAllBFour` | `5` | every E5 model, 4-bit cells: cells where joint has a lower ppl than P->Q in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointPQSigAllBFour` | `6` | every E5 model, 4-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointPQCellsAllBFour` | `10` | every E5 model, 4-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointPQSigAllBFour` | `7` | every E5 model, 4-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointPQCellsAllBFour` | `12` | every E5 model, 4-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointQPAllSeedsAllBFour` | `10` | every E5 model, 4-bit cells: cells where joint has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointQPSigAllBFour` | `9` | every E5 model, 4-bit cells: cells where the paired t-test over seeds (log ppl, joint vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointQPCellsAllBFour` | `10` | every E5 model, 4-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairPQQPAllSeedsAllBFour` | `9` | every E5 model, 4-bit cells: cells where P->Q has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairPQQPSigAllBFour` | `8` | every E5 model, 4-bit cells: cells where the paired t-test over seeds (log ppl, P->Q vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairPQQPCellsAllBFour` | `10` | every E5 model, 4-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointQPCellsAllBFour` | `12` | every E5 model, 4-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairPQQPAllSeedsAllBFour` | `10` | every E5 model, 4-bit cells: cells where P->Q has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairPQQPSigAllBFour` | `9` | every E5 model, 4-bit cells: cells where the paired t-test over seeds (log ppl, P->Q vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairPQQPCellsAllBFour` | `12` | every E5 model, 4-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedSdMaxSingleAllBFourPct` | `1.3` | every E5 model, 4-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single states (%) | reports/analysis/e1_seeds.csv |
-| `\resSeedSdMaxCombinedAllBFourPct` | `2.7` | every E5 model, 4-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, combined states (%) | reports/analysis/e1_seeds.csv |
-| `\resSeedSdMaxAllBFourPct` | `2.7` | every E5 model, 4-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single or combined states (%) | reports/analysis/e1_seeds.csv |
-| `\resSeedStatesAllBFour` | `73` | every E5 model, 4-bit cells: E5 states (seeds 1 and 2) available | results/v2/E5/*.jsonl |
+| `\resSeedSdMaxCombinedAllBFourPct` | `4.3` | every E5 model, 4-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, combined states (%) | reports/analysis/e1_seeds.csv |
+| `\resSeedSdMaxAllBFourPct` | `4.3` | every E5 model, 4-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single or combined states (%) | reports/analysis/e1_seeds.csv |
+| `\resSeedStatesAllBFour` | `80` | every E5 model, 4-bit cells: E5 states (seeds 1 and 2) available | results/v2/E5/*.jsonl |
 | `\resSeedStatesPlannedAllBFour` | `80` | every E5 model, 4-bit cells: E5 states planned | scripts/make_queues.py e5() |
 | `\resSeedBestCellsAllBThree` | `12` | every E5 model, 3-bit cells: cells with every seed and order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedBestStableAllBThree` | `10` | every E5 model, 3-bit cells: cells whose best order by WikiText-2 ppl is the same in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
@@ -3148,27 +3148,27 @@ Columns:
 | `\resSeedSdMaxAllBThreePct` | `13.4` | every E5 model, 3-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single or combined states (%) | reports/analysis/e1_seeds.csv |
 | `\resSeedStatesAllBThree` | `80` | every E5 model, 3-bit cells: E5 states (seeds 1 and 2) available | results/v2/E5/*.jsonl |
 | `\resSeedStatesPlannedAllBThree` | `80` | every E5 model, 3-bit cells: E5 states planned | scripts/make_queues.py e5() |
-| `\resSeedBestCellsAllBoth` | `22` | every E5 model, 4- and 3-bit cells: cells with every seed and order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedBestStableAllBoth` | `17` | every E5 model, 4- and 3-bit cells: cells whose best order by WikiText-2 ppl is the same in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedBestCellsAllBoth` | `24` | every E5 model, 4- and 3-bit cells: cells with every seed and order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedBestStableAllBoth` | `18` | every E5 model, 4- and 3-bit cells: cells whose best order by WikiText-2 ppl is the same in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedQPWorstAllSeedsAllBoth` | `16` | every E5 model, 4- and 3-bit cells: cells where Q->P has strictly the highest WikiText-2 ppl in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsAllBoth` | `66` | every E5 model, 4- and 3-bit cells: (cell, seed) pairs of those cells | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsQPWorstAllBoth` | `54` | every E5 model, 4- and 3-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsQPWorstAllBothPct` | `82` | every E5 model, 4- and 3-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsJointBestAllBoth` | `37` | every E5 model, 4- and 3-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsJointBeatsPQAllBoth` | `37` | every E5 model, 4- and 3-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsAllBoth` | `72` | every E5 model, 4- and 3-bit cells: (cell, seed) pairs of those cells | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPWorstAllBoth` | `57` | every E5 model, 4- and 3-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPWorstAllBothPct` | `79` | every E5 model, 4- and 3-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsJointBestAllBoth` | `39` | every E5 model, 4- and 3-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsJointBeatsPQAllBoth` | `39` | every E5 model, 4- and 3-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQAllSeedsAllBoth` | `10` | every E5 model, 4- and 3-bit cells: cells where joint has a lower ppl than P->Q in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointPQSigAllBoth` | `8` | every E5 model, 4- and 3-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointPQCellsAllBoth` | `22` | every E5 model, 4- and 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointPQSigAllBoth` | `9` | every E5 model, 4- and 3-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointPQCellsAllBoth` | `24` | every E5 model, 4- and 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointQPAllSeedsAllBoth` | `17` | every E5 model, 4- and 3-bit cells: cells where joint has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointQPSigAllBoth` | `16` | every E5 model, 4- and 3-bit cells: cells where the paired t-test over seeds (log ppl, joint vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointQPCellsAllBoth` | `22` | every E5 model, 4- and 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairPQQPAllSeedsAllBoth` | `20` | every E5 model, 4- and 3-bit cells: cells where P->Q has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairPQQPSigAllBoth` | `14` | every E5 model, 4- and 3-bit cells: cells where the paired t-test over seeds (log ppl, P->Q vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairPQQPCellsAllBoth` | `22` | every E5 model, 4- and 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointQPCellsAllBoth` | `24` | every E5 model, 4- and 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairPQQPAllSeedsAllBoth` | `21` | every E5 model, 4- and 3-bit cells: cells where P->Q has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairPQQPSigAllBoth` | `15` | every E5 model, 4- and 3-bit cells: cells where the paired t-test over seeds (log ppl, P->Q vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairPQQPCellsAllBoth` | `24` | every E5 model, 4- and 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedSdMaxSingleAllBothPct` | `9.2` | every E5 model, 4- and 3-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single states (%) | reports/analysis/e1_seeds.csv |
 | `\resSeedSdMaxCombinedAllBothPct` | `13.4` | every E5 model, 4- and 3-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, combined states (%) | reports/analysis/e1_seeds.csv |
 | `\resSeedSdMaxAllBothPct` | `13.4` | every E5 model, 4- and 3-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single or combined states (%) | reports/analysis/e1_seeds.csv |
-| `\resSeedStatesAllBoth` | `153` | every E5 model, 4- and 3-bit cells: E5 states (seeds 1 and 2) available | results/v2/E5/*.jsonl |
+| `\resSeedStatesAllBoth` | `160` | every E5 model, 4- and 3-bit cells: E5 states (seeds 1 and 2) available | results/v2/E5/*.jsonl |
 | `\resSeedStatesPlannedAllBoth` | `160` | every E5 model, 4- and 3-bit cells: E5 states planned | scripts/make_queues.py e5() |
 | `\resSeedBestCellsCoreBFour` | `9` | the three small models, 4-bit cells: cells with every seed and order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedBestStableCoreBFour` | `7` | the three small models, 4-bit cells: cells whose best order by WikiText-2 ppl is the same in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
@@ -3434,27 +3434,27 @@ Columns:
 | `\resSeedSdMaxQwenBothPct` | `1.9` | Qwen2.5-0.5B, 4- and 3-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single or combined states (%) | reports/analysis/e1_seeds.csv |
 | `\resSeedStatesQwenBoth` | `40` | Qwen2.5-0.5B, 4- and 3-bit cells: E5 states (seeds 1 and 2) available | results/v2/E5/*.jsonl |
 | `\resSeedStatesPlannedQwenBoth` | `40` | Qwen2.5-0.5B, 4- and 3-bit cells: E5 states planned | scripts/make_queues.py e5() |
-| `\resSeedBestCellsQwenMidBFour` | `1` | Qwen2.5-1.5B, 4-bit cells: cells with every seed and order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedBestStableQwenMidBFour` | `0` | Qwen2.5-1.5B, 4-bit cells: cells whose best order by WikiText-2 ppl is the same in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedBestCellsQwenMidBFour` | `3` | Qwen2.5-1.5B, 4-bit cells: cells with every seed and order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedBestStableQwenMidBFour` | `1` | Qwen2.5-1.5B, 4-bit cells: cells whose best order by WikiText-2 ppl is the same in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedQPWorstAllSeedsQwenMidBFour` | `1` | Qwen2.5-1.5B, 4-bit cells: cells where Q->P has strictly the highest WikiText-2 ppl in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsQwenMidBFour` | `3` | Qwen2.5-1.5B, 4-bit cells: (cell, seed) pairs of those cells | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsQPWorstQwenMidBFour` | `3` | Qwen2.5-1.5B, 4-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsQPWorstQwenMidBFourPct` | `100` | Qwen2.5-1.5B, 4-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsJointBestQwenMidBFour` | `1` | Qwen2.5-1.5B, 4-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsJointBeatsPQQwenMidBFour` | `1` | Qwen2.5-1.5B, 4-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQwenMidBFour` | `9` | Qwen2.5-1.5B, 4-bit cells: (cell, seed) pairs of those cells | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPWorstQwenMidBFour` | `6` | Qwen2.5-1.5B, 4-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPWorstQwenMidBFourPct` | `67` | Qwen2.5-1.5B, 4-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsJointBestQwenMidBFour` | `3` | Qwen2.5-1.5B, 4-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsJointBeatsPQQwenMidBFour` | `3` | Qwen2.5-1.5B, 4-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQAllSeedsQwenMidBFour` | `0` | Qwen2.5-1.5B, 4-bit cells: cells where joint has a lower ppl than P->Q in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointPQSigQwenMidBFour` | `0` | Qwen2.5-1.5B, 4-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointPQCellsQwenMidBFour` | `1` | Qwen2.5-1.5B, 4-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointPQSigQwenMidBFour` | `1` | Qwen2.5-1.5B, 4-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointPQCellsQwenMidBFour` | `3` | Qwen2.5-1.5B, 4-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointQPAllSeedsQwenMidBFour` | `1` | Qwen2.5-1.5B, 4-bit cells: cells where joint has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointQPSigQwenMidBFour` | `1` | Qwen2.5-1.5B, 4-bit cells: cells where the paired t-test over seeds (log ppl, joint vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointQPCellsQwenMidBFour` | `1` | Qwen2.5-1.5B, 4-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairPQQPAllSeedsQwenMidBFour` | `1` | Qwen2.5-1.5B, 4-bit cells: cells where P->Q has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairPQQPSigQwenMidBFour` | `0` | Qwen2.5-1.5B, 4-bit cells: cells where the paired t-test over seeds (log ppl, P->Q vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairPQQPCellsQwenMidBFour` | `1` | Qwen2.5-1.5B, 4-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedSdMaxSingleQwenMidBFourPct` | `--` | Qwen2.5-1.5B, 4-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single states (%) | reports/analysis/e1_seeds.csv |
-| `\resSeedSdMaxCombinedQwenMidBFourPct` | `2.2` | Qwen2.5-1.5B, 4-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, combined states (%) | reports/analysis/e1_seeds.csv |
-| `\resSeedSdMaxQwenMidBFourPct` | `2.2` | Qwen2.5-1.5B, 4-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single or combined states (%) | reports/analysis/e1_seeds.csv |
-| `\resSeedStatesQwenMidBFour` | `13` | Qwen2.5-1.5B, 4-bit cells: E5 states (seeds 1 and 2) available | results/v2/E5/*.jsonl |
+| `\resSeedPairJointQPCellsQwenMidBFour` | `3` | Qwen2.5-1.5B, 4-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairPQQPAllSeedsQwenMidBFour` | `2` | Qwen2.5-1.5B, 4-bit cells: cells where P->Q has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairPQQPSigQwenMidBFour` | `1` | Qwen2.5-1.5B, 4-bit cells: cells where the paired t-test over seeds (log ppl, P->Q vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairPQQPCellsQwenMidBFour` | `3` | Qwen2.5-1.5B, 4-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedSdMaxSingleQwenMidBFourPct` | `0.9` | Qwen2.5-1.5B, 4-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single states (%) | reports/analysis/e1_seeds.csv |
+| `\resSeedSdMaxCombinedQwenMidBFourPct` | `4.3` | Qwen2.5-1.5B, 4-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, combined states (%) | reports/analysis/e1_seeds.csv |
+| `\resSeedSdMaxQwenMidBFourPct` | `4.3` | Qwen2.5-1.5B, 4-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single or combined states (%) | reports/analysis/e1_seeds.csv |
+| `\resSeedStatesQwenMidBFour` | `20` | Qwen2.5-1.5B, 4-bit cells: E5 states (seeds 1 and 2) available | results/v2/E5/*.jsonl |
 | `\resSeedStatesPlannedQwenMidBFour` | `20` | Qwen2.5-1.5B, 4-bit cells: E5 states planned | scripts/make_queues.py e5() |
 | `\resSeedBestCellsQwenMidBThree` | `3` | Qwen2.5-1.5B, 3-bit cells: cells with every seed and order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedBestStableQwenMidBThree` | `2` | Qwen2.5-1.5B, 3-bit cells: cells whose best order by WikiText-2 ppl is the same in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
@@ -3478,27 +3478,27 @@ Columns:
 | `\resSeedSdMaxQwenMidBThreePct` | `10.6` | Qwen2.5-1.5B, 3-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single or combined states (%) | reports/analysis/e1_seeds.csv |
 | `\resSeedStatesQwenMidBThree` | `20` | Qwen2.5-1.5B, 3-bit cells: E5 states (seeds 1 and 2) available | results/v2/E5/*.jsonl |
 | `\resSeedStatesPlannedQwenMidBThree` | `20` | Qwen2.5-1.5B, 3-bit cells: E5 states planned | scripts/make_queues.py e5() |
-| `\resSeedBestCellsQwenMidBoth` | `4` | Qwen2.5-1.5B, 4- and 3-bit cells: cells with every seed and order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedBestStableQwenMidBoth` | `2` | Qwen2.5-1.5B, 4- and 3-bit cells: cells whose best order by WikiText-2 ppl is the same in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedBestCellsQwenMidBoth` | `6` | Qwen2.5-1.5B, 4- and 3-bit cells: cells with every seed and order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedBestStableQwenMidBoth` | `3` | Qwen2.5-1.5B, 4- and 3-bit cells: cells whose best order by WikiText-2 ppl is the same in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedQPWorstAllSeedsQwenMidBoth` | `2` | Qwen2.5-1.5B, 4- and 3-bit cells: cells where Q->P has strictly the highest WikiText-2 ppl in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsQwenMidBoth` | `12` | Qwen2.5-1.5B, 4- and 3-bit cells: (cell, seed) pairs of those cells | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsQPWorstQwenMidBoth` | `7` | Qwen2.5-1.5B, 4- and 3-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsQPWorstQwenMidBothPct` | `58` | Qwen2.5-1.5B, 4- and 3-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsJointBestQwenMidBoth` | `2` | Qwen2.5-1.5B, 4- and 3-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedRunsJointBeatsPQQwenMidBoth` | `2` | Qwen2.5-1.5B, 4- and 3-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQwenMidBoth` | `18` | Qwen2.5-1.5B, 4- and 3-bit cells: (cell, seed) pairs of those cells | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPWorstQwenMidBoth` | `10` | Qwen2.5-1.5B, 4- and 3-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPWorstQwenMidBothPct` | `56` | Qwen2.5-1.5B, 4- and 3-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsJointBestQwenMidBoth` | `4` | Qwen2.5-1.5B, 4- and 3-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsJointBeatsPQQwenMidBoth` | `4` | Qwen2.5-1.5B, 4- and 3-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQAllSeedsQwenMidBoth` | `0` | Qwen2.5-1.5B, 4- and 3-bit cells: cells where joint has a lower ppl than P->Q in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointPQSigQwenMidBoth` | `1` | Qwen2.5-1.5B, 4- and 3-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointPQCellsQwenMidBoth` | `4` | Qwen2.5-1.5B, 4- and 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointPQSigQwenMidBoth` | `2` | Qwen2.5-1.5B, 4- and 3-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointPQCellsQwenMidBoth` | `6` | Qwen2.5-1.5B, 4- and 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointQPAllSeedsQwenMidBoth` | `2` | Qwen2.5-1.5B, 4- and 3-bit cells: cells where joint has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointQPSigQwenMidBoth` | `2` | Qwen2.5-1.5B, 4- and 3-bit cells: cells where the paired t-test over seeds (log ppl, joint vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairJointQPCellsQwenMidBoth` | `4` | Qwen2.5-1.5B, 4- and 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairPQQPAllSeedsQwenMidBoth` | `4` | Qwen2.5-1.5B, 4- and 3-bit cells: cells where P->Q has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairPQQPSigQwenMidBoth` | `1` | Qwen2.5-1.5B, 4- and 3-bit cells: cells where the paired t-test over seeds (log ppl, P->Q vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
-| `\resSeedPairPQQPCellsQwenMidBoth` | `4` | Qwen2.5-1.5B, 4- and 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairJointQPCellsQwenMidBoth` | `6` | Qwen2.5-1.5B, 4- and 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairPQQPAllSeedsQwenMidBoth` | `5` | Qwen2.5-1.5B, 4- and 3-bit cells: cells where P->Q has a lower ppl than Q->P in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairPQQPSigQwenMidBoth` | `2` | Qwen2.5-1.5B, 4- and 3-bit cells: cells where the paired t-test over seeds (log ppl, P->Q vs Q->P) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedPairPQQPCellsQwenMidBoth` | `6` | Qwen2.5-1.5B, 4- and 3-bit cells: cells with every seed for both orders | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedSdMaxSingleQwenMidBothPct` | `1.7` | Qwen2.5-1.5B, 4- and 3-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single states (%) | reports/analysis/e1_seeds.csv |
 | `\resSeedSdMaxCombinedQwenMidBothPct` | `10.6` | Qwen2.5-1.5B, 4- and 3-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, combined states (%) | reports/analysis/e1_seeds.csv |
 | `\resSeedSdMaxQwenMidBothPct` | `10.6` | Qwen2.5-1.5B, 4- and 3-bit cells: largest 100 sd/mean of WikiText-2 ppl over three seeds, single or combined states (%) | reports/analysis/e1_seeds.csv |
-| `\resSeedStatesQwenMidBoth` | `33` | Qwen2.5-1.5B, 4- and 3-bit cells: E5 states (seeds 1 and 2) available | results/v2/E5/*.jsonl |
+| `\resSeedStatesQwenMidBoth` | `40` | Qwen2.5-1.5B, 4- and 3-bit cells: E5 states (seeds 1 and 2) available | results/v2/E5/*.jsonl |
 | `\resSeedStatesPlannedQwenMidBoth` | `40` | Qwen2.5-1.5B, 4- and 3-bit cells: E5 states planned | scripts/make_queues.py e5() |
 
 ## E6 order spread vs scale, per model and cell (reports/analysis/scale_family_cells.csv)
@@ -4633,9 +4633,9 @@ Columns:
 | `\resScaleSeedSpreadMinQwenSFiftyBThreePct` | `21.0` | Qwen2.5-0.5B 50%+3: smallest order spread over its 3 calibration seeds (%) | results/v2 (wikitext2.ppl of the three orders per seed; scripts/analysis/latex.py macros_scale_seeds) |
 | `\resScaleSeedSpreadMaxQwenSFiftyBThreePct` | `22.9` | Qwen2.5-0.5B 50%+3: largest order spread over its 3 calibration seeds (%) | results/v2 (wikitext2.ppl of the three orders per seed; scripts/analysis/latex.py macros_scale_seeds) |
 | `\resScaleSeedSpreadSeedsQwenSFiftyBThree` | `3` | Qwen2.5-0.5B 50%+3: seeds with the three orders (of 3) | results/v2 (wikitext2.ppl of the three orders per seed; scripts/analysis/latex.py macros_scale_seeds) |
-| `\resScaleSeedSpreadMinQwenMidSTwentyFiveBFourPct` | `--` | Qwen2.5-1.5B 25%+4: smallest order spread over its 3 calibration seeds (%) | results/v2 (wikitext2.ppl of the three orders per seed; scripts/analysis/latex.py macros_scale_seeds) |
-| `\resScaleSeedSpreadMaxQwenMidSTwentyFiveBFourPct` | `--` | Qwen2.5-1.5B 25%+4: largest order spread over its 3 calibration seeds (%) | results/v2 (wikitext2.ppl of the three orders per seed; scripts/analysis/latex.py macros_scale_seeds) |
-| `\resScaleSeedSpreadSeedsQwenMidSTwentyFiveBFour` | `2` | Qwen2.5-1.5B 25%+4: seeds with the three orders (of 3) | results/v2 (wikitext2.ppl of the three orders per seed; scripts/analysis/latex.py macros_scale_seeds) |
+| `\resScaleSeedSpreadMinQwenMidSTwentyFiveBFourPct` | `0.8` | Qwen2.5-1.5B 25%+4: smallest order spread over its 3 calibration seeds (%) | results/v2 (wikitext2.ppl of the three orders per seed; scripts/analysis/latex.py macros_scale_seeds) |
+| `\resScaleSeedSpreadMaxQwenMidSTwentyFiveBFourPct` | `2.2` | Qwen2.5-1.5B 25%+4: largest order spread over its 3 calibration seeds (%) | results/v2 (wikitext2.ppl of the three orders per seed; scripts/analysis/latex.py macros_scale_seeds) |
+| `\resScaleSeedSpreadSeedsQwenMidSTwentyFiveBFour` | `3` | Qwen2.5-1.5B 25%+4: seeds with the three orders (of 3) | results/v2 (wikitext2.ppl of the three orders per seed; scripts/analysis/latex.py macros_scale_seeds) |
 | `\resScaleSeedSpreadMinQwenMidSTwentyFiveBThreePct` | `2.6` | Qwen2.5-1.5B 25%+3: smallest order spread over its 3 calibration seeds (%) | results/v2 (wikitext2.ppl of the three orders per seed; scripts/analysis/latex.py macros_scale_seeds) |
 | `\resScaleSeedSpreadMaxQwenMidSTwentyFiveBThreePct` | `5.9` | Qwen2.5-1.5B 25%+3: largest order spread over its 3 calibration seeds (%) | results/v2 (wikitext2.ppl of the three orders per seed; scripts/analysis/latex.py macros_scale_seeds) |
 | `\resScaleSeedSpreadSeedsQwenMidSTwentyFiveBThree` | `3` | Qwen2.5-1.5B 25%+3: seeds with the three orders (of 3) | results/v2 (wikitext2.ppl of the three orders per seed; scripts/analysis/latex.py macros_scale_seeds) |
@@ -4645,9 +4645,9 @@ Columns:
 | `\resScaleSeedSpreadMinQwenMidSThirtyThreeBThreePct` | `10.4` | Qwen2.5-1.5B 33%+3: smallest order spread over its 3 calibration seeds (%) | results/v2 (wikitext2.ppl of the three orders per seed; scripts/analysis/latex.py macros_scale_seeds) |
 | `\resScaleSeedSpreadMaxQwenMidSThirtyThreeBThreePct` | `19.8` | Qwen2.5-1.5B 33%+3: largest order spread over its 3 calibration seeds (%) | results/v2 (wikitext2.ppl of the three orders per seed; scripts/analysis/latex.py macros_scale_seeds) |
 | `\resScaleSeedSpreadSeedsQwenMidSThirtyThreeBThree` | `3` | Qwen2.5-1.5B 33%+3: seeds with the three orders (of 3) | results/v2 (wikitext2.ppl of the three orders per seed; scripts/analysis/latex.py macros_scale_seeds) |
-| `\resScaleSeedSpreadMinQwenMidSFiftyBFourPct` | `--` | Qwen2.5-1.5B 50%+4: smallest order spread over its 3 calibration seeds (%) | results/v2 (wikitext2.ppl of the three orders per seed; scripts/analysis/latex.py macros_scale_seeds) |
-| `\resScaleSeedSpreadMaxQwenMidSFiftyBFourPct` | `--` | Qwen2.5-1.5B 50%+4: largest order spread over its 3 calibration seeds (%) | results/v2 (wikitext2.ppl of the three orders per seed; scripts/analysis/latex.py macros_scale_seeds) |
-| `\resScaleSeedSpreadSeedsQwenMidSFiftyBFour` | `2` | Qwen2.5-1.5B 50%+4: seeds with the three orders (of 3) | results/v2 (wikitext2.ppl of the three orders per seed; scripts/analysis/latex.py macros_scale_seeds) |
+| `\resScaleSeedSpreadMinQwenMidSFiftyBFourPct` | `7.5` | Qwen2.5-1.5B 50%+4: smallest order spread over its 3 calibration seeds (%) | results/v2 (wikitext2.ppl of the three orders per seed; scripts/analysis/latex.py macros_scale_seeds) |
+| `\resScaleSeedSpreadMaxQwenMidSFiftyBFourPct` | `13.9` | Qwen2.5-1.5B 50%+4: largest order spread over its 3 calibration seeds (%) | results/v2 (wikitext2.ppl of the three orders per seed; scripts/analysis/latex.py macros_scale_seeds) |
+| `\resScaleSeedSpreadSeedsQwenMidSFiftyBFour` | `3` | Qwen2.5-1.5B 50%+4: seeds with the three orders (of 3) | results/v2 (wikitext2.ppl of the three orders per seed; scripts/analysis/latex.py macros_scale_seeds) |
 | `\resScaleSeedSpreadMinQwenMidSFiftyBThreePct` | `17.7` | Qwen2.5-1.5B 50%+3: smallest order spread over its 3 calibration seeds (%) | results/v2 (wikitext2.ppl of the three orders per seed; scripts/analysis/latex.py macros_scale_seeds) |
 | `\resScaleSeedSpreadMaxQwenMidSFiftyBThreePct` | `38.9` | Qwen2.5-1.5B 50%+3: largest order spread over its 3 calibration seeds (%) | results/v2 (wikitext2.ppl of the three orders per seed; scripts/analysis/latex.py macros_scale_seeds) |
 | `\resScaleSeedSpreadSeedsQwenMidSFiftyBThree` | `3` | Qwen2.5-1.5B 50%+3: seeds with the three orders (of 3) | results/v2 (wikitext2.ppl of the three orders per seed; scripts/analysis/latex.py macros_scale_seeds) |
@@ -4663,9 +4663,9 @@ Columns:
 | `\resScaleSeedEndsCellsFamSmol` | `6` | SmolLM2: grid cells with three sizes and every planned seed of the smallest and the largest size | reports/analysis/e6_scale_spread.csv (models by compressed weights) and results/v2 (per-seed spreads) |
 | `\resScaleSeedEndsShrinkFamSmol` | `5` | SmolLM2: of those, cells where the highest spread of the largest size over its seeds is below the lowest of the smallest size | reports/analysis/e6_scale_spread.csv (models by compressed weights) and results/v2 (per-seed spreads) |
 | `\resScalePeakMidFamQwen` | `5` | Qwen2.5: grid cells with three sizes where the middle size has the largest order spread (seed 0) | reports/analysis/e6_scale_spread.csv (models by compressed weights) and results/v2 (per-seed spreads) |
-| `\resScaleSeedCellsFamQwen` | `4` | Qwen2.5: grid cells with three sizes and every planned calibration seed in the three orders | reports/analysis/e6_scale_spread.csv (models by compressed weights) and results/v2 (per-seed spreads) |
-| `\resScaleSeedPeakMidFamQwen` | `2` | Qwen2.5: of those, cells where the lowest spread of the middle size over its seeds is above the highest of each end | reports/analysis/e6_scale_spread.csv (models by compressed weights) and results/v2 (per-seed spreads) |
-| `\resScaleSeedGrowMidFamQwen` | `2` | Qwen2.5: of those, cells where the lowest spread of the middle size over its seeds is above the highest of the smallest size | reports/analysis/e6_scale_spread.csv (models by compressed weights) and results/v2 (per-seed spreads) |
+| `\resScaleSeedCellsFamQwen` | `6` | Qwen2.5: grid cells with three sizes and every planned calibration seed in the three orders | reports/analysis/e6_scale_spread.csv (models by compressed weights) and results/v2 (per-seed spreads) |
+| `\resScaleSeedPeakMidFamQwen` | `3` | Qwen2.5: of those, cells where the lowest spread of the middle size over its seeds is above the highest of each end | reports/analysis/e6_scale_spread.csv (models by compressed weights) and results/v2 (per-seed spreads) |
+| `\resScaleSeedGrowMidFamQwen` | `3` | Qwen2.5: of those, cells where the lowest spread of the middle size over its seeds is above the highest of the smallest size | reports/analysis/e6_scale_spread.csv (models by compressed weights) and results/v2 (per-seed spreads) |
 | `\resScaleSeedEndsCellsFamQwen` | `6` | Qwen2.5: grid cells with three sizes and every planned seed of the smallest and the largest size | reports/analysis/e6_scale_spread.csv (models by compressed weights) and results/v2 (per-seed spreads) |
 | `\resScaleSeedEndsShrinkFamQwen` | `3` | Qwen2.5: of those, cells where the highest spread of the largest size over its seeds is below the lowest of the smallest size | reports/analysis/e6_scale_spread.csv (models by compressed weights) and results/v2 (per-seed spreads) |
 
@@ -7530,26 +7530,26 @@ Columns:
 | `\resPplSdQwenTwoFiveOneFiveBSFiftyBThreePQ` | `0.51` | = `\resPplSdQwenMidSFiftyBThreePQ` | see that macro |
 | `\resPplMeanQwenTwoFiveOneFiveBSFiftyBThreeQP` | `30.08` | = `\resPplMeanQwenMidSFiftyBThreeQP` | see that macro |
 | `\resPplSdQwenTwoFiveOneFiveBSFiftyBThreeQP` | `3.18` | = `\resPplSdQwenMidSFiftyBThreeQP` | see that macro |
-| `\resPplMeanQwenTwoFiveOneFiveBQuantBFour` | `11.09` | = `\resPplMeanQwenMidQuantBFour` | see that macro |
+| `\resPplMeanQwenTwoFiveOneFiveBQuantBFour` | `11.05` | = `\resPplMeanQwenMidQuantBFour` | see that macro |
 | `\resPplSdQwenTwoFiveOneFiveBQuantBFour` | `0.10` | = `\resPplSdQwenMidQuantBFour` | see that macro |
-| `\resPplMeanQwenTwoFiveOneFiveBSTwentyFiveBFourJoint` | `11.29` | = `\resPplMeanQwenMidSTwentyFiveBFourJoint` | see that macro |
-| `\resPplSdQwenTwoFiveOneFiveBSTwentyFiveBFourJoint` | `0.01` | = `\resPplSdQwenMidSTwentyFiveBFourJoint` | see that macro |
-| `\resPplMeanQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `11.24` | = `\resPplMeanQwenMidSTwentyFiveBFourPQ` | see that macro |
-| `\resPplSdQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `0.09` | = `\resPplSdQwenMidSTwentyFiveBFourPQ` | see that macro |
+| `\resPplMeanQwenTwoFiveOneFiveBSTwentyFiveBFourJoint` | `11.30` | = `\resPplMeanQwenMidSTwentyFiveBFourJoint` | see that macro |
+| `\resPplSdQwenTwoFiveOneFiveBSTwentyFiveBFourJoint` | `0.03` | = `\resPplSdQwenMidSTwentyFiveBFourJoint` | see that macro |
+| `\resPplMeanQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `11.30` | = `\resPplMeanQwenMidSTwentyFiveBFourPQ` | see that macro |
+| `\resPplSdQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `0.12` | = `\resPplSdQwenMidSTwentyFiveBFourPQ` | see that macro |
 | `\resPplMeanQwenTwoFiveOneFiveBSTwentyFiveBFourQP` | `11.41` | = `\resPplMeanQwenMidSTwentyFiveBFourQP` | see that macro |
-| `\resPplSdQwenTwoFiveOneFiveBSTwentyFiveBFourQP` | `0.17` | = `\resPplSdQwenMidSTwentyFiveBFourQP` | see that macro |
+| `\resPplSdQwenTwoFiveOneFiveBSTwentyFiveBFourQP` | `0.12` | = `\resPplSdQwenMidSTwentyFiveBFourQP` | see that macro |
 | `\resPplMeanQwenTwoFiveOneFiveBSThirtyThreeBFourJoint` | `11.70` | = `\resPplMeanQwenMidSThirtyThreeBFourJoint` | see that macro |
 | `\resPplSdQwenTwoFiveOneFiveBSThirtyThreeBFourJoint` | `0.13` | = `\resPplSdQwenMidSThirtyThreeBFourJoint` | see that macro |
 | `\resPplMeanQwenTwoFiveOneFiveBSThirtyThreeBFourPQ` | `11.63` | = `\resPplMeanQwenMidSThirtyThreeBFourPQ` | see that macro |
 | `\resPplSdQwenTwoFiveOneFiveBSThirtyThreeBFourPQ` | `0.25` | = `\resPplSdQwenMidSThirtyThreeBFourPQ` | see that macro |
 | `\resPplMeanQwenTwoFiveOneFiveBSThirtyThreeBFourQP` | `11.96` | = `\resPplMeanQwenMidSThirtyThreeBFourQP` | see that macro |
 | `\resPplSdQwenTwoFiveOneFiveBSThirtyThreeBFourQP` | `0.21` | = `\resPplSdQwenMidSThirtyThreeBFourQP` | see that macro |
-| `\resPplMeanQwenTwoFiveOneFiveBSFiftyBFourJoint` | `15.29` | = `\resPplMeanQwenMidSFiftyBFourJoint` | see that macro |
-| `\resPplSdQwenTwoFiveOneFiveBSFiftyBFourJoint` | `0.27` | = `\resPplSdQwenMidSFiftyBFourJoint` | see that macro |
-| `\resPplMeanQwenTwoFiveOneFiveBSFiftyBFourPQ` | `14.20` | = `\resPplMeanQwenMidSFiftyBFourPQ` | see that macro |
-| `\resPplSdQwenTwoFiveOneFiveBSFiftyBFourPQ` | `0.22` | = `\resPplSdQwenMidSFiftyBFourPQ` | see that macro |
-| `\resPplMeanQwenTwoFiveOneFiveBSFiftyBFourQP` | `15.68` | = `\resPplMeanQwenMidSFiftyBFourQP` | see that macro |
-| `\resPplSdQwenTwoFiveOneFiveBSFiftyBFourQP` | `0.94` | = `\resPplSdQwenMidSFiftyBFourQP` | see that macro |
+| `\resPplMeanQwenTwoFiveOneFiveBSFiftyBFourJoint` | `15.37` | = `\resPplMeanQwenMidSFiftyBFourJoint` | see that macro |
+| `\resPplSdQwenTwoFiveOneFiveBSFiftyBFourJoint` | `0.24` | = `\resPplSdQwenMidSFiftyBFourJoint` | see that macro |
+| `\resPplMeanQwenTwoFiveOneFiveBSFiftyBFourPQ` | `14.36` | = `\resPplMeanQwenMidSFiftyBFourPQ` | see that macro |
+| `\resPplSdQwenTwoFiveOneFiveBSFiftyBFourPQ` | `0.32` | = `\resPplSdQwenMidSFiftyBFourPQ` | see that macro |
+| `\resPplMeanQwenTwoFiveOneFiveBSFiftyBFourQP` | `15.73` | = `\resPplMeanQwenMidSFiftyBFourQP` | see that macro |
+| `\resPplSdQwenTwoFiveOneFiveBSFiftyBFourQP` | `0.67` | = `\resPplSdQwenMidSFiftyBFourQP` | see that macro |
 | `\resQTwoRatioQwenTwoFiveOneFiveBSTwentyFiveBFour` | `1.02` | = `\resQTwoRatioQwenMidSTwentyFiveBFour` | see that macro |
 | `\resQTwoRatioQwenTwoFiveOneFiveBSThirtyThreeBFour` | `1.04` | = `\resQTwoRatioQwenMidSThirtyThreeBFour` | see that macro |
 | `\resQTwoRatioQwenTwoFiveOneFiveBSFiftyBFour` | `1.14` | = `\resQTwoRatioQwenMidSFiftyBFour` | see that macro |
@@ -8330,27 +8330,27 @@ Columns:
 | `\resAccDiffOLMoTwoZeroFourTwoFiveOneBSFiftyBThreePQQP` | `--` | = `\resAccDiffOlmoSFiftyBThreePQQP` | see that macro |
 | `\resAccDiffLoOLMoTwoZeroFourTwoFiveOneBSFiftyBThreePQQP` | `--` | = `\resAccDiffLoOlmoSFiftyBThreePQQP` | see that macro |
 | `\resAccDiffHiOLMoTwoZeroFourTwoFiveOneBSFiftyBThreePQQP` | `--` | = `\resAccDiffHiOlmoSFiftyBThreePQQP` | see that macro |
-| `\resSeedBestCellsQwenTwoFiveOneFiveBBFour` | `1` | = `\resSeedBestCellsQwenMidBFour` | see that macro |
-| `\resSeedBestStableQwenTwoFiveOneFiveBBFour` | `0` | = `\resSeedBestStableQwenMidBFour` | see that macro |
+| `\resSeedBestCellsQwenTwoFiveOneFiveBBFour` | `3` | = `\resSeedBestCellsQwenMidBFour` | see that macro |
+| `\resSeedBestStableQwenTwoFiveOneFiveBBFour` | `1` | = `\resSeedBestStableQwenMidBFour` | see that macro |
 | `\resSeedQPWorstAllSeedsQwenTwoFiveOneFiveBBFour` | `1` | = `\resSeedQPWorstAllSeedsQwenMidBFour` | see that macro |
-| `\resSeedRunsQwenTwoFiveOneFiveBBFour` | `3` | = `\resSeedRunsQwenMidBFour` | see that macro |
-| `\resSeedRunsQPWorstQwenTwoFiveOneFiveBBFour` | `3` | = `\resSeedRunsQPWorstQwenMidBFour` | see that macro |
-| `\resSeedRunsQPWorstQwenTwoFiveOneFiveBBFourPct` | `100` | = `\resSeedRunsQPWorstQwenMidBFourPct` | see that macro |
-| `\resSeedRunsJointBestQwenTwoFiveOneFiveBBFour` | `1` | = `\resSeedRunsJointBestQwenMidBFour` | see that macro |
-| `\resSeedRunsJointBeatsPQQwenTwoFiveOneFiveBBFour` | `1` | = `\resSeedRunsJointBeatsPQQwenMidBFour` | see that macro |
+| `\resSeedRunsQwenTwoFiveOneFiveBBFour` | `9` | = `\resSeedRunsQwenMidBFour` | see that macro |
+| `\resSeedRunsQPWorstQwenTwoFiveOneFiveBBFour` | `6` | = `\resSeedRunsQPWorstQwenMidBFour` | see that macro |
+| `\resSeedRunsQPWorstQwenTwoFiveOneFiveBBFourPct` | `67` | = `\resSeedRunsQPWorstQwenMidBFourPct` | see that macro |
+| `\resSeedRunsJointBestQwenTwoFiveOneFiveBBFour` | `3` | = `\resSeedRunsJointBestQwenMidBFour` | see that macro |
+| `\resSeedRunsJointBeatsPQQwenTwoFiveOneFiveBBFour` | `3` | = `\resSeedRunsJointBeatsPQQwenMidBFour` | see that macro |
 | `\resSeedPairJointPQAllSeedsQwenTwoFiveOneFiveBBFour` | `0` | = `\resSeedPairJointPQAllSeedsQwenMidBFour` | see that macro |
-| `\resSeedPairJointPQSigQwenTwoFiveOneFiveBBFour` | `0` | = `\resSeedPairJointPQSigQwenMidBFour` | see that macro |
-| `\resSeedPairJointPQCellsQwenTwoFiveOneFiveBBFour` | `1` | = `\resSeedPairJointPQCellsQwenMidBFour` | see that macro |
+| `\resSeedPairJointPQSigQwenTwoFiveOneFiveBBFour` | `1` | = `\resSeedPairJointPQSigQwenMidBFour` | see that macro |
+| `\resSeedPairJointPQCellsQwenTwoFiveOneFiveBBFour` | `3` | = `\resSeedPairJointPQCellsQwenMidBFour` | see that macro |
 | `\resSeedPairJointQPAllSeedsQwenTwoFiveOneFiveBBFour` | `1` | = `\resSeedPairJointQPAllSeedsQwenMidBFour` | see that macro |
 | `\resSeedPairJointQPSigQwenTwoFiveOneFiveBBFour` | `1` | = `\resSeedPairJointQPSigQwenMidBFour` | see that macro |
-| `\resSeedPairJointQPCellsQwenTwoFiveOneFiveBBFour` | `1` | = `\resSeedPairJointQPCellsQwenMidBFour` | see that macro |
-| `\resSeedPairPQQPAllSeedsQwenTwoFiveOneFiveBBFour` | `1` | = `\resSeedPairPQQPAllSeedsQwenMidBFour` | see that macro |
-| `\resSeedPairPQQPSigQwenTwoFiveOneFiveBBFour` | `0` | = `\resSeedPairPQQPSigQwenMidBFour` | see that macro |
-| `\resSeedPairPQQPCellsQwenTwoFiveOneFiveBBFour` | `1` | = `\resSeedPairPQQPCellsQwenMidBFour` | see that macro |
-| `\resSeedSdMaxSingleQwenTwoFiveOneFiveBBFourPct` | `--` | = `\resSeedSdMaxSingleQwenMidBFourPct` | see that macro |
-| `\resSeedSdMaxCombinedQwenTwoFiveOneFiveBBFourPct` | `2.2` | = `\resSeedSdMaxCombinedQwenMidBFourPct` | see that macro |
-| `\resSeedSdMaxQwenTwoFiveOneFiveBBFourPct` | `2.2` | = `\resSeedSdMaxQwenMidBFourPct` | see that macro |
-| `\resSeedStatesQwenTwoFiveOneFiveBBFour` | `13` | = `\resSeedStatesQwenMidBFour` | see that macro |
+| `\resSeedPairJointQPCellsQwenTwoFiveOneFiveBBFour` | `3` | = `\resSeedPairJointQPCellsQwenMidBFour` | see that macro |
+| `\resSeedPairPQQPAllSeedsQwenTwoFiveOneFiveBBFour` | `2` | = `\resSeedPairPQQPAllSeedsQwenMidBFour` | see that macro |
+| `\resSeedPairPQQPSigQwenTwoFiveOneFiveBBFour` | `1` | = `\resSeedPairPQQPSigQwenMidBFour` | see that macro |
+| `\resSeedPairPQQPCellsQwenTwoFiveOneFiveBBFour` | `3` | = `\resSeedPairPQQPCellsQwenMidBFour` | see that macro |
+| `\resSeedSdMaxSingleQwenTwoFiveOneFiveBBFourPct` | `0.9` | = `\resSeedSdMaxSingleQwenMidBFourPct` | see that macro |
+| `\resSeedSdMaxCombinedQwenTwoFiveOneFiveBBFourPct` | `4.3` | = `\resSeedSdMaxCombinedQwenMidBFourPct` | see that macro |
+| `\resSeedSdMaxQwenTwoFiveOneFiveBBFourPct` | `4.3` | = `\resSeedSdMaxQwenMidBFourPct` | see that macro |
+| `\resSeedStatesQwenTwoFiveOneFiveBBFour` | `20` | = `\resSeedStatesQwenMidBFour` | see that macro |
 | `\resSeedStatesPlannedQwenTwoFiveOneFiveBBFour` | `20` | = `\resSeedStatesPlannedQwenMidBFour` | see that macro |
 | `\resSeedBestCellsQwenTwoFiveOneFiveBBThree` | `3` | = `\resSeedBestCellsQwenMidBThree` | see that macro |
 | `\resSeedBestStableQwenTwoFiveOneFiveBBThree` | `2` | = `\resSeedBestStableQwenMidBThree` | see that macro |
@@ -8374,27 +8374,27 @@ Columns:
 | `\resSeedSdMaxQwenTwoFiveOneFiveBBThreePct` | `10.6` | = `\resSeedSdMaxQwenMidBThreePct` | see that macro |
 | `\resSeedStatesQwenTwoFiveOneFiveBBThree` | `20` | = `\resSeedStatesQwenMidBThree` | see that macro |
 | `\resSeedStatesPlannedQwenTwoFiveOneFiveBBThree` | `20` | = `\resSeedStatesPlannedQwenMidBThree` | see that macro |
-| `\resSeedBestCellsQwenTwoFiveOneFiveBBoth` | `4` | = `\resSeedBestCellsQwenMidBoth` | see that macro |
-| `\resSeedBestStableQwenTwoFiveOneFiveBBoth` | `2` | = `\resSeedBestStableQwenMidBoth` | see that macro |
+| `\resSeedBestCellsQwenTwoFiveOneFiveBBoth` | `6` | = `\resSeedBestCellsQwenMidBoth` | see that macro |
+| `\resSeedBestStableQwenTwoFiveOneFiveBBoth` | `3` | = `\resSeedBestStableQwenMidBoth` | see that macro |
 | `\resSeedQPWorstAllSeedsQwenTwoFiveOneFiveBBoth` | `2` | = `\resSeedQPWorstAllSeedsQwenMidBoth` | see that macro |
-| `\resSeedRunsQwenTwoFiveOneFiveBBoth` | `12` | = `\resSeedRunsQwenMidBoth` | see that macro |
-| `\resSeedRunsQPWorstQwenTwoFiveOneFiveBBoth` | `7` | = `\resSeedRunsQPWorstQwenMidBoth` | see that macro |
-| `\resSeedRunsQPWorstQwenTwoFiveOneFiveBBothPct` | `58` | = `\resSeedRunsQPWorstQwenMidBothPct` | see that macro |
-| `\resSeedRunsJointBestQwenTwoFiveOneFiveBBoth` | `2` | = `\resSeedRunsJointBestQwenMidBoth` | see that macro |
-| `\resSeedRunsJointBeatsPQQwenTwoFiveOneFiveBBoth` | `2` | = `\resSeedRunsJointBeatsPQQwenMidBoth` | see that macro |
+| `\resSeedRunsQwenTwoFiveOneFiveBBoth` | `18` | = `\resSeedRunsQwenMidBoth` | see that macro |
+| `\resSeedRunsQPWorstQwenTwoFiveOneFiveBBoth` | `10` | = `\resSeedRunsQPWorstQwenMidBoth` | see that macro |
+| `\resSeedRunsQPWorstQwenTwoFiveOneFiveBBothPct` | `56` | = `\resSeedRunsQPWorstQwenMidBothPct` | see that macro |
+| `\resSeedRunsJointBestQwenTwoFiveOneFiveBBoth` | `4` | = `\resSeedRunsJointBestQwenMidBoth` | see that macro |
+| `\resSeedRunsJointBeatsPQQwenTwoFiveOneFiveBBoth` | `4` | = `\resSeedRunsJointBeatsPQQwenMidBoth` | see that macro |
 | `\resSeedPairJointPQAllSeedsQwenTwoFiveOneFiveBBoth` | `0` | = `\resSeedPairJointPQAllSeedsQwenMidBoth` | see that macro |
-| `\resSeedPairJointPQSigQwenTwoFiveOneFiveBBoth` | `1` | = `\resSeedPairJointPQSigQwenMidBoth` | see that macro |
-| `\resSeedPairJointPQCellsQwenTwoFiveOneFiveBBoth` | `4` | = `\resSeedPairJointPQCellsQwenMidBoth` | see that macro |
+| `\resSeedPairJointPQSigQwenTwoFiveOneFiveBBoth` | `2` | = `\resSeedPairJointPQSigQwenMidBoth` | see that macro |
+| `\resSeedPairJointPQCellsQwenTwoFiveOneFiveBBoth` | `6` | = `\resSeedPairJointPQCellsQwenMidBoth` | see that macro |
 | `\resSeedPairJointQPAllSeedsQwenTwoFiveOneFiveBBoth` | `2` | = `\resSeedPairJointQPAllSeedsQwenMidBoth` | see that macro |
 | `\resSeedPairJointQPSigQwenTwoFiveOneFiveBBoth` | `2` | = `\resSeedPairJointQPSigQwenMidBoth` | see that macro |
-| `\resSeedPairJointQPCellsQwenTwoFiveOneFiveBBoth` | `4` | = `\resSeedPairJointQPCellsQwenMidBoth` | see that macro |
-| `\resSeedPairPQQPAllSeedsQwenTwoFiveOneFiveBBoth` | `4` | = `\resSeedPairPQQPAllSeedsQwenMidBoth` | see that macro |
-| `\resSeedPairPQQPSigQwenTwoFiveOneFiveBBoth` | `1` | = `\resSeedPairPQQPSigQwenMidBoth` | see that macro |
-| `\resSeedPairPQQPCellsQwenTwoFiveOneFiveBBoth` | `4` | = `\resSeedPairPQQPCellsQwenMidBoth` | see that macro |
+| `\resSeedPairJointQPCellsQwenTwoFiveOneFiveBBoth` | `6` | = `\resSeedPairJointQPCellsQwenMidBoth` | see that macro |
+| `\resSeedPairPQQPAllSeedsQwenTwoFiveOneFiveBBoth` | `5` | = `\resSeedPairPQQPAllSeedsQwenMidBoth` | see that macro |
+| `\resSeedPairPQQPSigQwenTwoFiveOneFiveBBoth` | `2` | = `\resSeedPairPQQPSigQwenMidBoth` | see that macro |
+| `\resSeedPairPQQPCellsQwenTwoFiveOneFiveBBoth` | `6` | = `\resSeedPairPQQPCellsQwenMidBoth` | see that macro |
 | `\resSeedSdMaxSingleQwenTwoFiveOneFiveBBothPct` | `1.7` | = `\resSeedSdMaxSingleQwenMidBothPct` | see that macro |
 | `\resSeedSdMaxCombinedQwenTwoFiveOneFiveBBothPct` | `10.6` | = `\resSeedSdMaxCombinedQwenMidBothPct` | see that macro |
 | `\resSeedSdMaxQwenTwoFiveOneFiveBBothPct` | `10.6` | = `\resSeedSdMaxQwenMidBothPct` | see that macro |
-| `\resSeedStatesQwenTwoFiveOneFiveBBoth` | `33` | = `\resSeedStatesQwenMidBoth` | see that macro |
+| `\resSeedStatesQwenTwoFiveOneFiveBBoth` | `40` | = `\resSeedStatesQwenMidBoth` | see that macro |
 | `\resSeedStatesPlannedQwenTwoFiveOneFiveBBoth` | `40` | = `\resSeedStatesPlannedQwenMidBoth` | see that macro |
 | `\resScaleSpreadQwenTwoFiveOneFiveBSTwentyFiveBFourPct` | `2.2` | = `\resScaleSpreadQwenMidSTwentyFiveBFourPct` | see that macro |
 | `\resScaleGapMaskFirstQwenTwoFiveOneFiveBSTwentyFiveBFourPct` | `0.20` | = `\resScaleGapMaskFirstQwenMidSTwentyFiveBFourPct` | see that macro |
@@ -8622,9 +8622,9 @@ Columns:
 | `\resISrPaperPmOLMoTwoZeroFourTwoFiveOneBSTwentyFiveBFourPQ` | `0.009` | = `\resISrPaperPmOlmoSTwentyFiveBFourPQ` | see that macro |
 | `\resISrPaperPmQwenTwoFiveOneFiveBSThirtyThreeBThreePQ` | `0.012` | = `\resISrPaperPmQwenMidSThirtyThreeBThreePQ` | see that macro |
 | `\resISrPaperPmOLMoTwoZeroFourTwoFiveOneBSThirtyThreeBThreePQ` | `0.013` | = `\resISrPaperPmOlmoSThirtyThreeBThreePQ` | see that macro |
-| `\resScaleSeedSpreadMinQwenTwoFiveOneFiveBSTwentyFiveBFourPct` | `--` | = `\resScaleSeedSpreadMinQwenMidSTwentyFiveBFourPct` | see that macro |
-| `\resScaleSeedSpreadMaxQwenTwoFiveOneFiveBSTwentyFiveBFourPct` | `--` | = `\resScaleSeedSpreadMaxQwenMidSTwentyFiveBFourPct` | see that macro |
-| `\resScaleSeedSpreadSeedsQwenTwoFiveOneFiveBSTwentyFiveBFour` | `2` | = `\resScaleSeedSpreadSeedsQwenMidSTwentyFiveBFour` | see that macro |
+| `\resScaleSeedSpreadMinQwenTwoFiveOneFiveBSTwentyFiveBFourPct` | `0.8` | = `\resScaleSeedSpreadMinQwenMidSTwentyFiveBFourPct` | see that macro |
+| `\resScaleSeedSpreadMaxQwenTwoFiveOneFiveBSTwentyFiveBFourPct` | `2.2` | = `\resScaleSeedSpreadMaxQwenMidSTwentyFiveBFourPct` | see that macro |
+| `\resScaleSeedSpreadSeedsQwenTwoFiveOneFiveBSTwentyFiveBFour` | `3` | = `\resScaleSeedSpreadSeedsQwenMidSTwentyFiveBFour` | see that macro |
 | `\resScaleSeedSpreadMinQwenTwoFiveOneFiveBSTwentyFiveBThreePct` | `2.6` | = `\resScaleSeedSpreadMinQwenMidSTwentyFiveBThreePct` | see that macro |
 | `\resScaleSeedSpreadMaxQwenTwoFiveOneFiveBSTwentyFiveBThreePct` | `5.9` | = `\resScaleSeedSpreadMaxQwenMidSTwentyFiveBThreePct` | see that macro |
 | `\resScaleSeedSpreadSeedsQwenTwoFiveOneFiveBSTwentyFiveBThree` | `3` | = `\resScaleSeedSpreadSeedsQwenMidSTwentyFiveBThree` | see that macro |
@@ -8634,9 +8634,9 @@ Columns:
 | `\resScaleSeedSpreadMinQwenTwoFiveOneFiveBSThirtyThreeBThreePct` | `10.4` | = `\resScaleSeedSpreadMinQwenMidSThirtyThreeBThreePct` | see that macro |
 | `\resScaleSeedSpreadMaxQwenTwoFiveOneFiveBSThirtyThreeBThreePct` | `19.8` | = `\resScaleSeedSpreadMaxQwenMidSThirtyThreeBThreePct` | see that macro |
 | `\resScaleSeedSpreadSeedsQwenTwoFiveOneFiveBSThirtyThreeBThree` | `3` | = `\resScaleSeedSpreadSeedsQwenMidSThirtyThreeBThree` | see that macro |
-| `\resScaleSeedSpreadMinQwenTwoFiveOneFiveBSFiftyBFourPct` | `--` | = `\resScaleSeedSpreadMinQwenMidSFiftyBFourPct` | see that macro |
-| `\resScaleSeedSpreadMaxQwenTwoFiveOneFiveBSFiftyBFourPct` | `--` | = `\resScaleSeedSpreadMaxQwenMidSFiftyBFourPct` | see that macro |
-| `\resScaleSeedSpreadSeedsQwenTwoFiveOneFiveBSFiftyBFour` | `2` | = `\resScaleSeedSpreadSeedsQwenMidSFiftyBFour` | see that macro |
+| `\resScaleSeedSpreadMinQwenTwoFiveOneFiveBSFiftyBFourPct` | `7.5` | = `\resScaleSeedSpreadMinQwenMidSFiftyBFourPct` | see that macro |
+| `\resScaleSeedSpreadMaxQwenTwoFiveOneFiveBSFiftyBFourPct` | `13.9` | = `\resScaleSeedSpreadMaxQwenMidSFiftyBFourPct` | see that macro |
+| `\resScaleSeedSpreadSeedsQwenTwoFiveOneFiveBSFiftyBFour` | `3` | = `\resScaleSeedSpreadSeedsQwenMidSFiftyBFour` | see that macro |
 | `\resScaleSeedSpreadMinQwenTwoFiveOneFiveBSFiftyBThreePct` | `17.7` | = `\resScaleSeedSpreadMinQwenMidSFiftyBThreePct` | see that macro |
 | `\resScaleSeedSpreadMaxQwenTwoFiveOneFiveBSFiftyBThreePct` | `38.9` | = `\resScaleSeedSpreadMaxQwenMidSFiftyBThreePct` | see that macro |
 | `\resScaleSeedSpreadSeedsQwenTwoFiveOneFiveBSFiftyBThree` | `3` | = `\resScaleSeedSpreadSeedsQwenMidSFiftyBThree` | see that macro |

@@ -472,3 +472,14 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     the other 6 at 4 bits (queue files `__c` and `__d` re-split 4 + 6; none of their states had run). About 22 minutes
     per state, about 2.6 hours of wall time, about 5 L4-hours, about 9 CU. When they finish, Q3's sentence on
     Qwen2.5-1.5B ("one calibration seed") is replaced by the seed check (macros ScaleSeed...FamQwen), and V4 is rebuilt.
+65. **2026-11-16 20:30 UTC, the seed check in V4 (Q3).** All 13 states of #64 ran (0 failures; the Hub copies match).
+    With three calibration seeds for Qwen2.5-0.5B and -1.5B (seed 0 for -3B), the 1.5B model has the largest order
+    spread in 3 of the 5 settings where seed 0 shows it (50%+4, 25%+3 and 33%+3; not at 33%+4 or 50%+3, where its lower
+    seeds fall below 0.5B's), and the fall from SmolLM2-135M to SmolLM2-1.7B holds in 5 of 6 settings whichever seeds are
+    compared. Seed 0 is at the top of the 1.5B range in most settings. V4's Q3 replaces "(one calibration seed)" by
+    "whichever calibration seeds are compared, the fall holds in N settings and the 1.5B peak in K" (macros
+    ScaleSeedEndsShrinkFamSmol, ScaleSeedPeakMidFamQwen; new claim, 37 of 37 hold); the setup says seeds 1 and 2 also
+    repeat Qwen2.5-1.5B; to keep 6 pages, "in 84 of 84 cases" becomes "in all 84 cases" (claim already checked) and
+    one "and" becomes a comma. The review note (REVIEW_V4.md, sections 1, 2 and 5) gives the per-setting spreads;
+    `diff_v4_update.pdf` shows the changes against the V4 sent at 16:45. The supplement's `seeds.csv` is rebuilt
+    and re-uploaded; the package is backed up to the private dataset (`author_package_v4_update_2026-11-16/`).

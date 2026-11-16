@@ -113,3 +113,13 @@ About 25 L4-hours, about 45 CU of the 100 added on 15 Nov; since your reading of
 about 8 L4-hours, about 14 CU, leaving about 66 CU. The runtimes reclaimed during the pauses of this session
 (esann-a10/b9, a11/b10, a12/b11) were billed until Colab reclaimed them, about an hour after their tokens expired;
 that is included above. Please check the real balance in Colab.
+
+## 16 November evening: the Qwen2.5-1.5B seed check (DECISIONS.md #64)
+
+| Runtimes | Work | L4-hours (from `logs/runtimes.jsonl`) |
+|---|---|---|
+| esann-a14 (17:00 to 20:10) | 3 seed-2 states at 3 bits, 4 at 4 bits; idle 19:48 to 20:10 (the watcher missed the end of its second queue) | 3.2 |
+| esann-b13 (17:00 to 19:47) | 6 seed-2 states at 4 bits; idle 19:23 to 19:47 | 2.8 |
+
+About 5.9 L4-hours, about 11 CU at 1.8 CU per L4-hour, leaving about 55 CU of the 80 (estimate). No runtime is
+assigned now (16 Nov, 20:10 UTC). Please check the real balance in Colab.
