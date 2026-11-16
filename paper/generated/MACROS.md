@@ -4476,6 +4476,7 @@ Columns:
 | `\resESevenKimPredQPCellsKlCore` | `4` | Core: cells where the rule recommends Q->P and the three orders are ranked by wt_kl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPWorstKlCore` | `4` | Core: of those, Q->P strictly worst (wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPBestKlCore` | `0` | Core: of those, Q->P best of the three (wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resESevenKimPredQPMinSparsityPctCore` | `33` | Core: smallest sparsity among the cells where the rule (by WikiText-2 ppl) recommends Q->P (%) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPCellsSrExtCore` | `4` | Core: cells where the rule (by nine-task accuracy, sr9_v2) recommends Q->P and the three orders are ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPBestSrExtCore` | `3` | Core: of those, Q->P best of the three by nine-task accuracy | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPCellsPplLarger` | `10` | Larger: cells where the rule recommends Q->P and the three orders are ranked by wt_ppl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
@@ -4484,6 +4485,7 @@ Columns:
 | `\resESevenKimPredQPCellsKlLarger` | `7` | Larger: cells where the rule recommends Q->P and the three orders are ranked by wt_kl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPWorstKlLarger` | `6` | Larger: of those, Q->P strictly worst (wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPBestKlLarger` | `0` | Larger: of those, Q->P best of the three (wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resESevenKimPredQPMinSparsityPctLarger` | `33` | Larger: smallest sparsity among the cells where the rule (by WikiText-2 ppl) recommends Q->P (%) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPCellsSrExtLarger` | `1` | Larger: cells where the rule (by nine-task accuracy, sr9_v2) recommends Q->P and the three orders are ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPBestSrExtLarger` | `0` | Larger: of those, Q->P best of the three by nine-task accuracy | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPCellsPplAllModels` | `14` | AllModels: cells where the rule recommends Q->P and the three orders are ranked by wt_ppl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
@@ -4492,6 +4494,7 @@ Columns:
 | `\resESevenKimPredQPCellsKlAllModels` | `11` | AllModels: cells where the rule recommends Q->P and the three orders are ranked by wt_kl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPWorstKlAllModels` | `10` | AllModels: of those, Q->P strictly worst (wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPBestKlAllModels` | `0` | AllModels: of those, Q->P best of the three (wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resESevenKimPredQPMinSparsityPctAllModels` | `33` | AllModels: smallest sparsity among the cells where the rule (by WikiText-2 ppl) recommends Q->P (%) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPCellsSrExtAllModels` | `5` | AllModels: cells where the rule (by nine-task accuracy, sr9_v2) recommends Q->P and the three orders are ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPBestSrExtAllModels` | `3` | AllModels: of those, Q->P best of the three by nine-task accuracy | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 
@@ -4868,6 +4871,7 @@ Columns:
 | `\resETwoSplitOrderPosCore` | `18` | Core, all cells: cells where the update-order part is positive | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitOrderAboveMaskCore` | `18` | Core, all cells: cells where the update-order part is larger than the mask part | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGapPosCore` | `12` | Core, all cells: cells where Q->P has the larger layer error (gap > 0) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitOrderLargestGapPosCore` | `12` | Core, all cells: of the cells where Q->P has the larger layer error, those where the update-order part is the largest of the three | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGridMaxAbsCorePct` | `0.4` | Core, all cells: largest |grid part| (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGapMinCoreBFourPct` | `\ensuremath{+8.7}` | Core, 4-bit cells: smallest gap part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGapMaxCoreBFourPct` | `\ensuremath{+16.0}` | Core, 4-bit cells: largest gap part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
@@ -4880,6 +4884,7 @@ Columns:
 | `\resETwoSplitOrderPosCoreBFour` | `9` | Core, 4-bit cells: cells where the update-order part is positive | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitOrderAboveMaskCoreBFour` | `9` | Core, 4-bit cells: cells where the update-order part is larger than the mask part | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGapPosCoreBFour` | `9` | Core, 4-bit cells: cells where Q->P has the larger layer error (gap > 0) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitOrderLargestGapPosCoreBFour` | `9` | Core, 4-bit cells: of the cells where Q->P has the larger layer error, those where the update-order part is the largest of the three | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitCellsCoreBFour` | `9` | Core, 4-bit cells: cells with the split | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGridMaxAbsCoreBFourPct` | `0.4` | Core, 4-bit cells: largest |grid part| (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGapMinCoreBThreePct` | `\ensuremath{-7.9}` | Core, 3-bit cells: smallest gap part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
@@ -4893,6 +4898,7 @@ Columns:
 | `\resETwoSplitOrderPosCoreBThree` | `9` | Core, 3-bit cells: cells where the update-order part is positive | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitOrderAboveMaskCoreBThree` | `9` | Core, 3-bit cells: cells where the update-order part is larger than the mask part | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGapPosCoreBThree` | `3` | Core, 3-bit cells: cells where Q->P has the larger layer error (gap > 0) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitOrderLargestGapPosCoreBThree` | `3` | Core, 3-bit cells: of the cells where Q->P has the larger layer error, those where the update-order part is the largest of the three | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitCellsCoreBThree` | `9` | Core, 3-bit cells: cells with the split | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGridMaxAbsCoreBThreePct` | `0.3` | Core, 3-bit cells: largest |grid part| (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitMaskNegFreeZerosCore` | `6` | Core: 25% and 33%+3-bit cells where the mask part is negative (Q->P's mask, which takes the zeros of rounding, is the better one) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
@@ -4912,6 +4918,7 @@ Columns:
 | `\resETwoSplitOrderPosLarger` | `24` | Larger, all cells: cells where the update-order part is positive | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitOrderAboveMaskLarger` | `23` | Larger, all cells: cells where the update-order part is larger than the mask part | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGapPosLarger` | `18` | Larger, all cells: cells where Q->P has the larger layer error (gap > 0) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitOrderLargestGapPosLarger` | `17` | Larger, all cells: of the cells where Q->P has the larger layer error, those where the update-order part is the largest of the three | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGridMaxAbsLargerPct` | `0.5` | Larger, all cells: largest |grid part| (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGapMinLargerBFourPct` | `\ensuremath{+9.9}` | Larger, 4-bit cells: smallest gap part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGapMaxLargerBFourPct` | `\ensuremath{+25.5}` | Larger, 4-bit cells: largest gap part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
@@ -4924,6 +4931,7 @@ Columns:
 | `\resETwoSplitOrderPosLargerBFour` | `12` | Larger, 4-bit cells: cells where the update-order part is positive | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitOrderAboveMaskLargerBFour` | `12` | Larger, 4-bit cells: cells where the update-order part is larger than the mask part | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGapPosLargerBFour` | `12` | Larger, 4-bit cells: cells where Q->P has the larger layer error (gap > 0) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitOrderLargestGapPosLargerBFour` | `12` | Larger, 4-bit cells: of the cells where Q->P has the larger layer error, those where the update-order part is the largest of the three | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitCellsLargerBFour` | `12` | Larger, 4-bit cells: cells with the split | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGridMaxAbsLargerBFourPct` | `0.5` | Larger, 4-bit cells: largest |grid part| (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGapMinLargerBThreePct` | `\ensuremath{-6.9}` | Larger, 3-bit cells: smallest gap part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
@@ -4937,6 +4945,7 @@ Columns:
 | `\resETwoSplitOrderPosLargerBThree` | `12` | Larger, 3-bit cells: cells where the update-order part is positive | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitOrderAboveMaskLargerBThree` | `11` | Larger, 3-bit cells: cells where the update-order part is larger than the mask part | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGapPosLargerBThree` | `6` | Larger, 3-bit cells: cells where Q->P has the larger layer error (gap > 0) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitOrderLargestGapPosLargerBThree` | `5` | Larger, 3-bit cells: of the cells where Q->P has the larger layer error, those where the update-order part is the largest of the three | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitCellsLargerBThree` | `12` | Larger, 3-bit cells: cells with the split | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGridMaxAbsLargerBThreePct` | `0.4` | Larger, 3-bit cells: largest |grid part| (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitMaskNegFreeZerosLarger` | `8` | Larger: 25% and 33%+3-bit cells where the mask part is negative (Q->P's mask, which takes the zeros of rounding, is the better one) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
@@ -4956,6 +4965,7 @@ Columns:
 | `\resETwoSplitOrderPosAllModels` | `42` | AllModels, all cells: cells where the update-order part is positive | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitOrderAboveMaskAllModels` | `41` | AllModels, all cells: cells where the update-order part is larger than the mask part | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGapPosAllModels` | `30` | AllModels, all cells: cells where Q->P has the larger layer error (gap > 0) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitOrderLargestGapPosAllModels` | `29` | AllModels, all cells: of the cells where Q->P has the larger layer error, those where the update-order part is the largest of the three | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGridMaxAbsAllModelsPct` | `0.5` | AllModels, all cells: largest |grid part| (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGapMinAllModelsBFourPct` | `\ensuremath{+8.7}` | AllModels, 4-bit cells: smallest gap part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGapMaxAllModelsBFourPct` | `\ensuremath{+25.5}` | AllModels, 4-bit cells: largest gap part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
@@ -4968,6 +4978,7 @@ Columns:
 | `\resETwoSplitOrderPosAllModelsBFour` | `21` | AllModels, 4-bit cells: cells where the update-order part is positive | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitOrderAboveMaskAllModelsBFour` | `21` | AllModels, 4-bit cells: cells where the update-order part is larger than the mask part | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGapPosAllModelsBFour` | `21` | AllModels, 4-bit cells: cells where Q->P has the larger layer error (gap > 0) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitOrderLargestGapPosAllModelsBFour` | `21` | AllModels, 4-bit cells: of the cells where Q->P has the larger layer error, those where the update-order part is the largest of the three | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitCellsAllModelsBFour` | `21` | AllModels, 4-bit cells: cells with the split | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGridMaxAbsAllModelsBFourPct` | `0.5` | AllModels, 4-bit cells: largest |grid part| (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGapMinAllModelsBThreePct` | `\ensuremath{-7.9}` | AllModels, 3-bit cells: smallest gap part (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
@@ -4981,6 +4992,7 @@ Columns:
 | `\resETwoSplitOrderPosAllModelsBThree` | `21` | AllModels, 3-bit cells: cells where the update-order part is positive | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitOrderAboveMaskAllModelsBThree` | `20` | AllModels, 3-bit cells: cells where the update-order part is larger than the mask part | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGapPosAllModelsBThree` | `9` | AllModels, 3-bit cells: cells where Q->P has the larger layer error (gap > 0) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitOrderLargestGapPosAllModelsBThree` | `8` | AllModels, 3-bit cells: of the cells where Q->P has the larger layer error, those where the update-order part is the largest of the three | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitCellsAllModelsBThree` | `21` | AllModels, 3-bit cells: cells with the split | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGridMaxAbsAllModelsBThreePct` | `0.4` | AllModels, 3-bit cells: largest |grid part| (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitMaskNegFreeZerosAllModels` | `14` | AllModels: 25% and 33%+3-bit cells where the mask part is negative (Q->P's mask, which takes the zeros of rounding, is the better one) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |

@@ -458,3 +458,12 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     (Panferov et al. is verified but not cited: its factorization concerns training); Kim et al.'s hypothesis is
     named with the layer-independence assumption our pipeline violates. 33 claims hold; 6 pages. The supplement
     (`paper/supplement/`) is generated from the analysis tables and uploaded to the results dataset.
+63. **2026-11-16 17:30 UTC, independent audit of V4 and its fixes.** One blocker and four major points, all fixed
+    (`context/author_package_v4/audit_v4.md`): the weaker-first paragraph no longer puts the difference with Kim et
+    al. on compensation (they test compensated methods too) but on the measured fact that all 14 settings where the
+    heuristic recommends Q->P lie at 33% or 50% sparsity, beyond their 30%; the split of the penalty is stated as
+    "where Q->P has the larger layer error (30 of 42 cases), the update-order part is the largest in all but one,
+    while at 25% and most 33%+3-bit cases the better mask outweighs it", and the paper speaks of a "layer-level
+    penalty"; the abstract says the decomposition "identifies a mechanism"; Q3's 33%+3-bit sentence follows the
+    intervals; Table 2's caption keeps the re-quantization caveat. New macros ESevenKimPredQPMinSparsityPct and
+    ETwoSplitOrderLargestGapPos; 36 claims hold; 6 pages. The supplement README lists the extra states.

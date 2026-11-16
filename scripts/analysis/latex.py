@@ -1133,6 +1133,8 @@ def macros_e2_groups(M, store, e2res):
                   f"{g}, {lab}: cells where the update-order part is larger than the mask part", src)
             M.add(sec, f"ETwoSplitGapPos{g}{bt}", _n(sum(r["gap"] > 0 for r in B)) if B else "--",
                   f"{g}, {lab}: cells where Q->P has the larger layer error (gap > 0)", src)
+            M.add(sec, f"ETwoSplitOrderLargestGapPos{g}{bt}", _n(sum(r["order"] > max(r["mask"], r["grid"]) for r in B if r["gap"] > 0)) if B else "--",
+                  f"{g}, {lab}: of the cells where Q->P has the larger layer error, those where the update-order part is the largest of the three", src)
             M.add(sec, f"ETwoSplitCells{g}{bt}", _n(len(B)) if B else "--", f"{g}, {lab}: cells with the split", src) if bt else None
             v = [abs(r["grid"]) for r in B]
             M.add(sec, f"ETwoSplitGridMaxAbs{g}{bt}Pct", num(max(v), 1) if v else "--", f"{g}, {lab}: largest |grid part| (% of E_PQ)", src)
@@ -1409,6 +1411,8 @@ def macros_order_all_models(M, store, q, e7res):
                   f"{g}: cells where the rule recommends Q->P and the three orders are ranked by {key}", src)
             M.add(sec, f"ESevenKimPredQPWorst{tag}{g}", _n(worst) if P_ else "--", f"{g}: of those, Q->P strictly worst ({key})", src)
             M.add(sec, f"ESevenKimPredQPBest{tag}{g}", _n(best) if P_ else "--", f"{g}: of those, Q->P best of the three ({key})", src)
+        M.add(sec, f"ESevenKimPredQPMinSparsityPct{g}", num(100 * min(float(x["sparsity"]) for x in P_), 0) if P_ else "--",
+              f"{g}: smallest sparsity among the cells where the rule (by WikiText-2 ppl) recommends Q->P (%)", src)
         # nine-task accuracy: cells where the rule, by sr9_v2, recommends Q->P, and how often Q->P is the best of three
         predS = [r for r in e7res["kim"] if r["metric"] == "sr9_v2" and r["in_counts"] and r["seed"] == 0
                  and r["prediction"] == "q_then_p" and sel(r["model"])]
