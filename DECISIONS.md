@@ -437,3 +437,11 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     5 Qwen2.5-1.5B seed states (esann-b11, `chain_b16.sh`). (c) The other 8 seed states (esann-c2, `chain_c2.sh`).
     The 10 missing 4-bit seed states are split into two new queue files (`E5__Qwen2.5-1.5B__c.json`, `__d.json`), each
     with its own result file. About 9 L4-hours in all, about 16 of the 80 CU. Colab refused a third runtime (two at a time), so the seed states run after E9 on esann-a12 (5) and after E2 on esann-b11 (8); chain_c2.sh is not used.
+61. **2026-11-16 14:20 UTC, third loss of runtimes; short runs only, seed states dropped.** The session's usage limit
+    paused it from about 09:40 to 14:10, and esann-a12 and esann-b11 were reclaimed after their tokens expired (10:17).
+    Before that: E9 complete on the three small models, E2 complete on OLMo-2-1B (six of seven models now). The
+    runtimes cannot outlive a pause of this session, and the pauses come after about half an hour of work, so only
+    runs of about 75 minutes are relaunched: E9 on the four larger models (esann-a13, `chain_a19.sh`; Qwen2.5-3B on
+    esann-b12) and the rest of E2 on Qwen2.5-3B (esann-b12, `chain_b17.sh`); results go to the Hub every 5 minutes.
+    The 13 missing Qwen2.5-1.5B seed states (about 5 GPU-hours) are not run: V4's Q3 already states that the 1.5B
+    peak rests on one calibration seed. About 2.5 L4-hours, about 5 CU.

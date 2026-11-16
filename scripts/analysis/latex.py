@@ -1183,6 +1183,24 @@ def macros_e9(M, store, e9res):
                 T = "NoComp" if tag == "nocomp" else "Comp"
                 M.add(sec, f"ENine{kt}{T}Min{g}Pct", num(min(v), 0) if ok else "--", f"{g}: smallest {k} ({tag}, %)", src)
                 M.add(sec, f"ENine{kt}{T}Max{g}Pct", num(max(v), 0) if ok else "--", f"{g}: largest {k} ({tag}, %)", src)
+        for bt, bsel in (("BFour", 4), ("BThree", 3)):
+            B = [c for c in R if int(c["bits"]) == bsel]
+            for tag, T in (("nocomp", "NoComp"), ("comp", "Comp")):
+                for k, kt in (("overlap_mask_zeros", "Overlap"), ("zeros", "Zeros")):
+                    v = [100 * c[f"{tag}_{k}"] for c in B]
+                    M.add(sec, f"ENine{kt}{T}Min{g}{bt}Pct", num(min(v), 0) if v else "--", f"{g}, {bsel}-bit cells: smallest {k} ({tag}, %)", src)
+                    M.add(sec, f"ENine{kt}{T}Max{g}{bt}Pct", num(max(v), 0) if v else "--", f"{g}, {bsel}-bit cells: largest {k} ({tag}, %)", src)
+            v = [c["mask_pct"] for c in B]
+            M.add(sec, f"ENineSplitMaskMin{g}{bt}Pct", signed(min(v), 1) if v else "--", f"{g}, {bsel}-bit cells: smallest mask part without compensation", src)
+            M.add(sec, f"ENineSplitMaskMax{g}{bt}Pct", signed(max(v), 1) if v else "--", f"{g}, {bsel}-bit cells: largest mask part without compensation", src)
+        v = [abs(c["cross_pct"]) for c in R]
+        M.add(sec, f"ENineCrossMaxAbs{g}Pct", num(max(v), 2) if ok else "--", f"{g}: largest |cross terms| over cells (% of E_P+E_Q)", src)
+        v = [100 * abs(c["cross_pct"]) / abs(c["absorption_pct"]) for c in R if c["absorption_pct"]]
+        M.add(sec, f"ENineCrossShareMax{g}Pct", num(max(v), 1) if v else "--", f"{g}: largest |cross terms| / |absorption| over cells (%)", src)
+        v = [c["mask_pct"] for c in R if not (int(c["bits"]) == 3 and c["sparsity"] < 0.3)]
+        M.add(sec, f"ENineSplitMaskMinNoTwentyFiveBThree{g}Pct", signed(min(v), 1) if v else "--",
+              f"{g}: smallest mask part without compensation, cells other than 25%+3", src)
+        M.add(sec, f"ENineSplitMaskPos{g}", _n(sum(c["mask_pct"] > 0 for c in R)) if ok else "--", f"{g}: cells where Q->P's uncompensated mask is the worse one", src)
         for k, kt in (("comp_over_nocomp_P", "P"), ("comp_over_nocomp_Q", "Q")):
             v = [c[k] for c in R if finite(c.get(k))]
             M.add(sec, f"ENineCompRatio{kt}Min{g}", num(min(v), 2) if v else "--", f"{g}: smallest compensated / uncompensated E_{kt}", src)
