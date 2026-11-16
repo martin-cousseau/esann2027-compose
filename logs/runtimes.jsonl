@@ -46,3 +46,6 @@
 {"runtime": "esann-b10", "event": "created", "time": "2026-11-15T22:23:55+00:00", "spec": "L4 standard", "note": "#58 chain_b15: E2 on Qwen2.5-1.5B and Qwen2.5-3B, then next_loop"}
 {"runtime": "esann-a11", "event": "gone", "time": "2026-11-16T00:25:00+00:00", "note": "#59 reclaimed about an hour after its token expired (23:23): session paused by its usage limit 22:45-03:20; E2 SmolLM2-1.7B complete (42 layers), OLMo-2-1B 17 of 56"}
 {"runtime": "esann-b10", "event": "gone", "time": "2026-11-16T00:25:00+00:00", "note": "#59 reclaimed about an hour after its token expired (23:23): session paused by its usage limit 22:45-03:20; E2 Qwen2.5-1.5B complete (49 layers), Qwen2.5-3B 9 of 63"}
+{"runtime": "esann-a12", "event": "created", "time": "2026-11-16T09:17:32+00:00", "spec": "L4 standard", "note": "#60 chain_a18: E9 on seven models, then 5 Qwen2.5-1.5B seed states (__c)"}
+{"runtime": "esann-b11", "event": "created", "time": "2026-11-16T09:17:36+00:00", "spec": "L4 standard", "note": "#60 chain_b16: rest of E2 on OLMo-2-1B and Qwen2.5-3B, then 8 Qwen2.5-1.5B seed states (__b, __d)"}
+{"runtime": "esann-c2", "event": "refused", "time": "2026-11-16T09:17:40+00:00", "note": "#60 create_runtime: precondition check failed (two runtimes at a time); chain_c2 not used"}

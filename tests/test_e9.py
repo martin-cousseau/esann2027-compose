@@ -67,3 +67,27 @@ def test_arms_that_coincide_without_compensation():
         pqs, _ = A.run_arm(nocomp, "p_then_q_stale", W, H, s, b, Pz, Qz)
         assert torch.equal(j, pq)
         assert torch.equal(qpm, pqs)
+
+
+def test_analysis_sums(tmp_path):
+    import json
+    from scripts.analysis import e9 as E9
+    core = ASH.load_core(ROOT)
+    d = tmp_path / "results" / "v2" / "E9"
+    d.mkdir(parents=True)
+    with open(d / "Fake.jsonl", "w") as f:
+        for blk in range(2):
+            W, H = _layer(seed=10 + blk)
+            res = run_e9.layer_e9(core, W, H, CELLS)
+            f.write(json.dumps(dict(model="org/Fake", block=blk, name="mlp.down_proj", shape=list(W.shape), seconds=0, **res)) + "\n")
+        f.write('{"model": "org/Fake", "block": 9, "na')   # a line cut by a lost runtime is skipped
+    paths = types.SimpleNamespace(results_v2=str(tmp_path / "results" / "v2"), reports=str(tmp_path))
+    out = E9.analyze(paths)
+    assert out["layers"] == {"Fake": 2} and len(out["cells"]) == len(CELLS)
+    for c in out["cells"]:
+        assert c["n_layers"] == 2
+        assert abs(c["ratio_p_then_q_stale_pct"] - (c["absorption_pct"] + c["cross_pct"])) < 1e-2
+        assert abs(c["gap_pct"] - (c["mask_pct"] + c["grid_pct"])) < 1e-9
+        assert 0 <= c["nocomp_overlap_mask_zeros"] <= 1
+    E9.write(out, paths)
+    assert (tmp_path / "e9_cells.csv").exists()

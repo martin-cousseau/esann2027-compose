@@ -35,7 +35,7 @@ import time
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
-from scripts.analysis import (batch, boolq_chance, det, e1, e2, e7, e8, frontier, isr, latex, paper_figures, questions,  # noqa: E402
+from scripts.analysis import (batch, boolq_chance, det, e1, e2, e7, e8, e9, frontier, isr, latex, paper_figures, questions,  # noqa: E402
                               repro, summary)
 from scripts.analysis import stats as S  # noqa: E402
 from scripts.analysis.common import Missing, Paths, Store  # noqa: E402
@@ -62,6 +62,8 @@ def run(paths=None, B=S.BOOT_B, figures=True, fetch=True, log=print):
     frontier.write(fr, paths)
     e2res = e2.analyze(paths, missing)
     e2.write(e2res, paths)
+    e2res["e9"] = e9.analyze(paths)
+    e9.write(e2res["e9"], paths)
     rep = repro.analyze(paths, missing)
     repro.write(rep, paths)
     e7res = e7.analyze(store, e1res, missing)

@@ -1142,6 +1142,53 @@ def macros_e2_groups(M, store, e2res):
         M.add(sec, f"ETwoSplitFreeZerosCells{g}", _n(len(free)) if free else "--", f"{g}: 25% and 33%+3-bit cells with the split", src)
 
 
+def macros_e9(M, store, e9res):
+    """E9 (layer-level control without error compensation) over model groups; only models whose E9 run has its
+    planned layers (E2_PLANNED_LAYERS: the same blocks as E2) count. Percentages are of E_P + E_Q (sums over layers)."""
+    core = {g[0] for g in PAPER_GRID}
+    groups = {"Core": lambda m: m in core, "Larger": lambda m: m not in core, "AllModels": lambda m: True}
+    sec = "E9: the layer level without error compensation (diag(H) in the sweeps, errors under the full H)"
+    src = "reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers)"
+    lay = e9res.get("layers", {})
+    partial = sorted(m for m, n in lay.items() if n < E2_PLANNED_LAYERS.get(m, 0))
+    M.add(sec, "ENineIncompleteModels", tex_escape(", ".join(partial)) if partial else "none", "models whose E9 run is not complete (left out)", src)
+    C = [c for c in e9res.get("cells", []) if c.get("n_layers") and c["model"] not in partial]
+    for g, sel in groups.items():
+        R = [c for c in C if sel(c["model"])]
+        ok = bool(R)
+        M.add(sec, f"ENineModels{g}", _n(len({c['model'] for c in R})), f"{g}: models with a complete E9 run", src)
+        M.add(sec, f"ENineCells{g}", _n(len(R)) if ok else "--", f"{g}: (model, cell) pairs", src)
+        for a, at in (("p_then_q", "PQ"), ("p_then_q_stale", "PQStale"), ("q_then_p", "QP")):
+            v = [c[f"ratio_{a}_pct"] for c in R]
+            M.add(sec, f"ENineSub{at}{g}", _n(sum(x < 0 for x in v)) if ok else "--", f"{g}: cells where uncompensated {a} is sub-additive (summed I_E < 0)", src)
+            M.add(sec, f"ENineRatio{at}Min{g}Pct", signed(min(v), 1) if ok else "--", f"{g}: smallest I_E of uncompensated {a} (% of E_P+E_Q)", src)
+            M.add(sec, f"ENineRatio{at}Max{g}Pct", signed(max(v), 1) if ok else "--", f"{g}: largest I_E of uncompensated {a} (% of E_P+E_Q)", src)
+        for t, tt in (("absorption", "Absorb"), ("cross", "Cross")):
+            v = [c[f"{t}_pct"] for c in R]
+            M.add(sec, f"ENine{tt}Min{g}Pct", signed(min(v), 1) if ok else "--", f"{g}: smallest {t} term (% of E_P+E_Q)", src)
+            M.add(sec, f"ENine{tt}Max{g}Pct", signed(max(v), 1) if ok else "--", f"{g}: largest {t} term (% of E_P+E_Q)", src)
+        M.add(sec, f"ENineCrossPos{g}", _n(sum(c["cross_pct"] > 0 for c in R)) if ok else "--", f"{g}: cells where the cross terms add error", src)
+        M.add(sec, f"ENineAbsorbDominates{g}", _n(sum(-c["absorption_pct"] > abs(c["cross_pct"]) for c in R)) if ok else "--",
+              f"{g}: cells where |absorption| exceeds |cross terms|", src)
+        M.add(sec, f"ENineResidMax{g}", sci(max(c["decomp_residual_rel_max"] for c in R)) if ok else "--",
+              f"{g}: largest |residual of the decomposition identity| / (E_P+E_Q) over layers", src)
+        for k in ("gap", "mask", "grid"):
+            v = [c[f"{k}_pct"] for c in R]
+            M.add(sec, f"ENineSplit{k.capitalize()}Min{g}Pct", signed(min(v), 1) if ok else "--", f"{g}: smallest {k} part without compensation (% of E_PQ)", src)
+            M.add(sec, f"ENineSplit{k.capitalize()}Max{g}Pct", signed(max(v), 1) if ok else "--", f"{g}: largest {k} part without compensation (% of E_PQ)", src)
+        M.add(sec, f"ENineGapPos{g}", _n(sum(c["gap_pct"] > 0 for c in R)) if ok else "--", f"{g}: cells where uncompensated Q->P has the larger error", src)
+        for tag in ("nocomp", "comp"):
+            for k, kt in (("overlap_mask_zeros", "Overlap"), ("zeros", "Zeros")):
+                v = [100 * c[f"{tag}_{k}"] for c in R]
+                T = "NoComp" if tag == "nocomp" else "Comp"
+                M.add(sec, f"ENine{kt}{T}Min{g}Pct", num(min(v), 0) if ok else "--", f"{g}: smallest {k} ({tag}, %)", src)
+                M.add(sec, f"ENine{kt}{T}Max{g}Pct", num(max(v), 0) if ok else "--", f"{g}: largest {k} ({tag}, %)", src)
+        for k, kt in (("comp_over_nocomp_P", "P"), ("comp_over_nocomp_Q", "Q")):
+            v = [c[k] for c in R if finite(c.get(k))]
+            M.add(sec, f"ENineCompRatio{kt}Min{g}", num(min(v), 2) if v else "--", f"{g}: smallest compensated / uncompensated E_{kt}", src)
+            M.add(sec, f"ENineCompRatio{kt}Max{g}", num(max(v), 2) if v else "--", f"{g}: largest compensated / uncompensated E_{kt}", src)
+
+
 def macros_scale_seeds(M, store, q):
     """Q3 seed check of the scale trend (DECISIONS.md #56): the order spread (WikiText-2 ppl, 100 (max - min) / min over
     the three orders) per calibration seed, and, per family with three sizes and grid cell, whether the middle size has
@@ -1410,6 +1457,8 @@ def build_macros(store, e1, q, det, fr, e2res, boolq, missing, repro=(), e7res=N
     macros_scale_seeds(M, store, q)
     if e2res is not None:
         macros_e2_groups(M, store, e2res)
+        if e2res.get("e9") is not None:
+            macros_e9(M, store, e2res["e9"])
     if e8res is not None:
         macros_e8(M, store, e8res)
     if isr is not None:

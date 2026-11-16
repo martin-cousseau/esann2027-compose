@@ -4934,6 +4934,123 @@ Columns:
 | `\resETwoSplitMaskNegFreeZerosAllModels` | `10` | AllModels: 25% and 33%+3-bit cells where the mask part is negative (Q->P's mask, which takes the zeros of rounding, is the better one) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitFreeZerosCellsAllModels` | `10` | AllModels: 25% and 33%+3-bit cells with the split | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 
+## E9: the layer level without error compensation (diag(H) in the sweeps, errors under the full H)
+
+| Macro | Value | Meaning | Source |
+|---|---|---|---|
+| `\resENineIncompleteModels` | `SmolLM2-135M` | models whose E9 run is not complete (left out) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineModelsCore` | `0` | Core: models with a complete E9 run | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCellsCore` | `--` | Core: (model, cell) pairs | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSubPQCore` | `--` | Core: cells where uncompensated p_then_q is sub-additive (summed I_E < 0) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineRatioPQMinCorePct` | `--` | Core: smallest I_E of uncompensated p_then_q (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineRatioPQMaxCorePct` | `--` | Core: largest I_E of uncompensated p_then_q (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSubPQStaleCore` | `--` | Core: cells where uncompensated p_then_q_stale is sub-additive (summed I_E < 0) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineRatioPQStaleMinCorePct` | `--` | Core: smallest I_E of uncompensated p_then_q_stale (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineRatioPQStaleMaxCorePct` | `--` | Core: largest I_E of uncompensated p_then_q_stale (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSubQPCore` | `--` | Core: cells where uncompensated q_then_p is sub-additive (summed I_E < 0) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineRatioQPMinCorePct` | `--` | Core: smallest I_E of uncompensated q_then_p (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineRatioQPMaxCorePct` | `--` | Core: largest I_E of uncompensated q_then_p (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineAbsorbMinCorePct` | `--` | Core: smallest absorption term (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineAbsorbMaxCorePct` | `--` | Core: largest absorption term (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCrossMinCorePct` | `--` | Core: smallest cross term (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCrossMaxCorePct` | `--` | Core: largest cross term (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCrossPosCore` | `--` | Core: cells where the cross terms add error | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineAbsorbDominatesCore` | `--` | Core: cells where |absorption| exceeds |cross terms| | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineResidMaxCore` | `--` | Core: largest |residual of the decomposition identity| / (E_P+E_Q) over layers | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitGapMinCorePct` | `--` | Core: smallest gap part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitGapMaxCorePct` | `--` | Core: largest gap part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitMaskMinCorePct` | `--` | Core: smallest mask part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitMaskMaxCorePct` | `--` | Core: largest mask part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitGridMinCorePct` | `--` | Core: smallest grid part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitGridMaxCorePct` | `--` | Core: largest grid part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineGapPosCore` | `--` | Core: cells where uncompensated Q->P has the larger error | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineOverlapNoCompMinCorePct` | `--` | Core: smallest overlap_mask_zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineOverlapNoCompMaxCorePct` | `--` | Core: largest overlap_mask_zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineZerosNoCompMinCorePct` | `--` | Core: smallest zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineZerosNoCompMaxCorePct` | `--` | Core: largest zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineOverlapCompMinCorePct` | `--` | Core: smallest overlap_mask_zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineOverlapCompMaxCorePct` | `--` | Core: largest overlap_mask_zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineZerosCompMinCorePct` | `--` | Core: smallest zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineZerosCompMaxCorePct` | `--` | Core: largest zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCompRatioPMinCore` | `--` | Core: smallest compensated / uncompensated E_P | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCompRatioPMaxCore` | `--` | Core: largest compensated / uncompensated E_P | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCompRatioQMinCore` | `--` | Core: smallest compensated / uncompensated E_Q | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCompRatioQMaxCore` | `--` | Core: largest compensated / uncompensated E_Q | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineModelsLarger` | `0` | Larger: models with a complete E9 run | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCellsLarger` | `--` | Larger: (model, cell) pairs | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSubPQLarger` | `--` | Larger: cells where uncompensated p_then_q is sub-additive (summed I_E < 0) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineRatioPQMinLargerPct` | `--` | Larger: smallest I_E of uncompensated p_then_q (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineRatioPQMaxLargerPct` | `--` | Larger: largest I_E of uncompensated p_then_q (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSubPQStaleLarger` | `--` | Larger: cells where uncompensated p_then_q_stale is sub-additive (summed I_E < 0) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineRatioPQStaleMinLargerPct` | `--` | Larger: smallest I_E of uncompensated p_then_q_stale (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineRatioPQStaleMaxLargerPct` | `--` | Larger: largest I_E of uncompensated p_then_q_stale (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSubQPLarger` | `--` | Larger: cells where uncompensated q_then_p is sub-additive (summed I_E < 0) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineRatioQPMinLargerPct` | `--` | Larger: smallest I_E of uncompensated q_then_p (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineRatioQPMaxLargerPct` | `--` | Larger: largest I_E of uncompensated q_then_p (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineAbsorbMinLargerPct` | `--` | Larger: smallest absorption term (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineAbsorbMaxLargerPct` | `--` | Larger: largest absorption term (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCrossMinLargerPct` | `--` | Larger: smallest cross term (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCrossMaxLargerPct` | `--` | Larger: largest cross term (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCrossPosLarger` | `--` | Larger: cells where the cross terms add error | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineAbsorbDominatesLarger` | `--` | Larger: cells where |absorption| exceeds |cross terms| | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineResidMaxLarger` | `--` | Larger: largest |residual of the decomposition identity| / (E_P+E_Q) over layers | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitGapMinLargerPct` | `--` | Larger: smallest gap part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitGapMaxLargerPct` | `--` | Larger: largest gap part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitMaskMinLargerPct` | `--` | Larger: smallest mask part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitMaskMaxLargerPct` | `--` | Larger: largest mask part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitGridMinLargerPct` | `--` | Larger: smallest grid part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitGridMaxLargerPct` | `--` | Larger: largest grid part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineGapPosLarger` | `--` | Larger: cells where uncompensated Q->P has the larger error | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineOverlapNoCompMinLargerPct` | `--` | Larger: smallest overlap_mask_zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineOverlapNoCompMaxLargerPct` | `--` | Larger: largest overlap_mask_zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineZerosNoCompMinLargerPct` | `--` | Larger: smallest zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineZerosNoCompMaxLargerPct` | `--` | Larger: largest zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineOverlapCompMinLargerPct` | `--` | Larger: smallest overlap_mask_zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineOverlapCompMaxLargerPct` | `--` | Larger: largest overlap_mask_zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineZerosCompMinLargerPct` | `--` | Larger: smallest zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineZerosCompMaxLargerPct` | `--` | Larger: largest zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCompRatioPMinLarger` | `--` | Larger: smallest compensated / uncompensated E_P | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCompRatioPMaxLarger` | `--` | Larger: largest compensated / uncompensated E_P | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCompRatioQMinLarger` | `--` | Larger: smallest compensated / uncompensated E_Q | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCompRatioQMaxLarger` | `--` | Larger: largest compensated / uncompensated E_Q | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineModelsAllModels` | `0` | AllModels: models with a complete E9 run | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCellsAllModels` | `--` | AllModels: (model, cell) pairs | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSubPQAllModels` | `--` | AllModels: cells where uncompensated p_then_q is sub-additive (summed I_E < 0) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineRatioPQMinAllModelsPct` | `--` | AllModels: smallest I_E of uncompensated p_then_q (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineRatioPQMaxAllModelsPct` | `--` | AllModels: largest I_E of uncompensated p_then_q (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSubPQStaleAllModels` | `--` | AllModels: cells where uncompensated p_then_q_stale is sub-additive (summed I_E < 0) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineRatioPQStaleMinAllModelsPct` | `--` | AllModels: smallest I_E of uncompensated p_then_q_stale (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineRatioPQStaleMaxAllModelsPct` | `--` | AllModels: largest I_E of uncompensated p_then_q_stale (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSubQPAllModels` | `--` | AllModels: cells where uncompensated q_then_p is sub-additive (summed I_E < 0) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineRatioQPMinAllModelsPct` | `--` | AllModels: smallest I_E of uncompensated q_then_p (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineRatioQPMaxAllModelsPct` | `--` | AllModels: largest I_E of uncompensated q_then_p (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineAbsorbMinAllModelsPct` | `--` | AllModels: smallest absorption term (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineAbsorbMaxAllModelsPct` | `--` | AllModels: largest absorption term (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCrossMinAllModelsPct` | `--` | AllModels: smallest cross term (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCrossMaxAllModelsPct` | `--` | AllModels: largest cross term (% of E_P+E_Q) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCrossPosAllModels` | `--` | AllModels: cells where the cross terms add error | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineAbsorbDominatesAllModels` | `--` | AllModels: cells where |absorption| exceeds |cross terms| | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineResidMaxAllModels` | `--` | AllModels: largest |residual of the decomposition identity| / (E_P+E_Q) over layers | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitGapMinAllModelsPct` | `--` | AllModels: smallest gap part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitGapMaxAllModelsPct` | `--` | AllModels: largest gap part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitMaskMinAllModelsPct` | `--` | AllModels: smallest mask part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitMaskMaxAllModelsPct` | `--` | AllModels: largest mask part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitGridMinAllModelsPct` | `--` | AllModels: smallest grid part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineSplitGridMaxAllModelsPct` | `--` | AllModels: largest grid part without compensation (% of E_PQ) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineGapPosAllModels` | `--` | AllModels: cells where uncompensated Q->P has the larger error | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineOverlapNoCompMinAllModelsPct` | `--` | AllModels: smallest overlap_mask_zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineOverlapNoCompMaxAllModelsPct` | `--` | AllModels: largest overlap_mask_zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineZerosNoCompMinAllModelsPct` | `--` | AllModels: smallest zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineZerosNoCompMaxAllModelsPct` | `--` | AllModels: largest zeros (nocomp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineOverlapCompMinAllModelsPct` | `--` | AllModels: smallest overlap_mask_zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineOverlapCompMaxAllModelsPct` | `--` | AllModels: largest overlap_mask_zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineZerosCompMinAllModelsPct` | `--` | AllModels: smallest zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineZerosCompMaxAllModelsPct` | `--` | AllModels: largest zeros (comp, %) | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCompRatioPMinAllModels` | `--` | AllModels: smallest compensated / uncompensated E_P | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCompRatioPMaxAllModels` | `--` | AllModels: largest compensated / uncompensated E_P | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCompRatioQMinAllModels` | `--` | AllModels: smallest compensated / uncompensated E_Q | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+| `\resENineCompRatioQMaxAllModels` | `--` | AllModels: largest compensated / uncompensated E_Q | reports/analysis/e9_cells.csv (scripts/analysis/e9.py; sums over layers) |
+
 ## E8 layer error vs KL (reports/analysis/e8_layer_error_vs_kl.json; scripts/analysis/e8.py)
 
 | Macro | Value | Meaning | Source |
