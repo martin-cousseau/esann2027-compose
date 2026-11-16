@@ -426,3 +426,14 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     macros: `macros_e2_groups` (group scopes, the split), `ISrPaperPm*`. 30 claims (`claims_v4.txt`) hold; 6 pages.
     Not done, stopped by the usage limit: the check of the two references the co-authors proposed (not added: rule
     2), the independent re-audit, the control without compensation (E9: specified, code not written), the supplement.
+60. **2026-11-16 09:30 UTC, you asked to finish the remaining work; the V4 runs restart on three runtimes.** (a) E9, the
+    layer-level control without error compensation (`scripts/run_e9.py`, new): the E2 arms run on diag(H) (no error
+    propagated between columns; src/core.py unchanged), errors measured with the full H, plus the exact terms of the
+    paper's decomposition (absorption and the two cross terms, float64, with the residual of the identity) and the
+    overlap of the pruning mask with the zeros of rounding, with and without compensation. Tests: without compensation
+    the joint pass equals P->Q and Q->P with the pruning-only mask equals P->Q with a stale grid, exactly, so the
+    update-order part of the V4 split is a property of compensation (`tests/test_e9.py`). Seven models, the blocks of
+    E2. Runtime esann-a12, `chain_a18.sh`. (b) The rest of E2 on OLMo-2-1B and Qwen2.5-3B, resumed from the Hub, then
+    5 Qwen2.5-1.5B seed states (esann-b11, `chain_b16.sh`). (c) The other 8 seed states (esann-c2, `chain_c2.sh`).
+    The 10 missing 4-bit seed states are split into two new queue files (`E5__Qwen2.5-1.5B__c.json`, `__d.json`), each
+    with its own result file. About 9 L4-hours in all, about 16 of the 80 CU.

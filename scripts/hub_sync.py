@@ -10,8 +10,8 @@ minutes by the chain scripts, keeps a copy on the Hub so that a lost runtime los
 that does not parse. The token is read from the Hugging Face cache or $HF_TOKEN by huggingface_hub; it is never printed.
 """
 import glob
+import json
 import os
-import shutil
 import sys
 
 REPO = os.environ.get("ESANN_HF_RESULTS", "martincousseau/esann2027-v2-results")
@@ -37,10 +37,22 @@ def main():
             if os.path.exists(dst):
                 print(f"hub_sync get: {rel} already there ({sum(1 for _ in open(dst))} lines), kept")
                 continue
-            src = hf_hub_download(REPO, rel, repo_type="dataset", force_download=True)
+            try:
+                src = hf_hub_download(REPO, rel, repo_type="dataset", force_download=True)
+            except Exception as e:  # not on the Hub yet: the runner starts from an empty file
+                print(f"hub_sync get: {rel} not on the Hub ({type(e).__name__}), starting empty")
+                continue
             os.makedirs(os.path.dirname(dst), exist_ok=True)
-            shutil.copyfile(src, dst)
-            print(f"hub_sync get: {rel} fetched ({sum(1 for _ in open(dst))} lines)")
+            kept = []
+            for line in open(src):
+                try:
+                    json.loads(line)
+                    kept.append(line if line.endswith("\n") else line + "\n")
+                except ValueError:
+                    pass  # a line cut while it was uploaded: that state or layer simply runs again
+            with open(dst, "w") as f:
+                f.writelines(kept)
+            print(f"hub_sync get: {rel} fetched ({len(kept)} complete lines)")
     else:
         raise SystemExit(__doc__)
 
