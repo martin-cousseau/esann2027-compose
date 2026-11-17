@@ -1,7 +1,11 @@
 # NEWS (newest first)
 
 ## Read this first
-- **Now (17 Nov, 10:30 UTC):** the remaining items are closed (DECISIONS.md #67): V4.1 links the no-compensation result
+- **Now (17 Nov, 22:40 UTC):** V4.1 no longer contrasts its prune-then-quantize with the IJCNN pipeline. The IJCNN
+  paper describes quantizing all weights after pruning, but the llmcompressor GPTQ it used keeps zero weights at zero,
+  so those models most likely kept their mask. Section 2 and Table 2's caption are corrected and the private package
+  rebuilt (6 pages, 40 claims hold; DECISIONS.md #68).
+- **17 Nov, 10:30 UTC:** the remaining items are closed (DECISIONS.md #67): V4.1 links the no-compensation result
   to Harma et al.'s mechanism (verified at the source; still 6 pages, 40 claims hold); a ready variant without the 7-8B
   rows of Table 2 and camera-ready notes are in the private package; FINDINGS.md is regenerated from the macros and
   QUESTIONS.md holds only the open author decisions; the W&B project now has one run per state (409 runs, checked

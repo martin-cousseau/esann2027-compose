@@ -65,7 +65,8 @@ Hosts that could not be reached from the sandbox: proceedings.neurips.cc, papers
 | A8c | Panferov: training-time | confirmed | "...when training occurs over various compressed representations..." | Abstract. Their sparse-quantized format sparsifies first, following Harma et al. (Sec. 2, p. 3). |
 | A9a | Laborde: DOI resolves to this paper | confirmed | (doi.org redirects to IEEE Xplore 11227279; the registered title, authors and pages 1–9 match) | doi.org content negotiation |
 | A9b | Laborde: Case A quantizes all weights after pruning | confirmed | "We analyze a potential approximate approach to sequential compression: quantizing all weights after pruning (Case A) rather than only the non-pruned weights (Case B)." | Sec. III-B.2 "Analysis of Approximation Approaches", p. 3, arXiv v1 |
-| A9c | Laborde: Case A updates pruned weights | confirmed | "Case A ... introduces additional error through updates to pruned weights and potentially overcompensating correlations" | Same section, p. 3 |
+| A9c | Laborde: Case A updates pruned weights | confirmed (as the paper's analysis; see A9d) | "Case A ... introduces additional error through updates to pruned weights and potentially overcompensating correlations" | Same section, p. 3 |
+| A9d | Laborde: what the tool did with the pruned weights | most likely kept at zero, unlike A9c | The runs used "public implementations (from llmcompressor)". The GPTQ of every llmcompressor release before the preprint (0.2.0-0.5.1) multiplies both error updates by the non-zero mask when at least 5% of a layer is zero (`preserve_zeros = sparsity >= SPARSITY_THRESHOLD`, `SPARSITY_THRESHOLD = 0.05`), so pruned weights are not updated and quantize to zero. The version used is not stated | Sec. IV-A, arXiv v1; llmcompressor source on PyPI; DECISIONS.md #68 |
 
 ## 3. Part C candidates (2025–2026)
 

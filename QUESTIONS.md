@@ -6,8 +6,9 @@ Open (none blocks the submission of V4.1; ESANN 2027 extended deadline: 25 Novem
    November. The ESANN form asks for the full details of every author (institution, address, phone, e-mail); they
    are not in the package.
 2. **The 7-8B rows of Table 2** (from the first author's draft). Both simulated reviews of V4.1 ask to drop them: they
-   come from another pipeline and other tasks, and all weights were re-quantized after pruning. Kept in V4.1 with the
-   caption's caveat. A ready alternative without them is in the package (`paper/alternative_without_7_8B/`).
+   come from another toolchain and other tasks and have no per-item results (so no intervals), and LLaMA's value is
+   driven by MATH. (Their worry that those models may not be sparse is most likely unfounded: DECISIONS.md #68.) Kept
+   in V4.1; the caption names their source and why they have no intervals. A ready alternative without them is in the package (`paper/alternative_without_7_8B/`).
 3. **Where the paper's link points.** V4.1 links the public results dataset on the Hub, which links the code (this
    branch) and the models. Alternatively merge the branch into the first author's repository and link that.
 4. **Benchmark citations.** ARC-Easy, PIQA, HellaSwag and the six extra tasks are named, not cited (about four lines).
