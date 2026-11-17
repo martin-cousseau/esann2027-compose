@@ -24,9 +24,10 @@ GIT = "https://github.com/martin-cousseau/esann2027-compose"
 BRANCH = "claude/busy-hopper-ghtynk"
 WANDB = "https://wandb.ai/martin-css/esann2027-compose-v2"
 BASE = {"SmolLM2-135M": "HuggingFaceTB/SmolLM2-135M", "SmolLM2-360M": "HuggingFaceTB/SmolLM2-360M",
-        "SmolLM2-1.7B": "HuggingFaceTB/SmolLM2-1.7B", "Qwen2.5-0.5B": "Qwen/Qwen2.5-0.5B"}
+        "SmolLM2-1.7B": "HuggingFaceTB/SmolLM2-1.7B", "Qwen2.5-0.5B": "Qwen/Qwen2.5-0.5B",
+        "Qwen2.5-1.5B": "Qwen/Qwen2.5-1.5B", "OLMo-2-0425-1B": "allenai/OLMo-2-0425-1B"}
 FAMILY_TXT = {"E1": "the paper's grid in fp32", "E3": "Q->P mechanism arms", "E4": "extra frontier points",
-              "E5": "calibration seeds 1 and 2", "E6": "scale within one family"}
+              "E5": "calibration seeds 1 and 2", "E6": "the grid on the larger models", "E6B": "larger-model states re-run with benchmarks"}
 
 
 def fmt(v, nd):
@@ -44,8 +45,31 @@ def config(r):
     return f"{cell_label(r['sparsity'], r['bits'])} {ORDER_TXT.get(o, o)}"
 
 
+def exports_by_state():
+    """state_id -> model_export of any result line that uploaded the state (the line the analysis keeps for a state,
+    e.g. a later re-run with benchmarks, does not always carry the export of the first run)."""
+    import glob
+    import json
+    out = {}
+    for path in sorted(glob.glob(os.path.join(ROOT, "results", "v2", "*", "*.jsonl"))):
+        with open(path) as f:
+            for line in f:
+                try:
+                    r = json.loads(line)
+                except ValueError:
+                    continue
+                e = r.get("model_export") or {}
+                if isinstance(r, dict) and e.get("repo_path") and r.get("state_id") not in out:
+                    out[r["state_id"]] = e
+    return out
+
+
 def rows_by_model(store):
     out = collections.OrderedDict()
+    ex = exports_by_state()
+    for r in store.states.values():
+        if not (r.get("model_export") or {}).get("repo_path") and r.get("state_id") in ex:
+            r["model_export"] = ex[r["state_id"]]
     for m in store.models():
         rr = [r for r in store.states.values() if short(r["model"]) == m and (r.get("model_export") or {}).get("repo_path")]
         rr.sort(key=lambda r: (int(r.get("seed", 0)), r["order"] != "dense", r["order"] not in ("quant", "prune"),
