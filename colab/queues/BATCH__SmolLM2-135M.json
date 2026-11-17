@@ -1,0 +1,20 @@
+[
+{
+"order": "dense",
+"sparsity": 0.0,
+"bits": 16,
+"seed": 0
+},
+{
+"order": "quant",
+"sparsity": 0.0,
+"bits": 4,
+"seed": 0
+},
+{
+"order": "p_then_q",
+"sparsity": 0.5,
+"bits": 4,
+"seed": 0
+}
+]

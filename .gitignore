@@ -1,0 +1,27 @@
+# private inputs (review text, draft PDF, Drive exports): backed up to the private HF dataset, never pushed
+context/
+# runtime caches and local scratch
+cache/
+__pycache__/
+*.pyc
+.pytest_cache/
+paper/scratch/
+# LaTeX build artifacts (the PDFs are kept)
+paper/**/*.aux
+paper/**/*.fls
+paper/**/*.fdb_latexmk
+paper/**/*.blg
+paper/**/*.out
+paper/**/*.synctex.gz
+paper/**/build_stdout.log
+paper/**/main.log
+# compressed models live on Hugging Face, not in git
+models/
+# local bookkeeping of the container-side mirrors
+results/v2/.pull_manifest.json
+results/v2/.wandb_synced.json
+logs/status/
+# every runtime writes its image check to the same name; the record is the per-runtime copy IMG/<model>__<runtime>.jsonl
+results/v2/IMG/SmolLM2-135M.jsonl
+# W&B local run files (the sync script writes them under /root/.cache/esann-wandb)
+wandb/

@@ -1,0 +1,61 @@
+{"event":"create","name":"runtimes/esann-pilot","spec":"L4/STANDARD/GPU","image":"latest (unspecified)","created_utc":"2026-11-09T23:38:09Z","owner":"orchestrator","purpose":"phase-0 pilot"}
+{"event":"create","name":"runtimes/esann-e1-a","spec":"L4/STANDARD/GPU","created_utc":"2026-11-10T05:53:32Z","owner":"orchestrator","purpose":"E1 135M+360M, E2"}
+{"event":"create","name":"runtimes/esann-e1-b","spec":"L4/STANDARD/GPU","created_utc":"2026-11-10T05:53:35Z","owner":"orchestrator","purpose":"DET, E1 Qwen2.5-0.5B"}
+{"event":"create_failed","name":"runtimes/esann-e2-a","spec":"L4/STANDARD/GPU","utc":"2026-11-10T05:53:40Z","error":"Precondition check failed (likely the 2-concurrent-GPU-runtime limit)"}
+{"event":"reclaimed","name":"runtimes/esann-pilot","observed_utc":"2026-11-10T05:50:30Z","note":"absent from list_runtimes after the session was suspended 23:51-05:49 UTC; lifetime unknown (>= 23:38-00:00 active; upper bound 6.2 h)"}
+{"event":"reclaimed","name":"runtimes/esann-e1-a","observed_utc":"2026-11-10T06:40:21Z","note":"404 from ~06:33; last kernel execution 06:14; idle-kernel reclaim suspected (background processes do not count)","lifetime_h_est":0.67}
+{"event":"reclaimed","name":"runtimes/esann-e1-b","observed_utc":"2026-11-10T06:40:21Z","note":"same as esann-e1-a","lifetime_h_est":0.67}
+{"event":"create","name":"runtimes/esann-e1-a2","spec":"L4/STANDARD/GPU","created_utc":"2026-11-10T06:41:31Z","owner":"orchestrator","purpose":"E1 135M+360M, E2 (replaces esann-e1-a)"}
+{"event":"create","name":"runtimes/esann-e1-b2","spec":"L4/STANDARD/GPU","created_utc":"2026-11-10T06:41:34Z","owner":"orchestrator","purpose":"E1 Qwen2.5-0.5B (replaces esann-e1-b)"}
+{"event":"lost","name":"runtimes/esann-e1-a2","observed_utc":"2026-11-10T07:19:30Z","note":"Requested entity was not found; last status 07:13:48; a keepalive cell was running; cause unknown (possibly preemption); B2 created at the same time is alive","lifetime_h_est":0.58}
+{"event":"create","name":"runtimes/esann-e1-a3","spec":"L4/STANDARD/GPU","created_utc":"2026-11-10T07:15:48Z","owner":"orchestrator","purpose":"reproduction investigation, E2 Qwen, then E1 135M/360M (replaces esann-e1-a2)"}
+{"event":"lost","name":"runtimes/esann-e1-b2","observed_utc":"2026-11-10T07:38:33Z","lifetime_h_est":0.9}
+{"event":"lost","name":"runtimes/esann-e1-a3","observed_utc":"2026-11-10T11:05:00Z","note":"last upload 07:55, model upload after; died ~08:00-08:10","lifetime_h_est":0.85}
+{"event":"create","name":"runtimes/esann-a4","spec":"L4/STANDARD/GPU","created_utc":"2026-11-10T11:06:39Z","owner":"orchestrator","purpose":"E1 135M+360M, E2 Qwen"}
+{"event":"create","name":"runtimes/esann-b3","spec":"L4/STANDARD/GPU","created_utc":"2026-11-10T11:06:43Z","owner":"orchestrator","purpose":"E1 Qwen, E4, E3"}
+{"event":"lost","name":"runtimes/esann-a4","observed_utc":"2026-11-10T18:02:00Z","note":"last upload 15:45; tokens expired 14:54 during a session suspension (usage limit), keepalive stopped","lifetime_h_est":4.75}
+{"event":"lost","name":"runtimes/esann-b3","observed_utc":"2026-11-10T18:02:00Z","note":"same as esann-a4","lifetime_h_est":4.75}
+{"event":"create","name":"runtimes/esann-a5","spec":"L4/STANDARD/GPU (us-west4)","created_utc":"2026-11-10T18:03:59Z","owner":"orchestrator","purpose":"E3 135M rest, E1 360M"}
+{"event":"create","name":"runtimes/esann-b4","spec":"L4/STANDARD/GPU","created_utc":"2026-11-10T18:04:03Z","owner":"orchestrator","purpose":"E1 Qwen rest, E4/E3 Qwen and 360M"}
+{"runtime": "esann-a5", "event": "deleted", "time": "2026-11-11T07:21:06+00:00", "note": "queues done (E1 SmolLM2-360M, E3 SmolLM2-135M, E6 SmolLM2-1.7B); all exports verified on the Hub"}
+{"runtime": "esann-b4", "event": "deleted", "time": "2026-11-11T08:47:59+00:00", "note": "queues done (E1/E4 Qwen2.5-0.5B, E4/E3/E5 SmolLM2-360M, E3 Qwen2.5-0.5B 50% cells); all exports verified on the Hub; list_runtimes empty"}
+{"runtime": "esann-a6", "event": "created", "time": "2026-11-12T19:47:00+00:00", "spec": "L4 standard", "image": "release-colab-external-images_20261111-060450_RC00", "note": "DECISIONS #38 runs"}
+{"runtime": "esann-b5", "event": "created", "time": "2026-11-12T19:47:00+00:00", "spec": "L4 standard", "image": "release-colab-external-images_20261111-060450_RC00", "note": "DECISIONS #38 runs"}
+{"runtime": "esann-a7", "event": "created", "time": "2026-11-13T18:41:29+00:00", "spec": "L4 standard", "note": "DECISIONS #44: E6B benchmarks for Table 2, remaining E6/E5"}
+{"runtime": "esann-b6", "event": "created", "time": "2026-11-13T18:41:33+00:00", "spec": "L4 standard", "note": "DECISIONS #44: remaining E6/E5"}
+{"runtime": "esann-a7", "event": "reclaimed", "time": "2026-11-13T23:30:00+00:00", "note": "worker restart ended the watcher during a token refresh (#46)"}
+{"runtime": "esann-b6", "event": "reclaimed", "time": "2026-11-13T23:30:00+00:00", "note": "worker restart ended the watcher during a token refresh (#46)"}
+{"runtime": "esann-a8", "event": "created", "time": "2026-11-14T06:18:58+00:00", "spec": "L4 standard", "note": "#46 resume chain_a13"}
+{"runtime": "esann-b7", "event": "created", "time": "2026-11-14T06:19:03+00:00", "spec": "L4 standard", "note": "#46 resume chain_b11"}
+{"runtime": "esann-b7", "event": "chain_queued", "time": "2026-11-14T13:29:00+00:00", "note": "#47 chain_b12.sh waits for chain_b11, then Qwen2.5-3B grid completion (13 states, own result file)"}
+{"runtime": "esann-a8", "event": "reclaimed", "time": "2026-11-15T05:27:00+00:00", "note": "#50 found gone after two worker restarts"}
+{"runtime": "esann-b7", "event": "reclaimed", "time": "2026-11-15T05:27:00+00:00", "note": "#50 found gone after two worker restarts"}
+{"runtime": "esann-a9", "event": "created", "time": "2026-11-15T05:30:14+00:00", "spec": "L4 standard", "note": "#50 resume chain_a15"}
+{"runtime": "esann-b8", "event": "created", "time": "2026-11-15T05:30:18+00:00", "spec": "L4 standard", "note": "#50 resume chain_b13"}
+{"runtime": "esann-a9", "event": "reclaimed", "time": "2026-11-15T07:18:00+00:00", "note": "#51 found gone; its start command was never run (approval pending at a worker restart)"}
+{"runtime": "esann-b8", "event": "reclaimed", "time": "2026-11-15T07:18:00+00:00", "note": "#51 found gone; its start command was never run (approval pending at a worker restart)"}
+{"runtime": "esann-a9", "event": "created", "time": "2026-11-15T12:12:46+00:00", "spec": "L4 standard", "note": "#53 Qwen2.5-3B completion, chain_a15 (second use of the name)"}
+{"runtime": "esann-b8", "event": "created", "time": "2026-11-15T12:12:50+00:00", "spec": "L4 standard", "note": "#53 Qwen2.5-3B completion, chain_b13 (second use of the name)"}
+{"runtime": "esann-a9", "event": "gone", "time": "2026-11-15T14:48:00+00:00", "note": "#54 both runtimes ended together at about 14:45 while the keepalive ran (balance?)"}
+{"runtime": "esann-b8", "event": "gone", "time": "2026-11-15T14:48:00+00:00", "note": "#54 both runtimes ended together at about 14:45 while the keepalive ran (balance?)"}
+{"runtime": "esann-a10", "event": "created", "time": "2026-11-15T15:15:06+00:00", "spec": "L4 standard", "note": "#55 #56 chain_a16: last 5 Qwen2.5-3B states, then Qwen2.5-1.5B 4-bit seeds"}
+{"runtime": "esann-b9", "event": "created", "time": "2026-11-15T15:15:10+00:00", "spec": "L4 standard", "note": "#56 chain_b14: Qwen2.5-1.5B 3-bit seeds"}
+{"runtime": "esann-a10", "event": "gone", "time": "2026-11-15T21:50:00+00:00", "note": "#58 reclaimed about 21:45-22:00: session paused by its usage limit 20:20-22:20, tokens not renewed after 20:55"}
+{"runtime": "esann-b9", "event": "gone", "time": "2026-11-15T21:50:00+00:00", "note": "#58 reclaimed about 21:45-22:00: session paused by its usage limit 20:20-22:20, tokens not renewed after 20:55"}
+{"runtime": "esann-a11", "event": "created", "time": "2026-11-15T22:23:51+00:00", "spec": "L4 standard", "note": "#58 chain_a17: E2 on SmolLM2-1.7B and OLMo-2-1B, 3 seed states, then next_loop"}
+{"runtime": "esann-b10", "event": "created", "time": "2026-11-15T22:23:55+00:00", "spec": "L4 standard", "note": "#58 chain_b15: E2 on Qwen2.5-1.5B and Qwen2.5-3B, then next_loop"}
+{"runtime": "esann-a11", "event": "gone", "time": "2026-11-16T00:25:00+00:00", "note": "#59 reclaimed about an hour after its token expired (23:23): session paused by its usage limit 22:45-03:20; E2 SmolLM2-1.7B complete (42 layers), OLMo-2-1B 17 of 56"}
+{"runtime": "esann-b10", "event": "gone", "time": "2026-11-16T00:25:00+00:00", "note": "#59 reclaimed about an hour after its token expired (23:23): session paused by its usage limit 22:45-03:20; E2 Qwen2.5-1.5B complete (49 layers), Qwen2.5-3B 9 of 63"}
+{"runtime": "esann-a12", "event": "created", "time": "2026-11-16T09:17:32+00:00", "spec": "L4 standard", "note": "#60 chain_a18: E9 on seven models, then 5 Qwen2.5-1.5B seed states (__c)"}
+{"runtime": "esann-b11", "event": "created", "time": "2026-11-16T09:17:36+00:00", "spec": "L4 standard", "note": "#60 chain_b16: rest of E2 on OLMo-2-1B and Qwen2.5-3B, then 8 Qwen2.5-1.5B seed states (__b, __d)"}
+{"runtime": "esann-c2", "event": "refused", "time": "2026-11-16T09:17:40+00:00", "note": "#60 create_runtime: precondition check failed (two runtimes at a time); chain_c2 not used"}
+{"runtime": "esann-a12", "event": "gone", "time": "2026-11-16T11:20:00+00:00", "note": "#61 reclaimed after its token expired (10:17): session paused by its usage limit 09:40-14:10; E9 done on the three small models"}
+{"runtime": "esann-b11", "event": "gone", "time": "2026-11-16T11:20:00+00:00", "note": "#61 reclaimed after its token expired (10:17): session paused by its usage limit 09:40-14:10; E2 OLMo-2-1B complete, Qwen2.5-3B not reached"}
+{"runtime": "esann-a13", "event": "created", "time": "2026-11-16T14:13:48+00:00", "spec": "L4 standard", "note": "#61 chain_a19: E9 on SmolLM2-1.7B, Qwen2.5-1.5B, OLMo-2-1B"}
+{"runtime": "esann-b12", "event": "created", "time": "2026-11-16T14:13:52+00:00", "spec": "L4 standard", "note": "#61 chain_b17: rest of E2 on Qwen2.5-3B, then E9 on Qwen2.5-3B"}
+{"runtime": "esann-a13", "event": "deleted", "time": "2026-11-16T15:41:32+00:00", "note": "#61 chain_a19 done: E9 on SmolLM2-1.7B, Qwen2.5-1.5B, OLMo-2-1B"}
+{"runtime": "esann-b12", "event": "deleted", "time": "2026-11-16T16:26:22+00:00", "note": "#61 chain_b18 done: E9 on Qwen2.5-3B complete (63 layers); no runtime is assigned now"}
+{"runtime": "esann-a14", "event": "created", "time": "2026-11-16T17:00:00+00:00", "spec": "L4 standard", "time_from": "first token expiry minus 1 h", "note": "#64 chain_a20: 3 Qwen2.5-1.5B seed-2 states at 3 bits (__b), then 4 at 4 bits (__c)"}
+{"runtime": "esann-b13", "event": "created", "time": "2026-11-16T17:00:04+00:00", "spec": "L4 standard", "time_from": "first token expiry minus 1 h", "note": "#64 chain_b19: 6 Qwen2.5-1.5B seed-2 states at 4 bits (__d)"}
+{"runtime": "esann-b13", "event": "deleted", "time": "2026-11-16T19:46:38+00:00", "note": "#64 chain_b19 done: 6 Qwen2.5-1.5B seed-2 states at 4 bits (0 failures; Hub copy checked)"}
+{"runtime": "esann-a14", "event": "deleted", "time": "2026-11-16T20:09:58+00:00", "note": "#64 chain_a20 done at 19:48 (3 + 4 Qwen2.5-1.5B seed-2 states, 0 failures; Hub copies checked); idle 19:48-20:10 because the watcher missed the second queue end (same status-file name); no runtime is assigned now"}

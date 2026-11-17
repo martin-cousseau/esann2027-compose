@@ -1,0 +1,14 @@
+[1] paper order q_then_p unchanged after install: True
+    q_then_p_refit         mean rel_err 0.0628  ppl   535.08  KL 0.0048  top-1 agreement 0.472
+    q_then_p_pmask         mean rel_err 0.0594  ppl   535.08  KL 0.0047  top-1 agreement 0.453
+    q_then_p_pmask_refit   mean rel_err 0.0596  ppl   535.31  KL 0.0048  top-1 agreement 0.467
+    p_then_q_stale         mean rel_err 0.0563  ppl   536.35  KL 0.0042  top-1 agreement 0.494
+    q_then_p (paper)       ppl   535.04  KL 0.0046; dense vs itself KL 0.00e+00, agreement 1.000
+[2] strict safeguard raises for q_then_p and all 4 ablation orders: 1 non-finite Hessian entries: re-run this configuration in float32
+[3] flips 0.15 (expected 0.15); McNemar right-in-A-only 15, right-in-B-only 0, p = 6.10e-05
+[4] 25%+4: TCr-equivalent 3.00 | bitmap 4.00 | entropy 3.81 | bitmap + group overhead 4.156
+[4] 50%+4: TCr-equivalent 2.00 | bitmap 3.00 | entropy 3.00 | bitmap + group overhead 3.156
+[4] 33%+3: TCr-equivalent 2.00 | bitmap 3.00 | entropy 2.92 | bitmap + group overhead 3.148
+[4]  0%+3: TCr-equivalent 3.00 | bitmap 3.00 | entropy 3.00 | bitmap + group overhead 3.148
+[5] metadata keys: ['accelerate', 'colab_release_tag', 'compute_dtype', 'cuda_runtime', 'datasets', 'lm_eval', 'python', 'repo_commit', 'torch', 'transformers']
+ALL CHECKS PASSED

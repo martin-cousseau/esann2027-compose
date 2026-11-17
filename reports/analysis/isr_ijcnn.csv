@@ -1,0 +1,9 @@
+model,tag,cell,cell_tag,tasks,set_tag,sr_pq,sr_p,sr_q,isr,source
+Mistral-7B-v0.3,Mistral,25%+4,STwentyFiveBFour,"MMLU-Pro, BBH, MATH",All,0.8951533135509397,0.9495548961424333,0.9337289812067261,0.008526387776006894,"analysis/reproduce_paper.py (PUB, read with ast)"
+Mistral-7B-v0.3,Mistral,25%+4,STwentyFiveBFour,"MMLU-Pro, BBH",NoMath,0.9105322763306909,0.9637599093997735,0.9501698754246887,-0.005203356723001096,"analysis/reproduce_paper.py (PUB, read with ast)"
+Mistral-7B-v0.3,Mistral,33%+3,SThirtyThreeBThree,"MMLU-Pro, BBH, MATH",All,0.6478733926805144,0.9080118694362018,0.7190900098911969,-0.005068871493688176,"analysis/reproduce_paper.py (PUB, read with ast)"
+Mistral-7B-v0.3,Mistral,33%+3,SThirtyThreeBThree,"MMLU-Pro, BBH",NoMath,0.6817667044167611,0.9263873159682899,0.7508493771234428,-0.013810634753087414,"analysis/reproduce_paper.py (PUB, read with ast)"
+LLaMA-3.1-8B,Llama,25%+4,STwentyFiveBFour,"MMLU-Pro, BBH, MATH",All,0.8180242634315426,0.9393414211438476,0.7409012131715772,0.12206506492375246,"analysis/reproduce_paper.py (PUB, read with ast)"
+LLaMA-3.1-8B,Llama,25%+4,STwentyFiveBFour,"MMLU-Pro, BBH",NoMath,0.858751279426817,0.9570112589559878,0.873080859774821,0.023203066643339265,"analysis/reproduce_paper.py (PUB, read with ast)"
+LLaMA-3.1-8B,Llama,33%+3,SThirtyThreeBThree,"MMLU-Pro, BBH, MATH",All,0.5424610051993068,0.8396880415944542,0.6005199306759099,0.038211600671614665,"analysis/reproduce_paper.py (PUB, read with ast)"
+LLaMA-3.1-8B,Llama,33%+3,SThirtyThreeBThree,"MMLU-Pro, BBH",NoMath,0.632548618219038,0.87410440122825,0.6663254861821905,0.050110578096631886,"analysis/reproduce_paper.py (PUB, read with ast)"

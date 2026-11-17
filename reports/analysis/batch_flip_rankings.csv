@@ -1,0 +1,15 @@
+model,cell,sparsity,bits,ranking_e1,ranking_batch,ranking_both,changes,changes_both
+SmolLM2-135M,25%+4,0.25,4,P->Q < joint < Q->P,P->Q < joint < Q->P,P->Q < joint < Q->P,False,False
+SmolLM2-135M,33%+4,0.3333,4,joint < P->Q < Q->P,joint < P->Q < Q->P,joint < P->Q < Q->P,False,False
+SmolLM2-135M,50%+4,0.5,4,Q->P < P->Q < joint,Q->P < P->Q < joint,Q->P < P->Q < joint,False,False
+SmolLM2-135M,60%+4,0.6,4,joint < P->Q < Q->P,joint < P->Q < Q->P,joint < P->Q < Q->P,False,False
+SmolLM2-135M,25%+3,0.25,3,P->Q < joint < Q->P,P->Q < joint < Q->P,P->Q < joint < Q->P,False,False
+SmolLM2-135M,33%+3,0.3333,3,P->Q < Q->P < joint,P->Q < Q->P < joint,P->Q < Q->P < joint,False,False
+SmolLM2-135M,50%+3,0.5,3,P->Q < joint < Q->P,P->Q < joint < Q->P,P->Q < joint < Q->P,False,False
+Qwen2.5-0.5B,25%+4,0.25,4,joint < P->Q < Q->P,joint < P->Q < Q->P,joint < P->Q < Q->P,False,False
+Qwen2.5-0.5B,33%+4,0.3333,4,Q->P < P->Q < joint,Q->P < P->Q < joint,Q->P < P->Q < joint,False,False
+Qwen2.5-0.5B,50%+4,0.5,4,joint < Q->P < P->Q,joint < Q->P < P->Q,joint < Q->P < P->Q,False,False
+Qwen2.5-0.5B,60%+4,0.6,4,joint < P->Q < Q->P,joint < P->Q < Q->P,joint < P->Q < Q->P,False,False
+Qwen2.5-0.5B,25%+3,0.25,3,P->Q < joint < Q->P,P->Q < joint < Q->P,P->Q < joint < Q->P,False,False
+Qwen2.5-0.5B,33%+3,0.3333,3,P->Q < Q->P < joint,P->Q < Q->P < joint,P->Q < Q->P < joint,False,False
+Qwen2.5-0.5B,50%+3,0.5,3,joint < P->Q < Q->P,joint < P->Q < Q->P,joint < P->Q < Q->P,False,False

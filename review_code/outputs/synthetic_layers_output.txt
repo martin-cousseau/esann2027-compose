@@ -1,0 +1,28 @@
+1. decomposition identity (no compensation, one fixed grid, correlated H)
+   I_E = -4.379627e-01; absorption + cross terms = -4.379574e-01 (absorption -3.782e-01, 2<P,R_keep> -1.397e-01, -2<R_M,R_keep> +7.993e-02)
+
+2. I_E/(E_P+E_Q) in % on synthetic 512x512 layers, mean [min, max] over 4 seeds; all arms share one H
+
+  independent features (mean |off-diagonal correlation| of H = 0.01)
+    25%+4: joint  -8.4 [-8.7,-8.3] | p_then_q  -8.2 [-8.5,-8.1] | q_then_p -10.3 [-10.5,-10.1] | q_then_p_refit -10.0 [-10.2,-9.7] | q_then_p_pmask  -8.1 [-8.3,-7.9] | q_then_p_pmask_refit  -7.7 [-7.9,-7.5] | p_then_q_stale  -8.3 [-8.5,-8.1] | Q->P mask, pruning alone: 2.18x SparseGPT's error
+    50%+4: joint -17.1 [-17.2,-17.0] | p_then_q -16.9 [-17.0,-16.9] | q_then_p  -3.7 [-4.0,-3.5] | q_then_p_refit  -3.5 [-3.7,-3.2] | q_then_p_pmask -15.9 [-16.0,-15.8] | q_then_p_pmask_refit -15.6 [-15.7,-15.4] | p_then_q_stale -16.9 [-17.0,-16.9] | Q->P mask, pruning alone: 1.21x SparseGPT's error
+    25%+3: joint  -2.5 [-2.6,-2.5] | p_then_q  -2.5 [-2.5,-2.4] | q_then_p  -2.5 [-2.6,-2.5] | q_then_p_refit  -2.4 [-2.5,-2.3] | q_then_p_pmask  -2.5 [-2.5,-2.4] | q_then_p_pmask_refit  -2.4 [-2.4,-2.3] | p_then_q_stale  -2.5 [-2.6,-2.4] | Q->P mask, pruning alone: 9.09x SparseGPT's error
+    50%+3: joint -17.7 [-17.9,-17.4] | p_then_q -17.4 [-17.7,-17.2] | q_then_p -21.5 [-21.7,-21.3] | q_then_p_refit -21.4 [-21.6,-21.2] | q_then_p_pmask -17.2 [-17.4,-16.9] | q_then_p_pmask_refit -16.8 [-17.1,-16.6] | p_then_q_stale -17.4 [-17.7,-17.2] | Q->P mask, pruning alone: 1.60x SparseGPT's error
+
+  weak correlation (mean |off-diagonal correlation| of H = 0.04)
+    25%+4: joint -11.0 [-11.2,-10.8] | p_then_q -10.0 [-10.1,-9.9] | q_then_p -12.8 [-13.0,-12.7] | q_then_p_refit -11.9 [-12.2,-11.7] | q_then_p_pmask  -7.6 [-7.8,-7.5] | q_then_p_pmask_refit  -6.7 [-6.8,-6.5] | p_then_q_stale -10.0 [-10.2,-9.8] | Q->P mask, pruning alone: 1.85x SparseGPT's error
+    50%+4: joint -16.3 [-16.5,-16.2] | p_then_q -15.2 [-15.4,-15.1] | q_then_p  +4.1 [+3.1,+4.8] | q_then_p_refit  +4.5 [+3.5,+5.1] | q_then_p_pmask  -7.3 [-7.5,-7.1] | q_then_p_pmask_refit  -6.9 [-7.0,-6.8] | p_then_q_stale -15.1 [-15.3,-14.9] | Q->P mask, pruning alone: 1.25x SparseGPT's error
+    25%+3: joint  -3.2 [-3.3,-3.2] | p_then_q  -3.0 [-3.1,-2.9] | q_then_p  -3.2 [-3.3,-3.2] | q_then_p_refit  -2.7 [-2.8,-2.6] | q_then_p_pmask  -2.8 [-2.9,-2.8] | q_then_p_pmask_refit  -2.3 [-2.4,-2.2] | p_then_q_stale  -3.0 [-3.1,-3.0] | Q->P mask, pruning alone: 7.29x SparseGPT's error
+    50%+3: joint -21.5 [-21.7,-21.0] | p_then_q -19.9 [-20.2,-19.6] | q_then_p -24.1 [-24.5,-23.8] | q_then_p_refit -23.7 [-24.1,-23.4] | q_then_p_pmask -16.7 [-16.9,-16.2] | q_then_p_pmask_refit -16.0 [-16.2,-15.4] | p_then_q_stale -19.9 [-20.2,-19.6] | Q->P mask, pruning alone: 1.38x SparseGPT's error
+
+  moderate (+ outlier channels x5) (mean |off-diagonal correlation| of H = 0.19)
+    25%+4: joint  -6.5 [-7.4,-5.0] | p_then_q  -0.9 [-1.7,-0.1] | q_then_p -10.8 [-11.2,-10.5] | q_then_p_refit  -6.4 [-6.6,-6.2] | q_then_p_pmask +15.5 [+15.0,+16.0] | q_then_p_pmask_refit +17.9 [+17.1,+18.6] | p_then_q_stale  -0.9 [-1.3,-0.4] | Q->P mask, pruning alone: 2.96x SparseGPT's error
+    50%+4: joint  -8.8 [-10.6,-6.4] | p_then_q  -3.0 [-3.9,-1.5] | q_then_p +12.1 [+11.9,+12.2] | q_then_p_refit +13.0 [+12.7,+13.2] | q_then_p_pmask +13.8 [+12.5,+14.5] | q_then_p_pmask_refit +14.4 [+13.2,+15.1] | p_then_q_stale  -2.4 [-2.9,-1.4] | Q->P mask, pruning alone: 1.35x SparseGPT's error
+    25%+3: joint  -1.4 [-2.0,-0.5] | p_then_q  +2.7 [+2.0,+4.0] | q_then_p  -2.6 [-2.7,-2.6] | q_then_p_refit  +0.8 [+0.3,+1.4] | q_then_p_pmask +13.5 [+13.0,+14.1] | q_then_p_pmask_refit +15.6 [+14.2,+16.2] | p_then_q_stale  +3.1 [+2.6,+3.9] | Q->P mask, pruning alone: 11.49x SparseGPT's error
+    50%+3: joint -12.0 [-13.8,-9.1] | p_then_q  -1.5 [-2.7,-0.0] | q_then_p -16.9 [-18.3,-15.4] | q_then_p_refit -14.5 [-15.4,-13.1] | q_then_p_pmask +17.6 [+16.5,+18.1] | q_then_p_pmask_refit +18.8 [+17.3,+19.6] | p_then_q_stale  -1.4 [-2.6,-0.2] | Q->P mask, pruning alone: 1.97x SparseGPT's error
+
+  strong (+ mean offset, outliers x15) (mean |off-diagonal correlation| of H = 0.63)
+    25%+4: joint  +0.7 [-2.2,+5.5] | p_then_q  +7.6 [+5.8,+8.9] | q_then_p  -4.3 [-5.0,-3.9] | q_then_p_refit  -0.0 [-0.9,+1.1] | q_then_p_pmask +19.2 [+17.9,+20.3] | q_then_p_pmask_refit +21.3 [+19.2,+22.8] | p_then_q_stale  +7.9 [+6.0,+9.4] | Q->P mask, pruning alone: 7.42x SparseGPT's error
+    50%+4: joint  +6.0 [+0.7,+13.5] | p_then_q +18.3 [+14.1,+22.8] | q_then_p +14.0 [+11.9,+16.8] | q_then_p_refit +15.9 [+12.0,+18.4] | q_then_p_pmask +37.4 [+34.5,+40.6] | q_then_p_pmask_refit +39.5 [+36.4,+43.3] | p_then_q_stale +20.5 [+15.2,+27.3] | Q->P mask, pruning alone: 1.70x SparseGPT's error
+    25%+3: joint  +2.0 [-0.6,+5.7] | p_then_q  +7.9 [+6.3,+9.1] | q_then_p  -1.0 [-1.2,-0.9] | q_then_p_refit  +2.0 [+0.9,+3.0] | q_then_p_pmask +17.1 [+14.8,+19.1] | q_then_p_pmask_refit +18.5 [+16.2,+21.4] | p_then_q_stale  +7.8 [+6.3,+9.7] | Q->P mask, pruning alone: 32.70x SparseGPT's error
+    50%+3: joint  +5.6 [-2.0,+21.0] | p_then_q +28.9 [+22.7,+37.2] | q_then_p  -4.8 [-7.5,-1.4] | q_then_p_refit  -0.5 [-2.9,+2.6] | q_then_p_pmask +48.1 [+43.6,+51.0] | q_then_p_pmask_refit +47.6 [+43.6,+52.9] | p_then_q_stale +28.4 [+22.6,+35.7] | Q->P mask, pruning alone: 4.78x SparseGPT's error

@@ -1,0 +1,9 @@
+# CPU-only analysis of the v2 study (python scripts/make_tables.py, python -m pytest tests/test_analysis.py).
+# The versions are the ones that produced the committed outputs (Python 3.13.18). The GPU runs use
+# requirements-v2.txt instead. torch is not needed for the analysis; tests/test_pipeline.py needs it.
+numpy==2.5.4
+scipy==1.18.1
+matplotlib==3.11.2
+pyarrow==26.0.1
+huggingface_hub==2.4.0
+pytest==9.2.0

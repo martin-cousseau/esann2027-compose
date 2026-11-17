@@ -1,0 +1,177 @@
+
+========== A. reproduction of the paper's numbers ==========
+  Table 1 (all 93 printed perplexities): max |recomputed - printed| = 0.000
+  mask-first sub-additive (mean over layers): 36/36 | joint 6.0-23.6% | P->Q 2.8-18.3%  [paper: 36/36, 6-24%, 3-18%]
+  Q->P super-additive at 4 bits: 9/9, +1.3 to +7.4%  [paper: 9/9, +1 to +7%]
+  Q->P worst order: 16/18; max worst/best ratio 2.01  [paper: 16/18, up to 2x]
+  50%+3 worst/best: 135M 1.70x, 360M 2.01x  [paper: 1.7x, 2.0x]
+  best order: joint on 360M 6/6 + Qwen 5/6; P->Q on 135M 5/6  [paper: 11 of 12, 5 of 6]
+  SmolLM2-135M: 4-bit best-to-worst spread 9.9-23.7%
+  SmolLM2-360M: 4-bit best-to-worst spread 8.9-14.4%
+  Qwen2.5-0.5B: 4-bit best-to-worst spread 2.3-5.3%
+  [paper: 10-24% (135M), 9-14% (360M), 2-5% (Qwen)]
+  joint has the most negative interaction (smallest layer error) in every 4-bit cell: True
+
+========== B. precision: replaced 16-bit runs, 32-bit controls, mixed-precision cells ==========
+  SmolLM2-360M joint 25%+3: perplexity NaN (forward overflow); 32-bit 20.11
+  SmolLM2-360M P->Q  33%+4: perplexity NaN (forward overflow); 32-bit 14.20
+  SmolLM2-360M Q->P  33%+3: perplexity NaN (forward overflow); 32-bit 30.50
+  SmolLM2-360M joint 33%+3: finite perplexity 46.05 = 2.26x the 32-bit value, layer error NaN (Hessian overflow); 32-bit 20.34
+  SmolLM2-360M joint 50%+3: finite perplexity 63.04 = 2.20x the 32-bit value, layer error NaN (Hessian overflow); 32-bit 28.71
+  SmolLM2-360M P->Q  50%+3: finite perplexity 65.26 = 2.17x the 32-bit value, layer error NaN (Hessian overflow); 32-bit 30.07
+  dense 360M: 16-bit 11.4635 vs 32-bit 11.4636 (two separate sessions)
+  control 25%+4 joint: 16-bit 13.167 32-bit 13.218 (+0.39%)
+  control 25%+4 P->Q : 16-bit 13.316 32-bit 13.289 (-0.20%)
+  control 25%+4 Q->P : 16-bit 14.339 32-bit 14.331 (-0.06%)
+  360M 25%+4 joint-vs-P->Q gap: 1.1% in 16-bit, 0.5% in 32-bit
+  360M 33%+4: joint fp16, P->Q fp32, Q->P fp16  (P only and Q only are 16-bit)
+  360M 25%+3: joint fp32, P->Q fp16, Q->P fp16  (P only and Q only are 16-bit)
+  360M 33%+3: joint fp32, P->Q fp16, Q->P fp32  (P only and Q only are 16-bit)
+  360M 50%+3: joint fp32, P->Q fp32, Q->P fp16  (P only and Q only are 16-bit)
+
+========== C. unit checks over every logged layer; weights actually compressed ==========
+  20244 layer records: max |mask fraction - target| 2.0e-05; pruned weights not zero: 0; groups with more than 2^b levels: 0
+  SmolLM2-135M: 30 blocks, 210 linear layers, 106.2M weights compressed
+  SmolLM2-360M: 32 blocks, 224 linear layers, 314.6M weights compressed
+  Qwen2.5-0.5B: 24 blocks, 168 linear layers, 357.8M weights compressed
+
+========== D. layer-level interaction per layer, by type, by depth ==========
+  joint 4-bit: sub-additive layers 1791/1806 = 99.2% | down_proj 99% gate_proj 100% k_proj 98% o_proj 98% q_proj 100% up_proj 100% v_proj 100%
+  joint 3-bit: sub-additive layers 1716/1806 = 95.0% | down_proj 97% gate_proj 100% k_proj 88% o_proj 94% q_proj 89% up_proj 100% v_proj 98%
+  P->Q  4-bit: sub-additive layers 1528/1806 = 84.6% | down_proj 91% gate_proj 99% k_proj 69% o_proj 93% q_proj 69% up_proj 99% v_proj 74%
+  P->Q  3-bit: sub-additive layers 1447/1806 = 80.1% | down_proj 88% gate_proj 97% k_proj 59% o_proj 83% q_proj 58% up_proj 98% v_proj 79%
+  Q->P  4-bit: sub-additive layers 440/1806 = 24.4% | down_proj 22% gate_proj 2% k_proj 40% o_proj 19% q_proj 53% up_proj 1% v_proj 34%
+  Q->P  3-bit: sub-additive layers 1624/1806 = 89.9% | down_proj 90% gate_proj 78% k_proj 99% o_proj 92% q_proj 99% up_proj 76% v_proj 95%
+  depth profile, I_E/(E_P+E_Q) in % from sums over the layers of each group:
+  (block 0: identical calibration inputs in every run; later blocks: inputs differ between runs)
+  SmolLM2-135M  25%+4   block 0 / blocks 1+:  joint   -8.1 /  -12.7 | P->Q   -1.3 /   -6.4 | Q->P  +13.3 /   +6.6
+  SmolLM2-135M  33%+4   block 0 / blocks 1+:  joint   -7.1 /  -12.5 | P->Q   -1.2 /   -6.4 | Q->P  +12.1 /   +7.1
+  SmolLM2-135M  50%+4   block 0 / blocks 1+:  joint   -4.5 /   -9.7 | P->Q   -1.0 /   -6.2 | Q->P   +7.1 /   +1.8
+  SmolLM2-135M  25%+3   block 0 / blocks 1+:  joint   -7.4 /   -9.8 | P->Q   +0.4 /   -5.3 | Q->P   -9.2 /  -10.8
+  SmolLM2-135M  33%+3   block 0 / blocks 1+:  joint  -13.0 /  -17.8 | P->Q   -3.2 /  -10.4 | Q->P   -5.9 /  -17.4
+  SmolLM2-135M  50%+3   block 0 / blocks 1+:  joint  -13.9 /  -23.8 | P->Q   -4.6 /  -18.7 | Q->P  +10.3 /   -8.1
+  SmolLM2-360M  25%+4   block 0 / blocks 1+:  joint   -6.0 /  -11.1 | P->Q   +6.6 /   -6.1 | Q->P   +5.4 /   +6.9
+  SmolLM2-360M  33%+4   block 0 / blocks 1+:  joint   -6.0 /   -9.9 | P->Q   +8.3 /   -5.5 | Q->P   +6.8 /   +7.4
+  SmolLM2-360M  50%+4   block 0 / blocks 1+:  joint   -4.7 /   -8.0 | P->Q   +9.8 /   -5.4 | Q->P   +5.5 /   +1.3
+  SmolLM2-360M  25%+3   block 0 / blocks 1+:  joint   -5.1 /   -6.2 | P->Q   +3.5 /   -2.9 | Q->P   -5.7 /  -10.1
+  SmolLM2-360M  33%+3   block 0 / blocks 1+:  joint   -9.8 /  -14.6 | P->Q   +4.3 /   -8.9 | Q->P   -5.5 /  -13.3
+  SmolLM2-360M  50%+3   block 0 / blocks 1+:  joint  -12.1 /  -20.2 | P->Q   +8.6 /  -15.1 | Q->P   +4.5 /   -2.2
+  Qwen2.5-0.5B  25%+4   block 0 / blocks 1+:  joint  -10.3 /  -10.3 | P->Q   -6.0 /   -5.7 | Q->P  +10.3 /   +2.3
+  Qwen2.5-0.5B  33%+4   block 0 / blocks 1+:  joint   -8.8 /  -11.0 | P->Q   -5.4 /   -6.4 | Q->P  +11.2 /   +7.0
+  Qwen2.5-0.5B  50%+4   block 0 / blocks 1+:  joint   -5.5 /   -9.2 | P->Q   -3.6 /   -7.0 | Q->P   +7.1 /   +3.3
+  Qwen2.5-0.5B  25%+3   block 0 / blocks 1+:  joint   -7.3 /   -5.9 | P->Q   -3.3 /   -2.8 | Q->P   -9.1 /   -6.9
+  Qwen2.5-0.5B  33%+3   block 0 / blocks 1+:  joint  -13.7 /  -12.1 | P->Q   -8.0 /   -6.9 | Q->P  -10.4 /  -13.1
+  Qwen2.5-0.5B  50%+3   block 0 / blocks 1+:  joint  -15.3 /  -20.7 | P->Q   -9.7 /  -14.5 | Q->P   +7.1 /   -5.8
+  cells where block 0 is less sub-additive (or more super-additive) than blocks 1+: joint 15/18, P->Q 15/18, Q->P 15/18
+  cells where block 0 alone is super-additive: joint 0/18, P->Q 7/18, Q->P 12/18
+
+========== E. model-level additivity in perplexity under two nulls ==========
+  SmolLM2-135M  25%+4   vs additive ppl   22.84 / multiplicative ppl   23.28:  joint   +0.9% /   -1.0% | P->Q   -4.3% /   -6.1% | Q->P   +5.2% /   +3.2%
+  SmolLM2-135M  33%+4   vs additive ppl   24.75 / multiplicative ppl   25.97:  joint   +5.4% /   +0.4% | P->Q   -2.6% /   -7.2% | Q->P  +12.1% /   +6.8%
+  SmolLM2-135M  50%+4   vs additive ppl   39.25 / multiplicative ppl   46.46:  joint  +15.8% /   -2.2% | P->Q   +2.3% /  -13.6% | Q->P  +26.6% /   +6.9%
+  SmolLM2-135M  25%+3   vs additive ppl   59.23 / multiplicative ppl   62.18:  joint   +2.8% /   -2.1% | P->Q   -4.0% /   -8.5% | Q->P   -1.8% /   -6.5%
+  SmolLM2-135M  33%+3   vs additive ppl   61.14 / multiplicative ppl   69.39:  joint   +3.3% /   -8.9% | P->Q   -3.6% /  -15.0% | Q->P  +11.2% /   -2.0%
+  SmolLM2-135M  50%+3   vs additive ppl   75.65 / multiplicative ppl  124.13:  joint  +16.6% /  -28.9% | P->Q  +29.5% /  -21.1% | Q->P  +98.4% /  +20.9%
+  SmolLM2-360M  25%+4   vs additive ppl   13.90 / multiplicative ppl   14.00:  joint   -5.3% /   -5.9% | P->Q   -4.2% /   -4.9% | Q->P   +3.1% /   +2.4%
+  SmolLM2-360M  33%+4   vs additive ppl   14.69 / multiplicative ppl   14.91:  joint   -3.9% /   -5.3% | P->Q   -3.3% /   -4.7% | Q->P   +5.7% /   +4.2%
+  SmolLM2-360M  50%+4   vs additive ppl   20.46 / multiplicative ppl   21.61:  joint   +1.7% /   -3.6% | P->Q   +2.7% /   -2.7% | Q->P  +16.4% /  +10.2%
+  SmolLM2-360M  25%+3   vs additive ppl   26.54 / multiplicative ppl   27.31:  joint  -24.2% /  -26.4% | P->Q  -21.7% /  -23.9% | Q->P   -2.3% /   -5.1%
+  SmolLM2-360M  33%+3   vs additive ppl   27.32 / multiplicative ppl   29.08:  joint  -25.5% /  -30.0% | P->Q  -23.6% /  -28.2% | Q->P  +11.6% /   +4.9%
+  SmolLM2-360M  50%+3   vs additive ppl   33.10 / multiplicative ppl   42.15:  joint  -13.3% /  -31.9% | P->Q   -9.2% /  -28.7% | Q->P  +74.6% /  +37.1%
+  Qwen2.5-0.5B  25%+4   vs additive ppl   14.81 / multiplicative ppl   14.86:  joint   -0.8% /   -1.2% | P->Q   -0.6% /   -1.0% | Q->P   +1.4% /   +1.1%
+  Qwen2.5-0.5B  33%+4   vs additive ppl   15.70 / multiplicative ppl   15.83:  joint   -0.5% /   -1.3% | P->Q   -0.1% /   -0.9% | Q->P   +1.8% /   +1.0%
+  Qwen2.5-0.5B  50%+4   vs additive ppl   21.39 / multiplicative ppl   22.03:  joint   +1.0% /   -1.9% | P->Q   +4.9% /   +1.9% | Q->P   +6.3% /   +3.3%
+  Qwen2.5-0.5B  25%+3   vs additive ppl   22.51 / multiplicative ppl   22.90:  joint   -2.4% /   -4.1% | P->Q   -1.8% /   -3.4% | Q->P   -2.5% /   -4.1%
+  Qwen2.5-0.5B  33%+3   vs additive ppl   23.40 / multiplicative ppl   24.39:  joint   -6.0% /   -9.8% | P->Q   -4.6% /   -8.4% | Q->P   -1.9% /   -5.9%
+  Qwen2.5-0.5B  50%+3   vs additive ppl   29.09 / multiplicative ppl   33.95:  joint   -2.3% /  -16.3% | P->Q   +2.1% /  -12.5% | Q->P  +22.4% /   +4.9%
+  worse than the null: mask-first 13/36 (additive), 2/36 (multiplicative); Q->P 14/18, 13/18
+
+========== F. weaker-first rule (Kim et al., ICLR 2026) against Table 1 ==========
+  SmolLM2-135M  25%+4   dPPL prune   1.06, quant   6.36 -> predicts P first; P->Q  21.86, Q->P  24.03
+  SmolLM2-135M  33%+4   dPPL prune   2.97, quant   6.36 -> predicts P first; P->Q  24.11, Q->P  27.73
+  SmolLM2-135M  50%+4   dPPL prune  17.48, quant   6.36 -> predicts Q first; P->Q  40.15, Q->P  49.68   <- rule fails
+  SmolLM2-135M  25%+3   dPPL prune   1.06, quant  42.76 -> predicts P first; P->Q  56.88, Q->P  58.17
+  SmolLM2-135M  33%+3   dPPL prune   2.97, quant  42.76 -> predicts P first; P->Q  58.97, Q->P  68.00
+  SmolLM2-135M  50%+3   dPPL prune  17.48, quant  42.76 -> predicts P first; P->Q  97.97, Q->P 150.10
+  SmolLM2-360M  25%+4   dPPL prune   0.61, quant   1.83 -> predicts P first; P->Q  13.32, Q->P  14.34
+  SmolLM2-360M  33%+4   dPPL prune   1.40, quant   1.83 -> predicts P first; P->Q  14.20, Q->P  15.53
+  SmolLM2-360M  50%+4   dPPL prune   7.17, quant   1.83 -> predicts Q first; P->Q  21.02, Q->P  23.82   <- rule fails
+  SmolLM2-360M  25%+3   dPPL prune   0.61, quant  14.46 -> predicts P first; P->Q  20.77, Q->P  25.92
+  SmolLM2-360M  33%+3   dPPL prune   1.40, quant  14.46 -> predicts P first; P->Q  20.88, Q->P  30.50
+  SmolLM2-360M  50%+3   dPPL prune   7.17, quant  14.46 -> predicts P first; P->Q  30.07, Q->P  57.80
+  Qwen2.5-0.5B  25%+4   dPPL prune   0.56, quant   1.17 -> predicts P first; P->Q  14.71, Q->P  15.02
+  Qwen2.5-0.5B  33%+4   dPPL prune   1.45, quant   1.17 -> predicts Q first; P->Q  15.69, Q->P  15.99   <- rule fails
+  Qwen2.5-0.5B  50%+4   dPPL prune   7.14, quant   1.17 -> predicts Q first; P->Q  22.44, Q->P  22.74   <- rule fails
+  Qwen2.5-0.5B  25%+3   dPPL prune   0.56, quant   8.88 -> predicts P first; P->Q  22.11, Q->P  21.95   <- rule fails
+  Qwen2.5-0.5B  33%+3   dPPL prune   1.45, quant   8.88 -> predicts P first; P->Q  22.33, Q->P  22.96
+  Qwen2.5-0.5B  50%+3   dPPL prune   7.14, quant   8.88 -> predicts P first; P->Q  29.69, Q->P  35.61
+  rule holds in 13/18 cells
+
+========== G. calibration-seed noise (SmolLM2-135M, seeds 0-2) and the gaps it has to explain ==========
+  25%+4 joint      23.044  23.387  23.615  mean  23.35 sd 0.29 (1.2%)
+  25%+4 p_then_q   21.857  21.497  21.901  mean  21.75 sd 0.22 (1.0%)
+  25%+4 q_then_p   24.032  23.635  24.017  mean  23.89 sd 0.22 (0.9%)
+  25%+4 prune      16.479  16.495  16.483  mean  16.49 sd 0.01 (0.1%)
+  25%+4 quant      21.774  21.810  21.804  mean  21.80 sd 0.02 (0.1%)
+     paired joint-P->Q: +1.19 +1.89 +1.71  mean +1.60  t = +7.56 (df 2, two-sided p = 0.017)
+     paired joint-Q->P: -0.99 -0.25 -0.40  mean -0.55  t = -2.42 (df 2, two-sided p = 0.136)
+     paired P->Q-Q->P: -2.17 -2.14 -2.12  mean -2.14  t = -125.44 (df 2, two-sided p = 0.000)
+     layer interaction joint by seed: -12.6% -13.4% -13.5%
+     layer interaction P->Q  by seed: -6.3% -7.0% -6.0%
+     layer interaction Q->P  by seed: +6.8% +6.1% +7.0%
+  50%+4 joint      45.445  41.732  40.549  mean  42.58 sd 2.56 (6.0%)
+  50%+4 p_then_q   40.152  40.434  43.412  mean  41.33 sd 1.81 (4.4%)
+  50%+4 q_then_p   49.684  45.680  47.477  mean  47.61 sd 2.01 (4.2%)
+  50%+4 prune      32.894  32.802  32.688  mean  32.79 sd 0.10 (0.3%)
+  50%+4 quant      21.774  21.810  21.804  mean  21.80 sd 0.02 (0.1%)
+     paired joint-P->Q: +5.29 +1.30 -2.86  mean +1.24  t = +0.53 (df 2, two-sided p = 0.651)
+     paired joint-Q->P: -4.24 -3.95 -6.93  mean -5.04  t = -5.31 (df 2, two-sided p = 0.034)
+     paired P->Q-Q->P: -9.53 -5.25 -4.06  mean -6.28  t = -3.78 (df 2, two-sided p = 0.063)
+     layer interaction joint by seed: -9.5% -9.8% -8.8%
+     layer interaction P->Q  by seed: -6.1% -6.8% -6.5%
+     layer interaction Q->P  by seed: +2.0% +3.2% +2.7%
+  joint vs P->Q on the models without seeds (perplexity gap, P->Q over joint):
+  SmolLM2-360M  25%+4 +1.1%  33%+4 +0.6%  50%+4 +1.0%  25%+3 +3.3%  33%+3 +2.6%  50%+3 +4.7%
+  Qwen2.5-0.5B  25%+4 +0.2%  33%+4 +0.4%  50%+4 +3.8%  25%+3 +0.7%  33%+3 +1.5%  50%+3 +4.5%
+
+========== H. task scores: noise, chance floor, I_Sr interval ==========
+  SmolLM2-135M: dense arc_easy 0.604 (SE 0.022) piqa 0.694 (SE 0.021) hellaswag 0.440 (SE 0.022) | chance floor of Sr 0.575
+     I_Sr 25%+4: +0.012 (unpaired SE ~0.037; chance-normalized +0.031)
+     I_Sr 33%+3: +0.053 (unpaired SE ~0.035; chance-normalized +0.110)
+  SmolLM2-360M: dense arc_easy 0.700 (SE 0.020) piqa 0.724 (SE 0.020) hellaswag 0.548 (SE 0.022) | chance floor of Sr 0.507
+     I_Sr 25%+4: +0.009 (unpaired SE ~0.032; chance-normalized +0.016)
+     I_Sr 33%+3: +0.089 (unpaired SE ~0.031; chance-normalized +0.169)
+  Qwen2.5-0.5B: dense arc_easy 0.636 (SE 0.022) piqa 0.724 (SE 0.020) hellaswag 0.502 (SE 0.022) | chance floor of Sr 0.537
+     I_Sr 25%+4: +0.009 (unpaired SE ~0.034; chance-normalized +0.019)
+     I_Sr 33%+3: +0.012 (unpaired SE ~0.034; chance-normalized +0.023)
+  example: 25% pruning moves SmolLM2-135M HellaSwag from 0.440 to 0.464
+
+========== I. storage with the mask counted ==========
+  bits per weight, excluding the per-group scale/zero overhead (about 0.15 bit for every 3/4-bit format):
+    0%+8    TCr 0.500 -> 8.00 | bitmap 8.00 | entropy bound 8.00
+    0%+4    TCr 0.750 -> 4.00 | bitmap 4.00 | entropy bound 4.00
+    0%+3    TCr 0.812 -> 3.00 | bitmap 3.00 | entropy bound 3.00
+    25%+4   TCr 0.812 -> 3.00 | bitmap 4.00 | entropy bound 3.81
+    33%+4   TCr 0.833 -> 2.67 | bitmap 3.67 | entropy bound 3.58
+    50%+4   TCr 0.875 -> 2.00 | bitmap 3.00 | entropy bound 3.00
+    25%+3   TCr 0.859 -> 2.25 | bitmap 3.25 | entropy bound 3.06
+    33%+3   TCr 0.875 -> 2.00 | bitmap 3.00 | entropy bound 2.92
+    50%+3   TCr 0.906 -> 1.50 | bitmap 2.50 | entropy bound 2.50
+  equal-storage comparisons (bitmap accounting, WikiText-2 perplexity, best order):
+  SmolLM2-135M  4.00 b/w: 4-bit 21.77 vs 25%+4 21.86 (P->Q) | 3.00 b/w: 3-bit 58.17 vs 50%+4 40.15 (P->Q) vs 33%+3 58.97 (P->Q) | 3.25 b/w: 25%+3 56.88 (P->Q)
+  SmolLM2-360M  4.00 b/w: 4-bit 13.29 vs 25%+4 13.17 (joint) | 3.00 b/w: 3-bit 25.92 vs 50%+4 20.82 (joint) vs 33%+3 20.34 (joint) | 3.25 b/w: 25%+3 20.11 (joint)
+  Qwen2.5-0.5B  4.00 b/w: 4-bit 14.24 vs 25%+4 14.68 (joint) | 3.00 b/w: 3-bit 21.95 vs 50%+4 21.61 (joint) vs 33%+3 22.00 (joint) | 3.25 b/w: 25%+3 21.95 (Q->P)
+  wrote /home/user/esann2027-compose/results/v2/storage_points_v1.csv
+
+========== J. exact zeros and the Q->P = 3-bit identity ==========
+  SmolLM2-135M  zeros after quantization alone: 4-bit 0.152, 3-bit 0.312 | 25%+3: joint 0.330, P->Q 0.342, Q->P 0.312
+     Q->P 25%+3 identical to 3-bit alone (every layer error and the perplexity): True; layers with fewer 3-bit zeros than 25/33/50%: 0/192/210 of 210
+  SmolLM2-360M  zeros after quantization alone: 4-bit 0.152, 3-bit 0.313 | 25%+3: joint 0.328, P->Q 0.342, Q->P 0.313
+     Q->P 25%+3 identical to 3-bit alone (every layer error and the perplexity): True; layers with fewer 3-bit zeros than 25/33/50%: 0/200/222 of 224
+  Qwen2.5-0.5B  zeros after quantization alone: 4-bit 0.165, 3-bit 0.333 | 25%+3: joint 0.355, P->Q 0.369, Q->P 0.333
+     Q->P 25%+3 identical to 3-bit alone (every layer error and the perplexity): True; layers with fewer 3-bit zeros than 25/33/50%: 0/109/167 of 168
+
+========== K. what each result line records ==========
+  keys: ['bits', 'diags', 'eval_limit', 'main', 'mean_rel_err', 'model', 'n_calib', 'order', 'ppl', 'ppl_windows', 'repro_diff', 'repro_scale', 'seed', 'seqlen', 'sparsity', 't_compress', 't_eval', 'tasks', 'tcr']
+  missing: GPU name or UUID, driver/CUDA, torch/transformers/lm-eval versions, compute precision, per-item task results, safeguard warnings
+  seed-1/2 pruning-only runs are stored with bits = [4] (should be 16)

@@ -1,0 +1,49 @@
+[1] arms vs paper's compress_weight (block 0, 3 cells, 3 orders): max |diff| = 0.000e+00
+[2] block-0 errors vs the paper's compress_model diags: max relative diff = 0.00e+00
+[3] ablation on 21 layers x 3 cells x 7 arms in 11.5s
+
+=== tiny-random-llama: 21 linear layers from blocks [0, 1, 2]
+  25% + 4-bit  (E_P sum 0.1008, E_Q sum 0.1201)
+    joint                  I_E/(E_P+E_Q)   -10.5%   sub-additive layers 18/21
+    p_then_q               I_E/(E_P+E_Q)   -10.0%   sub-additive layers 18/21
+    q_then_p               I_E/(E_P+E_Q)   +28.1%   sub-additive layers 0/21
+    q_then_p_refit         I_E/(E_P+E_Q)   +29.5%   sub-additive layers 0/21
+    q_then_p_pmask         I_E/(E_P+E_Q)    +7.8%   sub-additive layers 3/21
+    q_then_p_pmask_refit   I_E/(E_P+E_Q)    +9.3%   sub-additive layers 0/21
+    p_then_q_stale         I_E/(E_P+E_Q)   -10.0%   sub-additive layers 18/21
+    Q->P penalty over P->Q (sum of layer errors): +0.08418 (+42.4% of P->Q)
+      share of the penalty removed by q_then_p_refit           -3.7%
+      share of the penalty removed by q_then_p_pmask          +53.4%
+      share of the penalty removed by q_then_p_pmask_refit    +49.4%
+      stale grid imposed on P->Q changes its error by +0.1%
+    Q->P mask used for pruning alone: median error ratio 1.58x SparseGPT's mask; median overlap (Jaccard) 0.67
+  50% + 4-bit  (E_P sum 0.9448, E_Q sum 0.1201)
+    joint                  I_E/(E_P+E_Q)    -3.9%   sub-additive layers 18/21
+    p_then_q               I_E/(E_P+E_Q)    -4.1%   sub-additive layers 18/21
+    q_then_p               I_E/(E_P+E_Q)    +7.3%   sub-additive layers 0/21
+    q_then_p_refit         I_E/(E_P+E_Q)    +7.3%   sub-additive layers 0/21
+    q_then_p_pmask         I_E/(E_P+E_Q)    +2.0%   sub-additive layers 4/21
+    q_then_p_pmask_refit   I_E/(E_P+E_Q)    +2.2%   sub-additive layers 0/21
+    p_then_q_stale         I_E/(E_P+E_Q)    -3.7%   sub-additive layers 18/21
+    Q->P penalty over P->Q (sum of layer errors): +0.1214 (+11.9% of P->Q)
+      share of the penalty removed by q_then_p_refit           -0.4%
+      share of the penalty removed by q_then_p_pmask          +46.0%
+      share of the penalty removed by q_then_p_pmask_refit    +44.5%
+      stale grid imposed on P->Q changes its error by +0.4%
+    Q->P mask used for pruning alone: median error ratio 1.08x SparseGPT's mask; median overlap (Jaccard) 0.87
+  33% + 3-bit  (E_P sum 0.2494, E_Q sum 0.5524)
+    joint                  I_E/(E_P+E_Q)   -18.9%   sub-additive layers 18/21
+    p_then_q               I_E/(E_P+E_Q)   -18.0%   sub-additive layers 18/21
+    q_then_p               I_E/(E_P+E_Q)    -0.3%   sub-additive layers 8/21
+    q_then_p_refit         I_E/(E_P+E_Q)    +1.9%   sub-additive layers 5/21
+    q_then_p_pmask         I_E/(E_P+E_Q)    -4.2%   sub-additive layers 9/21
+    q_then_p_pmask_refit   I_E/(E_P+E_Q)    -2.2%   sub-additive layers 8/21
+    p_then_q_stale         I_E/(E_P+E_Q)   -18.0%   sub-additive layers 18/21
+    Q->P penalty over P->Q (sum of layer errors): +0.1422 (+21.6% of P->Q)
+      share of the penalty removed by q_then_p_refit          -12.1%
+      share of the penalty removed by q_then_p_pmask          +22.1%
+      share of the penalty removed by q_then_p_pmask_refit    +10.8%
+      stale grid imposed on P->Q changes its error by -0.0%
+    Q->P mask used for pruning alone: median error ratio 1.59x SparseGPT's mask; median overlap (Jaccard) 0.72
+
+SMOKE TEST PASSED (random weights: the numbers above test the code path, not the paper's claims)

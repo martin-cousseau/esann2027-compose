@@ -1,0 +1,13 @@
+# Pinned for every Colab runtime of the v2 study (installed by colab/bootstrap.py).
+# Locked image: release-colab-external-images_20261106-060046_RC00 (Python 3.13.16, torch 2.14.1+cu130).
+# torch is NOT listed: it stays at the image's version, and bootstrap.py adds a constraint so no
+# dependency can move it. The other pins equal the image's versions (no-op there; a guard against drift).
+lm-eval==0.4.13
+transformers==5.22.1
+datasets==4.8.5
+accelerate==1.15.0
+huggingface_hub==1.33.0
+numpy==2.4.6
+nvidia-ml-py==13.615.71
+pytest==8.4.2
+websocket-client==1.9.2

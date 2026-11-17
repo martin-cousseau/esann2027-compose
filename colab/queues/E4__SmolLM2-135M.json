@@ -1,0 +1,32 @@
+[
+{
+"order": "quant",
+"sparsity": 0.0,
+"bits": 2,
+"seed": 0
+},
+{
+"order": "prune",
+"sparsity": 0.6,
+"bits": 16,
+"seed": 0
+},
+{
+"order": "joint",
+"sparsity": 0.6,
+"bits": 4,
+"seed": 0
+},
+{
+"order": "p_then_q",
+"sparsity": 0.6,
+"bits": 4,
+"seed": 0
+},
+{
+"order": "q_then_p",
+"sparsity": 0.6,
+"bits": 4,
+"seed": 0
+}
+]

@@ -1,0 +1,125 @@
+# Compute budget (100 Colab compute units, binding)
+
+The Colab connector does not report the CU balance (`get_subscription` returns only the tier), and Google
+publishes no per-GPU rate. Spending below is an **estimate**: planning rate x runtime lifetime (creation to
+deletion, idle time included). **The author should check the real balance on the Colab website.**
+
+## Rates (looked up 2026-11-09)
+
+| Accelerator | Reported CU/hour | Date and kind of report | Source |
+|---|---|---|---|
+| T4 | 1.19 | measured March 2026 | https://www.thundercompute.com/blog/colab-alternatives-for-cheap-deep-learning-in-2025 ; https://gpuperhour.com/blog/google-colab-alternatives |
+| L4 | 1.71 | measured March 2026 | same two pages; Fastero (Oct 27, 2026) implies about 1.67 |
+| L4 | 1.7-1.8, then 1.94 | user reports, Oct 31 and Nov 2, 2026 (anecdotal) | https://github.com/googlecolab/colabtools/issues/6194 |
+| A100 40 GB | 5.40; "close to 7" | March 2026; user report Oct 31, 2026 | Thunder/GPUperhour; colabtools#6194 |
+| A100 80 GB | 7.52; 8.88-8.96 | March 2026; user reports Oct 29 - Nov 3, 2026 | Thunder/GPUperhour; colabtools#6194 |
+| G4 (RTX PRO 6000) | 8.71; "more than 10" | March 2026; user report Nov 3, 2026 | Thunder; Fastero (https://fastero.com/blog/google-colab-pro); colabtools#6194 |
+
+Since 29 October 2026 users report rates roughly a fifth to a third higher than before for the same GPU.
+
+**Planning rate for L4: 1.94 CU/h (latest report) x 1.15 safety margin = 2.23 CU/h.**
+G4 costs about 4.5-5x L4, above the "at most about twice L4" rule, so it was not piloted. A100 costs
+3-5x L4 with lower fp32 throughput than L4 when TF32 is off, so it was not piloted either.
+
+## Allocation and spending (updated after every runtime closes)
+
+Since 2026-11-10 the author lets the 100 CU be allocated freely (DECISIONS.md #10); the table is indicative.
+
+| Item | Allocated CU | Spent (est.) | Notes |
+|---|---|---|---|
+| Phase 0 and timing pilot | 4 | 0 | |
+| E1 full grid, core models | 38 | 0 | |
+| E2 same-Hessian ablation | 10 | 0 | |
+| E3 mechanism runs | 12 | 0 | |
+| E4 extra frontier points | 6 | 0 | |
+| E5 seeds (4-bit cells) | 12 | 0 | |
+| E6 SmolLM2-1.7B | 10 | 0 | |
+| Reserve | 8 | 0 | |
+| **Total** | **100** | **0** | |
+
+## Runtime log (lifetime -> estimated CU at 2.23 CU/h)
+
+| Runtime | Created (UTC) | Deleted (UTC) | Hours | Est. CU |
+|---|---|---|---|---|
+| esann-pilot | 2026-11-09 23:38 | reclaimed by Colab, likely ~00:10 (idle-client reclaim seen later) | ~0.6 (upper bound 6.2) | ~1.3 (upper bound 13.8) |
+| esann-e1-a | 2026-11-10 05:53 | reclaimed ~06:33 | 0.67 | 1.5 |
+| esann-e1-b | 2026-11-10 05:53 | reclaimed ~06:33 | 0.67 | 1.5 |
+| esann-e1-a2 | 2026-11-10 06:41 | lost ~07:15 | 0.58 | 1.3 |
+| esann-e1-b2 | 2026-11-10 06:41 | lost ~07:35 | 0.9 | 2.0 |
+| esann-e1-a3 | 2026-11-10 07:15 | lost ~08:05 | 0.85 | 1.9 |
+| esann-a4 | 2026-11-10 11:06 | lost ~15:50 (session suspended) | 4.75 | 10.6 |
+| esann-b3 | 2026-11-10 11:06 | lost ~15:50 (session suspended) | 4.75 | 10.6 |
+| esann-a5 | 2026-11-10 18:04 | 2026-11-11 07:21 (deleted, queues done) | 13.28 | 29.6 |
+| esann-b4 | 2026-11-10 18:04 | 2026-11-11 08:48 (deleted, queues done) | 14.73 | 32.9 |
+
+## Final account (2026-11-11, all runtimes deleted; `list_runtimes` returns none)
+
+Total runtime lifetime (creation to deletion, idle time included): **41.8 L4-hours** (the pilot at its likely
+0.6 h; 47.4 h if the pilot lived to its upper bound of 6.2 h).
+
+| Rate (CU per L4-hour) | Basis | Estimated CU |
+|---|---|---|
+| 2.23 | planning rate (1.94 x 1.15 safety margin) | **93.2** (upper bound 105.7) |
+| 1.94 | latest user report (colabtools#6194) | 81.1 (upper bound 91.9) |
+| 1.71 | measured in March 2026 | 71.5 (upper bound 81.0) |
+
+The Colab connector does not report the balance: **the author should read the real number on the Colab website.**
+The GPU work stopped with all queues done; three cuts kept the plan near the stop line of about 95 CU at the
+planning rate (DECISIONS.md #29 E5/E6 scope, #34-#35 E3 Qwen2.5-0.5B reduced to its two 50% cells).
+
+## Second budget (12-13 Nov; DECISIONS.md #38, #40, #42, #44)
+
+You reported 120 CU available on 12 Nov and **114.97 CU on 13 Nov at about 18:30 UTC**. Between the two, two L4
+runtimes lived 19:47 to about 21:35 UTC on 12 Nov (about 3.6 L4-hours): 5.03 CU for 3.6 hours, about 1.4 CU per
+L4-hour, below the planning rate. Plan for this round: about 53 L4-hours without the optional Qwen2.5-3B tail.
+
+| Runtime | Created (UTC) | Deleted (UTC) | Hours | Note |
+|---|---|---|---|---|
+| esann-a6 | 2026-11-12 19:47 | reclaimed ~21:35 | ~1.8 | stopped when the session paused (#42) |
+| esann-b5 | 2026-11-12 19:47 | reclaimed ~21:35 | ~1.8 | stopped when the session paused (#42) |
+| esann-a7 | 2026-11-13 18:41 | reclaimed ~23:30 | ~4.8 | stopped when the worker restarted (#46) |
+| esann-b6 | 2026-11-13 18:41 | reclaimed ~23:30 | ~4.8 | stopped when the worker restarted (#46) |
+| esann-a8 | 2026-11-14 06:18 | reclaimed ~05:10, 15 Nov | ~22.9 | E6B, Qwen2.5-1.5B grid, Qwen2.5-3B 9 states (#46, #50) |
+| esann-b7 | 2026-11-14 06:19 | reclaimed ~05:10, 15 Nov | ~22.9 | OLMo-2-1B grid, SmolLM2 seeds, Qwen2.5-3B 1 state (#46, #50) |
+| esann-a9 | 2026-11-15 05:30 | reclaimed by 07:18 | ~1.5 | no work: its start command waited for approval (#51) |
+| esann-b8 | 2026-11-15 05:30 | reclaimed by 07:18 | ~1.5 | no work: its start command waited for approval (#51) |
+
+**Account of this round (estimate; Colab does not report the balance through the connector).** Since your reading of
+114.97 CU (13 Nov, about 18:30 UTC): about 58 L4-hours (9.6 + 45.8 + 3.0). At the rate measured between your two
+readings (about 1.4 CU per L4-hour) that is about 82 CU, leaving about 33 CU; at Colab's list rate for an L4 (about
+1.7 CU per hour) about 100 CU, leaving about 15. Please check the real balance in Colab; the Qwen2.5-3B completion
+(14 states, about 6.5 L4-hours) needs about 9 to 11 CU. No runtime is assigned now (15 Nov, 07:20 UTC).
+
+**15 Nov, 14:45 UTC: the balance is exhausted (inferred).** The Qwen2.5-3B completion (#53) ran on two L4 runtimes from
+12:13; both ended together at about 14:45 while the keepalive was running, and from 14:50 Colab lists the L4 (and every
+other paid GPU) as not eligible for this account; only CPU, T4 and a small TPU remain, the free tier. Since your reading
+of 114.97 CU about 63.5 L4-hours were used (58.4 + 5.1), so the real rate was about 1.8 CU per L4-hour, not the 1.4
+measured between your first two readings. Qwen2.5-3B has 19 of its 24 states; the last 5 (25%+3 joint and P->Q, 50%+3
+in the three orders) need about 2.3 L4-hours, about 4 CU.
+
+## Round of 15-16 November (after you added 100 CU, then V4 with "80 CU available")
+
+Estimate at about 1.8 CU per L4-hour (the rate measured on 15 Nov); Colab does not report the balance to this session.
+
+| Runtimes | Work | L4-hours (approx.) |
+|---|---|---|
+| esann-a10, esann-b9 (15 Nov, 15:15 to about 21:50) | last 5 Qwen2.5-3B states; 27 of 40 Qwen2.5-1.5B seed states | 13.2 |
+| esann-a11, esann-b10 (15 Nov, 22:23 to about 00:25) | E2 on SmolLM2-1.7B and Qwen2.5-1.5B; part of OLMo-2-1B and Qwen2.5-3B | 4.0 |
+| esann-a12, esann-b11 (16 Nov, 09:17 to about 11:20) | E9 on the three small models; E2 on OLMo-2-1B | 4.1 |
+| esann-a13 (16 Nov, 14:13 to 15:45) | E9 on SmolLM2-1.7B, Qwen2.5-1.5B, OLMo-2-1B | 1.5 |
+| esann-b12 (16 Nov, 14:13 to about 16:30) | E2 on Qwen2.5-3B; E9 on Qwen2.5-3B | 2.3 |
+
+About 25 L4-hours, about 45 CU of the 100 added on 15 Nov; since your reading of 80 CU available (16 Nov, morning),
+about 8 L4-hours, about 14 CU, leaving about 66 CU. The runtimes reclaimed during the pauses of this session
+(esann-a10/b9, a11/b10, a12/b11) were billed until Colab reclaimed them, about an hour after their tokens expired;
+that is included above. Please check the real balance in Colab.
+
+## 16 November evening: the Qwen2.5-1.5B seed check (DECISIONS.md #64)
+
+| Runtimes | Work | L4-hours (from `logs/runtimes.jsonl`) |
+|---|---|---|
+| esann-a14 (17:00 to 20:10) | 3 seed-2 states at 3 bits, 4 at 4 bits; idle 19:48 to 20:10 (the watcher missed the end of its second queue) | 3.2 |
+| esann-b13 (17:00 to 19:47) | 6 seed-2 states at 4 bits; idle 19:23 to 19:47 | 2.8 |
+
+About 5.9 L4-hours, about 11 CU at 1.8 CU per L4-hour, leaving about 55 CU of the 80 (estimate). No runtime is
+assigned now (16 Nov, 20:10 UTC). Please check the real balance in Colab.
