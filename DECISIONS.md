@@ -502,8 +502,8 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     dataset), with the cover note, the strengths/weaknesses reflection (acceptance estimate 60-75%), the audit and the
     reviews.
 67. **2026-11-17 10:30 UTC, remaining work after V4.1 (you asked to finish the open items).** (1) The public W&B
-    project mirrored 168 of the 415 state lines; `scripts/wandb_sync.py` (idempotent) now syncs the rest, so that the
-    READMEs' "one W&B run per state" holds. (2) FINDINGS.md is generated from the macros by
+    project mirrored 168 of the 415 state lines; `scripts/wandb_sync.py` (idempotent) synced the rest: the project
+    has 409 runs, one per (family, state) of the result files (counted through the W&B API). (2) FINDINGS.md is generated from the macros by
     `scripts/templates/FINDINGS.template.md` (R1-R7 for seven models; the 11 November version is kept as history in
     `reports/FINDINGS_history_2026-11-11.md`); QUESTIONS.md lists only the open author decisions (the batch check of
     #19 was done in v3; the Explainer and LaTeX questions are closed). (3) Harma et al.'s mechanism was checked at the

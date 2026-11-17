@@ -4,7 +4,8 @@
 - **Now (17 Nov, 10:30 UTC):** the remaining items are closed (DECISIONS.md #67): V4.1 links the no-compensation result
   to Harma et al.'s mechanism (verified at the source; still 6 pages, 40 claims hold); a ready variant without the 7-8B
   rows of Table 2 and camera-ready notes are in the private package; FINDINGS.md is regenerated from the macros and
-  QUESTIONS.md holds only the open author decisions; the W&B project is being completed to one run per state.
+  QUESTIONS.md holds only the open author decisions; the W&B project now has one run per state (409 runs, checked
+  against the result files). Nothing remains to run; the open items are the authors' decisions in QUESTIONS.md.
 - **17 Nov, 06:00 UTC:** V4.1, the final pass before submission, is delivered with the full submission package
   (private zip `context/esann2027_submission_v4.1_2026-11-17.zip`, backed up to the private dataset): 6 pages, margins
   centred to the ESANN rule, 40 worded claims checked; an independent audit found no numerical error; two simulated
