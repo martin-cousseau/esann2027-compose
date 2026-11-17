@@ -1,19 +1,29 @@
-# Questions only the author can decide
+# Questions only the authors can decide (updated 17 November 2026)
 
-1. **Authors and affiliations (blocks submission).** The paper is authored "A. Yaacoub" (taken from README.md) with
-   "[Affiliation to be confirmed]". ESANN reviewing is single-blind; confirm the author list and the affiliations.
-2. **Where the paper's code link points.** The paper links the v2 branch (`.../tree/claude/busy-hopper-ghtynk`),
-   because the default branch of the fork still holds v1. If PR #1 is merged before submission, the link can be
-   shortened to the repository root.
-3. **The reviewer's code in a public repository.** `review_code/` (unpacked from the review bundle, as the brief
-   asked, and imported by the v2 pipeline) is public on the fork. Confirm that the reviewer agrees and add a licence,
-   or say so and it can be replaced by an attribution and a pointer.
-4. **Google Drive folder.** Its folder and document ids were written to `logs/env_check.txt` and this file during
-   phase 0; they are now removed from the current files but remain in the public git history (history is not
-   rewritten). Check that the folder is not shared by link.
-5. **Explainer document.** It was not in the Drive folder. If it exists, its "corrections" section may change what is
-   tested.
-6. **LaTeX source.** The draft's LaTeX was not available; the paper is re-created from the PDF in the ESANN template
-   (`paper/v1/`). If you have the original source, the rewrite can be ported onto it.
-7. **Open check.** The lm-eval re-run of the two dense references at the later batch configuration (DECISIONS.md
-   #19) was not done before the GPUs were released; it needs about 1 L4-hour (FINDINGS.md, caveats).
+Open (none blocks the submission of V4.1; ESANN 2027 extended deadline: 25 November 2026):
+
+1. **Submission form details.** V4.1 keeps the author list and affiliations of the first author's draft of 12
+   November. The ESANN form asks for the full details of every author (institution, address, phone, e-mail); they
+   are not in the package.
+2. **The 7-8B rows of Table 2** (from the first author's draft). Both simulated reviews of V4.1 ask to drop them: they
+   come from another pipeline and other tasks, and all weights were re-quantized after pruning. Kept in V4.1 with the
+   caption's caveat. A ready alternative without them is in the package (`paper/alternative_without_7_8B/`).
+3. **Where the paper's link points.** V4.1 links the public results dataset on the Hub, which links the code (this
+   branch) and the models. Alternatively merge the branch into the first author's repository and link that.
+4. **Benchmark citations.** ARC-Easy, PIQA, HellaSwag and the six extra tasks are named, not cited (about four lines).
+5. **The reviewer's code in a public repository.** `review_code/` (unpacked from the review bundle and imported by the
+   v2 pipeline) is public on the fork. Confirm that the reviewer agrees and add a licence, or replace it by an
+   attribution and a pointer.
+6. **Google Drive folder.** Its folder and document ids were written to `logs/env_check.txt` during phase 0; they
+   were removed from the current files but remain in the public git history. Check that the folder is not shared by
+   link.
+7. **Compute units.** The Colab balance is not visible from this session; the estimate is in `logs/budget.md` (about
+   55 of the 80 left). Please read the real balance in Colab.
+
+Resolved:
+
+- *Authors and affiliations of the paper*: set by the first author's draft of 12 November (item 1 above remains).
+- *Explainer document*: absent from the Drive folder; you chose to proceed without it (DECISIONS.md #1).
+- *LaTeX source*: the first author's LaTeX of 12 November is the base of every revision since v2 of the package.
+- *lm-eval batch check* (DECISIONS.md #19): done in v3 (BATCH family; identical perplexity and no changed item;
+  FINDINGS.md, R6).
