@@ -483,3 +483,21 @@ Every judgment call, with the reason and the date (UTC). Newest last.
     one "and" becomes a comma. The review note (REVIEW_V4.md, sections 1, 2 and 5) gives the per-setting spreads;
     `diff_v4_update.pdf` shows the changes against the V4 sent at 16:45. The supplement's `seeds.csv` is rebuilt
     and re-uploaded; the package is backed up to the private dataset (`author_package_v4_update_2026-11-16/`).
+66. **2026-11-17 06:00 UTC, V4.1: the final pass before submission (you asked for a fully consistent V4.1 and the
+    submission package).** An independent audit recomputed the paper's numbers from the raw result lines with its own
+    code and found no numerical error (2 major, 13 minor points of wording or scope); two simulated ESANN reviews (a
+    compression specialist, a methods generalist) both said weak accept. V4.1 changes no result, angle or section: it
+    fixes every point that was imprecise or overclaimed (the decomposition is exact only without compensation and
+    absorption is not specific to mask-first orders; the layer error misses part of the perplexity penalty, which the
+    mechanism paragraph now says, with counts; the split does not depend on the order of the exchanges, checked with the
+    existing arms; Q->P at 50%+3-bit changes sign with one shared Hessian; I_Sr keeps its reading with chance-corrected
+    retention; Q3 gives medians and seed-robust counts; the six extra tasks are named; the re-runs are counted over every
+    family, 20 states, all bit-identical on other GPUs) and centres the text block to ESANN's margins. Kept as the first
+    author's choice: the 7-8B rows of Table 2 (a decision for the authors in the cover note). New macros and analysis:
+    sr3_paper_cn, Rerun*, ETwoSplitGapNeg*, ETwoSplitRev*, ETwoSubQP*BThree, QThreeSpreadMedian*, QTwoQPBest*,
+    SeedRunsQPBest*, ISrPaperExclZero*/Cn*. Supplement: layer_ablation.csv, no_compensation.csv, weaker_first.csv, a
+    calibration-seed table, Sr3's metric in task_scores.csv, I_Sr3_cn; uploaded to the results dataset. The Hub model
+    card (316 states of 6 models, sizes and hashes checked) and the dataset README were brought up to date. 40 claims
+    hold; 6 pages. Package: `context/esann2027_submission_v4.1_2026-11-17.zip` (private; backed up to the private
+    dataset), with the cover note, the strengths/weaknesses reflection (acceptance estimate 60-75%), the audit and the
+    reviews.

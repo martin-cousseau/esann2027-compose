@@ -1,7 +1,13 @@
 # NEWS (newest first)
 
 ## Read this first
-- **Now (16 Nov, 20:30 UTC):** the V4 update with the Qwen2.5-1.5B seed check is delivered (private package
+- **Now (17 Nov, 06:00 UTC):** V4.1, the final pass before submission, is delivered with the full submission package
+  (private zip `context/esann2027_submission_v4.1_2026-11-17.zip`, backed up to the private dataset): 6 pages, margins
+  centred to the ESANN rule, 40 worded claims checked; an independent audit found no numerical error; two simulated
+  reviews (weak accept) and the fixes are in the package (`REFLECTION.md`, acceptance estimate 60-75%;
+  `COVER_NOTE.md`, changes and checklist). Supplement extended and re-uploaded; Hub READMEs brought up to date
+  (DECISIONS.md #66). ESANN 2027 extended deadline: 25 November 2026.
+- **16 Nov, 20:30 UTC:** the V4 update with the Qwen2.5-1.5B seed check is delivered (private package
   `context/esann2027_author_package_v4_update_2026-11-16.zip`, backed up to the private dataset). All 13 missing
   seed states ran. Whichever calibration seeds are compared, the 1.5B peak within Qwen2.5 holds in 3 of the 5 settings
   where seed 0 shows it, and the fall from SmolLM2-135M to -1.7B in 5 of 6; Q3 says so (DECISIONS.md #65). 6 pages,
@@ -21,6 +27,9 @@
 - **Links:** PR https://github.com/martin-cousseau/esann2027-compose/pull/1 (draft) ; models
   https://huggingface.co/martincousseau/esann2027-compose-v2 ; results and supplement
   https://huggingface.co/datasets/martincousseau/esann2027-v2-results ; runs https://wandb.ai/martin-css/esann2027-compose-v2
+
+## 2026-11-17 06:00 UTC - V4.1 and the submission package
+- Audit and two simulated reviews of the V4.1 draft; fixes, macros and supplement tables (#66). No GPU used.
 
 ## 2026-11-16 20:30 UTC - Qwen2.5-1.5B seed check, V4 update
 - Runtimes esann-a14 and esann-b13 ran the 13 seed-2 states (#64), then were deleted. The tables, the supplement's
