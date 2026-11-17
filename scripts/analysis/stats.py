@@ -30,6 +30,8 @@ SR_SETS = {
                "label": "Sr-extended over the 9 zero-shot tasks, v2 metric"},
     "sr9_cn": {"tasks": tuple(P.ZERO_SHOT_TASKS), "kind": "v2", "chance": True,
                "label": "chance-normalized Sr over the 9 zero-shot tasks, v2 metric"},
+    "sr3_paper_cn": {"tasks": tuple(P.PAPER_TASKS), "kind": "paper", "chance": True,
+                     "label": "chance-normalized Sr over ARC-E, PIQA, HellaSwag, paper metric (acc, acc, acc_norm): sum of (score - chance) / sum of (dense score - chance)"},
 }
 
 

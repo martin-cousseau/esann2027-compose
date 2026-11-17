@@ -33,7 +33,8 @@ ORDER_TXT = {"dense": "dense", "quant": "quant. only", "prune": "pruning only", 
 ORDER_TEX = {"dense": "dense", "quant": "quant.\\ only", "prune": "pruning only", "joint": "joint", "p_then_q": "P$\\to$Q", "q_then_p": "Q$\\to$P"}
 TASKS = ["arc_easy", "piqa", "hellaswag", "arc_challenge", "winogrande", "openbookqa", "boolq", "sciq", "lambada_openai"]
 COLS = ["model", "family", "order", "sparsity_pct", "bits", "tcr", "wikitext2_ppl", "c4_ppl", "wikitext2_kl", "c4_kl",
-        "layer_error", "I_E_pct", "sr3", "sr3_lo", "sr3_hi", "sr9", "sr9_lo", "sr9_hi", "I_Sr3", "I_Sr3_lo", "I_Sr3_hi"]
+        "layer_error", "I_E_pct", "sr3", "sr3_lo", "sr3_hi", "sr9", "sr9_lo", "sr9_hi", "I_Sr3", "I_Sr3_lo", "I_Sr3_hi",
+        "I_Sr3_cn", "I_Sr3_cn_lo", "I_Sr3_cn_hi"]
 
 
 def rows(name):
@@ -69,9 +70,11 @@ def build(out):
     q1 = {(r["model"], r["order"], round(float(r["sparsity"]), 4), int(r["bits"])): fl(r["ratio_mean_pct"])
           for r in rows("q1_layer_interaction.csv") if int(float(r["seed"])) == 0}
     isr = {(r["model"], r["state_id"]): r for r in rows("e1_isr.csv") if r["set"] == "sr3_paper"}
+    isr_cn = {(r["model"], r["state_id"]): r for r in rows("e1_isr.csv") if r["set"] == "sr3_paper_cn"}
     tasks = defaultdict(dict)
-    for r in rows("e1_tasks.csv"):
-        tasks[(r["model"], r["state_id"])][r["task"]] = (r["v2_metric"], fl(r["v2"]))
+    for r in rows("e1_tasks.csv"):   # (metric of Sr3 / Table 2 where the task is one of its three, else of Sr9, score), (metric of Sr9, score)
+        first = (r["paper_metric"], fl(r["paper"])) if r.get("paper_metric") else (r["v2_metric"], fl(r["v2"]))
+        tasks[(r["model"], r["state_id"])][r["task"]] = (first, (r["v2_metric"], fl(r["v2"])))
     models = list(dict.fromkeys(r["model"] for r in states))
     seen, res = set(), []
     for r in sorted(states, key=lambda r: (models.index(r["model"]), ORDERS.index(r["order"]) if r["order"] in ("dense", "quant", "prune") else 3,
@@ -87,17 +90,21 @@ def build(out):
                     "I_E_pct": q1.get((r["model"], r["order"], s, b)) if r["order"] in ("joint", "p_then_q", "q_then_p") else None,
                     "sr3": fl(r["sr3_paper"]), "sr3_lo": fl(r["sr3_paper_lo"]), "sr3_hi": fl(r["sr3_paper_hi"]),
                     "sr9": fl(r["sr9_v2"]), "sr9_lo": fl(r["sr9_v2_lo"]), "sr9_hi": fl(r["sr9_v2_hi"]),
-                    "I_Sr3": fl(i.get("value")), "I_Sr3_lo": fl(i.get("lo")), "I_Sr3_hi": fl(i.get("hi")), "_sid": r["state_id"]})
+                    "I_Sr3": fl(i.get("value")), "I_Sr3_lo": fl(i.get("lo")), "I_Sr3_hi": fl(i.get("hi")),
+                    "I_Sr3_cn": fl(isr_cn.get((r["model"], r["state_id"]), {}).get("value")),
+                    "I_Sr3_cn_lo": fl(isr_cn.get((r["model"], r["state_id"]), {}).get("lo")),
+                    "I_Sr3_cn_hi": fl(isr_cn.get((r["model"], r["state_id"]), {}).get("hi")), "_sid": r["state_id"]})
     dense_sid = {x["model"]: x["_sid"] for x in res if x["order"] == "dense"}
     trows = []
     for x in res:
         t, d = tasks.get((x["model"], x["_sid"]), {}), tasks.get((x["model"], dense_sid.get(x["model"])), {})
         for name in TASKS:
-            if name in t and t[name][1] is not None:
-                ds = d.get(name, (None, None))[1]
+            if name in t and t[name][0][1] is not None:
+                (pm, ps), (vm, vs) = t[name]
+                (_, pd), (_, vd) = d.get(name, ((None, None), (None, None)))
                 trows.append({"model": x["model"], "order": x["order"], "sparsity_pct": x["sparsity_pct"], "bits": x["bits"], "task": name,
-                              "metric": t[name][0], "score": t[name][1], "dense_score": ds,
-                              "retention": t[name][1] / ds if ds else None})
+                              "metric": pm, "score": ps, "dense_score": pd, "retention": ps / pd if pd else None,
+                              "sr9_metric": vm, "sr9_score": vs, "sr9_dense_score": vd})
     seeds = []
     for r in rows("seed_ppl_orders.csv"):
         v = [fl(r.get(f"wt_ppl_seed{k}")) for k in (0, 1, 2)]
@@ -229,6 +236,35 @@ def tex_layer_tables(abl, noc, wf):
     return L
 
 
+def tex_seed_table(seeds):
+    """WikiText-2 perplexity over calibration seeds 0-2 per model and setting: mean +- sample sd of each order, and
+    the worst order of each seed (J joint, P P->Q, Q Q->P)."""
+    by = defaultdict(dict)
+    for r in seeds:
+        if r["order"] in ("joint", "p_then_q", "q_then_p"):
+            by[(r["model"], r["sparsity_pct"], r["bits"])][r["order"]] = r
+    letter = {"joint": "J", "p_then_q": "P", "q_then_p": "Q"}
+    L = [r"\clearpage\section*{Calibration seeds (WikiText-2 perplexity, seeds 0, 1 and 2)}",
+         r"Mean $\pm$ sample standard deviation over the three calibration seeds of each order, and the worst order of each seed "
+         r"(J: joint, P: P$\to$Q, Q: Q$\to$P; seed 0 first). Per-seed values: \texttt{seeds.csv}.",
+         r"\begin{longtable}{lrrrrrl}",
+         r"\toprule model & $s$ (\%) & $b$ & joint & P$\to$Q & Q$\to$P & worst (seeds 0, 1, 2) \\ \midrule \endhead"]
+    for (m, s, b), d in sorted(by.items(), key=lambda kv: (kv[0][0], -kv[0][2], kv[0][1])):
+        if len(d) < 3:
+            continue
+        cell = []
+        for o in ("joint", "p_then_q", "q_then_p"):
+            r = d[o]
+            cell.append("" if r["mean"] is None else f"{r['mean']:.2f} $\\pm$ {r['sd']:.2f}" if r["sd"] is not None else f"{r['mean']:.2f}")
+        worst = []
+        for k in ("ppl_seed0", "ppl_seed1", "ppl_seed2"):
+            v = {o: d[o][k] for o in d if d[o][k] is not None}
+            worst.append(letter[max(v, key=v.get)] if len(v) == 3 else "-")
+        L.append(" & ".join([m, f(s, 1), str(b)] + cell + [" ".join(worst)]) + r" \\")
+    L.append(r"\bottomrule\end{longtable}")
+    return L
+
+
 def tex(res, trows, models, out, layer_tables=()):
     best = {}
     for x in res:
@@ -267,7 +303,7 @@ def tex(res, trows, models, out, layer_tables=()):
             for t in T:
                 by[(t["order"], t["sparsity_pct"], t["bits"])][t["task"]] = t
             L += [r"\begin{longtable}{lrr" + "r" * len(TASKS) + "}",
-                  r"\caption*{" + m + r": score / retention per task (from e1\_tasks.csv; retention = score / dense score)}\\",
+                  r"\caption*{" + m + r": score / retention per task (retention = score / dense score; from e1\_tasks.csv). Metric: that of Sr3 and Table 2 for the paper's three tasks (acc for ARC-Easy and PIQA, acc\_norm for HellaSwag), that of Sr9 for the other six (acc\_norm for ARC-Challenge and OpenBookQA, acc for WinoGrande, BoolQ, SciQ, LAMBADA); task\_scores.csv also gives the Sr9 metric of every task}\\",
                   r"\toprule order & $s$ & $b$ & " + " & ".join(t.replace("_", r"\_") for t in TASKS) + r" \\ \midrule \endhead"]
             for (o, s, b), d in by.items():
                 cells = [f"{d[t]['score']:.3f}/{d[t]['retention']:.3f}" if t in d and d[t]["retention"] is not None else "" for t in TASKS]
@@ -289,7 +325,7 @@ def main():
     a = ap.parse_args()
     res, trows, seeds, models = build(a.out)
     abl, noc, wf = build_layer_tables(a.out, models)
-    path = tex(res, trows, models, a.out, tex_layer_tables(abl, noc, wf))
+    path = tex(res, trows, models, a.out, tex_layer_tables(abl, noc, wf) + tex_seed_table(seeds))
     if not a.no_pdf:
         for _ in range(2):
             subprocess.run(["pdflatex", "-interaction=nonstopmode", "supplement.tex"], cwd=a.out, stdout=subprocess.DEVNULL, check=False)

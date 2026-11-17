@@ -635,6 +635,33 @@ def _n(v):
     return str(v) if v is not None else "--"
 
 
+def _reruns(store):
+    """States run more than once (fp32 state lines of every family but the per-layer E2/E9 and fp16 REPRO16): how
+    many, how many reproduce bit-exactly (same WikiText-2 nll_sum in every line), how many ran on more than one GPU."""
+    import glob
+    import json
+    by = {}
+    for path in sorted(glob.glob(os.path.join(store.paths.results_v2, "*", "*.jsonl"))):
+        fam = os.path.basename(os.path.dirname(path))
+        if fam in ("E2", "E9", "REPRO16") or "failures__" in os.path.basename(path):
+            continue
+        with open(path) as f:
+            for line in f:
+                try:
+                    r = json.loads(line)
+                except ValueError:
+                    continue
+                if not isinstance(r, dict) or r.get("status") != "ok" or "state_id" not in r or r.get("dtype", "float32") != "float32":
+                    continue
+                md = r.get("metadata") or {}
+                unit = next((x for x in str(md.get("nvidia_smi") or "").split(", ") if x.startswith("GPU-")), None)
+                by.setdefault(r["state_id"], []).append(((r.get("wikitext2") or {}).get("nll_sum"), unit))
+    multi = {k: v for k, v in by.items() if len(v) > 1}
+    return {"states": len(multi), "dense": sum("__dense__" in k for k in multi),
+            "identical": sum(len({x[0] for x in v}) == 1 and v[0][0] is not None for v in multi.values()),
+            "other_unit": sum(len({x[1] for x in v if x[1]}) > 1 for v in multi.values())}
+
+
 def macros_requests(M, store, e1, q, fr, e2res, repro, det=()):
     """Macros requested by paper/main.tex (reports/latex_macro_requests.md, R1-R31), under the exact names."""
     sec = "Requested by paper/main.tex (reports/latex_macro_requests.md, R1-R31)"
@@ -742,28 +769,15 @@ def macros_requests(M, store, e1, q, fr, e2res, repro, det=()):
             f"R27: {r['model']} {store.label(r['state_id'].replace('__float16', '__float32'))}: 100(ppl REPRO16 / ppl {r['reference']} - 1)",
             src + f" (`{r['state_id']}`)")
     r32 = [x for x in repro if x["family"] == "REPRO32"]
-    same, other = [], []
-
-    def unit(r):   # the GPU's UUID in the nvidia-smi line of a result line's metadata
-        s = str((r.get("metadata") or {}).get("nvidia_smi") or "")
-        return next((f for f in s.split(", ") if f.startswith("GPU-")), None)
-    for d in det:
-        if d.get("status") in ("identical", "differs"):
-            same.append(d["status"] == "identical")
-            a, b = store.det.get(d["state_id"]), store.states.get(d["state_id"])
-            other.append(bool(a and b and unit(a) and unit(b) and unit(a) != unit(b)))
-    for x in r32:   # the same state_id run again in the REPRO32 family: equal WikiText-2 perplexity to the last bit?
-        e = store.states.get(x["state_id"])
-        if e is not None and finite(x.get("ppl")):
-            same.append((e.get("wikitext2") or {}).get("ppl") == x["ppl"])
-            other.append(bool(x.get("gpu_unit") and unit(e) and x["gpu_unit"] != unit(e)))
-    add("RerunStates", _n(len(same)) if same else "--",
-        "states run a second time (DET, REPRO32) whose state_id is also in the study families", "results/v2/DET, results/v2/REPRO32")
-    add("RerunOtherUnit", _n(sum(other)) if same else "--",
-        "of the re-run states, those whose second run used another GPU unit (another UUID) than the study line", "results/v2/DET, results/v2/REPRO32 (metadata.nvidia_smi)")
-    add("RerunIdentical", _n(sum(same)) if same else "--",
-        "of those, runs that reproduce the study line exactly (DET: nll_sum and every layer error; REPRO32: WikiText-2 ppl to the last bit)",
-        "results/v2/DET, results/v2/REPRO32 against the line with the same state_id")
+    rr = _reruns(store)
+    add("RerunStates", _n(rr["states"]) if rr["states"] else "--",
+        "fp32 states with more than one result line (any families: E1/E6 and their re-runs E6B, DET, REPRO32, BATCH, IMG)",
+        "results/v2/*/*.jsonl except E2, E9 and REPRO16 (scripts/analysis/latex.py _reruns)")
+    add("RerunDense", _n(rr["dense"]) if rr["states"] else "--", "of those, dense (uncompressed) states", "as RerunStates")
+    add("RerunIdentical", _n(rr["identical"]) if rr["states"] else "--",
+        "of those, states whose WikiText-2 nll_sum is identical in every line (bit-exact reproduction)", "as RerunStates")
+    add("RerunOtherUnit", _n(rr["other_unit"]) if rr["states"] else "--",
+        "of those, states whose lines come from more than one GPU unit (nvidia-smi UUID)", "as RerunStates")
     ok = r32 and all(finite(x["rel_delta_pct"]) for x in r32)
     add("ReproThirtyTwoMaxAbsPct", num(max(abs(x["rel_delta_pct"]) for x in r32), 1) if ok else "--",
         f"R28: largest |100(ppl REPRO32 / ppl results_fix - 1)| over the {len(r32)} planned REPRO32 states (-- until all exist)", src)
@@ -1118,12 +1132,19 @@ def macros_e2_groups(M, store, e2res):
             continue
         add_ = c["E_P_sum"] + c["E_Q_sum"]
         E = {a: add_ * (1 + c[f"ratio_{a}_pct"] / 100) for a in need + ("joint",) if finite(c.get(f"ratio_{a}_pct"))}
+        for a in ("q_then_p_refit", "q_then_p_pmask_refit"):
+            if finite(c.get(f"ratio_{a}_pct")):
+                E[a] = add_ * (1 + c[f"ratio_{a}_pct"] / 100)
         r = {"model": c["model"], "cell": c["cell"], "sparsity": c["sparsity"], "bits": int(c["bits"]), "E": E,
-             "n_layers": c["n_layers"], "blocks": c.get("blocks", "")}
+             "n_layers": c["n_layers"], "blocks": c.get("blocks", ""), "E_add": add_}
         if all(a in E for a in need):
             pq = E["p_then_q"]
             r.update(mask=100 * (E["q_then_p"] - E["q_then_p_pmask"]) / pq, order=100 * (E["q_then_p_pmask"] - E["p_then_q_stale"]) / pq,
                      grid=100 * (E["p_then_q_stale"] - E["p_then_q"]) / pq, gap=100 * (E["q_then_p"] - E["p_then_q"]) / pq)
+            if "q_then_p_refit" in E and "q_then_p_pmask_refit" in E:   # the same gap, exchanged grid first, then mask, then order
+                r.update(rev_grid=100 * (E["q_then_p"] - E["q_then_p_refit"]) / pq,
+                         rev_mask=100 * (E["q_then_p_refit"] - E["q_then_p_pmask_refit"]) / pq,
+                         rev_order=100 * (E["q_then_p_pmask_refit"] - E["p_then_q"]) / pq)
         r["sub"] = {o: c[f"ratio_{o}_pct"] < 0 for o in ("joint", "p_then_q") if finite(c.get(f"ratio_{o}_pct"))}
         rows.append(r)
     for m in sorted({r["model"] for r in rows}, key=lambda x: store.models().index(x) if x in store.models() else 99):
@@ -1162,6 +1183,28 @@ def macros_e2_groups(M, store, e2res):
             M.add(sec, f"ETwoSplitCells{g}{bt}", _n(len(B)) if B else "--", f"{g}, {lab}: cells with the split", src) if bt else None
             v = [abs(r["grid"]) for r in B]
             M.add(sec, f"ETwoSplitGridMaxAbs{g}{bt}Pct", num(max(v), 1) if v else "--", f"{g}, {lab}: largest |grid part| (% of E_PQ)", src)
+        neg = [r for r in S_ if r["gap"] < 0]
+
+        def ppl(r, o):
+            st = store.get(r["model"], o, r["sparsity"], r["bits"], 0)
+            return ((st or {}).get("wikitext2") or {}).get("ppl")
+        disagree = [r for r in neg if finite(ppl(r, "q_then_p")) and finite(ppl(r, "p_then_q")) and ppl(r, "q_then_p") > ppl(r, "p_then_q")]
+        M.add(sec, f"ETwoSplitGapNeg{g}", _n(len(neg)) if S_ else "--",
+              f"{g}: cells where Q->P has the smaller layer error (gap < 0) with one shared Hessian", src)
+        M.add(sec, f"ETwoSplitGapNegQPWorsePpl{g}", _n(len(disagree)) if S_ else "--",
+              f"{g}: of those, cells where Q->P still has the higher WikiText-2 perplexity than P->Q (seed 0, pipeline)", src)
+        rev = [r for r in S_ if "rev_order" in r]
+        M.add(sec, f"ETwoSplitRevOrderLargestGapPos{g}", _n(sum(r["rev_order"] > max(r["rev_mask"], r["rev_grid"]) for r in rev if r["gap"] > 0)) if rev else "--",
+              f"{g}: with the ingredients exchanged in another order (grid re-fitted first, then the mask, then the update order),"
+              " cells with gap > 0 where the update-order part is the largest", src)
+        M.add(sec, f"ETwoSplitRevOrderPos{g}", _n(sum(r["rev_order"] > 0 for r in rev)) if rev else "--",
+              f"{g}: with that order of exchanges, cells where the update-order part is positive", src)
+        M.add(sec, f"ETwoSplitRevCells{g}", _n(len(rev)) if rev else "--", f"{g}: cells with the arms of that order of exchanges", src)
+        for s_, st_ in ((0.25, "STwentyFive"), (1 / 3, "SThirtyThree"), (0.5, "SFifty")):
+            C3 = [r for r in R if r["bits"] == 3 and abs(r["sparsity"] - s_) < 1e-3 and "q_then_p" in r["E"]]
+            M.add(sec, f"ETwoSubQP{st_}BThree{g}", _n(sum(r["E"]["q_then_p"] < r["E_add"] for r in C3)) if C3 else "--",
+                  f"{g}: {st_} 3-bit cells where Q->P is sub-additive in aggregate with one shared Hessian", src)
+            M.add(sec, f"ETwoQP{st_}BThreeCells{g}", _n(len(C3)) if C3 else "--", f"{g}: {st_} 3-bit cells with Q->P (one shared Hessian)", src)
         free = [r for r in S_ if r["bits"] == 3 and r["sparsity"] < 0.4]
         M.add(sec, f"ETwoSplitMaskNegFreeZeros{g}", _n(sum(r["mask"] < 0 for r in free)) if free else "--",
               f"{g}: 25% and 33%+3-bit cells where the mask part is negative (Q->P's mask, which takes the zeros of rounding, is the better one)", src)
@@ -1418,6 +1461,11 @@ def macros_order_all_models(M, store, q, e7res):
                   f"{g}: smallest order spread over the {b}-bit grid cells of its models (%)", src3)
             M.add(sec, f"QThreeSpreadMax{g}{bt}Pct", num(max(r["grid_spread_max_pct"] for r in R), 1) if ok else "--",
                   f"{g}: largest order spread over the {b}-bit grid cells of its models (%)", src3)
+            sp = [float(x["wt_ppl_spread_pct"]) for x in q["q2"] if x.get("seed", 0) == 0 and skey(x["sparsity"]) in GRID_SPARSITIES
+                  and int(x["bits"]) == b and sel(x["model"]) and x["model"] not in store.excluded_models and finite(x.get("wt_ppl_spread_pct"))]
+            import statistics
+            M.add(sec, f"QThreeSpreadMedian{g}{bt}Pct", num(statistics.median(sp), 1) if ok and sp else "--",
+                  f"{g}: median order spread over the {b}-bit grid cells of its models (%)", src3)
             M.add(sec, f"QThreeSpreadModels{g}{bt}", _n(len(R)) if R else "--",
                   f"{g}: models planned with {b}-bit grid cells (the range needs all of them complete)", src3)
     if e7res is None:
@@ -1459,41 +1507,53 @@ def macros_order_all_models(M, store, q, e7res):
 
 def macros_isr_groups(M, store, e1):
     """Table 2 over model groups (DECISIONS.md #47): for P->Q at 25%+4 and 33%+3 (sr3_paper, seed 0), the smallest and
-    largest I_Sr over the models of a group, the widest interval ends, and how many intervals contain 0."""
+    largest I_Sr over the models of a group, the widest interval ends, and how many intervals contain 0. The same
+    with chance-normalized retention (sr3_paper_cn, tag ISrPaperCn...: the floor check of DECISIONS.md #66)."""
+    _macros_isr_groups(M, store, e1, "sr3_paper", "ISrPaper")
+    _macros_isr_groups(M, store, e1, "sr3_paper_cn", "ISrPaperCn")
+
+
+def _macros_isr_groups(M, store, e1, sr_set, pre):
     core = {g[0] for g in PAPER_GRID}
     groups = {"Core": lambda m: m in core, "Larger": lambda m: m not in core, "AllModels": lambda m: True}
-    sec = "I_Sr of Table 2 over model groups (P->Q, Sr set sr3_paper, seed 0)"
-    src = "reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items)"
+    sec = f"I_Sr of Table 2 over model groups (P->Q, Sr set {sr_set}, seed 0)"
+    src = "reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items)"
     for s, b in ((0.25, 4), (1 / 3, 3)):
         ct, vals = cell_tag(s, b), []
         for m in store.models():
             sid = store.sid(m, "p_then_q", s, b, 0)
             bs = e1["by_sid"].get(sid, {}) if sid else {}
-            v, lo, hi = (_sr(bs, "isr", "sr3_paper", i) for i in range(3))
+            v, lo, hi = (_sr(bs, "isr", sr_set, i) for i in range(3))
             if finite(v) and finite(lo) and finite(hi):
                 vals.append((m, v, lo, hi))
         for g, sel in groups.items():
             V = [x for x in vals if sel(x[0])]
             lab = f"{g}, P->Q {cell_label(s, b)}"
-            M.add(sec, f"ISrPaperN{g}{ct}PQ", _n(len(V)), f"{lab}: models with I_Sr and its interval", src)
+            M.add(sec, f"{pre}N{g}{ct}PQ", _n(len(V)), f"{lab}: models with I_Sr and its interval", src)
             mn, mx = (min(V, key=lambda x: x[1]), max(V, key=lambda x: x[1])) if V else (None, None)
-            M.add(sec, f"ISrPaperMin{g}{ct}PQ", signed(mn[1], 3) if V else "--", f"{lab}: smallest I_Sr", src)
-            M.add(sec, f"ISrPaperMinWhere{g}{ct}PQ", tex_escape(mn[0]) if V else "--", f"{lab}: model with the smallest I_Sr", src)
-            M.add(sec, f"ISrPaperMax{g}{ct}PQ", signed(mx[1], 3) if V else "--", f"{lab}: largest I_Sr", src)
-            M.add(sec, f"ISrPaperMaxWhere{g}{ct}PQ", tex_escape(mx[0]) if V else "--", f"{lab}: model with the largest I_Sr", src)
-            M.add(sec, f"ISrPaperLoMin{g}{ct}PQ", signed(min(x[2] for x in V), 3) if V else "--", f"{lab}: lowest interval end", src)
-            M.add(sec, f"ISrPaperHiMax{g}{ct}PQ", signed(max(x[3] for x in V), 3) if V else "--", f"{lab}: highest interval end", src)
-            M.add(sec, f"ISrPaperZeroIn{g}{ct}PQ", _n(sum(x[2] <= 0 <= x[3] for x in V)) if V else "--",
+            M.add(sec, f"{pre}Min{g}{ct}PQ", signed(mn[1], 3) if V else "--", f"{lab}: smallest I_Sr", src)
+            M.add(sec, f"{pre}MinWhere{g}{ct}PQ", tex_escape(mn[0]) if V else "--", f"{lab}: model with the smallest I_Sr", src)
+            M.add(sec, f"{pre}Max{g}{ct}PQ", signed(mx[1], 3) if V else "--", f"{lab}: largest I_Sr", src)
+            M.add(sec, f"{pre}MaxWhere{g}{ct}PQ", tex_escape(mx[0]) if V else "--", f"{lab}: model with the largest I_Sr", src)
+            M.add(sec, f"{pre}LoMin{g}{ct}PQ", signed(min(x[2] for x in V), 3) if V else "--", f"{lab}: lowest interval end", src)
+            M.add(sec, f"{pre}HiMax{g}{ct}PQ", signed(max(x[3] for x in V), 3) if V else "--", f"{lab}: highest interval end", src)
+            M.add(sec, f"{pre}ZeroIn{g}{ct}PQ", _n(sum(x[2] <= 0 <= x[3] for x in V)) if V else "--",
                   f"{lab}: models whose 95% interval contains 0", src)
-            M.add(sec, f"ISrPaperExclZero{g}{ct}PQ", _n(sum(not (x[2] <= 0 <= x[3]) for x in V)) if V else "--",
+            M.add(sec, f"{pre}ExclZero{g}{ct}PQ", _n(sum(not (x[2] <= 0 <= x[3]) for x in V)) if V else "--",
                   f"{lab}: models whose 95% interval excludes 0", src)
-            M.add(sec, f"ISrPaperPmMax{g}{ct}PQ", num(max((x[3] - x[2]) / 2 for x in V), 3) if V else "--",
+            M.add(sec, f"{pre}Pos{g}{ct}PQ", _n(sum(x[1] > 0 for x in V)) if V else "--", f"{lab}: models with a positive I_Sr", src)
+            M.add(sec, f"{pre}ExclZeroPos{g}{ct}PQ", _n(sum(x[2] > 0 for x in V)) if V else "--",
+                  f"{lab}: models whose 95% interval lies above 0", src)
+            M.add(sec, f"{pre}PmMax{g}{ct}PQ", num(max((x[3] - x[2]) / 2 for x in V), 3) if V else "--",
                   f"{lab}: largest half-width of the 95% intervals", src)
-            M.add(sec, f"ISrPaperAsymMax{g}{ct}PQ", num(max(abs((x[3] - x[1]) - (x[1] - x[2])) for x in V), 3) if V else "--",
+            M.add(sec, f"{pre}AsymMax{g}{ct}PQ", num(max(abs((x[3] - x[1]) - (x[1] - x[2])) for x in V), 3) if V else "--",
                   f"{lab}: largest asymmetry |(hi - I_Sr) - (I_Sr - lo)| of the 95% intervals", src)
         for m, v, lo, hi in vals:   # Table 2 printed as "value +- half-width"
-            M.add(sec, f"ISrPaperPm{model_tag(m)}{ct}PQ", num((hi - lo) / 2, 3),
+            M.add(sec, f"{pre}Pm{model_tag(m)}{ct}PQ", num((hi - lo) / 2, 3),
                   f"{m}, P->Q {cell_label(s, b)}: half-width (hi - lo) / 2 of the 95% interval of I_Sr", src)
+            if pre != "ISrPaper":   # the Table 2 values themselves are made in macros_e1 for sr3_paper
+                M.add(sec, f"{pre}{model_tag(m)}{ct}PQ", signed(v, 3), f"{m}, P->Q {cell_label(s, b)}: I_Sr ({sr_set})", src)
+                M.add(sec, f"{pre}Lo{model_tag(m)}{ct}PQ", signed(lo, 3), f"{m}, P->Q {cell_label(s, b)}: lower end of its 95% interval ({sr_set})", src)
 
 
 def build_macros(store, e1, q, det, fr, e2res, boolq, missing, repro=(), e7res=None, e8res=None, isr=None, batch=None):

@@ -2731,9 +2731,10 @@ Columns:
 | `\resMcNemarSigFavourQP` | `5` | cells where P->Q vs Q->P has p < 0.05 and Q->P is right on more items (b_only > a_only) | reports/analysis/e1_mcnemar.csv (task pooled9, seed 0; extra_orders.mcnemar) |
 | `\resHwDeltaSmolSmallSFiftyBFourPQPct` | `\ensuremath{+4.6}` | R27: SmolLM2-135M 50%+4 P->Q: 100(ppl REPRO16 / ppl results_full (16-bit, T4) - 1) | reports/analysis/repro_hardware.csv (`SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float16`) |
 | `\resHwDeltaSmolSmallQuantBFourPct` | `\ensuremath{+1.5}` | R27: SmolLM2-135M 4-bit: 100(ppl REPRO16 / ppl results_full (16-bit, T4) - 1) | reports/analysis/repro_hardware.csv (`SmolLM2-135M__quant__s0.0000__b4__seed0__float16`) |
-| `\resRerunStates` | `4` | states run a second time (DET, REPRO32) whose state_id is also in the study families | results/v2/DET, results/v2/REPRO32 |
-| `\resRerunOtherUnit` | `4` | of the re-run states, those whose second run used another GPU unit (another UUID) than the study line | results/v2/DET, results/v2/REPRO32 (metadata.nvidia_smi) |
-| `\resRerunIdentical` | `4` | of those, runs that reproduce the study line exactly (DET: nll_sum and every layer error; REPRO32: WikiText-2 ppl to the last bit) | results/v2/DET, results/v2/REPRO32 against the line with the same state_id |
+| `\resRerunStates` | `20` | fp32 states with more than one result line (any families: E1/E6 and their re-runs E6B, DET, REPRO32, BATCH, IMG) | results/v2/*/*.jsonl except E2, E9 and REPRO16 (scripts/analysis/latex.py _reruns) |
+| `\resRerunDense` | `4` | of those, dense (uncompressed) states | as RerunStates |
+| `\resRerunIdentical` | `20` | of those, states whose WikiText-2 nll_sum is identical in every line (bit-exact reproduction) | as RerunStates |
+| `\resRerunOtherUnit` | `20` | of those, states whose lines come from more than one GPU unit (nvidia-smi UUID) | as RerunStates |
 | `\resReproThirtyTwoMaxAbsPct` | `0.4` | R28: largest |100(ppl REPRO32 / ppl results_fix - 1)| over the 3 planned REPRO32 states (-- until all exist) | reports/analysis/repro_hardware.csv |
 | `\resSeedBestStable` | `3` | R30: SmolLM2-360M, 4-bit cells whose best order by WikiText-2 ppl is the same for every seed | reports/analysis/seed_order_stability.csv (SmolLM2-360M, 4-bit cells; = the SmolMediumBFour variants) |
 | `\resSeedBestCells` | `3` | R30: SmolLM2-360M, 4-bit cells with every seed and order | reports/analysis/seed_order_stability.csv (SmolLM2-360M, 4-bit cells; = the SmolMediumBFour variants) |
@@ -4479,21 +4480,27 @@ Columns:
 |---|---|---|---|
 | `\resQThreeSpreadMinCoreBFourPct` | `2.2` | Core: smallest order spread over the 4-bit grid cells of its models (%) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
 | `\resQThreeSpreadMaxCoreBFourPct` | `15.4` | Core: largest order spread over the 4-bit grid cells of its models (%) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
+| `\resQThreeSpreadMedianCoreBFourPct` | `10.7` | Core: median order spread over the 4-bit grid cells of its models (%) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
 | `\resQThreeSpreadModelsCoreBFour` | `3` | Core: models planned with 4-bit grid cells (the range needs all of them complete) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
 | `\resQThreeSpreadMinCoreBThreePct` | `1.8` | Core: smallest order spread over the 3-bit grid cells of its models (%) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
 | `\resQThreeSpreadMaxCoreBThreePct` | `77.3` | Core: largest order spread over the 3-bit grid cells of its models (%) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
+| `\resQThreeSpreadMedianCoreBThreePct` | `28.8` | Core: median order spread over the 3-bit grid cells of its models (%) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
 | `\resQThreeSpreadModelsCoreBThree` | `3` | Core: models planned with 3-bit grid cells (the range needs all of them complete) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
 | `\resQThreeSpreadMinLargerBFourPct` | `1.7` | Larger: smallest order spread over the 4-bit grid cells of its models (%) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
 | `\resQThreeSpreadMaxLargerBFourPct` | `13.9` | Larger: largest order spread over the 4-bit grid cells of its models (%) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
+| `\resQThreeSpreadMedianLargerBFourPct` | `2.5` | Larger: median order spread over the 4-bit grid cells of its models (%) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
 | `\resQThreeSpreadModelsLargerBFour` | `4` | Larger: models planned with 4-bit grid cells (the range needs all of them complete) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
 | `\resQThreeSpreadMinLargerBThreePct` | `0.9` | Larger: smallest order spread over the 3-bit grid cells of its models (%) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
 | `\resQThreeSpreadMaxLargerBThreePct` | `36.0` | Larger: largest order spread over the 3-bit grid cells of its models (%) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
+| `\resQThreeSpreadMedianLargerBThreePct` | `8.3` | Larger: median order spread over the 3-bit grid cells of its models (%) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
 | `\resQThreeSpreadModelsLargerBThree` | `4` | Larger: models planned with 3-bit grid cells (the range needs all of them complete) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
 | `\resQThreeSpreadMinAllModelsBFourPct` | `1.7` | AllModels: smallest order spread over the 4-bit grid cells of its models (%) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
 | `\resQThreeSpreadMaxAllModelsBFourPct` | `15.4` | AllModels: largest order spread over the 4-bit grid cells of its models (%) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
+| `\resQThreeSpreadMedianAllModelsBFourPct` | `3.6` | AllModels: median order spread over the 4-bit grid cells of its models (%) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
 | `\resQThreeSpreadModelsAllModelsBFour` | `7` | AllModels: models planned with 4-bit grid cells (the range needs all of them complete) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
 | `\resQThreeSpreadMinAllModelsBThreePct` | `0.9` | AllModels: smallest order spread over the 3-bit grid cells of its models (%) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
 | `\resQThreeSpreadMaxAllModelsBThreePct` | `77.3` | AllModels: largest order spread over the 3-bit grid cells of its models (%) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
+| `\resQThreeSpreadMedianAllModelsBThreePct` | `17.1` | AllModels: median order spread over the 3-bit grid cells of its models (%) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
 | `\resQThreeSpreadModelsAllModelsBThree` | `7` | AllModels: models planned with 3-bit grid cells (the range needs all of them complete) | reports/analysis/q3_order_spread.csv (grid_spread_min_pct / grid_spread_max_pct; WikiText-2 ppl) |
 
 ## Weaker-first rule vs the three orders (cells where the rule, by WikiText-2 ppl, recommends Q->P; seed 0)
@@ -4541,84 +4548,215 @@ Columns:
 
 | Macro | Value | Meaning | Source |
 |---|---|---|---|
-| `\resISrPaperNCoreSTwentyFiveBFourPQ` | `3` | Core, P->Q 25%+4: models with I_Sr and its interval | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperMinCoreSTwentyFiveBFourPQ` | `\ensuremath{+0.009}` | Core, P->Q 25%+4: smallest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperMinWhereCoreSTwentyFiveBFourPQ` | `Qwen2.5-0.5B` | Core, P->Q 25%+4: model with the smallest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperMaxCoreSTwentyFiveBFourPQ` | `\ensuremath{+0.016}` | Core, P->Q 25%+4: largest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperMaxWhereCoreSTwentyFiveBFourPQ` | `SmolLM2-135M` | Core, P->Q 25%+4: model with the largest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperLoMinCoreSTwentyFiveBFourPQ` | `\ensuremath{-0.003}` | Core, P->Q 25%+4: lowest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperHiMaxCoreSTwentyFiveBFourPQ` | `\ensuremath{+0.030}` | Core, P->Q 25%+4: highest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperZeroInCoreSTwentyFiveBFourPQ` | `1` | Core, P->Q 25%+4: models whose 95% interval contains 0 | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperExclZeroCoreSTwentyFiveBFourPQ` | `2` | Core, P->Q 25%+4: models whose 95% interval excludes 0 | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperPmMaxCoreSTwentyFiveBFourPQ` | `0.014` | Core, P->Q 25%+4: largest half-width of the 95% intervals | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperAsymMaxCoreSTwentyFiveBFourPQ` | `0.000` | Core, P->Q 25%+4: largest asymmetry |(hi - I_Sr) - (I_Sr - lo)| of the 95% intervals | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperNLargerSTwentyFiveBFourPQ` | `3` | Larger, P->Q 25%+4: models with I_Sr and its interval | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperMinLargerSTwentyFiveBFourPQ` | `\ensuremath{-0.004}` | Larger, P->Q 25%+4: smallest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperMinWhereLargerSTwentyFiveBFourPQ` | `OLMo-2-0425-1B` | Larger, P->Q 25%+4: model with the smallest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperMaxLargerSTwentyFiveBFourPQ` | `\ensuremath{+0.008}` | Larger, P->Q 25%+4: largest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperMaxWhereLargerSTwentyFiveBFourPQ` | `Qwen2.5-1.5B` | Larger, P->Q 25%+4: model with the largest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperLoMinLargerSTwentyFiveBFourPQ` | `\ensuremath{-0.013}` | Larger, P->Q 25%+4: lowest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperHiMaxLargerSTwentyFiveBFourPQ` | `\ensuremath{+0.016}` | Larger, P->Q 25%+4: highest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperZeroInLargerSTwentyFiveBFourPQ` | `3` | Larger, P->Q 25%+4: models whose 95% interval contains 0 | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperExclZeroLargerSTwentyFiveBFourPQ` | `0` | Larger, P->Q 25%+4: models whose 95% interval excludes 0 | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperPmMaxLargerSTwentyFiveBFourPQ` | `0.009` | Larger, P->Q 25%+4: largest half-width of the 95% intervals | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperAsymMaxLargerSTwentyFiveBFourPQ` | `0.000` | Larger, P->Q 25%+4: largest asymmetry |(hi - I_Sr) - (I_Sr - lo)| of the 95% intervals | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperNAllModelsSTwentyFiveBFourPQ` | `6` | AllModels, P->Q 25%+4: models with I_Sr and its interval | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperMinAllModelsSTwentyFiveBFourPQ` | `\ensuremath{-0.004}` | AllModels, P->Q 25%+4: smallest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperMinWhereAllModelsSTwentyFiveBFourPQ` | `OLMo-2-0425-1B` | AllModels, P->Q 25%+4: model with the smallest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperMaxAllModelsSTwentyFiveBFourPQ` | `\ensuremath{+0.016}` | AllModels, P->Q 25%+4: largest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperMaxWhereAllModelsSTwentyFiveBFourPQ` | `SmolLM2-135M` | AllModels, P->Q 25%+4: model with the largest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperLoMinAllModelsSTwentyFiveBFourPQ` | `\ensuremath{-0.013}` | AllModels, P->Q 25%+4: lowest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperHiMaxAllModelsSTwentyFiveBFourPQ` | `\ensuremath{+0.030}` | AllModels, P->Q 25%+4: highest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperZeroInAllModelsSTwentyFiveBFourPQ` | `4` | AllModels, P->Q 25%+4: models whose 95% interval contains 0 | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperExclZeroAllModelsSTwentyFiveBFourPQ` | `2` | AllModels, P->Q 25%+4: models whose 95% interval excludes 0 | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperPmMaxAllModelsSTwentyFiveBFourPQ` | `0.014` | AllModels, P->Q 25%+4: largest half-width of the 95% intervals | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperAsymMaxAllModelsSTwentyFiveBFourPQ` | `0.000` | AllModels, P->Q 25%+4: largest asymmetry |(hi - I_Sr) - (I_Sr - lo)| of the 95% intervals | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperPmSmolSmallSTwentyFiveBFourPQ` | `0.014` | SmolLM2-135M, P->Q 25%+4: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperPmSmolMediumSTwentyFiveBFourPQ` | `0.010` | SmolLM2-360M, P->Q 25%+4: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperPmQwenSTwentyFiveBFourPQ` | `0.012` | Qwen2.5-0.5B, P->Q 25%+4: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperPmQwenMidSTwentyFiveBFourPQ` | `0.009` | Qwen2.5-1.5B, P->Q 25%+4: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperPmSmolLargeSTwentyFiveBFourPQ` | `0.008` | SmolLM2-1.7B, P->Q 25%+4: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperPmOlmoSTwentyFiveBFourPQ` | `0.009` | OLMo-2-0425-1B, P->Q 25%+4: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperNCoreSThirtyThreeBThreePQ` | `3` | Core, P->Q 33%+3: models with I_Sr and its interval | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperMinCoreSThirtyThreeBThreePQ` | `\ensuremath{+0.012}` | Core, P->Q 33%+3: smallest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperMinWhereCoreSThirtyThreeBThreePQ` | `Qwen2.5-0.5B` | Core, P->Q 33%+3: model with the smallest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperMaxCoreSThirtyThreeBThreePQ` | `\ensuremath{+0.062}` | Core, P->Q 33%+3: largest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperMaxWhereCoreSThirtyThreeBThreePQ` | `SmolLM2-360M` | Core, P->Q 33%+3: model with the largest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperLoMinCoreSThirtyThreeBThreePQ` | `\ensuremath{-0.003}` | Core, P->Q 33%+3: lowest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperHiMaxCoreSThirtyThreeBThreePQ` | `\ensuremath{+0.077}` | Core, P->Q 33%+3: highest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperZeroInCoreSThirtyThreeBThreePQ` | `1` | Core, P->Q 33%+3: models whose 95% interval contains 0 | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperExclZeroCoreSThirtyThreeBThreePQ` | `2` | Core, P->Q 33%+3: models whose 95% interval excludes 0 | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperPmMaxCoreSThirtyThreeBThreePQ` | `0.018` | Core, P->Q 33%+3: largest half-width of the 95% intervals | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperAsymMaxCoreSThirtyThreeBThreePQ` | `0.000` | Core, P->Q 33%+3: largest asymmetry |(hi - I_Sr) - (I_Sr - lo)| of the 95% intervals | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperNLargerSThirtyThreeBThreePQ` | `3` | Larger, P->Q 33%+3: models with I_Sr and its interval | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperMinLargerSThirtyThreeBThreePQ` | `\ensuremath{+0.011}` | Larger, P->Q 33%+3: smallest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperMinWhereLargerSThirtyThreeBThreePQ` | `SmolLM2-1.7B` | Larger, P->Q 33%+3: model with the smallest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperMaxLargerSThirtyThreeBThreePQ` | `\ensuremath{+0.030}` | Larger, P->Q 33%+3: largest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperMaxWhereLargerSThirtyThreeBThreePQ` | `OLMo-2-0425-1B` | Larger, P->Q 33%+3: model with the largest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperLoMinLargerSThirtyThreeBThreePQ` | `\ensuremath{-0.000}` | Larger, P->Q 33%+3: lowest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperHiMaxLargerSThirtyThreeBThreePQ` | `\ensuremath{+0.042}` | Larger, P->Q 33%+3: highest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperZeroInLargerSThirtyThreeBThreePQ` | `1` | Larger, P->Q 33%+3: models whose 95% interval contains 0 | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperExclZeroLargerSThirtyThreeBThreePQ` | `2` | Larger, P->Q 33%+3: models whose 95% interval excludes 0 | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperPmMaxLargerSThirtyThreeBThreePQ` | `0.013` | Larger, P->Q 33%+3: largest half-width of the 95% intervals | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperAsymMaxLargerSThirtyThreeBThreePQ` | `0.000` | Larger, P->Q 33%+3: largest asymmetry |(hi - I_Sr) - (I_Sr - lo)| of the 95% intervals | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperNAllModelsSThirtyThreeBThreePQ` | `6` | AllModels, P->Q 33%+3: models with I_Sr and its interval | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperMinAllModelsSThirtyThreeBThreePQ` | `\ensuremath{+0.011}` | AllModels, P->Q 33%+3: smallest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperMinWhereAllModelsSThirtyThreeBThreePQ` | `SmolLM2-1.7B` | AllModels, P->Q 33%+3: model with the smallest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperMaxAllModelsSThirtyThreeBThreePQ` | `\ensuremath{+0.062}` | AllModels, P->Q 33%+3: largest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperMaxWhereAllModelsSThirtyThreeBThreePQ` | `SmolLM2-360M` | AllModels, P->Q 33%+3: model with the largest I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperLoMinAllModelsSThirtyThreeBThreePQ` | `\ensuremath{-0.003}` | AllModels, P->Q 33%+3: lowest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperHiMaxAllModelsSThirtyThreeBThreePQ` | `\ensuremath{+0.077}` | AllModels, P->Q 33%+3: highest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperZeroInAllModelsSThirtyThreeBThreePQ` | `2` | AllModels, P->Q 33%+3: models whose 95% interval contains 0 | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperExclZeroAllModelsSThirtyThreeBThreePQ` | `4` | AllModels, P->Q 33%+3: models whose 95% interval excludes 0 | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperPmMaxAllModelsSThirtyThreeBThreePQ` | `0.018` | AllModels, P->Q 33%+3: largest half-width of the 95% intervals | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperAsymMaxAllModelsSThirtyThreeBThreePQ` | `0.000` | AllModels, P->Q 33%+3: largest asymmetry |(hi - I_Sr) - (I_Sr - lo)| of the 95% intervals | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperPmSmolSmallSThirtyThreeBThreePQ` | `0.018` | SmolLM2-135M, P->Q 33%+3: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperPmSmolMediumSThirtyThreeBThreePQ` | `0.014` | SmolLM2-360M, P->Q 33%+3: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperPmQwenSThirtyThreeBThreePQ` | `0.015` | Qwen2.5-0.5B, P->Q 33%+3: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperPmQwenMidSThirtyThreeBThreePQ` | `0.012` | Qwen2.5-1.5B, P->Q 33%+3: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperPmSmolLargeSThirtyThreeBThreePQ` | `0.011` | SmolLM2-1.7B, P->Q 33%+3: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
-| `\resISrPaperPmOlmoSThirtyThreeBThreePQ` | `0.013` | OLMo-2-0425-1B, P->Q 33%+3: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperNCoreSTwentyFiveBFourPQ` | `3` | Core, P->Q 25%+4: models with I_Sr and its interval | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMinCoreSTwentyFiveBFourPQ` | `\ensuremath{+0.009}` | Core, P->Q 25%+4: smallest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMinWhereCoreSTwentyFiveBFourPQ` | `Qwen2.5-0.5B` | Core, P->Q 25%+4: model with the smallest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMaxCoreSTwentyFiveBFourPQ` | `\ensuremath{+0.016}` | Core, P->Q 25%+4: largest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMaxWhereCoreSTwentyFiveBFourPQ` | `SmolLM2-135M` | Core, P->Q 25%+4: model with the largest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperLoMinCoreSTwentyFiveBFourPQ` | `\ensuremath{-0.003}` | Core, P->Q 25%+4: lowest interval end | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperHiMaxCoreSTwentyFiveBFourPQ` | `\ensuremath{+0.030}` | Core, P->Q 25%+4: highest interval end | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperZeroInCoreSTwentyFiveBFourPQ` | `1` | Core, P->Q 25%+4: models whose 95% interval contains 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperExclZeroCoreSTwentyFiveBFourPQ` | `2` | Core, P->Q 25%+4: models whose 95% interval excludes 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperPosCoreSTwentyFiveBFourPQ` | `3` | Core, P->Q 25%+4: models with a positive I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperExclZeroPosCoreSTwentyFiveBFourPQ` | `2` | Core, P->Q 25%+4: models whose 95% interval lies above 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperPmMaxCoreSTwentyFiveBFourPQ` | `0.014` | Core, P->Q 25%+4: largest half-width of the 95% intervals | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperAsymMaxCoreSTwentyFiveBFourPQ` | `0.000` | Core, P->Q 25%+4: largest asymmetry |(hi - I_Sr) - (I_Sr - lo)| of the 95% intervals | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperNLargerSTwentyFiveBFourPQ` | `3` | Larger, P->Q 25%+4: models with I_Sr and its interval | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMinLargerSTwentyFiveBFourPQ` | `\ensuremath{-0.004}` | Larger, P->Q 25%+4: smallest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMinWhereLargerSTwentyFiveBFourPQ` | `OLMo-2-0425-1B` | Larger, P->Q 25%+4: model with the smallest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMaxLargerSTwentyFiveBFourPQ` | `\ensuremath{+0.008}` | Larger, P->Q 25%+4: largest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMaxWhereLargerSTwentyFiveBFourPQ` | `Qwen2.5-1.5B` | Larger, P->Q 25%+4: model with the largest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperLoMinLargerSTwentyFiveBFourPQ` | `\ensuremath{-0.013}` | Larger, P->Q 25%+4: lowest interval end | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperHiMaxLargerSTwentyFiveBFourPQ` | `\ensuremath{+0.016}` | Larger, P->Q 25%+4: highest interval end | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperZeroInLargerSTwentyFiveBFourPQ` | `3` | Larger, P->Q 25%+4: models whose 95% interval contains 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperExclZeroLargerSTwentyFiveBFourPQ` | `0` | Larger, P->Q 25%+4: models whose 95% interval excludes 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperPosLargerSTwentyFiveBFourPQ` | `1` | Larger, P->Q 25%+4: models with a positive I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperExclZeroPosLargerSTwentyFiveBFourPQ` | `0` | Larger, P->Q 25%+4: models whose 95% interval lies above 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperPmMaxLargerSTwentyFiveBFourPQ` | `0.009` | Larger, P->Q 25%+4: largest half-width of the 95% intervals | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperAsymMaxLargerSTwentyFiveBFourPQ` | `0.000` | Larger, P->Q 25%+4: largest asymmetry |(hi - I_Sr) - (I_Sr - lo)| of the 95% intervals | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperNAllModelsSTwentyFiveBFourPQ` | `6` | AllModels, P->Q 25%+4: models with I_Sr and its interval | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMinAllModelsSTwentyFiveBFourPQ` | `\ensuremath{-0.004}` | AllModels, P->Q 25%+4: smallest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMinWhereAllModelsSTwentyFiveBFourPQ` | `OLMo-2-0425-1B` | AllModels, P->Q 25%+4: model with the smallest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMaxAllModelsSTwentyFiveBFourPQ` | `\ensuremath{+0.016}` | AllModels, P->Q 25%+4: largest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMaxWhereAllModelsSTwentyFiveBFourPQ` | `SmolLM2-135M` | AllModels, P->Q 25%+4: model with the largest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperLoMinAllModelsSTwentyFiveBFourPQ` | `\ensuremath{-0.013}` | AllModels, P->Q 25%+4: lowest interval end | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperHiMaxAllModelsSTwentyFiveBFourPQ` | `\ensuremath{+0.030}` | AllModels, P->Q 25%+4: highest interval end | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperZeroInAllModelsSTwentyFiveBFourPQ` | `4` | AllModels, P->Q 25%+4: models whose 95% interval contains 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperExclZeroAllModelsSTwentyFiveBFourPQ` | `2` | AllModels, P->Q 25%+4: models whose 95% interval excludes 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperPosAllModelsSTwentyFiveBFourPQ` | `4` | AllModels, P->Q 25%+4: models with a positive I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperExclZeroPosAllModelsSTwentyFiveBFourPQ` | `2` | AllModels, P->Q 25%+4: models whose 95% interval lies above 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperPmMaxAllModelsSTwentyFiveBFourPQ` | `0.014` | AllModels, P->Q 25%+4: largest half-width of the 95% intervals | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperAsymMaxAllModelsSTwentyFiveBFourPQ` | `0.000` | AllModels, P->Q 25%+4: largest asymmetry |(hi - I_Sr) - (I_Sr - lo)| of the 95% intervals | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperPmSmolSmallSTwentyFiveBFourPQ` | `0.014` | SmolLM2-135M, P->Q 25%+4: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperPmSmolMediumSTwentyFiveBFourPQ` | `0.010` | SmolLM2-360M, P->Q 25%+4: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperPmQwenSTwentyFiveBFourPQ` | `0.012` | Qwen2.5-0.5B, P->Q 25%+4: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperPmQwenMidSTwentyFiveBFourPQ` | `0.009` | Qwen2.5-1.5B, P->Q 25%+4: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperPmSmolLargeSTwentyFiveBFourPQ` | `0.008` | SmolLM2-1.7B, P->Q 25%+4: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperPmOlmoSTwentyFiveBFourPQ` | `0.009` | OLMo-2-0425-1B, P->Q 25%+4: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperNCoreSThirtyThreeBThreePQ` | `3` | Core, P->Q 33%+3: models with I_Sr and its interval | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMinCoreSThirtyThreeBThreePQ` | `\ensuremath{+0.012}` | Core, P->Q 33%+3: smallest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMinWhereCoreSThirtyThreeBThreePQ` | `Qwen2.5-0.5B` | Core, P->Q 33%+3: model with the smallest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMaxCoreSThirtyThreeBThreePQ` | `\ensuremath{+0.062}` | Core, P->Q 33%+3: largest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMaxWhereCoreSThirtyThreeBThreePQ` | `SmolLM2-360M` | Core, P->Q 33%+3: model with the largest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperLoMinCoreSThirtyThreeBThreePQ` | `\ensuremath{-0.003}` | Core, P->Q 33%+3: lowest interval end | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperHiMaxCoreSThirtyThreeBThreePQ` | `\ensuremath{+0.077}` | Core, P->Q 33%+3: highest interval end | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperZeroInCoreSThirtyThreeBThreePQ` | `1` | Core, P->Q 33%+3: models whose 95% interval contains 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperExclZeroCoreSThirtyThreeBThreePQ` | `2` | Core, P->Q 33%+3: models whose 95% interval excludes 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperPosCoreSThirtyThreeBThreePQ` | `3` | Core, P->Q 33%+3: models with a positive I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperExclZeroPosCoreSThirtyThreeBThreePQ` | `2` | Core, P->Q 33%+3: models whose 95% interval lies above 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperPmMaxCoreSThirtyThreeBThreePQ` | `0.018` | Core, P->Q 33%+3: largest half-width of the 95% intervals | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperAsymMaxCoreSThirtyThreeBThreePQ` | `0.000` | Core, P->Q 33%+3: largest asymmetry |(hi - I_Sr) - (I_Sr - lo)| of the 95% intervals | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperNLargerSThirtyThreeBThreePQ` | `3` | Larger, P->Q 33%+3: models with I_Sr and its interval | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMinLargerSThirtyThreeBThreePQ` | `\ensuremath{+0.011}` | Larger, P->Q 33%+3: smallest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMinWhereLargerSThirtyThreeBThreePQ` | `SmolLM2-1.7B` | Larger, P->Q 33%+3: model with the smallest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMaxLargerSThirtyThreeBThreePQ` | `\ensuremath{+0.030}` | Larger, P->Q 33%+3: largest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMaxWhereLargerSThirtyThreeBThreePQ` | `OLMo-2-0425-1B` | Larger, P->Q 33%+3: model with the largest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperLoMinLargerSThirtyThreeBThreePQ` | `\ensuremath{-0.000}` | Larger, P->Q 33%+3: lowest interval end | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperHiMaxLargerSThirtyThreeBThreePQ` | `\ensuremath{+0.042}` | Larger, P->Q 33%+3: highest interval end | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperZeroInLargerSThirtyThreeBThreePQ` | `1` | Larger, P->Q 33%+3: models whose 95% interval contains 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperExclZeroLargerSThirtyThreeBThreePQ` | `2` | Larger, P->Q 33%+3: models whose 95% interval excludes 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperPosLargerSThirtyThreeBThreePQ` | `3` | Larger, P->Q 33%+3: models with a positive I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperExclZeroPosLargerSThirtyThreeBThreePQ` | `2` | Larger, P->Q 33%+3: models whose 95% interval lies above 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperPmMaxLargerSThirtyThreeBThreePQ` | `0.013` | Larger, P->Q 33%+3: largest half-width of the 95% intervals | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperAsymMaxLargerSThirtyThreeBThreePQ` | `0.000` | Larger, P->Q 33%+3: largest asymmetry |(hi - I_Sr) - (I_Sr - lo)| of the 95% intervals | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperNAllModelsSThirtyThreeBThreePQ` | `6` | AllModels, P->Q 33%+3: models with I_Sr and its interval | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMinAllModelsSThirtyThreeBThreePQ` | `\ensuremath{+0.011}` | AllModels, P->Q 33%+3: smallest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMinWhereAllModelsSThirtyThreeBThreePQ` | `SmolLM2-1.7B` | AllModels, P->Q 33%+3: model with the smallest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMaxAllModelsSThirtyThreeBThreePQ` | `\ensuremath{+0.062}` | AllModels, P->Q 33%+3: largest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperMaxWhereAllModelsSThirtyThreeBThreePQ` | `SmolLM2-360M` | AllModels, P->Q 33%+3: model with the largest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperLoMinAllModelsSThirtyThreeBThreePQ` | `\ensuremath{-0.003}` | AllModels, P->Q 33%+3: lowest interval end | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperHiMaxAllModelsSThirtyThreeBThreePQ` | `\ensuremath{+0.077}` | AllModels, P->Q 33%+3: highest interval end | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperZeroInAllModelsSThirtyThreeBThreePQ` | `2` | AllModels, P->Q 33%+3: models whose 95% interval contains 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperExclZeroAllModelsSThirtyThreeBThreePQ` | `4` | AllModels, P->Q 33%+3: models whose 95% interval excludes 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperPosAllModelsSThirtyThreeBThreePQ` | `6` | AllModels, P->Q 33%+3: models with a positive I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperExclZeroPosAllModelsSThirtyThreeBThreePQ` | `4` | AllModels, P->Q 33%+3: models whose 95% interval lies above 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperPmMaxAllModelsSThirtyThreeBThreePQ` | `0.018` | AllModels, P->Q 33%+3: largest half-width of the 95% intervals | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperAsymMaxAllModelsSThirtyThreeBThreePQ` | `0.000` | AllModels, P->Q 33%+3: largest asymmetry |(hi - I_Sr) - (I_Sr - lo)| of the 95% intervals | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperPmSmolSmallSThirtyThreeBThreePQ` | `0.018` | SmolLM2-135M, P->Q 33%+3: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperPmSmolMediumSThirtyThreeBThreePQ` | `0.014` | SmolLM2-360M, P->Q 33%+3: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperPmQwenSThirtyThreeBThreePQ` | `0.015` | Qwen2.5-0.5B, P->Q 33%+3: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperPmQwenMidSThirtyThreeBThreePQ` | `0.012` | Qwen2.5-1.5B, P->Q 33%+3: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperPmSmolLargeSThirtyThreeBThreePQ` | `0.011` | SmolLM2-1.7B, P->Q 33%+3: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperPmOlmoSThirtyThreeBThreePQ` | `0.013` | OLMo-2-0425-1B, P->Q 33%+3: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+
+## I_Sr of Table 2 over model groups (P->Q, Sr set sr3_paper_cn, seed 0)
+
+| Macro | Value | Meaning | Source |
+|---|---|---|---|
+| `\resISrPaperCnNCoreSTwentyFiveBFourPQ` | `3` | Core, P->Q 25%+4: models with I_Sr and its interval | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnMinCoreSTwentyFiveBFourPQ` | `\ensuremath{+0.019}` | Core, P->Q 25%+4: smallest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnMinWhereCoreSTwentyFiveBFourPQ` | `Qwen2.5-0.5B` | Core, P->Q 25%+4: model with the smallest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnMaxCoreSTwentyFiveBFourPQ` | `\ensuremath{+0.033}` | Core, P->Q 25%+4: largest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnMaxWhereCoreSTwentyFiveBFourPQ` | `SmolLM2-135M` | Core, P->Q 25%+4: model with the largest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnLoMinCoreSTwentyFiveBFourPQ` | `\ensuremath{-0.006}` | Core, P->Q 25%+4: lowest interval end | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnHiMaxCoreSTwentyFiveBFourPQ` | `\ensuremath{+0.064}` | Core, P->Q 25%+4: highest interval end | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnZeroInCoreSTwentyFiveBFourPQ` | `1` | Core, P->Q 25%+4: models whose 95% interval contains 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnExclZeroCoreSTwentyFiveBFourPQ` | `2` | Core, P->Q 25%+4: models whose 95% interval excludes 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnPosCoreSTwentyFiveBFourPQ` | `3` | Core, P->Q 25%+4: models with a positive I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnExclZeroPosCoreSTwentyFiveBFourPQ` | `2` | Core, P->Q 25%+4: models whose 95% interval lies above 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnPmMaxCoreSTwentyFiveBFourPQ` | `0.031` | Core, P->Q 25%+4: largest half-width of the 95% intervals | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnAsymMaxCoreSTwentyFiveBFourPQ` | `0.001` | Core, P->Q 25%+4: largest asymmetry |(hi - I_Sr) - (I_Sr - lo)| of the 95% intervals | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnNLargerSTwentyFiveBFourPQ` | `3` | Larger, P->Q 25%+4: models with I_Sr and its interval | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnMinLargerSTwentyFiveBFourPQ` | `\ensuremath{-0.008}` | Larger, P->Q 25%+4: smallest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnMinWhereLargerSTwentyFiveBFourPQ` | `OLMo-2-0425-1B` | Larger, P->Q 25%+4: model with the smallest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnMaxLargerSTwentyFiveBFourPQ` | `\ensuremath{+0.013}` | Larger, P->Q 25%+4: largest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnMaxWhereLargerSTwentyFiveBFourPQ` | `Qwen2.5-1.5B` | Larger, P->Q 25%+4: model with the largest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnLoMinLargerSTwentyFiveBFourPQ` | `\ensuremath{-0.025}` | Larger, P->Q 25%+4: lowest interval end | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnHiMaxLargerSTwentyFiveBFourPQ` | `\ensuremath{+0.029}` | Larger, P->Q 25%+4: highest interval end | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnZeroInLargerSTwentyFiveBFourPQ` | `3` | Larger, P->Q 25%+4: models whose 95% interval contains 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnExclZeroLargerSTwentyFiveBFourPQ` | `0` | Larger, P->Q 25%+4: models whose 95% interval excludes 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnPosLargerSTwentyFiveBFourPQ` | `1` | Larger, P->Q 25%+4: models with a positive I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnExclZeroPosLargerSTwentyFiveBFourPQ` | `0` | Larger, P->Q 25%+4: models whose 95% interval lies above 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnPmMaxLargerSTwentyFiveBFourPQ` | `0.017` | Larger, P->Q 25%+4: largest half-width of the 95% intervals | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnAsymMaxLargerSTwentyFiveBFourPQ` | `0.000` | Larger, P->Q 25%+4: largest asymmetry |(hi - I_Sr) - (I_Sr - lo)| of the 95% intervals | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnNAllModelsSTwentyFiveBFourPQ` | `6` | AllModels, P->Q 25%+4: models with I_Sr and its interval | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnMinAllModelsSTwentyFiveBFourPQ` | `\ensuremath{-0.008}` | AllModels, P->Q 25%+4: smallest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnMinWhereAllModelsSTwentyFiveBFourPQ` | `OLMo-2-0425-1B` | AllModels, P->Q 25%+4: model with the smallest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnMaxAllModelsSTwentyFiveBFourPQ` | `\ensuremath{+0.033}` | AllModels, P->Q 25%+4: largest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnMaxWhereAllModelsSTwentyFiveBFourPQ` | `SmolLM2-135M` | AllModels, P->Q 25%+4: model with the largest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnLoMinAllModelsSTwentyFiveBFourPQ` | `\ensuremath{-0.025}` | AllModels, P->Q 25%+4: lowest interval end | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnHiMaxAllModelsSTwentyFiveBFourPQ` | `\ensuremath{+0.064}` | AllModels, P->Q 25%+4: highest interval end | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnZeroInAllModelsSTwentyFiveBFourPQ` | `4` | AllModels, P->Q 25%+4: models whose 95% interval contains 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnExclZeroAllModelsSTwentyFiveBFourPQ` | `2` | AllModels, P->Q 25%+4: models whose 95% interval excludes 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnPosAllModelsSTwentyFiveBFourPQ` | `4` | AllModels, P->Q 25%+4: models with a positive I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnExclZeroPosAllModelsSTwentyFiveBFourPQ` | `2` | AllModels, P->Q 25%+4: models whose 95% interval lies above 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnPmMaxAllModelsSTwentyFiveBFourPQ` | `0.031` | AllModels, P->Q 25%+4: largest half-width of the 95% intervals | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnAsymMaxAllModelsSTwentyFiveBFourPQ` | `0.001` | AllModels, P->Q 25%+4: largest asymmetry |(hi - I_Sr) - (I_Sr - lo)| of the 95% intervals | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnPmSmolSmallSTwentyFiveBFourPQ` | `0.031` | SmolLM2-135M, P->Q 25%+4: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnSmolSmallSTwentyFiveBFourPQ` | `\ensuremath{+0.033}` | SmolLM2-135M, P->Q 25%+4: I_Sr (sr3_paper_cn) | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnLoSmolSmallSTwentyFiveBFourPQ` | `\ensuremath{+0.002}` | SmolLM2-135M, P->Q 25%+4: lower end of its 95% interval (sr3_paper_cn) | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnPmSmolMediumSTwentyFiveBFourPQ` | `0.021` | SmolLM2-360M, P->Q 25%+4: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnSmolMediumSTwentyFiveBFourPQ` | `\ensuremath{+0.023}` | SmolLM2-360M, P->Q 25%+4: I_Sr (sr3_paper_cn) | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnLoSmolMediumSTwentyFiveBFourPQ` | `\ensuremath{+0.002}` | SmolLM2-360M, P->Q 25%+4: lower end of its 95% interval (sr3_paper_cn) | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnPmQwenSTwentyFiveBFourPQ` | `0.025` | Qwen2.5-0.5B, P->Q 25%+4: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnQwenSTwentyFiveBFourPQ` | `\ensuremath{+0.019}` | Qwen2.5-0.5B, P->Q 25%+4: I_Sr (sr3_paper_cn) | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnLoQwenSTwentyFiveBFourPQ` | `\ensuremath{-0.006}` | Qwen2.5-0.5B, P->Q 25%+4: lower end of its 95% interval (sr3_paper_cn) | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnPmQwenMidSTwentyFiveBFourPQ` | `0.016` | Qwen2.5-1.5B, P->Q 25%+4: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnQwenMidSTwentyFiveBFourPQ` | `\ensuremath{+0.013}` | Qwen2.5-1.5B, P->Q 25%+4: I_Sr (sr3_paper_cn) | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnLoQwenMidSTwentyFiveBFourPQ` | `\ensuremath{-0.003}` | Qwen2.5-1.5B, P->Q 25%+4: lower end of its 95% interval (sr3_paper_cn) | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnPmSmolLargeSTwentyFiveBFourPQ` | `0.014` | SmolLM2-1.7B, P->Q 25%+4: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnSmolLargeSTwentyFiveBFourPQ` | `\ensuremath{-0.004}` | SmolLM2-1.7B, P->Q 25%+4: I_Sr (sr3_paper_cn) | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnLoSmolLargeSTwentyFiveBFourPQ` | `\ensuremath{-0.018}` | SmolLM2-1.7B, P->Q 25%+4: lower end of its 95% interval (sr3_paper_cn) | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnPmOlmoSTwentyFiveBFourPQ` | `0.017` | OLMo-2-0425-1B, P->Q 25%+4: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnOlmoSTwentyFiveBFourPQ` | `\ensuremath{-0.008}` | OLMo-2-0425-1B, P->Q 25%+4: I_Sr (sr3_paper_cn) | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnLoOlmoSTwentyFiveBFourPQ` | `\ensuremath{-0.025}` | OLMo-2-0425-1B, P->Q 25%+4: lower end of its 95% interval (sr3_paper_cn) | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnNCoreSThirtyThreeBThreePQ` | `3` | Core, P->Q 33%+3: models with I_Sr and its interval | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnMinCoreSThirtyThreeBThreePQ` | `\ensuremath{+0.020}` | Core, P->Q 33%+3: smallest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnMinWhereCoreSThirtyThreeBThreePQ` | `Qwen2.5-0.5B` | Core, P->Q 33%+3: model with the smallest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnMaxCoreSThirtyThreeBThreePQ` | `\ensuremath{+0.116}` | Core, P->Q 33%+3: largest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnMaxWhereCoreSThirtyThreeBThreePQ` | `SmolLM2-360M` | Core, P->Q 33%+3: model with the largest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnLoMinCoreSThirtyThreeBThreePQ` | `\ensuremath{-0.011}` | Core, P->Q 33%+3: lowest interval end | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnHiMaxCoreSThirtyThreeBThreePQ` | `\ensuremath{+0.143}` | Core, P->Q 33%+3: highest interval end | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnZeroInCoreSThirtyThreeBThreePQ` | `1` | Core, P->Q 33%+3: models whose 95% interval contains 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnExclZeroCoreSThirtyThreeBThreePQ` | `2` | Core, P->Q 33%+3: models whose 95% interval excludes 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnPosCoreSThirtyThreeBThreePQ` | `3` | Core, P->Q 33%+3: models with a positive I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnExclZeroPosCoreSThirtyThreeBThreePQ` | `2` | Core, P->Q 33%+3: models whose 95% interval lies above 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnPmMaxCoreSThirtyThreeBThreePQ` | `0.037` | Core, P->Q 33%+3: largest half-width of the 95% intervals | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnAsymMaxCoreSThirtyThreeBThreePQ` | `0.001` | Core, P->Q 33%+3: largest asymmetry |(hi - I_Sr) - (I_Sr - lo)| of the 95% intervals | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnNLargerSThirtyThreeBThreePQ` | `3` | Larger, P->Q 33%+3: models with I_Sr and its interval | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnMinLargerSThirtyThreeBThreePQ` | `\ensuremath{+0.019}` | Larger, P->Q 33%+3: smallest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnMinWhereLargerSThirtyThreeBThreePQ` | `SmolLM2-1.7B` | Larger, P->Q 33%+3: model with the smallest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnMaxLargerSThirtyThreeBThreePQ` | `\ensuremath{+0.049}` | Larger, P->Q 33%+3: largest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnMaxWhereLargerSThirtyThreeBThreePQ` | `OLMo-2-0425-1B` | Larger, P->Q 33%+3: model with the largest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnLoMinLargerSThirtyThreeBThreePQ` | `\ensuremath{-0.002}` | Larger, P->Q 33%+3: lowest interval end | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnHiMaxLargerSThirtyThreeBThreePQ` | `\ensuremath{+0.073}` | Larger, P->Q 33%+3: highest interval end | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnZeroInLargerSThirtyThreeBThreePQ` | `1` | Larger, P->Q 33%+3: models whose 95% interval contains 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnExclZeroLargerSThirtyThreeBThreePQ` | `2` | Larger, P->Q 33%+3: models whose 95% interval excludes 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnPosLargerSThirtyThreeBThreePQ` | `3` | Larger, P->Q 33%+3: models with a positive I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnExclZeroPosLargerSThirtyThreeBThreePQ` | `2` | Larger, P->Q 33%+3: models whose 95% interval lies above 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnPmMaxLargerSThirtyThreeBThreePQ` | `0.023` | Larger, P->Q 33%+3: largest half-width of the 95% intervals | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnAsymMaxLargerSThirtyThreeBThreePQ` | `0.001` | Larger, P->Q 33%+3: largest asymmetry |(hi - I_Sr) - (I_Sr - lo)| of the 95% intervals | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnNAllModelsSThirtyThreeBThreePQ` | `6` | AllModels, P->Q 33%+3: models with I_Sr and its interval | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnMinAllModelsSThirtyThreeBThreePQ` | `\ensuremath{+0.019}` | AllModels, P->Q 33%+3: smallest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnMinWhereAllModelsSThirtyThreeBThreePQ` | `SmolLM2-1.7B` | AllModels, P->Q 33%+3: model with the smallest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnMaxAllModelsSThirtyThreeBThreePQ` | `\ensuremath{+0.116}` | AllModels, P->Q 33%+3: largest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnMaxWhereAllModelsSThirtyThreeBThreePQ` | `SmolLM2-360M` | AllModels, P->Q 33%+3: model with the largest I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnLoMinAllModelsSThirtyThreeBThreePQ` | `\ensuremath{-0.011}` | AllModels, P->Q 33%+3: lowest interval end | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnHiMaxAllModelsSThirtyThreeBThreePQ` | `\ensuremath{+0.143}` | AllModels, P->Q 33%+3: highest interval end | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnZeroInAllModelsSThirtyThreeBThreePQ` | `2` | AllModels, P->Q 33%+3: models whose 95% interval contains 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnExclZeroAllModelsSThirtyThreeBThreePQ` | `4` | AllModels, P->Q 33%+3: models whose 95% interval excludes 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnPosAllModelsSThirtyThreeBThreePQ` | `6` | AllModels, P->Q 33%+3: models with a positive I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnExclZeroPosAllModelsSThirtyThreeBThreePQ` | `4` | AllModels, P->Q 33%+3: models whose 95% interval lies above 0 | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnPmMaxAllModelsSThirtyThreeBThreePQ` | `0.037` | AllModels, P->Q 33%+3: largest half-width of the 95% intervals | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnAsymMaxAllModelsSThirtyThreeBThreePQ` | `0.001` | AllModels, P->Q 33%+3: largest asymmetry |(hi - I_Sr) - (I_Sr - lo)| of the 95% intervals | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnPmSmolSmallSThirtyThreeBThreePQ` | `0.037` | SmolLM2-135M, P->Q 33%+3: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnSmolSmallSThirtyThreeBThreePQ` | `\ensuremath{+0.089}` | SmolLM2-135M, P->Q 33%+3: I_Sr (sr3_paper_cn) | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnLoSmolSmallSThirtyThreeBThreePQ` | `\ensuremath{+0.052}` | SmolLM2-135M, P->Q 33%+3: lower end of its 95% interval (sr3_paper_cn) | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnPmSmolMediumSThirtyThreeBThreePQ` | `0.027` | SmolLM2-360M, P->Q 33%+3: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnSmolMediumSThirtyThreeBThreePQ` | `\ensuremath{+0.116}` | SmolLM2-360M, P->Q 33%+3: I_Sr (sr3_paper_cn) | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnLoSmolMediumSThirtyThreeBThreePQ` | `\ensuremath{+0.088}` | SmolLM2-360M, P->Q 33%+3: lower end of its 95% interval (sr3_paper_cn) | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnPmQwenSThirtyThreeBThreePQ` | `0.031` | Qwen2.5-0.5B, P->Q 33%+3: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnQwenSThirtyThreeBThreePQ` | `\ensuremath{+0.020}` | Qwen2.5-0.5B, P->Q 33%+3: I_Sr (sr3_paper_cn) | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnLoQwenSThirtyThreeBThreePQ` | `\ensuremath{-0.011}` | Qwen2.5-0.5B, P->Q 33%+3: lower end of its 95% interval (sr3_paper_cn) | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnPmQwenMidSThirtyThreeBThreePQ` | `0.022` | Qwen2.5-1.5B, P->Q 33%+3: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnQwenMidSThirtyThreeBThreePQ` | `\ensuremath{+0.023}` | Qwen2.5-1.5B, P->Q 33%+3: I_Sr (sr3_paper_cn) | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnLoQwenMidSThirtyThreeBThreePQ` | `\ensuremath{+0.001}` | Qwen2.5-1.5B, P->Q 33%+3: lower end of its 95% interval (sr3_paper_cn) | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnPmSmolLargeSThirtyThreeBThreePQ` | `0.020` | SmolLM2-1.7B, P->Q 33%+3: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnSmolLargeSThirtyThreeBThreePQ` | `\ensuremath{+0.019}` | SmolLM2-1.7B, P->Q 33%+3: I_Sr (sr3_paper_cn) | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnLoSmolLargeSThirtyThreeBThreePQ` | `\ensuremath{-0.002}` | SmolLM2-1.7B, P->Q 33%+3: lower end of its 95% interval (sr3_paper_cn) | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnPmOlmoSThirtyThreeBThreePQ` | `0.023` | OLMo-2-0425-1B, P->Q 33%+3: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnOlmoSThirtyThreeBThreePQ` | `\ensuremath{+0.049}` | OLMo-2-0425-1B, P->Q 33%+3: I_Sr (sr3_paper_cn) | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperCnLoOlmoSThirtyThreeBThreePQ` | `\ensuremath{+0.027}` | OLMo-2-0425-1B, P->Q 33%+3: lower end of its 95% interval (sr3_paper_cn) | reports/analysis/e1_isr.csv (I_Sr per state; paired bootstrap over items) |
 
 ## Q3 seed check of the scale trend: order spread per calibration seed (WikiText-2 ppl, grid cells)
 
@@ -4946,6 +5084,17 @@ Columns:
 | `\resETwoSplitOrderLargestGapPosCoreBThree` | `3` | Core, 3-bit cells: of the cells where Q->P has the larger layer error, those where the update-order part is the largest of the three | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitCellsCoreBThree` | `9` | Core, 3-bit cells: cells with the split | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGridMaxAbsCoreBThreePct` | `0.3` | Core, 3-bit cells: largest |grid part| (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitGapNegCore` | `6` | Core: cells where Q->P has the smaller layer error (gap < 0) with one shared Hessian | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitGapNegQPWorsePplCore` | `5` | Core: of those, cells where Q->P still has the higher WikiText-2 perplexity than P->Q (seed 0, pipeline) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitRevOrderLargestGapPosCore` | `12` | Core: with the ingredients exchanged in another order (grid re-fitted first, then the mask, then the update order), cells with gap > 0 where the update-order part is the largest | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitRevOrderPosCore` | `18` | Core: with that order of exchanges, cells where the update-order part is positive | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitRevCellsCore` | `18` | Core: cells with the arms of that order of exchanges | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSubQPSTwentyFiveBThreeCore` | `3` | Core: STwentyFive 3-bit cells where Q->P is sub-additive in aggregate with one shared Hessian | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoQPSTwentyFiveBThreeCellsCore` | `3` | Core: STwentyFive 3-bit cells with Q->P (one shared Hessian) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSubQPSThirtyThreeBThreeCore` | `3` | Core: SThirtyThree 3-bit cells where Q->P is sub-additive in aggregate with one shared Hessian | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoQPSThirtyThreeBThreeCellsCore` | `3` | Core: SThirtyThree 3-bit cells with Q->P (one shared Hessian) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSubQPSFiftyBThreeCore` | `0` | Core: SFifty 3-bit cells where Q->P is sub-additive in aggregate with one shared Hessian | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoQPSFiftyBThreeCellsCore` | `3` | Core: SFifty 3-bit cells with Q->P (one shared Hessian) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitMaskNegFreeZerosCore` | `6` | Core: 25% and 33%+3-bit cells where the mask part is negative (Q->P's mask, which takes the zeros of rounding, is the better one) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitFreeZerosCellsCore` | `6` | Core: 25% and 33%+3-bit cells with the split | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoModelsLarger` | `4` | Larger: models with E2 lines | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
@@ -4993,6 +5142,17 @@ Columns:
 | `\resETwoSplitOrderLargestGapPosLargerBThree` | `5` | Larger, 3-bit cells: of the cells where Q->P has the larger layer error, those where the update-order part is the largest of the three | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitCellsLargerBThree` | `12` | Larger, 3-bit cells: cells with the split | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGridMaxAbsLargerBThreePct` | `0.4` | Larger, 3-bit cells: largest |grid part| (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitGapNegLarger` | `6` | Larger: cells where Q->P has the smaller layer error (gap < 0) with one shared Hessian | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitGapNegQPWorsePplLarger` | `5` | Larger: of those, cells where Q->P still has the higher WikiText-2 perplexity than P->Q (seed 0, pipeline) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitRevOrderLargestGapPosLarger` | `18` | Larger: with the ingredients exchanged in another order (grid re-fitted first, then the mask, then the update order), cells with gap > 0 where the update-order part is the largest | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitRevOrderPosLarger` | `24` | Larger: with that order of exchanges, cells where the update-order part is positive | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitRevCellsLarger` | `24` | Larger: cells with the arms of that order of exchanges | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSubQPSTwentyFiveBThreeLarger` | `4` | Larger: STwentyFive 3-bit cells where Q->P is sub-additive in aggregate with one shared Hessian | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoQPSTwentyFiveBThreeCellsLarger` | `4` | Larger: STwentyFive 3-bit cells with Q->P (one shared Hessian) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSubQPSThirtyThreeBThreeLarger` | `4` | Larger: SThirtyThree 3-bit cells where Q->P is sub-additive in aggregate with one shared Hessian | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoQPSThirtyThreeBThreeCellsLarger` | `4` | Larger: SThirtyThree 3-bit cells with Q->P (one shared Hessian) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSubQPSFiftyBThreeLarger` | `0` | Larger: SFifty 3-bit cells where Q->P is sub-additive in aggregate with one shared Hessian | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoQPSFiftyBThreeCellsLarger` | `4` | Larger: SFifty 3-bit cells with Q->P (one shared Hessian) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitMaskNegFreeZerosLarger` | `8` | Larger: 25% and 33%+3-bit cells where the mask part is negative (Q->P's mask, which takes the zeros of rounding, is the better one) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitFreeZerosCellsLarger` | `8` | Larger: 25% and 33%+3-bit cells with the split | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoModelsAllModels` | `7` | AllModels: models with E2 lines | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
@@ -5040,6 +5200,17 @@ Columns:
 | `\resETwoSplitOrderLargestGapPosAllModelsBThree` | `8` | AllModels, 3-bit cells: of the cells where Q->P has the larger layer error, those where the update-order part is the largest of the three | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitCellsAllModelsBThree` | `21` | AllModels, 3-bit cells: cells with the split | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitGridMaxAbsAllModelsBThreePct` | `0.4` | AllModels, 3-bit cells: largest |grid part| (% of E_PQ) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitGapNegAllModels` | `12` | AllModels: cells where Q->P has the smaller layer error (gap < 0) with one shared Hessian | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitGapNegQPWorsePplAllModels` | `10` | AllModels: of those, cells where Q->P still has the higher WikiText-2 perplexity than P->Q (seed 0, pipeline) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitRevOrderLargestGapPosAllModels` | `30` | AllModels: with the ingredients exchanged in another order (grid re-fitted first, then the mask, then the update order), cells with gap > 0 where the update-order part is the largest | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitRevOrderPosAllModels` | `42` | AllModels: with that order of exchanges, cells where the update-order part is positive | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSplitRevCellsAllModels` | `42` | AllModels: cells with the arms of that order of exchanges | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSubQPSTwentyFiveBThreeAllModels` | `7` | AllModels: STwentyFive 3-bit cells where Q->P is sub-additive in aggregate with one shared Hessian | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoQPSTwentyFiveBThreeCellsAllModels` | `7` | AllModels: STwentyFive 3-bit cells with Q->P (one shared Hessian) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSubQPSThirtyThreeBThreeAllModels` | `7` | AllModels: SThirtyThree 3-bit cells where Q->P is sub-additive in aggregate with one shared Hessian | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoQPSThirtyThreeBThreeCellsAllModels` | `7` | AllModels: SThirtyThree 3-bit cells with Q->P (one shared Hessian) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoSubQPSFiftyBThreeAllModels` | `0` | AllModels: SFifty 3-bit cells where Q->P is sub-additive in aggregate with one shared Hessian | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
+| `\resETwoQPSFiftyBThreeCellsAllModels` | `7` | AllModels: SFifty 3-bit cells with Q->P (one shared Hessian) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitMaskNegFreeZerosAllModels` | `14` | AllModels: 25% and 33%+3-bit cells where the mask part is negative (Q->P's mask, which takes the zeros of rounding, is the better one) | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 | `\resETwoSplitFreeZerosCellsAllModels` | `14` | AllModels: 25% and 33%+3-bit cells with the split | reports/analysis/e2_cells.csv (sums over layers; scripts/analysis/latex.py macros_e2_groups) |
 
@@ -8670,6 +8841,18 @@ Columns:
 | `\resISrPaperPmOLMoTwoZeroFourTwoFiveOneBSTwentyFiveBFourPQ` | `0.009` | = `\resISrPaperPmOlmoSTwentyFiveBFourPQ` | see that macro |
 | `\resISrPaperPmQwenTwoFiveOneFiveBSThirtyThreeBThreePQ` | `0.012` | = `\resISrPaperPmQwenMidSThirtyThreeBThreePQ` | see that macro |
 | `\resISrPaperPmOLMoTwoZeroFourTwoFiveOneBSThirtyThreeBThreePQ` | `0.013` | = `\resISrPaperPmOlmoSThirtyThreeBThreePQ` | see that macro |
+| `\resISrPaperCnPmQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `0.016` | = `\resISrPaperCnPmQwenMidSTwentyFiveBFourPQ` | see that macro |
+| `\resISrPaperCnQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `\ensuremath{+0.013}` | = `\resISrPaperCnQwenMidSTwentyFiveBFourPQ` | see that macro |
+| `\resISrPaperCnLoQwenTwoFiveOneFiveBSTwentyFiveBFourPQ` | `\ensuremath{-0.003}` | = `\resISrPaperCnLoQwenMidSTwentyFiveBFourPQ` | see that macro |
+| `\resISrPaperCnPmOLMoTwoZeroFourTwoFiveOneBSTwentyFiveBFourPQ` | `0.017` | = `\resISrPaperCnPmOlmoSTwentyFiveBFourPQ` | see that macro |
+| `\resISrPaperCnOLMoTwoZeroFourTwoFiveOneBSTwentyFiveBFourPQ` | `\ensuremath{-0.008}` | = `\resISrPaperCnOlmoSTwentyFiveBFourPQ` | see that macro |
+| `\resISrPaperCnLoOLMoTwoZeroFourTwoFiveOneBSTwentyFiveBFourPQ` | `\ensuremath{-0.025}` | = `\resISrPaperCnLoOlmoSTwentyFiveBFourPQ` | see that macro |
+| `\resISrPaperCnPmQwenTwoFiveOneFiveBSThirtyThreeBThreePQ` | `0.022` | = `\resISrPaperCnPmQwenMidSThirtyThreeBThreePQ` | see that macro |
+| `\resISrPaperCnQwenTwoFiveOneFiveBSThirtyThreeBThreePQ` | `\ensuremath{+0.023}` | = `\resISrPaperCnQwenMidSThirtyThreeBThreePQ` | see that macro |
+| `\resISrPaperCnLoQwenTwoFiveOneFiveBSThirtyThreeBThreePQ` | `\ensuremath{+0.001}` | = `\resISrPaperCnLoQwenMidSThirtyThreeBThreePQ` | see that macro |
+| `\resISrPaperCnPmOLMoTwoZeroFourTwoFiveOneBSThirtyThreeBThreePQ` | `0.023` | = `\resISrPaperCnPmOlmoSThirtyThreeBThreePQ` | see that macro |
+| `\resISrPaperCnOLMoTwoZeroFourTwoFiveOneBSThirtyThreeBThreePQ` | `\ensuremath{+0.049}` | = `\resISrPaperCnOlmoSThirtyThreeBThreePQ` | see that macro |
+| `\resISrPaperCnLoOLMoTwoZeroFourTwoFiveOneBSThirtyThreeBThreePQ` | `\ensuremath{+0.027}` | = `\resISrPaperCnLoOlmoSThirtyThreeBThreePQ` | see that macro |
 | `\resScaleSeedSpreadMinQwenTwoFiveOneFiveBSTwentyFiveBFourPct` | `0.8` | = `\resScaleSeedSpreadMinQwenMidSTwentyFiveBFourPct` | see that macro |
 | `\resScaleSeedSpreadMaxQwenTwoFiveOneFiveBSTwentyFiveBFourPct` | `2.2` | = `\resScaleSeedSpreadMaxQwenMidSTwentyFiveBFourPct` | see that macro |
 | `\resScaleSeedSpreadSeedsQwenTwoFiveOneFiveBSTwentyFiveBFour` | `3` | = `\resScaleSeedSpreadSeedsQwenMidSTwentyFiveBFour` | see that macro |
