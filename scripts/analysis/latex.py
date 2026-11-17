@@ -742,13 +742,25 @@ def macros_requests(M, store, e1, q, fr, e2res, repro, det=()):
             f"R27: {r['model']} {store.label(r['state_id'].replace('__float16', '__float32'))}: 100(ppl REPRO16 / ppl {r['reference']} - 1)",
             src + f" (`{r['state_id']}`)")
     r32 = [x for x in repro if x["family"] == "REPRO32"]
-    same = [d.get("status") == "identical" for d in det if d.get("status") in ("identical", "differs")]
+    same, other = [], []
+
+    def unit(r):   # the GPU's UUID in the nvidia-smi line of a result line's metadata
+        s = str((r.get("metadata") or {}).get("nvidia_smi") or "")
+        return next((f for f in s.split(", ") if f.startswith("GPU-")), None)
+    for d in det:
+        if d.get("status") in ("identical", "differs"):
+            same.append(d["status"] == "identical")
+            a, b = store.det.get(d["state_id"]), store.states.get(d["state_id"])
+            other.append(bool(a and b and unit(a) and unit(b) and unit(a) != unit(b)))
     for x in r32:   # the same state_id run again in the REPRO32 family: equal WikiText-2 perplexity to the last bit?
         e = store.states.get(x["state_id"])
         if e is not None and finite(x.get("ppl")):
             same.append((e.get("wikitext2") or {}).get("ppl") == x["ppl"])
+            other.append(bool(x.get("gpu_unit") and unit(e) and x["gpu_unit"] != unit(e)))
     add("RerunStates", _n(len(same)) if same else "--",
         "states run a second time (DET, REPRO32) whose state_id is also in the study families", "results/v2/DET, results/v2/REPRO32")
+    add("RerunOtherUnit", _n(sum(other)) if same else "--",
+        "of the re-run states, those whose second run used another GPU unit (another UUID) than the study line", "results/v2/DET, results/v2/REPRO32 (metadata.nvidia_smi)")
     add("RerunIdentical", _n(sum(same)) if same else "--",
         "of those, runs that reproduce the study line exactly (DET: nll_sum and every layer error; REPRO32: WikiText-2 ppl to the last bit)",
         "results/v2/DET, results/v2/REPRO32 against the line with the same state_id")

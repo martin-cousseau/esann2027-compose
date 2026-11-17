@@ -2732,6 +2732,7 @@ Columns:
 | `\resHwDeltaSmolSmallSFiftyBFourPQPct` | `\ensuremath{+4.6}` | R27: SmolLM2-135M 50%+4 P->Q: 100(ppl REPRO16 / ppl results_full (16-bit, T4) - 1) | reports/analysis/repro_hardware.csv (`SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float16`) |
 | `\resHwDeltaSmolSmallQuantBFourPct` | `\ensuremath{+1.5}` | R27: SmolLM2-135M 4-bit: 100(ppl REPRO16 / ppl results_full (16-bit, T4) - 1) | reports/analysis/repro_hardware.csv (`SmolLM2-135M__quant__s0.0000__b4__seed0__float16`) |
 | `\resRerunStates` | `4` | states run a second time (DET, REPRO32) whose state_id is also in the study families | results/v2/DET, results/v2/REPRO32 |
+| `\resRerunOtherUnit` | `4` | of the re-run states, those whose second run used another GPU unit (another UUID) than the study line | results/v2/DET, results/v2/REPRO32 (metadata.nvidia_smi) |
 | `\resRerunIdentical` | `4` | of those, runs that reproduce the study line exactly (DET: nll_sum and every layer error; REPRO32: WikiText-2 ppl to the last bit) | results/v2/DET, results/v2/REPRO32 against the line with the same state_id |
 | `\resReproThirtyTwoMaxAbsPct` | `0.4` | R28: largest |100(ppl REPRO32 / ppl results_fix - 1)| over the 3 planned REPRO32 states (-- until all exist) | reports/analysis/repro_hardware.csv |
 | `\resSeedBestStable` | `3` | R30: SmolLM2-360M, 4-bit cells whose best order by WikiText-2 ppl is the same for every seed | reports/analysis/seed_order_stability.csv (SmolLM2-360M, 4-bit cells; = the SmolMediumBFour variants) |

@@ -60,7 +60,8 @@ def analyze(paths, missing):
         row = {"family": fam, "state_id": sid, "model": info["model"], "order": info["order"], "sparsity": info["sparsity"],
                "bits": info["bits"], "seed": info["seed"], "ppl": ppl, "source": src, "reference": ref_name,
                "ref_ppl": ref.get("ppl") if ref else None,
-               "gpu": ((r or {}).get("metadata") or {}).get("gpu"), "dtype": (r or {}).get("dtype")}
+               "gpu": ((r or {}).get("metadata") or {}).get("gpu"), "dtype": (r or {}).get("dtype"),
+               "gpu_unit": next((x for x in str(((r or {}).get("metadata") or {}).get("nvidia_smi") or "").split(", ") if x.startswith("GPU-")), None)}
         row["rel_delta_pct"] = 100 * (ppl / row["ref_ppl"] - 1) if finite(ppl) and finite(row["ref_ppl"]) else None
         if r is None:
             missing.add("REPRO (hardware/precision)", sid, "planned unit not available yet")
