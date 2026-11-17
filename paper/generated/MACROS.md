@@ -2731,6 +2731,8 @@ Columns:
 | `\resMcNemarSigFavourQP` | `5` | cells where P->Q vs Q->P has p < 0.05 and Q->P is right on more items (b_only > a_only) | reports/analysis/e1_mcnemar.csv (task pooled9, seed 0; extra_orders.mcnemar) |
 | `\resHwDeltaSmolSmallSFiftyBFourPQPct` | `\ensuremath{+4.6}` | R27: SmolLM2-135M 50%+4 P->Q: 100(ppl REPRO16 / ppl results_full (16-bit, T4) - 1) | reports/analysis/repro_hardware.csv (`SmolLM2-135M__p_then_q__s0.5000__b4__seed0__float16`) |
 | `\resHwDeltaSmolSmallQuantBFourPct` | `\ensuremath{+1.5}` | R27: SmolLM2-135M 4-bit: 100(ppl REPRO16 / ppl results_full (16-bit, T4) - 1) | reports/analysis/repro_hardware.csv (`SmolLM2-135M__quant__s0.0000__b4__seed0__float16`) |
+| `\resRerunStates` | `4` | states run a second time (DET, REPRO32) whose state_id is also in the study families | results/v2/DET, results/v2/REPRO32 |
+| `\resRerunIdentical` | `4` | of those, runs that reproduce the study line exactly (DET: nll_sum and every layer error; REPRO32: WikiText-2 ppl to the last bit) | results/v2/DET, results/v2/REPRO32 against the line with the same state_id |
 | `\resReproThirtyTwoMaxAbsPct` | `0.4` | R28: largest |100(ppl REPRO32 / ppl results_fix - 1)| over the 3 planned REPRO32 states (-- until all exist) | reports/analysis/repro_hardware.csv |
 | `\resSeedBestStable` | `3` | R30: SmolLM2-360M, 4-bit cells whose best order by WikiText-2 ppl is the same for every seed | reports/analysis/seed_order_stability.csv (SmolLM2-360M, 4-bit cells; = the SmolMediumBFour variants) |
 | `\resSeedBestCells` | `3` | R30: SmolLM2-360M, 4-bit cells with every seed and order | reports/analysis/seed_order_stability.csv (SmolLM2-360M, 4-bit cells; = the SmolMediumBFour variants) |
@@ -3111,6 +3113,7 @@ Columns:
 | `\resSeedRunsQPWorstAllBFour` | `32` | every E5 model, 4-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsQPWorstAllBFourPct` | `89` | every E5 model, 4-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBestAllBFour` | `21` | every E5 model, 4-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPBestAllBFour` | `0` | every E5 model, 4-bit cells: (cell, seed) pairs where Q->P has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBeatsPQAllBFour` | `21` | every E5 model, 4-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQAllSeedsAllBFour` | `5` | every E5 model, 4-bit cells: cells where joint has a lower ppl than P->Q in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQSigAllBFour` | `7` | every E5 model, 4-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
@@ -3133,6 +3136,7 @@ Columns:
 | `\resSeedRunsQPWorstAllBThree` | `25` | every E5 model, 3-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsQPWorstAllBThreePct` | `69` | every E5 model, 3-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBestAllBThree` | `18` | every E5 model, 3-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPBestAllBThree` | `1` | every E5 model, 3-bit cells: (cell, seed) pairs where Q->P has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBeatsPQAllBThree` | `18` | every E5 model, 3-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQAllSeedsAllBThree` | `5` | every E5 model, 3-bit cells: cells where joint has a lower ppl than P->Q in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQSigAllBThree` | `2` | every E5 model, 3-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
@@ -3155,6 +3159,7 @@ Columns:
 | `\resSeedRunsQPWorstAllBoth` | `57` | every E5 model, 4- and 3-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsQPWorstAllBothPct` | `79` | every E5 model, 4- and 3-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBestAllBoth` | `39` | every E5 model, 4- and 3-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPBestAllBoth` | `1` | every E5 model, 4- and 3-bit cells: (cell, seed) pairs where Q->P has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBeatsPQAllBoth` | `39` | every E5 model, 4- and 3-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQAllSeedsAllBoth` | `10` | every E5 model, 4- and 3-bit cells: cells where joint has a lower ppl than P->Q in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQSigAllBoth` | `9` | every E5 model, 4- and 3-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
@@ -3177,6 +3182,7 @@ Columns:
 | `\resSeedRunsQPWorstCoreBFour` | `26` | the three small models, 4-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsQPWorstCoreBFourPct` | `96` | the three small models, 4-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBestCoreBFour` | `18` | the three small models, 4-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPBestCoreBFour` | `0` | the three small models, 4-bit cells: (cell, seed) pairs where Q->P has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBeatsPQCoreBFour` | `18` | the three small models, 4-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQAllSeedsCoreBFour` | `5` | the three small models, 4-bit cells: cells where joint has a lower ppl than P->Q in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQSigCoreBFour` | `6` | the three small models, 4-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
@@ -3199,6 +3205,7 @@ Columns:
 | `\resSeedRunsQPWorstCoreBThree` | `21` | the three small models, 3-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsQPWorstCoreBThreePct` | `78` | the three small models, 3-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBestCoreBThree` | `17` | the three small models, 3-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPBestCoreBThree` | `1` | the three small models, 3-bit cells: (cell, seed) pairs where Q->P has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBeatsPQCoreBThree` | `17` | the three small models, 3-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQAllSeedsCoreBThree` | `5` | the three small models, 3-bit cells: cells where joint has a lower ppl than P->Q in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQSigCoreBThree` | `1` | the three small models, 3-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
@@ -3221,6 +3228,7 @@ Columns:
 | `\resSeedRunsQPWorstCoreBoth` | `47` | the three small models, 4- and 3-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsQPWorstCoreBothPct` | `87` | the three small models, 4- and 3-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBestCoreBoth` | `35` | the three small models, 4- and 3-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPBestCoreBoth` | `1` | the three small models, 4- and 3-bit cells: (cell, seed) pairs where Q->P has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBeatsPQCoreBoth` | `35` | the three small models, 4- and 3-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQAllSeedsCoreBoth` | `10` | the three small models, 4- and 3-bit cells: cells where joint has a lower ppl than P->Q in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQSigCoreBoth` | `7` | the three small models, 4- and 3-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
@@ -3243,6 +3251,7 @@ Columns:
 | `\resSeedRunsQPWorstSmolSmallBFour` | `9` | SmolLM2-135M, 4-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsQPWorstSmolSmallBFourPct` | `100` | SmolLM2-135M, 4-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBestSmolSmallBFour` | `1` | SmolLM2-135M, 4-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPBestSmolSmallBFour` | `0` | SmolLM2-135M, 4-bit cells: (cell, seed) pairs where Q->P has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBeatsPQSmolSmallBFour` | `1` | SmolLM2-135M, 4-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQAllSeedsSmolSmallBFour` | `0` | SmolLM2-135M, 4-bit cells: cells where joint has a lower ppl than P->Q in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQSigSmolSmallBFour` | `2` | SmolLM2-135M, 4-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
@@ -3265,6 +3274,7 @@ Columns:
 | `\resSeedRunsQPWorstSmolSmallBThree` | `6` | SmolLM2-135M, 3-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsQPWorstSmolSmallBThreePct` | `67` | SmolLM2-135M, 3-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBestSmolSmallBThree` | `0` | SmolLM2-135M, 3-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPBestSmolSmallBThree` | `0` | SmolLM2-135M, 3-bit cells: (cell, seed) pairs where Q->P has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBeatsPQSmolSmallBThree` | `0` | SmolLM2-135M, 3-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQAllSeedsSmolSmallBThree` | `0` | SmolLM2-135M, 3-bit cells: cells where joint has a lower ppl than P->Q in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQSigSmolSmallBThree` | `0` | SmolLM2-135M, 3-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
@@ -3287,6 +3297,7 @@ Columns:
 | `\resSeedRunsQPWorstSmolSmallBoth` | `15` | SmolLM2-135M, 4- and 3-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsQPWorstSmolSmallBothPct` | `83` | SmolLM2-135M, 4- and 3-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBestSmolSmallBoth` | `1` | SmolLM2-135M, 4- and 3-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPBestSmolSmallBoth` | `0` | SmolLM2-135M, 4- and 3-bit cells: (cell, seed) pairs where Q->P has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBeatsPQSmolSmallBoth` | `1` | SmolLM2-135M, 4- and 3-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQAllSeedsSmolSmallBoth` | `0` | SmolLM2-135M, 4- and 3-bit cells: cells where joint has a lower ppl than P->Q in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQSigSmolSmallBoth` | `2` | SmolLM2-135M, 4- and 3-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
@@ -3309,6 +3320,7 @@ Columns:
 | `\resSeedRunsQPWorstSmolMediumBFour` | `9` | SmolLM2-360M, 4-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsQPWorstSmolMediumBFourPct` | `100` | SmolLM2-360M, 4-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBestSmolMediumBFour` | `9` | SmolLM2-360M, 4-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPBestSmolMediumBFour` | `0` | SmolLM2-360M, 4-bit cells: (cell, seed) pairs where Q->P has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBeatsPQSmolMediumBFour` | `9` | SmolLM2-360M, 4-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQAllSeedsSmolMediumBFour` | `3` | SmolLM2-360M, 4-bit cells: cells where joint has a lower ppl than P->Q in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQSigSmolMediumBFour` | `3` | SmolLM2-360M, 4-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
@@ -3331,6 +3343,7 @@ Columns:
 | `\resSeedRunsQPWorstSmolMediumBThree` | `9` | SmolLM2-360M, 3-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsQPWorstSmolMediumBThreePct` | `100` | SmolLM2-360M, 3-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBestSmolMediumBThree` | `9` | SmolLM2-360M, 3-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPBestSmolMediumBThree` | `0` | SmolLM2-360M, 3-bit cells: (cell, seed) pairs where Q->P has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBeatsPQSmolMediumBThree` | `9` | SmolLM2-360M, 3-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQAllSeedsSmolMediumBThree` | `3` | SmolLM2-360M, 3-bit cells: cells where joint has a lower ppl than P->Q in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQSigSmolMediumBThree` | `1` | SmolLM2-360M, 3-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
@@ -3353,6 +3366,7 @@ Columns:
 | `\resSeedRunsQPWorstSmolMediumBoth` | `18` | SmolLM2-360M, 4- and 3-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsQPWorstSmolMediumBothPct` | `100` | SmolLM2-360M, 4- and 3-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBestSmolMediumBoth` | `18` | SmolLM2-360M, 4- and 3-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPBestSmolMediumBoth` | `0` | SmolLM2-360M, 4- and 3-bit cells: (cell, seed) pairs where Q->P has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBeatsPQSmolMediumBoth` | `18` | SmolLM2-360M, 4- and 3-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQAllSeedsSmolMediumBoth` | `6` | SmolLM2-360M, 4- and 3-bit cells: cells where joint has a lower ppl than P->Q in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQSigSmolMediumBoth` | `4` | SmolLM2-360M, 4- and 3-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
@@ -3375,6 +3389,7 @@ Columns:
 | `\resSeedRunsQPWorstQwenBFour` | `8` | Qwen2.5-0.5B, 4-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsQPWorstQwenBFourPct` | `89` | Qwen2.5-0.5B, 4-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBestQwenBFour` | `8` | Qwen2.5-0.5B, 4-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPBestQwenBFour` | `0` | Qwen2.5-0.5B, 4-bit cells: (cell, seed) pairs where Q->P has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBeatsPQQwenBFour` | `8` | Qwen2.5-0.5B, 4-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQAllSeedsQwenBFour` | `2` | Qwen2.5-0.5B, 4-bit cells: cells where joint has a lower ppl than P->Q in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQSigQwenBFour` | `1` | Qwen2.5-0.5B, 4-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
@@ -3397,6 +3412,7 @@ Columns:
 | `\resSeedRunsQPWorstQwenBThree` | `6` | Qwen2.5-0.5B, 3-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsQPWorstQwenBThreePct` | `67` | Qwen2.5-0.5B, 3-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBestQwenBThree` | `8` | Qwen2.5-0.5B, 3-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPBestQwenBThree` | `1` | Qwen2.5-0.5B, 3-bit cells: (cell, seed) pairs where Q->P has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBeatsPQQwenBThree` | `8` | Qwen2.5-0.5B, 3-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQAllSeedsQwenBThree` | `2` | Qwen2.5-0.5B, 3-bit cells: cells where joint has a lower ppl than P->Q in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQSigQwenBThree` | `0` | Qwen2.5-0.5B, 3-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
@@ -3419,6 +3435,7 @@ Columns:
 | `\resSeedRunsQPWorstQwenBoth` | `14` | Qwen2.5-0.5B, 4- and 3-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsQPWorstQwenBothPct` | `78` | Qwen2.5-0.5B, 4- and 3-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBestQwenBoth` | `16` | Qwen2.5-0.5B, 4- and 3-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPBestQwenBoth` | `1` | Qwen2.5-0.5B, 4- and 3-bit cells: (cell, seed) pairs where Q->P has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBeatsPQQwenBoth` | `16` | Qwen2.5-0.5B, 4- and 3-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQAllSeedsQwenBoth` | `4` | Qwen2.5-0.5B, 4- and 3-bit cells: cells where joint has a lower ppl than P->Q in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQSigQwenBoth` | `1` | Qwen2.5-0.5B, 4- and 3-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
@@ -3441,6 +3458,7 @@ Columns:
 | `\resSeedRunsQPWorstQwenMidBFour` | `6` | Qwen2.5-1.5B, 4-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsQPWorstQwenMidBFourPct` | `67` | Qwen2.5-1.5B, 4-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBestQwenMidBFour` | `3` | Qwen2.5-1.5B, 4-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPBestQwenMidBFour` | `0` | Qwen2.5-1.5B, 4-bit cells: (cell, seed) pairs where Q->P has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBeatsPQQwenMidBFour` | `3` | Qwen2.5-1.5B, 4-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQAllSeedsQwenMidBFour` | `0` | Qwen2.5-1.5B, 4-bit cells: cells where joint has a lower ppl than P->Q in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQSigQwenMidBFour` | `1` | Qwen2.5-1.5B, 4-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
@@ -3463,6 +3481,7 @@ Columns:
 | `\resSeedRunsQPWorstQwenMidBThree` | `4` | Qwen2.5-1.5B, 3-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsQPWorstQwenMidBThreePct` | `44` | Qwen2.5-1.5B, 3-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBestQwenMidBThree` | `1` | Qwen2.5-1.5B, 3-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPBestQwenMidBThree` | `0` | Qwen2.5-1.5B, 3-bit cells: (cell, seed) pairs where Q->P has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBeatsPQQwenMidBThree` | `1` | Qwen2.5-1.5B, 3-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQAllSeedsQwenMidBThree` | `0` | Qwen2.5-1.5B, 3-bit cells: cells where joint has a lower ppl than P->Q in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQSigQwenMidBThree` | `1` | Qwen2.5-1.5B, 3-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
@@ -3485,6 +3504,7 @@ Columns:
 | `\resSeedRunsQPWorstQwenMidBoth` | `10` | Qwen2.5-1.5B, 4- and 3-bit cells: (cell, seed) pairs where Q->P is strictly the worst order | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsQPWorstQwenMidBothPct` | `56` | Qwen2.5-1.5B, 4- and 3-bit cells: share of (cell, seed) pairs where Q->P is strictly the worst order (%) | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBestQwenMidBoth` | `4` | Qwen2.5-1.5B, 4- and 3-bit cells: (cell, seed) pairs where joint has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
+| `\resSeedRunsQPBestQwenMidBoth` | `0` | Qwen2.5-1.5B, 4- and 3-bit cells: (cell, seed) pairs where Q->P has the lowest WikiText-2 ppl | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedRunsJointBeatsPQQwenMidBoth` | `4` | Qwen2.5-1.5B, 4- and 3-bit cells: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQAllSeedsQwenMidBoth` | `0` | Qwen2.5-1.5B, 4- and 3-bit cells: cells where joint has a lower ppl than P->Q in every seed | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
 | `\resSeedPairJointPQSigQwenMidBoth` | `2` | Qwen2.5-1.5B, 4- and 3-bit cells: cells where the paired t-test over seeds (log ppl, joint vs P->Q) gives p < 0.05 | reports/analysis/seed_overview.csv (complete cells: every seed has the three orders) |
@@ -4217,10 +4237,13 @@ Columns:
 |---|---|---|---|
 | `\resQTwoCellsPplCore` | `18` | Core: grid cells with the three orders ranked by wt_ppl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resQTwoQPWorstPplCore` | `16` | Core: of those, cells where Q->P is strictly worst (wt_ppl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPBestPplCore` | `0` | Core: of those, cells where Q->P is the best of the three orders (wt_ppl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resQTwoCellsKlCore` | `18` | Core: grid cells with the three orders ranked by wt_kl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resQTwoQPWorstKlCore` | `16` | Core: of those, cells where Q->P is strictly worst (wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPBestKlCore` | `0` | Core: of those, cells where Q->P is the best of the three orders (wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resQTwoCellsPplCFourCore` | `18` | Core: grid cells with the three orders ranked by c4_ppl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resQTwoQPWorstPplCFourCore` | `15` | Core: of those, cells where Q->P is strictly worst (c4_ppl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPBestPplCFourCore` | `0` | Core: of those, cells where Q->P is the best of the three orders (c4_ppl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resQTwoModelsCore` | `3` | Core: models with at least one ranked grid cell | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resQTwoModelsFullCore` | `3` | Core: models with all six grid cells ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resQTwoMaxRatioCore` | `1.77` | Core: largest worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
@@ -4228,10 +4251,13 @@ Columns:
 | `\resQTwoMaxRatioQPCore` | `1.77` | Core: largest worst/best WikiText-2 ppl ratio among the cells where Q->P is strictly worst (= Q->P / best) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resQTwoCellsPplLarger` | `24` | Larger: grid cells with the three orders ranked by wt_ppl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resQTwoQPWorstPplLarger` | `19` | Larger: of those, cells where Q->P is strictly worst (wt_ppl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPBestPplLarger` | `1` | Larger: of those, cells where Q->P is the best of the three orders (wt_ppl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resQTwoCellsKlLarger` | `18` | Larger: grid cells with the three orders ranked by wt_kl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resQTwoQPWorstKlLarger` | `14` | Larger: of those, cells where Q->P is strictly worst (wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPBestKlLarger` | `1` | Larger: of those, cells where Q->P is the best of the three orders (wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resQTwoCellsPplCFourLarger` | `24` | Larger: grid cells with the three orders ranked by c4_ppl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resQTwoQPWorstPplCFourLarger` | `20` | Larger: of those, cells where Q->P is strictly worst (c4_ppl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPBestPplCFourLarger` | `2` | Larger: of those, cells where Q->P is the best of the three orders (c4_ppl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resQTwoModelsLarger` | `4` | Larger: models with at least one ranked grid cell | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resQTwoModelsFullLarger` | `4` | Larger: models with all six grid cells ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resQTwoMaxRatioLarger` | `1.36` | Larger: largest worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
@@ -4239,10 +4265,13 @@ Columns:
 | `\resQTwoMaxRatioQPLarger` | `1.36` | Larger: largest worst/best WikiText-2 ppl ratio among the cells where Q->P is strictly worst (= Q->P / best) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resQTwoCellsPplAllModels` | `42` | AllModels: grid cells with the three orders ranked by wt_ppl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resQTwoQPWorstPplAllModels` | `35` | AllModels: of those, cells where Q->P is strictly worst (wt_ppl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPBestPplAllModels` | `1` | AllModels: of those, cells where Q->P is the best of the three orders (wt_ppl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resQTwoCellsKlAllModels` | `36` | AllModels: grid cells with the three orders ranked by wt_kl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resQTwoQPWorstKlAllModels` | `30` | AllModels: of those, cells where Q->P is strictly worst (wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPBestKlAllModels` | `1` | AllModels: of those, cells where Q->P is the best of the three orders (wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resQTwoCellsPplCFourAllModels` | `42` | AllModels: grid cells with the three orders ranked by c4_ppl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resQTwoQPWorstPplCFourAllModels` | `35` | AllModels: of those, cells where Q->P is strictly worst (c4_ppl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resQTwoQPBestPplCFourAllModels` | `2` | AllModels: of those, cells where Q->P is the best of the three orders (c4_ppl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resQTwoModelsAllModels` | `7` | AllModels: models with at least one ranked grid cell | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resQTwoModelsFullAllModels` | `7` | AllModels: models with all six grid cells ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resQTwoMaxRatioAllModels` | `1.77` | AllModels: largest worst/best WikiText-2 ppl ratio | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
@@ -4477,6 +4506,9 @@ Columns:
 | `\resESevenKimPredQPWorstKlCore` | `4` | Core: of those, Q->P strictly worst (wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPBestKlCore` | `0` | Core: of those, Q->P best of the three (wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPMinSparsityPctCore` | `33` | Core: smallest sparsity among the cells where the rule (by WikiText-2 ppl) recommends Q->P (%) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resESevenKimPredQPPplWithSrExtCore` | `4` | Core: cells where the rule (by WikiText-2 ppl) recommends Q->P and the three orders are ranked by nine-task accuracy | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resESevenKimPredQPPplBestSrExtCore` | `3` | Core: of those, Q->P best of the three by nine-task accuracy | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resESevenKimPredQPPplBestSrPaperCore` | `0` | Core: of those, Q->P best of the three by three-task accuracy | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPCellsSrExtCore` | `4` | Core: cells where the rule (by nine-task accuracy, sr9_v2) recommends Q->P and the three orders are ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPBestSrExtCore` | `3` | Core: of those, Q->P best of the three by nine-task accuracy | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPCellsPplLarger` | `10` | Larger: cells where the rule recommends Q->P and the three orders are ranked by wt_ppl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
@@ -4486,6 +4518,9 @@ Columns:
 | `\resESevenKimPredQPWorstKlLarger` | `6` | Larger: of those, Q->P strictly worst (wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPBestKlLarger` | `0` | Larger: of those, Q->P best of the three (wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPMinSparsityPctLarger` | `33` | Larger: smallest sparsity among the cells where the rule (by WikiText-2 ppl) recommends Q->P (%) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resESevenKimPredQPPplWithSrExtLarger` | `1` | Larger: cells where the rule (by WikiText-2 ppl) recommends Q->P and the three orders are ranked by nine-task accuracy | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resESevenKimPredQPPplBestSrExtLarger` | `0` | Larger: of those, Q->P best of the three by nine-task accuracy | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resESevenKimPredQPPplBestSrPaperLarger` | `0` | Larger: of those, Q->P best of the three by three-task accuracy | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPCellsSrExtLarger` | `1` | Larger: cells where the rule (by nine-task accuracy, sr9_v2) recommends Q->P and the three orders are ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPBestSrExtLarger` | `0` | Larger: of those, Q->P best of the three by nine-task accuracy | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPCellsPplAllModels` | `14` | AllModels: cells where the rule recommends Q->P and the three orders are ranked by wt_ppl | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
@@ -4495,6 +4530,9 @@ Columns:
 | `\resESevenKimPredQPWorstKlAllModels` | `10` | AllModels: of those, Q->P strictly worst (wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPBestKlAllModels` | `0` | AllModels: of those, Q->P best of the three (wt_kl) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPMinSparsityPctAllModels` | `33` | AllModels: smallest sparsity among the cells where the rule (by WikiText-2 ppl) recommends Q->P (%) | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resESevenKimPredQPPplWithSrExtAllModels` | `5` | AllModels: cells where the rule (by WikiText-2 ppl) recommends Q->P and the three orders are ranked by nine-task accuracy | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resESevenKimPredQPPplBestSrExtAllModels` | `3` | AllModels: of those, Q->P best of the three by nine-task accuracy | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
+| `\resESevenKimPredQPPplBestSrPaperAllModels` | `0` | AllModels: of those, Q->P best of the three by three-task accuracy | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPCellsSrExtAllModels` | `5` | AllModels: cells where the rule (by nine-task accuracy, sr9_v2) recommends Q->P and the three orders are ranked | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 | `\resESevenKimPredQPBestSrExtAllModels` | `3` | AllModels: of those, Q->P best of the three by nine-task accuracy | reports/analysis/q2_order_ranking.csv and reports/analysis/e7_kim.csv (scripts/analysis/latex.py) |
 
@@ -4510,6 +4548,7 @@ Columns:
 | `\resISrPaperLoMinCoreSTwentyFiveBFourPQ` | `\ensuremath{-0.003}` | Core, P->Q 25%+4: lowest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
 | `\resISrPaperHiMaxCoreSTwentyFiveBFourPQ` | `\ensuremath{+0.030}` | Core, P->Q 25%+4: highest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
 | `\resISrPaperZeroInCoreSTwentyFiveBFourPQ` | `1` | Core, P->Q 25%+4: models whose 95% interval contains 0 | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperExclZeroCoreSTwentyFiveBFourPQ` | `2` | Core, P->Q 25%+4: models whose 95% interval excludes 0 | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
 | `\resISrPaperPmMaxCoreSTwentyFiveBFourPQ` | `0.014` | Core, P->Q 25%+4: largest half-width of the 95% intervals | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
 | `\resISrPaperAsymMaxCoreSTwentyFiveBFourPQ` | `0.000` | Core, P->Q 25%+4: largest asymmetry |(hi - I_Sr) - (I_Sr - lo)| of the 95% intervals | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
 | `\resISrPaperNLargerSTwentyFiveBFourPQ` | `3` | Larger, P->Q 25%+4: models with I_Sr and its interval | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
@@ -4520,6 +4559,7 @@ Columns:
 | `\resISrPaperLoMinLargerSTwentyFiveBFourPQ` | `\ensuremath{-0.013}` | Larger, P->Q 25%+4: lowest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
 | `\resISrPaperHiMaxLargerSTwentyFiveBFourPQ` | `\ensuremath{+0.016}` | Larger, P->Q 25%+4: highest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
 | `\resISrPaperZeroInLargerSTwentyFiveBFourPQ` | `3` | Larger, P->Q 25%+4: models whose 95% interval contains 0 | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperExclZeroLargerSTwentyFiveBFourPQ` | `0` | Larger, P->Q 25%+4: models whose 95% interval excludes 0 | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
 | `\resISrPaperPmMaxLargerSTwentyFiveBFourPQ` | `0.009` | Larger, P->Q 25%+4: largest half-width of the 95% intervals | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
 | `\resISrPaperAsymMaxLargerSTwentyFiveBFourPQ` | `0.000` | Larger, P->Q 25%+4: largest asymmetry |(hi - I_Sr) - (I_Sr - lo)| of the 95% intervals | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
 | `\resISrPaperNAllModelsSTwentyFiveBFourPQ` | `6` | AllModels, P->Q 25%+4: models with I_Sr and its interval | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
@@ -4530,6 +4570,7 @@ Columns:
 | `\resISrPaperLoMinAllModelsSTwentyFiveBFourPQ` | `\ensuremath{-0.013}` | AllModels, P->Q 25%+4: lowest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
 | `\resISrPaperHiMaxAllModelsSTwentyFiveBFourPQ` | `\ensuremath{+0.030}` | AllModels, P->Q 25%+4: highest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
 | `\resISrPaperZeroInAllModelsSTwentyFiveBFourPQ` | `4` | AllModels, P->Q 25%+4: models whose 95% interval contains 0 | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperExclZeroAllModelsSTwentyFiveBFourPQ` | `2` | AllModels, P->Q 25%+4: models whose 95% interval excludes 0 | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
 | `\resISrPaperPmMaxAllModelsSTwentyFiveBFourPQ` | `0.014` | AllModels, P->Q 25%+4: largest half-width of the 95% intervals | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
 | `\resISrPaperAsymMaxAllModelsSTwentyFiveBFourPQ` | `0.000` | AllModels, P->Q 25%+4: largest asymmetry |(hi - I_Sr) - (I_Sr - lo)| of the 95% intervals | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
 | `\resISrPaperPmSmolSmallSTwentyFiveBFourPQ` | `0.014` | SmolLM2-135M, P->Q 25%+4: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
@@ -4546,6 +4587,7 @@ Columns:
 | `\resISrPaperLoMinCoreSThirtyThreeBThreePQ` | `\ensuremath{-0.003}` | Core, P->Q 33%+3: lowest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
 | `\resISrPaperHiMaxCoreSThirtyThreeBThreePQ` | `\ensuremath{+0.077}` | Core, P->Q 33%+3: highest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
 | `\resISrPaperZeroInCoreSThirtyThreeBThreePQ` | `1` | Core, P->Q 33%+3: models whose 95% interval contains 0 | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperExclZeroCoreSThirtyThreeBThreePQ` | `2` | Core, P->Q 33%+3: models whose 95% interval excludes 0 | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
 | `\resISrPaperPmMaxCoreSThirtyThreeBThreePQ` | `0.018` | Core, P->Q 33%+3: largest half-width of the 95% intervals | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
 | `\resISrPaperAsymMaxCoreSThirtyThreeBThreePQ` | `0.000` | Core, P->Q 33%+3: largest asymmetry |(hi - I_Sr) - (I_Sr - lo)| of the 95% intervals | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
 | `\resISrPaperNLargerSThirtyThreeBThreePQ` | `3` | Larger, P->Q 33%+3: models with I_Sr and its interval | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
@@ -4556,6 +4598,7 @@ Columns:
 | `\resISrPaperLoMinLargerSThirtyThreeBThreePQ` | `\ensuremath{-0.000}` | Larger, P->Q 33%+3: lowest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
 | `\resISrPaperHiMaxLargerSThirtyThreeBThreePQ` | `\ensuremath{+0.042}` | Larger, P->Q 33%+3: highest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
 | `\resISrPaperZeroInLargerSThirtyThreeBThreePQ` | `1` | Larger, P->Q 33%+3: models whose 95% interval contains 0 | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperExclZeroLargerSThirtyThreeBThreePQ` | `2` | Larger, P->Q 33%+3: models whose 95% interval excludes 0 | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
 | `\resISrPaperPmMaxLargerSThirtyThreeBThreePQ` | `0.013` | Larger, P->Q 33%+3: largest half-width of the 95% intervals | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
 | `\resISrPaperAsymMaxLargerSThirtyThreeBThreePQ` | `0.000` | Larger, P->Q 33%+3: largest asymmetry |(hi - I_Sr) - (I_Sr - lo)| of the 95% intervals | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
 | `\resISrPaperNAllModelsSThirtyThreeBThreePQ` | `6` | AllModels, P->Q 33%+3: models with I_Sr and its interval | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
@@ -4566,6 +4609,7 @@ Columns:
 | `\resISrPaperLoMinAllModelsSThirtyThreeBThreePQ` | `\ensuremath{-0.003}` | AllModels, P->Q 33%+3: lowest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
 | `\resISrPaperHiMaxAllModelsSThirtyThreeBThreePQ` | `\ensuremath{+0.077}` | AllModels, P->Q 33%+3: highest interval end | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
 | `\resISrPaperZeroInAllModelsSThirtyThreeBThreePQ` | `2` | AllModels, P->Q 33%+3: models whose 95% interval contains 0 | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
+| `\resISrPaperExclZeroAllModelsSThirtyThreeBThreePQ` | `4` | AllModels, P->Q 33%+3: models whose 95% interval excludes 0 | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
 | `\resISrPaperPmMaxAllModelsSThirtyThreeBThreePQ` | `0.018` | AllModels, P->Q 33%+3: largest half-width of the 95% intervals | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
 | `\resISrPaperAsymMaxAllModelsSThirtyThreeBThreePQ` | `0.000` | AllModels, P->Q 33%+3: largest asymmetry |(hi - I_Sr) - (I_Sr - lo)| of the 95% intervals | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
 | `\resISrPaperPmSmolSmallSThirtyThreeBThreePQ` | `0.018` | SmolLM2-135M, P->Q 33%+3: half-width (hi - lo) / 2 of the 95% interval of I_Sr | reports/analysis/e1_sr.csv (I_Sr per state; paired bootstrap over items) |
@@ -8337,6 +8381,7 @@ Columns:
 | `\resSeedRunsQPWorstQwenTwoFiveOneFiveBBFour` | `6` | = `\resSeedRunsQPWorstQwenMidBFour` | see that macro |
 | `\resSeedRunsQPWorstQwenTwoFiveOneFiveBBFourPct` | `67` | = `\resSeedRunsQPWorstQwenMidBFourPct` | see that macro |
 | `\resSeedRunsJointBestQwenTwoFiveOneFiveBBFour` | `3` | = `\resSeedRunsJointBestQwenMidBFour` | see that macro |
+| `\resSeedRunsQPBestQwenTwoFiveOneFiveBBFour` | `0` | = `\resSeedRunsQPBestQwenMidBFour` | see that macro |
 | `\resSeedRunsJointBeatsPQQwenTwoFiveOneFiveBBFour` | `3` | = `\resSeedRunsJointBeatsPQQwenMidBFour` | see that macro |
 | `\resSeedPairJointPQAllSeedsQwenTwoFiveOneFiveBBFour` | `0` | = `\resSeedPairJointPQAllSeedsQwenMidBFour` | see that macro |
 | `\resSeedPairJointPQSigQwenTwoFiveOneFiveBBFour` | `1` | = `\resSeedPairJointPQSigQwenMidBFour` | see that macro |
@@ -8359,6 +8404,7 @@ Columns:
 | `\resSeedRunsQPWorstQwenTwoFiveOneFiveBBThree` | `4` | = `\resSeedRunsQPWorstQwenMidBThree` | see that macro |
 | `\resSeedRunsQPWorstQwenTwoFiveOneFiveBBThreePct` | `44` | = `\resSeedRunsQPWorstQwenMidBThreePct` | see that macro |
 | `\resSeedRunsJointBestQwenTwoFiveOneFiveBBThree` | `1` | = `\resSeedRunsJointBestQwenMidBThree` | see that macro |
+| `\resSeedRunsQPBestQwenTwoFiveOneFiveBBThree` | `0` | = `\resSeedRunsQPBestQwenMidBThree` | see that macro |
 | `\resSeedRunsJointBeatsPQQwenTwoFiveOneFiveBBThree` | `1` | = `\resSeedRunsJointBeatsPQQwenMidBThree` | see that macro |
 | `\resSeedPairJointPQAllSeedsQwenTwoFiveOneFiveBBThree` | `0` | = `\resSeedPairJointPQAllSeedsQwenMidBThree` | see that macro |
 | `\resSeedPairJointPQSigQwenTwoFiveOneFiveBBThree` | `1` | = `\resSeedPairJointPQSigQwenMidBThree` | see that macro |
@@ -8381,6 +8427,7 @@ Columns:
 | `\resSeedRunsQPWorstQwenTwoFiveOneFiveBBoth` | `10` | = `\resSeedRunsQPWorstQwenMidBoth` | see that macro |
 | `\resSeedRunsQPWorstQwenTwoFiveOneFiveBBothPct` | `56` | = `\resSeedRunsQPWorstQwenMidBothPct` | see that macro |
 | `\resSeedRunsJointBestQwenTwoFiveOneFiveBBoth` | `4` | = `\resSeedRunsJointBestQwenMidBoth` | see that macro |
+| `\resSeedRunsQPBestQwenTwoFiveOneFiveBBoth` | `0` | = `\resSeedRunsQPBestQwenMidBoth` | see that macro |
 | `\resSeedRunsJointBeatsPQQwenTwoFiveOneFiveBBoth` | `4` | = `\resSeedRunsJointBeatsPQQwenMidBoth` | see that macro |
 | `\resSeedPairJointPQAllSeedsQwenTwoFiveOneFiveBBoth` | `0` | = `\resSeedPairJointPQAllSeedsQwenMidBoth` | see that macro |
 | `\resSeedPairJointPQSigQwenTwoFiveOneFiveBBoth` | `2` | = `\resSeedPairJointPQSigQwenMidBoth` | see that macro |

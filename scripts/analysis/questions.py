@@ -517,7 +517,7 @@ def seed_pairs(store, bits=SEED_BITS):
                     wo = "q_then_p" if qw else max(PAPER_ORDERS, key=lambda o: (v[o], -PAPER_ORDERS.index(o)))
                     cell_best.append({"model": m, "bits": b, "cell": cell_label(s, b), "seed": sd, "best": bo, "worst": wo,
                                       "joint_best": bo == "joint", "joint_beats_pq": v["joint"] < v["p_then_q"],
-                                      "qp_worst": qw, "e5_cell": (s, b) in e5})
+                                      "qp_worst": qw, "qp_best": bo == "q_then_p", "e5_cell": (s, b) in e5})
             for x in cell_best:
                 x["cell_complete"] = len(cell_best) == len(seeds)
             best += cell_best
@@ -588,6 +588,7 @@ def seed_overview(store, stability, pairs, best, e1_seeds):
                    "qp_worst_all_seeds": sum(r["qp_worst_all_seeds"] for r in S_), "runs": len(runs),
                    "runs_qp_worst": sum(r["qp_worst"] for r in runs), "runs_joint_best": sum(r["joint_best"] for r in runs),
                    "runs_joint_beats_pq": sum(r["joint_beats_pq"] for r in runs),
+                   "runs_qp_best": sum(r["qp_best"] for r in runs),
                    "models_complete": " ".join(x for x in seed_models(store) if any(r["model"] == x for r in S_))}
             for a, c in SEED_PAIRS:
                 rr = [r for r in pairs if ok(r) and r["order_a"] == a and r["order_b"] == c and r["complete"]]

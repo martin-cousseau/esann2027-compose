@@ -635,7 +635,7 @@ def _n(v):
     return str(v) if v is not None else "--"
 
 
-def macros_requests(M, store, e1, q, fr, e2res, repro):
+def macros_requests(M, store, e1, q, fr, e2res, repro, det=()):
     """Macros requested by paper/main.tex (reports/latex_macro_requests.md, R1-R31), under the exact names."""
     sec = "Requested by paper/main.tex (reports/latex_macro_requests.md, R1-R31)"
     add = lambda name, val, what, src: M.add(sec, name, val, what, src)  # noqa: E731
@@ -742,6 +742,16 @@ def macros_requests(M, store, e1, q, fr, e2res, repro):
             f"R27: {r['model']} {store.label(r['state_id'].replace('__float16', '__float32'))}: 100(ppl REPRO16 / ppl {r['reference']} - 1)",
             src + f" (`{r['state_id']}`)")
     r32 = [x for x in repro if x["family"] == "REPRO32"]
+    same = [d.get("status") == "identical" for d in det if d.get("status") in ("identical", "differs")]
+    for x in r32:   # the same state_id run again in the REPRO32 family: equal WikiText-2 perplexity to the last bit?
+        e = store.states.get(x["state_id"])
+        if e is not None and finite(x.get("ppl")):
+            same.append((e.get("wikitext2") or {}).get("ppl") == x["ppl"])
+    add("RerunStates", _n(len(same)) if same else "--",
+        "states run a second time (DET, REPRO32) whose state_id is also in the study families", "results/v2/DET, results/v2/REPRO32")
+    add("RerunIdentical", _n(sum(same)) if same else "--",
+        "of those, runs that reproduce the study line exactly (DET: nll_sum and every layer error; REPRO32: WikiText-2 ppl to the last bit)",
+        "results/v2/DET, results/v2/REPRO32 against the line with the same state_id")
     ok = r32 and all(finite(x["rel_delta_pct"]) for x in r32)
     add("ReproThirtyTwoMaxAbsPct", num(max(abs(x["rel_delta_pct"]) for x in r32), 1) if ok else "--",
         f"R28: largest |100(ppl REPRO32 / ppl results_fix - 1)| over the {len(r32)} planned REPRO32 states (-- until all exist)", src)
@@ -836,6 +846,8 @@ def macros_e5(M, store, q):
               f"{lab}: share of (cell, seed) pairs where Q->P is strictly the worst order (%)", src)
         M.add(sec, f"SeedRunsJointBest{sfx}", _n(row["runs_joint_best"]) if runs else "--",
               f"{lab}: (cell, seed) pairs where joint has the lowest WikiText-2 ppl", src)
+        M.add(sec, f"SeedRunsQPBest{sfx}", _n(row["runs_qp_best"]) if runs else "--",
+              f"{lab}: (cell, seed) pairs where Q->P has the lowest WikiText-2 ppl", src)
         M.add(sec, f"SeedRunsJointBeatsPQ{sfx}", _n(row["runs_joint_beats_pq"]) if runs else "--",
               f"{lab}: (cell, seed) pairs where joint has a lower WikiText-2 ppl than P->Q", src)
         for a, c in (("joint", "p_then_q"), ("joint", "q_then_p"), ("p_then_q", "q_then_p")):
@@ -1295,6 +1307,8 @@ def macros_order_all_models(M, store, q, e7res):
             worst = sum(r[f"{key}_worst"] == "q_then_p" and not r[f"{key}_tie_at_worst"] for r in K)
             M.add(sec, f"QTwoCells{tag}{g}", _n(len(K)) if K else "--", f"{g}: grid cells with the three orders ranked by {key}", src)
             M.add(sec, f"QTwoQPWorst{tag}{g}", _n(worst) if K else "--", f"{g}: of those, cells where Q->P is strictly worst ({key})", src)
+            M.add(sec, f"QTwoQPBest{tag}{g}", _n(sum(r[f"{key}_best"] == "q_then_p" for r in K)) if K else "--",
+                  f"{g}: of those, cells where Q->P is the best of the three orders ({key})", src)
         K = [r for r in R if r.get("wt_ppl_ranking")]
         models = sorted({r["model"] for r in K})
         full = [m for m in models if sum(r["model"] == m for r in K) == len(GRID_SPARSITIES) * 2]
@@ -1413,6 +1427,13 @@ def macros_order_all_models(M, store, q, e7res):
             M.add(sec, f"ESevenKimPredQPBest{tag}{g}", _n(best) if P_ else "--", f"{g}: of those, Q->P best of the three ({key})", src)
         M.add(sec, f"ESevenKimPredQPMinSparsityPct{g}", num(100 * min(float(x["sparsity"]) for x in P_), 0) if P_ else "--",
               f"{g}: smallest sparsity among the cells where the rule (by WikiText-2 ppl) recommends Q->P (%)", src)
+        N_ = [x for x in P_ if x.get("sr9_v2_ranking")]
+        M.add(sec, f"ESevenKimPredQPPplWithSrExt{g}", _n(len(N_)) if P_ else "--",
+              f"{g}: cells where the rule (by WikiText-2 ppl) recommends Q->P and the three orders are ranked by nine-task accuracy", src)
+        M.add(sec, f"ESevenKimPredQPPplBestSrExt{g}", _n(sum(x["sr9_v2_best"] == "q_then_p" for x in N_)) if P_ else "--",
+              f"{g}: of those, Q->P best of the three by nine-task accuracy", src)
+        M.add(sec, f"ESevenKimPredQPPplBestSrPaper{g}", _n(sum(x.get("sr3_paper_best") == "q_then_p" for x in N_)) if P_ else "--",
+              f"{g}: of those, Q->P best of the three by three-task accuracy", src)
         # nine-task accuracy: cells where the rule, by sr9_v2, recommends Q->P, and how often Q->P is the best of three
         predS = [r for r in e7res["kim"] if r["metric"] == "sr9_v2" and r["in_counts"] and r["seed"] == 0
                  and r["prediction"] == "q_then_p" and sel(r["model"])]
@@ -1452,6 +1473,8 @@ def macros_isr_groups(M, store, e1):
             M.add(sec, f"ISrPaperHiMax{g}{ct}PQ", signed(max(x[3] for x in V), 3) if V else "--", f"{lab}: highest interval end", src)
             M.add(sec, f"ISrPaperZeroIn{g}{ct}PQ", _n(sum(x[2] <= 0 <= x[3] for x in V)) if V else "--",
                   f"{lab}: models whose 95% interval contains 0", src)
+            M.add(sec, f"ISrPaperExclZero{g}{ct}PQ", _n(sum(not (x[2] <= 0 <= x[3]) for x in V)) if V else "--",
+                  f"{lab}: models whose 95% interval excludes 0", src)
             M.add(sec, f"ISrPaperPmMax{g}{ct}PQ", num(max((x[3] - x[2]) / 2 for x in V), 3) if V else "--",
                   f"{lab}: largest half-width of the 95% intervals", src)
             M.add(sec, f"ISrPaperAsymMax{g}{ct}PQ", num(max(abs((x[3] - x[1]) - (x[1] - x[2])) for x in V), 3) if V else "--",
@@ -1469,7 +1492,7 @@ def build_macros(store, e1, q, det, fr, e2res, boolq, missing, repro=(), e7res=N
     macros_seeds(M, store, e1)
     macros_questions(M, store, q)
     macros_misc(M, store, e1, det, fr, e2res, boolq)
-    macros_requests(M, store, e1, q, fr, e2res, repro)
+    macros_requests(M, store, e1, q, fr, e2res, repro, det=det)
     macros_e5(M, store, q)
     macros_e6(M, store, q)
     if e7res is not None:

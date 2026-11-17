@@ -2,7 +2,7 @@
 \usepackage[a4paper,landscape,margin=1.5cm]{geometry}\usepackage{booktabs,longtable}\usepackage[T1]{fontenc}
 \begin{document}\footnotesize
 \section*{Supplementary tables}
-Every number below is produced by \texttt{scripts/make\_supplement.py} from the analysis tables of \texttt{scripts/make\_tables.py} (\texttt{reports/analysis/*.csv}), which also generate every number of the paper. Seed 0, 32-bit. TCr: theoretical compression rate $1-\frac{b}{16}(1-s)$. ppl: perplexity; KL: divergence to the dense model on WikiText-2; $E$: mean normalized layer error; $I_E$: layer interaction in \% of $E_P+E_Q$ (mean over layers); Sr3: semantic retention on ARC-Easy, PIQA and HellaSwag; Sr9: on nine tasks (also ARC-Challenge, WinoGrande, OpenBookQA, BoolQ, SciQ, LAMBADA); $I_{Sr}$: Sr3 of the combination minus the product of the single methods' Sr3, with its 95\% paired-bootstrap interval. Bold: best of the three orders by WikiText-2 perplexity. CSV files with every column: \texttt{complete\_results.csv}, \texttt{task\_scores.csv}, \texttt{seeds.csv}.
+Every number below is produced by \texttt{scripts/make\_supplement.py} from the analysis tables of \texttt{scripts/make\_tables.py} (\texttt{reports/analysis/*.csv}), which also generate every number of the paper. Seed 0, 32-bit. TCr: theoretical compression rate $1-\frac{b}{16}(1-s)$. ppl: perplexity; KL: divergence to the dense model on WikiText-2; $E$: mean normalized layer error; $I_E$: layer interaction in \% of $E_P+E_Q$ (mean over layers); Sr3: semantic retention on ARC-Easy, PIQA and HellaSwag; Sr9: on nine tasks (also ARC-Challenge, WinoGrande, OpenBookQA, BoolQ, SciQ, LAMBADA); $I_{Sr}$: Sr3 of the combination minus the product of the single methods' Sr3, with its 95\% paired-bootstrap interval. Bold: best of the three orders by WikiText-2 perplexity. CSV files with every column: \texttt{complete\_results.csv}, \texttt{task\_scores.csv}, \texttt{seeds.csv}; the layer-level controls and the weaker-first test follow the per-model tables.
 \begin{longtable}{llrrrrrrrrrrl}
 \caption*{\textbf{SmolLM2-135M}: all states (from e1\_states.csv, q1\_layer\_interaction.csv, e1\_isr.csv)}\\
 \toprule order & $s$ (\%) & $b$ & TCr & WikiText-2 ppl & C4 ppl & KL & $E$ & $I_E$ (\%) & Sr3 & Sr9 & $I_{Sr}$ [95\%] \\ \midrule \endhead
@@ -363,4 +363,143 @@ P$\to$Q & 25.0 & 4 & 0.711/0.967 & 0.749/0.989 & 0.661/0.968 & 0.409/0.964 & 0.6
 P$\to$Q & 33.3 & 3 & 0.568/0.772 & 0.726/0.958 & 0.607/0.889 & 0.329/0.777 & 0.605/0.934 & 0.328/0.828 & 0.595/0.943 & 0.913/0.958 & 0.456/0.700 \\
 \bottomrule\end{longtable}
 \clearpage
+\clearpage\section*{Layer-level controls and the weaker-first test (per model and setting, seed 0)}
+Sums over the linear layers of every second or fourth decoder block. \textbf{One shared Hessian} (\texttt{layer\_ablation.csv}): every order is calibrated with the dense model's Hessian. $I_E$ in \% of $E_P+E_Q$; gap $=100\,(E_{QP}-E_{PQ})/E_{PQ}$, split exactly into three parts, each obtained by exchanging one ingredient between Q$\to$P and P$\to$Q: the mask (chosen on rounded weights instead of the pruning-only mask), the order of the compensated updates (same mask and grid, second sweep started from quantized instead of pruned weights) and the grid (fitted before pruning instead of on the kept weights).
+\begin{longtable}{lrrrrrrrrrr}
+\toprule model & $s$ (\%) & $b$ & layers & $I_E$ joint & $I_E$ P$\to$Q & $I_E$ Q$\to$P & gap & mask & update order & grid \\ \midrule \endhead
+SmolLM2-135M & 25.0 & 4 & 105 & -11.8 & -5.4 & +7.5 & +13.7 & +0.9 & +12.5 & +0.28 \\
+SmolLM2-135M & 33.3 & 4 & 105 & -10.1 & -5.1 & +9.2 & +15.1 & +2.0 & +12.8 & +0.24 \\
+SmolLM2-135M & 50.0 & 4 & 105 & -6.4 & -4.1 & +5.5 & +10.0 & +2.2 & +7.6 & +0.29 \\
+SmolLM2-135M & 25.0 & 3 & 105 & -8.8 & -4.2 & -9.8 & -5.8 & -10.4 & +4.5 & +0.12 \\
+SmolLM2-135M & 33.3 & 3 & 105 & -15.7 & -9.3 & -13.1 & -4.2 & -12.6 & +8.1 & +0.26 \\
+SmolLM2-135M & 50.0 & 3 & 105 & -18.1 & -12.2 & +4.9 & +19.5 & +7.6 & +11.6 & +0.19 \\
+SmolLM2-360M & 25.0 & 4 & 112 & -12.0 & -6.9 & +7.5 & +15.4 & -2.9 & +18.1 & +0.25 \\
+SmolLM2-360M & 33.3 & 4 & 112 & -10.3 & -5.9 & +9.2 & +16.0 & -0.6 & +16.4 & +0.21 \\
+SmolLM2-360M & 50.0 & 4 & 112 & -6.5 & -3.8 & +5.5 & +9.6 & +0.6 & +8.8 & +0.28 \\
+SmolLM2-360M & 25.0 & 3 & 112 & -9.7 & -5.8 & -9.6 & -4.1 & -13.9 & +9.8 & +0.13 \\
+SmolLM2-360M & 33.3 & 3 & 112 & -16.7 & -10.4 & -12.7 & -2.5 & -16.1 & +13.5 & +0.13 \\
+SmolLM2-360M & 50.0 & 3 & 112 & -18.8 & -12.6 & +5.1 & +20.2 & +4.8 & +15.3 & +0.08 \\
+Qwen2.5-0.5B & 25.0 & 4 & 84 & -10.3 & -5.3 & +3.0 & +8.7 & -4.7 & +13.2 & +0.23 \\
+Qwen2.5-0.5B & 33.3 & 4 & 84 & -10.3 & -5.7 & +8.0 & +14.5 & -0.8 & +15.1 & +0.27 \\
+Qwen2.5-0.5B & 50.0 & 4 & 84 & -7.2 & -4.3 & +6.4 & +11.2 & +1.1 & +9.8 & +0.36 \\
+Qwen2.5-0.5B & 25.0 & 3 & 84 & -5.9 & -2.0 & -7.0 & -5.1 & -10.7 & +5.5 & +0.11 \\
+Qwen2.5-0.5B & 33.3 & 3 & 84 & -11.5 & -5.5 & -13.0 & -7.9 & -17.3 & +9.3 & +0.08 \\
+Qwen2.5-0.5B & 50.0 & 3 & 84 & -16.7 & -9.8 & +0.8 & +11.7 & -2.2 & +14.0 & -0.06 \\
+Qwen2.5-1.5B & 25.0 & 4 & 49 & -11.6 & -5.2 & +6.6 & +12.4 & -2.9 & +15.0 & +0.27 \\
+Qwen2.5-1.5B & 33.3 & 4 & 49 & -10.4 & -5.0 & +9.7 & +15.5 & -0.2 & +15.5 & +0.17 \\
+Qwen2.5-1.5B & 50.0 & 4 & 49 & -6.6 & -3.8 & +6.2 & +10.4 & +1.1 & +9.0 & +0.37 \\
+Qwen2.5-1.5B & 25.0 & 3 & 49 & -7.7 & -2.3 & -8.6 & -6.4 & -13.6 & +6.7 & +0.44 \\
+Qwen2.5-1.5B & 33.3 & 3 & 49 & -14.2 & -6.5 & -13.0 & -6.9 & -18.0 & +10.8 & +0.28 \\
+Qwen2.5-1.5B & 50.0 & 3 & 49 & -17.6 & -10.3 & +3.8 & +15.7 & +1.2 & +14.5 & +0.05 \\
+SmolLM2-1.7B & 25.0 & 4 & 42 & -12.7 & -8.1 & +12.5 & +22.5 & +6.0 & +16.4 & +0.19 \\
+SmolLM2-1.7B & 33.3 & 4 & 42 & -10.0 & -6.4 & +11.4 & +19.0 & +4.0 & +14.8 & +0.17 \\
+SmolLM2-1.7B & 50.0 & 4 & 42 & -6.0 & -4.0 & +5.5 & +9.9 & +2.2 & +7.5 & +0.22 \\
+SmolLM2-1.7B & 25.0 & 3 & 42 & -10.9 & -6.8 & -11.4 & -4.9 & -10.9 & +5.9 & +0.05 \\
+SmolLM2-1.7B & 33.3 & 3 & 42 & -19.0 & -12.3 & -9.5 & +3.2 & -8.3 & +11.5 & +0.01 \\
+SmolLM2-1.7B & 50.0 & 3 & 42 & -18.7 & -13.1 & +8.6 & +24.9 & +11.0 & +14.0 & -0.13 \\
+Qwen2.5-3B & 25.0 & 4 & 63 & -11.2 & -5.6 & +8.0 & +14.4 & -1.1 & +15.3 & +0.22 \\
+Qwen2.5-3B & 33.3 & 4 & 63 & -9.9 & -5.1 & +10.7 & +16.6 & +0.8 & +15.6 & +0.20 \\
+Qwen2.5-3B & 50.0 & 4 & 63 & -6.2 & -3.7 & +6.5 & +10.5 & +1.1 & +8.9 & +0.48 \\
+Qwen2.5-3B & 25.0 & 3 & 63 & -7.7 & -2.8 & -8.5 & -5.9 & -12.6 & +6.4 & +0.33 \\
+Qwen2.5-3B & 33.3 & 3 & 63 & -14.2 & -7.0 & -12.3 & -5.7 & -16.8 & +10.9 & +0.26 \\
+Qwen2.5-3B & 50.0 & 3 & 63 & -17.0 & -10.2 & +5.6 & +17.7 & +3.1 & +14.7 & -0.08 \\
+OLMo-2-0425-1B & 25.0 & 4 & 56 & -13.1 & -9.6 & +13.4 & +25.5 & +9.4 & +15.9 & +0.20 \\
+OLMo-2-0425-1B & 33.3 & 4 & 56 & -9.9 & -7.4 & +12.1 & +20.9 & +6.2 & +14.5 & +0.17 \\
+OLMo-2-0425-1B & 50.0 & 4 & 56 & -5.9 & -4.7 & +5.6 & +10.8 & +3.3 & +7.3 & +0.27 \\
+OLMo-2-0425-1B & 25.0 & 3 & 56 & -11.4 & -8.3 & -12.1 & -4.1 & -9.1 & +5.0 & +0.02 \\
+OLMo-2-0425-1B & 33.3 & 3 & 56 & -19.9 & -14.7 & -9.7 & +5.9 & -4.9 & +10.8 & -0.01 \\
+OLMo-2-0425-1B & 50.0 & 3 & 56 & -19.1 & -15.2 & +10.0 & +29.8 & +16.0 & +13.9 & -0.06 \\
+\bottomrule\end{longtable}
+\textbf{Without compensation} (\texttt{no\_compensation.csv}): the same layers and Hessian, sweeps run on the diagonal of the Hessian (no error is propagated), errors measured with the full Hessian. Mask-first: mask of pruning alone, grid of quantization alone (the setting of the paper's decomposition); absorption and cross terms in \% of $E_P+E_Q$ (they sum to the mask-first $I_E$); gap, mask and grid as above (the update-order part is zero by construction); zeros: share of the weights that rounding alone sets to zero, and share of the pruned weights among them.
+\begin{longtable}{lrrrrrrrrrrrr}
+\toprule model & $s$ (\%) & $b$ & $I_E$ mask-first & $I_E$ P$\to$Q & $I_E$ Q$\to$P & absorption & cross terms & gap & mask & grid & zeros (\%) & pruned among zeros (\%) \\ \midrule \endhead
+SmolLM2-135M & 25.0 & 4 & -9.4 & -9.4 & +0.0 & -9.4 & -0.027 & +10.4 & +10.4 & +0.000 & 14.9 & 57.7 \\
+SmolLM2-135M & 33.3 & 4 & -9.2 & -9.2 & -0.8 & -9.2 & -0.058 & +9.3 & +9.3 & +0.000 & 14.9 & 44.0 \\
+SmolLM2-135M & 50.0 & 4 & -7.1 & -7.1 & -1.7 & -7.0 & -0.057 & +5.7 & +5.7 & +0.001 & 14.9 & 29.6 \\
+SmolLM2-135M & 25.0 & 3 & -6.8 & -6.8 & -7.1 & -6.8 & +0.005 & -0.3 & -0.3 & -0.000 & 31.0 & 95.8 \\
+SmolLM2-135M & 33.3 & 3 & -12.9 & -12.9 & -11.2 & -12.9 & -0.005 & +1.9 & +1.9 & -0.000 & 31.0 & 84.2 \\
+SmolLM2-135M & 50.0 & 3 & -16.9 & -16.9 & -1.8 & -16.9 & -0.017 & +18.2 & +18.2 & +0.003 & 31.0 & 60.3 \\
+SmolLM2-360M & 25.0 & 4 & -8.7 & -8.7 & +0.4 & -8.7 & +0.018 & +10.0 & +10.0 & +0.000 & 14.9 & 57.8 \\
+SmolLM2-360M & 33.3 & 4 & -8.6 & -8.6 & -0.4 & -8.7 & +0.020 & +9.1 & +9.1 & -0.000 & 14.9 & 44.1 \\
+SmolLM2-360M & 50.0 & 4 & -6.8 & -6.8 & -1.5 & -6.8 & -0.024 & +5.7 & +5.7 & +0.000 & 14.9 & 29.7 \\
+SmolLM2-360M & 25.0 & 3 & -6.5 & -6.5 & -6.7 & -6.5 & -0.002 & -0.3 & -0.3 & +0.000 & 31.0 & 96.3 \\
+SmolLM2-360M & 33.3 & 3 & -12.3 & -12.3 & -10.6 & -12.3 & -0.037 & +2.0 & +2.0 & +0.000 & 31.0 & 84.8 \\
+SmolLM2-360M & 50.0 & 3 & -16.5 & -16.5 & -1.2 & -16.4 & -0.126 & +18.3 & +18.3 & +0.001 & 31.0 & 60.5 \\
+Qwen2.5-0.5B & 25.0 & 4 & -8.9 & -8.9 & -2.9 & -8.8 & -0.064 & +6.6 & +6.6 & +0.000 & 15.7 & 60.0 \\
+Qwen2.5-0.5B & 33.3 & 4 & -9.7 & -9.7 & -2.0 & -9.8 & +0.033 & +8.6 & +8.6 & -0.000 & 15.7 & 46.0 \\
+Qwen2.5-0.5B & 50.0 & 4 & -8.1 & -8.1 & -2.3 & -8.2 & +0.086 & +6.3 & +6.3 & +0.004 & 15.7 & 31.1 \\
+Qwen2.5-0.5B & 25.0 & 3 & -4.9 & -4.9 & -5.3 & -4.9 & +0.008 & -0.4 & -0.4 & +0.000 & 32.3 & 95.3 \\
+Qwen2.5-0.5B & 33.3 & 3 & -9.8 & -9.8 & -10.7 & -9.8 & +0.028 & -1.0 & -1.0 & +0.002 & 32.3 & 85.5 \\
+Qwen2.5-0.5B & 50.0 & 3 & -16.0 & -16.1 & -5.9 & -16.0 & -0.055 & +12.1 & +12.1 & +0.012 & 32.3 & 62.6 \\
+Qwen2.5-1.5B & 25.0 & 4 & -9.6 & -9.6 & -0.9 & -9.6 & +0.046 & +9.6 & +9.6 & +0.000 & 14.9 & 57.9 \\
+Qwen2.5-1.5B & 33.3 & 4 & -9.6 & -9.6 & -1.2 & -9.6 & +0.012 & +9.3 & +9.3 & +0.000 & 14.9 & 44.0 \\
+Qwen2.5-1.5B & 50.0 & 4 & -7.3 & -7.3 & -2.0 & -7.3 & -0.015 & +5.8 & +5.8 & +0.007 & 14.9 & 29.6 \\
+Qwen2.5-1.5B & 25.0 & 3 & -6.3 & -6.3 & -6.7 & -6.3 & -0.018 & -0.4 & -0.4 & +0.000 & 31.0 & 96.2 \\
+Qwen2.5-1.5B & 33.3 & 3 & -12.1 & -12.1 & -11.8 & -12.0 & -0.040 & +0.3 & +0.3 & +0.000 & 31.0 & 84.7 \\
+Qwen2.5-1.5B & 50.0 & 3 & -16.7 & -16.7 & -3.4 & -16.7 & +0.001 & +15.8 & +15.8 & -0.000 & 31.0 & 60.5 \\
+SmolLM2-1.7B & 25.0 & 4 & -9.1 & -9.1 & +2.7 & -9.1 & -0.029 & +13.0 & +13.0 & -0.000 & 14.3 & 56.1 \\
+SmolLM2-1.7B & 33.3 & 4 & -8.3 & -8.3 & +0.2 & -8.3 & +0.009 & +9.3 & +9.3 & -0.000 & 14.3 & 42.4 \\
+SmolLM2-1.7B & 50.0 & 4 & -6.1 & -6.1 & -0.8 & -6.1 & +0.006 & +5.6 & +5.6 & +0.000 & 14.3 & 28.4 \\
+SmolLM2-1.7B & 25.0 & 3 & -7.7 & -7.7 & -7.9 & -7.7 & -0.011 & -0.2 & -0.2 & +0.000 & 29.9 & 97.2 \\
+SmolLM2-1.7B & 33.3 & 3 & -14.2 & -14.2 & -9.1 & -14.1 & -0.063 & +5.9 & +5.9 & +0.000 & 29.9 & 84.3 \\
+SmolLM2-1.7B & 50.0 & 3 & -16.4 & -16.4 & +2.4 & -16.3 & -0.085 & +22.5 & +22.5 & +0.000 & 29.9 & 58.8 \\
+Qwen2.5-3B & 25.0 & 4 & -9.6 & -9.6 & -0.0 & -9.6 & -0.024 & +10.6 & +10.6 & +0.000 & 16.5 & 59.8 \\
+Qwen2.5-3B & 33.3 & 4 & -9.3 & -9.3 & -0.5 & -9.3 & -0.002 & +9.7 & +9.7 & +0.000 & 16.5 & 46.7 \\
+Qwen2.5-3B & 50.0 & 4 & -6.9 & -6.9 & -1.7 & -6.9 & +0.017 & +5.6 & +5.6 & -0.000 & 16.5 & 32.3 \\
+Qwen2.5-3B & 25.0 & 3 & -6.5 & -6.5 & -6.9 & -6.5 & -0.000 & -0.4 & -0.4 & +0.000 & 32.8 & 95.6 \\
+Qwen2.5-3B & 33.3 & 3 & -12.3 & -12.3 & -11.7 & -12.3 & +0.014 & +0.8 & +0.8 & +0.000 & 32.8 & 85.0 \\
+Qwen2.5-3B & 50.0 & 3 & -16.5 & -16.5 & -1.6 & -16.5 & -0.058 & +17.8 & +17.8 & +0.004 & 32.8 & 62.1 \\
+OLMo-2-0425-1B & 25.0 & 4 & -11.6 & -11.6 & +4.8 & -11.6 & +0.010 & +18.6 & +18.6 & +0.000 & 14.0 & 55.2 \\
+OLMo-2-0425-1B & 33.3 & 4 & -9.6 & -9.6 & +1.3 & -9.6 & -0.002 & +12.0 & +12.0 & +0.000 & 14.0 & 41.7 \\
+OLMo-2-0425-1B & 50.0 & 4 & -6.4 & -6.4 & -0.7 & -6.4 & -0.013 & +6.1 & +6.1 & +0.000 & 14.0 & 27.9 \\
+OLMo-2-0425-1B & 25.0 & 3 & -9.8 & -9.8 & -10.0 & -9.8 & -0.008 & -0.2 & -0.2 & +0.000 & 29.4 & 96.9 \\
+OLMo-2-0425-1B & 33.3 & 3 & -17.6 & -17.6 & -10.3 & -17.6 & -0.038 & +8.9 & +8.9 & +0.000 & 29.4 & 83.8 \\
+OLMo-2-0425-1B & 50.0 & 3 & -18.5 & -18.5 & +5.4 & -18.5 & +0.065 & +29.2 & +29.2 & +0.000 & 29.4 & 58.1 \\
+\bottomrule\end{longtable}
+\textbf{Weaker-first test} (\texttt{weaker\_first.csv}): WikiText-2 perplexity of each method alone and of the three orders; the rule puts first the method with the lower perplexity alone. Best and worst order by perplexity, by KL and by nine-task accuracy (blank where not measured).
+\begin{longtable}{lrrrrlrrrllllll}
+\toprule model & $s$ (\%) & $b$ & pruning only & quant.\ only & rule: first & joint & P$\to$Q & Q$\to$P & best & worst & best (KL) & worst (KL) & best (Sr9) & worst (Sr9) \\ \midrule \endhead
+SmolLM2-135M & 25.0 & 4 & 16.48 & 21.94 & prune & 23.50 & 21.99 & 24.35 & P$\to$Q & Q$\to$P & P$\to$Q & Q$\to$P & P$\to$Q & joint \\
+SmolLM2-135M & 33.3 & 4 & 18.37 & 21.94 & prune & 26.23 & 24.44 & 27.07 & P$\to$Q & Q$\to$P & P$\to$Q & Q$\to$P & P$\to$Q & joint \\
+SmolLM2-135M & 50.0 & 4 & 32.82 & 21.94 & quantize & 44.47 & 41.20 & 47.33 & P$\to$Q & Q$\to$P & P$\to$Q & Q$\to$P & Q$\to$P & P$\to$Q \\
+SmolLM2-135M & 25.0 & 3 & 16.48 & 57.55 & prune & 68.77 & 53.14 & 57.55 & P$\to$Q & joint & P$\to$Q & joint & P$\to$Q & Q$\to$P \\
+SmolLM2-135M & 33.3 & 3 & 18.37 & 57.55 & prune & 62.21 & 53.24 & 68.59 & P$\to$Q & Q$\to$P & P$\to$Q & Q$\to$P & Q$\to$P & joint \\
+SmolLM2-135M & 50.0 & 3 & 32.82 & 57.55 & prune & 99.24 & 86.03 & 152.51 & P$\to$Q & Q$\to$P & P$\to$Q & Q$\to$P & P$\to$Q & joint \\
+SmolLM2-360M & 25.0 & 4 & 12.08 & 13.27 & prune & 13.20 & 13.34 & 14.38 & joint & Q$\to$P & joint & Q$\to$P & joint & Q$\to$P \\
+SmolLM2-360M & 33.3 & 4 & 12.86 & 13.27 & prune & 14.01 & 14.19 & 15.58 & joint & Q$\to$P & joint & Q$\to$P & joint & Q$\to$P \\
+SmolLM2-360M & 50.0 & 4 & 18.63 & 13.27 & quantize & 20.48 & 21.29 & 23.63 & joint & Q$\to$P & joint & Q$\to$P & joint & Q$\to$P \\
+SmolLM2-360M & 25.0 & 3 & 12.08 & 21.97 & prune & 20.00 & 20.38 & 21.97 & joint & Q$\to$P & joint & Q$\to$P & joint & Q$\to$P \\
+SmolLM2-360M & 33.3 & 3 & 12.86 & 21.97 & prune & 20.03 & 20.68 & 28.88 & joint & Q$\to$P & joint & Q$\to$P & joint & Q$\to$P \\
+SmolLM2-360M & 50.0 & 3 & 18.63 & 21.97 & prune & 29.14 & 29.62 & 49.29 & joint & Q$\to$P & joint & Q$\to$P & joint & Q$\to$P \\
+Qwen2.5-0.5B & 25.0 & 4 & 13.63 & 14.31 & prune & 14.63 & 14.77 & 15.07 & joint & Q$\to$P & joint & Q$\to$P & P$\to$Q & Q$\to$P \\
+Qwen2.5-0.5B & 33.3 & 4 & 14.53 & 14.31 & quantize & 15.64 & 15.63 & 16.07 & P$\to$Q & Q$\to$P & joint & Q$\to$P & Q$\to$P & joint \\
+Qwen2.5-0.5B & 50.0 & 4 & 20.15 & 14.31 & quantize & 21.91 & 22.18 & 22.39 & joint & Q$\to$P & joint & Q$\to$P & Q$\to$P & P$\to$Q \\
+Qwen2.5-0.5B & 25.0 & 3 & 13.63 & 21.84 & prune & 21.53 & 21.92 & 21.84 & joint & P$\to$Q & joint & P$\to$Q & joint & Q$\to$P \\
+Qwen2.5-0.5B & 33.3 & 3 & 14.53 & 21.84 & prune & 21.95 & 22.96 & 23.15 & joint & Q$\to$P & joint & Q$\to$P & Q$\to$P & joint \\
+Qwen2.5-0.5B & 50.0 & 3 & 20.15 & 21.84 & prune & 28.62 & 29.96 & 34.63 & joint & Q$\to$P & joint & Q$\to$P & joint & Q$\to$P \\
+Qwen2.5-1.5B & 25.0 & 4 & 9.55 & 11.16 & prune & 11.28 & 11.31 & 11.53 & joint & Q$\to$P & joint & Q$\to$P &  &  \\
+Qwen2.5-1.5B & 33.3 & 4 & 10.02 & 11.16 & prune & 11.78 & 11.67 & 12.16 & P$\to$Q & Q$\to$P & P$\to$Q & Q$\to$P &  &  \\
+Qwen2.5-1.5B & 50.0 & 4 & 13.27 & 11.16 & quantize & 15.48 & 14.35 & 16.35 & P$\to$Q & Q$\to$P & P$\to$Q & Q$\to$P &  &  \\
+Qwen2.5-1.5B & 25.0 & 3 & 9.55 & 17.57 & prune & 17.68 & 16.69 & 17.57 & P$\to$Q & joint & P$\to$Q & joint &  &  \\
+Qwen2.5-1.5B & 33.3 & 3 & 10.02 & 17.57 & prune & 20.78 & 17.35 & 18.05 & P$\to$Q & joint & P$\to$Q & joint &  &  \\
+Qwen2.5-1.5B & 50.0 & 3 & 13.27 & 17.57 & prune & 24.05 & 23.46 & 31.91 & P$\to$Q & Q$\to$P & P$\to$Q & Q$\to$P &  &  \\
+SmolLM2-1.7B & 25.0 & 4 & 8.51 & 8.71 & prune & 9.00 & 9.06 & 9.19 & joint & Q$\to$P & joint & Q$\to$P &  &  \\
+SmolLM2-1.7B & 33.3 & 4 & 9.04 & 8.71 & quantize & 9.89 & 9.66 & 9.84 & P$\to$Q & joint & P$\to$Q & joint &  &  \\
+SmolLM2-1.7B & 50.0 & 4 & 13.51 & 8.71 & quantize & 14.13 & 14.11 & 15.02 & P$\to$Q & Q$\to$P & P$\to$Q & Q$\to$P & joint & Q$\to$P \\
+SmolLM2-1.7B & 25.0 & 3 & 8.51 & 13.01 & prune & 12.52 & 11.99 & 13.01 & P$\to$Q & Q$\to$P & P$\to$Q & Q$\to$P &  &  \\
+SmolLM2-1.7B & 33.3 & 3 & 9.04 & 13.01 & prune & 12.01 & 12.32 & 12.83 & joint & Q$\to$P & joint & Q$\to$P &  &  \\
+SmolLM2-1.7B & 50.0 & 3 & 13.51 & 13.01 & quantize & 17.72 & 18.38 & 23.66 & joint & Q$\to$P & joint & Q$\to$P &  &  \\
+Qwen2.5-3B & 25.0 & 4 & 8.21 & 8.43 & prune & 8.56 & 8.53 & 8.69 & P$\to$Q & Q$\to$P &  &  &  &  \\
+Qwen2.5-3B & 33.3 & 4 & 8.55 & 8.43 & quantize & 8.87 & 8.88 & 9.06 & joint & Q$\to$P &  &  &  &  \\
+Qwen2.5-3B & 50.0 & 4 & 10.70 & 8.43 & quantize & 11.02 & 11.05 & 11.42 & joint & Q$\to$P &  &  &  &  \\
+Qwen2.5-3B & 25.0 & 3 & 8.21 & 10.48 & prune & 10.55 & 10.46 & 10.48 & P$\to$Q & joint &  &  &  &  \\
+Qwen2.5-3B & 33.3 & 3 & 8.55 & 10.48 & prune & 10.60 & 10.48 & 10.89 & P$\to$Q & Q$\to$P &  &  &  &  \\
+Qwen2.5-3B & 50.0 & 3 & 10.70 & 10.48 & quantize & 12.91 & 12.97 & 15.12 & joint & Q$\to$P &  &  &  &  \\
+OLMo-2-0425-1B & 25.0 & 4 & 9.65 & 10.11 & prune & 10.40 & 10.40 & 10.66 & joint & Q$\to$P & P$\to$Q & Q$\to$P &  &  \\
+OLMo-2-0425-1B & 33.3 & 4 & 10.31 & 10.11 & quantize & 11.16 & 11.14 & 11.33 & P$\to$Q & Q$\to$P & P$\to$Q & Q$\to$P &  &  \\
+OLMo-2-0425-1B & 50.0 & 4 & 14.62 & 10.11 & quantize & 15.76 & 15.69 & 16.76 & P$\to$Q & Q$\to$P & P$\to$Q & Q$\to$P &  &  \\
+OLMo-2-0425-1B & 25.0 & 3 & 9.65 & 14.07 & prune & 14.13 & 14.23 & 14.07 & Q$\to$P & P$\to$Q & Q$\to$P & P$\to$Q &  &  \\
+OLMo-2-0425-1B & 33.3 & 3 & 10.31 & 14.07 & prune & 14.42 & 14.45 & 15.56 & joint & Q$\to$P & joint & Q$\to$P &  &  \\
+OLMo-2-0425-1B & 50.0 & 3 & 14.62 & 14.07 & quantize & 19.87 & 20.03 & 26.11 & joint & Q$\to$P & joint & Q$\to$P &  &  \\
+\bottomrule\end{longtable}
 \end{document}
