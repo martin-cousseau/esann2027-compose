@@ -1,7 +1,11 @@
 # NEWS (newest first)
 
 ## Read this first
-- **Now (17 Nov, 06:00 UTC):** V4.1, the final pass before submission, is delivered with the full submission package
+- **Now (17 Nov, 10:30 UTC):** the remaining items are closed (DECISIONS.md #67): V4.1 links the no-compensation result
+  to Harma et al.'s mechanism (verified at the source; still 6 pages, 40 claims hold); a ready variant without the 7-8B
+  rows of Table 2 and camera-ready notes are in the private package; FINDINGS.md is regenerated from the macros and
+  QUESTIONS.md holds only the open author decisions; the W&B project is being completed to one run per state.
+- **17 Nov, 06:00 UTC:** V4.1, the final pass before submission, is delivered with the full submission package
   (private zip `context/esann2027_submission_v4.1_2026-11-17.zip`, backed up to the private dataset): 6 pages, margins
   centred to the ESANN rule, 40 worded claims checked; an independent audit found no numerical error; two simulated
   reviews (weak accept) and the fixes are in the package (`REFLECTION.md`, acceptance estimate 60-75%;
@@ -27,6 +31,9 @@
 - **Links:** PR https://github.com/martin-cousseau/esann2027-compose/pull/1 (draft) ; models
   https://huggingface.co/martincousseau/esann2027-compose-v2 ; results and supplement
   https://huggingface.co/datasets/martincousseau/esann2027-v2-results ; runs https://wandb.ai/martin-css/esann2027-compose-v2
+
+## 2026-11-17 10:30 UTC - Remaining items closed
+- Harma link in V4.1, camera-ready notes, the without-7-8B variant, FINDINGS/QUESTIONS, W&B completion (#67).
 
 ## 2026-11-17 06:00 UTC - V4.1 and the submission package
 - Audit and two simulated reviews of the V4.1 draft; fixes, macros and supplement tables (#66). No GPU used.
